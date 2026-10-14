@@ -1,0 +1,49 @@
+[
+ {
+  "id": "street_midday",
+  "tags": [
+   "outdoor",
+   "street",
+   "midday",
+   "clear"
+  ],
+  "title": "Wide Street 01",
+  "author": "Sergej Majboroda",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/wide_street_01",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/wide_street_01_2k.hdr",
+    "sha256": "fd1d60b212dea726d27fdb6265d82b69eff0a40470e80fb180658f118ac40f86",
+    "bytes": 5834052
+   }
+  ],
+  "prepare": {}
+ },
+ {
+  "id": "sky_partly_cloudy",
+  "tags": [
+   "outdoor",
+   "sky",
+   "partly_cloudy"
+  ],
+  "title": "Kloofendal 48d Partly Cloudy (Pure Sky)",
+  "author": "Greg Zaal, Jarod Guest",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloofendal_48d_partly_cloudy_puresky_2k.hdr",
+    "sha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198",
+    "bytes": 5451493
+   }
+  ],
+  "prepare": {
+   "strength": 0.3
+  }
+ }
+]

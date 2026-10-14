@@ -1,0 +1,1393 @@
+[
+ {
+  "id": "relaxed_a",
+  "reach": 0.3451,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2403,
+   "front": 0.2569,
+   "front_feet": 0.2569,
+   "front_body": 0.2122,
+   "side": 0.3147,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 5,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "standing at ease, arms down, looking ahead",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_idle_neutral_01.max.fbx",
+    "sha256": "818cc185af21390575f7fbfdeb3012ba2ce5969fbcb220ea725a2617b339a6e2",
+    "bytes": 2418544,
+    "file": "m_idle_neutral_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_idle_neutral_01.max.fbx",
+   "frame": 176,
+   "prop": null
+  }
+ },
+ {
+  "id": "relaxed_b",
+  "reach": 0.3341,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2212,
+   "front": 0.2016,
+   "front_feet": 0.2016,
+   "front_body": 0.2015,
+   "side": 0.3335,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 7,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 5,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "standing at ease, arms down, feet a little apart",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_listen_angry_01.max.fbx",
+    "sha256": "d8101e20d035ec53af4db1da3f09dedb0ff8356ee1f214277c0940d715cbf97f",
+    "bytes": 4835008,
+    "file": "f_gestic_listen_angry_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_listen_angry_01.max.fbx",
+   "frame": 420,
+   "prop": null
+  }
+ },
+ {
+  "id": "relaxed_c",
+  "reach": 0.3532,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.233,
+   "front": 0.2747,
+   "front_feet": 0.2747,
+   "front_body": 0.2296,
+   "side": 0.3146,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 5,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "standing at ease, arms down, looking slightly down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_idle_neutral_03.max.fbx",
+    "sha256": "1ccd908762597f0dfe61a0d167a97c6e6659c241ea314f61585f7d16245a322b",
+    "bytes": 5466800,
+    "file": "m_idle_neutral_03.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_idle_neutral_03.max.fbx",
+   "frame": 501,
+   "prop": null
+  }
+ },
+ {
+  "id": "weight_one_leg_a",
+  "reach": 0.3152,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2459,
+   "front": 0.2049,
+   "front_feet": 0.2049,
+   "front_body": 0.1997,
+   "side": 0.315,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 6,
+    "1.84x1.06": 4,
+    "1.84x1.09": 4,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "weight on one leg, arms down, head turned a little to the left",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_idle_neutral_04.max.fbx",
+    "sha256": "9d8af7737ad77137aa0208c402e50cb275e46b0791e5561ddc1108cb448c768f",
+    "bytes": 5120144,
+    "file": "f_idle_neutral_04.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_idle_neutral_04.max.fbx",
+   "frame": 820,
+   "prop": null
+  }
+ },
+ {
+  "id": "weight_one_leg_b",
+  "reach": 0.3568,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2343,
+   "front": 0.2107,
+   "front_feet": 0.2014,
+   "front_body": 0.2107,
+   "side": 0.3431,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 7,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 7,
+    "1.84x1.06": 6,
+    "1.84x1.09": 5,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "weight on one leg, arms down, head turned well to the left",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_idle_angry_01.max.fbx",
+    "sha256": "35d54af5153e0d84014f92b5a23101d8745f724cbcea1a3df5f4a13440abbda3",
+    "bytes": 4229648,
+    "file": "f_idle_angry_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_idle_angry_01.max.fbx",
+   "frame": 644,
+   "prop": null
+  }
+ },
+ {
+  "id": "head_turned_left",
+  "reach": 0.3079,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2429,
+   "front": 0.1968,
+   "front_feet": 0.1966,
+   "front_body": 0.1968,
+   "side": 0.3076,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 6,
+    "1.84x1.06": 4,
+    "1.84x1.09": 3,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "arms down, head turned to the left",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_idle_look_around_01.max.fbx",
+    "sha256": "61a70b35f08d5308c01fd1bce75ecbdb2cd320193ee900bbef26ad0e9d52261e",
+    "bytes": 1617760,
+    "file": "f_idle_look_around_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_idle_look_around_01.max.fbx",
+   "frame": 68,
+   "prop": null
+  }
+ },
+ {
+  "id": "head_turned_right",
+  "reach": 0.3599,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2269,
+   "front": 0.2409,
+   "front_feet": 0.2409,
+   "front_body": 0.2238,
+   "side": 0.3385,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 6,
+    "1.84x0.92": 7,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 5,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "arms down, head turned to the right and a little down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_hold_bag_idle.max.fbx",
+    "sha256": "1a34632061eaf8b9aa90c09615c722725014d6608d93482faf3ec280dc728994",
+    "bytes": 5760800,
+    "file": "m_hold_bag_idle.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_hold_bag_idle.max.fbx",
+   "frame": 532,
+   "prop": null
+  }
+ },
+ {
+  "id": "head_turned_right_slight",
+  "reach": 0.2812,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2372,
+   "front": 0.2026,
+   "front_feet": 0.194,
+   "front_body": 0.2026,
+   "side": 0.281,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 6,
+    "1.84x0.92": 9,
+    "1.84x1.00": 9,
+    "1.84x1.03": 8,
+    "1.84x1.06": 7,
+    "1.84x1.09": 6,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "arms down, head turned a little to the right",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_idle_neutral_06.max.fbx",
+    "sha256": "501b985abcf9ea5d8f3ebbc98b1196d71b80c1dac00d629a02f847ff542a0753",
+    "bytes": 7409216,
+    "file": "f_idle_neutral_06.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_idle_neutral_06.max.fbx",
+   "frame": 1273,
+   "prop": null
+  }
+ },
+ {
+  "id": "look_over_shoulder",
+  "reach": 0.2967,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2368,
+   "front": 0.2681,
+   "front_feet": 0.2681,
+   "front_body": 0.2079,
+   "side": 0.2964,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 8,
+    "1.84x1.03": 8,
+    "1.84x1.06": 7,
+    "1.84x1.09": 5,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "arms down, looking over the right shoulder",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_idle_waiting_01.max.fbx",
+    "sha256": "4ef108e767de7fcfa5dca9677369118664fdcc7743bf02ff04be2748c72579c2",
+    "bytes": 7600640,
+    "file": "f_idle_waiting_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_idle_waiting_01.max.fbx",
+   "frame": 428,
+   "prop": null
+  }
+ },
+ {
+  "id": "check_watch",
+  "reach": 0.405,
+  "tags": [
+   "waiting"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2502,
+   "front": 0.4027,
+   "front_feet": 0.2749,
+   "front_body": 0.4027,
+   "side": 0.3389,
+   "axis_seen": 5,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 7,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 6,
+    "1.84x1.12": 6,
+    "1.84x1.15": 6
+   }
+  },
+  "looks": "both forearms raised before the chest, looking down at the wrist",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_idle_waiting_02.max.fbx",
+    "sha256": "76178c2bdaf5b9059c4aff5b347ad948d89dcfbd387cb983fb8c8dd45de87233",
+    "bytes": 5717376,
+    "file": "m_idle_waiting_02.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_idle_waiting_02.max.fbx",
+   "frame": 308,
+   "prop": null
+  }
+ },
+ {
+  "id": "thoughtful_a",
+  "reach": 0.361,
+  "tags": [
+   "waiting"
+  ],
+  "note": "a hand at the chin with the other arm across the body: for someone waiting, and not for a member of a conversation, where it reads as a raised fist or as a face in the hand",
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2896,
+   "front": 0.2732,
+   "front_feet": 0.2732,
+   "front_body": 0.2228,
+   "side": 0.2721,
+   "axis_seen": 6,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 8,
+    "1.84x1.03": 8,
+    "1.84x1.06": 7,
+    "1.84x1.09": 6,
+    "1.84x1.12": 6,
+    "1.84x1.15": 6
+   }
+  },
+  "looks": "one arm across the body, the other hand at the chin",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_thoughtful_01.max.fbx",
+    "sha256": "70916c9e70b2ce15a8662e828134ce45b01ddbb72b3bbff2958d1d7f565070c1",
+    "bytes": 2716624,
+    "file": "m_gestic_thoughtful_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_thoughtful_01.max.fbx",
+   "frame": 204,
+   "prop": null
+  }
+ },
+ {
+  "id": "thoughtful_b",
+  "reach": 0.2939,
+  "tags": [],
+  "note": "a hand at the chin with the other arm across the body, as thoughtful_a: one take of the two is enough, or the pose turns up in every other waiting line, so this one carries no tag and nobody is cast in it",
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2633,
+   "front": 0.2091,
+   "front_feet": 0.1995,
+   "front_body": 0.2091,
+   "side": 0.2728,
+   "axis_seen": 5,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 7,
+    "1.84x1.03": 7,
+    "1.84x1.06": 7,
+    "1.84x1.09": 7,
+    "1.84x1.12": 7,
+    "1.84x1.15": 7
+   }
+  },
+  "looks": "one arm across the body, the other hand at the cheek, leaning a little",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_thoughtful_01.max.fbx",
+    "sha256": "089e041b5fbe673c86d2bb9ce5cd2f93bace720f1d31523eaa8a049eeb79b57d",
+    "bytes": 2136016,
+    "file": "f_gestic_thoughtful_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_thoughtful_01.max.fbx",
+   "frame": 142,
+   "prop": null
+  }
+ },
+ {
+  "id": "phone_look_a",
+  "reach": 0.3885,
+  "tags": [
+   "waiting",
+   "phone"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2355,
+   "front": 0.3456,
+   "front_feet": 0.2797,
+   "front_body": 0.3456,
+   "side": 0.3451,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 4,
+    "1.84x0.92": 6,
+    "1.84x1.00": 5,
+    "1.84x1.03": 5,
+    "1.84x1.06": 4,
+    "1.84x1.09": 3,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "phone held before the chest in the right hand, head bowed to it, left arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_cell_phone_textmessage.max.fbx",
+    "sha256": "fe358efe720533691589b3f16d43bfb7719f51be7ae23abaa66459477fb4250b",
+    "bytes": 5693776,
+    "file": "m_cell_phone_textmessage.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_cell_phone_textmessage.max.fbx",
+   "frame": 104,
+   "prop": "phone",
+   "hand": "R"
+  }
+ },
+ {
+  "id": "phone_look_b",
+  "reach": 0.3187,
+  "tags": [
+   "waiting",
+   "phone"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2135,
+   "front": 0.3161,
+   "front_feet": 0.1922,
+   "front_body": 0.3161,
+   "side": 0.3103,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 3,
+    "1.84x0.92": 7,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 5,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "phone held close before the chest in the right hand, head bowed to it",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_cell_phone_textmessage.max.fbx",
+    "sha256": "fec5b09446c1f097d87490005157979a49053cd2462547794b9bdeababdae97b",
+    "bytes": 3647440,
+    "file": "f_cell_phone_textmessage.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_cell_phone_textmessage.max.fbx",
+   "frame": 309,
+   "prop": "phone",
+   "hand": "R"
+  }
+ },
+ {
+  "id": "phone_ear",
+  "reach": 0.3526,
+  "tags": [
+   "waiting",
+   "phone"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2328,
+   "front": 0.2704,
+   "front_feet": 0.2442,
+   "front_body": 0.2704,
+   "side": 0.3427,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 5,
+    "1.84x1.03": 4,
+    "1.84x1.06": 4,
+    "1.84x1.09": 3,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "phone at the right ear, left arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_cell_phone_talk_01.max.fbx",
+    "sha256": "9501002826cec966b7e3abfb9e1dfb5a9c528760343b0d6509a3ce4e0f85a2d7",
+    "bytes": 5374704,
+    "file": "m_cell_phone_talk_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_cell_phone_talk_01.max.fbx",
+   "frame": 862,
+   "prop": "phone",
+   "hand": "R",
+   "hold": "ear"
+  }
+ },
+ {
+  "id": "cup_a",
+  "reach": 0.3621,
+  "tags": [
+   "talking",
+   "cup"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2329,
+   "front": 0.3011,
+   "front_feet": 0.266,
+   "front_body": 0.3011,
+   "side": 0.3603,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 5,
+    "1.58x1.15": 4,
+    "1.84x0.92": 7,
+    "1.84x1.00": 6,
+    "1.84x1.03": 6,
+    "1.84x1.06": 5,
+    "1.84x1.09": 5,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "a paper cup held before the body in the right hand at waist height, left arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_drink_idle.max.fbx",
+    "sha256": "44a8183dd457dbbac3e56b8dc93dcec99eb26e9eb10c36d73987ab70beb1f2b2",
+    "bytes": 5229184,
+    "file": "m_drink_idle.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_drink_idle.max.fbx",
+   "frame": 95,
+   "prop": "cup",
+   "hand": "R"
+  }
+ },
+ {
+  "id": "cup_b",
+  "reach": 0.3415,
+  "tags": [
+   "talking",
+   "cup"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2435,
+   "front": 0.2662,
+   "front_feet": 0.2053,
+   "front_body": 0.2662,
+   "side": 0.3405,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 5,
+    "1.84x1.03": 4,
+    "1.84x1.06": 4,
+    "1.84x1.09": 3,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "a paper cup held before the body in the right hand, a little higher, left arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_drink_idle.max.fbx",
+    "sha256": "3e486b8aa0e5d4aac1907536ff04f1c8b55a350095496ad10e513d797f1e1f67",
+    "bytes": 5017600,
+    "file": "f_drink_idle.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_drink_idle.max.fbx",
+   "frame": 269,
+   "prop": "cup",
+   "hand": "R"
+  }
+ },
+ {
+  "id": "hand_on_hip",
+  "reach": 0.3782,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2422,
+   "front": 0.2048,
+   "front_feet": 0.179,
+   "front_body": 0.2048,
+   "side": 0.3602,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 4,
+    "1.84x0.92": 5,
+    "1.84x1.00": 5,
+    "1.84x1.03": 5,
+    "1.84x1.06": 3,
+    "1.84x1.09": 3,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "left hand on the hip, right arm down, weight on one leg",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_listen_self-assured_01.max.fbx",
+    "sha256": "dca81e24b2ccb335bdc272520edf89bd2f05565e80e40c329333c59fc7db39dc",
+    "bytes": 4763392,
+    "file": "f_gestic_listen_self-assured_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_listen_self-assured_01.max.fbx",
+   "frame": 581,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_hand_on_chest",
+  "reach": 0.367,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2391,
+   "front": 0.2892,
+   "front_feet": 0.2224,
+   "front_body": 0.2892,
+   "side": 0.3309,
+   "axis_seen": 5,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 8,
+    "1.84x1.00": 6,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 5,
+    "1.84x1.12": 5,
+    "1.84x1.15": 5
+   }
+  },
+  "looks": "left hand at the chest, right arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_talk_cool.max.fbx",
+    "sha256": "7ecabc77ab990bf53e83c4cf7c39607db596ea7caca14aa08a9a12e7a77c73b6",
+    "bytes": 7538848,
+    "file": "m_gestic_talk_cool.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_talk_cool.max.fbx",
+   "frame": 1051,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_hand_low",
+  "reach": 0.3657,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.236,
+   "front": 0.3417,
+   "front_feet": 0.2493,
+   "front_body": 0.3417,
+   "side": 0.3177,
+   "axis_seen": 5,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 6,
+    "1.84x1.06": 5,
+    "1.84x1.09": 5,
+    "1.84x1.12": 5,
+    "1.84x1.15": 5
+   }
+  },
+  "looks": "left hand before the belly in a small gesture, right arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_talk_cool.max.fbx",
+    "sha256": "7ecabc77ab990bf53e83c4cf7c39607db596ea7caca14aa08a9a12e7a77c73b6",
+    "bytes": 7538848,
+    "file": "m_gestic_talk_cool.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_talk_cool.max.fbx",
+   "frame": 1111,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_lean_in",
+  "reach": 0.4014,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2256,
+   "front": 0.3372,
+   "front_feet": 0.3372,
+   "front_body": 0.3024,
+   "side": 0.38,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 4,
+    "1.84x0.92": 6,
+    "1.84x1.00": 6,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 5,
+    "1.84x1.12": 5,
+    "1.84x1.15": 5
+   }
+  },
+  "looks": "right hand at the chest, leaning a little towards the listener",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_talk_cool.max.fbx",
+    "sha256": "7ecabc77ab990bf53e83c4cf7c39607db596ea7caca14aa08a9a12e7a77c73b6",
+    "bytes": 7538848,
+    "file": "m_gestic_talk_cool.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_talk_cool.max.fbx",
+   "frame": 571,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_hand_forward",
+  "reach": 0.384,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2578,
+   "front": 0.3201,
+   "front_feet": 0.2761,
+   "front_body": 0.3201,
+   "side": 0.3447,
+   "axis_seen": 4,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 4,
+    "1.84x0.92": 7,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 5,
+    "1.84x1.09": 5,
+    "1.84x1.12": 4,
+    "1.84x1.15": 4
+   }
+  },
+  "looks": "left hand out before the body, palm in, right arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_talk_relaxed_01.max.fbx",
+    "sha256": "560c369eeec15c56534cdd8a87bdebd76f365a783c43b473e879a1707721be07",
+    "bytes": 5511856,
+    "file": "m_gestic_talk_relaxed_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_talk_relaxed_01.max.fbx",
+   "frame": 181,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_thumb_back",
+  "reach": 0.3332,
+  "tags": [],
+  "note": "a closed hand raised to the shoulder: it reads as a raised fist at the distance of a scene, so it carries no tag and nobody is cast in it",
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2426,
+   "front": 0.3018,
+   "front_feet": 0.2793,
+   "front_body": 0.3018,
+   "side": 0.3146,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 5,
+    "1.84x1.03": 5,
+    "1.84x1.06": 4,
+    "1.84x1.09": 3,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "left fist raised beside the shoulder, right arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_talk_relaxed_01.max.fbx",
+    "sha256": "560c369eeec15c56534cdd8a87bdebd76f365a783c43b473e879a1707721be07",
+    "bytes": 5511856,
+    "file": "m_gestic_talk_relaxed_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_talk_relaxed_01.max.fbx",
+   "frame": 736,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_open_palm",
+  "reach": 0.4012,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2602,
+   "front": 0.3171,
+   "front_feet": 0.2432,
+   "front_body": 0.3171,
+   "side": 0.3351,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 5,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "right hand out before the body, palm up, left arm down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_talk_relaxed_01.max.fbx",
+    "sha256": "560c369eeec15c56534cdd8a87bdebd76f365a783c43b473e879a1707721be07",
+    "bytes": 5511856,
+    "file": "m_gestic_talk_relaxed_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_talk_relaxed_01.max.fbx",
+   "frame": 331,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_hand_raised",
+  "reach": 0.4144,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2205,
+   "front": 0.2963,
+   "front_feet": 0.166,
+   "front_body": 0.2963,
+   "side": 0.3677,
+   "axis_seen": 5,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 5,
+    "1.84x0.92": 7,
+    "1.84x1.00": 6,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 5,
+    "1.84x1.12": 5,
+    "1.84x1.15": 5
+   }
+  },
+  "looks": "left hand raised beside the shoulder, right arm down, head turned to the left",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_talk_relaxed_01.max.fbx",
+    "sha256": "a22d59d1d0cc34a16df70a994ef829d3206034f6416bc9bd3de387fb3f204c61",
+    "bytes": 4802192,
+    "file": "f_gestic_talk_relaxed_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_talk_relaxed_01.max.fbx",
+   "frame": 736,
+   "prop": null
+  }
+ },
+ {
+  "id": "talk_both_hands",
+  "reach": 0.4108,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.1829,
+   "front": 0.3823,
+   "front_feet": 0.182,
+   "front_body": 0.3823,
+   "side": 0.281,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 5,
+    "1.58x1.00": 5,
+    "1.58x1.15": 5,
+    "1.84x0.92": 6,
+    "1.84x1.00": 6,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 5,
+    "1.84x1.12": 4,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "both hands raised before the chest, palms towards each other",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_listen_relaxed_01.max.fbx",
+    "sha256": "df0a16f6db2f0ba3fdae9742923c870efd257d324016b8fa7ce4ad34f2cf36b8",
+    "bytes": 4985952,
+    "file": "f_gestic_listen_relaxed_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_listen_relaxed_01.max.fbx",
+   "frame": 481,
+   "prop": null
+  }
+ },
+ {
+  "id": "listen_nod",
+  "reach": 0.3521,
+  "tags": [
+   "talking"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2363,
+   "front": 0.2852,
+   "front_feet": 0.2852,
+   "front_body": 0.2084,
+   "side": 0.352,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 5,
+    "1.84x0.92": 6,
+    "1.84x1.00": 5,
+    "1.84x1.03": 5,
+    "1.84x1.06": 4,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "arms down, head bowed a little, as when nodding",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_listen_neutral_01.max.fbx",
+    "sha256": "8aa72ed1767b7dc79f7d63ef32454a71c31f70c219e6822d67013a74c24d6253",
+    "bytes": 5445056,
+    "file": "m_gestic_listen_neutral_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_listen_neutral_01.max.fbx",
+   "frame": 226,
+   "prop": null
+  }
+ },
+ {
+  "id": "listen_upright",
+  "reach": 0.3385,
+  "tags": [
+   "talking",
+   "serving"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2128,
+   "front": 0.2034,
+   "front_feet": 0.175,
+   "front_body": 0.2034,
+   "side": 0.3382,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 6,
+    "1.84x1.06": 6,
+    "1.84x1.09": 4,
+    "1.84x1.12": 4,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "upright, arms close to the body, head turned a little to the right",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_listen_self-assured_01.max.fbx",
+    "sha256": "dca81e24b2ccb335bdc272520edf89bd2f05565e80e40c329333c59fc7db39dc",
+    "bytes": 4763392,
+    "file": "f_gestic_listen_self-assured_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_listen_self-assured_01.max.fbx",
+   "frame": 706,
+   "prop": null
+  }
+ },
+ {
+  "id": "serve_upright",
+  "reach": 0.3457,
+  "tags": [
+   "serving"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2376,
+   "front": 0.2624,
+   "front_feet": 0.2624,
+   "front_body": 0.2194,
+   "side": 0.3193,
+   "axis_seen": 3,
+   "axis_seen_at": {
+    "1.58x0.92": 7,
+    "1.58x1.00": 7,
+    "1.58x1.15": 6,
+    "1.84x0.92": 8,
+    "1.84x1.00": 6,
+    "1.84x1.03": 5,
+    "1.84x1.06": 4,
+    "1.84x1.09": 4,
+    "1.84x1.12": 3,
+    "1.84x1.15": 3
+   }
+  },
+  "looks": "upright and square, arms down",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/m_gestic_listen_neutral_01.max.fbx",
+    "sha256": "8aa72ed1767b7dc79f7d63ef32454a71c31f70c219e6822d67013a74c24d6253",
+    "bytes": 5445056,
+    "file": "m_gestic_listen_neutral_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "m_gestic_listen_neutral_01.max.fbx",
+   "frame": 16,
+   "prop": null
+  }
+ },
+ {
+  "id": "serve_hands_folded",
+  "reach": 0.3285,
+  "tags": [
+   "serving"
+  ],
+  "measured": {
+   "over_avatars": 30,
+   "back": 0.2549,
+   "front": 0.3018,
+   "front_feet": 0.1886,
+   "front_body": 0.3018,
+   "side": 0.3242,
+   "axis_seen": 5,
+   "axis_seen_at": {
+    "1.58x0.92": 6,
+    "1.58x1.00": 6,
+    "1.58x1.15": 5,
+    "1.84x0.92": 8,
+    "1.84x1.00": 7,
+    "1.84x1.03": 7,
+    "1.84x1.06": 6,
+    "1.84x1.09": 6,
+    "1.84x1.12": 5,
+    "1.84x1.15": 5
+   }
+  },
+  "looks": "hands together before the waist, elbows in",
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/master/Assets/Animations/all_animations_max_motextr_static/f_gestic_thoughtful_01.max.fbx",
+    "sha256": "089e041b5fbe673c86d2bb9ce5cd2f93bace720f1d31523eaa8a049eeb79b57d",
+    "bytes": 2136016,
+    "file": "f_gestic_thoughtful_01.max.fbx"
+   }
+  ],
+  "licence": "MIT (LICENSE.md at the repository root, Copyright (c) 2020 Microsoft)",
+  "author": "Microsoft (Rocketbox Avatar Library)",
+  "redistributable": true,
+  "brand": false,
+  "prepare": {
+   "animation": "f_gestic_thoughtful_01.max.fbx",
+   "frame": 211,
+   "prop": null
+  }
+ }
+]

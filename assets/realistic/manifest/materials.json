@@ -1,0 +1,619 @@
+[
+ {
+  "id": "floor_tile",
+  "kind": "pbr",
+  "tile_m": 1.9,
+  "title": "Interior Tiles",
+  "author": "Charlotte Baglioni",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/interior_tiles",
+  "note": "the roughness map (mean 0.696) is scaled by 0.25, to about 0.17: a soft blurred sheen of the ceiling panels, no mirror image",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/interior_tiles/interior_tiles_diff_1k.jpg",
+    "sha256": "f267c4357e629f5ca2ab86f30da4fb0ae8c655a566cec6d81278df8d78dcca4a",
+    "bytes": 694562
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/interior_tiles/interior_tiles_rough_1k.jpg",
+    "sha256": "478b5cad03a064b9b25369223f8334d26c1bdc2cba08e3398c16234a4b2a1aaf",
+    "bytes": 521038
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/interior_tiles/interior_tiles_disp_1k.jpg",
+    "sha256": "cee95db185f5a848379001b697130002f635cbbc6c8c2c94235648938348cd3d",
+    "bytes": 278771
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "interior_tiles_diff_1k.jpg",
+    "roughness": "interior_tiles_rough_1k.jpg",
+    "height": "interior_tiles_disp_1k.jpg"
+   },
+   "bump_m": 0.001,
+   "roughness_scale": 0.25
+  }
+ },
+ {
+  "id": "floor_terrazzo",
+  "kind": "pbr",
+  "tile_m": 2.0,
+  "title": "Terrazzo Tiles",
+  "author": "Amal Kumar",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/terrazzo_tiles",
+  "changes": "recoloured from its red-brown to a pale warm grey, its chips kept, and its roughness scaled by 0.6 (to about 0.17, smoother than the photograph) so that it shows a soft blurred sheen of the ceiling panels and no mirror image",
+  "note": "neutral: the photograph is a strong red-brown, mean (137, 109, 87), and smooth, roughness 0.28; the floor of a public hall is light and matt to satin. The colour map is scaled to the colour given here and the roughness map by 0.6, to about 0.17, which with the fittings of build.py shows a soft blurred sheen of a panel and no mirror image; the first look round had it at 1.5 (matt, no sheen at all), the very first at 1.0 and under (a mirror of the ceiling)",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/terrazzo_tiles/terrazzo_tiles_diff_1k.jpg",
+    "sha256": "462e3e719cda0472a33152523cf5ca2fc660e1c5869348be1609ba3dca12a2ef",
+    "bytes": 1166107
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/terrazzo_tiles/terrazzo_tiles_rough_1k.jpg",
+    "sha256": "cf0cb8525674adeb7da551ed1846c8c4edfd0377a35c6fe94d5f1cb2142c6152",
+    "bytes": 459022
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/terrazzo_tiles/terrazzo_tiles_disp_1k.jpg",
+    "sha256": "e08fccc69d871a664910500b7c5300452ed44d7439775f6d21c8e4307d5d48a1",
+    "bytes": 93432
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "terrazzo_tiles_diff_1k.jpg",
+    "roughness": "terrazzo_tiles_rough_1k.jpg",
+    "height": "terrazzo_tiles_disp_1k.jpg"
+   },
+   "bump_m": 0.001,
+   "roughness_scale": 0.6,
+   "neutral": true,
+   "colour": [
+    186,
+    182,
+    172
+   ]
+  }
+ },
+ {
+  "id": "floor_laminate",
+  "kind": "pbr",
+  "tile_m": 1.7,
+  "title": "Laminate Floor 02",
+  "author": "Dario Barresi, Charlotte Baglioni",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/laminate_floor_02",
+  "note": "the roughness map (mean 0.377) is scaled by 0.7, to about 0.26: a soft blurred sheen of the ceiling panels, no mirror image",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/laminate_floor_02/laminate_floor_02_diff_1k.jpg",
+    "sha256": "c112a8fb107d8600a2974af2f9fa9b595c491a33a59982e22706e9650990bf8f",
+    "bytes": 721641
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/laminate_floor_02/laminate_floor_02_rough_1k.jpg",
+    "sha256": "1d48d21a8497d83d4148e4378bf6891e052c98b58cdce1f79003bcc24a3aff8f",
+    "bytes": 560815
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/laminate_floor_02/laminate_floor_02_disp_1k.jpg",
+    "sha256": "2c80b1b3af652e8d3c31f2929d74152dcd2332cb04dd6d1a0f2ee04c7f1cd8ae",
+    "bytes": 544686
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "laminate_floor_02_diff_1k.jpg",
+    "roughness": "laminate_floor_02_rough_1k.jpg",
+    "height": "laminate_floor_02_disp_1k.jpg"
+   },
+   "bump_m": 0.0006,
+   "roughness_scale": 0.7
+  }
+ },
+ {
+  "id": "ceiling_tile",
+  "kind": "pbr",
+  "tile_m": 3.85,
+  "title": "OfficeCeiling001",
+  "author": "ambientCG (Lennart Demes)",
+  "licence": "CC0 1.0 (\"licensed under the Creative Commons CC0 1.0 Universal License\", https://docs.ambientcg.com/license/)",
+  "page": "https://ambientcg.com/a/OfficeCeiling001",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://ambientcg.com/get?file=OfficeCeiling001_1K-JPG.zip",
+    "sha256": "925ef7003375852b80096a46a9a06db3eeee789c99680f789868acb47386d5bd",
+    "bytes": 7212308,
+    "file": "OfficeCeiling001_1K-JPG.zip"
+   }
+  ],
+  "prepare": {
+   "archive": "OfficeCeiling001_1K-JPG.zip",
+   "maps": {
+    "color": "OfficeCeiling001_1K-JPG_Color.jpg",
+    "roughness": "OfficeCeiling001_1K-JPG_Roughness.jpg",
+    "height": "OfficeCeiling001_1K-JPG_Displacement.jpg"
+   },
+   "tile": "3.85 m, as ambientCG states it",
+   "bump_m": 0.004
+  }
+ },
+ {
+  "id": "wall_paint",
+  "kind": "pbr",
+  "tile_m": 3.0,
+  "title": "Beige Wall 001",
+  "author": "Dimitrios Savva, Rico Cilliers",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/beige_wall_001",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/beige_wall_001/beige_wall_001_diff_1k.jpg",
+    "sha256": "72104704d0b9bd3713c5f6238971252b63eccf6e61263059c674caa8f3d0fa6d",
+    "bytes": 33074
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/beige_wall_001/beige_wall_001_rough_1k.jpg",
+    "sha256": "fc8328f47f4d2d82d5311a75bcb5c8cd8979d171a0ee097ad9e44ca9c5a00d60",
+    "bytes": 151256
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/beige_wall_001/beige_wall_001_disp_1k.jpg",
+    "sha256": "c74c538357976119482da48f92fde76667612ee53b840766545ab1795de3d200",
+    "bytes": 149252
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "beige_wall_001_diff_1k.jpg",
+    "roughness": "beige_wall_001_rough_1k.jpg",
+    "height": "beige_wall_001_disp_1k.jpg"
+   },
+   "bump_m": 0.001,
+   "neutral": true,
+   "colour": [
+    233,
+    227,
+    213
+   ]
+  }
+ },
+ {
+  "id": "wood",
+  "kind": "pbr",
+  "tile_m": 1.83,
+  "title": "Oak Veneer 01",
+  "author": "Jenelle van Heerden",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/oak_veneer_01",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/oak_veneer_01/oak_veneer_01_diff_1k.jpg",
+    "sha256": "c14681f72f59f17bff568cae7a837641443b607b899f0c279cd64a5638f877a7",
+    "bytes": 641756
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/oak_veneer_01/oak_veneer_01_rough_1k.jpg",
+    "sha256": "ca2af5649b628ef05f196793d68cdca874c12ceb6e9ae566976546d9dd5a2604",
+    "bytes": 865194
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/oak_veneer_01/oak_veneer_01_disp_1k.jpg",
+    "sha256": "7870aa682808e40a18bd6fb18e820182a70f8f24a375db4ae9be6196cdea928a",
+    "bytes": 23526
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "oak_veneer_01_diff_1k.jpg",
+    "roughness": "oak_veneer_01_rough_1k.jpg",
+    "height": "oak_veneer_01_disp_1k.jpg"
+   },
+   "bump_m": 0.0004
+  }
+ },
+ {
+  "id": "wood_dark",
+  "kind": "pbr",
+  "tile_m": 1.5,
+  "title": "Wood Table 001",
+  "author": "Dimitrios Savva, Rico Cilliers",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/wood_table_001",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_diff_1k.jpg",
+    "sha256": "460dd08d240f4a1f02982415048c3c5c200f385db212da18dc7e2df68bf4d0be",
+    "bytes": 215573
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_rough_1k.jpg",
+    "sha256": "a2ca9ae89dfe7b8e2e5e92f0aa43467845417de8a50205b5852ef0d57c7624f9",
+    "bytes": 237261
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/wood_table_001/wood_table_001_disp_1k.jpg",
+    "sha256": "c89e5e29620cb784fcef4081baf224f014940c4a0cd7daf025d0e9255f52c9f0",
+    "bytes": 269799
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "wood_table_001_diff_1k.jpg",
+    "roughness": "wood_table_001_rough_1k.jpg",
+    "height": "wood_table_001_disp_1k.jpg"
+   },
+   "bump_m": 0.0004
+  }
+ },
+ {
+  "id": "laminate_white",
+  "kind": "plain",
+  "tile_m": 1.0,
+  "title": "laminate white, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    236,
+    236,
+    232
+   ],
+   "roughness": 0.35,
+   "bump_m": 0.0001,
+   "grain": 6.0
+  }
+ },
+ {
+  "id": "steel",
+  "kind": "pbr",
+  "tile_m": 0.5,
+  "title": "Metal009",
+  "author": "ambientCG (Lennart Demes)",
+  "licence": "CC0 1.0 (\"licensed under the Creative Commons CC0 1.0 Universal License\", https://docs.ambientcg.com/license/)",
+  "page": "https://ambientcg.com/a/Metal009",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://ambientcg.com/get?file=Metal009_1K-JPG.zip",
+    "sha256": "1b1970219b40fe707e7194b28702f1a65b0d227bbea56da69dfbc8d8b5cfcb5e",
+    "bytes": 4767000,
+    "file": "Metal009_1K-JPG.zip"
+   }
+  ],
+  "prepare": {
+   "archive": "Metal009_1K-JPG.zip",
+   "maps": {
+    "color": "Metal009_1K-JPG_Color.jpg",
+    "roughness": "Metal009_1K-JPG_Roughness.jpg",
+    "metallic": "Metal009_1K-JPG_Metalness.jpg"
+   },
+   "tile": "not stated by ambientCG; 0.5 m is taken, the brushing having no feature to measure by"
+  }
+ },
+ {
+  "id": "painted_metal",
+  "kind": "plain",
+  "tile_m": 1.0,
+  "title": "painted metal, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    92,
+    104,
+    120
+   ],
+   "roughness": 0.4,
+   "bump_m": 0.0002,
+   "grain": 14.0,
+   "coat": 0.3
+  }
+ },
+ {
+  "id": "plastic_dark",
+  "kind": "plain",
+  "tile_m": 1.0,
+  "title": "plastic dark, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    48,
+    50,
+    54
+   ],
+   "roughness": 0.38,
+   "bump_m": 0.0002,
+   "grain": 14.0
+  }
+ },
+ {
+  "id": "plastic_light",
+  "kind": "plain",
+  "tile_m": 1.0,
+  "title": "plastic light, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    214,
+    214,
+    210
+   ],
+   "roughness": 0.42,
+   "bump_m": 0.0002,
+   "grain": 14.0
+  }
+ },
+ {
+  "id": "fabric",
+  "kind": "pbr",
+  "tile_m": 0.27,
+  "title": "Poly Wool Herringbone",
+  "author": "colormass, Rico Cilliers",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/poly_wool_herringbone",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/poly_wool_herringbone/poly_wool_herringbone_diff_1k.jpg",
+    "sha256": "fd889a46f617efd331e522e36b8ad2548e16e1cb018c001872f17537d7666af5",
+    "bytes": 942966
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/poly_wool_herringbone/poly_wool_herringbone_rough_1k.jpg",
+    "sha256": "028b4fb92c322a31b5374171f62f43af2cfd6a012748be175fd44dbf1109903c",
+    "bytes": 857426
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/poly_wool_herringbone/poly_wool_herringbone_disp_1k.jpg",
+    "sha256": "25b1d66d55f917c9100cb19a097c0d57931f95f902ab79ffc5e5ebb5bb03b80d",
+    "bytes": 955851
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "poly_wool_herringbone_diff_1k.jpg",
+    "roughness": "poly_wool_herringbone_rough_1k.jpg",
+    "height": "poly_wool_herringbone_disp_1k.jpg"
+   },
+   "bump_m": 0.0008,
+   "neutral": true,
+   "colour": [
+    88,
+    104,
+    132
+   ]
+  }
+ },
+ {
+  "id": "stone",
+  "kind": "pbr",
+  "tile_m": 2.3,
+  "title": "Granite Tile",
+  "author": "Charlotte Baglioni",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/granite_tile",
+  "note": "neutral: a part's tint is the colour it comes out in, with the granite's joints and grain. The colour given here is the photograph's own mean, so stone without a tint is the dark granite as it was photographed",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granite_tile/granite_tile_diff_1k.jpg",
+    "sha256": "9df48b66055588708d446e69f37ea6146b8d5d3df54cd1ff088ec688acdca95c",
+    "bytes": 676597
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granite_tile/granite_tile_rough_1k.jpg",
+    "sha256": "0bb28aebdb75b850714f936bfb180ffcbb6607342f925ad27f0bfcb5a31ca8de",
+    "bytes": 674755
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/granite_tile/granite_tile_disp_1k.jpg",
+    "sha256": "6f37b903963de2bd3eaa28ac18f5f42735087ef26c5ba9e8cba7a50e9e7d557e",
+    "bytes": 409126
+   }
+  ],
+  "prepare": {
+   "maps": {
+    "color": "granite_tile_diff_1k.jpg",
+    "roughness": "granite_tile_rough_1k.jpg",
+    "height": "granite_tile_disp_1k.jpg"
+   },
+   "bump_m": 0.0008,
+   "roughness_scale": 0.8,
+   "neutral": true,
+   "colour": [
+    78,
+    78,
+    79
+   ]
+  }
+ },
+ {
+  "id": "cork",
+  "kind": "pbr",
+  "tile_m": 0.6,
+  "title": "Cork004",
+  "author": "ambientCG (Lennart Demes)",
+  "licence": "CC0 1.0 (\"licensed under the Creative Commons CC0 1.0 Universal License\", https://docs.ambientcg.com/license/)",
+  "page": "https://ambientcg.com/a/Cork004",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://ambientcg.com/get?file=Cork004_1K-JPG.zip",
+    "sha256": "62279978ffc33feab1f738141264710703aa87f06872ef2ca27a13467ea6c7c1",
+    "bytes": 8942288,
+    "file": "Cork004_1K-JPG.zip"
+   }
+  ],
+  "prepare": {
+   "archive": "Cork004_1K-JPG.zip",
+   "maps": {
+    "color": "Cork004_1K-JPG_Color.jpg",
+    "roughness": "Cork004_1K-JPG_Roughness.jpg",
+    "height": "Cork004_1K-JPG_Displacement.jpg"
+   },
+   "tile": "not stated by ambientCG; 0.6 m is taken from the size of the grains",
+   "bump_m": 0.0008
+  }
+ },
+ {
+  "id": "paper",
+  "kind": "plain",
+  "tile_m": 1.0,
+  "title": "paper, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    244,
+    242,
+    232
+   ],
+   "roughness": 0.7,
+   "bump_m": 0.0001,
+   "grain": 20.0
+  }
+ },
+ {
+  "id": "cardboard",
+  "kind": "pbr",
+  "tile_m": 0.5,
+  "title": "Cardboard004",
+  "author": "ambientCG (Lennart Demes)",
+  "licence": "CC0 1.0 (\"licensed under the Creative Commons CC0 1.0 Universal License\", https://docs.ambientcg.com/license/)",
+  "page": "https://ambientcg.com/a/Cardboard004",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://ambientcg.com/get?file=Cardboard004_1K-JPG.zip",
+    "sha256": "f427eb664e0cbc97fc1e7066a800f3ad656ad4eeaa0d0314182ea8b7f03e4a64",
+    "bytes": 5970368,
+    "file": "Cardboard004_1K-JPG.zip"
+   }
+  ],
+  "prepare": {
+   "archive": "Cardboard004_1K-JPG.zip",
+   "maps": {
+    "color": "Cardboard004_1K-JPG_Color.jpg",
+    "roughness": "Cardboard004_1K-JPG_Roughness.jpg",
+    "height": "Cardboard004_1K-JPG_Displacement.jpg"
+   },
+   "tile": "not stated by ambientCG; 0.5 m is taken from the pitch of the fluting",
+   "bump_m": 0.0005
+  }
+ },
+ {
+  "id": "ceramic",
+  "kind": "plain",
+  "tile_m": 1.0,
+  "title": "ceramic, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    240,
+    238,
+    232
+   ],
+   "roughness": 0.12,
+   "bump_m": 0.0,
+   "grain": 6.0,
+   "coat": 0.5
+  }
+ },
+ {
+  "id": "glass",
+  "kind": "glass",
+  "tile_m": 1.0,
+  "title": "glass, made in code",
+  "note": "panes of parts are built by build.glass(), whose tint is (0.995, 1.0, 0.995); this colour is the one of the library's own window_glass, nearly clear too",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    254,
+    255,
+    254
+   ],
+   "ior": 1.45
+  }
+ },
+ {
+  "id": "screen",
+  "kind": "screen",
+  "tile_m": 1.0,
+  "title": "screen, made in code",
+  "author": "this project",
+  "licence": "none: made in code",
+  "redistributable": true,
+  "brand": false,
+  "sources": [],
+  "prepare": {
+   "tile": "no texture: the metre is nominal",
+   "colour": [
+    28,
+    34,
+    44
+   ],
+   "glow": [
+    96,
+    100,
+    106
+   ],
+   "emission": 1.0,
+   "roughness": 0.15
+  }
+ }
+]

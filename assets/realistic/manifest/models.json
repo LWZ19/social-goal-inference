@@ -1,0 +1,900 @@
+[
+ {
+  "id": "plant_tall",
+  "kind": "plant",
+  "size": [
+   0.6336,
+   0.5874,
+   1.3502
+  ],
+  "tags": [
+   "leafy",
+   "terracotta_pot",
+   "floor"
+  ],
+  "lettering": "none",
+  "title": "Potted Plant 01",
+  "author": "Rico Cilliers",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/potted_plant_01",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/potted_plant_01/potted_plant_01_1k.gltf",
+    "sha256": "23b30294407684b02f14800d6685bd8938da5d2111e17753ac8dd3c37d8c88a0",
+    "bytes": 7969
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_pot_rough_1k.jpg",
+    "sha256": "1256199fe3a88a0534bcd4c8bf141cfa9a28b68fce3f286193d0713796fd8561",
+    "bytes": 173192,
+    "file": "textures/potted_plant_01_pot_rough_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_leaves_nor_gl_1k.jpg",
+    "sha256": "2faa756e0ee2b8341c752b283b93599157bf56f4083a9f61b825cdfa0c7138ff",
+    "bytes": 177105,
+    "file": "textures/potted_plant_01_leaves_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_pot_diff_1k.jpg",
+    "sha256": "51c9d80e8abe585bd3dbcebe7cba1d3ed1a22b137c7cb66baf0e462c08dca312",
+    "bytes": 204900,
+    "file": "textures/potted_plant_01_pot_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/potted_plant_01/potted_plant_01.bin",
+    "sha256": "a8dd1f7ce75f50dc25bbedc20809da02ee4193815c155b883a329925fa5548f7",
+    "bytes": 5345188
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_leaves_rough_1k.jpg",
+    "sha256": "765e3bd1bfdad39dd0d1cd755eafd1f9f1d46cbbb6013988cbfd1197de27a1f9",
+    "bytes": 91706,
+    "file": "textures/potted_plant_01_leaves_rough_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_pot_nor_gl_1k.jpg",
+    "sha256": "ec02e51751e0822d229d48bea1373b06e2675c3725ff04fd1f87ac516719e620",
+    "bytes": 200349,
+    "file": "textures/potted_plant_01_pot_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_leaves_diff_1k.jpg",
+    "sha256": "b73891a0a606e139d0fcdd9e6fe503cd1210be3fc9c55fbd033941288231ccaa",
+    "bytes": 124730,
+    "file": "textures/potted_plant_01_leaves_diff_1k.jpg"
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y",
+   "max_tris": 200000
+  }
+ },
+ {
+  "id": "plant_low",
+  "kind": "plant",
+  "size": [
+   0.6574,
+   0.7012,
+   0.8412
+  ],
+  "tags": [
+   "leafy",
+   "terracotta_pot",
+   "floor"
+  ],
+  "lettering": "none",
+  "title": "Potted Plant 02",
+  "author": "Rico Cilliers",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/potted_plant_02",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/potted_plant_02/potted_plant_02_1k.gltf",
+    "sha256": "c533dcce0d1aa4379eb7db04601a04983f8df2422b28578de922655a416e64a9",
+    "bytes": 6653
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_leaves_diff_1k.jpg",
+    "sha256": "3643dce6e6c0a9f40129bd837ec1a11802e8f43ea43cb29e58219d82e0ac632b",
+    "bytes": 167700,
+    "file": "textures/potted_plant_02_leaves_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/potted_plant_02/potted_plant_02.bin",
+    "sha256": "9c9812482c78a59789ed32fa842b4cbd9365e09c900c31ebb998e5efe627fe97",
+    "bytes": 1852244
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_pot_rough_1k.jpg",
+    "sha256": "4e92ad8ee0f098050785d9a025e2c5a7d55bc7a7f7e1916cc7627fc7824a938f",
+    "bytes": 114886,
+    "file": "textures/potted_plant_02_pot_rough_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_leaves_rough_1k.jpg",
+    "sha256": "ac8959f70c0e91e77f3cd6fd3f73578b8aed64ac6c33fc34ac027a4e88276960",
+    "bytes": 102396,
+    "file": "textures/potted_plant_02_leaves_rough_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_pot_diff_1k.jpg",
+    "sha256": "684949bf24821d7e951d46915366b5a388d2e4ccaaa9d5284e718c83604705e9",
+    "bytes": 155244,
+    "file": "textures/potted_plant_02_pot_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_leaves_nor_gl_1k.jpg",
+    "sha256": "e0fe090ff7a511729c9bbe59df7288b400430fdab178529443dec75e0f06007d",
+    "bytes": 127232,
+    "file": "textures/potted_plant_02_leaves_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_pot_nor_gl_1k.jpg",
+    "sha256": "981a68721c8b7b9ac26b96d0210334599d5e8f529362f505082c071a0a58e86c",
+    "bytes": 108343,
+    "file": "textures/potted_plant_02_pot_nor_gl_1k.jpg"
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "bench_station",
+  "kind": "bench",
+  "size": [
+   0.4246,
+   1.5,
+   0.775
+  ],
+  "tags": [
+   "three_seats",
+   "plastic",
+   "steel_frame"
+  ],
+  "lettering": "none",
+  "title": "Japan Train Station Bench",
+  "author": "ditovirnantio (https://sketchfab.com/ditovirnantio)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/japan-train-station-bench-e23d79c1014a431bb913d15fc395b4f0",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-080/e23d79c1014a431bb913d15fc395b4f0.glb",
+    "sha256": "b78fa06b45cbcb864b5afd80c07f08bbee2349b47a674de2a93c89756248eae4",
+    "bytes": 957048,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.001,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "bench_ottoman",
+  "kind": "bench",
+  "size": [
+   0.4324,
+   1.2191,
+   0.4064
+  ],
+  "tags": [
+   "upholstered",
+   "no_back"
+  ],
+  "lettering": "none",
+  "title": "Red Hook Meknes Storage Ottoman Bench with Fabric Upholstery - 48 x 17 x 16 Inches, Almond (ABO B07H2HGZLK)",
+  "author": "Amazon.com",
+  "licence": "CC BY 4.0 (\"Creative Commons Attribution 4.0 International Public License (CC BY 4.0)\", credit Amazon.com for the 3D models; https://amazon-berkeley-objects.s3.amazonaws.com/index.html)",
+  "page": "https://amazon-berkeley-objects.s3.amazonaws.com/index.html",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://amazon-berkeley-objects.s3.amazonaws.com/3dmodels/original/K/B07H2HGZLK.glb",
+    "sha256": "462ea200f3eca12ff8685794b94c8ac8a6b4ff9bf6e0494a0a9758d8135a123c",
+    "bytes": 52252768
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "cooler_water",
+  "kind": "cooler",
+  "size": [
+   0.3379,
+   0.31,
+   1.3819
+  ],
+  "tags": [
+   "bottle_on_top",
+   "white"
+  ],
+  "lettering": "a rating plate of a few lines too small to read; no name",
+  "title": "Water cooler",
+  "author": "tboiston (https://sketchfab.com/tboiston)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/water-cooler-4b88c4c4e94c497ca39f831f374e89fc",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-144/4b88c4c4e94c497ca39f831f374e89fc.glb",
+    "sha256": "61cc3d096eceb5ecf9fe0bd8b4ad99679dc79e09e99565c3cf9628f20dc85c72",
+    "bytes": 1218588,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.01,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "lockers_blue",
+  "kind": "lockers",
+  "size": [
+   0.3258,
+   1.3388,
+   1.8113
+  ],
+  "tags": [
+   "three_doors",
+   "worn",
+   "blue"
+  ],
+  "lettering": "the door numbers 567, 345 and 123",
+  "title": "Locker",
+  "author": "andree (https://sketchfab.com/maestronoov)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/locker-6ab96c76558f43a3b0e1442bc0065f68",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-028/6ab96c76558f43a3b0e1442bc0065f68.glb",
+    "sha256": "e4ee2e263e9b1b0e339d394f53689a12a0d13261048acb427b8e6f9771b19108",
+    "bytes": 2776760,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.9,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "chair_task_black",
+  "kind": "office_chair",
+  "size": [
+   0.6096,
+   0.6096,
+   0.9715
+  ],
+  "tags": [
+   "swivel",
+   "castors",
+   "black"
+  ],
+  "lettering": "none",
+  "title": "AmazonBasics Office Chair (ABO B016ID34BO)",
+  "author": "Amazon.com",
+  "licence": "CC BY 4.0 (\"Creative Commons Attribution 4.0 International Public License (CC BY 4.0)\", credit Amazon.com for the 3D models; https://amazon-berkeley-objects.s3.amazonaws.com/index.html)",
+  "page": "https://amazon-berkeley-objects.s3.amazonaws.com/index.html",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://amazon-berkeley-objects.s3.amazonaws.com/3dmodels/original/O/B016ID34BO.glb",
+    "sha256": "21e34d98f0abd975e4b6f7a2dd4f1ac59aa403464eadccfc681eb02274cbac27",
+    "bytes": 37849448
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "chair_task_grey",
+  "kind": "office_chair",
+  "size": [
+   0.7123,
+   0.6706,
+   0.9501
+  ],
+  "tags": [
+   "swivel",
+   "castors",
+   "grey",
+   "upholstered"
+  ],
+  "lettering": "none",
+  "title": "Amazon Brand – Rivet Contemporary Office Desk Chair, 33\"-36\", Grey/Chrome (ABO B07B7DL3H8)",
+  "author": "Amazon.com",
+  "licence": "CC BY 4.0 (\"Creative Commons Attribution 4.0 International Public License (CC BY 4.0)\", credit Amazon.com for the 3D models; https://amazon-berkeley-objects.s3.amazonaws.com/index.html)",
+  "page": "https://amazon-berkeley-objects.s3.amazonaws.com/index.html",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://amazon-berkeley-objects.s3.amazonaws.com/3dmodels/original/8/B07B7DL3H8.glb",
+    "sha256": "d4935405dd379a37583284319a45d549d4df2c06df530409469a5149b0dc5ff3",
+    "bytes": 12776724
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y",
+   "max_tris": 60000
+  }
+ },
+ {
+  "id": "monitor_flat",
+  "kind": "monitor",
+  "size": [
+   0.2125,
+   0.5,
+   0.3393
+  ],
+  "tags": [
+   "flat_screen",
+   "black",
+   "on_stand"
+  ],
+  "lettering": "none",
+  "title": "Monitor",
+  "author": "aivarsted (https://sketchfab.com/aivarsted)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/monitor-47558534407a45169544dfb5d86b8c08",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-035/47558534407a45169544dfb5d86b8c08.glb",
+    "sha256": "e25182d5c9d96392ecaa51dc54b9822cb5446912992d57f959b0aa3de1c90c68",
+    "bytes": 2726516,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.125,
+   "front": "+X"
+  }
+ },
+ {
+  "id": "keyboard_black",
+  "kind": "keyboard",
+  "size": [
+   0.1368,
+   0.4454,
+   0.0175
+  ],
+  "tags": [
+   "full_size",
+   "black"
+  ],
+  "lettering": "the letters and signs of its keys",
+  "title": "Keyboards",
+  "author": "3D Share (https://sketchfab.com/3dsharesg)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/keyboards-a25c537932e84ef693de2cdbfc9dd22d",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-117/a25c537932e84ef693de2cdbfc9dd22d.glb",
+    "sha256": "1051d7a02a2ff0b3d63d2278037d10b5054f0b0cdfbae75e0dd591edbc6c4ebb",
+    "bytes": 589852,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.1,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "coffee_brewer",
+  "kind": "espresso_machine",
+  "size": [
+   0.6364,
+   0.6514,
+   0.6293
+  ],
+  "tags": [
+   "drip_brewer",
+   "three_pots",
+   "steel"
+  ],
+  "lettering": "DUNN and DUNN-O-MATIC, names its author made up for the model",
+  "changes": "the brewer and its pots taken off the cart they stand on; the cart, its cord and its other things left out",
+  "note": "a commercial brewer with two warmers at its side, 0.64 m from front to back: at 0.85 of its size it still needs a counter 0.55 m deep. A coffee stall is built with a counter about 0.3 m deep, so no stall shows this model and its machine is built of parts; the model is kept for a place with a deeper counter. Cutting the brewer alone out of the mesh does not help: without the side warmers it is 0.35 m wide and still 0.64 m from front to back",
+  "title": "Coffee Cart 01",
+  "author": "Joe Seabuhr",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/CoffeeCart_01",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/CoffeeCart_01/CoffeeCart_01_1k.gltf",
+    "sha256": "3f4e7e79e751662a767c22b21c34dfb6f7d414d56dda60a236ad7d621d211934",
+    "bytes": 6637
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/CoffeeCart_01/CoffeeCart_01_cart_arm_1k.jpg",
+    "sha256": "7481660c7b4b0c676c9143a9ae497dfa6da2c509a0e1db8080c0dfb498279175",
+    "bytes": 159358,
+    "file": "textures/CoffeeCart_01_cart_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/CoffeeCart_01/CoffeeCart_01_props_arm_1k.jpg",
+    "sha256": "8bc6a844a23d1ccb441d40e912adf8c38c6a3f7daf468598ae990a90d73733e8",
+    "bytes": 198809,
+    "file": "textures/CoffeeCart_01_props_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/CoffeeCart_01/CoffeeCart_01.bin",
+    "sha256": "0c0f9ed417ba85208c7f42b674ee3ce99a7e6fb63e67c7ea8d312304c470db50",
+    "bytes": 865700
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/CoffeeCart_01/CoffeeCart_01_props_nor_gl_1k.jpg",
+    "sha256": "8546f2ba3cfb14e9aef8e24e695a30117b03076071f11d877c15007793b3ca9e",
+    "bytes": 156633,
+    "file": "textures/CoffeeCart_01_props_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/CoffeeCart_01/CoffeeCart_01_cart_nor_gl_1k.jpg",
+    "sha256": "160121cfeb3e9a6a029fd6b7be0e282c1f99abeb1b34d197dbc99d9fcaeea1f7",
+    "bytes": 171213,
+    "file": "textures/CoffeeCart_01_cart_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/CoffeeCart_01/CoffeeCart_01_cart_diff_1k.jpg",
+    "sha256": "654ead6c2e651e6aa3a9166e9b94333f41b33e31fcd9c75b4058e40744108bcb",
+    "bytes": 118396,
+    "file": "textures/CoffeeCart_01_cart_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/CoffeeCart_01/CoffeeCart_01_props_diff_1k.jpg",
+    "sha256": "2583de82b450923b75eb62b9e24fca9c252969fd249e91e7bbbbf3cfbad5e703",
+    "bytes": 158758,
+    "file": "textures/CoffeeCart_01_props_diff_1k.jpg"
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y",
+   "keep": [
+    "CoffeeCart_01_props"
+   ],
+   "keep_box": [
+    [
+     -0.62,
+     -0.46,
+     1.09
+    ],
+    [
+     0.04,
+     0.16,
+     1.75
+    ]
+   ]
+  }
+ },
+ {
+  "id": "cup_paper",
+  "kind": "cup",
+  "size": [
+   0.1076,
+   0.1076,
+   0.1111
+  ],
+  "tags": [
+   "paper",
+   "lid",
+   "white",
+   "sleeve"
+  ],
+  "lettering": "none",
+  "changes": "its red wall painted white, with a band of brown round it for a sleeve",
+  "title": "Paper Coffee Cup",
+  "author": "jashmcirwin (https://sketchfab.com/jashmcirwin)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/paper-coffee-cup-6b3afe782b204dfba87a03ddaf222958",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-114/6b3afe782b204dfba87a03ddaf222958.glb",
+    "sha256": "3295640b2e4b2b8238d1166542f7c3589cc188d1f89c6d148e658b3bbcf7c66b",
+    "bytes": 134216,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.05,
+   "front": "-Y",
+   "plain": {
+    "Material.001": [
+     240,
+     237,
+     228
+    ]
+   },
+   "band": {
+    "Material.001": {
+     "colour": [
+      172,
+      132,
+      90
+     ],
+     "from": 0.03,
+     "to": 0.074
+    }
+   }
+  }
+ },
+ {
+  "id": "bottle_metal",
+  "kind": "bottle",
+  "size": [
+   0.1089,
+   0.1089,
+   0.2604
+  ],
+  "tags": [
+   "flask",
+   "yellow",
+   "red_cap"
+  ],
+  "lettering": "a mark of three peaks and the words CLIMB HIGHER, made up for the sample model",
+  "title": "Water Bottle (glTF Sample Assets)",
+  "author": "Microsoft",
+  "licence": "CC0 1.0 (the model's LICENSE.md: \"All files directly associated with the model ... Creative Commons Zero v1.0 Universal\"; \"This license excludes logos and associated trademarks\")",
+  "page": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/WaterBottle",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/4995a638c96dbc94376d3d6164e70fee3ac7f7a2/Models/WaterBottle/glTF-Binary/WaterBottle.glb",
+    "sha256": "b337e526fd6a162013c2984aeec163f5fbb4f717252724dfc3f3458bd51df94b",
+    "bytes": 8966700
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "books_row",
+  "kind": "book",
+  "size": [
+   0.1631,
+   0.5513,
+   0.2374
+  ],
+  "tags": [
+   "row_of_twenty",
+   "leather_bound"
+  ],
+  "lettering": "ENCYCLOPEDIA and a volume letter on each spine; no publisher",
+  "title": "Book Encyclopedia Set 01",
+  "author": "John Malcolm",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/book_encyclopedia_set_01",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_1k.gltf",
+    "sha256": "89eb80fffd619ebbe5043d632bd8cf25b2d68a3614aee2f356e850c69ae498ba",
+    "bytes": 55011
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_cover_diff_1k.jpg",
+    "sha256": "a456aae6ef0ab24769527cccac5313a802ad253584c49fc10a377ce75969d382",
+    "bytes": 126794,
+    "file": "textures/book_encyclopedia_set_01_cover_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/book_encyclopedia_set_01/book_encyclopedia_set_01.bin",
+    "sha256": "bbc726698b6e40ab5537b73e082f7bb4db97b9e6f978f52cdaf763dddc85d9ba",
+    "bytes": 2547932
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_paper_nor_gl_1k.jpg",
+    "sha256": "705f4380c654c44d086ceb120595078e562438c6e4ba01458d2d23fd61483d9d",
+    "bytes": 193390,
+    "file": "textures/book_encyclopedia_set_01_paper_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_cover_arm_1k.jpg",
+    "sha256": "ab19b627092da77770de2212a04785940feb2df0957cab8993742a6b8b3f7bff",
+    "bytes": 189997,
+    "file": "textures/book_encyclopedia_set_01_cover_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_cover_nor_gl_1k.jpg",
+    "sha256": "17ad410f2d1aab487e47c729a5b988ea4e4d196679c8696331b7960e77a91c17",
+    "bytes": 19941,
+    "file": "textures/book_encyclopedia_set_01_cover_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_paper_diff_1k.jpg",
+    "sha256": "b552d6829b75db7a75012bb761068c63507b69e8e944597ea53f6d1a70efa36c",
+    "bytes": 115297,
+    "file": "textures/book_encyclopedia_set_01_paper_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_paper_roughness_1k.jpg",
+    "sha256": "62d875e9427f5d71f1bb4d9dc9569e34465bfd3067b8b13f5644b73e23a09fa3",
+    "bytes": 12684,
+    "file": "textures/book_encyclopedia_set_01_paper_roughness_1k.jpg"
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "box_cardboard",
+  "kind": "box",
+  "size": [
+   0.5159,
+   0.387,
+   0.3418
+  ],
+  "tags": [
+   "cardboard",
+   "strapped",
+   "dented"
+  ],
+  "lettering": "two small handling marks; no name",
+  "title": "Cardboard Box 01",
+  "author": "Rahul Chaudhary",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/cardboard_box_01",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/cardboard_box_01/cardboard_box_01_1k.gltf",
+    "sha256": "6038bcc5bba5a08a5f6643a265977e37e3d14553e62981e144c33a89f10b78e1",
+    "bytes": 2903
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_arm_1k.jpg",
+    "sha256": "5db63828d0f904c6a8d9c83afc912260b2a27261c15a28d06360519384574d2b",
+    "bytes": 398433,
+    "file": "textures/cardboard_box_01_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/cardboard_box_01/cardboard_box_01.bin",
+    "sha256": "7212d43b4cb56459e46d31ab34dc7c310fcfbe170f4a588416dea07ae5628a4b",
+    "bytes": 381936
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_diff_1k.jpg",
+    "sha256": "122c7ba8c5935e289804a730b480677a4bffdf74a45c91970cba682df92e171c",
+    "bytes": 567741,
+    "file": "textures/cardboard_box_01_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/cardboard_box_01/cardboard_box_01_nor_gl_1k.jpg",
+    "sha256": "d2d1f529a851966b65411b5094510dd9eba03cd5c0a89921f79325c377a8e8eb",
+    "bytes": 817424,
+    "file": "textures/cardboard_box_01_nor_gl_1k.jpg"
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "crate_plastic",
+  "kind": "box",
+  "size": [
+   0.4055,
+   0.5055,
+   0.2541
+  ],
+  "tags": [
+   "plastic",
+   "open",
+   "crate"
+  ],
+  "lettering": "none",
+  "title": "Plastic Crate 02",
+  "author": "Fabi_G",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/plastic_crate_02",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/plastic_crate_02/plastic_crate_02_1k.gltf",
+    "sha256": "531f7ba7d4b501759b04fb704db1948bcaab34d8342e71e3f5877d9f0340dba7",
+    "bytes": 2947
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_02/plastic_crate_02_nor_gl_1k.jpg",
+    "sha256": "492b4cb03b043fb30a21b5de1cdf91dfbcd9bb7d080957af69a333d622050f30",
+    "bytes": 558561,
+    "file": "textures/plastic_crate_02_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_02/plastic_crate_02_diff_1k.jpg",
+    "sha256": "f153478d5f44f39ab27a967850caac27b35ee8f04185d0d4eaf7ad501742fb15",
+    "bytes": 492862,
+    "file": "textures/plastic_crate_02_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/plastic_crate_02/plastic_crate_02_arm_1k.jpg",
+    "sha256": "f0c667358c7afd46be37b40c30435b63ae3dba8432b45c507f3298fc6f163418",
+    "bytes": 597561,
+    "file": "textures/plastic_crate_02_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/plastic_crate_02/plastic_crate_02.bin",
+    "sha256": "f51696aa04643b5c1948da88be8ce1d4e92596ae4908b0132cd690f8fb8e0b63",
+    "bytes": 186848
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "clock_wall",
+  "kind": "clock",
+  "size": [
+   0.0472,
+   0.3205,
+   0.3205
+  ],
+  "tags": [
+   "round",
+   "wall",
+   "analogue"
+  ],
+  "lettering": "the hours 1 to 12, and under the 12 the word URBAN over 'quartz', 2 cm wide; no maker of that name is known to me",
+  "title": "Wall Clock",
+  "author": "PierreB3D",
+  "licence": "CC0 1.0 (\"Our assets are all licensed as CC0\", https://polyhaven.com/license)",
+  "page": "https://polyhaven.com/a/wall_clock",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/wall_clock/wall_clock_1k.gltf",
+    "sha256": "4e67385443e808bc709c054c1de5be1e83d4bf07eb0893884c301fec0bae8bc6",
+    "bytes": 9008
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wall_clock/wall_clock_nor_gl_1k.jpg",
+    "sha256": "6138946e055828e92d5e0d8d50c75e3d2da0ea789dd6512b30f85f0e18435d00",
+    "bytes": 236489,
+    "file": "textures/wall_clock_nor_gl_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wall_clock/wall_clock_diff_1k.jpg",
+    "sha256": "012bfc3ceecd5e35679fe5764e33b6d1b8a631ad4fc9f5b267af25ad10468672",
+    "bytes": 366683,
+    "file": "textures/wall_clock_diff_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wall_clock/wall_clock_arm_1k.jpg",
+    "sha256": "c78aabec7bb4af4fd6818be1099523e59bf12d88c872530b2260cdea08d81968",
+    "bytes": 444044,
+    "file": "textures/wall_clock_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/wall_clock/wall_clock_glass_arm_1k.jpg",
+    "sha256": "42804955958b3d0fdc1da8d4c4e8e909b04f659ae1b02911e148abe0741b8b84",
+    "bytes": 376244,
+    "file": "textures/wall_clock_glass_arm_1k.jpg"
+   },
+   {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/wall_clock/wall_clock.bin",
+    "sha256": "61d9fe03e871508230160de546ef505f3f4405b1e82c167536945a483a8bb639",
+    "bytes": 132412
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y"
+  }
+ },
+ {
+  "id": "suitcase_cabin",
+  "kind": "bag",
+  "size": [
+   0.2247,
+   0.3657,
+   0.7515
+  ],
+  "tags": [
+   "trolley",
+   "hard_shell",
+   "cream"
+  ],
+  "lettering": "as fetched, a label with the name and mark of a travel firm (Wahana); painted over in preparation, so none",
+  "changes": "the label on its front, which names a travel firm, painted over in the shell's colour",
+  "title": "Wahana's Luggage",
+  "author": "Naufal Rafi'uddin (https://sketchfab.com/naufalrafiuddin)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/wahanas-luggage-bb7e31d730814e97b882bee710535b12",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-008/bb7e31d730814e97b882bee710535b12.glb",
+    "sha256": "47b5d48a8676c6dda189aac26a9d588d19da69c5aa30a3226adc77cbbf017a72",
+    "bytes": 2261420,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 1.0,
+   "front": "-Y",
+   "plain": {
+    "texture_wahana": [
+     218,
+     190,
+     133
+    ]
+   }
+  }
+ },
+ {
+  "id": "backpack_dark",
+  "kind": "bag",
+  "size": [
+   0.2282,
+   0.2825,
+   0.4489
+  ],
+  "tags": [
+   "backpack",
+   "dark"
+  ],
+  "lettering": "none",
+  "title": "Backpack",
+  "author": "typhomnt (https://sketchfab.com/typhomnt)",
+  "licence": "CC BY 4.0 (the file's own metadata: \"CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)\"; listed as \"by\" in Objaverse 1.0, https://huggingface.co/datasets/allenai/objaverse)",
+  "page": "https://sketchfab.com/3d-models/backpack-5655596f9efe47deb09df57a79b44e04",
+  "redistributable": true,
+  "brand": false,
+  "sources": [
+   {
+    "url": "https://huggingface.co/datasets/allenai/objaverse/resolve/556637099bf4fa79ea7b239d0d9c328b8a2e9ac8/glbs/000-035/5655596f9efe47deb09df57a79b44e04.glb",
+    "sha256": "63e56bdaee773747365761cbd65ae4426485bf045ba9778f4c99a08b27af64bd",
+    "bytes": 4908088,
+    "file": "model.glb"
+   }
+  ],
+  "prepare": {
+   "scale": 0.19,
+   "front": "-Y"
+  }
+ }
+]
