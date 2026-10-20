@@ -1,0 +1,35 @@
+# A scene put together from downloaded models: an empty room (python -m sgi_habitat.make_room) with Poly Haven's
+# coffee cart against the north wall, two potted plants and a water cooler, a line at the cart and someone
+# walking about. Fetch the models first: python -m sgi_habitat.fetch_models coffee_brewer plant_tall cooler_water
+# Each object: model (a .glb or .gltf), x, y (where its middle goes), and optionally yaw_deg (turn about the
+# vertical), scale or height_m (scaled to that height), z (raised off the floor).
+stage: data/habitat/stages/room.glb
+
+objects:
+  - {model: data/habitat/objects/coffee_brewer/CoffeeCart_01_1k.gltf, x: 5.0, y: -1.0}
+  - {model: data/habitat/objects/plant_tall/potted_plant_01_1k.gltf, x: 0.5, y: -0.5, height_m: 1.4}
+  - {model: data/habitat/objects/plant_tall/potted_plant_01_1k.gltf, x: 9.5, y: -0.5, height_m: 1.4}
+  - {model: data/habitat/objects/cooler_water/model.glb, x: 9.6, y: -4.0, height_m: 1.38, yaw_deg: -90}
+
+robot:
+  x: 8.0
+  y: -4.0
+  face: [5.0, -3.5]
+
+queues:
+  coffee_cart:
+    service_s: 25
+    slots:
+      - {x: 5.0, y: -2.5, face: [5.0, -1.0]}
+      - {x: 5.0, y: -3.2}
+      - {x: 5.0, y: -3.9}
+      - {x: 5.0, y: -4.6}
+
+humans:
+  - {avatar: male_1, queue: coffee_cart}
+  - {avatar: female_0, queue: coffee_cart}
+  - {avatar: female_2, queue: coffee_cart}
+  - {avatar: male_0, start: [2.0, -6.0]}
+
+requests:
+  - Get me a coffee

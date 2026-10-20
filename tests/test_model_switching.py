@@ -166,9 +166,9 @@ def test_list_entries_prints_one_line_per_entry_and_runs_nothing(table, tmp_path
     lines = listed(capsys, harness.main, "--config", str(table))      # neither --scenes nor --name is needed
     cfg = load_config(table)
     assert [line.split()[:3] for line in lines] == [[name, e.provider, e.model] for name, e in cfg.models.items()]
-    assert len(lines) == 6 + 15 + 6 + 2 and not (tmp_path / "runs").exists()
+    assert len(lines) == 7 + 15 + 6 + 2 and not (tmp_path / "runs").exists()
     row = {line.split()[0]: line for line in lines}
-    assert row["claude_haiku55"].split() == ["claude_haiku55", "anthropic", "claude-haiku-5-5", "effort", "none", "xy_1000",
+    assert row["claude_haiku55"].split() == ["claude_haiku55", "anthropic", "claude-haiku-5-5", "effort", "none", "xy_pixel",
                                              "key", "missing", "(ANTHROPIC_API_KEY)"]
     assert row["mock"].split() == ["mock", "mock", "mock-centre", "effort", "low", "xy_1000", "no", "key", "needed"]
     assert row["soclaas_glm53_max"].split() == ["soclaas_glm53_max", "openai_compatible", "x-test-1", "effort", "max",
@@ -184,7 +184,7 @@ def test_list_entries_says_which_keys_are_set_and_never_shows_one(table, tmp_pat
     env.write_text(f"GEMINI_API_KEY={KEY}\nOPENAI_API_KEY=\nGATEWAY_API_KEY='{KEY}-2'\nANTHROPIC_API_KEY={KEY}-3\n")
     monkeypatch.setattr(factory, "load_env", functools.partial(factory.load_env, env))
     lines = listed(capsys, harness.main, "--config", str(table))
-    held = {line.split()[0]: line.split("  ")[-1] for line in lines}
+    held = {line.split()[0]: line.split("  ")[-1].strip() for line in lines}
     assert (held["gemini_fast"], held["gemini_strong"]) == ("key set (GEMINI_API_KEY)",) * 2
     assert (held["claude_opus55"], held["claude_haiku55_low"]) == ("key set (ANTHROPIC_API_KEY)",) * 2
     assert (held["openai_fast"], held["gateway"]) == ("key missing (OPENAI_API_KEY)", "key set (GATEWAY_API_KEY)")

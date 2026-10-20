@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sgi-habitat"
+version = "0.1.0"
+description = "Spot among moving people in Habitat, sent where the sgi pipeline says (docs/habitat.md)"
+# habitat-sim is built for Python 3.9 only, and sgi needs 3.12: the two run in separate environments and talk
+# over HTTP (python -m sgi.serve). habitat-sim comes from conda (envs/sgi-habitat.yml), not from pip.
+requires-python = ">=3.9,<3.10"
+dependencies = ["habitat-lab==0.3.320250127", "pillow==10.4.0", "opencv-python", "pyyaml", "numpy<2", "trimesh==4.5.3"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sgi_habitat*"]

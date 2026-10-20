@@ -35,7 +35,7 @@ def test_defaults_in_code_and_in_the_yaml():
     assert cfg.run.model_dump() == {**RUN, "examples_dir": "data/placeholder/examples"}
     assert {k: (e.provider, e.model) for k, e in cfg.models.items() if not k.startswith("soclaas_")} == {
         "mock": ("mock", "mock-centre"), "gemini_fast": ("gemini", "gemini-3.8-flash"),
-        "gemini_strong": ("gemini", "gemini-3.1-pro-preview"),
+        "gemini_strong": ("gemini", "gemini-3.1-pro-preview"), "gemini_35_flash": ("gemini", "gemini-3.5-flash"),
         "gemini_pointing": ("gemini", "gemini-robotics-er-2-preview"),
         "openai_fast": ("openai", "gpt-6-luna"), "openai_strong": ("openai", "gpt-6.1-sol"),
         "claude_opus55": ("anthropic", "claude-opus-5-5"), "claude_opus55_low": ("anthropic", "claude-opus-5-5"),

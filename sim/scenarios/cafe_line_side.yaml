@@ -1,0 +1,26 @@
+# The café, with four people standing in line at the coffee counter, and nobody served, so the line stays put.
+# Spot starts beside the line, looking at it side-on. Build the café first: python -m sgi_habitat.make_cafe
+stage: data/habitat/stages/cafe.glb
+
+robot:
+  x: 7.3
+  y: -2.5
+  face: [5.0, -2.5]          # due west, across the line
+
+queues:
+  coffee_counter:
+    service_s: null          # null: nobody is served, nobody leaves
+    slots:                   # the counter's front is at y = -1.0; the line runs south from it
+      - {x: 5.0, y: -1.45, face: [5.0, -0.5]}
+      - {x: 5.0, y: -2.15}
+      - {x: 5.0, y: -2.85}
+      - {x: 5.0, y: -3.55}
+
+humans:
+  - {avatar: male_1, queue: coffee_counter}
+  - {avatar: female_0, queue: coffee_counter}
+  - {avatar: male_3, queue: coffee_counter}
+  - {avatar: female_2, queue: coffee_counter}
+
+requests:
+  - Get me a coffee

@@ -1,0 +1,8 @@
+# Model conversion only: Assimp, to turn an .fbx download into .glb (sim/fbx_to_glb.py). Nothing else needs it.
+#   conda env create -f envs/sgi-tools.yml
+name: sgi-tools
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - assimp

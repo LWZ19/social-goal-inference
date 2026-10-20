@@ -1,0 +1,73 @@
+# concert_crowded: the whole front row along the barricades is taken, and more stand behind it.
+# Asked for a place near the stage, the robot should take a place behind these people.
+# An open ground 30 x 32 m (python -m sgi_habitat.make_room --width 30 --depth 32 --no-walls
+# --floor-rgb 92 92 96 --out data/habitat/stages/concert_ground.glb), the concert stage at its north end,
+# and two barricades of 8 m end to end 1.4 m in front of it. Three performers stand on the stage deck,
+# 1.2 m up. Positions are in the pipeline's world: the stage's front edge is at y = -12.7.
+stage: data/habitat/stages/concert_ground.glb
+wander_area: [3.0, 27.0, -30.5, -24.0]       # walkers stay at the back, behind the robot's view of the front
+
+objects:
+  - {model: data/habitat/objects/concert_stage/concert_stage.glb, x: 15.0, y: -7.0, scale: 0.01}
+  - {model: data/habitat/objects/barricade/barricade.glb, x: 11.0, y: -14.5}
+  - {model: data/habitat/objects/barricade/barricade.glb, x: 19.0, y: -14.5}
+
+robot:
+  x: 15.0
+  y: -23.5
+  face: [15.0, -14.0]
+
+humans:
+  # performers, on the deck
+  - {avatar: male_2, stand: [12.0, -8.5], face: [12.0, -20.0], z: 1.2}
+  - {avatar: female_3, stand: [15.0, -7.5], face: [15.0, -20.0], z: 1.2}
+  - {avatar: male_0, stand: [18.0, -8.5], face: [18.0, -20.0], z: 1.2}
+  # the audience, facing the stage
+  - {avatar: male_1, stand: [7.4, -15.5], face: [7.4, -10.0]}
+  - {avatar: female_0, stand: [8.05, -15.5], face: [8.05, -10.0]}
+  - {avatar: male_3, stand: [8.7, -15.5], face: [8.7, -10.0]}
+  - {avatar: female_2, stand: [9.35, -15.5], face: [9.35, -10.0]}
+  - {avatar: female_1, stand: [10.0, -15.5], face: [10.0, -10.0]}
+  - {avatar: male_0, stand: [10.65, -15.5], face: [10.65, -10.0]}
+  - {avatar: female_3, stand: [11.3, -15.5], face: [11.3, -10.0]}
+  - {avatar: male_2, stand: [11.95, -15.5], face: [11.95, -10.0]}
+  - {avatar: male_1, stand: [12.6, -15.5], face: [12.6, -10.0]}
+  - {avatar: female_0, stand: [13.25, -15.5], face: [13.25, -10.0]}
+  - {avatar: male_3, stand: [13.9, -15.5], face: [13.9, -10.0]}
+  - {avatar: female_2, stand: [14.55, -15.5], face: [14.55, -10.0]}
+  - {avatar: female_1, stand: [15.2, -15.5], face: [15.2, -10.0]}
+  - {avatar: male_0, stand: [15.85, -15.5], face: [15.85, -10.0]}
+  - {avatar: female_3, stand: [16.5, -15.5], face: [16.5, -10.0]}
+  - {avatar: male_2, stand: [17.15, -15.5], face: [17.15, -10.0]}
+  - {avatar: male_1, stand: [17.8, -15.5], face: [17.8, -10.0]}
+  - {avatar: female_0, stand: [18.45, -15.5], face: [18.45, -10.0]}
+  - {avatar: male_3, stand: [19.1, -15.5], face: [19.1, -10.0]}
+  - {avatar: female_2, stand: [19.75, -15.5], face: [19.75, -10.0]}
+  - {avatar: female_1, stand: [20.4, -15.5], face: [20.4, -10.0]}
+  - {avatar: male_0, stand: [21.05, -15.5], face: [21.05, -10.0]}
+  - {avatar: female_3, stand: [21.7, -15.5], face: [21.7, -10.0]}
+  - {avatar: male_2, stand: [22.35, -15.5], face: [22.35, -10.0]}
+  - {avatar: male_1, stand: [7.7, -16.3], face: [7.7, -10.0]}
+  - {avatar: female_0, stand: [8.6, -16.3], face: [8.6, -10.0]}
+  - {avatar: male_3, stand: [9.5, -16.3], face: [9.5, -10.0]}
+  - {avatar: female_2, stand: [10.4, -16.3], face: [10.4, -10.0]}
+  - {avatar: female_1, stand: [11.3, -16.3], face: [11.3, -10.0]}
+  - {avatar: male_0, stand: [12.2, -16.3], face: [12.2, -10.0]}
+  - {avatar: female_3, stand: [13.1, -16.3], face: [13.1, -10.0]}
+  - {avatar: male_2, stand: [14.0, -16.3], face: [14.0, -10.0]}
+  - {avatar: male_1, stand: [14.9, -16.3], face: [14.9, -10.0]}
+  - {avatar: female_0, stand: [15.8, -16.3], face: [15.8, -10.0]}
+  - {avatar: male_3, stand: [16.7, -16.3], face: [16.7, -10.0]}
+  - {avatar: female_2, stand: [17.6, -16.3], face: [17.6, -10.0]}
+  - {avatar: female_1, stand: [18.5, -16.3], face: [18.5, -10.0]}
+  - {avatar: male_0, stand: [19.4, -16.3], face: [19.4, -10.0]}
+  - {avatar: female_3, stand: [20.3, -16.3], face: [20.3, -10.0]}
+  - {avatar: male_2, stand: [21.2, -16.3], face: [21.2, -10.0]}
+  - {avatar: male_1, stand: [22.1, -16.3], face: [22.1, -10.0]}
+  # two walking about at the back
+  - {avatar: female_1, start: [6.0, -29.0]}
+  - {avatar: male_3, start: [24.0, -29.5]}
+
+requests:
+  - Take me near the stage, I want to watch the concert
+  - Find me a spot at the front

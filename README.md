@@ -152,6 +152,14 @@ A region says where a goal is in place. Whether the robot can stand there is a c
 
 That change left every picture of the placeholder set as it was, so the cached answers of the models still belong to the scenes generated again, with one exception. A goal request under `few_shot` or `few_shot_cot` shows the goal point of each worked example, and those points moved with the regions, so with the examples generated again such a request is a new one to the cache. Look at what the examples show before a few-shot run on them. A worked example's goal point is the grid point deepest inside its region. In the band round a conversation group that can be behind the person asked for, or across the group from them, while the reasoning text of those examples says to stand just outside the group, facing that person, and names no side. The examples generated before the change are no way round this: the goal points of their waiting lines and groups lie outside the new regions.
 
+### Drive a robot among moving people
+
+```bash
+.venv/bin/python -m sgi.serve --model gemini_fast --goal constraints --port 8765
+```
+
+`sgi.serve` runs the pipeline as a local HTTP service: it is given one live RGB-D view, the camera, the robot's pose and a request, and it answers with the goal pose of the plan's first navigation subtask. It takes `--model`, `--stage-model` and `--strategy` as `sgi.run` does. A simulator built on it, Spot in a Habitat 3.0 flat with five people who walk about and queue at a kitchen counter, is in `sim/`. Habitat needs Python 3.9, so it has a conda environment of its own. [`docs/habitat.md`](docs/habitat.md) covers the setup, `sim/demo.sh`, which starts both, and the known limits.
+
 ## Switching models
 
 A model entry is one line of the `models` table in `configs/default.yaml`: a provider, a model ID, a `reasoning_effort` and a `point_format`. Each of the four stages (`plan`, `locate`, `context`, `goal`) names the entry it uses, and by default all four name `mock`. The two stages of the constraint method, `people` and `constraints`, may be named there in the same way; left out, they use the entry of the `goal` stage. There are three ways to choose other entries.

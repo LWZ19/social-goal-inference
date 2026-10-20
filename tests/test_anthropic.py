@@ -449,9 +449,12 @@ def test_the_model_table_has_six_claude_entries_each_with_its_model_its_level_an
     entries = {name: entry for name, entry in cfg.models.items() if entry.provider == "anthropic"}
     assert {name: (e.model, e.reasoning_effort, e.price_input_per_mtok, e.price_output_per_mtok) for name, e in entries.items()} == CLAUDE
     assert list(entries) == list(CLAUDE) and all(name.startswith("claude_") for name in entries)
-    shared = {(e.point_format, e.base_url, e.api_key_env, e.temperature, e.image_detail, e.max_output_tokens,
+    shared = {(e.base_url, e.api_key_env, e.temperature, e.image_detail, e.max_output_tokens,
                e.max_requests_per_minute) for e in entries.values()}
-    assert shared == {("xy_1000", None, None, None, None, None, None)}
+    assert shared == {(None, None, None, None, None, None)}
+    # Haiku was calibrated (pixels, configs/default.yaml); the others are not yet, and keep the default.
+    assert {name: e.point_format for name, e in entries.items()} == {
+        name: "xy_pixel" if name.startswith("claude_haiku") else "xy_1000" for name in CLAUDE}
     build_all = AnthropicBackend(KEY).build_request                   # what each sends for its level
     sent = {name: build_all(entry, None, PARTS, SCHEMA) for name, entry in entries.items()}
     assert {name: (r["model"], r["output_config"].get("effort"), r.get("thinking"), r["max_tokens"]) for name, r in sent.items()} == {

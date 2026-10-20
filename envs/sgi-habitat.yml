@@ -1,0 +1,15 @@
+# The simulator's environment: Habitat-Sim 0.3.3 (built for Python 3.9 only), habitat-lab 0.3.3 and the
+# simulator package of this repository. The pipeline itself runs in envs/sgi.yml. See docs/habitat.md.
+#   conda env create -f envs/sgi-habitat.yml
+name: sgi-habitat
+channels:
+  - aihabitat
+  - conda-forge
+dependencies:
+  - python=3.9
+  - cmake=3.14.0
+  - habitat-sim=0.3.3
+  - withbullet                            # Bullet physics; the build with a display, not the headless one
+  - pip
+  - pip:
+      - -e ../sim

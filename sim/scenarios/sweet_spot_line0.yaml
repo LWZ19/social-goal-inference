@@ -1,0 +1,33 @@
+# sweet_spot_line0: nobody waiting at the counter. One of a set of three
+# (sweet_spot_line0, _line2, _line6) that differ only in how many wait, in the Sweet Spot café (Sketchfab, CC BY 4.0, painted as sweet_spot_cafe.yaml says).
+# Spot starts south-west of the line: the counter and all six places of the line are in view
+# (checked against depth). The line stands still, nobody being served; two people walk about
+# beyond it, where they never come between Spot and the line.
+stage: data/habitat/stages/sweet_spot_cafe.glb
+map_area: [7.0, 21.5, -0.8, 9.8]
+wander_area: [16.8, 20.5, 0.5, 4.3]
+
+robot:
+  x: 13.0
+  y: 1.4
+  face: [15.72, 2.67]          # 25 deg: the line's far end and the counter both inside the view, with margin
+
+queues:
+  counter_line:
+    service_s: null
+    slots:
+      - {x: 15.8, y: 4.35, face: [15.8, 5.2]}
+      - {x: 15.8, y: 3.65}
+      - {x: 15.8, y: 2.95}
+      - {x: 15.8, y: 2.25}
+      - {x: 15.8, y: 1.55}
+      - {x: 15.8, y: 0.85}
+
+humans:
+  - {avatar: male_2, stand: [15.1, 6.4], face: [15.1, 3.0]}      # the barista
+  - {avatar: male_1, start: [19.5, 1.2]}
+  - {avatar: female_0, start: [18.0, 4.0]}
+
+requests:
+  - Get me a coffee
+  - Take me to the counter

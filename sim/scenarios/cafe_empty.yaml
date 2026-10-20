@@ -1,0 +1,11 @@
+# The café with nobody in it. The robot starts where it does in cafe_line_side.yaml; asked for the counter, it
+# should stop in front of it (the standard goal, about a metre before the side it sees).
+stage: data/habitat/stages/cafe.glb
+
+robot:
+  x: 7.3
+  y: -2.5
+  face: [5.0, -1.2]
+
+requests:
+  - Take me to the counter

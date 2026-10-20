@@ -5,6 +5,8 @@ models:
   mock:            {provider: mock, model: mock-centre}
   gemini_fast:     {provider: gemini, model: gemini-3.8-flash, reasoning_effort: low, point_format: xy_1000}
   gemini_strong:   {provider: gemini, model: gemini-3.1-pro-preview, reasoning_effort: low, point_format: xy_1000}
+  # Answered on 2026-10-21 while gemini-3.8-flash gave 503 (high demand). point_format not calibrated.
+  gemini_35_flash: {provider: gemini, model: gemini-3.5-flash, reasoning_effort: low, point_format: xy_1000}
   gemini_pointing: {provider: gemini, model: gemini-robotics-er-2-preview, reasoning_effort: low, point_format: xy_1000}
   openai_fast:     {provider: openai, model: gpt-6-luna, reasoning_effort: low, point_format: xy_1000}
   openai_strong:   {provider: openai, model: gpt-6.1-sol, reasoning_effort: low, point_format: xy_1000}
@@ -77,9 +79,11 @@ models:
                         price_input_per_mtok: 2.0, price_output_per_mtok: 10.0}
   claude_sonnet55_low: {provider: anthropic, model: claude-sonnet-5-5, reasoning_effort: low, point_format: xy_1000,
                         price_input_per_mtok: 2.0, price_output_per_mtok: 10.0}
-  claude_haiku55:      {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: "none", point_format: xy_1000,
+  # Haiku's point_format from `python -m sgi.smoke --model claude_haiku55 --calibrate` on 2026-10-21: median error
+  # 38.6 px in xy_pixel, 104.6 px in xy_1000 (the image centre: 179.8 px). claude_haiku55_low is taken to match.
+  claude_haiku55:      {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: "none", point_format: xy_pixel,
                         price_input_per_mtok: 0.1, price_output_per_mtok: 0.5}
-  claude_haiku55_low:  {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: low, point_format: xy_1000,
+  claude_haiku55_low:  {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: low, point_format: xy_pixel,
                         price_input_per_mtok: 0.1, price_output_per_mtok: 0.5}
 stages:            # model: a key of models. strategy: zero_shot | cot, and for goal also few_shot | few_shot_cot
   plan:    {model: mock, strategy: cot}

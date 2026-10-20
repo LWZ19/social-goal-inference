@@ -1,0 +1,29 @@
+# The café while it is busy: the line moves (the person at the front is served every 12 s, walks about for 8 to
+# 15 s and joins the end again) and two people walk about. Does the robot still join the end of the line?
+stage: data/habitat/stages/cafe.glb
+
+robot:
+  x: 7.3
+  y: -2.5
+  face: [5.0, -2.5]
+
+queues:
+  coffee_counter:
+    service_s: 12
+    slots:
+      - {x: 5.0, y: -1.45, face: [5.0, -0.5]}
+      - {x: 5.0, y: -2.15}
+      - {x: 5.0, y: -2.85}
+      - {x: 5.0, y: -3.55}
+      - {x: 5.0, y: -4.25}
+
+humans:
+  - {avatar: male_1, queue: coffee_counter}
+  - {avatar: female_0, queue: coffee_counter}
+  - {avatar: male_3, queue: coffee_counter}
+  - {avatar: female_2, queue: coffee_counter}
+  - {avatar: male_0, start: [2.5, -5.0]}
+  - {avatar: female_1, start: [7.5, -5.5]}
+
+requests:
+  - Take me to the counter where these people are queueing

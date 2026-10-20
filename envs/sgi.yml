@@ -1,0 +1,10 @@
+# The pipeline's environment, as conda (the README's .venv works as well). See docs/habitat.md.
+#   conda env create -f envs/sgi.yml
+name: sgi
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -e "..[dev]"

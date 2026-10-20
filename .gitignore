@@ -1,9 +1,18 @@
+# Secrets: model API keys. Never committed; .env.example is the template.
 .env
-.venv/
-.cache/
-runs/
+
+# Made on each machine; sim/setup.sh recreates all of them (sim/README.md, Quick start).
+# data/: Habitat's data, the Sketchfab downloads, the built scenes, the placeholder scenes.
+# runs/: what each run and each request leaves behind. .cache/: the pipeline's cache of model answers.
 data/
-soclaas/
-cs6244_goal_inference_mvp.zip
+runs/
+.cache/
+.venv/
+
+# Python's own leftovers
 __pycache__/
 *.egg-info/
+.pytest_cache/
+
+soclaas/
+cs6244_goal_inference_mvp.zip

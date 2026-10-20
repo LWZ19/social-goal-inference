@@ -1,0 +1,40 @@
+# A queue at the kitchen counter of ReplicaCAD's apt_0, and two people walking about the flat.
+# Positions are in the pipeline's world frame (src/sgi/geometry.py): metres, z up, floor at z = 0.
+# Habitat's (x, z) is (x, -y) here: a point at Habitat x = -1.35, z = 1.25 is written x: -1.35, y: -1.25.
+dataset: data/habitat/replica_cad/replicaCAD.scene_dataset_config.json
+scene: apt_0
+humanoids: data/habitat/humanoids/humanoid_data
+spot_urdf: data/habitat/robots/hab_spot_arm/urdf/hab_spot_arm.urdf
+
+robot:
+  x: 1.2
+  y: -4.6
+  face: [-1.3, -1.8]         # the robot starts turned towards this point
+
+camera:                      # the robot's RGB-D camera, the one the pipeline sees through
+  width: 640
+  height: 480
+  hfov_deg: 90
+  height_m: 1.2
+  forward_m: 0.35
+  pitch_down_deg: 10
+
+queues:
+  kitchen_counter:
+    service_s: 25            # the person at the front is served, and leaves, this often
+    slots:                   # the first is at the counter; a slot without `face` faces the slot ahead
+      - {x: -1.35, y: -1.25, face: [-2.3, -1.25]}
+      - {x: -1.25, y: -2.0}
+      - {x: -1.25, y: -2.7}
+      - {x: -1.25, y: -3.4}
+
+humans:
+  - {avatar: male_0, queue: kitchen_counter}
+  - {avatar: female_1, queue: kitchen_counter}
+  - {avatar: female_3, queue: kitchen_counter}
+  - {avatar: neutral_0, start: [0.5, -0.6]}        # no queue: walks about
+  - {avatar: male_2, start: [2.5, -1.0]}
+
+requests:                    # printed at the start, as examples to type
+  - Get me a cup from the kitchen counter
+  - Bring me something from the fridge

@@ -1,0 +1,26 @@
+# "Modern Coffee Shop Interior - Sweet Spot Cafe" by ahmadmughal2023, from Sketchfab, CC BY 4.0: credit it
+# wherever images of it are shared (data/habitat/downloads/sweet_spot_cafe/license.txt has the credit line).
+# The download has no colours (its author uploaded an .stl): it is painted in the two tones of Sketchfab's clay
+# view first (docs/habitat.md):
+#   python -m sgi_habitat.paint_stage data/habitat/downloads/sweet_spot_cafe/scene.gltf \
+#       data/habitat/stages/sweet_spot_cafe.glb --floor-y 0.15 --region 7.5 21.0 -0.3 9.3 --counter 11.0 16.7 4.9 8.85
+# A U-shaped counter with the coffee machines stands at the north of the room, its front at y = 5.0; four
+# tables with chairs fill the south. This one has nobody waiting: a barista stands behind the counter and three people walk
+# about between the tables. sweet_spot_cafe.yaml is the same café with four people queueing.
+stage: data/habitat/stages/sweet_spot_cafe.glb
+wander_area: [8.5, 20.5, 0.5, 4.3]          # walkers stay among the tables, inside the café
+map_area: [7.0, 21.5, -0.8, 9.8]            # the map shows the café, not the ground round it
+
+robot:                                       # south-west of the counter, which is in view
+  x: 12.0
+  y: 0.8
+  face: [14.5, 5.0]
+
+humans:
+  - {avatar: male_2, stand: [15.1, 6.4], face: [15.1, 3.0]}         # the barista, behind the till end of the counter
+  - {avatar: male_0, start: [9.0, 3.6]}
+  - {avatar: female_1, start: [19.5, 1.2]}
+  - {avatar: female_0, start: [18.5, 3.8]}
+
+requests:
+  - Get me a coffee
