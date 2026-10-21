@@ -452,9 +452,10 @@ def test_the_model_table_has_six_claude_entries_each_with_its_model_its_level_an
     shared = {(e.base_url, e.api_key_env, e.temperature, e.image_detail, e.max_output_tokens,
                e.max_requests_per_minute) for e in entries.values()}
     assert shared == {(None, None, None, None, None, None)}
-    # Haiku was calibrated (pixels, configs/default.yaml); the others are not yet, and keep the default.
+    # The format each model points best in, by `sgi.smoke --calibrate` on 17 October; Opus is not calibrated yet.
     assert {name: e.point_format for name, e in entries.items()} == {
-        name: "xy_pixel" if name.startswith("claude_haiku") else "xy_1000" for name in CLAUDE}
+        "claude_opus55": "xy_1000", "claude_opus55_low": "xy_1000", "claude_sonnet55": "xy_pixel",
+        "claude_sonnet55_low": "xy_pixel", "claude_haiku55": "xy_pixel", "claude_haiku55_low": "xy_pixel"}
     build_all = AnthropicBackend(KEY).build_request                   # what each sends for its level
     sent = {name: build_all(entry, None, PARTS, SCHEMA) for name, entry in entries.items()}
     assert {name: (r["model"], r["output_config"].get("effort"), r.get("thinking"), r["max_tokens"]) for name, r in sent.items()} == {

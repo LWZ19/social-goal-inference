@@ -234,7 +234,7 @@ def test_a_key_that_two_answers_share_is_described_by_the_answer_it_is_in():
                  "locate": location_schema("cot", "xy_1000", SIZE).model_json_schema()["properties"]}
     assert described["plan"]["target"]["description"].startswith("For navigate: a few words that pick out the place")
     assert described["plan"]["target_point"]["description"] == described["locate"]["target_point"]["description"]     # as they were
-    assert described["locate"]["reasoning"]["description"] == "Your reasoning, written before the rest of the answer."
+    assert described["locate"]["reasoning"]["description"] == "What in the image could be the target, written before the point."
 
 # ---------------------------------------------------------------------- the constraints answer of the constraint method
 KINDS = ("keep_out_of_shared_space", "keep_out_of_view", "come_after", "within_distance", "visible_to", "face")

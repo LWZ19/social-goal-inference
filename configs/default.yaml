@@ -70,17 +70,17 @@ models:
   # No entry may set temperature or image_detail: the models refuse a sampling parameter, and none is sent.
   # price_*_per_mtok: US dollars per million tokens, from Anthropic's model table as it stood on 2026-10-06;
   # thinking is billed as output. Haiku's are for a prompt of up to 100 000 tokens (0.50 and 2.50 above that).
-  # point_format is not calibrated: `python -m sgi.smoke --model <entry> --calibrate` settles it.
+  # point_format, by `python -m sgi.smoke --model <entry> --calibrate`: Sonnet and Haiku point in pixels. On 17 October
+  # Haiku's median error was 37 px in xy_pixel against 117 px in xy_1000 and Sonnet's 43 against 44 px; on 21 October
+  # Haiku's again 38.6 against 104.6 px (the image centre: 179.8 px). Opus is not calibrated and keeps xy_1000.
   claude_opus55:       {provider: anthropic, model: claude-opus-5-5, reasoning_effort: medium, point_format: xy_1000,
                         price_input_per_mtok: 4.0, price_output_per_mtok: 20.0}
   claude_opus55_low:   {provider: anthropic, model: claude-opus-5-5, reasoning_effort: low, point_format: xy_1000,
                         price_input_per_mtok: 4.0, price_output_per_mtok: 20.0}
-  claude_sonnet55:     {provider: anthropic, model: claude-sonnet-5-5, reasoning_effort: medium, point_format: xy_1000,
+  claude_sonnet55:     {provider: anthropic, model: claude-sonnet-5-5, reasoning_effort: medium, point_format: xy_pixel,
                         price_input_per_mtok: 2.0, price_output_per_mtok: 10.0}
-  claude_sonnet55_low: {provider: anthropic, model: claude-sonnet-5-5, reasoning_effort: low, point_format: xy_1000,
+  claude_sonnet55_low: {provider: anthropic, model: claude-sonnet-5-5, reasoning_effort: low, point_format: xy_pixel,
                         price_input_per_mtok: 2.0, price_output_per_mtok: 10.0}
-  # Haiku's point_format from `python -m sgi.smoke --model claude_haiku55 --calibrate` on 2026-10-21: median error
-  # 38.6 px in xy_pixel, 104.6 px in xy_1000 (the image centre: 179.8 px). claude_haiku55_low is taken to match.
   claude_haiku55:      {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: "none", point_format: xy_pixel,
                         price_input_per_mtok: 0.1, price_output_per_mtok: 0.5}
   claude_haiku55_low:  {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: low, point_format: xy_pixel,

@@ -71,10 +71,12 @@ _Reasoning = Annotated[str, AfterValidator(_non_empty)]
 # Field descriptions are sent to the model, so they name no task and no situation (G2). The keys are wire keys.
 # Each answer has its own: one key can stand in two answers and mean another thing in each, as `analysis` does,
 # three parts in the goal answer and one string in the people answer.
-_REASONING_DESC = "Your reasoning, written before the rest of the answer."
+# A reasoning field is described by what goes into it. Described as "your reasoning", it had Claude Sonnet 5.5 decline
+# the request before writing anything (stop_details category reasoning_extraction), taken for a request for its
+# internal reasoning.
 _TARGET_POINT_DESC = "A point on the target if it is visible in the image, otherwise null."
 _PLAN_DESC = {
-    "reasoning": _REASONING_DESC,
+    "reasoning": "What the request asks for and what in the scene can serve it, written before the subtasks.",
     "subtasks": "The ordered steps that carry out the request.",
     "description": "One short sentence saying what this step does.",
     "target": "For navigate: a few words that pick out the place, object or person to go to. For act: null.",
@@ -82,9 +84,11 @@ _PLAN_DESC = {
     "tour_frame": "The index of the frame that shows the target best, or null.",
     "type": "navigate: go to a target. act: do something at the target of the preceding navigate step.",
 }
-_LOCATION_DESC = {"reasoning": _REASONING_DESC, "target_point": _TARGET_POINT_DESC}
+_LOCATION_DESC = {"reasoning": "What in the image could be the target, written before the point.",
+                  "target_point": _TARGET_POINT_DESC}
 _CONTEXT_DESC = {
-    "reasoning": _REASONING_DESC,
+    "reasoning": ("What the people in view are doing and whether it concerns the target, written before the "
+                  "answer."),
     "relevant_people": ("The people whose position, facing or activity affects where an arriving robot may stop "
                         "or what it would block."),
     "stop_elsewhere": "False only when stopping at the standard goal would be appropriate.",
@@ -97,7 +101,8 @@ _GOAL_DESC = {
     "look_at_point": "The point the robot should face from where it stands, or null to face the target.",
 }
 _PEOPLE_DESC = {
-    "analysis": _REASONING_DESC,
+    "analysis": ("How many people are in view, where each of them is and what shows the way each faces, written "
+                 "before the list."),
     "people": "Every person visible in the image, one entry each.",
     "appearance": "A few words that pick this person out from the others in the image.",
     "faced_point": "A point on what this person faces if that is visible in the image, otherwise null.",
