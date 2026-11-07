@@ -99,7 +99,14 @@ class Demo:
                 face = s.get("face") or ([ahead["x"], ahead["y"]] if ahead else [s["x"] - 1.0, s["y"]])
                 slots.append(Slot(s["x"], s["y"], tuple(face)))
             service = q.get("service_s", 20.0)
-            self.queues[name] = Queue(slots, service_s=None if service is None else float(service))
+            if isinstance(service, (list, tuple)):      # [min_s, max_s]: every service takes a time drawn from it
+                lo, hi = float(service[0]), float(service[1])
+                self.queues[name] = Queue(slots, service_s=self.rng.uniform(lo, hi), service_range=(lo, hi))
+            else:
+                self.queues[name] = Queue(slots, service_s=None if service is None else float(service))
+            if q.get("step_lag") is not None:          # [min_s, max_s]: members wait this long before stepping up
+                self.queues[name].step_lag = (float(q["step_lag"][0]), float(q["step_lag"][1]))
+            self.queues[name].lazy_share = float(q.get("lazy_share", 0.0))   # of those, wait for two free places
 
         root = _repo_path(scenario.get("humanoids", HUMANOIDS))
         self.humans: List[Human] = []
@@ -108,14 +115,25 @@ class Demo:
             human = Human(self.sim, f"{h['avatar']}#{i}", root / h["avatar"], self.floor_y + float(h.get("z", 0.0)))
             area = h.get("wander_area", scenario.get("wander_area"))
             human.wander_area = None if area is None else tuple(area)
+            human.turn_rad = math.radians(float(h.get("turn_deg", 0.0)))   # faces this far off its point
             line = self.queues.get(h.get("queue")) if h.get("queue") else None
             if h.get("stand") is not None:     # stays at a place of their own, facing `face`
                 x, y = h["stand"]
                 face = h.get("face", [x, y - 1.0])
-                human.home = Slot(x, y, tuple(face))
-                human.place(x, y, math.atan2(face[1] - y, face[0] - x))
+                human.home = human.anchor = Slot(x, y, tuple(face))
+                human.place(x, y, math.atan2(face[1] - y, face[0] - x) + math.radians(float(h.get("turn_deg", 0.0))))
+                if h.get("fidget") is not None:     # [min_s, max_s, radius_m]: shifts about the place now and then
+                    human.fidget = tuple(float(v) for v in h["fidget"])
+                    human.fidget_s = self.rng.uniform(human.fidget[0], human.fidget[1])
+                if h.get("excursion") is not None:  # once: walks part way to `toward` and back (at, dist, hold drawn)
+                    ex = h["excursion"]
+                    human.excursion = {"at": self.rng.uniform(*ex["at"]), "dist": self.rng.uniform(*ex["dist"]),
+                                       "hold": self.rng.uniform(*ex["hold"]), "toward": tuple(ex["toward"]),
+                                       "phase": "before"}
             elif line is not None:
                 human.queue = line
+                if getattr(line, "lazy_share", 0.0) > 0.0:
+                    human.lazy = self.rng.random() < line.lazy_share
                 line.join(human)
                 slot = line.slot_of(human)
                 human.place(slot.x, slot.y, math.atan2(slot.face[1] - slot.y, slot.face[0] - slot.x))

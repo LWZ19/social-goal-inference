@@ -1,0 +1,51 @@
+# cafe_line2_fast (research break-it case a/g, 2026-11-01): cafe_line2_moving served every 6 s, so the
+# robot can become first in line, and the line moves faster than it can follow.
+stage: data/habitat/stages/cafe.glb
+wander_area:
+- 0.5
+- 4.0
+- -7.5
+- -1.5
+robot:
+  x: 8.0
+  y: -2.6
+  face:
+  - 5.0
+  - -2.95
+queues:
+  counter_line:
+    service_s: 6
+    slots:
+    - x: 5.0
+      y: -1.45
+      face:
+      - 5.0
+      - -0.5
+    - x: 5.0
+      y: -2.15
+    - x: 5.0
+      y: -2.85
+    - x: 5.0
+      y: -3.55
+    - x: 5.0
+      y: -4.25
+    - x: 5.0
+      y: -4.95
+    - x: 5.0
+      y: -5.65
+humans:
+- avatar: male_1
+  queue: counter_line
+- avatar: female_0
+  queue: counter_line
+- avatar: male_3
+  start:
+  - 2.0
+  - -6.0
+- avatar: female_2
+  start:
+  - 1.5
+  - -3.0
+requests:
+- Get me a coffee
+- Take me to the counter
