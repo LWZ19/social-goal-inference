@@ -1,0 +1,218 @@
+# The runs of the research track beyond the VLM-only pipeline (step 0, frozen 17 October 2026): 153 run folders.
+# Each line is RUN_DIR=SCENES_DIR from the repository root; the scenes folder is the one the
+# run's config.yaml records. research_harness.py reads this list and refuses every run folder that is not on it.
+#
+# Resolution: where one run name has several folders, the latest folder by the time its name starts with that holds
+# a results.jsonl is taken (as the comparison tables do); the others are named below as superseded.
+# Never on this list: s18 and s20_held (held out), the held-out scene sets, .cache, the s21_replay_* and s21_sonnet_* probes,
+# the partial s20_*_dsv41_low_* runs, the s17 con and fsc runs, the s22_replay* and pre-flight pf_* runs, and every
+# other stage. Records of a held-out situation (group_photo, lift_wait) inside these runs are skipped by the harness
+# before any of their fields is used.
+#
+# Code at run time: no config.yaml records a commit. By the development repository's HEAD reflog at each run's start
+# (uncommitted changes unknown): s8 227845e, but s8_convlm_qwen3vl 89ceafe (227845e cannot read the placeholder
+# scenes as they are now, 89ceafe can; they give every s8 place again); s10 a3c3fd0; s16b fc61bc5, but from 2025 d7ebfc3;
+# s19 31e7150; s20 a233baa, but the cot runs at 2003-2004 74b61a9; s21 202c165, but the con runs f1a488a.
+# The solver places that the code as it is does not give again, and why: research_moved.txt.
+#
+# Also taken, beyond the first step-0 list: the 6 s22 and 45 s23 runs the plan's step 0 adds (REPORT.md, step 0,
+# and its stage 22 and 23 notes); and the 12 s17 R and E runs of the development seeds, as the comparison tables'
+# development set takes them.
+
+# s8, the panel ablations of the constraint method on the placeholder scenes: none (oracle people and no
+# constraints, the solver alone), convlm (people and constraints from the model), conorc (oracle people and
+# constraints from the model): 15 runs.
+runs/20261010-004334_s8_none_glm53=data/placeholder/eval
+runs/20261010-005140_s8_none_ornith15=data/placeholder/eval
+runs/20261010-003520_s8_none_qwen36_35=data/placeholder/eval
+runs/20261010-003518_s8_none_qwen38=data/placeholder/eval
+runs/20261010-004700_s8_none_qwen3vl=data/placeholder/eval
+runs/20261010-004747_s8_convlm_glm53=data/placeholder/eval
+runs/20261010-005514_s8_convlm_ornith15=data/placeholder/eval
+runs/20261010-003923_s8_convlm_qwen36_35=data/placeholder/eval
+runs/20261010-004041_s8_convlm_qwen38=data/placeholder/eval
+runs/20261010-005734_s8_convlm_qwen3vl=data/placeholder/eval
+runs/20261010-004411_s8_conorc_glm53=data/placeholder/eval
+runs/20261010-005218_s8_conorc_ornith15=data/placeholder/eval
+runs/20261010-003604_s8_conorc_qwen36_35=data/placeholder/eval
+runs/20261010-003601_s8_conorc_qwen38=data/placeholder/eval
+runs/20261010-004740_s8_conorc_qwen3vl=data/placeholder/eval
+
+# s10, reasoning effort none, low and medium, by method, on the placeholder scenes: 15 runs.
+# Names with no folder: s10_glm53_medium_cot, s10_glm53_medium_fsc, s10_glm53_medium_con.
+# s10_qwen38_low_con: 20261010-121108 taken (28 records); superseded 20261010-115145 (28 records).
+runs/20261010-121744_s10_glm53_none_cot=data/placeholder/eval
+runs/20261010-122014_s10_glm53_none_fsc=data/placeholder/eval
+runs/20261010-122223_s10_glm53_none_con=data/placeholder/eval
+runs/20261010-120006_s10_glm53_low_cot=data/placeholder/eval
+runs/20261010-120334_s10_glm53_low_fsc=data/placeholder/eval
+runs/20261010-120459_s10_glm53_low_con=data/placeholder/eval
+runs/20261010-121111_s10_qwen38_none_cot=data/placeholder/eval
+runs/20261010-121342_s10_qwen38_none_fsc=data/placeholder/eval
+runs/20261010-121526_s10_qwen38_none_con=data/placeholder/eval
+runs/20261010-113310_s10_qwen38_low_cot=data/placeholder/eval
+runs/20261010-114653_s10_qwen38_low_fsc=data/placeholder/eval
+runs/20261010-121108_s10_qwen38_low_con=data/placeholder/eval
+runs/20261010-113304_s10_qwen38_medium_cot=data/placeholder/eval
+runs/20261010-114330_s10_qwen38_medium_fsc=data/placeholder/eval
+runs/20261010-114753_s10_qwen38_medium_con=data/placeholder/eval
+
+# s16b, the marked point (cot) and worked examples (fsc), on the three realistic arms and the placeholder
+# scenes: 16 runs.
+runs/20261010-201358_s16b_real_qwen38_low_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-202647_s16b_real_qwen38_low_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-203755_s16b_real_glm53_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-204211_s16b_real_glm53_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-201359_s16b_staffed_qwen38_low_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-202635_s16b_staffed_qwen38_low_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-203708_s16b_staffed_glm53_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-204058_s16b_staffed_glm53_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-201401_s16b_plain_qwen38_low_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-202550_s16b_plain_qwen38_low_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-203707_s16b_plain_glm53_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-204052_s16b_plain_glm53_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-201401_s16b_ph_qwen38_low_cot=data/placeholder/eval
+runs/20261010-202545_s16b_ph_qwen38_low_fsc=data/placeholder/eval
+runs/20261010-203754_s16b_ph_glm53_cot=data/placeholder/eval
+runs/20261010-204126_s16b_ph_glm53_fsc=data/placeholder/eval
+
+# s17, Qwen 3.8 low and GLM-5.3, the marked point (cot) and 3 worked examples (fsc3) on the development seeds, 24
+# records each, as the comparison tables' development set takes them: 12 runs. fsc3 shows 3 worked examples where s16b
+# fsc on the realistic sets shows 2. Not the s17 con runs, from before the solver fix (C on the seeds is s19
+# dev_seed*), nor the s17 fsc runs, the 4-example variant.
+runs/20261010-205408_s17_seed0_qwen38_low_cot=data/dev_scenes/dev_new/seed0/scenes
+runs/20261010-210542_s17_seed0_qwen38_low_fsc3=data/dev_scenes/dev_new/seed0/scenes
+runs/20261010-205413_s17_seed0_glm53_cot=data/dev_scenes/dev_new/seed0/scenes
+runs/20261010-210545_s17_seed0_glm53_fsc3=data/dev_scenes/dev_new/seed0/scenes
+runs/20261010-205410_s17_seed1_qwen38_low_cot=data/dev_scenes/dev_new/seed1/scenes
+runs/20261010-210547_s17_seed1_qwen38_low_fsc3=data/dev_scenes/dev_new/seed1/scenes
+runs/20261010-205413_s17_seed1_glm53_cot=data/dev_scenes/dev_new/seed1/scenes
+runs/20261010-210549_s17_seed1_glm53_fsc3=data/dev_scenes/dev_new/seed1/scenes
+runs/20261010-205411_s17_seed2_qwen38_low_cot=data/dev_scenes/dev_new/seed2/scenes
+runs/20261010-210549_s17_seed2_qwen38_low_fsc3=data/dev_scenes/dev_new/seed2/scenes
+runs/20261010-205901_s17_seed2_glm53_cot=data/dev_scenes/dev_new/seed2/scenes
+runs/20261010-210550_s17_seed2_glm53_fsc3=data/dev_scenes/dev_new/seed2/scenes
+
+# s19, the constraint method (con), on the three realistic arms, the placeholder scenes (its first 14) and the
+# development seeds: 14 runs. The ph runs record data/dev_scenes/placeholder_first14, a folder of 14 links to
+# data/placeholder/eval/eval_00 to eval_13: the same scenes as the s8, s10 and s16b_ph runs (research_scenes.txt).
+runs/20261011-160334_s19_real_qwen38_low_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261011-160500_s19_real_glm53_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261011-160344_s19_staffed_qwen38_low_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261011-160352_s19_staffed_glm53_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261011-160527_s19_plain_qwen38_low_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261011-160452_s19_plain_glm53_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261011-160610_s19_ph_qwen38_low_con=data/dev_scenes/placeholder_first14
+runs/20261011-160439_s19_ph_glm53_con=data/dev_scenes/placeholder_first14
+runs/20261011-160326_s19_dev_seed0_qwen38_low_con=data/dev_scenes/dev_new/seed0/scenes
+runs/20261011-160611_s19_dev_seed0_glm53_con=data/dev_scenes/dev_new/seed0/scenes
+runs/20261011-160315_s19_dev_seed1_qwen38_low_con=data/dev_scenes/dev_new/seed1/scenes
+runs/20261011-160558_s19_dev_seed1_glm53_con=data/dev_scenes/dev_new/seed1/scenes
+runs/20261011-160306_s19_dev_seed2_qwen38_low_con=data/dev_scenes/dev_new/seed2/scenes
+runs/20261011-160545_s19_dev_seed2_glm53_con=data/dev_scenes/dev_new/seed2/scenes
+
+# s20, DeepSeek V4.1 Flash, every method, outside the held-out set (the partial s20_*_dsv41_low_* runs are
+# left out). Where a name has several folders, each has a results.jsonl (one of them empty); the folder times are
+# given with the records in each, and every folder taken is complete (84 records, 24 on a development seed): 21 runs.
+# The ph runs record data/dev_scenes/placeholder_first14, as the s19 ph runs do.
+# s20_real_dsv41_cot: 20261013-200416 taken (84); superseded 185203 (19), 185751 (53), 190615 (84).
+# s20_staffed_dsv41_cot: 20261013-200416 taken (84); superseded 185202 (18), 185756 (53), 190619 (84).
+# s20_plain_dsv41_cot: 20261013-200418 taken (84); superseded 185203 (21), 185758 (53), 190621 (84).
+# s20_ph_dsv41_cot: 20261013-190613 taken (84); superseded 185202 (28), 185754 (68).
+# s20_dev_seed0_dsv41_cot: 20261013-190547 taken (24); superseded 185058 (24), 185730 (24).
+# s20_dev_seed0_dsv41_fsc: 20261013-190707 taken (24); superseded 190150 (24).
+# s20_dev_seed0_dsv41_con: 20261013-190610 taken (24); superseded 185621 (0), 185757 (24).
+# s20_dev_seed1_dsv41_cot: 20261013-190550 taken (24); superseded 185100 (24), 185730 (24).
+# s20_dev_seed1_dsv41_fsc: 20261013-190709 taken (24); superseded 185942 (24).
+# s20_dev_seed1_dsv41_con: 20261013-190617 taken (24); superseded 185616 (1), 185754 (24).
+# s20_dev_seed2_dsv41_cot: 20261013-200348 taken (24); superseded 190323 (7), 190724 (24).
+runs/20261013-200416_s20_real_dsv41_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261013-192254_s20_real_dsv41_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261013-191337_s20_real_dsv41_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261013-200416_s20_staffed_dsv41_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261013-192322_s20_staffed_dsv41_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261013-191345_s20_staffed_dsv41_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261013-200418_s20_plain_dsv41_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261013-192208_s20_plain_dsv41_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261013-191402_s20_plain_dsv41_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261013-190613_s20_ph_dsv41_cot=data/dev_scenes/placeholder_first14
+runs/20261013-191716_s20_ph_dsv41_fsc=data/dev_scenes/placeholder_first14
+runs/20261013-190939_s20_ph_dsv41_con=data/dev_scenes/placeholder_first14
+runs/20261013-190547_s20_dev_seed0_dsv41_cot=data/dev_scenes/dev_new/seed0/scenes
+runs/20261013-190707_s20_dev_seed0_dsv41_fsc=data/dev_scenes/dev_new/seed0/scenes
+runs/20261013-190610_s20_dev_seed0_dsv41_con=data/dev_scenes/dev_new/seed0/scenes
+runs/20261013-190550_s20_dev_seed1_dsv41_cot=data/dev_scenes/dev_new/seed1/scenes
+runs/20261013-190709_s20_dev_seed1_dsv41_fsc=data/dev_scenes/dev_new/seed1/scenes
+runs/20261013-190617_s20_dev_seed1_dsv41_con=data/dev_scenes/dev_new/seed1/scenes
+runs/20261013-200348_s20_dev_seed2_dsv41_cot=data/dev_scenes/dev_new/seed2/scenes
+runs/20261013-191252_s20_dev_seed2_dsv41_fsc=data/dev_scenes/dev_new/seed2/scenes
+runs/20261013-191026_s20_dev_seed2_dsv41_con=data/dev_scenes/dev_new/seed2/scenes
+
+# s21, Qwen 3.8 at low effort, every method, on the three realistic arms (84 records each): 9 runs.
+runs/20261017-012658_s21_real_qwen38_low_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-020507_s21_real_qwen38_low_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-022122_s21_real_qwen38_low_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-012700_s21_staffed_qwen38_low_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-020339_s21_staffed_qwen38_low_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-021937_s21_staffed_qwen38_low_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-012701_s21_plain_qwen38_low_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-020401_s21_plain_qwen38_low_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-021852_s21_plain_qwen38_low_con=data/dev_scenes/realistic_final/plain/scenes
+
+# s22, Qwen 3.8 at low effort, the marked point (cot) and worked examples (fsc) on the three realistic arms, pinned
+# at 202c165, 168 records each: 6 runs. Trials 0-2 are cache copies of the s16b qwen38_low runs and trials 3-5 are
+# fresh: deduplicate when pooling with s16b. Not the s22_replay* runs (the guard refuses them).
+runs/20261017-114056_s22_real_qwen38_low_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-121440_s22_real_qwen38_low_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-114058_s22_staffed_qwen38_low_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-121408_s22_staffed_qwen38_low_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-114059_s22_plain_qwen38_low_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-121157_s22_plain_qwen38_low_fsc=data/dev_scenes/realistic_final/plain/scenes
+
+# s23, five models (glm53, dsv41, haiku55, sonnet55_low, gemini38_low), every method, on the three realistic arms, at
+# the current wording, 84 records each: 45 runs. Not the pre-flight pf_* runs (the guard refuses them).
+runs/20261017-123106_s23_real_glm53_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-125125_s23_real_glm53_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-125813_s23_real_glm53_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-123103_s23_real_dsv41_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-124447_s23_real_dsv41_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-124936_s23_real_dsv41_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-123103_s23_real_haiku55_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-125406_s23_real_haiku55_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-130036_s23_real_haiku55_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-123109_s23_real_sonnet55_low_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-125647_s23_real_sonnet55_low_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-130300_s23_real_sonnet55_low_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-123104_s23_real_gemini38_low_cot=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-124739_s23_real_gemini38_low_fsc=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-125226_s23_real_gemini38_low_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261017-123059_s23_staffed_glm53_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-124859_s23_staffed_glm53_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-125552_s23_staffed_glm53_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-123107_s23_staffed_dsv41_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-124447_s23_staffed_dsv41_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-124931_s23_staffed_dsv41_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-123104_s23_staffed_haiku55_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-125429_s23_staffed_haiku55_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-130055_s23_staffed_haiku55_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-130912_s23_staffed_sonnet55_low_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-132258_s23_staffed_sonnet55_low_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-132708_s23_staffed_sonnet55_low_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-123104_s23_staffed_gemini38_low_cot=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-124910_s23_staffed_gemini38_low_fsc=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-125459_s23_staffed_gemini38_low_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261017-123108_s23_plain_glm53_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-124913_s23_plain_glm53_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-125556_s23_plain_glm53_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-123108_s23_plain_dsv41_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-124429_s23_plain_dsv41_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-124904_s23_plain_dsv41_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-123107_s23_plain_haiku55_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-125403_s23_plain_haiku55_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-130031_s23_plain_haiku55_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-130918_s23_plain_sonnet55_low_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-132301_s23_plain_sonnet55_low_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-132708_s23_plain_sonnet55_low_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-123105_s23_plain_gemini38_low_cot=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-124809_s23_plain_gemini38_low_fsc=data/dev_scenes/realistic_final/plain/scenes
+runs/20261017-125351_s23_plain_gemini38_low_con=data/dev_scenes/realistic_final/plain/scenes
