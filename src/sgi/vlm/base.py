@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import itertools
 import json
+import os
 import random
 import time
 from collections import deque
@@ -197,6 +198,8 @@ class VLMClient:
                 latency_s=tally.latency_s, latency_total_s=self._clock() - started,
                 validation_retries=validation_retries, transient_retries=tally.transient_retries, **answered)
 
+        if os.environ.get("SGI_CACHE_ONLY") == "1":     # replaying stored answers: a miss is an error, not a call
+            return response("vlm_error", error="not in the cache, and SGI_CACHE_ONLY=1")
         try:
             result = self._request(system, list(parts), json_schema, tally)
             parsed, error = _read_answer(result, schema)

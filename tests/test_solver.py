@@ -1765,3 +1765,16 @@ def test_on_every_placeholder_scene_the_place_is_first_in_the_order_and_breaks_n
     assert solved_episodes == 44                   # two episodes a scene, of every scene as the set is generated now: the two
     #                                                rules of thumb above are constraints to solve with in each of them, and no
     #                                                more than that where people watch a thing or a picture is being taken
+
+
+def test_turn_roles_takes_who_stands_behind_the_last_unless_exempt():
+    from sgi.types import Constraint, DetectedPerson
+    people = [DetectedPerson(number=i + 1, xy=xy, yaw=math.pi / 2, pixel=(0.0, 0.0))
+              for i, xy in enumerate([(1.0, 8.0), (1.0, 7.2), (1.0, 6.2)])]
+    waits = [Constraint(because="they wait", kind="come_after", people=[1, 2])]
+    th = Thresholds()
+    last, joined, place = solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), th)
+    assert last == 3 and joined == [3] and place[1] < 6.2              # the one behind has taken the place
+    last, joined, place = solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), th, exempt=[3])
+    assert last == 2 and joined == [] and place[1] == pytest.approx(6.2, abs=0.3)
+    assert solver.turn_roles(people, [], (1.0, 9.0), (3.0, 3.0), th) == (None, [], None)

@@ -124,7 +124,7 @@ class Config(_Strict):
     thresholds: Thresholds = Thresholds()
     run: RunConfig = RunConfig()
     dev_situations: list[str] = ["no_one", "waiting_line", "conversation_group", "audience"]
-    held_out_situations: list[str] = ["group_photo", "lift_wait"]
+    held_out_situations: list[str] = ["group_photo", "lift_wait", "machine_use"]
 
     @model_validator(mode="after")
     def _check_rules(self) -> "Config":

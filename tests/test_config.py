@@ -8,7 +8,7 @@ from sgi.config import (DEFAULT_CONFIG, PROMPTS_DIR, REPO_ROOT, Config, ConfigEr
 
 STAGES = ("plan", "locate", "context", "goal")
 METHOD_STAGES = ("people", "constraints")                          # of the constraint method: a config may leave them out
-SITUATIONS = (["no_one", "waiting_line", "conversation_group", "audience"], ["group_photo", "lift_wait"])
+SITUATIONS = (["no_one", "waiting_line", "conversation_group", "audience"], ["group_photo", "lift_wait", "machine_use"])
 RUN = dict(grounding="vlm", context_check="vlm", goal="direct_marking", people="vlm", constraints="vlm",
            grounding_source="view", heading_mode="face_target", trials=1, leave_out_situation=None, final_test=False, examples_dir=None,
            k=None, seed=0, max_tour_frames=16, max_image_side=None, prompts_dir="prompts", use_cache=True,
@@ -40,7 +40,12 @@ def test_defaults_in_code_and_in_the_yaml():
         "openai_fast": ("openai", "gpt-6-luna"), "openai_strong": ("openai", "gpt-6.1-sol"),
         "claude_opus55": ("anthropic", "claude-opus-5-5"), "claude_opus55_low": ("anthropic", "claude-opus-5-5"),
         "claude_sonnet55": ("anthropic", "claude-sonnet-5-5"), "claude_sonnet55_low": ("anthropic", "claude-sonnet-5-5"),
-        "claude_haiku55": ("anthropic", "claude-haiku-5-5"), "claude_haiku55_low": ("anthropic", "claude-haiku-5-5")}
+        "claude_haiku55": ("anthropic", "claude-haiku-5-5"), "claude_haiku55_low": ("anthropic", "claude-haiku-5-5"),
+        # older models, for how much the method depends on the model (6 Nov 2026)
+        "claude_haiku45": ("anthropic", "claude-haiku-4-5"), "claude_sonnet46_low": ("anthropic", "claude-sonnet-4-6"),
+        "claude_sonnet5_low": ("anthropic", "claude-sonnet-5"),
+        "gemini3_flash": ("gemini", "gemini-3-flash-preview"), "gemini31_flash_lite": ("gemini", "gemini-3.1-flash-lite"),
+        "gemini35_flash_lite": ("gemini", "gemini-3.5-flash-lite"), "gemini36_flash": ("gemini", "gemini-3.6-flash")}
     assert cfg.models["mock"].model_dump(exclude={"provider", "model"}) == dict(
         base_url=None, api_key_env=None, structured_output="json_schema", max_requests_per_minute=None,
         price_input_per_mtok=None, price_output_per_mtok=None,
@@ -213,12 +218,13 @@ SOCLAAS = {                                                        # entry: (mod
     "soclaas_glm53": ("x-test-1", "none"), "soclaas_glm53_low": ("x-test-1", "low"),
     "soclaas_glm53_high": ("x-test-1", "high"),
     "soclaas_glm53_max": ("x-test-1", "max"), "soclaas_dsv41": ("x-test-2", "none"),
-    "soclaas_dsv41_low": ("x-test-2", "low"), "soclaas_gemma4": ("gemma4:26b", "none"),
+    "soclaas_dsv41_low": ("x-test-2", "low"), "soclaas_qwen38_next": ("x-test-3", "none"),
+    "soclaas_qwen38_next_low": ("x-test-3", "low"), "soclaas_gemma4": ("gemma4:26b", "none"),
     "soclaas_qwen35_9": ("qwen3.5:9b", "none")}
 PRICES = {                                                         # model id: dollars per million tokens (input, output)
     "qwen3.8:27b": (0.408922, 2.320054), "qwen3-vl:32b": (0.380025, 2.419278), "qwen3.6:35b": (0.450056, 1.5155),
     "x-test-1": (0.37, 1.25), "x-test-2": (0.3, 1.2), "ornith1.5:35b": (0.2, 1.7), "gemma4:26b": (0.102294, 0.379882),
-    "qwen3.5:9b": (0.114438, 0.200438)}
+    "qwen3.5:9b": (0.114438, 0.200438), "x-test-3": (None, None)}     # x-test-3: not read from the model list yet
 
 
 @pytest.mark.parametrize("entry, named", [
@@ -264,7 +270,10 @@ def test_soclaas_entries_carry_the_request_limit_and_the_prices_of_their_model()
         assert (entry.max_requests_per_minute, entry.price_input_per_mtok, entry.price_output_per_mtok) == (
             80, *PRICES[model]), name
     others = [e for name, e in cfg.models.items() if name not in SOCLAAS]
-    assert {e.max_requests_per_minute for e in others} == {None}   # no other provider is paced,
+    # no other provider is paced, but for the three older Claude models, at 25 requests a minute
+    assert {name: e.max_requests_per_minute for name, e in cfg.models.items() if name not in SOCLAAS
+            and e.max_requests_per_minute is not None} == dict.fromkeys(
+        ("claude_haiku45", "claude_sonnet46_low", "claude_sonnet5_low"), 25)
     priced = {e.provider for e in others if (e.price_input_per_mtok, e.price_output_per_mtok) != (None, None)}
     assert priced == {"anthropic"}                                 # and one other is priced: tests/test_anthropic.py has its prices
 

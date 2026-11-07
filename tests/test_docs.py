@@ -72,12 +72,12 @@ def test_readme_says_how_to_switch_models_and_what_state_each_provider_is_in():
     assert {"Gemini", "SoCLaaS", "OpenAI", "Claude"} <= set(table)   # a row each, with its key variable and its state
     assert "`GEMINI_API_KEY`" in table["Gemini"] and "live calls" in table["Gemini"]
     assert "`SOCLAAS_API_KEY`" in table["SoCLaaS"] and "full runs on 2026-10-08" in table["SoCLaaS"]
-    assert "90 requests a minute" in table["SoCLaaS"] and "allowance" in table["SoCLaaS"] and "prices" in table["SoCLaaS"]
-    assert sum(name.startswith("soclaas_") for name in CFG.models) == 15 and "the fifteen `soclaas_*` entries" in table["SoCLaaS"]
+    assert "90 requests a minute" in table["SoCLaaS"] and "no spending cap" in table["SoCLaaS"] and "prices" in table["SoCLaaS"]
+    assert sum(name.startswith("soclaas_") for name in CFG.models) == 17 and "the seventeen `soclaas_*` entries" in table["SoCLaaS"]
     assert "`OPENAI_API_KEY`" in table["OpenAI"] and "never called" in table["OpenAI"]
     claude = [name for name, entry in CFG.models.items() if entry.provider == "anthropic"]
-    assert "`ANTHROPIC_API_KEY`" in table["Claude"] and "never called" in table["Claude"] and "`anthropic`" in table["Claude"]
-    assert len(claude) == 6 and [name for name in claude if f"`{name}`" not in table["Claude"]] == []
+    assert "`ANTHROPIC_API_KEY`" in table["Claude"] and "live runs" in table["Claude"] and "`anthropic`" in table["Claude"]
+    assert len(claude) == 9 and [name for name in claude if f"`{name}`" not in table["Claude"]] == []
     # What an entry of that provider sends for its level, and the two settings it may not have.
     (levels,) = [p for p in text.split("\n\n") if p.startswith("For an `anthropic` entry")]
     said = ["reasoning_effort", "none", "low", "medium", "high", "xhigh", "max", "temperature", "image_detail", "max_output_tokens"]

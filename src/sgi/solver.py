@@ -68,6 +68,7 @@ class Solved:
     candidates: list[Candidate]                    # the runners-up, the best first
     note: SolverNote
     flags: Flags                                   # the flags the solver sets; the rest are left as they are
+    turn_last: int | None = None                   # the number of the last waiting person, where a place in turn is used
 
     @property
     def heading(self) -> float:
@@ -201,6 +202,46 @@ def floor(observation: ObservationData, people: Sequence[DetectedPerson], th: Th
     selectable = standable & _joined(passable, (half, half))
     return Floor(robot=observation.robot, offsets=offsets, seen=seen, hidden=hidden, strip=strip, blocked=blocked,
                  own=own, passable=passable, standable=standable, selectable=selectable)
+
+
+@dataclass(frozen=True)
+class FloorMap:
+    """Where the robot may stand, as its own navigation map has it (people not in it): a world-frame grid whose
+    rows run along y and columns along x."""
+    origin_xy: tuple[float, float]                 # the world position of the centre of cell [0, 0]
+    resolution: float                              # metres a cell
+    navigable: np.ndarray                          # (rows, columns) bool
+
+    def at(self, x: np.ndarray, y: np.ndarray) -> np.ndarray:
+        """Whether the map has the robot able to stand at each world point; False off the map."""
+        col = np.floor((np.asarray(x) - self.origin_xy[0]) / self.resolution + 0.5).astype(int)
+        row = np.floor((np.asarray(y) - self.origin_xy[1]) / self.resolution + 0.5).astype(int)
+        rows, cols = self.navigable.shape
+        inside = (row >= 0) & (row < rows) & (col >= 0) & (col < cols)
+        return inside & self.navigable[np.where(inside, row, 0), np.where(inside, col, 0)]
+
+
+def floor_from_map(robot: RobotPose, people: Sequence[DetectedPerson], th: Thresholds, floor_map: FloorMap) -> Floor:
+    """The floor round the robot as its navigation map gives it, on the grid of `floor`: for a caller that solves
+    again after the picture the answer came with (`sgi.resolve`), where the picture no longer shows the people's
+    floor. A cell is seen where the map lets the robot stand; it is blocked within `person_radius_m +
+    robot_radius_m` of a person's centre; nothing is hidden and there is no strip."""
+    resolution = th.grid_resolution_m
+    half = math.floor(th.floor_range_m / resolution + _EPS)
+    offsets = np.arange(-half, half + 1) * resolution
+    x, y = np.meshgrid(offsets, offsets)
+    from_robot = np.hypot(x, y)
+    c, s = math.cos(robot.yaw), math.sin(robot.yaw)
+    seen = floor_map.at(robot.x + c * x - s * y, robot.y + s * x + c * y) & (from_robot <= th.floor_range_m + _EPS)
+    blocked = np.zeros_like(seen)
+    for person in people:
+        ahead, left = to_robot_xy(robot, *person.xy)
+        blocked |= np.hypot(x - ahead, y - left) <= th.person_radius_m + th.robot_radius_m + _EPS
+    own = from_robot <= th.robot_radius_m + _EPS
+    passable = own | (seen & ~blocked)
+    nothing = np.zeros_like(seen)
+    return Floor(robot=robot, offsets=offsets, seen=seen, hidden=nothing, strip=nothing, blocked=blocked, own=own,
+                 passable=passable, standable=passable, selectable=passable & _joined(passable, (half, half)))
 
 
 # ------------------------------------------------------------------------------------------ people and what is asked
@@ -467,16 +508,20 @@ def _unseen(cells: np.ndarray, reading: _Reading, everyone: Sequence[_Body], bod
 
 # ---------------------------------------------------------------------------------------------------- the place in turn
 def _line_end(waiting: Sequence[int], bodies: dict[int, _Body], target_xy: np.ndarray, robot_xy: np.ndarray,
-              th: Thresholds) -> tuple[int, int | None]:
+              th: Thresholds, line: np.ndarray | None = None) -> tuple[int, int | None]:
     """(the last of the waiting people, the one before them or None), from positions alone.
 
-    The last is the farthest from the target point. Those within `person_radius_m` of that distance count as
-    equally far, and of these the nearest the robot is taken. The one before is the waiting person nearest to
-    the last, when that person is nearer to the target point than the last by more than `person_radius_m`:
-    otherwise their nearest neighbour stands beside them. Of two equally near, to the millimetre, the lower
-    number is taken.
+    The last is the farthest from the target point, or, where the line's direction `line` is given, the farthest
+    back along it. Those within `person_radius_m` of that count as equally far, and of these the nearest the robot
+    is taken. The one before is the waiting person nearest to the last, when that person is nearer to the target
+    point (or farther forward along `line`) than the last by more than `person_radius_m`: otherwise their nearest
+    neighbour stands beside them. Of two equally near, to the millimetre, the lower number is taken.
     """
-    from_target = {n: float(np.hypot(*(bodies[n].xy - target_xy))) for n in waiting}
+    if line is not None:
+        unit = np.asarray(line, dtype=np.float64) / max(float(np.hypot(*line)), _EPS)
+        from_target = {n: float(bodies[n].xy @ unit) for n in waiting}     # along the line, from no fixed origin
+    else:
+        from_target = {n: float(np.hypot(*(bodies[n].xy - target_xy))) for n in waiting}
     farthest = max(from_target.values())
     equally_far = [n for n in waiting if from_target[n] >= farthest - th.person_radius_m]
     last = min(equally_far, key=lambda n: (round(float(np.hypot(*(bodies[n].xy - robot_xy))), _MM), n))
@@ -488,10 +533,14 @@ def _line_end(waiting: Sequence[int], bodies: dict[int, _Body], target_xy: np.nd
 
 
 def _behind(last: _Body, before: _Body | None, target_xy: np.ndarray, robot_xy: np.ndarray,
-            th: Thresholds) -> tuple[np.ndarray, np.ndarray]:
+            th: Thresholds, line: np.ndarray | None = None) -> tuple[np.ndarray, np.ndarray]:
     """(the place in turn, the direction of the line): `standoff_m` beyond the last on the line from the one
-    before through the last. The line starts from the target point when nobody is before, and runs from the last
-    towards the robot when the target point too is within `heading_degenerate_m` of the last."""
+    before through the last, or along `line` where one is given (the way the line was seen earlier, from its front
+    to its back). When nobody is before, the line starts from the target point; and runs from the last towards the
+    robot when the target point too is within `heading_degenerate_m` of the last."""
+    if line is not None and float(np.hypot(*line)) > _EPS:
+        along = np.asarray(line, dtype=np.float64) / float(np.hypot(*line))
+        return last.xy + th.standoff_m * along, along
     for start in ((before.xy,) if before is not None else ()) + (target_xy,):
         length = float(np.hypot(*(last.xy - start)))
         if length >= th.heading_degenerate_m:
@@ -512,7 +561,7 @@ class _Turn:
 
 
 def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], target_number: int | None,
-          target_xy: np.ndarray, robot_xy: np.ndarray, th: Thresholds) -> _Turn:
+          target_xy: np.ndarray, robot_xy: np.ndarray, th: Thresholds, line: np.ndarray | None = None) -> _Turn:
     """The place in turn for the waiting people of the answer, and who has taken it.
 
     A detected person who is neither the target, nor waiting, nor `apart` (listed among people who attend to one
@@ -522,9 +571,10 @@ def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], tar
     them, and the place is worked out again from the two; and so on until nobody has taken it.
     """
     waiting, joined = list(waiting), []
-    last, before = _line_end(waiting, bodies, target_xy, robot_xy, th)
+    last, before = _line_end(waiting, bodies, target_xy, robot_xy, th, line)
     while True:
-        place, along = _behind(bodies[last], None if before is None else bodies[before], target_xy, robot_xy, th)
+        place, along = _behind(bodies[last], None if before is None else bodies[before], target_xy, robot_xy, th,
+                               line)
         taken = []
         for number, body in bodies.items():
             if number in waiting or number == target_number or number in apart:
@@ -631,7 +681,8 @@ def _first(keys: dict[str, np.ndarray], among: np.ndarray, band_m: float) -> int
 
 
 def _settle(cells: np.ndarray, robot_xy, camera_xy, target_xy, bodies: Sequence[_Body],
-            constraints: Sequence[Constraint], standard_xy, th: Thresholds, front=None) -> _Settled:
+            constraints: Sequence[Constraint], standard_xy, th: Thresholds, front=None, line=None,
+            exempt: Sequence[int] = ()) -> _Settled:
     """The place among `cells`, (N, 2) positions in the order of the grid, and the runners-up (the design,
     section 7). Every position is given in one frame, and so is every heading. `front` is the front of the seen
     face in that frame (`_seen_face`), or None where the target point lies on none. It needs at least one cell: with
@@ -666,7 +717,8 @@ def _settle(cells: np.ndarray, robot_xy, camera_xy, target_xy, bodies: Sequence[
     turn = None
     if waiting:                                    # several come_after are one, about all their people
         apart = {n for reading in used if reading.kind == "keep_out_of_shared_space" for n in reading.people}
-        turn = _turn(waiting, apart, by_number, target_number, target_xy, robot_xy, th)
+        apart |= set(exempt)                       # and those the caller knows are not joining (sgi.resolve, CT3)
+        turn = _turn(waiting, apart, by_number, target_number, target_xy, robot_xy, th, line)
         ahead = np.maximum(0.0, turn.last_from_target - from_target)       # nearer to the target than the last
         exclusions.append(ahead)
         for index, reading in enumerate(readings):
@@ -759,24 +811,56 @@ def _settle(cells: np.ndarray, robot_xy, camera_xy, target_xy, bodies: Sequence[
                     not_ahead_reason=not_ahead_reason)
 
 
+def turn_roles(people: Sequence[DetectedPerson], constraints: Sequence[Constraint], target_xy, robot_xy, th: Thresholds,
+               line_direction=None, exempt: Sequence[int] = ()) -> tuple[int | None, list[int], tuple | None]:
+    """What a solve decides about who waits, without placing the robot: the place-in-turn rule's last, the people it
+    takes as joining, and the place in turn, all in world coordinates; (None, [], None) when no usable come_after
+    names anyone present. For replaying tracks where no full solve is wanted (`sgi.serve`, the wait between the
+    image the answer was asked on and a first re-solve). The camera is taken to stand at the robot."""
+    bodies = {p.number: _Body(p.number, np.array(p.xy, dtype=np.float64), p.yaw) for p in people}
+    robot_xy = np.asarray(robot_xy, dtype=np.float64)
+    target_number = _target_number(list(bodies.values()), target_xy, robot_xy, th)
+    target = bodies[target_number].xy if target_number is not None else np.asarray(target_xy, dtype=np.float64)
+    used = [r for r in _read(constraints, bodies, target_number, th) if r.status == "used"]
+    waiting = sorted({n for r in used if r.kind == "come_after" for n in r.people})
+    if not waiting:
+        return None, [], None
+    apart = {n for r in used if r.kind == "keep_out_of_shared_space" for n in r.people} | set(exempt)
+    line = None if line_direction is None else np.asarray(line_direction, dtype=np.float64)
+    turn = _turn(waiting, apart, bodies, target_number, target, robot_xy, th, line)
+    return turn.last, list(turn.joined), (float(turn.place[0]), float(turn.place[1]))
+
+
 def _over_floor(observation: ObservationData, target: GroundedTarget, people: Sequence[DetectedPerson],
-                constraints: Sequence[Constraint], standard: GoalResult, th: Thresholds) -> tuple[np.ndarray, _Settled]:
+                constraints: Sequence[Constraint], standard: GoalResult, th: Thresholds,
+                line_direction=None, floor_map: FloorMap | None = None,
+                exempt: Sequence[int] = ()) -> tuple[np.ndarray, _Settled]:
     """The selectable cells of the observation's floor, (N, 2) in the robot's frame and in the order of the grid,
     and what the solver works out over them."""
     if standard.pose_world is None:
         raise ValueError("the solver needs the standard goal's pose, and this one has none")
     robot = observation.robot
-    grid = floor(observation, people, th)
+    grid = floor(observation, people, th) if floor_map is None else floor_from_map(robot, people, th, floor_map)
     ahead, left = np.meshgrid(grid.offsets, grid.offsets)
     cells = np.stack([ahead[grid.selectable], left[grid.selectable]], axis=-1)
     settled = _settle(cells, (0.0, 0.0), to_robot_xy(robot, *observation.camera.T_world_camera[:2, 3]),
                       to_robot_xy(robot, *target.world[:2]), _bodies(people, robot), constraints,
-                      to_robot_xy(robot, *standard.pose_world[:2]), th, front=_seen_face(observation, target, th))
+                      to_robot_xy(robot, *standard.pose_world[:2]), th, front=_seen_face(observation, target, th),
+                      line=None if line_direction is None else _turned_vector(line_direction, robot.yaw),
+                      exempt=exempt)
     return cells, settled
 
 
+def _turned_vector(xy, yaw: float) -> np.ndarray:
+    """A world-frame direction in the frame of a robot whose heading is `yaw`."""
+    c, s = math.cos(yaw), math.sin(yaw)
+    return np.array([c * xy[0] + s * xy[1], c * xy[1] - s * xy[0]], dtype=np.float64)
+
+
 def solve(observation: ObservationData, target: GroundedTarget, people: Sequence[DetectedPerson],
-          constraints: Sequence[Constraint], standard: GoalResult, th: Thresholds) -> Solved:
+          constraints: Sequence[Constraint], standard: GoalResult, th: Thresholds,
+          line_direction: Sequence[float] | None = None, floor_map: FloorMap | None = None,
+          exempt: Sequence[int] = ()) -> Solved:
     """The place the constraints leave on the floor of the observation, the heading there and the runners-up
     (the design, section 7). `standard` is the standard goal for the same observation and target.
 
@@ -799,12 +883,22 @@ def solve(observation: ObservationData, target: GroundedTarget, people: Sequence
     behind them: with it the place breaks the other exclusions no more than without it, by the largest violation
     and by the sum. Where it is not added the note says why (`not_ahead_reason`).
 
+    `line_direction`, a world-frame direction from the front of a line to its back, is for a caller that has seen
+    the line before (`sgi.resolve`): the waiting people are then ordered along it, not by their distance from the
+    target point, and the place in turn is behind the last along it. Without it nothing changes. With
+    `floor_map` (the same caller's), the floor is the robot's navigation map round its pose (`floor_from_map`), not
+    the observation's picture; the observation still gives the robot's pose and the seen face.
+
     The robot faces what the `face` constraint names; without one the last of the waiting people; otherwise the
     target point. A runner-up is chosen in the same way among the cells at least a robot's width from every
     place already taken.
+
+    `exempt` numbers people the place-in-turn rule must not take as joining the waiting people, as if the answer
+    had listed them under `keep_out_of_shared_space` (research arm CT3, from `sgi.resolve`). Empty by default.
     """
     robot = observation.robot
-    cells, settled = _over_floor(observation, target, people, constraints, standard, th)
+    cells, settled = _over_floor(observation, target, people, constraints, standard, th, line_direction, floor_map,
+                                 exempt)
 
     def keys_at(cell: int) -> Keys:
         values = {name: float(key[cell]) for name, key in settled.keys.items() if name != "robot_m"}
@@ -835,4 +929,5 @@ def solve(observation: ObservationData, target: GroundedTarget, people: Sequence
                   far_from_target=(target_distance > th.max_keep_m + _EPS and settled.turn is None
                                    and not settled.not_ahead_of))
     candidates = [Candidate(pose_world=poses_at(cell)[0], keys=keys_at(cell)) for cell in settled.picks[1:]]
-    return Solved(pose_world=pose_world, pose_robot=pose_robot, uses=uses, candidates=candidates, note=note, flags=flags)
+    return Solved(pose_world=pose_world, pose_robot=pose_robot, uses=uses, candidates=candidates, note=note, flags=flags,
+                  turn_last=None if settled.turn is None else settled.turn.last)

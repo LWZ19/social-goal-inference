@@ -93,7 +93,8 @@ def test_a_default_oracle_run_over_the_split_folder_is_the_development_episodes_
     development = [(s, e) for s, e, sit in everything if sit not in cfg.held_out_situations]
     held_out = [(s, e) for s, e, sit in everything if sit in cfg.held_out_situations]
     assert development and held_out and len(development) + len(held_out) == len(everything)
-    assert {sit for _, _, sit in everything} == set(cfg.dev_situations) | set(cfg.held_out_situations)     # the folder has every situation of both lists
+    on_request = {"machine_use"}                        # written only on request (sgi.synth.generate --rows), never into these folders
+    assert {sit for _, _, sit in everything} == set(cfg.dev_situations) | set(cfg.held_out_situations) - on_request     # every other situation of both lists
     out = harness.run(scenes, cfg, "default", tmp_path / "runs")
     recs = records(out)
     assert backend.calls == [] and [(r["scene_id"], r["episode_id"]) for r in recs] == development

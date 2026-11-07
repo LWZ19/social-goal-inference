@@ -353,12 +353,94 @@ def test_a_picture_is_taken_of_a_row_by_someone_behind_a_camera_on_a_tripod(n, w
             assert min(shares[:n]) >= 0.9 and shares[n] >= 0.5 and anchored(obs, t), (seed, shares)
     assert sides == {1.0, -1.0} and max(turned) > 0.05          # in some draw the picture-taker stands turned from the row: nothing sets their yaw to the aim
 
+COUNTERS = {"help desk", "ticket counter", "coffee stall"}    # the places with a counter or a desk
+
+@pytest.mark.parametrize("n, before", [(4, 2), (6, 3)])
+def test_a_bent_line_turns_round_a_pillar_after_two_or_three_people_and_the_robot_sees_both_legs_from_outside_the_bend(n, before):
+    sides, places = set(), set()
+    step, corner = 0.6 / math.sqrt(2.0), 0.8 + 0.6 * (before - 1)      # the first after the bend stands diagonally on from the last before it
+    for seed in range(8):
+        lay = recipes.recipe_waiting_line_bent(rng(seed), n)
+        (t,), people, r = lay.scene_gt.targets, lay.scene_gt.people, lay.robot
+        side = math.copysign(1.0, people[-1].y)
+        assert lay.name == f"waiting_line_bent_{n}" and [(p.id, p.group) for p in people] == [(f"p{i}", "g0") for i in range(n)]
+        assert (t.id, t.kind, t.anchor, t.front_yaw) == ("t0", "place", (0.0, 0.0, 1.0), 0.0) and t.label in COUNTERS
+        grounded, high_level = next(row[4:] for row in recipes._PLACES if row[0] == t.label)
+        assert [(e.request, e.context, e.ground_truth.situation, e.ground_truth.group_at_target) for e in lay.episodes] == [
+            (grounded, None, "waiting_line", "g0"), (high_level, None, "waiting_line", "g0")]
+        assert all("join at the back" in e.ground_truth.rationale.expectations for e in lay.episodes)
+        spots = [(0.8 + 0.6 * i, 0.0) for i in range(before)] + [(corner + step, side * (step + 0.6 * j)) for j in range(n - before)]
+        assert np.allclose([(p.x, p.y) for p in people], spots, atol=0.0501)     # the first leg out from the place, the second across it
+        assert all(0.45 <= math.dist((p.x, p.y), (q.x, q.y)) <= 0.75 for p, q in zip(people, people[1:]))     # spaced as a straight line, round the bend too
+        first = math.atan2(people[before - 1].y - people[0].y, people[before - 1].x - people[0].x)
+        second = math.atan2(people[-1].y - people[before].y, people[-1].x - people[before].x)
+        assert abs(math.degrees(wrap_angle(second - first))) == pytest.approx(90.0, abs=12.0)      # the line turns by about 90 degrees
+        away = [math.hypot(p.x, p.y) for p in people]
+        assert all(b > a for a, b in zip(away, away[1:]))                      # each further from the place than the one before: the line's order is the rule's
+        ahead = [(-1.0, 0.0)] + [(p.x, p.y) for p in people[:-1]]
+        assert all(abs(wrap_angle(p.yaw - math.atan2(q[1] - p.y, q[0] - p.x))) <= 0.4 for p, q in zip(people, ahead))    # each faces the one before, the first the place
+        (pillar,) = [i for i in lay.items if i.kind == "pillar" and i.source == "boxes"]     # the one the line turns round: no furnishing
+        assert (pillar.source, pillar.stop) == ("boxes", len(lay.boxes)) and list(lay.footprints) == [t.footprint, pillar.footprint]
+        assert max(top_of(part) for part in lay.boxes[pillar.start:]) == 3.0 and all(within(part, [pillar.footprint]) for part in lay.boxes[pillar.start:])
+        px, py = np.mean(pillar.footprint, axis=0)                              # inside the corner, the line round it
+        assert px < people[before].x and side * py > side * people[before].y and min(math.hypot(px - p.x, py - p.y) for p in people) >= 0.6
+        assert max(math.hypot(px - q.x, py - q.y) for q in people[before - 1:before + 1]) <= 0.8
+        (region,), corridor = rules.build_regions("waiting_line", t, people, "g0")      # the region round the last of the second leg, facing along it
+        assert region.heading.yaw == pytest.approx(-side * math.pi / 2, abs=0.2) and len(corridor) == n
+        assert max(math.hypot(x - people[-1].x, y - people[-1].y) for x, y in region.polygon) == pytest.approx(1.2)
+        assert not point_in_polygon((corner + 0.9, 0.0), region.polygon)       # and not where the first leg would end, straight on
+        view = recipes._View(r)                     # the picture holds the place, sign and all, everyone from head to foot, and the floor behind the last
+        assert view.holds(t.footprint, 0.0, 2.25) and all(view.holds(recipes._body(p), 0.0, 1.85) for p in people)
+        assert in_image(mounted(r), *project(mounted(r), (spots[-1][0], spots[-1][1] + side * 1.4, 0.0))[:2])
+        bend = (corner + step / 2, side * step / 2)                             # the robot on the bend's outer bisector, 4.3 to 4.7 m out
+        assert abs(wrap_angle(math.atan2(r.y - bend[1], r.x - bend[0]) + side * math.pi / 4)) < 1e-9
+        assert 4.3 - 1e-9 <= math.hypot(r.x - bend[0], r.y - bend[1]) <= 4.7 + 1e-9
+        sides.add(side), places.add(t.label)
+        if seed < 3:                                 # in the picture everyone is seen, past the others, and the anchor on the counter
+            obs, shares = shares_shown(lay)
+            assert min(shares) >= 0.6 and anchored(obs, t), (seed, shares)
+    assert sides == {1.0, -1.0} and len(places) >= 2
+
+@pytest.mark.parametrize("machine, label, text, requests", [("cash", "cash machine", "CASH", ("go to the cash machine", "I need some cash")),
+                                                            ("ticket", "ticket machine", "TICKETS", ("go to the ticket machine", "buy me a train ticket"))])
+def test_someone_uses_a_machine_and_the_robot_looks_from_behind_them_and_to_one_side(machine, label, text, requests):
+    sides = set()
+    for seed in range(8):
+        lay = recipes.recipe_machine_use(rng(seed), machine)
+        (t,), (user,), r = lay.scene_gt.targets, lay.scene_gt.people, lay.robot
+        deep, wide = recipes._MACHINE_BUILDERS[machine][1]
+        assert (lay.name, t.id, t.kind, t.label, t.anchor, t.front_yaw, t.person_id) == (f"machine_use_{machine}", "t0", "place", label, (0.0, 0.0, 0.8), 0.0, None)
+        assert sorted(t.footprint) == pytest.approx(sorted([(-deep, -wide / 2), (0.0, -wide / 2), (0.0, wide / 2), (-deep, wide / 2)]))
+        assert list(lay.footprints) == [t.footprint] and len(lay.boxes) >= 7 and all(within(part, [t.footprint]) for part in lay.boxes)
+        assert [(i.kind, i.source, i.start, i.stop) for i in lay.items[:1]] == [(f"{machine}_machine", "boxes", 0, len(lay.boxes))]
+        top = max(top_of(part) for part in lay.boxes)
+        (head,) = [b for b in lay.boxes if isinstance(b, Box) and b.label]     # lettered on the head on top of it, and nowhere else
+        assert (head.label, head.label_face, head.z0 + head.sz) == (text, "front", top) and top <= 2.25
+        faced = [b for b in lay.boxes if isinstance(b, Box) and b.cx + b.sx / 2 == pytest.approx(0.0) and abs(b.cy) < b.sy / 2 and b.z0 <= 0.8 <= b.z0 + b.sz]
+        assert len(faced) == 1                       # the anchor lies on the front of one part
+        assert (user.id, user.group) == ("p0", "g0") and abs(user.x - 0.5) <= 0.0501 and abs(user.y) <= 0.0501    # 0.5 m before its face,
+        assert abs(wrap_angle(user.yaw - math.pi)) <= 0.1501                    # facing it
+        assert [(e.request, e.context, e.ground_truth.situation, e.ground_truth.group_at_target, e.ground_truth.rationale) for e in lay.episodes] == [
+            (q, None, "machine_use", "g0", None) for q in requests]             # held out: no rationale, so never a worked example
+        side = math.copysign(1.0, r.y)               # behind the user and to one side: 50 degrees off straight behind, 4.0 to 4.4 m from them
+        assert math.degrees(math.atan2(abs(r.y), r.x - 0.5)) == pytest.approx(50.0) and 4.0 - 1e-9 <= math.hypot(r.x - 0.5, r.y) <= 4.4 + 1e-9
+        view = recipes._View(r)                      # the picture holds the machine, head and all, and the user from head to foot
+        assert view.holds(t.footprint, 0.0, top) and view.holds(recipes._body(user), 0.0, 1.85)
+        (region,), _ = rules.build_regions("machine_use", t, [user], "g0")
+        assert not point_in_polygon((r.x, r.y), region.polygon) and in_image(mounted(r), *project(mounted(r), (2.0, 0.0, 0.0))[:2])    # 1.5 m behind the user: in it
+        sides.add(side)
+        if seed < 3:                                 # in the picture nothing hides the user, and the anchor is seen past them
+            obs, shares = shares_shown(lay)
+            assert shares == [1.0] and anchored(obs, t), (seed, shares)
+    assert sides == {1.0, -1.0}
+
 def test_recipes_refuse_what_they_cannot_frame():
     for call in (lambda: recipes.recipe_no_one(rng(), 0.0, "door"), lambda: recipes.recipe_waiting_line(rng(), 0),
                  lambda: recipes.recipe_waiting_line(rng(), 7), lambda: recipes.recipe_conversation_group(rng(), 5),
                  lambda: recipes.recipe_audience(rng(), 2), lambda: recipes.recipe_audience(rng(), 6),
                  lambda: recipes.recipe_lift_wait(rng(), 3), lambda: recipes.recipe_group_photo(rng(), 4, "posing"),
-                 lambda: recipes.recipe_group_photo(rng(), 2, "bystander")):
+                 lambda: recipes.recipe_group_photo(rng(), 2, "bystander"), lambda: recipes.recipe_waiting_line_bent(rng(), 5),
+                 lambda: recipes.recipe_waiting_line_bent(rng(), 2), lambda: recipes.recipe_machine_use(rng(), "coffee")):
         with pytest.raises(ValueError):
             call()
 
@@ -556,8 +638,55 @@ def test_the_second_pass_is_written_after_the_first_numbered_on_from_it_and_draw
                                                    ("no_one", 30, "lift"), ("no_one", 0, "screen")]     # last, the lift and the screen with nobody at them
     assert gen._EXAMPLES_MORE == (("audience", 4, None, 0, False),) and all(row[3:] == (0, False) for row in gen._EVAL_MORE)   # no bystander, no second group
     assert not {row[0] for row in gen._EXAMPLES_MORE} & set(CFG.held_out_situations)     # no example of a held-out situation
-    assert {row[0] for row in gen._EVAL_MORE} == {"audience", "no_one", *CFG.held_out_situations}
+    assert {row[0] for row in gen._EVAL_MORE} == {"audience", "no_one", *CFG.held_out_situations} - {"machine_use"}    # written on request only
     assert not {*gen._EVAL, *gen._EXAMPLES} & {*gen._EVAL_MORE, *gen._EXAMPLES_MORE}     # no row of the first pass, which is all that accepted_layouts reads
+
+ON_REQUEST = gen._ON_REQUEST["bend_and_machine"]
+
+def test_the_rows_on_request_are_drawn_with_a_generator_of_their_own_and_never_by_default(monkeypatch, tmp_path):
+    assert [row[:3] for row in ON_REQUEST] == [("waiting_line_bent", 4, None), ("waiting_line_bent", 6, None), ("machine_use", 1, "cash"), ("machine_use", 1, "ticket")]
+    assert all(row[3:] == (0, False) for row in ON_REQUEST) and list(gen._ON_REQUEST) == ["bend_and_machine"]     # no bystander, no second group
+    assert not set(ON_REQUEST) & {*gen._EVAL, *gen._EXAMPLES, *gen._EVAL_MORE, *gen._EXAMPLES_MORE}     # generate() writes none of them
+    assert "machine_use" in CFG.held_out_situations and "machine_use" not in {row[0] for rows in (gen._EVAL, gen._EXAMPLES, gen._EVAL_MORE, gen._EXAMPLES_MORE) for row in rows}
+    written = []
+    monkeypatch.setattr(gen, "_write_scene", lambda split_dir, index, row, draw, cfg, counts: written.append((split_dir, index, row, draw)))
+    assert gen.generate_rows(tmp_path / "seed9", CFG, ON_REQUEST, seed=9) == dict.fromkeys(gen._REASONS, 0)
+    assert [w[:3] for w in written] == [(tmp_path / "seed9", k, row) for k, row in enumerate(ON_REQUEST)]     # straight into the folder, numbered from 0
+    draw = written[0][3]
+    assert all(w[3] is draw for w in written) and draw.bit_generator.state == np.random.default_rng([9, 2]).bit_generator.state   # neither pass's generator
+    calls = []
+    monkeypatch.setattr(gen, "generate_rows", lambda out, cfg, rows, seed: calls.append((out, cfg, rows, seed)) or {"check_3": 1})
+    monkeypatch.setattr(gen, "generate", lambda *args: pytest.fail("the two splits are not written with --rows"))
+    assert gen.main(["--out", str(tmp_path), "--rows", "bend_and_machine", "--seed", "600"]) == 0 and calls == [(tmp_path, CFG, ON_REQUEST, 600)]
+    with pytest.raises(SystemExit):
+        gen.main(["--out", str(tmp_path), "--rows", "parade"])
+
+def test_the_rows_on_request_pass_the_scene_check_with_the_regions_of_their_rules(tmp_path):
+    out = tmp_path / "seed5"
+    (out / "seed5_00_stale").mkdir(parents=True)                # a scene of an earlier run under the same prefix goes; the rest stays
+    (out / "seed5_00_stale" / "scene.json").write_text("{}")
+    (out / "notes.txt").write_text("kept")
+    (out / "seed5_keep").mkdir()
+    counts = gen.generate_rows(out, CFG, ON_REQUEST, seed=5)
+    assert set(counts) == set(gen._REASONS) and sum(counts.values()) <= 2
+    names = ["seed5_00_waiting_line_bent_4", "seed5_01_waiting_line_bent_6", "seed5_02_machine_use_cash", "seed5_03_machine_use_ticket"]
+    assert sorted(p.name for p in out.iterdir()) == sorted(names + ["notes.txt", "seed5_keep"])
+    for name in names:
+        results = check_scene(out / name, CFG, write_png=False)
+        assert len(results) == 12 and not has_errors(results) and all(r.level == "ok" or r.number == 9 for r in results), name
+        inputs, truth = load_scene(out / name)
+        assert inputs.scene_id == name and len(inputs.tour) == 8 and hidden(truth.people, inputs.observation) == [], name
+        situation = "machine_use" if "machine" in name else "waiting_line"
+        ets = prepare(inputs, truth, CFG)
+        for episode_id, et in ets.items():
+            ep = truth.episodes[episode_id]
+            assert (ep.situation, truth.group_for(episode_id, "t0"), et.problems) == (situation, "g0", ()), name
+            assert et.standard_goal_ok == {"t0": False} and reference_people_matter(et, None), name      # the plain stop fails: the people matter
+            regions, forbidden = rules.build_regions(situation, truth.targets["t0"], truth.people, "g0")
+            assert [r.polygon for r in ep.acceptable_regions] == [r.polygon for r in regions] and all(r.representative_point for r in ep.acceptable_regions), name
+            kinds = ["over_shoulder", "beside_user"] if situation == "machine_use" else ["ahead_in_line"] * len(truth.people)
+            assert [f.kind for f in ep.forbidden_regions] == kinds, name
+        assert (truth.episodes["e0"].rationale is None) == (situation == "machine_use"), name
 
 @pytest.fixture(scope="module")
 def data(tmp_path_factory, placeholder):                        # a full run of its own, beside the one the run tests share
@@ -718,6 +847,19 @@ def test_a_digest_of_the_first_passs_scene_files_is_what_it_was_before_there_was
     for f in files:
         digest.update(f.parent.name.encode() + b"\n" + f.read_bytes() + b"\n")
     assert len(files) == 21 and digest.hexdigest() == "4cbad923f96227d5ba9caf940884a63cb20b118284c023a40bf96bca6f9bd108"
+
+def test_a_digest_of_the_second_passs_scene_files_is_what_it_was_before_the_rows_on_request(data):
+    # The 9 scene.json files of the second pass, as the generator wrote them at d50a7b3, before the bent lines and the
+    # machines were added to the module they share and the machine rule to sgi.gt. With the digest of the first pass
+    # above, this pins every scene of the set: writing the rows on request changes none of them.
+    import hashlib
+    a, digest = data[0], hashlib.sha256()
+    names = [f"{split}_{index:02d}" for split, rows in gen._MORE_SPLITS
+             for index in range(len(dict(gen._SPLITS)[split]), len(dict(gen._SPLITS)[split]) + len(rows))]
+    files = sorted(f for f in a.glob("*/*/scene.json") if f.parent.name[:len(f.parent.parent.name) + 3] in names)
+    for f in files:
+        digest.update(f.parent.name.encode() + b"\n" + f.read_bytes() + b"\n")
+    assert len(files) == 9 and digest.hexdigest() == "373056b886ed4a5a25a6608495939b31cfa755ac54d49b319a0058b9e4baa44e"
 
 def test_the_image_shows_every_person_of_every_scene(data):    # no factor counts someone the image does not show
     for folder, inputs, truth, et in data[3]:

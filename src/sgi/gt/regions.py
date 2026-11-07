@@ -13,7 +13,7 @@ from sgi.scene import ForbiddenRegion, Heading, Person, Region, Target
 # The first two say how near a person the robot may stand and how far off. They are the distances of "Where
 # Should I Join? Robot Group Joining via Language-Guided Goal Prediction" (arXiv
 # 2609.28467, September 2026), which counts a pose as valid 0.5 to 1.2 m from the relevant member: the last
-# member of a queue, any member of a conversation. The project owner adopted them on 9 October 2026.
+# member of a queue, any member of a conversation. Adopted on 9 October 2026.
 _JOIN_NEAR_M = 0.5
 _JOIN_FAR_M = 1.2
 _NO_ONE_NEAR_M = 0.6                # a place or an object with nobody at it: this project's own numbers
@@ -29,6 +29,16 @@ _VIEW_CLEAR_M = 0.3                 # how far the robot's centre keeps outside t
 _TAKER_SEES_DEG = 60.0              # whoever takes a picture has everyone else within this angle of the way they face,
 #                                     and everyone else has them within it of theirs
 _FRAME_MARGIN_M = 0.5               # how far to each side of the outermost of those in a picture its strip reaches
+# Someone using a machine, a cash machine or a ticket machine, with nobody else waiting: this project's own rule,
+# fixed on 6 November 2026 before any scene or result of it (E4_DESIGN.md). Banks commonly ask the next customer to
+# wait about a metre back for privacy; 2 m keeps the robot clearly waiting for this machine; 60 degrees counts
+# slightly-off-behind as polite and leaves out standing level beside the user.
+_MACHINE_NEAR_M = 1.0               # no nearer the user than this: within it is over their shoulder, and forbidden
+_MACHINE_NEAR_SENSITIVITY_M = 0.8   # the near limit of the variant reported beside the rule, fixed with it (no bar)
+_MACHINE_FAR_M = 2.0                # and no further from them than this
+_MACHINE_BEHIND_DEG = 60.0          # and within this of straight behind them, opposite the way they face
+_MACHINE_STRIP_M = _JOIN_NEAR_M     # the strip before the machine reaches this past the user, and past each side of
+#                                     the machine: arm's length, where a second person would stand at it with them
 
 # How finely a band is sampled; these set the polygons' resolution, not the rules.
 _BAND_RAYS = 180
@@ -384,6 +394,52 @@ def region_group_photo(target: Target, members: Sequence[Person]) -> _Regions:
     return [_region(target, polygon, Heading(face_point=(who.x, who.y)))], [picture]
 
 
+def region_machine_use(target: Target, members: Sequence[Person], near: float = _MACHINE_NEAR_M) -> _Regions:
+    """For one person using the target, a machine with a front, with nobody else waiting: the part of the ring
+    `near` to _MACHINE_FAR_M round the user that is not ahead of them and lies within _MACHINE_BEHIND_DEG of
+    straight behind them, to be stood in facing the machine. Ahead is the way the user faces, their `yaw`, and
+    behind is opposite it.
+
+    Forbidden: within `near` of the user, over their shoulder, as `over_shoulder`; and the strip before the
+    machine beside the user, where a second person would stand at it with them, as `beside_user`. The strip runs
+    from the machine's face, the line through the anchor across its front, out to _MACHINE_STRIP_M past the
+    user, and across the machine's footprint and _MACHINE_STRIP_M past each side of it.
+
+    `near` is the rule's near limit, _MACHINE_NEAR_M; _MACHINE_NEAR_SENSITIVITY_M gives the variant reported
+    beside it. The rule needs exactly one member, the user, who is not the target, and a target whose front is
+    a finite angle."""
+    if len(members) != 1 or members[0].id == target.person_id:
+        raise NoRule(f"target {target.id!r}: a machine in use needs exactly one member, the user, who is not the "
+                     f"target; {len(members)} given")
+    if target.front_yaw is None or not math.isfinite(target.front_yaw):
+        raise NoRule(f"target {target.id!r}: a machine in use needs a front, and its front_yaw is no direction")
+    (user,) = members
+    a = _ground(target)
+    _numbers(target, *a, user.x, user.y, user.yaw, *(c for vertex in target.footprint or [] for c in vertex))
+    at = (user.x, user.y)
+    behind = user.yaw + math.pi
+    fx, fy = math.cos(user.yaw), math.sin(user.yaw)
+    widest = math.radians(_MACHINE_BEHIND_DEG)
+
+    def ok(x: float, y: float) -> bool:
+        """Not ahead of the user, and within the angle of straight behind them."""
+        dx, dy = x - at[0], y - at[1]
+        return dx * fx + dy * fy <= _EPS_M and abs(wrap_angle(math.atan2(dy, dx) - behind)) <= widest + _STRAIGHT_RAD
+
+    # The first ray lies on one side of the angle, and the ray as far round the other way on the other: with rays
+    # every 2 degrees and 60 degrees each way, the region ends on both sides exactly.
+    (polygon,) = _ray_band(at, near, _MACHINE_FAR_M, ok, turn=behind - widest)
+    ux, uy = math.cos(target.front_yaw), math.sin(target.front_yaw)
+    out = (user.x - a[0]) * ux + (user.y - a[1]) * uy                  # how far out of the machine's face the user stands
+    across = [(x - a[0]) * -uy + (y - a[1]) * ux for x, y in target.footprint or [a]]
+    left, right = max(across) + _MACHINE_STRIP_M, min(across) - _MACHINE_STRIP_M
+    middle = ((left + right) / 2 * -uy + a[0], (left + right) / 2 * ux + a[1])
+    strip = oriented_rectangle(middle, target.front_yaw, 0.0, out + _MACHINE_STRIP_M, left - right)
+    forbidden = [ForbiddenRegion(kind="over_shoulder", polygon=disc(at, near), target_id=target.id),
+                 ForbiddenRegion(kind="beside_user", polygon=strip, target_id=target.id)]
+    return [_region(target, polygon, Heading(face_point=a))], forbidden
+
+
 # The situations whose rule needs the group at the target, each with its rule as (target, members).
 _GROUP_RULES: dict[str, Callable[[Target, Sequence[Person]], _Regions]] = {
     "waiting_line": region_waiting_line,
@@ -391,6 +447,7 @@ _GROUP_RULES: dict[str, Callable[[Target, Sequence[Person]], _Regions]] = {
     "audience": lambda target, members: region_attending(target, members, "audience_view"),
     "lift_wait": lambda target, members: region_attending(target, members, "ahead_in_line"),
     "group_photo": region_group_photo,
+    "machine_use": region_machine_use,
 }
 
 

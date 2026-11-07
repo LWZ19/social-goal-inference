@@ -166,7 +166,7 @@ def test_list_entries_prints_one_line_per_entry_and_runs_nothing(table, tmp_path
     lines = listed(capsys, harness.main, "--config", str(table))      # neither --scenes nor --name is needed
     cfg = load_config(table)
     assert [line.split()[:3] for line in lines] == [[name, e.provider, e.model] for name, e in cfg.models.items()]
-    assert len(lines) == 7 + 15 + 6 + 2 and not (tmp_path / "runs").exists()
+    assert len(lines) == 7 + 17 + 6 + 2 + 7 and not (tmp_path / "runs").exists()
     row = {line.split()[0]: line for line in lines}
     assert row["claude_haiku55"].split() == ["claude_haiku55", "anthropic", "claude-haiku-5-5", "effort", "none", "xy_pixel",
                                              "key", "missing", "(ANTHROPIC_API_KEY)"]
