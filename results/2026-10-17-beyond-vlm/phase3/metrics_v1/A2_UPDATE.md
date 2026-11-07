@@ -5,9 +5,9 @@
 **Naming.** The task called the probe "A2". The draft keeps "the confidence probe", because A2 also names I09's step A2, whose setting D the probe uses. The draft now calls setting D "the detector repair".
 
 **Sources** (paths relative to `results/2026-10-17-beyond-vlm/`):
-- `phase3/confidence/FROZEN.md`: AUROC by midranks, the layout-cluster bootstrap, the selective-accuracy grid.
-- `phase3/confidence/followup/exposure.txt` (Tables B, F, G, H).
-- `phase3/confidence/tables.txt` T5 and `summary.json` T5, for the per-cell abstention gains.
+- `results/still-scenes/confidence-signal/FROZEN.md`: AUROC by midranks, the layout-cluster bootstrap, the selective-accuracy grid.
+- `results/still-scenes/confidence-signal/followup/exposure.txt` (Tables B, F, G, H).
+- `results/still-scenes/confidence-signal/tables.txt` T5 and `summary.json` T5, for the per-cell abstention gains.
 - The draft, `CHANGELOG.md` and `FACTCHECK.md`.
 
 **Length.** 6,548 words before, 6,881 after (+333).

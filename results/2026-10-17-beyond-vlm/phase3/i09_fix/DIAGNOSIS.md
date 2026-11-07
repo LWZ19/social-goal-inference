@@ -1,6 +1,6 @@
 # I09 fix: diagnosis of the false people and misses (fit-train, seeds 110–115)
 
-Paths below are relative to `phase3/i09_fix/`.
+Paths below are relative to `results/still-scenes/people-finder/early-detector/fix/`.
 
 ## 0. At a glance
 
@@ -37,9 +37,9 @@ Paths below are relative to `phase3/i09_fix/`.
 ## 1. What was done
 
 1. **Manifest.** `manifest_fit.py` built `manifest_fit.json` (sha in `MANIFEST_FIT.sha256`): 140 images, 84 fit-train and 56 fit-validate.
-   - Every scene folder was checked by the fit path guard (`pathguard_fit.py`: only `phase3/seeds/realistic_train/seed110`–`119/eval/`), then by `H.guard_scene`, before its `scene.json` was read.
+   - Every scene folder was checked by the fit path guard (`pathguard_fit.py`: only `results/still-scenes/scene-seeds/phase3/realistic_train/seed110`–`119/eval/`), then by `H.guard_scene`, before its `scene.json` was read.
    - No banned name exists under the seeds folder.
-2. **Detector and pose pass.** `sidecar/infer_fit.py` follows `phase2/i09/confirm/sidecar/infer_confirm.py` and imports A1's `sidecar/infer.py` by path, with its sha256 asserted.
+2. **Detector and pose pass.** `sidecar/infer_fit.py` follows `results/still-scenes/people-finder/early-detector/phase2/confirm/sidecar/infer_confirm.py` and imports A1's `sidecar/infer.py` by path, with its sha256 asserted.
    - It calls A1's `run_pass("eval", …, ("rtdetr_v2_r50vd",))` unchanged. Only `guard` (the fit path guard plus manifest membership) and `wait_for_gpu` (≥ 3 GB GPU free and ≥ 3 GB RAM available) were replaced.
    - It loaded the pinned snapshots only: RT-DETRv2 `2824940…`, ViTPose `a93ac0c…`. It ran with `HF_HUB_OFFLINE=1`, `-I`, `nice -n 10` and 2 BLAS threads.
    - The pass took 18:34:51–18:35:08 for 140 images, with 15 MiB GPU in use beforehand and a peak of 799 MiB allocated.
@@ -58,7 +58,7 @@ Paths below are relative to `phase3/i09_fix/`.
    - Box colours: green = kept and matched, red = kept and false, orange = exempt, grey = dropped. Cyan is A1's torso hull, yellow dots are keypoints with confidence ≥ 0.30.
    - Circles mark each true person's labelled vertical axis (0–1.7 m): magenta for staff, white for others.
 
-## 2. How A1 lifts a box (confirmed from `phase1c/i09/a1/pipeline.py`)
+## 2. How A1 lifts a box (confirmed from `results/still-scenes/people-finder/early-detector/phase1c/a1/pipeline.py`)
 
 - **Torso region** (`box_features`, lines 186–196).
   - When all four of left and right shoulder and hip have keypoint confidence ≥ 0.30: the pixels whose centres lie inside the convex hull of those four keypoints. This requires at least 20 pixels with valid depth.
@@ -310,10 +310,10 @@ Limits:
 Deviations:
 1. Before the scripts existed, I read one fit scene's `scene.json` and `render_job.json` (seed 110, `eval_07` and `eval_06`) with plain JSON reads, without `H.guard_scene`. These are fit data, the path holds no banned name, and every scripted read guards first. `render_job.json` has no harness reader; the scripts read it only after `H.guard_scene` passes.
 2. `whatif.py` goes beyond a pure diagnosis, to give each candidate fix an expected effect. It is labelled indicative, and nothing is chosen or frozen.
-4. I read the source of `phase2/i09/confirm/posthoc_false.py` to reuse its class rules exactly. I did not read `posthoc_false.txt`, the confirmation's rows, or anything from seeds 200–219.
+4. I read the source of `results/still-scenes/people-finder/early-detector/phase2/confirm/posthoc_false.py` to reuse its class rules exactly. I did not read `posthoc_false.txt`, the confirmation's rows, or anything from seeds 200–219.
 5. The detector pass covered fit-validate, because the brief says all new renders. Its 56 images were neither scored nor viewed.
 
-Files (all in `phase3/i09_fix/`):
+Files (all in `results/still-scenes/people-finder/early-detector/fix/`):
 - scripts: `pathguard_fit.py`, `fitlib.py`, `manifest_fit.py`, `sidecar/infer_fit.py`, `score_fit.py`, `diagnose.py`, `whatif.py`, `figs.py`;
 - data: `manifest_fit.json`, `raw_fit/`, `fit_train_*.jsonl`, `fit_train_summary.json`, `diag_*.jsonl`;
 - tables: `diagnose_tables.txt`, `whatif.txt`;

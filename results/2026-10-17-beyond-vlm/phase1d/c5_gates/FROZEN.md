@@ -1,8 +1,8 @@
 # C5 (I52) zero-call gates 1 and 2: frozen protocol
 
-The C5 gates lead wrote this on 18 Oct 2026. It was written before any configuration was counted, any density fitted or any fold scored. Its sha256 is in `FROZEN.sha256`. This file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is scored. Paths are relative to `phase1d/c5_gates/`, unless they start with `phase1/`, `phase1b/` or `src/`.
+The C5 gates lead wrote this on 18 Oct 2026. It was written before any configuration was counted, any density fitted or any fold scored. Its sha256 is in `FROZEN.sha256`. This file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is scored. Paths are relative to `results/still-scenes/learned-models/flow-model-gates/`, unless they start with `phase1/`, `phase1b/` or `src/`.
 
-**Sources.** REPORT.md C5 [BOLD] I52 (gates 1–3), C2 [BOLD] I27 (Step 0 and kill), I04, I14, section 4.6 and section 6 steps 7–8; `phase1/i14_v0/METRIC_NOTE.md` and `i14.py`. This note borrows from them the vectorised point-in-polygon replica and the rule that a cell stands for its centre.
+**Sources.** REPORT.md C5 [BOLD] I52 (gates 1–3), C2 [BOLD] I27 (Step 0 and kill), I04, I14, section 4.6 and section 6 steps 7–8; `results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md` and `i14.py`. This note borrows from them the vectorised point-in-polygon replica and the rule that a cell stands for its centre.
 
 - Gate 1's sources and its three readings, and its 30 / 25–29 line.
 - Gate 2's data (fresh seeds 100–109), cells, the feature rule, the ratio KDE, the band-uniform baseline, the score, the folds and the pass rule (0.1 nats, C2's kill line).
@@ -10,7 +10,7 @@ The C5 gates lead wrote this on 18 Oct 2026. It was written before any configura
 **What I ran before hashing** (all in `precheck/`, logs beside the scripts):
 - `format_check.py` loaded 6 scenes of seed 100 (one each of no_one place, object and person, waiting_line_4, conversation_group_4 and audience_5). It listed their targets, people, episodes and region polygons, and their 0.10 m floor and region cell counts.
 - `bench_synthetic.py` timed the kernel sum on random numbers only: about 6.5 ns per (evaluation, training) pair, with 2 threads.
-- A one-liner read `phase1b/fresh_seeds/manifest.json`. Every seed has 26 scenes: 11 no_one, 7 waiting_line, 5 conversation_group and 3 audience. There are no rejections, and the 4 held-out rows were skipped.
+- A one-liner read `results/still-scenes/perception/fresh_seeds/manifest.json`. Every seed has 26 scenes: 11 no_one, 7 waiting_line, 5 conversation_group and 3 audience. There are no rejections, and the 4 held-out rows were skipped.
 
 **What the format check showed:**
 - Each scene has one target `t0` and two episodes, e0 and e1, with the same region cell set.
@@ -42,7 +42,7 @@ These facts shaped the episode weighting, the subsample sizes and gate 1's frame
 
 ## 2. Gate 2: does a non-neural conditional density transfer across situations?
 
-**Data.** The 260 fresh-seed scenes, loaded as `phase1b/i03/stageA/fitdata.py` does: `H.guard_scene`, then `sgi.scene.load_scene`. Their regions come from `sgi.gt.derive.prepare` under `configs/default.yaml`.
+**Data.** The 260 fresh-seed scenes, loaded as `results/still-scenes/perception/depth-blob-detector/stageA/fitdata.py` does: `H.guard_scene`, then `sgi.scene.load_scene`. Their regions come from `sgi.gt.derive.prepare` under `configs/default.yaml`.
 - **Unit:** one (scene, episode) with exactly one target and at least one acceptable region.
 - **Excluded and counted:** episodes with several targets, episodes with no region cell, and any episode of a held-out situation (asserted absent).
 - **Secondary test set, never fitted:** the 68 scenes of `H.distinct_scenes()`, each loaded with `H.scene(first listed run, scene_id)`. A scene with no listed run is skipped and counted. Domain comes from the folder: `realistic_final` is realistic (42), anything else placeholder (26).

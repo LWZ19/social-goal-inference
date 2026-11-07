@@ -10,7 +10,7 @@ So far there are only 15 Sonnet cells. On Qwen, dropping the people call is a la
 
 ## Arms, models, cells
 
-- **CTd and CTe run together** in one invocation into `moving/runs_x3/<model>/`, with the detector and tracker
+- **CTd and CTe run together** in one invocation into `results/data/moving/runs_x3/<model>/`, with the detector and tracker
   services up (as item 5), so both share the machine's load.
   - CTd replays the cell's cached CT2 first answer.
   - CTe makes a live constraints call (plus plan and context) on the detector's people.
@@ -34,13 +34,13 @@ So far there are only 15 Sonnet cells. On Qwen, dropping the people call is a la
 - X3-quality holds; CTe matched CTd within the spread on Sonnet (+0.07, 9/4/2).
 - On Qwen, CTe may turn a latency-bound arm into one that acts within the episode.
 
-    cd results/2026-11-01-push/moving
+    cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
     F=../fill/x3_cte
     # start the detector service (port 8899) and tracker_service.py (port 8897) exactly as item 5, with its health guard
     # stop both services by PID; then score (zero calls):
-    cd .. && $P fill/x3_cte/x3_score.py > fill/x3_cte/x3_score_out.txt
+    cd .. && $P results/moving-lines/people-finder/x3_score.py > results/moving-lines/people-finder/x3_score_out.txt
 
 ## Cost
 
@@ -50,5 +50,5 @@ So far there are only 15 Sonnet cells. On Qwen, dropping the people call is a la
 
 ## Scorer
 
-`x3_score.py`, using `fill/mcompare.py`. Tested with `--test` on the earlier Sonnet cells, it reproduces E1c: CTe
+`x3_score.py`, using `results/_lib/mcompare.py`. Tested with `--test` on the earlier Sonnet cells, it reproduces E1c: CTe
 0.316 and CTd 0.247, 9/4/2; first answer 10.6 and 13.0 s.

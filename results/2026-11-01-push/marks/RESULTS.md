@@ -74,7 +74,7 @@ Marks should take over only the first job. The design to test is therefore "numb
   A two-step design would miss about 29% of the wrong-object cases. So marks should cover the whole image, not just the area near the click.
 - **Mark count (Q7, Q10).** Ordered by size, a realistic target is in the first 3 for every place, but people need up to 8. Coverage is 0.79 at N=3, 0.93 at N=4–6, and 1.00 at N=8.
 
-**Sonnet at eval_12 (Q14, the image viewed).** "The person in red" stands behind a man whose arm overlaps her. Sonnet clicks on the visible part of her shirt beside his sleeve, which lands on the man's arm. It is a near miss caused by occlusion, not an ambiguous request. Touching people like these may also merge into one depth component, so person marks should come from the detector's people, which are stored for every development scene (`phase1c/i09/a1/eval_people.json`), not from components (Q13).
+**Sonnet at eval_12 (Q14, the image viewed).** "The person in red" stands behind a man whose arm overlaps her. Sonnet clicks on the visible part of her shirt beside his sleeve, which lands on the man's arm. It is a near miss caused by occlusion, not an ambiguous request. Touching people like these may also merge into one depth component, so person marks should come from the detector's people, which are stored for every development scene (`results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`), not from components (Q13).
 
 **What this means for M2 (inference).**
 - **The free-model run mainly measures harm.** That covers marks breaking a right choice, losing location information, binding errors and number bias. It can say little about benefit, except for GLM.

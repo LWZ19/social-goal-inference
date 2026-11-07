@@ -1,11 +1,11 @@
-results/2026-10-17-beyond-vlm/phase1b/i11/FROZEN.md OK
+results/still-scenes/perception/lifting/FROZEN.md OK
 src/sgi/evaluate.py OK
 src/sgi/geometry.py OK
 src/sgi/stages/goal.py OK
 docs/model_notes/tools/research_harness.py OK
 docs/model_notes/tools/replay_solver.py OK
-results/2026-10-17-beyond-vlm/rerun/lifting/lifting.py OK
-results/2026-10-17-beyond-vlm/rerun/lifting/frontsnap.py OK
+results/still-scenes/perception/lifting-rerun/lifting.py OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py OK
 xnew: 18 runs
   20261017-022122_s21_real_qwen38_low_con: 84 records, 8 s, tally {'allowed': 84}
   20261017-021937_s21_staffed_qwen38_low_con: 84 records, 16 s, tally {'allowed': 84}

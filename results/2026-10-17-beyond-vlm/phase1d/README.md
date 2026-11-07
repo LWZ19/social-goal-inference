@@ -4,18 +4,18 @@
 
 How it was made:
 - **Before hashing.** The I04 lead ran one format check through the harness: record counts, fields, thresholds and one solver call per run (4.4 s). The C5 lead loaded 6 scenes of seed 100, read the fresh-seed manifest and timed the kernel on random numbers. Neither computed a region statistic, a density or a score.
-- **After the freeze.** I04 has one hashed file, `i04/DEVIATIONS.md`, written at 00:30:59, before the S table and any fit. It records no deviation, eight clarifications of mechanics, and one code bug that stopped the first cache run before any result was read; the cache was rebuilt from scratch. C5 wrote no deviation note. Its departures in file layout are listed in section 4.
+- **After the freeze.** I04 has one hashed file, `results/still-scenes/learned-models/soft-density/DEVIATIONS.md`, written at 00:30:59, before the S table and any fit. It records no deviation, eight clarifications of mechanics, and one code bug that stopped the first cache run before any result was read; the cache was rebuilt from scratch. C5 wrote no deviation note. Its departures in file layout are listed in section 4.
 - **Inputs.**
   - I04: the 1,409 goal-step records of I14 version 0's 12 cells (549 primary, 860 new wording), read through the step-0 harness.
   - C5 gate 1: the generator's rows in `src/sgi/synth/generate.py`. 26 rows belong to the development situations; the 4 held-out rows are named in the code and were never instantiated. The descriptive spread uses seeds 100–109.
-  - C5 gate 2: the 260 scenes of fresh seeds 100–109, generated in phase 1b and read as `phase1b/i03/stageA/fitdata.py` reads them (not regenerated). The 68 whitelisted development scenes form a secondary test set that was never fitted.
+  - C5 gate 2: the 260 scenes of fresh seeds 100–109, generated in phase 1b and read as `results/still-scenes/perception/depth-blob-detector/stageA/fitdata.py` reads them (not regenerated). The 68 whitelisted development scenes form a secondary test set that was never fitted.
 - **Compute.** CPU only and numpy only (the venv has no scipy), at most 2 processes per track, `nice -n 10`. I04 took about 10 minutes of wall time. C5's gates took about 6.5 h on 2 processes, against an estimate of 5 CPU-hours, because the machine was shared.
 - **Verifiers.** Each track had an independent verifier with its own code.
   - I04's verifier rebuilt the cache, refitted all 57 fold choices and matched every per-record held-out value to 4.2e-15.
   - C5's verifier recounted gate 1 under several readings, rebuilt the cells and features (equal to 6e-15), repeated the inner cross-validation in all 14 folds, and scored the primary folds under its own subsample draw and two more.
   - Where a compute agent and its verifier differ, this page uses the verifier's final value. Where the verifier did not settle a point, both are given (section 4).
 - No model-provider or network call was made, no GPU was used and torch was not imported. No held-out scene, run or situation was read. Seeds 3–99 were not generated or opened, and no seed was generated. Nothing in `src/`, `tests/`, `docs/` or `configs/` changed.
-- **Phase 2 used these outputs before this page.** C5's flow-matching pilot (`phase2/flow_pilot/README.md`) took the gate-1 count and I04's V1 and V3 rows from this folder, and I06's first probe recounted gate 1 on its crowd variants (`phase2/i06/README.md` section 7). Gate 2's tables were written at 07:02, after the pilot's page, which reports gate 2 as having no result. The REPORT cites the gate-1 count and the I04 rows in its phase-2 entries but has not entered phase 1d itself; section 6 proposes the edits.
+- **Phase 2 used these outputs before this page.** C5's flow-matching pilot (`results/still-scenes/learned-models/flow-model-pilot/README.md`) took the gate-1 count and I04's V1 and V3 rows from this folder, and I06's first probe recounted gate 1 on its crowd variants (`results/still-scenes/crowds/README.md` section 7). Gate 2's tables were written at 07:02, after the pilot's page, which reports gate 2 as having no result. The REPORT cites the gate-1 count and the I04 rows in its phase-2 entries but has not entered phase 1d itself; section 6 proposes the edits.
 
 Paths below are relative to this folder (`phase1d/` in the research folder).
 - `i04/`: `FROZEN.md` and its hash, `DEVIATIONS.md` and its hash, `prefreeze/` (the format check), the scripts (`i04_cache.py`, `i04_check.py`, `i04_fit.py`, `i04_heldout.py`), `cache/` (per-record arrays and `check.txt`), `fits.json`, `folds.json` (a byte-identical copy) and `FITS.sha256`, `s_table.npz`, `tables.txt`, `summary.json`, per-record rows (`rows_<cell>.jsonl`, 12 files), the logs, `timings.log`, `posthoc/insample_grid.*`, and the verifier's `verify/`.
@@ -43,7 +43,7 @@ Shared cautions:
 
 ### What was done
 
-- **Records and cells** (as `phase1/i14_v0/METRIC_NOTE.md`): goal-step records of the con runs.
+- **Records and cells** (as `results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md`): goal-step records of the con runs.
   - Primary (549): old-wording realistic, s19 Qwen 143, s19 GLM 141 and s20 DeepSeek 157; watching (dev seeds 0–2, audience), 36 per model.
   - Reported beside, not judged (860): the new wording, s21 Qwen and s23 GLM, DeepSeek, Haiku, Sonnet and Gemini. Their Qwen, GLM and DeepSeek people answers are cache copies of s19/s20, so a model's old and new rows are not independent.
 - **Floor and keys.** Each record's solver inputs are rebuilt as `H.resolve` does. `sgi.solver._over_floor` then gives the floor F(rec), the selectable cells (I14's floor), and each cell's five keys, rounded to the millimetre as the solver compares them.
@@ -314,7 +314,7 @@ Table 2.5. Development transfer: trained on all 260 fresh scenes, tested on the 
 
 **What the REPORT says must happen first.** For gate 1: "If it finds fewer, widen the generator first with I06's crowd builder" (C5, gate 1). Section 4.6 gives the reason: below about 30 configurations, a generative model could only memorise the generator.
 
-**Where that remedy stands** (from `phase2/i06/README.md` section 7; [phase 2], not recomputed here).
+**Where that remedy stands** (from `results/still-scenes/crowds/README.md` section 7; [phase 2], not recomputed here).
 - I06's first probe (plan step 4, 18 Oct) built crowd variants of the development layouts of seeds 0–2 (families A–E). Recounted on them, gate 1 gives 92 configurations (22 plus 70) on a reading that adds (family, level) to the tuple, 63 with A's six levels and E's two depths counted once per row, and 49 under the coarse reading. So the count is met by the letter on that widened set. Its verifier checked 92 and 63 by hand; 49 and the spread were not recomputed.
 
 ---
@@ -424,7 +424,7 @@ Each item gives the exact old text from `REPORT.md` and the proposed new text. E
 
 Old:
 ```text
-- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`phase1/README.md`, `phase1b/README.md` for the second batch, or `phase1c/README.md` for step 3b, I09 A1–A2, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) and step 3b also froze and hashed a protocol note before any evaluation scoring. Their only input outside the whitelist is fresh seeds 100–109, generated in the second batch (fit data for I03 and I09 A1, and an extra domain for I11's component check).
+- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`results/still-scenes/overview/phase-notes/phase1.md`, `results/still-scenes/overview/phase-notes/phase1b.md` for the second batch, or `results/still-scenes/overview/phase-notes/phase1c.md` for step 3b, I09 A1–A2, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) and step 3b also froze and hashed a protocol note before any evaluation scoring. Their only input outside the whitelist is fresh seeds 100–109, generated in the second batch (fit data for I03 and I09 A1, and an extra domain for I11's component check).
 ```
 New:
 
@@ -432,11 +432,11 @@ New:
 
 Old:
 ```text
-`phase1c/README.md`: I09 A1–A2) and the phase-2 steps of 18 Oct
+`results/still-scenes/overview/phase-notes/phase1c.md`: I09 A1–A2) and the phase-2 steps of 18 Oct
 ```
 New:
 ```text
-`phase1c/README.md`: I09 A1–A2; `phase1d/README.md`: I04's first probe and C5's gates 1–3) and the phase-2 steps of 18 Oct
+`results/still-scenes/overview/phase-notes/phase1c.md`: I09 A1–A2; `results/still-scenes/overview/phase-notes/phase1d.md`: I04's first probe and C5's gates 1–3) and the phase-2 steps of 18 Oct
 ```
 
 ### 3. Opening status line: what phase 1 answers
@@ -500,7 +500,7 @@ The gate-1 count and the I04 rows are phase-1d outputs not yet entered in this r
 ```
 New:
 ```text
-The gate-1 count and the I04 rows are phase-1d outputs, now entered with the gates above (`phase1d/README.md`) [phase 1]; the kill does not rest on them, since K1 (against P) and K2 (against C) fire on their own. Gate 2's result (met) came after the pilot.
+The gate-1 count and the I04 rows are phase-1d outputs, now entered with the gates above (`results/still-scenes/overview/phase-notes/phase1d.md`) [phase 1]; the kill does not rest on them, since K1 (against P) and K2 (against C) fire on their own. Gate 2's result (met) came after the pilot.
 ```
 
 ### 10. C5, the exploratory pilot: gate 2 now has a result
@@ -528,7 +528,7 @@ New:
 - the simple density above transfers; [phase 1] met: a ratio KDE trained on fresh generator seeds beats the band-uniform baseline in 2 of 3 leave-one-situation-out folds, and loses at conversation groups;
 - I04's soft density exists as the baseline (plan step 7). [phase 1] Met: V1 and V3 exist on the I14 harness and were verified; V1 is a kill against V3, so V3, a near-point mass on the solver's top place, is the baseline to beat.
 
-[phase 1] So the gates do not pass (`phase1d/README.md` section 2), and by C5's rule the probe waits until the generator is widened. (inference) Gate 2 is the first evidence that a simple density learned from generator layouts reaches a situation it was not trained on, measured against the project's rules; I04's kill says the solver's own keys give no better distribution than a lightly smoothed top place.
+[phase 1] So the gates do not pass (`results/still-scenes/overview/phase-notes/phase1d.md` section 2), and by C5's rule the probe waits until the generator is widened. (inference) Gate 2 is the first evidence that a simple density learned from generator layouts reaches a situation it was not trained on, measured against the project's rules; I04's kill says the solver's own keys give no better distribution than a lightly smoothed top place.
 ```
 
 ### 12. Section 6, step 7 (done)
@@ -544,7 +544,7 @@ Then the probe, only if all three pass. Not counted in the do-first total. **Exp
 ```
 New:
 ```text
-Then the probe, only if all three pass. Not counted in the do-first total. **Gates run 18 Oct** [phase 1] (`phase1d/README.md` section 2): gate 1 not met (22 configurations; C2's Source A kill fires), gate 2 met (2 of 3 leave-one-situation-out folds), gate 3 met (I04's V1 and V3 verified on the I14 harness). So the gates do not pass, and C5 says to widen the generator first with I06's crowd builder; I06's recount on its development-seed crowd variants gives 92 by the letter (`phase2/i06/README.md` section 7), but training scenes would need fresh seeds. **Exploratory pilot run 18 Oct**
+Then the probe, only if all three pass. Not counted in the do-first total. **Gates run 18 Oct** [phase 1] (`results/still-scenes/overview/phase-notes/phase1d.md` section 2): gate 1 not met (22 configurations; C2's Source A kill fires), gate 2 met (2 of 3 leave-one-situation-out folds), gate 3 met (I04's V1 and V3 verified on the I14 harness). So the gates do not pass, and C5 says to widen the generator first with I06's crowd builder; I06's recount on its development-seed crowd variants gives 92 by the letter (`results/still-scenes/crowds/README.md` section 7), but training scenes would need fresh seeds. **Exploratory pilot run 18 Oct**
 ```
 
 ### 14. Section 6, step 8: effort and what a further step needs
@@ -560,7 +560,7 @@ the 3 m disc leaves out about 90% of the watching region, and the top place lies
 ```
 New:
 ```text
-the 3 m disc leaves out about 90% of the watching region, and the top place lies outside it in 470 of 790 line records. [phase 1] I04's first probe (`phase1d/README.md` sections 1 and 5) adds two points for a v1. Its fit score, the mean of ln(1e-3 + P(success)), rewards concentration whenever the top place usually succeeds: the fitted Gaussian control keeps more than 0.999 of its mass within 0.3 m of the top place in every record, so I04's own collapse line would fire on the control. And C5's gate 2 scored a different question, how well a density covers the whole acceptable region (the mean log density over region cells). (inference) A v1 should say which question a density answers, the chance that the chosen pose is acceptable or where all acceptable poses lie, and choose its score to match.
+the 3 m disc leaves out about 90% of the watching region, and the top place lies outside it in 470 of 790 line records. [phase 1] I04's first probe (`results/still-scenes/overview/phase-notes/phase1d.md` sections 1 and 5) adds two points for a v1. Its fit score, the mean of ln(1e-3 + P(success)), rewards concentration whenever the top place usually succeeds: the fitted Gaussian control keeps more than 0.999 of its mass within 0.3 m of the top place in every record, so I04's own collapse line would fire on the control. And C5's gate 2 scored a different question, how well a density covers the whole acceptable region (the mean log density over region cells). (inference) A v1 should say which question a density answers, the chance that the chosen pose is acceptable or where all acceptable poses lie, and choose its score to match.
 ```
 
 Old:
@@ -587,7 +587,7 @@ Old:
 ```
 New:
 ```text
-| I14/I04 give a confidence AUROC of at least 0.70. [phase 1] I04's first probe did not (0.303–0.559 on the old-wording realistic cells, `phase1d/README.md` section 1) |
+| I14/I04 give a confidence AUROC of at least 0.70. [phase 1] I04's first probe did not (0.303–0.559 on the old-wording realistic cells, `results/still-scenes/overview/phase-notes/phase1d.md` section 1) |
 ```
 
 ### 20. Section 4.7, the O-1 row (optional)
@@ -598,7 +598,7 @@ Old:
 ```
 New:
 ```text
-| O-1 Distribution over poses | I04 (with I14, I12); [phase 1] I04's first probe is a kill against its Gaussian control (`phase1d/README.md` section 1) | b |
+| O-1 Distribution over poses | I04 (with I14, I12); [phase 1] I04's first probe is a kill against its Gaussian control (`results/still-scenes/overview/phase-notes/phase1d.md` section 1) | b |
 ```
 
 ### 21. Section 6, the cut order (optional)
@@ -609,5 +609,5 @@ cut in this order: the optional I04 step, then I35 Part A, then I21's A1 impleme
 ```
 New:
 ```text
-cut in this order: I35 Part A, then I21's A1 implementation (keep its offline replay). I09's A2, once last on this list, is done (17 Oct), and so is the optional I04 step, once first (18 Oct, `phase1d/README.md`) [phase 1].
+cut in this order: I35 Part A, then I21's A1 implementation (keep its offline replay). I09's A2, once last on this list, is done (17 Oct), and so is the optional I04 step, once first (18 Oct, `results/still-scenes/overview/phase-notes/phase1d.md`) [phase 1].
 ```

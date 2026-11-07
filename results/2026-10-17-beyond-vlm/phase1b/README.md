@@ -3,17 +3,17 @@
 Three zero-call analyses from plan step 4 (REPORT section 1.2; section 6, step 3): I03 Stages A–B (the depth-blob audit), I11 Stage 0 (where wrong targets come from, and snap-and-lift) and I33's Stage B trigger, which I11's protocol note also covers.
 
 How they were made:
-- Each analysis has a protocol note written and hashed before any evaluation scene or record was scored: `i03/FROZEN.md` (sha256 `8106f74a…b979a`) and `i11/FROZEN.md` (sha256 `11f7b327…9165`). Changes and clarifications after the freeze are logged in their own files, most of them hashed (section 6 says which were not).
+- Each analysis has a protocol note written and hashed before any evaluation scene or record was scored: `results/still-scenes/perception/depth-blob-detector/FROZEN.md` (sha256 `8106f74a…b979a`) and `results/still-scenes/perception/lifting/FROZEN.md` (sha256 `11f7b327…9165`). Changes and clarifications after the freeze are logged in their own files, most of them hashed (section 6 says which were not).
 - Every number was computed through the step-0 harness (`docs/model_notes/tools/research_harness.py`) from whitelisted development runs and scenes. The only other input is fresh seeds 100–109, generated in this batch and used as fit data only.
 - An independent verifier then recomputed each analysis with its own code. Where the two differ, this page uses the verifier's final value. Where the verifier could not settle a point, both are given (section 6).
 - No model or network call was made. No held-out scene, run or situation was read. Seeds 3–99 were not generated or opened; they are reserved for the I46 sealed set. Nothing in `src/`, `tests/`, `docs/` or `configs/` changed.
 
 Paths below are relative to this folder (`phase1b/` in the research folder).
 - `i03/`: the I03 note, the fix addendum (`ADDENDUM_FIX.md`), `DEVIATIONS.md`, `DEVIATIONS_POST_EVAL.md`, the people scorer (`people_scorer.py`), the detector (`blobs.py`), the seed wrapper (`gen_fresh.py`) and the fit tables (`fit_selection.json`, `fit_selection_fix.json`).
-  - `i03/stageA/`: `tables.txt`, the blob rows (`rows.jsonl`), the VLM rows (`vlm_rows.jsonl`) and `chosen.json`.
-  - `i03/stageB/`: `tables.txt`, `CLARIFICATIONS.md`, per-record rows (`rows_*.jsonl`) and `posthoc.txt`.
-  - Verifiers: `i03/verify_i03_stageA/`, `i03/verify_i03_stageB/`.
-- `i11/`: the note, `DEVIATIONS.md`, `i11lib.py`, `run_eval.py`, `tables.txt`, `out_primary.txt`, `out_extras.txt` and per-record rows (`rows.jsonl`, 3,716 records). Verifier: `i11/verify_i11_stage0/`.
+  - `results/still-scenes/perception/depth-blob-detector/stageA/`: `tables.txt`, the blob rows (`rows.jsonl`), the VLM rows (`vlm_rows.jsonl`) and `chosen.json`.
+  - `results/still-scenes/perception/depth-blob-detector/stageB/`: `tables.txt`, `CLARIFICATIONS.md`, per-record rows (`rows_*.jsonl`) and `posthoc.txt`.
+  - Verifiers: `results/still-scenes/perception/depth-blob-detector/verify_i03_stageA/`, `results/still-scenes/perception/depth-blob-detector/verify_i03_stageB/`.
+- `i11/`: the note, `DEVIATIONS.md`, `i11lib.py`, `run_eval.py`, `tables.txt`, `out_primary.txt`, `out_extras.txt` and per-record rows (`rows.jsonl`, 3,716 records). Verifier: `results/still-scenes/perception/lifting/verify_i11_stage0/`.
 - `fresh_seeds/`: seeds 100–109 and `manifest.json`.
 
 ## 0. Verdicts at a glance
@@ -35,14 +35,14 @@ Shared cautions:
 
 ---
 
-## 1. I03 Stage A: the depth-blob detector (`i03/`, `i03/stageA/`)
+## 1. I03 Stage A: the depth-blob detector (`i03/`, `results/still-scenes/perception/depth-blob-detector/stageA/`)
 
 ### What was done
 
 - **Data split (frozen).**
   - Fit data: F-real = the 21 realistic worked examples (39 visible people). F-ph = the 8 placeholder worked examples plus 260 fresh-seed scenes (585 visible people).
   - Evaluation: the 68 whitelisted development scenes (`H.distinct_scenes()`), E-real and E-ph, each scored once.
-- **Fresh seeds.** `i03/gen_fresh.py` calls the package's `_write_scene` with the same random generators as `generate()`, and skips group_photo and lift_wait rows before any random draw.
+- **Fresh seeds.** `results/still-scenes/perception/depth-blob-detector/gen_fresh.py` calls the package's `_write_scene` with the same random generators as `generate()`, and skips group_photo and lift_wait rows before any random draw.
   - Seeds 100–109 give 26 scenes each (18 eval, 8 examples): 260 scenes (no_one 110, waiting_line 70, conversation_group 50, audience 30) and 520 episodes.
   - 0 rejected layouts and 0 held-out episodes. Mean 4.13 s per scene (1.9–9.8 s).
   - Because of the skip, `eval_20`, `eval_21` and `examples_07` differ from what `generate()` would write.
@@ -56,9 +56,9 @@ Shared cautions:
 - **Selection.**
   - Feasible means at most 0.10 false bodies per scene in each fit domain. Among feasible settings, take the highest lower-of-the-two-domain recall.
   - Ties go to the lower worst-domain merged share, then the lower worst-domain false-body rate, then the least restrictive setting.
-  - The table and the choice were hashed (`i03/fit_selection.json`) before any evaluation scene was loaded.
+  - The table and the choice were hashed (`results/still-scenes/perception/depth-blob-detector/fit_selection.json`) before any evaluation scene was loaded.
 - **One general fix.** It is allowed only if the choice misses a fit bar, must be designed from fit failures only and written as a hashed addendum, and is adopted only if the same rule picks it.
-- **Scorer** (`i03/people_scorer.py`; I09 A1 is meant to reuse it):
+- **Scorer** (`results/still-scenes/perception/depth-blob-detector/people_scorer.py`; I09 A1 is meant to reuse it):
   - visible = `sgi.gt.derive.is_visible`; matching = `sgi.run._matched_people` (greedy, nearest first, within 0.5 m); recall = matched / visible;
   - false = an unmatched detection not within 0.5 m of the anchor of a target that is not a person;
   - a neighbour pair = two visible people < 0.8 m apart; it is merged when they are not both matched and one detection lies within 0.5 m of both;
@@ -129,7 +129,7 @@ Table 1.2. VLM people lists and blobs on E-real, same scorer. The unit is answer
 
 ---
 
-## 2. I03 Stage B: solver replays with the blobs (`i03/stageB/`)
+## 2. I03 Stage B: solver replays with the blobs (`results/still-scenes/perception/depth-blob-detector/stageB/`)
 
 ### What was done
 
@@ -165,7 +165,7 @@ Table 2.1. Old wording, successes of 252 (flips / breaks against recorded C), an
 | I01 R4 (drop unmatched) | 236 (+2/−0) | 200 (+15/−1) | 188 (+6/−0) | 88 | 57 | 72 |
 | I01 P | 236 (+2/−0) | 202 (+16/−0) | 193 (+15/−4) | 88 | 57 | 75 |
 
-- The I01 rows are re-run in the same harness and match `phase1/README.md`.
+- The I01 rows are re-run in the same harness and match `results/still-scenes/overview/phase-notes/phase1.md`.
 - The single GLM break under all four arms is one record (`real_eval_10_conversation_group_2` e1 t1); see the post hoc findings below. DeepSeek's groups gain 1 under the prune arms.
 
 Table 2.2. Pre-registered line failures flipped, and fixable line failures recovered (old wording).
@@ -265,7 +265,7 @@ Table 2.4. Placeholder C runs (`ph` + dev seeds 0–2), successes of 156.
   - X-new: new wording, 18 runs, 1,512 records, 111 wrong;
   - X-ph: placeholder `ph` and dev-seed runs, 12 runs, 468 records, 17 wrong;
   - X-ph2: the s10 and s8 C runs, 15 runs, 980 records, 63 wrong; it holds 476 duplicate draws, so its counts are not independent.
-- **Error classes.** `rerun/lifting/lifting.py`'s rules, tested in this order:
+- **Error classes.** `results/still-scenes/perception/lifting-rerun/lifting.py`'s rules, tested in this order:
   - choice error: no body-mask pixel within 15 px;
   - occluder capture: the 5×5 median depth lies more than 0.25 m in front of the target;
   - background leak: it lies more than 0.25 m behind;
@@ -369,7 +369,7 @@ Table 3.4. New wording (X-new; the blind check), per model.
 
 ### What was done
 
-- **T1** (primary; frozen in `i11/FROZEN.md` section 8) fires when the lift lands on floor or structure, or when the valid pixels of the 5×5 lift window carry at least 2 labels among floor, structure and object components (fragments ignored).
+- **T1** (primary; frozen in `results/still-scenes/perception/lifting/FROZEN.md` section 8) fires when the lift lands on floor or structure, or when the valid pixels of the 5×5 lift window carry at least 2 labels among floor, structure and object components (fragments ignored).
 - **T2** (reported only) is T1, or any other object component within 15 px.
 - **Catches** are counted on the 15 person wrong targets of the old wording (all three models).
 - **False triggers** are counted over two denominators:
@@ -476,7 +476,7 @@ Not settled (both readings given; neither changes a number used here):
 - **I03 grid origin.** The note does not say where the 5 cm grid starts. Both implementations anchor it at world (0, 0), and a half-cell shift changes no count.
 
 Incidental, with no effect on any result:
-- Importing the unchanged `lifting.py` and `frontsnap.py` wrote bytecode caches into `rerun/lifting/__pycache__`, outside `phase1b/`. The original `rerun/lifting` outputs are untouched.
+- Importing the unchanged `lifting.py` and `frontsnap.py` wrote bytecode caches into `rerun/lifting/__pycache__`, outside `phase1b/`. The original `results/still-scenes/overview/rerun-files/lifting` outputs are untouched.
 - `lifting.py`'s `main()` reads the E runs s16b and s20 through the harness, for the reference reproduction only. No I11 measure uses them.
 - I11's first fresh-seed M4 pass read 195 scenes while seed 108 was still being written. Its output was deleted unread, and M4 was re-run on all 260 scenes (D8). It stayed inside seeds 100–109.
 
@@ -506,7 +506,7 @@ Incidental, with no effect on any result:
 **I33 and I09.**
 - **I33's Stage A kill.** If I33's Stage A reused this detector unchanged, its recall kill (below 0.90) would fire on the realistic images by 0.01 (105/118), all from staff.
   - Blob facing is an axis (0.686 realistic, 0.983 placeholder), so I33's verification call would still have to supply front and back.
-- **I09 A1.** The scorer (`i03/people_scorer.py`) and both comparison sets (`i03/stageA/rows.jsonl`, `i03/stageA/vlm_rows.jsonl`) are ready.
+- **I09 A1.** The scorer (`results/still-scenes/perception/depth-blob-detector/people_scorer.py`) and both comparison sets (`results/still-scenes/perception/depth-blob-detector/stageA/rows.jsonl`, `results/still-scenes/perception/depth-blob-detector/stageA/vlm_rows.jsonl`) are ready.
   - Blobs already find every line member, so a detector beats them mainly on staff (3 of 16 for blobs) and on facing sign.
   - A1 could freeze on the same fit data (worked examples and seeds 100–109), so that all three people sources share one split.
 
@@ -532,22 +532,22 @@ Each item gives the exact old text from `REPORT.md` and the proposed new text. E
 
 Old:
 ```text
-- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`phase1/README.md`, with its section).
+- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`results/still-scenes/overview/phase-notes/phase1.md`, with its section).
 ```
 New:
 ```text
-- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`phase1/README.md`, or `phase1b/README.md` for the second batch, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) also froze and hashed a protocol note before any evaluation scoring.
+- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`results/still-scenes/overview/phase-notes/phase1.md`, or `results/still-scenes/overview/phase-notes/phase1b.md` for the second batch, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) also froze and hashed a protocol note before any evaluation scoring.
 ```
 
 ### 2. Opening status line (optional)
 
 Old:
 ```text
-(`phase1/README.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics), nothing has been built, and no model has been run. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's step A0, I14 version 0 and the statistics half of I46.
+(`results/still-scenes/overview/phase-notes/phase1.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics), nothing has been built, and no model has been run. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's step A0, I14 version 0 and the statistics half of I46.
 ```
 New:
 ```text
-(`phase1/README.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics; `phase1b/README.md`: I03 Stages A–B, I11 Stage 0, I33's Stage B trigger), nothing has been built, and no model has been run. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's step A0, I14 version 0, the statistics half of I46, I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger.
+(`results/still-scenes/overview/phase-notes/phase1.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics; `results/still-scenes/overview/phase-notes/phase1b.md`: I03 Stages A–B, I11 Stage 0, I33's Stage B trigger), nothing has been built, and no model has been run. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's step A0, I14 version 0, the statistics half of I46, I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger.
 ```
 
 ### 3. Section 1.2, plan step 4 (done)
@@ -598,8 +598,8 @@ Old:
 New:
 ```text
 - [re-run] Oracle snap-and-lift fixes 20 of 46 GLM + DeepSeek wrong targets (16 full successes), meeting three of the four criteria; depth components were not tested (old wording).
-- **Stage 0 result (17 Oct; protocol frozen and hashed before scoring, `phase1b/i11/FROZEN.md`; `phase1b/README.md` section 3) [phase 1].**
-  - `rerun/lifting` reproduces line for line. Lift classes are 20 of 46 (43.5%; exactly 40.0% if the 4 no-point records count as non-lift): 9 occluder captures, 11 background leaks, 0 floor slips. Choice errors are 26 of 46 (56.5%).
+- **Stage 0 result (17 Oct; protocol frozen and hashed before scoring, `results/still-scenes/perception/lifting/FROZEN.md`; `results/still-scenes/overview/phase-notes/phase1b.md` section 3) [phase 1].**
+  - `results/still-scenes/overview/rerun-files/lifting` reproduces line for line. Lift classes are 20 of 46 (43.5%; exactly 40.0% if the 4 no-point records count as non-lift): 9 occluder captures, 11 background leaks, 0 floor slips. Choice errors are 26 of 46 (56.5%).
   - Oracle snap-and-lift, applied to every record with a point: fixes 20 of 46 (every occluder capture and background leak, no choice error), 16 of them full successes, and breaks 0 of 454 right-target records (0 of 699 over all three models; the front-surface snap broke 37). S1–S3 met.
   - Depth components, no ML (V1: 4-neighbour components joined across 3D gaps of at most 0.10 m, snapping only when the lift lands on floor or structure): 9 of 46 fixes, all background leaks, and 0 breaks, so 0.45 of the oracle's gain against the 0.70 bar. S4 not met. No variant reaches 0.70 (always snap 0.40; a step back to the object behind 0.50, data-informed; a depth-relative join 0.45). No kill clause fires. Verdict: neither.
   - Components recover people (12 of 12 person targets at IoU ≥ 0.7), but the parcel always merges with its table (3 of 3; 10 of 10 on fresh seeds), and 14 of 27 place targets merge with people standing against them.
@@ -616,7 +616,7 @@ Old:
 New:
 ```text
     - Stage B: the trigger catches at least 12 of 15 person wrong-targets, with at most 10% false triggers.
-      - [phase 1] Measured on 17 Oct (`phase1b/README.md` section 4; trigger frozen in `phase1b/i11/FROZEN.md`). The trigger fires when the lift lands on floor or structure, or the 5×5 lift window spans two depth components. On the old wording it catches 11 of 15 person wrong targets (all 6 background leaks; 5 of 9 occluder captures, exactly those whose window holds target pixels) and fires on 12 of 201 right-target person records (6.0%). Verdict: neither (the catch bar misses by one; the kill line of 10 is not crossed). The note's author had read the per-record diagnostics and predicted 11, so the blind check is the new wording: 20 of 31 pooled (post hoc pooling), with false triggers of 0–19.4% by model (Gemini 19.4%, Sonnet 12.3%). The 15 come from 3 layouts, 13 at `eval_12`. The trigger flags 11.3% of records with a point, 47% of them wrong targets.
+      - [phase 1] Measured on 17 Oct (`results/still-scenes/overview/phase-notes/phase1b.md` section 4; trigger frozen in `results/still-scenes/perception/lifting/FROZEN.md`). The trigger fires when the lift lands on floor or structure, or the 5×5 lift window spans two depth components. On the old wording it catches 11 of 15 person wrong targets (all 6 background leaks; 5 of 9 occluder captures, exactly those whose window holds target pixels) and fires on 12 of 201 right-target person records (6.0%). Verdict: neither (the catch bar misses by one; the kill line of 10 is not crossed). The note's author had read the per-record diagnostics and predicted 11, so the blind check is the new wording: 20 of 31 pooled (post hoc pooling), with false triggers of 0–19.4% by model (Gemini 19.4%, Sonnet 12.3%). The 15 come from 3 layouts, 13 at `eval_12`. The trigger flags 11.3% of records with a point, 47% of them wrong targets.
 ```
 
 ### 10. I33, kill: the recall line against I03's detector (optional)
@@ -628,7 +628,7 @@ Old:
 New:
 ```text
     - Recall below 0.90.
-      - [phase 1] (inference) I03 Stage A's frozen detector finds 0.890 of visible people on the realistic images (105 of 118; every miss is counter staff) and 1.000 on placeholder scenes. If Stage A here reused it unchanged, this kill line would fire on the realistic set by 0.01 (`phase1b/README.md` section 1).
+      - [phase 1] (inference) I03 Stage A's frozen detector finds 0.890 of visible people on the realistic images (105 of 118; every miss is counter staff) and 1.000 on placeholder scenes. If Stage A here reused it unchanged, this kill line would fire on the realistic set by 0.01 (`results/still-scenes/overview/phase-notes/phase1b.md` section 1).
 ```
 
 ### 11. I09, first probe: I03's people scorer is ready for A1
@@ -640,7 +640,7 @@ Old:
 New:
 ```text
   - A1 (after the OK, about 6 h): freeze on the example layouts, report once on 42 eval images.
-    - [phase 1] I03's people scorer is ready for A1 (17 Oct): `phase1b/i03/people_scorer.py`, `score_people(people, scene, th=None, *, exempt_xy=(), facing='full')`. It calls the package's own matching (`sgi.run._matched_people`) and visibility test, and returns recall, false people, merged neighbour pairs, xy error, full-yaw and axis facing, and misses by role. The rows to compare against, on the same scenes: the depth blobs (`phase1b/i03/stageA/rows.jsonl`; realistic recall 0.890, 0.143 false per image, every miss counter staff, axis facing 0.686) and the six models' recorded people lists (`phase1b/i03/stageA/vlm_rows.jsonl`; realistic recall 0.842–0.994, 0.028–0.342 false per answer; `phase1b/README.md` section 1). (inference) A1 could freeze on I03's fit data (the worked examples and fresh seeds 100–109), so that all three people sources share one split.
+    - [phase 1] I03's people scorer is ready for A1 (17 Oct): `results/still-scenes/perception/depth-blob-detector/people_scorer.py`, `score_people(people, scene, th=None, *, exempt_xy=(), facing='full')`. It calls the package's own matching (`sgi.run._matched_people`) and visibility test, and returns recall, false people, merged neighbour pairs, xy error, full-yaw and axis facing, and misses by role. The rows to compare against, on the same scenes: the depth blobs (`results/still-scenes/perception/depth-blob-detector/stageA/rows.jsonl`; realistic recall 0.890, 0.143 false per image, every miss counter staff, axis facing 0.686) and the six models' recorded people lists (`results/still-scenes/perception/depth-blob-detector/stageA/vlm_rows.jsonl`; realistic recall 0.842–0.994, 0.028–0.342 false per answer; `results/still-scenes/overview/phase-notes/phase1b.md` section 1). (inference) A1 could freeze on I03's fit data (the worked examples and fresh seeds 100–109), so that all three people sources share one split.
 ```
 
 Old:
@@ -663,11 +663,11 @@ New:
 
 Old:
 ```text
-and moving a detection with its `come_after` number kept was not tested (`phase1/README.md` section 1).
+and moving a detection with its `come_after` number kept was not tested (`results/still-scenes/overview/phase-notes/phase1.md` section 1).
 ```
 New:
 ```text
-and moving a detection with its `come_after` number kept was not tested (`phase1/README.md` section 1). [phase 1] I03 Stage B then tested it with real depth blobs: moving each unsupported detection to an unexplained blob within 40 px, with its number and constraints kept, fixes 15 of GLM's 29 and 3 of DeepSeek's 15 line failures; adding the blobs as new people fixes 2 and 2 (`phase1b/README.md` section 2).
+and moving a detection with its `come_after` number kept was not tested (`results/still-scenes/overview/phase-notes/phase1.md` section 1). [phase 1] I03 Stage B then tested it with real depth blobs: moving each unsupported detection to an unexplained blob within 40 px, with its number and constraints kept, fixes 15 of GLM's 29 and 3 of DeepSeek's 15 line failures; adding the blobs as new people fixes 2 and 2 (`results/still-scenes/overview/phase-notes/phase1b.md` section 2).
 ```
 
 ### 16. Finding 9: Gemini's wrong targets are now classified (optional)
@@ -678,7 +678,7 @@ Old:
 ```
 New:
 ```text
-(inference) Gemini's gap is wrong targets at lines. [phase 1] I11 Stage 0 classified them at the new wording: all 34 of Gemini's wrong targets are choice errors on place targets, and even the oracle snap-and-lift fixes none of them. So they are a choice problem (I11 Stage 1's marks), not a lift problem (`phase1b/README.md` section 3).
+(inference) Gemini's gap is wrong targets at lines. [phase 1] I11 Stage 0 classified them at the new wording: all 34 of Gemini's wrong targets are choice errors on place targets, and even the oracle snap-and-lift fixes none of them. So they are a choice problem (I11 Stage 1's marks), not a lift problem (`results/still-scenes/overview/phase-notes/phase1b.md` section 3).
 ```
 
 ### 17. Finding 9: the blob pilot and the zero-call snap (optional)
@@ -689,7 +689,7 @@ but the one zero-call rule tried fixes 8 and breaks 37 of 752 C records.
 ```
 New:
 ```text
-but the one zero-call rule tried fixes 8 and breaks 37 of 752 C records. [phase 1] With thresholds re-derived on fit data, the frozen blob detector keeps the pattern on the development scenes (every non-staff person found; 13 of 16 realistic staff missed). A designed zero-call depth-component snap fixes 9 of the 46 GLM + DeepSeek wrong targets and breaks none of 3,716 records, which is 0.45 of the oracle's gain (`phase1b/README.md` sections 1 and 3).
+but the one zero-call rule tried fixes 8 and breaks 37 of 752 C records. [phase 1] With thresholds re-derived on fit data, the frozen blob detector keeps the pattern on the development scenes (every non-staff person found; 13 of 16 realistic staff missed). A designed zero-call depth-component snap fixes 9 of the 46 GLM + DeepSeek wrong targets and breaks none of 3,716 records, which is 0.45 of the oracle's gain (`results/still-scenes/overview/phase-notes/phase1b.md` sections 1 and 3).
 ```
 
 ### 18. Revision note

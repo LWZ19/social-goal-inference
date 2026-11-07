@@ -16,15 +16,15 @@ How it was made:
   - `FIX_PROTOCOL.md` (sha256 `59654e7b…a600`). It was born and hashed at 19:06:13 (+08:00), before `fix/` existed (19:08:03) and before any candidate was scored. It fixes 11 candidates, the selection rule, the checks and a secondary scorer.
   - The choice, written by code and hashed at 19:10:11 (`chosen_fix2_precheck.json`, sha256 `047d9aa6…`, in `CHOSEN2.sha256`), before the checks ran (19:10:24–19:10:46).
   - `CONFIRM2_FROZEN.md` (sha256 `69aa2ccb…3b23`), saved at 19:23:48 and hashed at 19:24:00; both files are read-only. At 19:17:59–19:18:03 a search found no folder named seed213 or higher and no `confirm2/`.
-- **Not blind.** The fix was designed after the first confirmation's published aggregate failure, including its post hoc classes (`phase2/i09/README.md` Table 1.5). The fix protocol was written knowing the diagnosis and its what-ifs, which had already scored similar rules on fit-train, on A1's fit data and on the development scenes.
+- **Not blind.** The fix was designed after the first confirmation's published aggregate failure, including its post hoc classes (`results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.5). The fix protocol was written knowing the diagnosis and its what-ifs, which had already scored similar rules on fit-train, on A1's fit data and on the development scenes.
 - **Environments.**
   - Detector and pose: the torch sidecar, used read-only (`-I`, `HF_HUB_OFFLINE=1`). A1's `infer.run_pass` was imported by path, with only the path guard and the GPU wait replaced, and only the pinned snapshots were loaded (RT-DETRv2 `2824940…`, ViTPose `a93ac0c…`). The sidecar's `pip freeze` (160 lines, sha256 `20f344bf…`, the same as at the first confirmation) was unchanged.
   - Everything else: the torch-free project venv, with A1's and I03's code imported and pinned by sha256, never copied.
 - **No held-out data.** No held-out situation, scene or run was read or instantiated, and no seed 3–99 was generated or opened. The one breach of the test-data rules is the protocol author's text search, which opened files of the spent seeds 200–212 but printed file names only (section 4).
 - **At writing** (19:57 on 18 Oct), every hash file listed below verified with `sha256sum -c`, and `confirm2/` did not exist.
 
-Paths below are relative to this folder (`phase3/i09_fix/` in the research folder).
-- `../seeds/realistic_train/`: the renders `seed110`–`seed119` (589 MB, 1,260 PNG files), `manifest.json` (sha256 `ff4fefa7…`), `render_log.jsonl` and `seed<k>.stdout.txt`.
+Paths below are relative to this folder (`results/still-scenes/people-finder/early-detector/fix/` in the research folder).
+- `results/still-scenes/scene-seeds/phase3/realistic_train/`: the renders `seed110`–`seed119` (589 MB, 1,260 PNG files), `manifest.json` (sha256 `ff4fefa7…`), `render_log.jsonl` and `seed<k>.stdout.txt`.
 - Diagnosis:
   - note: `DIAGNOSIS.md`;
   - scripts: `pathguard_fit.py`, `fitlib.py`, `manifest_fit.py`, `sidecar/infer_fit.py`, `score_fit.py`, `diagnose.py`, `whatif.py`, `figs.py`;
@@ -61,7 +61,7 @@ Shared cautions:
 
 ## 1. Rendering and diagnosis (fit-train)
 
-### Rendering (`../seeds/realistic_train/`)
+### Rendering (`results/still-scenes/scene-seeds/phase3/realistic_train/`)
 
 - **Command.** For each seed k in 110–119: `python -m sgi.synth.realistic.generate --variant real --seed k --out phase3/seeds/realistic_train/seed<k> --only <14 ids>`.
   - The ids are `real_eval_00`–`13` (no_one 6 rows, waiting_line 5, conversation_group 3), the same rows as the first confirmation.
@@ -301,8 +301,8 @@ Table 3.1. The comparators the note records (section 7 of the note; the verifier
 - **The order holds.** The protocol was hashed before `fix/` existed, selection ran once, and the choice was hashed before the checks. Fit-validate was touched only by manifest hashing and the detector pass before the checks.
 
 2. **A text search opened spent test-seed files** (verifier). At 19:18:09 the protocol author ran a recursive `grep -rIl` over `.superpowers`, `src`, `configs`, `docs` and `tests`, piped through `grep -v /phase2/seeds/`.
-   - It opened 364 files under `phase2/seeds/realistic` (seed200–212), plus `phase2/i09/confirm/posthoc_false.txt`, `raw/meta.json`, `summary.json`, `tables.txt` and `phase1d/i04/i04_heldout.py`.
-   - It still breaks the rule that no file under `phase2/seeds/realistic/` may be opened by any process of this run. It also makes the exposure section of `CONFIRM2_FROZEN.md` wrong: the note says it opened no such file and lists `posthoc_false.txt` as not read. Access times cannot settle it (relatime).
+   - It opened 364 files under `results/still-scenes/scene-seeds/phase2/realistic` (seed200–212), plus `results/still-scenes/people-finder/early-detector/phase2/confirm/posthoc_false.txt`, `raw/meta.json`, `summary.json`, `tables.txt` and `results/still-scenes/learned-models/soft-density/i04_heldout.py`.
+   - It still breaks the rule that no file under `results/still-scenes/scene-seeds/phase2/realistic/` may be opened by any process of this run. It also makes the exposure section of `CONFIRM2_FROZEN.md` wrong: the note says it opened no such file and lists `posthoc_false.txt` as not read. Access times cannot settle it (relatime).
 3. **Minor points in `CONFIRM2_FROZEN.md`** (verifier, plus one writer's check).
    - The exposure statement (finding 2).
    - The harness's sha256 is recorded (`39148377…`) but not asserted. Asserting it now would change check C1, which the note's rules do not allow through a deviation file. Recording its hash at run time, as information, would be allowed.
@@ -338,10 +338,10 @@ Table 3.1. The comparators the note records (section 7 of the note; the verifier
   - placeholder avatars (fix 2 changes nothing there; placeholder recall stays 0.877, its misses mostly group members seen in profile or from behind);
   - real sensor depth;
   - the pipeline with the detector in it.
-- The draft metric list's decision D14 (`phase3/metrics_v1/METRIC_LIST_v1_DRAFT.md`, not agreed) would word such a claim as "new seeds of the same rows".
+- The draft metric list's decision D14 (`results/still-scenes/metrics-and-statistics/metric-v1/METRIC_LIST_v1_DRAFT.md`, not agreed) would word such a claim as "new seeds of the same rows".
 
 **For the live check.**
-- **It measures A1, not fix 2.** The live check's frozen people are A1's (`phase1c/i09/a1/eval_people.json`).
+- **It measures A1, not fix 2.** The live check's frozen people are A1's (`results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`).
 - **The difference there is small.** On those 42 development scenes, fix 2 differs from A1 only in counter-staff people: A1's 2 staff misses and 3 false people. Fix 2's effect on a live result would likely be small.
 
 **Status of I09.** By its own pre-registered standard, the detector is still not a method. Fix 2 is a candidate with a confirmed check on training seeds and a frozen test. The next informative step is the second confirmation.
@@ -395,11 +395,11 @@ New:
 
 Old:
 ```text
-and phase 3's zero-call confidence probe (`phase3/confidence/README.md`) [phase 3], nothing has been built
+and phase 3's zero-call confidence probe (`results/still-scenes/confidence-signal/README.md`) [phase 3], nothing has been built
 ```
 New:
 ```text
-and phase 3's zero-call confidence probe (`phase3/confidence/README.md`) and zero-call I09 detector fix (`phase3/i09_fix/README.md`) [phase 3], nothing has been built
+and phase 3's zero-call confidence probe (`results/still-scenes/confidence-signal/README.md`) and zero-call I09 detector fix (`results/still-scenes/people-finder/early-detector/fix/README.md`) [phase 3], nothing has been built
 ```
 
 ### 3. Opening status line: what phase 3 answers
@@ -414,7 +414,7 @@ New:
 
 Old:
 ```text
-so by its own pre-registered standard the detector is not yet a method, and no kill fired (`phase2/i09/README.md` section 1).
+so by its own pre-registered standard the detector is not yet a method, and no kill fired (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1).
 ```
 New:
 
@@ -436,7 +436,7 @@ New:
 
 Old:
 ```text
-The unseen-layout confirmation (seeds 200–212) is neither: 0.242 false people per image against 0.10 (`phase2/i09/README.md`) |
+The unseen-layout confirmation (seeds 200–212) is neither: 0.242 false people per image against 0.10 (`results/still-scenes/people-finder/early-detector/phase2/README.md`) |
 ```
 New:
 
@@ -450,7 +450,7 @@ New:
 
 Old:
 ```text
-they stay out of this sealed set and could serve later C5 work as training data only (`phase2/flow_pilot/README.md` section 7).
+they stay out of this sealed set and could serve later C5 work as training data only (`results/still-scenes/learned-models/flow-model-pilot/README.md` section 7).
 ```
 New:
 
@@ -458,11 +458,11 @@ New:
 
 Old:
 ```text
-finding 0.983 of visible people with the realistic avatars and 0.845 with the placeholder ones (`phase1c/README.md` section 1).
+finding 0.983 of visible people with the realistic avatars and 0.845 with the placeholder ones (`results/still-scenes/overview/phase-notes/phase1c.md` section 1).
 ```
 New:
 ```text
-finding 0.983 of visible people with the realistic avatars and 0.845 with the placeholder ones (`phase1c/README.md` section 1). [phase 3] I09's fix found three more render effects (`phase3/i09_fix/README.md` sections 1 and 5): the rendered depth treats glass as opaque, so the package's visibility rule calls staff in glass booths hidden while the picture shows them; the fix re-lifts occluded staff from 5×5 depth at head keypoints, which a real sensor would make noisy at head edges; and the generator reuses its camera–staff geometry across the seeds of a row, so new seeds of the same rows are weaker evidence than their count.
+finding 0.983 of visible people with the realistic avatars and 0.845 with the placeholder ones (`results/still-scenes/overview/phase-notes/phase1c.md` section 1). [phase 3] I09's fix found three more render effects (`results/still-scenes/people-finder/early-detector/fix/README.md` sections 1 and 5): the rendered depth treats glass as opaque, so the package's visibility rule calls staff in glass booths hidden while the picture shows them; the fix re-lifts occluded staff from 5×5 depth at head keypoints, which a real sensor would make noisy at head edges; and the generator reuses its camera–staff geometry across the seeds of a row, so new seeds of the same rows are weaker evidence than their count.
 ```
 
 ### 11. Revision note

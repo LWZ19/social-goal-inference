@@ -1,6 +1,6 @@
 # SCORING_STRICT: a third scoring for the fresh seeds (frozen 2026-11-02 ~01:45, before any fresh-seed result)
 
-Origin: post hoc, from the failure analysis of seeds 0-2 (analysis/FAILURES.md): the frozen in-line test has no
+Origin: post hoc, from the failure analysis of seeds 0-2 (results/moving-lines/failure-analysis/FAILURES.md): the frozen in-line test has no
 side check (38% of R1's in-line seconds on DeepSeek are beside the line), and the first-in-line tolerance (1.6 m)
 counts a robot standing about 1 m short of the serving spot, never served. Frozen here before any result on fresh
 seeds 10-19 is looked at; reported beside SCORING.md (primary, as frozen) and CT2_FROZEN.md's 0.6 m-first scoring.

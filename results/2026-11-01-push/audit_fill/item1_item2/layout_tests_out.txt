@@ -205,7 +205,7 @@ Totals R/E/C against the earlier report (EVIDENCE_AUDIT.md A1, A2; docs/results/
   old Qwen 3.8 low     got (175, 214, 234) report (175, 214, 234)  OK
   old GLM-5.3          got (129, 145, 186) report (129, 145, 186)  OK
   old DeepSeek V4.1    got (113, 120, 182) report (113, 120, 182)  OK
-Totals R/E/C against e3_models/results_all_out.txt:
+Totals R/E/C against results/still-scenes/hidden-situations-and-more-models/results_all_out.txt:
   Gemini 3 Flash         got (119, 132, 176) results_all_out (119, 132, 176)  OK
   Gemini 3.1 Flash Lite  got (131, 122, 227) results_all_out (131, 122, 227)  OK
   Gemini 3.5 Flash Lite  got (102, 101, 215) results_all_out (102, 101, 215)  OK
@@ -216,7 +216,7 @@ Totals R/E/C against e3_models/results_all_out.txt:
   Claude Sonnet 5.5      (s23 Sonnet 5.5 low) got (178, 178, 242) results_all_out (178, 178, 242)  OK
   Claude Haiku 5.5       (s23 Haiku 5.5) got (151, 148, 240) results_all_out (151, 148, 240)  OK
   Gemini 3.8 Flash       (s23 Gemini 3.8 low) got (164, 173, 214) results_all_out (164, 173, 214)  OK
-Earlier layout-level p-values (rerun/stats/stats_output.txt, two-sided, printed to 5 significant digits):
+Earlier layout-level p-values (results/still-scenes/metrics-and-statistics/stats-rerun/stats_output.txt, two-sided, printed to 5 significant digits):
   qwen                   earlier C=234 E=214 p=  0.03125 | here C=234 E=214 p=0.03125, 14 layout nets equal  OK
   glm                    earlier C=186 E=145 p=0.0078125 | here C=186 E=145 p=0.0078125, 14 layout nets equal  OK
   ds                     earlier C=182 E=120 p=0.00097656 | here C=182 E=120 p=0.00097656, 14 layout nets equal  OK

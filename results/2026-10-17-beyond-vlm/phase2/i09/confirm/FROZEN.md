@@ -3,11 +3,11 @@
 The I09 confirmation lead wrote this on 18 Oct 2026, between 01:14 and 01:30 +08:00, before any scene of seeds 200–219 existed (section 1.6 gives the check). Its sha256 is in `FROZEN.sha256`. This file is never edited. Changes and clarifications go into numbered `DEVIATIONS_<n>.md` files, each with its own sha256, written before the data they affect is processed.
 
 Path roots:
-- Bare paths are relative to this folder, `phase2/i09/confirm/`.
+- Bare paths are relative to this folder, `results/still-scenes/people-finder/early-detector/phase2/confirm/`.
 - Paths that start with `phase1b/`, `phase1c/` or `phase2/` are relative to the research folder `results/2026-10-17-beyond-vlm/`.
 
 - it rests on 14 layouts;
-- it needed one data-informed facing fix (`phase1c/i09/a1/ADDENDUM_FIX.md`);
+- it needed one data-informed facing fix (`results/still-scenes/people-finder/early-detector/phase1c/a1/ADDENDUM_FIX.md`);
 - the false-people interval spans its bar (layout bootstrap 0.000–0.190 against 0.10).
 
 The phase 1c README concluded that calling the detector a method needs a confirmation on layouts it has never seen, with nothing re-tuned. This is that confirmation.
@@ -15,7 +15,7 @@ The phase 1c README concluded that calling the detector a method needs a confirm
 **Rulings** (lead researcher, 18 Oct). This note implements them; where it fills a gap, section 11 lists the choice.
 1. Purpose as above.
 3. Method: A1's frozen pipeline exactly, with the one adopted fix. Nothing is re-tuned and no new fix is allowed.
-4. Scorer: `phase1b/i03/people_scorer.py`, unchanged, with facing "full" and `exempt_xy=exempt_points(truth)`, under the default thresholds. Visibility follows the package's rule.
+4. Scorer: `results/still-scenes/perception/depth-blob-detector/people_scorer.py`, unchanged, with facing "full" and `exempt_xy=exempt_points(truth)`, under the default thresholds. Visibility follows the package's rule.
 5. Criteria: A1's success bars verbatim, on the pooled test set; kill as stated there (section 5). Runtime is not judged again.
 6. Order: this note, the renders, the manifest, one detector pass, scoring once.
 
@@ -28,12 +28,12 @@ The phase 1c README concluded that calling the detector a method needs a confirm
 ## Exposure (disclosed)
 
 **What I read before writing:**
-- REPORT I09 and `phase1c/README.md`, in full;
-- `phase1c/i09/FROZEN.md`, `DEVIATIONS.md`, `DEVIATIONS_2.md`, `a1/ADDENDUM_FIX.md`, `a1/chosen.json` and `a1/chosen_fix.json`;
-- the code of `a1/pipeline.py`, `a1/common.py`, `a1/sidecar/infer.py`, the first 200 lines of `a1/evaluate.py`, and `phase1b/i03/people_scorer.py`;
+- REPORT I09 and `results/still-scenes/overview/phase-notes/phase1c.md`, in full;
+- `results/still-scenes/people-finder/early-detector/phase1c/FROZEN.md`, `DEVIATIONS.md`, `DEVIATIONS_2.md`, `a1/ADDENDUM_FIX.md`, `a1/chosen.json` and `a1/chosen_fix.json`;
+- the code of `a1/pipeline.py`, `a1/common.py`, `a1/sidecar/infer.py`, the first 200 lines of `a1/evaluate.py`, and `results/still-scenes/perception/depth-blob-detector/people_scorer.py`;
 - `docs/realistic_scenes.md`;
 - the docstring, `generate()` and CLI of `src/sgi/synth/realistic/generate.py`, the row tables and `accepted_layouts` of `src/sgi/synth/generate.py`, and the render job's fields;
-- the guards of `docs/model_notes/tools/research_harness.py`, `phase1b/i03/stageA/fitdata.py`, and the thresholds in `configs/default.yaml`.
+- the guards of `docs/model_notes/tools/research_harness.py`, `results/still-scenes/perception/depth-blob-detector/stageA/fitdata.py`, and the thresholds in `configs/default.yaml`.
 
 **What I computed.** I computed section 7's development comparators from A1's recorded `a1/people_rows.jsonl` and `a1/rows.jsonl`.
 
@@ -81,10 +81,10 @@ Nothing is written into `data/`.
 
 **1.6 Nothing existed before this note.** At 01:12:10 +08:00:
 - a search of `~` and `/tmp` found no folder named `seed200`–`seed219`;
-- `phase2/seeds/realistic/` did not exist;
+- `results/still-scenes/scene-seeds/phase2/realistic/` did not exist;
 - no `sgi.synth` or Blender process was running.
 
-`phase2/seeds/` held only another step's placeholder seeds 110–113.
+`results/still-scenes/scene-seeds/phase2/` held only another step's placeholder seeds 110–113.
 
 ## 2. The manifest (project venv)
 
@@ -92,7 +92,7 @@ Nothing is written into `data/`.
 - every scene folder is guarded with `H.guard_scene` and lies under `phase2/seeds/realistic/seed<k>/eval/`, with 200 ≤ k ≤ 219;
 - each complete seed holds exactly the 14 ids of section 1.2, and nothing else, under `eval/`;
 - `examples/` is absent or empty;
-- no file or folder name anywhere under `phase2/seeds/realistic/` contains `group_photo`, `lift_wait`, `heldout`, `held_out` or `eval_16`–`eval_19` (case ignored);
+- no file or folder name anywhere under `results/still-scenes/scene-seeds/phase2/realistic/` contains `group_photo`, `lift_wait`, `heldout`, `held_out` or `eval_16`–`eval_19` (case ignored);
 - `render_job.json` gives variant `real`, the folder's seed and renderer `blender`;
 - its thresholds equal `configs/default.yaml`'s, every key;
 - `scene.json`'s scene id equals the folder name.
@@ -101,7 +101,7 @@ Nothing is written into `data/`.
 
 **Order:** seed ascending, then row ascending. The manifest also lists every seed left out, with the reason.
 
-**Setting.** From `phase1c/i09/a1/chosen.json` and `chosen_fix.json`, unchanged:
+**Setting.** From `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen.json` and `chosen_fix.json`, unchanged:
 - RT-DETRv2-r50vd with score threshold τ 0.25;
 - height band [1.00, 2.30] m, flat test off;
 - duplicate radius 0.50 m, depth push 0.20 m;
@@ -111,14 +111,14 @@ Nothing is written into `data/`.
 
 | File | sha256 | Used for |
 |---|---|---|
-| `phase1c/i09/a1/pipeline.py` | `4826be88d6939f3f5e4d14375a2fc9698abd94973ca46243d6697e263e5d063a` | `run_image`, which calls `candidates` and `people_for`: lift, filters, duplicates, F5 facing |
-| `phase1c/i09/a1/common.py` | `cdc33d742f6db5d09c3ad9a4557c1210ef10f8909484cee101ce983f9f8b2f53` | `score_scene`, `view_angle_deg`, `view_class`, `facing_summary`, `boot_ci`, `p90` |
-| `phase1b/i03/people_scorer.py` | `e12776eaddac1de0af75b58f8a272cd0a13332596da626bcc81b085f5900d685` | `score_people`, `pool`, `wilson`, `exempt_points`, `truth_info`, `default_thresholds`, `FreshScene` |
-| `phase1c/i09/a1/sidecar/infer.py` | `bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484` | `setup`, `env_info`, `load_detector`, `load_pose`, `detect`, `pose`, and `BOX_MIN`, `POSE_MIN` |
-| `phase1c/i09/a1/chosen.json` | `19b1e16340d810e75f8f772eeeabeaf4b788e09614e74d78d3afc206531119ff` | the setting |
-| `phase1c/i09/a1/chosen_fix.json` | `fe8177165773f7208d417227c358adae7d04326bd29cb6c75d73ed87b3f83f52` | facing F5 (`fix_adopted`; its setting is asserted equal to chosen.json's) |
-| `phase1c/i09/a1/ADDENDUM_FIX.md` | `3a7d185526e3d9801bd2adcdaf529bfbe744c1a636dc8e03d0f53de45d2e208c` | the fix's record |
-| `phase1c/i09/FROZEN.md` | `f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15` | A1's protocol |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/pipeline.py` | `4826be88d6939f3f5e4d14375a2fc9698abd94973ca46243d6697e263e5d063a` | `run_image`, which calls `candidates` and `people_for`: lift, filters, duplicates, F5 facing |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/common.py` | `cdc33d742f6db5d09c3ad9a4557c1210ef10f8909484cee101ce983f9f8b2f53` | `score_scene`, `view_angle_deg`, `view_class`, `facing_summary`, `boot_ci`, `p90` |
+| `results/still-scenes/perception/depth-blob-detector/people_scorer.py` | `e12776eaddac1de0af75b58f8a272cd0a13332596da626bcc81b085f5900d685` | `score_people`, `pool`, `wilson`, `exempt_points`, `truth_info`, `default_thresholds`, `FreshScene` |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/sidecar/infer.py` | `bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484` | `setup`, `env_info`, `load_detector`, `load_pose`, `detect`, `pose`, and `BOX_MIN`, `POSE_MIN` |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen.json` | `19b1e16340d810e75f8f772eeeabeaf4b788e09614e74d78d3afc206531119ff` | the setting |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen_fix.json` | `fe8177165773f7208d417227c358adae7d04326bd29cb6c75d73ed87b3f83f52` | facing F5 (`fix_adopted`; its setting is asserted equal to chosen.json's) |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/ADDENDUM_FIX.md` | `3a7d185526e3d9801bd2adcdaf529bfbe744c1a636dc8e03d0f53de45d2e208c` | the fix's record |
+| `results/still-scenes/people-finder/early-detector/phase1c/FROZEN.md` | `f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15` | A1's protocol |
 | `configs/default.yaml` | `c651f4c484fff15d33290e13f28bc53c9221c8edd79c0b7a24f24a128098b4fc` | thresholds |
 
 `pipeline.py` and `common.py` carry the hashes A1 recorded in `a1/EVAL.sha256`. `infer.py` (last saved 21:34:58 on 17 Oct, before A1's fit pass) and `people_scorer.py` (18:58:56 on 17 Oct) are pinned here at their current contents.
@@ -215,9 +215,9 @@ Any analysis not listed here is labelled post hoc.
 ## 7. Development comparators (from A1's recorded rows; not recomputed)
 
 Sources, with their sha256 as in `a1/EVAL.sha256`:
-- `phase1c/i09/a1/people_rows.jsonl`: `96384dab0cb313715aa27c04fe1f8f4274b5b6ef3a8f83d6e1aa6cdf248f9f86`
-- `phase1c/i09/a1/rows.jsonl`: `d0d889051e97720f93df32a6dfbeab1126438385cf438322fa49daeb2331d51f`
-- `phase1c/i09/a1/summary.json`: `f2abcf10dc74623f43ebfd8f4f332a8b43320161d28b73064ad63afa703df60c`
+- `results/still-scenes/people-finder/early-detector/phase1c/a1/people_rows.jsonl`: `96384dab0cb313715aa27c04fe1f8f4274b5b6ef3a8f83d6e1aa6cdf248f9f86`
+- `results/still-scenes/people-finder/early-detector/phase1c/a1/rows.jsonl`: `d0d889051e97720f93df32a6dfbeab1126438385cf438322fa49daeb2331d51f`
+- `results/still-scenes/people-finder/early-detector/phase1c/a1/summary.json`: `f2abcf10dc74623f43ebfd8f4f332a8b43320161d28b73064ad63afa703df60c`
 
 The `real`-arm column is the like-for-like comparator, since the test set renders the `real` variant only.
 

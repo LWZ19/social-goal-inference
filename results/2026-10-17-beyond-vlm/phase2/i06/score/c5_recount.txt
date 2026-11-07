@@ -1,4 +1,4 @@
-C5 gate-1 recount on the widened generator (FROZEN.md section 10; phase1d/c5_gates/FROZEN.md readings kept)
+C5 gate-1 recount on the widened generator (FROZEN.md section 10; results/still-scenes/learned-models/flow-model-gates/FROZEN.md readings kept)
 Development rows (both splits, both passes): 26, 22 distinct tuples (C5 PRIMARY 22)
 Variant configurations (row, family, level) with >= 1 accepted variant in seeds 0-2: 70
 PRIMARY' (decides): 92 distinct (recipe, amount, kind, bystanders, second group, family, level) -> gate 1 met (>= 30 met; 25-29 borderline)

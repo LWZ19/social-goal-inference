@@ -1,9 +1,9 @@
 # C5 (I52) flow-matching pilot: frozen protocol (exploratory)
 
-The pilot lead wrote this on 18 Oct 2026, after the format check below. No raster, label, model or evaluation metric existed yet. Its sha256 is in `FROZEN.sha256`. This file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is built or scored. Paths are relative to `phase2/flow_pilot/` unless they start with `phase1`, `phase2`, `src/` or `tests/`.
+The pilot lead wrote this on 18 Oct 2026, after the format check below. No raster, label, model or evaluation metric existed yet. Its sha256 is in `FROZEN.sha256`. This file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is built or scored. Paths are relative to `results/still-scenes/learned-models/flow-model-pilot/` unless they start with `phase1`, `phase2`, `src/` or `tests/`.
 
-- Gate 2 is still running in `phase1d/c5_gates/`. Its outcome is unknown now; the results will cite it.
-- Gate 3: I04's V1 and V3 rows exist on the I14 harness (`phase1d/i04/`). Their verification is still running.
+- Gate 2 is still running in `results/still-scenes/learned-models/flow-model-gates/`. Its outcome is unknown now; the results will cite it.
+- Gate 3: I04's V1 and V3 rows exist on the I14 harness (`results/still-scenes/learned-models/soft-density/`). Their verification is still running.
 
 - the data: "fresh seeds" become seeds 110–199;
 - the raster: "10 cm cells" become 64 × 64 of them;
@@ -34,11 +34,11 @@ These facts shaped the seen-face target, the label exclusion and section 10. Not
 - Train: seeds 110–189.
 - Validation, which is also the in-distribution test: seeds 190–199.
 - All four development situations are included.
-- The seed agent writes the seeds under `phase2/seeds/placeholder/`. This pilot never generates one.
+- The seed agent writes the seeds under `results/still-scenes/scene-seeds/phase2/placeholder/`. This pilot never generates one.
 - Seed 100 served the format check only. Seeds 3–109 are not used.
 
 **Loading and guards.**
-- Loading follows `phase1b/i03/stageA/fitdata.py`: `H.guard_scene`, then `load_scene`, then regions from `sgi.gt.derive.prepare` under the default thresholds.
+- Loading follows `results/still-scenes/perception/depth-blob-detector/stageA/fitdata.py`: `H.guard_scene`, then `load_scene`, then regions from `sgi.gt.derive.prepare` under the default thresholds.
 - For every scene it is asserted that its situations are development situations and that it is no held-out row (group_photo, lift_wait, eval_16–19).
 
 **Units.**
@@ -142,7 +142,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
   - inside an acceptable region of the target;
   - reachable (joined to the robot on `robot_grid(truth)`);
   - heading within 45 deg of the region's heading.
-- **Scorer:** I14's vectorised replica (`phase1/i14_v0/i14.py`). It is checked against `sgi.evaluate.score` on a GoalResult with the oracle target, for the top pose and 8 random samples per episode. Any disagreement stops the scoring (choice).
+- **Scorer:** I14's vectorised replica (`results/still-scenes/metrics-and-statistics/metric-v0/i14.py`). It is checked against `sgi.evaluate.score` on a GoalResult with the oracle target, for the top pose and 8 random samples per episode. Any disagreement stops the scoring (choice).
 - **Metrics:**
   - the share of the 64 samples that succeed;
   - region coverage: the share of region cells with a raw sample within 0.2 m (+1e-9). Choice: region cells are cells of the 0.10 m grid, extended beyond the raster, whose centre lies in the region and on the floor by channel 1's rule. Clipping therefore counts against the flow;
@@ -152,7 +152,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
   - each LOSO model on its left-out situation, beside the main model on the same episodes.
 - **Baselines (top-1):** `sgi.solver.solve` with the oracle people, the oracle target and `standard_goal`. Where the oracle target's lift fails, a target at the 3-D anchor is used, counted.
   - **B0:** no constraints (the solver alone).
-  - **B1:** reference constraints. `src/` has none. The source is `tests/test_reference_constraints.reference_constraints` as copied in `phase1/i01_repairs/repairs.py`, written against the oracle people.
+  - **B1:** reference constraints. `src/` has none. The source is `tests/test_reference_constraints.reference_constraints` as copied in `results/still-scenes/replay-harness/repairs/repairs.py`, written against the oracle people.
   - B1 is I01's P5/ALL configuration, not R5: generated scenes have no recorded people. It reads the situation and the true group, so it is circular and serves only as a reference.
 
 **(ii) Development records, setting (b): each model's recorded people.**
@@ -184,7 +184,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
   - P(success) = mean S;
   - Lift_room = Σ S / Σ ρ_room;
   - hit@5 = `hit_pkg[4]`.
-- The I04 rows are used once their verification has finished (a README or a verification summary in `phase1d/i04/`). Until then: poll every 10 min for at most 2 h. After that, report without them and say so.
+- The I04 rows are used once their verification has finished (a README or a verification summary in `results/still-scenes/learned-models/soft-density/`). Until then: poll every 10 min for at most 2 h. After that, report without them and say so.
 
 **Secondary, deciding nothing** (choice):
 - a layout-cluster bootstrap of flow(b) − C top-1, per model and pooled: 2,000 draws, `default_rng(20261018)`, realistic and watching strata apart, as in I04;
@@ -218,7 +218,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
 5. A README.
 
 - It never imports sgi and installs nothing.
-- It reads and writes only .npz and .json files under `phase2/flow_pilot/`.
+- It reads and writes only .npz and .json files under `results/still-scenes/learned-models/flow-model-pilot/`.
 
 **GPU.**
 - One GPU process at a time.

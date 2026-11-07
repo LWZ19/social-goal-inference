@@ -1,5 +1,5 @@
 
-**Status.** Draft, revised 2026-10-18 after three reviews (`phase3/metrics_v1/CHANGELOG.md`; first draft kept as `METRIC_LIST_v1_DRAFT.first.md`), then fact-checked (`FACTCHECK.md`), then updated with the confidence probe's results (`A2_UPDATE.md`). Not frozen or agreed. Version 0 (`phase1/i14_v0/METRIC_NOTE.md`) stays in force until rows of the table below are agreed (REPORT §7).
+**Status.** Draft, revised 2026-10-18 after three reviews (`results/still-scenes/metrics-and-statistics/metric-v1/CHANGELOG.md`; first draft kept as `METRIC_LIST_v1_DRAFT.first.md`), then fact-checked (`FACTCHECK.md`), then updated with the confidence probe's results (`A2_UPDATE.md`). Not frozen or agreed. Version 0 (`results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md`) stays in force until rows of the table below are agreed (REPORT §7).
 - **How to agree.** Rows can be agreed one at a time. An agreed row replaces the matching v0 convention. A row nobody answers takes its default. A number marked *placeholder* is not up for agreement yet.
 - **Labels.** "Drafter's arithmetic": worked out here from cited numbers. "Reviewer's simulation": from a review, not re-run here. Paths are relative to `results/2026-10-17-beyond-vlm/`.
 
@@ -31,7 +31,7 @@
 - **SEWA.** Smallest effect worth acting on, fixed before a study.
 - **Holm's correction.** Over m models: test the smallest p at 0.05/m, the next at 0.05/(m − 1), and so on.
 - **Visibility rule.** The package's `is_visible`: whether a person counts as visible in the image.
-- **Confidence probe.** The phase-3 study (`phase3/confidence/README.md`, 18 Oct): confidence from disagreement between the VLM's people and a local detector's (§2.1). Signals: P1, the shift of C's place when the solver re-runs with the detector's people (the detector repair, I09 step A2's setting D); S2, people disagreement with the detector; S4, disagreement among C's trials (two extra runs); S6z, a zero-call combination including P1 and S2. **The flags:** any of the solver's three flags raised.
+- **Confidence probe.** The phase-3 study (`results/still-scenes/confidence-signal/README.md`, 18 Oct): confidence from disagreement between the VLM's people and a local detector's (§2.1). Signals: P1, the shift of C's place when the solver re-runs with the detector's people (the detector repair, I09 step A2's setting D); S2, people disagreement with the detector; S4, disagreement among C's trials (two extra runs); S6z, a zero-call combination including P1 and S2. **The flags:** any of the solver's three flags raised.
 - **Idea codes** (REPORT §4). I04 soft solver density; I06 crowd variants; I09 local people detector; I14 this scoreboard; I46 statistics and sealed test set; A0, I09's step that measured the VLMs' facing accuracy; C5 flow-matching sampler, whose "gate 2" tested a simple density on unseen situations.
 
 | # | Question | Recommendation; default if no answer | Who | Why (evidence) |
@@ -42,7 +42,7 @@
 
 ## 1. Primary metric: top-1 success
 
-**Definition** (as v0, `phase1/i14_v0/METRIC_NOTE.md`). One goal pose per episode succeeds when the method picked the right target, the pose is reachable on the ground-truth grid (robot radius 0.30 m, person radius 0.25 m), it lies inside the matched target's acceptable region, and its heading is within 45 deg of the allowed heading (D1, D2). The package scorer decides; a wrong target scores 0.
+**Definition** (as v0, `results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md`). One goal pose per episode succeeds when the method picked the right target, the pose is reachable on the ground-truth grid (robot radius 0.30 m, person radius 0.25 m), it lies inside the matched target's acceptable region, and its heading is within 45 deg of the allowed heading (D1, D2). The package scorer decides; a wrong target scores 0.
 
 **Units.** Every table names its unit. Goal-step counts read "of N goal-step records" and are never mixed with records of 252.
 
@@ -51,12 +51,12 @@
 | Episode record | One (arm, scene, episode, trial); the unit for top-1 | 252 per model and method per realistic set (14 layouts × 3 arms × 2 episodes × 3 trials) | 14 layouts of 18 records |
 | Goal-step record | An episode record where C reached the solver; the unit for set metrics, Q1, and Q2 on development records | Old wording: Qwen 143, GLM 141, DeepSeek 157 (441); watching 36 per model; 549 in all | 13 realistic layouts (`eval_04` has none; per cell Qwen 8, GLM 11, DeepSeek 12) plus 2 watching templates |
 | Generator episode | One (scene, episode) of a generator seed; the unit for Q2 there, as in gate 2 | 520 on seeds 100–109 | Templates |
-| Template | One generator row or base structure; seeds of a row repeat it with small jitter (members move a median 0.00–0.48 m; `phase1d/README.md` §2.1) | 22 among the development rows; the 14 realistic layouts are 14 rows | Cluster and leave out by template |
+| Template | One generator row or base structure; seeds of a row repeat it with small jitter (members move a median 0.00–0.48 m; `results/still-scenes/overview/phase-notes/phase1d.md` §2.1) | 22 among the development rows; the 14 realistic layouts are 14 rows | Cluster and leave out by template |
 
 - A **layout** is a scene id without the arm (real, staffed and plain dress one layout). Template counts: watching 2 (rows `eval_14`, `eval_15`, seeds 0–2), I06 10 base structures, I09 14 rows. Watching cells are descriptive only; give the 6-scene version as a sensitivity.
 - **Per-cell reporting.** k of n per cell. Pool only independent sets: s21 Qwen's and s23 GLM's and DeepSeek's C people answers are cache copies of s19/s20.
 
-**Intervals and tests.** Records in a layout are correlated: the share of variance between layouts (ICC) is 0.08–0.75, so 252 records carry the information of 18–107 independent ones (`phase1/README.md` §5).
+**Intervals and tests.** Records in a layout are correlated: the share of variance between layouts (ICC) is 0.08–0.75, so 252 records carry the information of 18–107 independent ones (`results/still-scenes/overview/phase-notes/phase1.md` §5).
 - **Top-1 differences on episode records.** The two-sided exact sign-flip test by layout decides whether there is a difference: how often random sign flips of the 14 layout differences give a total this large. The t interval over the 14 layout mean differences gives the size. No record-level binomial, McNemar or Wald tests.
 - **Record-weighted means and ratios on goal-step records** (log score, Brier, mean S, lift, recovery). Layouts are very unequal in size (1–6 records at `eval_00`–`05`), so an unweighted t over layout means estimates a different quantity. Use the record-weighted value with a cluster-robust standard error from cluster totals and t(G − 1) critical values, G the number of clusters. This interval decides.
 - **AUROC and selective accuracy.** Layout-cluster bootstrap, 2,000 draws, percentile; it runs narrow with 13 clusters, so say so. As the probe froze (`FROZEN.md` §5): paired draws, midrank AUROC (ties half), expected-value ties in selective accuracy. Fix tie rules in advance: P1's DeepSeek AUROC spans 0.670–0.706 by tie-breaking.
@@ -65,7 +65,7 @@
 **A difference worth acting on** (D3).
 - **Before the study,** the note names its design, the matching MDD row and its SEWA. If the MDD exceeds the SEWA, it says the study can detect only effects of at least the MDD.
 
-| Design | MDD, records of 252 (`phase1/i46_stats/mdd_table.txt`) | Noise covered |
+| Design | MDD, records of 252 (`results/still-scenes/metrics-and-statistics/statistics/mdd_table.txt`) | Noise covered |
 |---|---|---|
 | Claim about new layouts (offline replay or live) | Over 14 layouts: 18–28 (E−R-like), 33–79 (C−E-like) | Layout to layout |
 | Paired live A/B, one stage, same trials | 11–21 per 3-trial batch | Run to run, these layouts |
@@ -92,7 +92,7 @@
 - **Skill (judged).** Brier score: mean (p̂ − outcome)². Brier skill score (BSS): 1 − Brier / Brier of a reference that states the base rate of the record's own cell (leave one template out). Computed within each cell; the pooled figure is the record-weighted mean of the cell values. A pooled reference hands skill to any signal that knows the model: per-cell rates alone score +0.08 pooled and +0.32 at old Qwen (+0.35 if the base rate is pooled over all 549 primary records; drafter's arithmetic).
 - **Descriptive.** Binary log score (p̂ clipped to [0.001, 0.999]); a reliability table (5 equal-count bins); ECE, the record-weighted gap between mean p̂ and success share; calibration slope and intercept from a logistic refit, with intervals. ECE is biased upward on small clustered samples: a perfectly calibrated forecaster would often show 0.03–0.06 here (reviewer's simulation).
 
-**(c) Any confidence score, used for ranking.** **Stratified AUROC for failure** (judged): failure–success pairs are compared only within a cell, summed over the counting cells (Q1 bars). Never one ranking pooled across cells. Reported beside, each next to the flags': AUROC per cell with its failure count, right-target and wrong-target AUROC. 34 of the 102 failures among the 441 realistic records are wrong targets, which no density over one record's floor can see (`phase3/confidence/FROZEN.md`).
+**(c) Any confidence score, used for ranking.** **Stratified AUROC for failure** (judged): failure–success pairs are compared only within a cell, summed over the counting cells (Q1 bars). Never one ranking pooled across cells. Reported beside, each next to the flags': AUROC per cell with its failure count, right-target and wrong-target AUROC. 34 of the 102 failures among the 441 realistic records are wrong targets, which no density over one record's floor can see (`results/still-scenes/confidence-signal/FROZEN.md`).
 
 **(d) Abstention,** for a study claiming that use. (c) stays the primary bar for any confidence signal; an abstention claim must also pass (d). Abstain (ask or look again) on the 20% of a cell's records with the lowest confidence. **Selective accuracy** is top-1 over the rest; the gain is that minus the cell's base rate (random abstention's expected value), then the record-weighted mean over counting cells. Report failures caught beside the random 20%, and 50% abstention as a secondary rate. For scale on the 441 realistic records: a perfect ranker gains +6.3, +17.0 and +17.4 points (Qwen, GLM, DeepSeek); a signal with AUROC 0.70 about +1.9, +6.0 and +5.9, a mean of +4.6 (binormal model, equal spreads; reviewer's arithmetic, re-run here). Within cells on the probe's records (all three): P1 +8.5, S2 +8.1, S6z +8.6, the flags +3.0 (+4.6 over GLM and DeepSeek alone; drafter's arithmetic from its `tables.txt` T5).
 
@@ -129,37 +129,37 @@ Q2 asks whether a density covers the whole region and keeps mass elsewhere low. 
 - **Mass outside the region.** In-region mass, and mass in each forbidden kind (`ahead_in_line`, `group_space`, `audience_view`) over records or episodes that have that kind. Heading: the share of in-region mass within 45 deg.
 
 **Q2 bars** (D8).
-- Δ ≥ 0.10 nats per region cell against the **stronger** of band-uniform and uniform, fold by fold. Band-uniform alone is weak: uniform beats it by 0.131 and 2.919 nats in gate 2's waiting-line and audience folds, so uniform would clear 0.10 against the band in 2 of 3 folds (`phase1d/README.md` Table 2.2).
+- Δ ≥ 0.10 nats per region cell against the **stronger** of band-uniform and uniform, fold by fold. Band-uniform alone is weak: uniform beats it by 0.131 and 2.919 nats in gate 2's waiting-line and audience folds, so uniform would clear 0.10 against the band in 2 of 3 folds (`results/still-scenes/overview/phase-notes/phase1d.md` Table 2.2).
 - In at least 2 of 3 left-out people situations (gate 2's rule), each passing fold judged on its **worst of at least 3 training draws**: in gate 2 the training subsample alone moved a fold's Δ by about 0.9 nats (+1.955 against +2.843 to +2.906; Table 2.3). Report per-situation Δ, the share of episodes with Δ > 0, and a template-cluster interval per fold (3–5 templates, so descriptive).
 - The control must fail under the same folds, or the study makes no Q2 claim. (At I04's room shares, dropping the forbidden cells gains at most about 0.096 nats over uniform, so the control fails, narrowly, at audiences; drafter's arithmetic.)
 - The verdict holds at mixing weights 0.1%, 1% and 10%.
-- Forbidden mass at most 0.02 in each kind, beside uniform's level (the room share) and the solver's top place's share. 0.02 allows smoothing over a group's ring (V1 and V3: 0.001) and the top place's own rate under VLM people (0.0185 in audience view), and catches uniform's 0.0916 in audience view (`phase1d/README.md` Table 1.6). Where the room share is below 0.02 (lines 0.0016, groups 0.0030), only the log-density bar catches spreading.
+- Forbidden mass at most 0.02 in each kind, beside uniform's level (the room share) and the solver's top place's share. 0.02 allows smoothing over a group's ring (V1 and V3: 0.001) and the top place's own rate under VLM people (0.0185 in audience view), and catches uniform's 0.0916 in audience view (`results/still-scenes/overview/phase-notes/phase1d.md` Table 1.6). Where the room share is below 0.02 (lines 0.0016, groups 0.0030), only the log-density bar catches spreading.
 
 ### 2.3 Earlier results under v1
 
 | Result | What it scored | Question | Verdict under v1 |
 |---|---|---|---|
-| I14 v0 runners-up (`phase1/README.md` §4) | hit@k, recovery, set success share | A list question, closest to Q1 | **Same:** runner-up knowledge not shown. With whole-room draws, AR recovers 57% and 69%, above the 50% line in both DeepSeek cells. GLM's runners-up fall below random and farthest additions (99 against 104.0 and 107.0) |
-| I04 (`phase1d/README.md` §1) | Mean ln(1e-3 + S); concentration AUROC | Q1 (a), (c) | **Same (kill):** V1 −1.563 against V3 −1.452 (n 549). The ε check was not computed; stratified AUROC 0.447 (recomputed by the confidence probe); every cell AUROC (0.559, 0.303, 0.540) is below 0.70 |
-| C5 gate 2 (`phase1d/README.md` §2.2) | Region log density against band-uniform | Q2 | **Same on the main clause:** against the stronger baseline Δ is +1.823, −0.781, +1.195 (frozen draw) and 2 of 3 in the verifier's draw too. Not computable from the page: a third draw against uniform, mixing weights, the control, template intervals. Δ was positive in 0 of 100 conversation-group episodes |
-| Flow pilot (`phase2/flow_pilot/README.md` §5) | Top-1 (K1 against P, the solver with true people; K2 against C); Lift_room and P(success) against V3 (K3) | Top-1, then Q1 | **Same (kill):** K1 (22–30 points below P) and K2 (15–27 below C) fire on top-1 alone. K3 compares with V3, a near-point mass |
-| I06 L1/L2 (`phase2/i06/README.md` §2) | Disagreement on oracle C | Label validity (§4) | **Same:** 1.5% passes. The reference stop's 42.7% reads as label dependence for reference-point methods |
-| I09 confirmation (`phase2/i09/README.md` §1) | Detector bars | People perception (§5) | **Same (neither):** 0.242 false people per image, or 0.192 / 0.170 under D12, against 0.10 |
+| I14 v0 runners-up (`results/still-scenes/overview/phase-notes/phase1.md` §4) | hit@k, recovery, set success share | A list question, closest to Q1 | **Same:** runner-up knowledge not shown. With whole-room draws, AR recovers 57% and 69%, above the 50% line in both DeepSeek cells. GLM's runners-up fall below random and farthest additions (99 against 104.0 and 107.0) |
+| I04 (`results/still-scenes/overview/phase-notes/phase1d.md` §1) | Mean ln(1e-3 + S); concentration AUROC | Q1 (a), (c) | **Same (kill):** V1 −1.563 against V3 −1.452 (n 549). The ε check was not computed; stratified AUROC 0.447 (recomputed by the confidence probe); every cell AUROC (0.559, 0.303, 0.540) is below 0.70 |
+| C5 gate 2 (`results/still-scenes/overview/phase-notes/phase1d.md` §2.2) | Region log density against band-uniform | Q2 | **Same on the main clause:** against the stronger baseline Δ is +1.823, −0.781, +1.195 (frozen draw) and 2 of 3 in the verifier's draw too. Not computable from the page: a third draw against uniform, mixing weights, the control, template intervals. Δ was positive in 0 of 100 conversation-group episodes |
+| Flow pilot (`results/still-scenes/learned-models/flow-model-pilot/README.md` §5) | Top-1 (K1 against P, the solver with true people; K2 against C); Lift_room and P(success) against V3 (K3) | Top-1, then Q1 | **Same (kill):** K1 (22–30 points below P) and K2 (15–27 below C) fire on top-1 alone. K3 compares with V3, a near-point mass |
+| I06 L1/L2 (`results/still-scenes/crowds/README.md` §2) | Disagreement on oracle C | Label validity (§4) | **Same:** 1.5% passes. The reference stop's 42.7% reads as label dependence for reference-point methods |
+| I09 confirmation (`results/still-scenes/people-finder/early-detector/phase2/README.md` §1) | Detector bars | People perception (§5) | **Same (neither):** 0.242 false people per image, or 0.192 / 0.170 under D12, against 0.10 |
 
 ### 2.4 Chance region (D9)
 
-- **(a) Lift denominator.** v1 keeps the floor F(rec), as v0 froze. On shared records ρ_room does not depend on the method, so a lift ratio equals a success ratio: V3/V0's Lift_room of 8.78/8.90 matches their mean S of 0.749/0.760 (`phase1d/README.md` Table 1.2). Lift only restates success against chance. The region is 1.6–3.8% of reachable floor (REPORT I14), so lifts are large by nature; compare them across methods, not with a fixed number.
-- **(b) Random baselines.** v0 drew R5 (5 random cells) and AR (the top place plus 4 random cells) in a 3 m disc around the target. The disc leaves out about 90% of the watching region, and the top place lies outside it in 470 of 790 line records (`phase1/README.md` §4). v1 draws over F(rec), the disc beside. AR's recovery moves from 96% to 57% (DeepSeek realistic) and from 33% to 69% (watching).
+- **(a) Lift denominator.** v1 keeps the floor F(rec), as v0 froze. On shared records ρ_room does not depend on the method, so a lift ratio equals a success ratio: V3/V0's Lift_room of 8.78/8.90 matches their mean S of 0.749/0.760 (`results/still-scenes/overview/phase-notes/phase1d.md` Table 1.2). Lift only restates success against chance. The region is 1.6–3.8% of reachable floor (REPORT I14), so lifts are large by nature; compare them across methods, not with a fixed number.
+- **(b) Random baselines.** v0 drew R5 (5 random cells) and AR (the top place plus 4 random cells) in a 3 m disc around the target. The disc leaves out about 90% of the watching region, and the top place lies outside it in 470 of 790 line records (`results/still-scenes/overview/phase-notes/phase1.md` §4). v1 draws over F(rec), the disc beside. AR's recovery moves from 96% to 57% (DeepSeek realistic) and from 33% to 69% (watching).
 - **Why not a region around the acceptable region or the top place** (REPORT §7's option). Around the region uses the label, so it is not chance. Around the top place depends on the method's own pick, which the anchored baselines already cover (AR, and AF: the top place plus 4 farthest-apart cells), and it needs a radius nobody has chosen. The whole floor adds no parameter.
 
 ---
 
 ## 3. Collapse
 
-**What happened.** I04's kill 2: "more than 90% of the mass within 0.3 m of the top place in over 80% of records" (REPORT I04). V1 crossed 0.9 in 312 of 549 records (56.8%), so it did not fire. But V3 kept more than 0.999 of its mass within 0.3 m in every record, so the line would fire on the study's best density (`phase1d/README.md` Tables 1.1, 1.6). The top place succeeds in 417 of 549 goal-step records, so under a Q1 score moving mass off it costs more than it gains.
+**What happened.** I04's kill 2: "more than 90% of the mass within 0.3 m of the top place in over 80% of records" (REPORT I04). V1 crossed 0.9 in 312 of 549 records (56.8%), so it did not fire. But V3 kept more than 0.999 of its mass within 0.3 m in every record, so the line would fire on the study's best density (`results/still-scenes/overview/phase-notes/phase1d.md` Tables 1.1, 1.6). The top place succeeds in 417 of 549 goal-step records, so under a Q1 score moving mass off it costs more than it gains.
 
 **v1 rule** (D6).
-- **Q1: concentration is not a failure.** When the solver is usually right, nearly all mass on its top place is the right answer. No collapse line; beat V0 and V3. Phase 1d's reading, untested: a useful spread would need upstream uncertainty, such as perception, which the solver's keys cannot see (`phase1d/README.md` §5).
+- **Q1: concentration is not a failure.** When the solver is usually right, nearly all mass on its top place is the right answer. No collapse line; beat V0 and V3. Phase 1d's reading, untested: a useful spread would need upstream uncertainty, such as perception, which the solver's keys cannot see (`results/still-scenes/overview/phase-notes/phase1d.md` §5).
 - **Q2: concentration is a failure,** caught by the region log-density score itself, since a near-point mass leaves most region cells at the 1% floor. Coverage, read with in-region mass, shows it too.
 - **Diagnostics, never judged:** mass within 0.3 m of the top place; effective support (exp of the density's entropy, in m²) beside the region's area.
 - A method claiming both questions passes each question's bars separately.
@@ -170,7 +170,7 @@ Q2 asks whether a density covers the whole region and keeps mass elsewhere low. 
 
 L1 and L2 as in the glossary; L3 (L2 with a fallback) was not measured (REPORT §7).
 
-**What I06 found** (`phase2/i06/README.md` §2). One scene is one episode, so n is scenes. The 199 variants come from 10 base structures × 3 seeds: 10 templates.
+**What I06 found** (`results/still-scenes/crowds/README.md` §2). One scene is one episode, so n is scenes. The 199 variants come from 10 base structures × 3 seeds: 10 templates.
 - Oracle C (true people, reference constraints, then the solver) disagrees between labels in 3 of 199 (1.5%), all at one row (`eval_11`, one per seed); L2 is never empty. This is built in: the solver keeps 1.0 m from people and L2 needs 0.85 m. With simulated people, its disagreement is 2.1–4.5% (DeepSeek 4.0% in the verifier's run; §11 there), close to the 5% line.
 - L1's own reference stop fails L2 in 85 of 199 (42.7%), including all 72 variants of family A levels 2–6.
 
@@ -182,7 +182,7 @@ L1 and L2 as in the glossary; L3 (L2 with a fallback) was not measured (REPORT �
 
 ## 5. People-perception metrics
 
-For detector studies (I09) and VLM people stages, with the project's people scorer (from I03) unchanged (`phase2/i09/README.md` §1). **Detector bars:** I09 step A1's. The unseen-layout confirmation used all but the last two rows, since no VLM ran on its scenes and runtime was not judged.
+For detector studies (I09) and VLM people stages, with the project's people scorer (from I03) unchanged (`results/still-scenes/people-finder/early-detector/phase2/README.md` §1). **Detector bars:** I09 step A1's. The unseen-layout confirmation used all but the last two rows, since no VLM ran on its scenes and runtime was not judged.
 
 | Metric | Definition | Bar |
 |---|---|---|
@@ -195,8 +195,8 @@ For detector studies (I09) and VLM people stages, with the project's people scor
 | Runtime | Warm deployed path on the 4060: median detector-plus-pose time plus median project-side time | ≤ 1.0 s |
 
 - **Intervals.** Cluster by row (14 templates): a cluster-robust interval with t(13) for recall and for false people per image (a rate that can exceed 1, not a proportion); a row-cluster bootstrap as a check. Wilson intervals ignore clustering and are descriptive only.
-- Report recall by role class (staff was weakest: 69 of 78 on unseen layouts; `phase2/i09/README.md` Table 1.2).
-- **The hidden-by-rule question** (D12). On seeds 200–212, 44 false people gave 0.242 per image. 9 lie within 0.5 m of counter staff the visibility rule calls hidden, though the staff's marked point projects into the picture; 4 more lie 0.52–0.61 m away (post hoc, `phase2/i09/README.md` Table 1.5). Without the 9 the rate is 35/182 = 0.192; without all 13, 31/182 = 0.170 (drafter's arithmetic). Both stay above 0.10, so I09's "neither" stands. "Apart" fits better than hit or false: the rule and the image disagree, so there is no visible person to match, yet a real person is there; it is a scorer question (I09 §3, §4 question 4). The radius is fixed at 0.5 m now, because the 0.61 m edge came from the post hoc table.
+- Report recall by role class (staff was weakest: 69 of 78 on unseen layouts; `results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.2).
+- **The hidden-by-rule question** (D12). On seeds 200–212, 44 false people gave 0.242 per image. 9 lie within 0.5 m of counter staff the visibility rule calls hidden, though the staff's marked point projects into the picture; 4 more lie 0.52–0.61 m away (post hoc, `results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.5). Without the 9 the rate is 35/182 = 0.192; without all 13, 31/182 = 0.170 (drafter's arithmetic). Both stay above 0.10, so I09's "neither" stands. "Apart" fits better than hit or false: the rule and the image disagree, so there is no visible person to match, yet a real person is there; it is a scorer question (I09 §3, §4 question 4). The radius is fixed at 0.5 m now, because the 0.61 m edge came from the post hoc table.
 
 ---
 
@@ -213,7 +213,7 @@ Label every goal-step latency with one quantity (REPORT I21; Qwen C, 143 realist
 
 - Median and p90 with n. Fresh calls and cache hits apart. State the load (stage 23 ran 6 gateway jobs under the 85/min cap; REPORT §1.1, finding 8).
 - C and E are compared only under the same per-stage thinking policy (REPORT I22), paired on matched records in the same load window, with a scene-cluster bootstrap interval for the median difference. "C faster than E" is claimed only when that interval excludes zero.
-- **Local models:** name the timed span and the load. I09: 55.6 ms on the warm deployed path (step A1's development images; verifier 61.9 ms); 215.1 ms un-warmed, every box ≥ 0.10 posed, on a shared machine (verifier 127.0 ms on the same images; `phase2/i09/README.md` §1). The flow pilot's 18.3 ms covered sampling and projection only (verifier 11.9 ms, idle GPU), with the raster (78.5 ms) and floor work (110.8 ms) timed apart (`phase2/flow_pilot/README.md` Table 2.10). Neither pair is settled.
+- **Local models:** name the timed span and the load. I09: 55.6 ms on the warm deployed path (step A1's development images; verifier 61.9 ms); 215.1 ms un-warmed, every box ≥ 0.10 posed, on a shared machine (verifier 127.0 ms on the same images; `results/still-scenes/people-finder/early-detector/phase2/README.md` §1). The flow pilot's 18.3 ms covered sampling and projection only (verifier 11.9 ms, idle GPU), with the raster (78.5 ms) and floor work (110.8 ms) timed apart (`results/still-scenes/learned-models/flow-model-pilot/README.md` Table 2.10). Neither pair is settled.
 
 ---
 
@@ -222,8 +222,8 @@ Label every goal-step latency with one quantity (REPORT I21; Qwen C, 143 realist
 | Data | Fit or tune? | Test? | Source |
 |---|---|---|---|
 | Development: whitelisted runs and the 68 development scenes (42 realistic, 26 placeholder) | Yes, leaving one template out | Yes, but a method chosen on it needs fresh-template confirmation (D14) | REPORT §8, "Tuning on the reporting sets" |
-| Fit seeds 100–109 | Yes (I03, I11, I09 step A1, gate 2) | Not for methods fitted on them | REPORT I46; gate 2: `phase1d/README.md` §2.2 |
-| Training seeds 110–199 | Training only (110–189 trained the pilot, 190–199 chose its checkpoint) | No | `phase2/flow_pilot/README.md` §1, §7 |
+| Fit seeds 100–109 | Yes (I03, I11, I09 step A1, gate 2) | Not for methods fitted on them | REPORT I46; gate 2: `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 |
+| Training seeds 110–199 | Training only (110–189 trained the pilot, 190–199 chose its checkpoint) | No | `results/still-scenes/learned-models/flow-model-pilot/README.md` §1, §7 |
 | I46's sealed bank: seeds 3–99 (never generated or opened) and new situations written blind | No | I46's one final run, about 6,000 calls | REPORT I46, §6 |
 | `eval_16`–`19` (group photo, lift wait), runs s18 and s20_held | No; never read | Spent for clean claims; a new method needs its own held-out design | REPORT §8, "Held-out discipline" |
 

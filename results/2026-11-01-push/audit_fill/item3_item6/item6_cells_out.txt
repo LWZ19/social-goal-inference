@@ -775,7 +775,7 @@ Missing episodes: none
 | room_coffee_cart_bystanders | 10 | 1 / 1 | 361 / 240 | 0.003 / 0.004 |
 | sweet_spot_line2_bystanders | 10 | 77 / 1 | 217 / 176 | 0.355 / 0.006 |
 
-## Check against SUMMARY.md section 7 (and ideas2/SHORTLIST.md section 0)
+## Check against SUMMARY.md section 7 (and results/overview/ideas-round-2/SHORTLIST.md section 0)
 
 | Quoted | Cells | Recount A vs B | More / fewer | Match |
 |---|---|---|---|---|

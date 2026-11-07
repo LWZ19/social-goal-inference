@@ -19,7 +19,7 @@
    first answer. Found because Rq0's 128 answers all had the first answer's pose. Fixed in
    `Episode.requery` (renders a fresh view; checked: 75 re-asks, 75 different pictures). Arms affected: Rq, Cq,
    Rq0 (every re-asked answer). Not affected: R1, C1, CT, CTv, RT (their first frame and re-solves were rendered
-   fresh). The affected DeepSeek episodes are kept apart in `runs/dsv41_invalid_requery/` and run again
+   fresh). The affected DeepSeek episodes are kept apart in `results/data/moving/runs/dsv41_invalid_requery/` and run again
    (queue_all.sh). x-test-3 had not started.
 5. **2026-11-02 ~01:20, CT2 frozen (CT2_FROZEN.md, sha256 29808d8e) and the fresh-seed plan widened.** The waiting
    queue_fresh.sh (nothing started) is replaced by queue_freshA.sh / queue_freshB.sh: fresh seeds 10-19 for C1, R1, CT,
@@ -29,7 +29,7 @@
    Also found on seeds 0-2 by the brainstorm round: the resolver never re-admits a person who left and rejoined
    (`Resolver.record`), and two-person lines never got a line direction; both stay as they are in CT v1 and are fixed
    only in CT2 (opt-in options), so all CT v1 data are one consistent method.
-6. **2026-11-02, found by the failure analyst (analysis/FAILURES.md).** The sim's queue-membership corridor in
+6. **2026-11-02, found by the failure analyst (results/moving-lines/failure-analysis/FAILURES.md).** The sim's queue-membership corridor in
    `experiment.py` is 0.8 m (`CORRIDOR_M`), while DESIGN.md says 0.6 m; all episodes so far ran with 0.8 m, which is
    kept for consistency and reported. The frozen scoring's in-line test has no side check (only cut-in uses the
    1.0 m corridor), so a robot level with the right gap but beside the line counts as in line; 38% of R1's in-line
@@ -39,7 +39,7 @@
    usable about half the time, CTs against CT would compare two ways of maintaining nothing. CTd runs on DeepSeek and
    Sonnet (Sonnet the informative half). Both CTs_FROZEN.md and E1D_FROZEN.md named three models; only the models
    change, no bar or parameter.
-9. **2026-11-02 ~02:00, E1c (e1/e1c/E1C_FROZEN.md) as built (agreed with the questioner).** CTe numbers the request
+9. **2026-11-02 ~02:00, E1c (results/moving-lines/people-finder/first-check/E1C_FROZEN.md) as built (agreed with the questioner).** CTe numbers the request
    frame's detected people with the pipeline's own rule (`number_people`: merge, cut to max_people, left to right),
    not in ascending track id as the note said: it is the rule every people source goes through (E1b's D arm too),
    and the first match is then exact (identical detections at distance 0). Logged checks: the first-match rate

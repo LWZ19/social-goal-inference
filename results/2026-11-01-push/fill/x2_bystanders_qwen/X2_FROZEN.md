@@ -5,16 +5,16 @@
 Does motion evidence (CT3) stop the robot from lining up behind a bystander, on Qwen 3.8 as on DeepSeek? And does it
 raise time in line?
 
-The frozen confirmation passed on DeepSeek (`moving/BYSTANDERS_CONFIRM_FROZEN.md`). Its Sonnet addendum failed the
+The frozen confirmation passed on DeepSeek (`results/moving-lines/bystanders/BYSTANDERS_CONFIRM_FROZEN.md`). Its Sonnet addendum failed the
 capture bars. No school-panel model has run it.
 
 ## Design: the confirmation's, unchanged except the model
 
 - **Scenes:** cafe_line2_bystanders and sweet_spot_line2_bystanders, seeds 15-44. That is 60 cells.
-- **Arms:** CT2, CT3 and Gl, in one invocation per cell into `moving/runs_x2/soclaas_qwen38_low/`.
+- **Arms:** CT2, CT3 and Gl, in one invocation per cell into `results/data/moving/runs_x2/soclaas_qwen38_low/`.
   - CT2 makes the live first answer. CT3 and Gl replay it through the cache, as run_moving groups them.
 - **Model:** `soclaas_qwen38_low` (free). 92 s episodes.
-- **Scorer:** `moving/bystanders_confirm_score.py`, the frozen confirmation scorer, unchanged. Its bars are C1 (share,
+- **Scorer:** `results/moving-lines/bystanders/bystanders_confirm_score.py`, the frozen confirmation scorer, unchanged. Its bars are C1 (share,
   CT3 vs CT2), C2 (capture) and R (roles, CT3 vs Gl).
 
 ## Bars
@@ -23,7 +23,7 @@ capture bars. No school-panel model has run it.
 - **Latency.** Item 9's rule applies: if more than half of Qwen's CT2 episodes have no first answer within 92 s, the
   92 s result is labelled latency-bound.
   - CT2 and CT3 are then re-run with `--seconds 240`, cache-only (zero calls), into
-    `moving/runs_x2/soclaas_qwen38_low_long/`.
+    `results/data/moving/runs_x2/soclaas_qwen38_low_long/`.
   - The bars are read there as a labelled secondary.
 
 - **What happened.** `bystanders_confirm_score.py` raised IndexError on its first pass over Qwen's runs: in a CT2
@@ -40,7 +40,7 @@ capture bars. No school-panel model has run it.
 - **Roles (bar R):** CT3 beats the geometry chain if Qwen's rosters name few bystanders. Sonnet named them in 13 of
   29 answers, DeepSeek in 10 of 51.
 
-    cd results/2026-11-01-push/moving
+    cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     F=../fill/x2_bystanders_qwen
     $P run_moving.py --model soclaas_qwen38_low --out runs_x2/soclaas_qwen38_low --workers 2 --port-base 8900 \

@@ -32,21 +32,21 @@ Entries D1 to D7 were written after the S0 checks (synthetic and fit data only) 
   - So no section 4 definition fails visibly on fit data. **No ADDENDUM_1 was written**, and V1 is primary as frozen.
 
 **D4. The reference reproductions write only into this folder.**
-- `rerun/lifting/lifting.py` and `frontsnap.py` are re-run unchanged by importing them and calling their `main()`, with each module's `OUT` pointed at `phase1b/i11/repro_lifting/`. Their own `main()` would otherwise overwrite the original outputs in `rerun/lifting/`, which lies outside this folder.
+- `results/still-scenes/perception/lifting-rerun/lifting.py` and `frontsnap.py` are re-run unchanged by importing them and calling their `main()`, with each module's `OUT` pointed at `results/still-scenes/perception/lifting/repro_lifting/`. Their own `main()` would otherwise overwrite the original outputs in `results/still-scenes/perception/lifting-rerun/`, which lies outside this folder.
 - Their outputs are then diffed against the originals.
 - The per-record replay of the front snap calls `frontsnap.front_snap` unchanged.
 
 **D5. Verification is not independent.**
 - `verify_indep.py` therefore recomputes the key primary numbers with separately written code. It shares no code with `i11lib.py` or `lifting.py` beyond `sgi` and the harness, and uses its own breadth-first components, its own masks and its own window logic.
 
-**D6. Fresh seeds.** `phase1b/fresh_seeds/` did not exist when S0 ran. It is checked again when M4 runs. If it is still absent, M4 has no fresh-seed domain, and this is reported.
+**D6. Fresh seeds.** `results/still-scenes/perception/fresh_seeds/` did not exist when S0 ran. It is checked again when M4 runs. If it is still absent, M4 has no fresh-seed domain, and this is reported.
 
 **D7. Two record-level readings.**
 - **Moved.** For the oracle and V1 to V4, "moved" means the fix returned a new target. That target's pixel is a pixel centre, so it always differs from the recorded continuous pixel. This matches section 6 ("its target pixel or world point differs"). For the front-snap reference, "moved" means `front_snap` returned a point, as in frontsnap.py.
 - **Replay.** A record with source neither `constraints` (solver step) nor `standard`, and with no recorded pose, counts as a failure in the full-success replay. lifting.py left it as None. Section 6 counts a missing pose as a failure.
 
 **D8. Fresh seeds, and a discarded first pass** (written after the primary pass, before any fresh-seed result was read).
-- `phase1b/fresh_seeds/` appeared while the primary pass was running.
+- `results/still-scenes/perception/fresh_seeds/` appeared while the primary pass was running.
 - The primary pass's built-in M4 step then read 195 `scene.json` files under it. At that moment seed108 had no `DONE.json` yet, so some of what it read may have been half-written.
 - That code took only folders named `seedNNN` with NNN in 100–109, and guarded every scene folder with `H.guard_tree`. Only seed100 to seed108 existed, and no eval_16–19 scene is in any fresh set.
 - Its output (`m4_fresh.jsonl`) was deleted unread.

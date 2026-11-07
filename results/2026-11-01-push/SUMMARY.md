@@ -26,7 +26,7 @@ flatter R in the failure analysis, frozen before the fresh seeds).
 left the robot behind as the line moved up in small steps, and the 1.0 m standoff plus that threshold produced near
 misses past the scored 1.2 m band; an asymmetric rule (follow forward steps over 0.08 m at once) removes them. That is
 control engineering found by failure analysis, not part of the method's idea, and its benefit shows as staying
-inside a band our scorer defines. Measured (post hoc, `landscape/moving_q/ratchet_band_out.txt`):
+inside a band our scorer defines. Measured (post hoc, `results/moving-lines/questions/ratchet_band_out.txt`):
 - The ratchet keeps the robot about 0.1-0.3 m closer behind the person ahead. While joined, 30% of CT's gaps fall
   in 1.2-1.5 m, against 9% of CT2's; the gap's 75th percentile is 1.24 m against 1.14 m.
 - With the band top at 1.5 m instead of 1.2 m, CT2 against CT falls to +0.008 (Sonnet) and +0.033 (DeepSeek), and
@@ -118,14 +118,14 @@ roles), timing-matched. Zero extra calls.
 
 ## 6. Still scenes: C's misses are a depth error; a person snap (2 Nov evening)
 
-- **Diagnosis (zero calls, `group4/README.md`):** on the development scenes C is right 84-93%, and its misses
+- **Diagnosis (zero calls, `results/still-scenes/group-of-four-case/README.md`):** on the development scenes C is right 84-93%, and its misses
   concentrate in one scene, a 4-person conversation group (Sonnet 7 of 10 misses, Qwen 8 of 13, DeepSeek 9 of 24). All
   six models click the right person, but the 5x5 depth lift at her torso reads the arm of a nearer person, so the target
   lands on him (23 of 28 misses). A majority vote of 3 helps little (Sonnet 0.61 -> 0.67), because the clicks scatter
   across the arm's edge. A detector "person snap" (take the detected person whose box holds the click, only when the
   depth lift is more than 0.5 m from them) fixed 24 and broke 0 over 1,512 records, post hoc, but 25 of the 27 target
   fixes are in that one scene.
-- **Frozen test on new scenes** (`group4/SNAP_FROZEN.md` and amendments 1-3): 24 new realistic scenes (generator seeds
+- **Frozen test on new scenes** (`results/still-scenes/group-of-four-case/SNAP_FROZEN.md` and amendments 1-3): 24 new realistic scenes (generator seeds
   400-449, group bearings patched to make occlusion); primary set = 8 layouts with an occluder's edge within half a body
   width of the target's chest point, chosen from render geometry before any call; plan stage only, Qwen, GLM and
   DeepSeek x 3 trials, 432 free calls.
@@ -151,7 +151,7 @@ roles), timing-matched. Zero extra calls.
   method and answers): mean |d| about 0.06 per cell, mean shift under 0.011, yet a lean of 14/24 untied pairs
   (Sonnet, sign p about 0.14). So paired counts near that lean (e.g. CT2m against CT2, 12/27) need that context;
   the headline counts (43/2, 32/8) are far outside it.
-- Scoring sensitivity of the headline (post hoc, `landscape/moving_q/headline_band_out.txt`):
+- Scoring sensitivity of the headline (post hoc, `results/moving-lines/questions/headline_band_out.txt`):
   - With the side check (strict scoring), CT and CT2 beat R1 at every band top tried: 1.2, 1.5 and 2.0 m, Sonnet
     +0.28 to +0.31, DeepSeek +0.23.
   - Without the side check, the gain shrinks as the band widens. For Sonnet it is +0.19 at 1.2 m, +0.06 at 1.5 m and
@@ -173,9 +173,9 @@ roles), timing-matched. Zero extra calls.
 - **CT4** (`sgi.roles.RoleBelief`): one exact joint belief over who waits (2^n subsets of the people seen when the
   answer was asked). The answer is its prior; motion, stillness and following are its evidence.
 
-The claim was pre-registered (`moving/ideas2_1b/CT4_FROZEN.md`): CT4 is more robust than CT3F to people who are slow
+The claim was pre-registered (`results/moving-lines/best-version-and-running-guess/CT4_FROZEN.md`): CT4 is more robust than CT3F to people who are slow
 to step up. It was tested on 72 new layouts drawn for the test, with stress flags (late steppers, a restless
-bystander), on DeepSeek, scored once by a frozen scorer (`moving/sweep/score_dsv41_out.txt`).
+bystander), on DeepSeek, scored once by a frozen scorer (`results/moving-lines/test-layouts/score_dsv41_out.txt`).
 
 | Right last (share of re-solves where the robot comes after the right person) | clean | late steppers | restless | both |
 |---|---|---|---|---|
@@ -202,7 +202,7 @@ bystander), on DeepSeek, scored once by a frozen scorer (`moving/sweep/score_dsv
 
 ### 8b. The same comparison on Sonnet, and no-harm on the original scenes (3 Nov, reported, not claims)
 
-- **No-harm on the original scenes** (DeepSeek, 4 scenes x seeds 20-29; `moving/runs_noharm/dsv41/`):
+- **No-harm on the original scenes** (DeepSeek, 4 scenes x seeds 20-29; `results/data/moving/runs_noharm/dsv41/`):
   - CT3F beats CT3 on time in line (strict): 0.400 against 0.337, 25/7/8, p 0.002; after the first service 0.501
     against 0.421, p 0.001; fewer cut-ins (4.6 against 7.5);
   - CT4 is at 0.259 (18/21/1, p 0.75 against CT3).
@@ -220,7 +220,7 @@ bystander), on DeepSeek, scored once by a frozen scorer (`moving/sweep/score_dsv
   Predictions were hashed blind from CT2's episodes before any of these arms ran; the key one is that CT5 and W0
   beat CT4 on strict time in line from the first service. If CT5 also reaches CT3F, a confirmatory test on fresh
   layouts (2000-2449) follows.
-- **Result** (scored once, `moving/ideas2_1b/round3/h_pilot_score_out.txt`):
+- **Result** (scored once, `results/moving-lines/best-version-and-running-guess/round3/h_pilot_score_out.txt`):
   - the 5 s window halves roster changes (W0 and CT5 at 0.59 and 0.58 of CT4) and CT5 cuts in less (6.4 against
     9.1 samples);
   - **but neither gives back time in line.** Strict, from the first service: CT3F 0.188, W0 0.072, CT4 0.068,
@@ -264,7 +264,7 @@ frozen scorers):
 - **Reading:** the single role belief, even with the robot's own place in the order, does not yet replace the
   hand-built package. CT3F's other rules carry weight the belief does not reproduce. The best method stays CT3F
   (CT3 plus the group test, the gated anchor and the photo-time replay).
-- **The next design fixed in §8 is already spent.** The process-structured belief (round 5, `moving/ideas2_1b/round5/`)
+- **The next design fixed in §8 is already spent.** The process-structured belief (round 5, `results/moving-lines/best-version-and-running-guess/round5/`)
   was built offline on design data and failed its own written bars (`RESULTS_1.md`), so it never went to a run.
 - **Exploratory follow-up** (`round4/q_confirm_explore.py`, questions written before any per-layout data;
   output `q_confirm_explore_out.txt` ec0459bd; not claims):
@@ -278,7 +278,7 @@ frozen scorers):
 
 ### 8f. Why CT3F wins: it knows when it is at the front (round 6, logs only, exploratory)
 
-From `moving/ideas2_1b/round6/RESULTS_1.md` (d7bfb89a) and `RESULTS_2.md` (a95a01d7). Questions were fixed before
+From `results/moving-lines/best-version-and-running-guess/round6/RESULTS_1.md` (d7bfb89a) and `RESULTS_2.md` (a95a01d7). Questions were fixed before
 each step, and all 17 hashes in `ROUND6.sha256` were checked.
 - **Correction:** part B's "same accuracy" (RESULTS_1) was a scoring artefact. It counted "nobody ahead" as wrong
   even when the sim agreed, and RESULTS_2 §1 withdraws it.
@@ -317,7 +317,7 @@ each step, and all 17 hashes in `ROUND6.sha256` were checked.
 
 ### 8h. Still scenes: detector people beat C's people call, faster at no loss (E2, frozen, 4-5 Nov)
 
-- **Test** (`e2/E2_FROZEN.md` 38b2ef01; result `e2/E2_RESULTS.md` 8c7a3f5e): 40 fresh realistic Blender scenes
+- **Test** (`results/still-scenes/people-finder/E2_FROZEN.md` 38b2ef01; result `results/still-scenes/people-finder/E2_RESULTS.md` 8c7a3f5e): 40 fresh realistic Blender scenes
   (generator seeds 500-504, the 8 people rows), 2 episodes x 2 trials, three free models. Per unit the plan, target and
   context are shared; A0 = C, A0b = C drawn again (redraw floor and timing placebo), D = C with A1 detector people.
 - **Claim holds on all three models:** D is non-inferior to C within the redraw floor, never worse by layout, makes one

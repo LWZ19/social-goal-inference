@@ -1,6 +1,6 @@
 
 Frozen after phase 1b, before any fresh call. Design data only: seeds 10-44 of the bystander and original scenes,
-offline, zero calls. I have not opened `moving/sweep/human_dump/`, `moving/sweep/renders/`, or any fresh output. The
+offline, zero calls. I have not opened `results/moving-lines/test-layouts/human_dump/`, `results/moving-lines/test-layouts/renders/`, or any fresh output. The
 1b record is `INTERIM.md` and the `*_out.txt` files in this folder.
 
 ## 1. Frozen code (this folder; sha256)
@@ -66,7 +66,7 @@ Right last share, bystander cells, DeepSeek / Sonnet:
 - **Original scenes:** CT4-min wins 10-12 of 13 cells (DeepSeek) and 28 of 28 (Sonnet) in every condition.
 - **Restless bystanders defeat both** (capture rises several-fold). Neither design solves them.
 
-Data: the 72 frozen sweep layouts (`moving/sweep/selection.json`, scenario sha256 047f49a5), one seed each.
+Data: the 72 frozen sweep layouts (`results/moving-lines/test-layouts/selection.json`, scenario sha256 047f49a5), one seed each.
 - Ties are |d| < 0.01. Tests are exact two-sided sign tests over layouts.
 
 **Primary measure, right last.** At each re-solve from the first delivery to the episode's end, scored at ticks where

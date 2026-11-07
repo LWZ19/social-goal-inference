@@ -2,7 +2,7 @@
 
 - **Files.** The first draft is kept unchanged as `METRIC_LIST_v1_DRAFT.first.md`. The revision is `METRIC_LIST_v1_DRAFT.md`, edited in place.
 - **Reviews.** Three reviews were addressed. Critic 1 covered the statistics, critic 2 the document as a decision tool, and critic 3 fidelity to the sources. Every must_fix was fixed. Every should_fix and minor issue was fixed too, except where a row below says it was done differently, and why.
-- **New source.** `phase3/confidence/README.md` did not exist at revision time. `phase3/confidence/FROZEN.md` (hashed 17:34) did, and the revision cites it. The confidence numbers are marked as informed by the probe's result.
+- **New source.** `results/still-scenes/confidence-signal/README.md` did not exist at revision time. `results/still-scenes/confidence-signal/FROZEN.md` (hashed 17:34) did, and the revision cites it. The confidence numbers are marked as informed by the probe's result.
 - **Length.** The first draft had 3,346 words, and the revision has about 5,900, including two appendices. Critic 2 asked for a main text near 2,000 words. That was not reached: the must-fix items add a glossary, six decision rows, a full action rule and a Q2 floor definition. Instead, the summary (glossary plus decision table, about 1,400 words) now stands alone, and the speed and held-out tables moved to appendices.
 
 ## Critic 1 (statistics)

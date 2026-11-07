@@ -11,7 +11,7 @@ This decides the order of the two future-work leads: the counter point (lead 1) 
 ## Arms, models, layouts
 
 - **Stage A (the reading):** CT3FT and CT3F, re-run together in one invocation (cache-only) into
-  `moving/runs_x1/<model>/`, so both arms share the machine's load (the item 10 lesson).
+  `results/data/moving/runs_x1/<model>/`, so both arms share the machine's load (the item 10 lesson).
   - Models: DeepSeek (re-run too, for the same reason), Sonnet 5.5, Haiku 5.5, Gemini 3.8.
   - The 72 confirmation layouts (`sweep/jobs_confirm.txt`), each model's own cached CT2 first answers
     (`runs_confirm4/<model>`). 576 episodes.
@@ -40,7 +40,7 @@ This decides the order of the two future-work leads: the counter point (lead 1) 
 
     # stage B (reported), per model, then round7's decomposition:
     #   a <entry> <dir> "OW CT4OT CT4O CT4PJT CT4PJ" B
-    #   cd moving/ideas2_1b && $P round7/c_gaps.py sweep/confirm_selection.json runs_x1/<dir> runs_x1/<dir>
+    #   cd results/moving-lines/design-and-scoring/ideas2_1b && $P round7/c_gaps.py sweep/confirm_selection.json runs_x1/<dir> runs_x1/<dir>
 
 ## Cost
 

@@ -8,7 +8,7 @@ How it was made:
 - **Order** (file times, 18 Oct): FROZEN.md 01:34:19 → first base scene 01:45:21 → byte-identity proof 01:48:02 → `base_check.txt` 01:49:55 and `self_test.txt` 01:49:57 → `builder/crowd.py` last saved 01:51:41 → first variant 01:51:59 → `readings.txt` 01:53:45, `DEVIATIONS.md` 01:54:04 → label scoring 02:06:25 → first score file (`score/work/arms_seed0.jsonl`) 03:26:48 → tables and figures 05:21:40. Every hash file verifies.
 - **Inputs.** The 30 base layouts were reproduced in memory with the package's own generator and streams: rows eval_06–13 from `default_rng(seed)` (eval_00–05 drawn only to advance the stream), and eval_14–15 from `default_rng([seed, 1])`, stopping before the group-photo row eval_16. Every crowd addition draws from a new stream `[seed, 2, family, row, level]`, so the existing scenes stay byte-identical (proved, section 1). Noise was fitted on the old-wording C runs s19 `qwen38_low`, s19 `glm53` and s20 `dsv41` (arms real, staffed, plain, ph, dev_seed0–2), read through the step-0 harness.
 
-Paths below are relative to this folder (`phase2/i06/` in the research folder).
+Paths below are relative to this folder (`results/still-scenes/crowds/` in the research folder).
 - Protocol: `FROZEN.md`, `DEVIATIONS.md` (each hashed); `precheck/` (`format_check.py`, `depth_check.py`, logs).
 - `builder/`: `crowd.py`, `reproduce_bases.py`, `base_check.py` and `base_check.txt`, `self_test.py`, `byte_identity.py`, `generate_variants.py`, `label_checks.py`, `contact_sheets.py`, `run_guarded.sh`.
 - `build/`: `manifest.json` and `manifest.jsonl`, `labels.txt`, `labels_rows_seed{0,1,2}.jsonl`, `counts_by_row.txt`, `readings.txt`, `self_test.txt`, `byte_identity.txt` (and `byte_identity/`), `base_tables_seed*.json`, `base_layouts/`, `contact_A.png`–`contact_E.png`, `logs/`.
@@ -228,7 +228,7 @@ Table 4.1. Noise parameters (`score/noise/fit.txt`, `score/noise_model.json`).
 | GLM-5.3 (118; 485) | 49/372 | 8/86 | 2/27 | 23/426 | 0.305 | 0.116 m | +4.07 m (23) | 0.657 / 0.533 / 0.485 / 0.814 |
 | DeepSeek V4.1 (128; 499) | 15/372 | 7/89 | 0/38 | 32/477 | 0.102 | 0.119 m | +3.36 m (32) | 0.867 / 0.606 / 0.574 / 0.810 |
 
-- **Cross-check.** Recall computed I03's way equals `phase1b/i03/stageA/vlm_rows.jsonl` for all three: 465/480, 403/485, 445/499.
+- **Cross-check.** Recall computed I03's way equals `results/still-scenes/perception/depth-blob-detector/stageA/vlm_rows.jsonl` for all three: 465/480, 403/485, 445/499.
 - GLM's and DeepSeek's mislocated people sit 3–4 m farther along the camera ray, which matches the phantom people on the back wall in REPORT finding 8.
 - The score verifier's own fit gives identical parameters, including every offset list and the placeholder-only fit.
 
@@ -306,7 +306,7 @@ Figure 5.1 (`score/curves_noisy.png`). Oracle C and each model's noisy C, per fa
 
 ## 7. C5 gate-1 recount on the widened generator (`score/c5_recount.txt`)
 
-- **Before.** C5's gate 1 asks C2 Step 0 for at least about 30 distinct generator configurations. The phase-1d count over the 26 development rows gave PRIMARY 22 and LOWER 15: gate 1 not met, and C2's Source A kill fires (`phase1d/c5_gates/gate1.txt`).
+- **Before.** C5's gate 1 asks C2 Step 0 for at least about 30 distinct generator configurations. The phase-1d count over the 26 development rows gave PRIMARY 22 and LOWER 15: gate 1 not met, and C2's Source A kill fires (`results/still-scenes/learned-models/flow-model-gates/gate1.txt`).
 - **Readings** (FROZEN section 10, extending the phase-1d note): PRIMARY' adds (family, level) to C5's tuple and counts every (row, family, level) with at least one kept variant in seeds 0–2; STRUCTURE counts A's six levels and E's two depths once per row; LOWER' counts (situation, structure size, bystanders including added ungrouped people, second-group presence).
 
 | Reading | Count | Gate (≥ 30) |
@@ -397,7 +397,7 @@ Old:
 ```
 New:
 ```text
-2. I06 probe. [phase 2] First probe done 18 Oct, families A–E: neither ((b) and (e) not met, no kill). Oracle C fails only at lines, by bystanders absorbed behind the line; groups and audiences held in every variant built (`phase2/i06/README.md`).
+2. I06 probe. [phase 2] First probe done 18 Oct, families A–E: neither ((b) and (e) not met, no kill). Oracle C fails only at lines, by bystanders absorbed behind the line; groups and audiences held in every variant built (`results/still-scenes/crowds/README.md`).
 3. I35 Part A.
 ```
 
@@ -417,7 +417,7 @@ So the current scenes barely need them. That raises the cheaper routes to that f
 ```
 New:
 ```text
-So the current scenes barely need them. That raises the cheaper routes to that fact (I19, I24, I32, I05) and the scenes where the other kinds would matter (I06). [phase 2] I06's first probe (oracle people, reference constraints) did not change this at conversation groups: the solver with no constraints succeeds in all 38 group crowd variants (second groups, clusters, bystanders, a person on the line of sight) and all 9 group bases, as oracle C does. At the placeholder audience rows, which the realistic sets lack, the watcher constraints are needed (no constraints 0 of 14, reference constraints 14 of 14; 6 bases, 8 variants). At lines `come_after` is needed, and it is also where every crowd failure comes from, by absorbing bystanders behind the line (`phase2/i06/README.md` sections 2–3).
+So the current scenes barely need them. That raises the cheaper routes to that fact (I19, I24, I32, I05) and the scenes where the other kinds would matter (I06). [phase 2] I06's first probe (oracle people, reference constraints) did not change this at conversation groups: the solver with no constraints succeeds in all 38 group crowd variants (second groups, clusters, bystanders, a person on the line of sight) and all 9 group bases, as oracle C does. At the placeholder audience rows, which the realistic sets lack, the watcher constraints are needed (no constraints 0 of 14, reference constraints 14 of 14; 6 bases, 8 variants). At lines `come_after` is needed, and it is also where every crowd failure comes from, by absorbing bystanders behind the line (`results/still-scenes/crowds/README.md` sections 2–3).
 ```
 
 ### 8. C5, gate 1
@@ -458,7 +458,7 @@ Old:
 ```
 New:
 ```text
-6. I06 crowd probe, with the distractor family F: L1 vs L2 labels, true and noisy people. Its zero-call output is solver-degradation curves, not RQ2 curves for R and E. [phase 2] First probe done 18 Oct for families A–E (F deferred): neither, with no kill fired; oracle C fails only at lines, by bystanders absorbed behind the line (`phase2/i06/README.md`).
+6. I06 crowd probe, with the distractor family F: L1 vs L2 labels, true and noisy people. Its zero-call output is solver-degradation curves, not RQ2 curves for R and E. [phase 2] First probe done 18 Oct for families A–E (F deferred): neither, with no kill fired; oracle C fails only at lines, by bystanders absorbed behind the line (`results/still-scenes/crowds/README.md`).
 ```
 
 ### 13. Section 8, circularity: L2 and the solver (optional)
@@ -469,7 +469,7 @@ Old:
 ```
 New:
 ```text
-  - L2 labels mirror the solver's own-space rule. [phase 2] Measured in I06's first probe: on 199 crowd variants, oracle C and the solver alone each disagree between L1 and L2 in 1.5%, the full oracle's stop in 42.7% (`phase2/i06/README.md` section 2).
+  - L2 labels mirror the solver's own-space rule. [phase 2] Measured in I06's first probe: on 199 crowd variants, oracle C and the solver alone each disagree between L1 and L2 in 1.5%, the full oracle's stop in 42.7% (`results/still-scenes/crowds/README.md` section 2).
 ```
 
 ---

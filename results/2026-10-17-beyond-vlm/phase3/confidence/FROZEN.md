@@ -1,11 +1,11 @@
 # Phase 3, confidence from perception disagreement: frozen protocol
 
-The protocol author wrote this on 18 Oct 2026. It was written after the format check below and before any signal was computed against any outcome. Its sha256 is in `FROZEN.sha256`, and both files are read-only. This file is never edited. Any change goes into a dated `DEVIATIONS.md` with its own hash (`DEVIATIONS.sha256`), written before the data it affects is scored. Paths are relative to `phase3/confidence/` in the research folder (`results/2026-10-17-beyond-vlm/`) unless they start with `phase1`, `phase1c`, `phase1d`, `src/` or `docs/`.
+The protocol author wrote this on 18 Oct 2026. It was written after the format check below and before any signal was computed against any outcome. Its sha256 is in `FROZEN.sha256`, and both files are read-only. This file is never edited. Any change goes into a dated `DEVIATIONS.md` with its own hash (`DEVIATIONS.sha256`), written before the data it affects is scored. Paths are relative to `results/still-scenes/confidence-signal/` in the research folder (`results/2026-10-17-beyond-vlm/`) unless they start with `phase1`, `phase1c`, `phase1d`, `src/` or `docs/`.
 
 **Pre-freeze format check** (`prefreeze/format_check.py`, output `prefreeze/format_check.txt`, about 1 s, one process). It was run twice: the second run added two counts (D place and target numbers present in every A2 row; pose and target co-occurring in every trial), and its output replaced the first. It reads the 33 runs of section 2 through the harness. It never reads a success, a score, `target_correct`, a detector distance or a re-solved place, and it computes no signal.
-- Goal-step records per cell: old Qwen 143, old GLM 141, old DeepSeek 157; watching 36 each; s23 GLM 141, DeepSeek 151, Haiku 146, Sonnet 143, Gemini 135. That makes 1,265 in total. The key set (run folder/scene/episode/trial) equals I14 v0's rows (`phase1/i14_v0/rows_oldwatch.jsonl`, plus `rows_new.jsonl` without s21).
+- Goal-step records per cell: old Qwen 143, old GLM 141, old DeepSeek 157; watching 36 each; s23 GLM 141, DeepSeek 151, Haiku 146, Sonnet 143, Gemini 135. That makes 1,265 in total. The key set (run folder/scene/episode/trial) equals I14 v0's rows (`results/still-scenes/metrics-and-statistics/metric-v0/rows_oldwatch.jsonl`, plus `rows_new.jsonl` without s21).
 - Every goal-step record joins I04's rows (`phase1d/i04/rows_*.jsonl`) by key. Its three recorded solver flags equal I04's `flags` in 1,265 of 1,265. Every realistic goal-step record (1,157) joins an A2 row (`phase1c/i09/a2/rows_<old|new>_<model>.jsonl`) that is a solver step with a `D_d` block. All 1,157 of those rows carry a D place (`D_d.moved_from_C_m` present) and both target numbers (`tnum_C`, `D_d.tnum`).
-- Every goal-step record has `target.world`, the three flags, unique person numbers and a detector-people listing in `phase1c/i09/a1/eval_people.json`. That file has 68 scenes: 42 realistic, 12 of `keep/dev_new/seed0–2` (the watching scenes) and 14 placeholder.
+- Every goal-step record has `target.world`, the three flags, unique person numbers and a detector-people listing in `results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`. That file has 68 scenes: 42 realistic, 12 of `keep/dev_new/seed0–2` (the watching scenes) and 14 placeholder.
 - 12 records have an empty people list. 1,257 name at least one person in a constraint. 10 records name 29 numbers that are absent from their own people list.
 - **Trials.** 438 (run, scene, episode) groups hold a goal-step record, and each has exactly 3 trials (0, 1, 2). 434 groups have a place in all 3 trials. In 4 groups, one trial has status `no_target` and no place. 45 non-goal-step trials are standard-path records with a place. In every trial, a place and `target.world` are either both present or both absent.
 - **Layouts** (I04's `layout` field, which equals the `eval_NN` of the scene id in all 1,157 realistic records). Primary: `eval_00`–`03` and `05`–`13`, 13 in all (Qwen 8, GLM 11, DeepSeek 12). s23: `eval_00`, `01`, `03`, `06`–`13`, 11 in all. Watching: `dev_seed{0,1,2}/eval_14_audience_3` and `/eval_15_audience_5`, 6 in all.
@@ -29,7 +29,7 @@ The protocol author wrote this on 18 Oct 2026. It was written after the format c
 
 ## 2. Records
 
-- **Runs.** Old and watching are `i14.plan('oldwatch')` (`phase1/i14_v0/i14.py`, imported unchanged). s23 is `H.runs(stage='s23', arm=a, model=m, method='con')` for a in (real, staffed, plain), with exactly one run each. The folders are:
+- **Runs.** Old and watching are `i14.plan('oldwatch')` (`results/still-scenes/metrics-and-statistics/metric-v0/i14.py`, imported unchanged). s23 is `H.runs(stage='s23', arm=a, model=m, method='con')` for a in (real, staffed, plain), with exactly one run each. The folders are:
   - old Qwen: `20261011-160334_s19_real_qwen38_low_con`, `20261011-160344_s19_staffed_…`, `20261011-160527_s19_plain_…`;
   - old GLM: `20261011-160500_s19_real_glm53_con`, `20261011-160352_s19_staffed_…`, `20261011-160452_s19_plain_…`;
   - old DeepSeek: `20261013-191337_s20_real_dsv41_con`, `20261013-191345_s20_staffed_…`, `20261013-191402_s20_plain_…`;
@@ -49,12 +49,12 @@ The protocol author wrote this on 18 Oct 2026. It was written after the format c
 
 ## 3. Inputs (read unchanged; hashes verified on every load)
 
-- **Detector people.** `phase1c/i09/a1/eval_people.json`, loaded with A2's `load_detector_people()` (`phase1c/i09/a2/replay_d.py`, imported by path, unchanged). A record's detector people are those of the scene whose `listed` holds (str(run.scenes_dir), scene_id). That is all of the scene's entries in file order; no score cut is applied (choice: the file is A1's frozen output). Each person's xy is (x, y), in the world frame.
+- **Detector people.** `results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`, loaded with A2's `load_detector_people()` (`results/still-scenes/people-finder/early-detector/phase1c/a2/replay_d.py`, imported by path, unchanged). A record's detector people are those of the scene whose `listed` holds (str(run.scenes_dir), scene_id). That is all of the scene's entries in file order; no score cut is applied (choice: the file is A1's frozen output). Each person's xy is (x, y), in the world frame.
 - Hashes are verified with `replay_d.verify_hashes()` (I09 FROZEN.md, `a1/eval_people.json` against `a1/EVAL.sha256`, A2 CLARIFICATIONS.md) before any signal is computed.
 - **Recorded data.** People are `rec.people` as `DetectedPerson`. Constraints are `[u["constraint"] for u in rec.constraints]`, whatever their recorded status. The place is `rec.pose_world`, the target `rec.target`, the flags `rec.result["flags"]` and the label `rec.score["success"]`.
 - **I04 rows.** `phase1d/i04/rows_<cell>.jsonl` (cells `old_qwen`, `old_glm`, `old_deepseek`, `watch_*` and `new_{glm,deepseek,haiku,sonnet,gemini}`), joined by `key`. Read for `V1.conc` and `flags` only.
 - **A2 rows** (checks only). `phase1c/i09/a2/rows_old_{qwen38_low,glm53,dsv41}.jsonl` and `rows_new_{glm53,dsv41,haiku55,sonnet55_low,gemini38_low}.jsonl`, joined by (run folder, scene, episode, trial).
-- **I14 rows** (checks only). `phase1/i14_v0/rows_oldwatch.jsonl` and `rows_new.jsonl` (s21 rows ignored): `rec_success` and `target_ok`.
+- **I14 rows** (checks only). `results/still-scenes/metrics-and-statistics/metric-v0/rows_oldwatch.jsonl` and `rows_new.jsonl` (s21 rows ignored): `rec_success` and `target_ok`.
 
 ## 4. Signals (higher = less confident)
 
@@ -199,7 +199,7 @@ How it is read (choice; descriptive, not a criterion):
 ## 9. Compute rules, order and outputs
 
 **Rules.**
-- Runs and scenes are read only through `docs/model_notes/tools/research_harness.py`. Nothing held out is read: no s18 or s20_held run, nothing under `keep/heldout`, no `eval_16`–`19` scene, no synth seeds 3–99 and nothing of seeds 200–219 (`phase2/seeds/realistic`, the `phase2/i09/confirm` rows; and, to be safe, nothing under `phase3/seeds`).
+- Runs and scenes are read only through `docs/model_notes/tools/research_harness.py`. Nothing held out is read: no s18 or s20_held run, nothing under `keep/heldout`, no `eval_16`–`19` scene, no synth seeds 3–99 and nothing of seeds 200–219 (`results/still-scenes/scene-seeds/phase2/realistic`, the `results/still-scenes/people-finder/early-detector/phase2/confirm` rows; and, to be safe, nothing under `results/still-scenes/overview/phase-notes/phase3-files/seeds`).
 - CPU only. `nice -n 10`, 2 BLAS threads (`OMP_NUM_THREADS`, `OPENBLAS_NUM_THREADS` and `MKL_NUM_THREADS` = 2), at most 2 worker processes, and `free -m` must show at least 3 GB available first. No pkill or killall.
 - `.venv/bin/python -B` with `PYTHONPATH` empty. numpy only.
 - Nothing in `src/`, `tests/`, `configs/`, `docs/`, REPORT.md or any earlier phase folder is edited. Earlier code is imported unchanged (`i14.py`, `repairs.py`, `replay_d.py`, and I04's rows as data). Output goes only to this folder.

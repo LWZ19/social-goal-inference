@@ -5,19 +5,19 @@
 How it was made:
 - **Live-check protocol.** `live/FROZEN.md` (sha256 `7e1d3212…8b84`), written and hashed by the builder at 01:16:27, before `driver.py` existed (created 01:23:29). Before the note, the builder had extracted commit 202c165 read-only, compared its prompts with the recorded runs, and counted the baselines from recorded data; the note discloses all three.
 - **Environments.**
-  - Detector and pose: the torch sidecar, used read-only. Its `pip freeze` (160 lines) was unchanged before and after both GPU passes. It read image paths only from the manifest and refused any path outside `phase2/seeds/realistic/seed200`–`219`.
+  - Detector and pose: the torch sidecar, used read-only. Its `pip freeze` (160 lines) was unchanged before and after both GPU passes. It read image paths only from the manifest and refused any path outside `results/still-scenes/scene-seeds/phase2/realistic/seed200`–`219`.
   - Everything else: the torch-free project venv. Recorded runs and development scenes were read through the step-0 harness only.
 - **No held-out data.** No held-out scene, run or situation was read or instantiated. Seeds 3–99 were not generated or opened. Nothing was written into `data/`, `src/`, `tests/`, `docs/`, `configs/` or `REPORT.md`.
 - **Images.** Nobody viewed a test image. The live builder viewed two numbered images of development scenes from its dry run.
 
-Paths below are relative to this folder (`phase2/i09/` in the research folder).
+Paths below are relative to this folder (`results/still-scenes/people-finder/early-detector/phase2/` in the research folder).
 - `confirm/`:
   - protocol: `FROZEN.md`, `DEVIATIONS_1.md` (each hashed);
   - scripts: `pathguard.py`, `confirm_lib.py`, `c2_repro.py`, `manifest.py`, `c3_truth.py`, `sidecar/infer_confirm.py`, `score.py`, `posthoc_false.py`;
   - inputs and raw outputs: `manifest.json` (`MANIFEST.sha256`), `raw/` (`RAW.sha256`), `pip_freeze_before.txt`, `pip_freeze_after.txt`, `sidecar_pass.log`;
   - results: `tables.txt`, `rows.jsonl`, `people_rows.jsonl`, `summary.json` (`SCORE.sha256`), `score.log`;
   - checks and logs: `c2_repro.txt`, `c3_truth.txt`, `posthoc_false.txt` (`POSTHOC.sha256`), `ORDER.txt`.
-- `../seeds/realistic/seed200`–`seed212`: the test scenes (773 MB).
+- `results/still-scenes/scene-seeds/phase2/realistic/seed200`–`seed212`: the test scenes (773 MB).
 - `live/`: `FROZEN.md` (hashed), `driver.py` (`BUILD.sha256`), `dryrun.py` and `dryrun/`, `REQUEST.md`, and `src_202c165/` (the package at 202c165).
 - Verifiers: `verify_i09_confirm/`, `verify_i09_live_build/`.
 
@@ -63,7 +63,7 @@ Shared cautions:
   - It calls A1's `infer.run_pass` unchanged. It replaces only the path guard (A1's refuses these seed folders) and the GPU wait (A1's waits for an idle GPU).
   - Boxes with score ≥ 0.05 are written; ViTPose runs on boxes ≥ 0.10, one batch per image. fp32 and deterministic settings; no warm-up, as in A1's evaluation pass.
   - One pass, 04:45:34–04:46:32, 182 images.
-- **Scorer.** `phase1b/i03/people_scorer.py`, unchanged, with facing "full", the anchors of targets without a person as exempt points, and the default thresholds. Definitions as in A1 (`phase1c/README.md` section 1):
+- **Scorer.** `results/still-scenes/perception/depth-blob-detector/people_scorer.py`, unchanged, with facing "full", the anchors of targets without a person as exempt points, and the default thresholds. Definitions as in A1 (`results/still-scenes/overview/phase-notes/phase1c.md` section 1):
   - Recall = matched / visible. Matching is `sgi.run._matched_people` (greedy, nearest first, one to one, within 0.5 m); visibility is `is_visible`.
   - A false person is an unmatched detection not within 0.5 m of the anchor of a target with no person. Exempt detections are counted apart. A detection near a person who fails `is_visible` counts as false and is flagged.
   - View classes (angle between the true yaw and the bearing to the camera): frontal < 45, oblique 45 to < 75, profile 75–105, back > 105 deg.
@@ -173,7 +173,7 @@ Table 1.5. POST HOC: where the 44 false people come from (`confirm/posthoc_false
 - **People and scoring reproduced.** The verifier's own lift-and-facing code reproduces the 560 detector people (largest difference 4.4e-16). Its own scorer reproduces all 520 person rows and every scene row with 0 differences, every bootstrap interval within 1e-12, and the post hoc breakdown.
 - **No installs.** `pip freeze` of the sidecar (sha256 `20f344bf…`, 160 lines) was identical before and after both GPU passes.
 - **Order** (file times, +08:00): `FROZEN.md` 01:17:11 → `FROZEN.sha256` 01:17:19 → render trial 01:22:06 → first seed folder 01:23:29 → render stop 04:31:15 → `DEVIATIONS_1.md` hashed 04:36:38 → C2 04:39:35 → manifest 04:41:03 → C3 04:42:27 → `score.py` saved 04:45:24 → the one detector pass 04:45:34–04:46:32 → scoring once 04:46:43–04:47:33 → post hoc breakdown 04:49:15 → verifier 04:53–05:03. There is no `raw_failed` folder and no sign of a re-run.
-- **No held-out data.** The verifier searched `/`, the home folder, `/tmp` and `/dev/shm`: the only seed200–219 folders are seed200–212 under `phase2/seeds/realistic`. Nothing in `data/` changed after the freeze, and no seed 3–99 was touched. Development scenes were read only through the harness (C2).
+- **No held-out data.** The verifier searched `/`, the home folder, `/tmp` and `/dev/shm`: the only seed200–219 folders are seed200–212 under `results/still-scenes/scene-seeds/phase2/realistic`. Nothing in `data/` changed after the freeze, and no seed 3–99 was touched. Development scenes were read only through the harness (C2).
 
 ### Criteria and outcome
 
@@ -214,7 +214,7 @@ Not settled (not judged): the detector-plus-pose median, 215.1 ms in the compute
   - 84 records per model (3 arms × 14 scenes × 2 episodes: no_one 36, waiting_line 30, conversation_group 18).
   - The scenes are the 42 E-real development scenes, so this is not an unseen-layout test.
 - **People source, DetectorPeople.**
-  - It has OraclePeople's interface. For each scene it returns the people of `phase1c/i09/a1/eval_people.json` (sha256 `ffa59545…` checked on load), in descending score, with label None and the pixel built as OraclePeople builds it.
+  - It has OraclePeople's interface. For each scene it returns the people of `results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json` (sha256 `ffa59545…` checked on load), in descending score, with label None and the pixel built as OraclePeople builds it.
   - Scenes are matched by the harness fingerprint. A scene with no entry is an error, never an empty list.
   - The package then numbers, draws and lists the people as it does for every people source.
 - **Validity.** D-live is "C with one change" only if every plan, locate and context answer is the recorded t0 answer. Hence two rules:

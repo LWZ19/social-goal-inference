@@ -3,7 +3,7 @@
 Why: the bystander scenes' seeds are not independent tests. The service clock is fixed (the first service comes at
 16 s in every cafe and sweet_spot seed), and the photo barely changes between seeds; Sonnet names the lone man in
 0.78 of near-identical frames. A fresh test needs new layouts (`ideas2/research_session_challenge.md` Q2;
-`ideas2/SHORTLIST.md` section 5).
+`results/overview/ideas-round-2/SHORTLIST.md` section 5).
 
 ## Steps (all zero calls)
 

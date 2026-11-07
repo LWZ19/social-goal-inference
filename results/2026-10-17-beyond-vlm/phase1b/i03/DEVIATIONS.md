@@ -21,7 +21,7 @@ The Stage A compute agent wrote this on 17 Oct 2026, after the fresh seeds were 
    - The band variant is unknown (None) for a blob with fewer than 3 kept points at 1.0–1.6 m.
    - For choosing between the two variants on fit data, accuracy is the share of all matched pairs whose axis lies within 45° of the true yaw modulo 180°. An unknown axis counts as a miss.
    - The higher minimum over the two fit domains wins, and a tie goes to "all". The choice is made at the chosen threshold setting only.
-5. **Role classes** (tabulation only), as in `phase1/a0_facing`:
+5. **Role classes** (tabulation only), as in `results/still-scenes/overview/phase-notes/phase1-files/a0_facing`:
    - staff: the person has a role;
    - line member: the person's group is at a target of a waiting_line episode;
    - group member: the person's group is at a target of a conversation_group, audience or group_photo episode;
@@ -30,7 +30,7 @@ The Stage A compute agent wrote this on 17 Oct 2026, after the fresh seeds were 
 7. **Where the misses' depth went** is a descriptive breakdown that the note does not ask for (the task asks "where misses are"). Its categories are fixed here.
    - The missed person's blob is the blob (any blob, before the body filter) holding the most height-map cells within 0.25 m of the person.
    - The categories are checked in this order: no height-map cells within 0.25 m; kept blob matched to another person (a merge); kept blob unmatched, with its centre beyond 0.5 m; rejected, top above the clip (merged with tall structure); rejected, footprint above foot_hi; rejected, top below top_lo; rejected, footprint below foot_lo.
-8. **VLM answers** are formed as in `phase1/a0_facing`. One answer is the union of the people lists of a key's records. Identical entries are kept once, judged by xy to 1e-9 m and pixel to 1e-6 px, and the union is numbered in sorted order of that key.
+8. **VLM answers** are formed as in `results/still-scenes/overview/phase-notes/phase1-files/a0_facing`. One answer is the union of the people lists of a key's records. Identical entries are kept once, judged by xy to 1e-9 m and pixel to 1e-6 px, and the union is numbered in sorted order of that key.
    - "Blobs weighted to a model's answer keys" means each answer key that has a list adds its scene's blob counts once.
 9. **Wilson intervals** use z = 1.96.
 10. **The verdict** is computed on the two evaluation domains only, as the note says. The pooled-68 and per-set figures are reported but do not decide it.

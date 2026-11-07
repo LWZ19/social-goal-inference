@@ -8,7 +8,7 @@ How they were made:
 - Where the two differ, this page uses the verifier's final value. Where the verifier could not settle a point, both values are given (section 7).
 - No model or network call was made. Nothing was tuned. No held-out data was read. Nothing in `src/` or `tests/` changed.
 
-Paths below are relative to this folder (`RD/phase1/`). Each analysis has its own folder, with its scripts, its tables (`.txt`) and a `verify/` subfolder holding the verifier's code and outputs.
+Paths below are relative to this folder (`results/still-scenes/overview/phase-notes/phase1-files/`). Each analysis has its own folder, with its scripts, its tables (`.txt`) and a `verify/` subfolder holding the verifier's code and outputs.
 
 ## 0. Verdicts at a glance
 
@@ -333,7 +333,7 @@ Table 5.4. Batch noise and minimum detectable differences (80% power, two-sided 
 
 - Per-situation power, for I46's kill line (corrected text): 0 of 24 lines and groups cells need more than 40 layouts. The smallest n is 14 for GLM C − R lines and for the groups cells of Qwen C − R, DeepSeek C − E, DeepSeek C − R, Sonnet C − E and Sonnet C − R. It is 6 for the other 18 cells. This design resamples 3–5 values and is degenerate by construction.
 - A change confined to lines (floor p 0.0625) or groups (0.25) cannot reach p ≤ 0.05 on these sets.
-- `i46_stats/HOW_TO_REPORT.md` holds the one-page reporting note. The verifier asks for two fixes, not yet applied: (a) R and E are only nearly identical at nobody-near (identical for Qwen, Haiku, Sonnet and Gemini; DeepSeek differs in 3 of 108 records at s23 and 7 of 108 at s20); (b) "at least 6 layouts per situation" is the test's floor, not a powered size (power at 6 is about 0.09 when one group layout is tied).
+- `results/still-scenes/metrics-and-statistics/statistics/HOW_TO_REPORT.md` holds the one-page reporting note. The verifier asks for two fixes, not yet applied: (a) R and E are only nearly identical at nobody-near (identical for Qwen, Haiku, Sonnet and Gemini; DeepSeek differs in 3 of 108 records at s23 and 7 of 108 at s20); (b) "at least 6 layouts per situation" is the test's floor, not a powered size (power at 6 is about 0.09 when one group layout is tied).
 
 ---
 
@@ -447,22 +447,22 @@ New:
 
 Old:
 ```text
-Apart from the step-0 offline harness and its re-run (`RERUN.md`, `i01/README.md`), nothing has been built, and no model has been run.
+Apart from the step-0 offline harness and its re-run (`RERUN.md`, `results/still-scenes/replay-harness/sets-and-definitions/README.md`), nothing has been built, and no model has been run.
 ```
 New:
 ```text
-Apart from the step-0 offline harness, its re-run (`RERUN.md`, `i01/README.md`) and the phase-1 zero-call analyses (`phase1/README.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics), nothing has been built, and no model has been run.
+Apart from the step-0 offline harness, its re-run (`RERUN.md`, `results/still-scenes/replay-harness/sets-and-definitions/README.md`) and the phase-1 zero-call analyses (`results/still-scenes/overview/phase-notes/phase1.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics), nothing has been built, and no model has been run.
 ```
 
 ### 3. Section 1.2, step 2 (I01)
 
 Old:
 ```text
-Deliverables 1–3 (R0, the target and placement split, I34 Stage 0) done 17 Oct (`i01/README.md`); R1–R6 and facing accuracy (A0) remain.
+Deliverables 1–3 (R0, the target and placement split, I34 Stage 0) done 17 Oct (`results/still-scenes/replay-harness/sets-and-definitions/README.md`); R1–R6 and facing accuracy (A0) remain.
 ```
 New:
 ```text
-Deliverables 1–3 (R0, the target and placement split, I34 Stage 0) done 17 Oct (`i01/README.md`). Steps 0–2 (R1–R6 and the s8 calibration) and facing accuracy (A0) done 17 Oct (`phase1/README.md`): Step 1 is neither success nor kill, the calibration passes, and A0 sets I09's facing bar at 0.806. Only the optional pipeline oracle-people arm (a big run) is left.
+Deliverables 1–3 (R0, the target and placement split, I34 Stage 0) done 17 Oct (`results/still-scenes/replay-harness/sets-and-definitions/README.md`). Steps 0–2 (R1–R6 and the s8 calibration) and facing accuracy (A0) done 17 Oct (`results/still-scenes/overview/phase-notes/phase1.md`): Step 1 is neither success nor kill, the calibration passes, and A0 sets I09's facing bar at 0.806. Only the optional pipeline oracle-people arm (a big run) is left.
 ```
 
 ### 4. Section 1.2, step 3 (I14 and I46)
@@ -482,11 +482,11 @@ New:
 
 Old:
 ```text
-Deliverables 1–3 done 17 Oct (`i01/README.md`); R1–R6 and A0 remain.
+Deliverables 1–3 done 17 Oct (`results/still-scenes/replay-harness/sets-and-definitions/README.md`); R1–R6 and A0 remain.
 ```
 New:
 ```text
-Deliverables 1–3 done 17 Oct (`i01/README.md`). Steps 0–2 and A0 done 17 Oct (`phase1/README.md`): 1,301 of 1,301 places reproduce; Step 1 is neither success nor kill; the s8 calibration passes pooled. The optional pipeline oracle-people arm is not run (a big run, listed below).
+Deliverables 1–3 done 17 Oct (`results/still-scenes/replay-harness/sets-and-definitions/README.md`). Steps 0–2 and A0 done 17 Oct (`results/still-scenes/overview/phase-notes/phase1.md`): 1,301 of 1,301 places reproduce; Step 1 is neither success nor kill; the s8 calibration passes pooled. The optional pipeline oracle-people arm is not run (a big run, listed below).
 ```
 
 ### 7. Section 6, step 2 row (I46 and I14)
@@ -523,7 +523,7 @@ Old:
 New:
 ```text
   - More than 20% of matches are ambiguous.
-- **Phase-1 result (17 Oct; `phase1/README.md` sections 1–2) [phase 1].**
+- **Phase-1 result (17 Oct; `results/still-scenes/overview/phase-notes/phase1.md` sections 1–2) [phase 1].**
   - Step 0: 1,301 of 1,301 recorded solver places reproduce (s19 and s20 included).
   - Step 1, old wording, line failures flipped (GLM n 29 / DeepSeek n 15): P 15 / 8, exactly on the bars; R3 alone 2 / 2; R4 alone (dropping unmatched detections) 15 / 4; R5 (circular) 19 / 9; true people with reference constraints 29 / 15. Over all solver steps, P loses 0 (GLM), 4 (DeepSeek) and 0 (Qwen) successes, and R3 loses 0; over line steps only, DeepSeek P loses 1.
   - Step 1 verdict: neither success nor kill. R3 misses its bar badly. DeepSeek's 4 losses miss "at most 2" if the clause covers all situations (it is met if it covers lines only). The two P bars rest on few independent answers: GLM's 15 flips come from 9 people answers in 3 layouts, DeepSeek's 8 from 4.
@@ -541,7 +541,7 @@ Copying it into a harness tool is lighter.
 ```
 New:
 ```text
-Copying it into a harness tool is lighter. Phase 1 copied its rules into a research script (`phase1/i01_repairs/repairs.py`, arm R5); nothing in `src/` or `tests/` changed.
+Copying it into a harness tool is lighter. Phase 1 copied its rules into a research script (`results/still-scenes/replay-harness/repairs/repairs.py`, arm R5); nothing in `src/` or `tests/` changed.
 ```
 
 ### 12. I09, Why: facing accuracy is now measured
@@ -563,8 +563,8 @@ Old:
 ```
 New:
 ```text
-  - A0, the VLM facing error, runs inside I01 at no cost. Done 17 Oct (`phase1/README.md` section 3) [phase 1]. Within 45 deg, on the yaw the pipeline uses: Gemini 0.906 (n 310 matched pairs, 36 people, 8 layouts; 95% CI 0.81–0.98), Sonnet 0.809, Qwen 0.765, DeepSeek 0.616, Haiku 0.616, GLM 0.547. Weaker models lose most on people seen in profile, mainly line members (GLM 0.463, Haiku 0.488).
-  - So the facing kill bar below is 0.806 (10 points below Gemini), or the absolute 0.70 if only the school panel counts. Score A1 on the same matched (arm, scene, person) instances (`phase1/a0_facing/a0_pairs.jsonl`), since Gemini's 0.906 comes only from the scenes where it ran a people call.
+  - A0, the VLM facing error, runs inside I01 at no cost. Done 17 Oct (`results/still-scenes/overview/phase-notes/phase1.md` section 3) [phase 1]. Within 45 deg, on the yaw the pipeline uses: Gemini 0.906 (n 310 matched pairs, 36 people, 8 layouts; 95% CI 0.81–0.98), Sonnet 0.809, Qwen 0.765, DeepSeek 0.616, Haiku 0.616, GLM 0.547. Weaker models lose most on people seen in profile, mainly line members (GLM 0.463, Haiku 0.488).
+  - So the facing kill bar below is 0.806 (10 points below Gemini), or the absolute 0.70 if only the school panel counts. Score A1 on the same matched (arm, scene, person) instances (`results/still-scenes/facing/a0_pairs.jsonl`), since Gemini's 0.906 comes only from the scenes where it ran a people call.
   - Post hoc: the faced point replaces the model's own 8-bin label for 65–91% of people, and for 5 of 6 models this costs 4–23 points (GLM 0.547 against 0.779 with the label alone). A heading-from-label change would need pre-registering and testing on other sets; the placeholder panel splits 2 to 2 on it.
 ```
 
@@ -603,7 +603,7 @@ At SD 7–8, the same arithmetic gives about 28–32 records (11–13 points) (i
 ```
 New:
 ```text
-At SD 7–8, the same arithmetic gives about 28–32 records (11–13 points) (inference). [phase 1] I46 reproduces Qwen's 7.9 as 7.93 (df 4, exact 95% CI 4.8–22.8), which gives 31.4 records. Paired within one stage, the figure is 11–21 records; over 14 layouts it is 18–79 (`phase1/i46_stats/mdd_table.txt`).
+At SD 7–8, the same arithmetic gives about 28–32 records (11–13 points) (inference). [phase 1] I46 reproduces Qwen's 7.9 as 7.93 (df 4, exact 95% CI 4.8–22.8), which gives 31.4 records. Paired within one stage, the figure is 11–21 records; over 14 layouts it is 18–79 (`results/still-scenes/metrics-and-statistics/statistics/mdd_table.txt`).
 ```
 
 ### 18. Finding 1 in section 1.1 (optional)
@@ -627,5 +627,5 @@ I11, I22, I44, I47 and C5 get small wording fixes.
 New:
 ```text
 I11, I22, I44, I47 and C5 get small wording fixes.
-- **Phase 1, first results (17 Oct).** I01 Steps 0–2, A0, I14 version 0 and the I46 statistics are done, zero-call, each recomputed by an independent verifier (`phase1/README.md`). "How to read" defines [phase 1]. I01, I09, I14, I46, sections 1.2 and 6 (and optionally finding 1 and section 8) carry the results. I01 Step 1 is neither success nor kill, and its calibration passes. I14's set story survives its kill tests but fails S2 and S4. A0 sets I09's facing bar at 0.806. I46 sizes the sealed set at 20 or more fresh layouts.
+- **Phase 1, first results (17 Oct).** I01 Steps 0–2, A0, I14 version 0 and the I46 statistics are done, zero-call, each recomputed by an independent verifier (`results/still-scenes/overview/phase-notes/phase1.md`). "How to read" defines [phase 1]. I01, I09, I14, I46, sections 1.2 and 6 (and optionally finding 1 and section 8) carry the results. I01 Step 1 is neither success nor kill, and its calibration passes. I14's set story survives its kill tests but fails S2 and S4. A0 sets I09's facing bar at 0.806. I46 sizes the sealed set at 20 or more fresh layouts.
 ```

@@ -178,7 +178,7 @@
    - Target: `derive.oracle_target(observation, t0, th)`, the point `run_episode`'s oracle grounding lifts.
    - Context: oracle, `reference_people_matter(et, "t0")`. If False, the standard goal is the result.
    - People: `run.OraclePeople`, the visible true people, then `stages.people.number_people`.
-   - Constraints: the reference constraints from the truth, copied as I01 R5 copied them (`phase1/i01_repairs/repairs.py`, from `tests/test_reference_constraints.py`):
+   - Constraints: the reference constraints from the truth, copied as I01 R5 copied them (`results/still-scenes/replay-harness/repairs/repairs.py`, from `tests/test_reference_constraints.py`):
      - waiting_line: `come_after(members)`;
      - conversation_group: `keep_out_of_shared_space(members)`, `visible_to(needed)`, `face(needed)`;
      - audience: `keep_out_of_view(members, target=True)`, `face(target=True)`;
@@ -243,7 +243,7 @@ A failure **fires in a variant** when its detector is true in the variant and fa
 - mislocation offset: empirical (radial, lateral) of the paired detection from its person. Taken from the three models pooled if a model has fewer than 10 pairs; its rates stay its own;
 - false people per answer: the empirical count distribution. Their positions are (radial, lateral) offsets from the visible person whose mark projects nearest in pixels (pooled over models if fewer than 10). Their yaw is None in the model's observed share and U(−π, π) otherwise;
 - yaw, by A0 view class: frontal < 45, oblique 45–75, profile 75–105, back > 105 deg. The angle is |wrap(bearing(true person → camera xy) − true yaw)|. Per class, P(yaw unknown) and the empirical signed error on matched pairs. Pooled over models for a class with fewer than 10 known pairs. Mislocated people take the same yaw model.
-- **Cross-check:** recall computed I03's way (all visible, staff included) must equal `phase1b/i03/stageA/vlm_rows.jsonl`'s pooled recall for the same runs. Any mismatch is reported and stops the noisy arm until explained.
+- **Cross-check:** recall computed I03's way (all visible, staff included) must equal `results/still-scenes/perception/depth-blob-detector/stageA/vlm_rows.jsonl`'s pooled recall for the same runs. Any mismatch is reported and stops the noisy arm until explained.
 
 **Simulation of one draw on a scene.**
 - For each visible true person (OraclePeople's list): missed with p_miss[model, role]; if listed, mislocated with q_mis[model], else located.
@@ -302,7 +302,7 @@ A failure **fires in a variant** when its detector is true in the variant and fa
 
 ## 10. C5 gate-1 recount on the widened generator
 
-Under `phase1d/c5_gates/FROZEN.md` (it exists; its readings are kept and extended):
+Under `results/still-scenes/learned-models/flow-model-gates/FROZEN.md` (it exists; its readings are kept and extended):
 - **PRIMARY' (decides, as PRIMARY did):** the number of distinct (recipe, amount, kind, bystanders, second group, family, level), counted over:
   - the 26 development rows of both splits and both passes, with family and level empty. These are C5's 22 distinct tuples;
   - every (row, family, level) with at least one accepted variant in seeds 0–2.

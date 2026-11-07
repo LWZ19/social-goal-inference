@@ -1,11 +1,11 @@
 
-Written before computing anything below. C1 failed (`moving/sweep/score_dsv41_out.txt`, sha256 3791113d). Nothing
+Written before computing anything below. C1 failed (`results/moving-lines/test-layouts/score_dsv41_out.txt`, sha256 3791113d). Nothing
 here changes that verdict or any frozen file. The 72 sweep layouts are spent for confirmatory use: whatever this
 finds can only shape a new pre-registration on new layouts.
 
-**Data.** `moving/runs_sweep/dsv41/sweep/*/seed*/<arm>/episode.json` only: per re-solve `truth`, `last`, `roster`,
+**Data.** `results/data/moving/runs_sweep/dsv41/sweep/*/seed*/<arm>/episode.json` only: per re-solve `truth`, `last`, `roster`,
 `marginals` (CT4), `in_turn`, `joined`, `vacated`, `line_direction`, `tracks`; per 1-s sample `in_line`, `cut_in`,
-`state`. I do not open `moving/sweep/human_dump/` or `moving/sweep/renders/`.
+`state`. I do not open `results/moving-lines/test-layouts/human_dump/` or `results/moving-lines/test-layouts/renders/`.
 
 **Ticks.** As the scorer: re-solves with truth and someone ahead (`truth.ahead` non-empty).
 

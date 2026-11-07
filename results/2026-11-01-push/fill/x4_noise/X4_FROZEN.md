@@ -12,7 +12,7 @@ df 4. GLM's two same-prompt C runs differed by 16.
 - **Two fresh batches** (noise1, noise2) of the s23 runs, for GLM-5.3 and DeepSeek V4.1.
   - The 3 realistic development sets (plain, staffed, real) x R, E and C, at 3 trials: 252 records per method per
     batch.
-- **Configs:** E3's s23 configs (`e3_models/configs/{variant}_{method}.yaml`) with one change, a batch-specific cache
+- **Configs:** E3's s23 configs (`results/still-scenes/hidden-situations-and-more-models/configs/{variant}_{method}.yaml`) with one change, a batch-specific cache
   folder (`.cache/vlm_noise1`, `.cache/vlm_noise2`; `configs/`, with the diff in the hash set).
   - Every call is fresh: no cache entry exists there.
   - Within a batch E and C still reuse R's plan and context answers through that batch's cache, as s23 did. So the

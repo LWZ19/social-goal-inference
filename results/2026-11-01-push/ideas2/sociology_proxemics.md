@@ -1,7 +1,7 @@
 # Ideas round 2, lens: sociology, proxemics and HRI on social spaces (2 Nov 2026)
 
 - `cd moving && python3 -I $S/ctx_tally.py runs`: the first answer's "people matter" verdict, by model and scene.
-- `.venv/bin/python -I $S/roster_displays.py results/2026-11-01-push/moving/runs sim/scenarios` (repo
+- `.venv/bin/python -I $S/roster_displays.py results/data/moving/runs sim/scenarios` (repo
   root): who each bystander-scene answer named, and how it described their facing.
 - `cd moving && python3 -I $S/contingency.py runs dsv41 cafe_line2_bystanders 15 44` (also sweet_spot 15-44, and
   Sonnet room 10-19): a "who moves after whom" graph with no target and no names.

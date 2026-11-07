@@ -71,14 +71,14 @@ with both values.
 - CT3F has more cut-in samples than CT3, as CT3F had more than CT4PJ on the confirmation layouts.
 
     cd .
-    PYTHONPATH=sim ~/miniforge3/envs/sgi-habitat/bin/python results/2026-11-01-push/moving/sweep/make_sweep.py --start 3000 --per-base 450 --out results/2026-11-01-push/moving/sweep/i11_candidates
-    cp results/2026-11-01-push/fill/i11_ct3f/select_i11.py results/2026-11-01-push/moving/sweep/select_i11.py
-    cd results/2026-11-01-push/moving/sweep && python3 select_i11.py > i11_select_out.txt
+    PYTHONPATH=sim ~/miniforge3/envs/sgi-habitat/bin/python results/moving-lines/test-layouts/make_sweep.py --start 3000 --per-base 450 --out results/moving-lines/test-layouts/i11_candidates
+    cp results/moving-lines/best-version-new-layouts/select_i11.py results/moving-lines/test-layouts/select_i11.py
+    cd results/moving-lines/design-and-scoring/sweep && python3 select_i11.py > i11_select_out.txt
     python3 -c "import json;[print(f\"i11/{l['name']} {l['seed']}\") for l in json.load(open('i11_selection.json'))['layouts']]" > jobs_i11.txt
     cd .. && P=.venv/bin/python
     $P run_moving.py --model soclaas_dsv41 --out runs_i11/dsv41_live --workers 2 --port-base 8820 --module sgi_habitat.experiment_oracle --jobs sweep/jobs_i11.txt --arms CT2 > ../fill/i11_ct3f/run_ct2_live.log 2>&1
     SGI_CACHE_ONLY=1 $P run_moving.py --model soclaas_dsv41 --out runs_i11/dsv41 --workers 2 --port-base 8820 --module sgi_habitat.experiment_oracle --jobs sweep/jobs_i11.txt --arms CT2 CT3F CT3 > ../fill/i11_ct3f/run_replay.log 2>&1
-    cd .. && $P fill/i11_ct3f/i11_score.py sweep/i11_selection.json runs_i11/dsv41 runs_i11/dsv41_live > fill/i11_ct3f/i11_score_out.txt
+    cd .. && $P results/moving-lines/best-version-new-layouts/i11_score.py sweep/i11_selection.json runs_i11/dsv41 runs_i11/dsv41_live > results/moving-lines/best-version-new-layouts/i11_score_out.txt
     # the bars are read from the runs_i11/dsv41 section; the dsv41_live section is the CT2 repeat check
 
 ## Cost and order

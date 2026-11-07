@@ -8,7 +8,7 @@ How it was made:
 - **Compute.** `nice -n 10`, 2 BLAS threads, at most 2 processes, with at least 11 GB of memory free throughout. About 1 h 20 min of wall time for the compute agent and about 1 h for the verifier.
 - The structured outputs of the compute agent and the verifier (and the protocol author's) are in `agent_outputs.json`, unedited.
 
-Paths below are relative to this folder (`phase2/i06_repair/` in the research folder).
+Paths below are relative to this folder (`results/still-scenes/crowds/facing-gate-repair/` in the research folder).
 - Protocol: `FROZEN.md`, `DEVIATIONS.md` (each hashed; `logs/deviations_hash_history.txt`); `precheck/` (`format_check.py`, `format_check.log`).
 - `code/`: `rules.py` (the four rules), `common.py`, `crowd.py` (arm 1), `crowd_noisy.py` (arm 1b), `records.py` (arm 2), `tables.py`, `run_crowd_r0.sh`, `run_r0_rest.sh`, `run_repair.sh`.
 - Results: `tables.txt`, `summary.json`, `rows_crowd.jsonl`, `rows_noisy_{qwen,glm,dsv}.jsonl`, `rows_records_<cell>.jsonl` (11 cells); the R0 reproduction files `out/r0_*.txt`; per-pass rows in `work/`; `logs/` (`ORDER.txt`, `output_hashes.txt`, `git_status_before.txt`, `git_status_after.txt`, run logs).
@@ -287,7 +287,7 @@ Table 4.3. RN's breaks, that is how often absorption is needed (`tables.txt` Tab
 Every criterion value, every R0 reproduction and every row agree. The verifier found 0 differences against `rows_crowd.jsonl`, `rows_noisy_*.jsonl` and `rows_records_*.jsonl`. What differs is bookkeeping, one rounded median and one explanation.
 
 Settled by the verifier (its value is used above):
-1. **A write outside the probe folder.** The compute agent reported that nothing was written outside `phase2/i06_repair/`. Its records pass, which imports A2's `replay_d.py`, wrote the bytecode cache `phase1c/i09/a2/__pycache__/replay_d.cpython-312.pyc` at 06:47:42, creating that `__pycache__` folder in an earlier phase folder; the writer confirmed the file time (06:47:42.05). No content file changed. The verifier ran Python with `-B` and wrote nothing outside `verify/`.
+1. **A write outside the probe folder.** The compute agent reported that nothing was written outside `results/still-scenes/crowds/facing-gate-repair/`. Its records pass, which imports A2's `replay_d.py`, wrote the bytecode cache `phase1c/i09/a2/__pycache__/replay_d.cpython-312.pyc` at 06:47:42, creating that `__pycache__` folder in an earlier phase folder; the writer confirmed the file time (06:47:42.05). No content file changed. The verifier ran Python with `-B` and wrote nothing outside `verify/`.
 2. **The time in DEVIATIONS.md.** D1 and D2 are dated "06:45 +08:00, before any pass ran". The file was created at 06:43:25 and hashed at 06:43:26 (`logs/deviations_hash_history.txt`), and the first R0 pass started at 06:43:40. So both entries predate every pass, as stated, but the stated time is wrong, and it would fall after the first pass started.
 4. **Why A3 fails under every rule.** Compute agent: the confuser's own 1.0 m space covers the place in turn. Verifier: that also holds at A1 and A2, where RN succeeds 24 of 24; at A3 the confuser stands 0.26–0.35 m from the place in turn, against 0.55–0.94 m at A1–A2, and that closeness is what separates it. The counts are not in dispute. Section 2 uses the verifier's reading and extends its figures to A4–A6 (writer's tally).
 
@@ -314,7 +314,7 @@ Not a disagreement:
 - Everything is development data, with oracle people or in-sample i.i.d. noise. No crowd test with real VLM perception has been run.
 
 **For the pipeline.**
-- It needs a facing for every detected person, which ties it to the heading question in REPORT section 7. With a model's own yaw it can turn real joiners away (one DeepSeek record here). With I09's detector yaw (setting (c)) every person absorbed on the records faced the line's front, and that detector is within 45° for 0.969 of non-profile people on unseen layouts (`phase2/i09/README.md` section 1). So the gate and I09's people source fit together.
+- It needs a facing for every detected person, which ties it to the heading question in REPORT section 7. With a model's own yaw it can turn real joiners away (one DeepSeek record here). With I09's detector yaw (setting (c)) every person absorbed on the records faced the line's front, and that detector is within 45° for 0.969 of non-profile people on unseen layouts (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1). So the gate and I09's people source fit together.
 - A test on records not used to design the rule should come first. Because the gate only re-solves recorded inputs, it can be replayed on any later run's records at zero extra calls, for example on the VLM crowd run's (Programme B step 8).
 - For I19 (geometry computes the members): a chain consistent with facing for `come_after` should be compared with RF90, not only with the current `_turn`, on crowded lines.
 
@@ -333,11 +333,11 @@ Each item gives the exact old text from `REPORT.md` and the proposed new text. E
 
 Old:
 ```text
-I06's first crowd probe (`phase2/i06/README.md`) and C5's flow-matching pilot (`phase2/flow_pilot/README.md`). Each step froze
+I06's first crowd probe (`results/still-scenes/crowds/README.md`) and C5's flow-matching pilot (`results/still-scenes/learned-models/flow-model-pilot/README.md`). Each step froze
 ```
 New:
 ```text
-I06's first crowd probe (`phase2/i06/README.md`), I06's repair probe, a facing gate on joining a line (`phase2/i06_repair/README.md`), and C5's flow-matching pilot (`phase2/flow_pilot/README.md`). Each step froze
+I06's first crowd probe (`results/still-scenes/crowds/README.md`), I06's repair probe, a facing gate on joining a line (`results/still-scenes/crowds/facing-gate-repair/README.md`), and C5's flow-matching pilot (`results/still-scenes/learned-models/flow-model-pilot/README.md`). Each step froze
 ```
 
 ### 2. "How to read": the repair probe's inputs, in the same definition
@@ -368,22 +368,22 @@ New:
 
 Old:
 ```text
-post hoc because the frozen families kept added people at least 1.2 m from the members and outside the structure's space (`phase2/i06/README.md` section 3).
+post hoc because the frozen families kept added people at least 1.2 m from the members and outside the structure's space (`results/still-scenes/crowds/README.md` section 3).
 ```
 New:
 ```text
-post hoc because the frozen families kept added people at least 1.2 m from the members and outside the structure's space (`phase2/i06/README.md` section 3). [phase 2] A facing gate on joining (an unlisted person joins only when facing into the line's front half-plane; research code, zero calls) then turned 29 of the 54 judged absorption failures into successes and broke nothing on the crowds or the development records. What it leaves is unlisted people facing the line's front near its end, and confusers on or near the place in turn, which no join rule fixes (`phase2/i06_repair/README.md`).
+post hoc because the frozen families kept added people at least 1.2 m from the members and outside the structure's space (`results/still-scenes/crowds/README.md` section 3). [phase 2] A facing gate on joining (an unlisted person joins only when facing into the line's front half-plane; research code, zero calls) then turned 29 of the 54 judged absorption failures into successes and broke nothing on the crowds or the development records. What it leaves is unlisted people facing the line's front near its end, and confusers on or near the place in turn, which no join rule fixes (`results/still-scenes/crowds/facing-gate-repair/README.md`).
 ```
 
 ### 6. Section 1.2, phase-2 step 6
 
 Old:
 ```text
-(the other 4 post hoc from hidden floor; `phase2/i06/README.md`).
+(the other 4 post hoc from hidden floor; `results/still-scenes/crowds/README.md`).
 ```
 New:
 ```text
-(the other 4 post hoc from hidden floor; `phase2/i06/README.md`). [phase 2] A repair probe the same day, a facing gate on joining (zero calls), is a method candidate: it fixes 29 of 54 judged absorption failures and breaks nothing on the crowds or the development records (`phase2/i06_repair/README.md`).
+(the other 4 post hoc from hidden floor; `results/still-scenes/crowds/README.md`). [phase 2] A repair probe the same day, a facing gate on joining (zero calls), is a method candidate: it fixes 29 of 54 judged absorption failures and breaks nothing on the crowds or the development records (`results/still-scenes/crowds/facing-gate-repair/README.md`).
 ```
 
 ### 7. Section 1.3: a new decision
@@ -395,7 +395,7 @@ Old:
 New:
 ```text
 - Who could write rules for new held-out situations, and the real deadline.
-- [phase 2] Whether to adopt I06's facing gate on joining a line in the solver (a method candidate, `phase2/i06_repair/README.md`), which facing it should use, and whether to replay it first on records not used to design it.
+- [phase 2] Whether to adopt I06's facing gate on joining a line in the solver (a method candidate, `results/still-scenes/crowds/facing-gate-repair/README.md`), which facing it should use, and whether to replay it first on records not used to design it.
 ```
 
 ### 8. I06: the repair probe's result, after the first probe's result
@@ -414,7 +414,7 @@ Old:
 ```
 New:
 ```text
-- **Payoff.** −1/1.5/5 pp on the existing sets (guess). On crowded lines, +5–20 pp (guess). [phase 2] On I06's crowd variants (oracle people), a one-condition facing gate on the current `_turn` already turns 29 of 54 judged absorption failures into successes with no break (`phase2/i06_repair/README.md`). (inference) So I19's chain consistent with facing should be compared with that gate, not only with `_turn`; what the gate leaves is unlisted people facing the line's front near its end.
+- **Payoff.** −1/1.5/5 pp on the existing sets (guess). On crowded lines, +5–20 pp (guess). [phase 2] On I06's crowd variants (oracle people), a one-condition facing gate on the current `_turn` already turns 29 of 54 judged absorption failures into successes with no break (`results/still-scenes/crowds/facing-gate-repair/README.md`). (inference) So I19's chain consistent with facing should be compared with that gate, not only with `_turn`; what the gate leaves is unlisted people facing the line's front near its end.
 ```
 
 ### 10. Section 6, the decision-gate row
@@ -426,11 +426,11 @@ New:
 
 Old:
 ```text
-groups and audiences held in every variant built (`phase2/i06/README.md`).
+groups and audiences held in every variant built (`results/still-scenes/crowds/README.md`).
 ```
 New:
 ```text
-groups and audiences held in every variant built (`phase2/i06/README.md`). [phase 2] A repair probe the same day, a facing gate on joining, is a method candidate: 29 of 54 judged absorption failures fixed and no break on the crowds or the development records, though S2 rested on the 4 goal steps where absorption happened (`phase2/i06_repair/README.md`).
+groups and audiences held in every variant built (`results/still-scenes/crowds/README.md`). [phase 2] A repair probe the same day, a facing gate on joining, is a method candidate: 29 of 54 judged absorption failures fixed and no break on the crowds or the development records, though S2 rested on the 4 goal steps where absorption happened (`results/still-scenes/crowds/facing-gate-repair/README.md`).
 ```
 
 ### 12. Section 7: crowd labels and the cue threshold
@@ -441,19 +441,19 @@ the probe's criteria come out the same without A5–A6.
 ```
 New:
 ```text
-the probe's criteria come out the same without A5–A6. [phase 2] I06's repair probe shows that no join rule decides A3–A6: they fail under every rule tested, nobody joining included, because the confuser stands 0.03–0.44 m from the place in turn, against 0.55–0.94 m at A1–A2, where the rules succeed (`phase2/i06_repair/README.md` section 2). (inference) So those scenes turn on the cue threshold, that is on what L1 counts when someone stands at or near the place in turn.
+the probe's criteria come out the same without A5–A6. [phase 2] I06's repair probe shows that no join rule decides A3–A6: they fail under every rule tested, nobody joining included, because the confuser stands 0.03–0.44 m from the place in turn, against 0.55–0.94 m at A1–A2, where the rules succeed (`results/still-scenes/crowds/facing-gate-repair/README.md` section 2). (inference) So those scenes turn on the cue threshold, that is on what L1 counts when someone stands at or near the place in turn.
 ```
 
 ### 13. Section 7: a new item after the heading question
 
 Old:
 ```text
-where the models score 0.547–0.906 on the same pairs (`phase1c/README.md` section 1).
+where the models score 0.547–0.906 on the same pairs (`results/still-scenes/overview/phase-notes/phase1c.md` section 1).
 ```
 New:
 ```text
-where the models score 0.547–0.906 on the same pairs (`phase1c/README.md` section 1).
-- [phase 2] Whether the solver's joining rule should get I06's facing gate (an unlisted person joins a line only when facing into its front half-plane; method candidate, `phase2/i06_repair/README.md`). It needs a facing for every detected person, so it ties into the heading question above: with a model's own yaw, one DeepSeek record had a real joiner turned away (a second person saved the success); with true or I09-detector yaw, every person absorbed on the records faced the line's front. Adopting it changes `src/sgi/solver.py` and its tests. (inference) A replay on records not used to design it should come first.
+where the models score 0.547–0.906 on the same pairs (`results/still-scenes/overview/phase-notes/phase1c.md` section 1).
+- [phase 2] Whether the solver's joining rule should get I06's facing gate (an unlisted person joins a line only when facing into its front half-plane; method candidate, `results/still-scenes/crowds/facing-gate-repair/README.md`). It needs a facing for every detected person, so it ties into the heading question above: with a model's own yaw, one DeepSeek record had a real joiner turned away (a second person saved the success); with true or I09-detector yaw, every person absorbed on the records faced the line's front. Adopting it changes `src/sgi/solver.py` and its tests. (inference) A replay on records not used to design it should come first.
 ```
 
 ### 14. Revision note, after the C5 flow-matching pilot bullet

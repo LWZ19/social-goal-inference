@@ -1,7 +1,7 @@
 # Audit items 3 and 6: zero-call re-scoring of logged moving-people episodes (6 Nov)
 
-Read-only. No model call and no simulator run. Inputs are `moving/runs/<model>/<scenario>/seed<N>/<arm>/episode.json`
-(91 samples at 1 Hz each). Scoring uses `moving/summarise_fresh.py`'s `measures` and `sign_p`, imported unchanged.
+Read-only. No model call and no simulator run. Inputs are `results/data/moving/runs/<model>/<scenario>/seed<N>/<arm>/episode.json`
+(91 samples at 1 Hz each). Scoring uses `results/moving-lines/design-and-scoring/summarise_fresh.py`'s `measures` and `sign_p`, imported unchanged.
 
 | File | What |
 |---|---|

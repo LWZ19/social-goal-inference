@@ -9,8 +9,8 @@ The I03 lead wrote this on 17 Oct 2026, before any I03 code scored an evaluation
 
 Paths are relative to `phase1b/`.
 
-**Exposure (disclosed).** The whitelist re-run of the blob pilot (RERUN R36–R38 and R56, `rerun/blobpilot/`) has already run a blob detector on all 68 evaluation scenes, using the pilot's thresholds.
-- I read its summaries in REPORT.md and RERUN.md, never its per-scene files. I03 code will not read `rerun/blobpilot/per_scene`.
+**Exposure (disclosed).** The whitelist re-run of the blob pilot (RERUN R36–R38 and R56, `results/still-scenes/perception/depth-blob-pilot/`) has already run a blob detector on all 68 evaluation scenes, using the pilot's thresholds.
+- I read its summaries in REPORT.md and RERUN.md, never its per-scene files. I03 code will not read `results/still-scenes/perception/depth-blob-pilot/per_scene`.
 - Those summaries shaped the grid's generic ranges. They report that the misses are staff behind counters or blobs merged with tall structure at 2.0–2.1 m, and that false bodies run 0.6–2.6 per realistic image.
 - B-relocate and its 40 px radius are informed by I01 and RERUN results on these same development runs.
 - So are the Stage B failure population and its fixable shares (section 8).
@@ -126,7 +126,7 @@ The bars are the REPORT's. Each is judged separately on E-real (42) and on E-ph 
 - recall by role (line member, group member, staff, other).
 
 ## 6. VLM people lists, scored like for like
-**Answers.** One answer per (arm, scene, trial): the union of that key's records' people lists, for records that have one (as in `phase1/a0_facing`).
+**Answers.** One answer per (arm, scene, trial): the union of that key's records' people lists, for records that have one (as in `results/still-scenes/overview/phase-notes/phase1-files/a0_facing`).
 
 **Runs** (all con):
 - s19 `qwen38_low` and `glm53`, and s20 `dsv41`: the realistic arms plus their `ph` and `dev_seed0`–`2` runs.
@@ -144,7 +144,7 @@ The bars are the REPORT's. Each is judged separately on E-real (42) and on E-ph 
 - Extras: new wording, s21 `qwen38_low` and s23 `glm53`, `dsv41`, `haiku55`, `sonnet55_low` and `gemini38_low`, all con. Qwen's, GLM's and DeepSeek's people answers there are cache copies of s19/s20, so they are not new evidence on perception.
 - Further extras: the placeholder C runs, s19 `ph` and `dev_seed0`–`2` (Qwen, GLM) and s20 `ph` and `dev_seed0`–`2` (DeepSeek).
 
-**Solving.** Each solver step (`Record.solver_step`) is solved again with `H.resolve(rec, people=, constraints=)` and the recorded target, as in `phase1/i01_repairs/repairs.py`. Every other record keeps its recorded verdict. A record without a people list never gets blobs. Methods never read situation or scene labels; labels are used only to tabulate.
+**Solving.** Each solver step (`Record.solver_step`) is solved again with `H.resolve(rec, people=, constraints=)` and the recorded target, as in `results/still-scenes/replay-harness/repairs/repairs.py`. Every other record keeps its recorded verdict. A record without a people list never gets blobs. Methods never read situation or scene labels; labels are used only to tabulate.
 
 **Terms.** Blobs are the frozen Stage A kept blobs of the record's scene, and distances are in xy.
 - **Supported:** a detection with a blob within 0.5 m.

@@ -12,7 +12,7 @@ bound is −0.054, so too few cells to exclude a loss of 0.05.
 
 ## Arms and cells (zero model calls: both arms replay the cell's cached first answer)
 
-- **The earlier CT2 and CTd episodes** in `moving/runs/<model>/` are read only for a repeat check: the same arm and
+- **The earlier CT2 and CTd episodes** in `results/data/moving/runs/<model>/` are read only for a repeat check: the same arm and
   answer, earlier run vs this run. That is a timing-only floor on up to 125 cells for CT2 and 30 for CTd.
 - **Scenes:** the 5 evaluation scenes.
 - **Models and seeds:**
@@ -50,7 +50,7 @@ bound is −0.054, so too few cells to exclude a loss of 0.05.
       run soclaas_qwen38_low soclaas_qwen38_low 10 11 12 13 14
       run soclaas_glm53 soclaas_glm53 10 11 12 13 14
       kill $TP $DP
-      cd .. && $P fill/i5_ctd/i5_score.py > fill/i5_ctd/i5_score_out.txt     # zero calls
+      cd .. && $P results/moving-lines/own-camera/i5_score.py > results/moving-lines/own-camera/i5_score_out.txt     # zero calls
 
 ## Cost
 
@@ -60,6 +60,6 @@ bound is −0.054, so too few cells to exclude a loss of 0.05.
 
 ## Scorer
 
-- `i5_score.py`, using `fill/mcompare.py` and `summarise_fresh.tracking`.
+- `i5_score.py`, using `results/_lib/mcompare.py` and `summarise_fresh.tracking`.
 - Tested with `--test` on the earlier 30 cells. It reproduces −0.018 and −0.017; pooled lower bound −0.054; tracking
   matched 0.89 and 0.93, stale 0.71 and 0.67.

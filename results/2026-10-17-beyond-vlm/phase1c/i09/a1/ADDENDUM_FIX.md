@@ -39,7 +39,7 @@ It names no situation, scene or label, and it can create a yaw only where F4's p
 
 **Why facing rather than detection.** The facing failure has one cause and accounts for 4 missed (bar, domain) cells in both fit domains. A detection revision could address at most F-real's recall and false bars: 2 cells, 2 layouts, 3 people. F-ph's recall misses lie below the grid's τ.
 
-- I had read the section 8 input `phase1/a0_facing/a0_pairs.jsonl` and counted the view classes of Gemini's evaluation pairs: 27 frontal, 67 oblique, 171 profile and 45 back.
+- I had read the section 8 input `results/still-scenes/facing/a0_pairs.jsonl` and counted the view classes of Gemini's evaluation pairs: 27 frontal, 67 oblique, 171 profile and 45 back.
 
 So the choice of a facing revision over a detection revision is labelled **data-informed**. Its content, dropping the face rule, comes from fit failures only.
 

@@ -1,6 +1,6 @@
 # I09 phase 1c (plan step 3b): frozen protocol
 
-The I09 lead wrote this on 17 Oct 2026, after the API probe below (21:21 +08:00) and before any detector or pose model processed an evaluation image. Its sha256 is in `FROZEN.sha256`. This file is never edited. Changes go into dated addenda with their own hashes, written before the data they affect is processed. Paths are relative to `phase1c/i09/` unless they start with `phase1/`, `phase1b/` or `src/`.
+The I09 lead wrote this on 17 Oct 2026, after the API probe below (21:21 +08:00) and before any detector or pose model processed an evaluation image. Its sha256 is in `FROZEN.sha256`. This file is never edited. Changes go into dated addenda with their own hashes, written before the data they affect is processed. Paths are relative to `results/still-scenes/people-finder/early-detector/phase1c/` unless they start with `phase1/`, `phase1b/` or `src/`.
 
 - **Split.** The REPORT says "freeze on the example layouts, report once on 42 eval images". Here fitting uses I03's split: the worked examples plus 260 fresh-seed scenes. E-ph is added as a secondary domain.
 - **Facing.** The REPORT says "shoulder-and-hip plane, sign from face keypoints". Here there are 4 declared variants, and fit data picks one.
@@ -28,12 +28,12 @@ The I09 lead wrote this on 17 Oct 2026, after the API probe below (21:21 +08:00)
 - **Peak memory** was 457 MiB.
 - No threshold was set from the probe.
 
-## 1. Data (identical to I03, `phase1b/i03/FROZEN.md` section 1)
-**Fit data.** Everything is chosen on these scenes only, in `phase1b/i03/stageA/fitdata.py` `fit_refs()` order, loaded with its `load()`:
+## 1. Data (identical to I03, `results/still-scenes/perception/depth-blob-detector/FROZEN.md` section 1)
+**Fit data.** Everything is chosen on these scenes only, in `results/still-scenes/perception/depth-blob-detector/stageA/fitdata.py` `fit_refs()` order, loaded with its `load()`:
 - **F-real**: the 21 realistic worked examples, 39 visible people;
 - **F-ph**: the 8 placeholder worked examples plus the 260 scenes of fresh seeds 100–109 (already generated, never regenerated), 268 scenes and 585 visible people.
 
-**Evaluation data,** scored once: the 68 scenes of `H.distinct_scenes()`. The set and domain come from the scenes folder (`phase1b/i03/stageA/evaluate.py` `set_of`).
+**Evaluation data,** scored once: the 68 scenes of `H.distinct_scenes()`. The set and domain come from the scenes folder (`results/still-scenes/perception/depth-blob-detector/stageA/evaluate.py` `set_of`).
 - **E-real** (PRIMARY): 42 images, 14 layouts × real/staffed/plain, 118 visible people.
 - **E-ph** (secondary): 26 scenes. These are `data/placeholder/eval` `eval_00`–`13`, plus `eval_14`, `15`, `20` and `21` of `keep/dev_new/seed{0,1,2}/scenes`.
 
@@ -43,7 +43,7 @@ The I09 lead wrote this on 17 Oct 2026, after the API probe below (21:21 +08:00)
 **The sidecar** (`sidecar/infer.py`; `-I`, HF offline, never imports sgi):
 - **Input.** It reads image paths only from manifests that a project-venv script wrote through the harness (`H.examples`/`H.check_example`, `H.distinct_scenes`/`H.guard_scene`) and `fitdata.py`. It checks each image's sha256.
 - **Path guard.** It asserts that no path contains `keep/heldout`, `s18`, `s20_held`, `eval_16`–`eval_19`, `group_photo` or `lift_wait`.
-- **Seed folders.** A path component `seed<k>` must be seed100–109 directly under `phase1b/fresh_seeds`, or seed0–2 directly under `keep/dev_new`.
+- **Seed folders.** A path component `seed<k>` must be seed100–109 directly under `results/still-scenes/perception/fresh_seeds`, or seed0–2 directly under `keep/dev_new`.
   - I read the rule as protecting seeds 3–99.
 - **Writes** (JSONL, one line per image):
   - every person box with score ≥ 0.05 (xyxy, score);
@@ -125,7 +125,7 @@ No situation, scene or label is read.
 - It is adopted only if the rule over the union of rows (for facing, of variants) picks it. The kill bars are judged after it.
 
 ## 6. Scorer and A1 report
-**Scorer.** `phase1b/i03/people_scorer.py`, unchanged: `score_people(people, scene, th, exempt_xy=exempt_points(scene.truth), facing="full")`, `pool` and `wilson`.
+**Scorer.** `results/still-scenes/perception/depth-blob-detector/people_scorer.py`, unchanged: `score_people(people, scene, th, exempt_xy=exempt_points(scene.truth), facing="full")`, `pool` and `wilson`.
 
 **Report** per set (real, staffed, plain, placeholder), per domain and pooled, each with its n:
 - recall at 0.5 m (k/n, Wilson 95%) and by role (line, group, staff, other);
@@ -141,14 +141,14 @@ No situation, scene or label is read.
 
 Each facing figure is given with unknown counted as wrong (180 deg in medians) and among known, and the axis version is given too. E-real recall and facing also get layout cluster-bootstrap intervals (2000 draws, seed 0).
 
-## 7. Like for like (as `phase1b/README.md` Table 1.2)
-On E-real (arm, scene, trial) keys with a people list (`phase1b/i03/stageA/vlm_rows.jsonl`):
+## 7. Like for like (as `results/still-scenes/overview/phase-notes/phase1b.md` Table 1.2)
+On E-real (arm, scene, trial) keys with a people list (`results/still-scenes/perception/depth-blob-detector/stageA/vlm_rows.jsonl`):
 - each of the six models' recall, false per answer, merged pairs and full-yaw within 45;
-- beside them, the detector and the blobs (`phase1b/i03/stageA/rows.jsonl`), each re-weighted to that model's keys, with an axis comparison for the blobs.
+- beside them, the detector and the blobs (`results/still-scenes/perception/depth-blob-detector/stageA/rows.jsonl`), each re-weighted to that model's keys, with an axis comparison for the blobs.
 
 Also given: E-ph for Qwen, GLM and DeepSeek, and a sensitivity row in which keys without a list count as empty lists.
 
-## 8. A0-matched facing (`phase1/a0_facing/a0_pairs.jsonl`; arm, scene, pid)
+## 8. A0-matched facing (`results/still-scenes/facing/a0_pairs.jsonl`; arm, scene, pid)
 For each model's pairs, the detector's yaw for the same true person is scored (scorer matching on that scene).
 - **Coverage:** pairs whose person the detector matched with a known yaw.
 - **Primary measure:** within 45 over detector-matched pairs, unknown counted as wrong. Unmatched pairs are recall misses: counted, and left out.
@@ -184,7 +184,7 @@ The kill's facing clauses use section 8's primary measure on Gemini's pairs: a v
 
 **Overall I09:** success needs both A1 and A2 success. A kill fires on any A1 or A2 kill clause.
 
-## 11. A2: solver replays (no change to `src`; harness only, as `phase1/i01_repairs/repairs.py`)
+## 11. A2: solver replays (no change to `src`; harness only, as `results/still-scenes/replay-harness/repairs/repairs.py`)
 **Records.**
 - Primary: the old wording, s19 `qwen38_low` and `glm53`, and s20 `dsv41`. All con, realistic arms, 252 each.
 - Extras: the new wording, s21 Qwen and s23 GLM, DeepSeek, Haiku, Sonnet and Gemini. The Qwen, GLM and DeepSeek people answers there are cache copies of s19/s20.

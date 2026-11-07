@@ -3,7 +3,7 @@
 ---
 
 Does the C pipeline keep A2's gain when the constraints call itself sees the detector's numbered people, with no VLM
-people call at all? A2 (`phase1c/README.md` section 2) replayed recorded constraints that were written against the
+people call at all? A2 (`results/still-scenes/overview/phase-notes/phase1c.md` section 2) replayed recorded constraints that were written against the
 VLM's own people, re-addressed to the detector's people. Here the model writes its constraints against the detector's
 people: they are numbered on the image and listed in the request exactly as the package numbers and lists any people
 source's people.
@@ -29,7 +29,7 @@ source's people.
 
 - A class with OraclePeople's interface (`sgi.run.OraclePeople`): `__call__(observation) -> PeopleFound`, with
   `calls=[]`, `call_time_s=0.0` and the geometry time measured.
-- For the observation's scene: the frozen detector people of `phase1c/i09/a1/eval_people.json` (sha256
+- For the observation's scene: the frozen detector people of `results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json` (sha256
   `ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3`, checked on every load; RT-DETRv2 at score 0.25,
   band 1.00–2.30 m, flat test off, d_dup 0.50 m, d_push 0.20 m, facing F5 = A1's frozen choice with its one fix,
   unchanged), in descending score, each as `FoundPerson(xy=(x, y), yaw=yaw, pixel=projection of (x, y,

@@ -4,10 +4,10 @@ How it was made:
 - **Protocol.** The pilot lead wrote `FROZEN.md` (sha256 `a60f1d62…767f`) at 01:18:12 and hashed it at 01:18:17, after a format check (`prefreeze/`: 16 scenes of seed 100 and the first goal-step record of 4 primary runs; no metric) and before any raster, label or model existed.
   - `DEVIATIONS.md` (hashed at 04:17:55: after `CHECKPOINTS.sha256` at 04:17:45, before the first evaluation sample at 04:17:57) records no deviation, 13 clarifications of mechanics, and a 15 s smoke run of the training code on the real data, deleted, from which nothing was chosen.
 - **Two environments.** Rasters, labels, the solver's keys, scoring and tables ran in the torch-free project venv, reading recorded runs and scenes only through the step-0 harness. Training and sampling ran in the separate torch environment, used read-only as a sidecar (`-I`, `HF_HUB_OFFLINE=1`). The sidecar never imported the package and read and wrote only `.npz` and `.json` files in this folder. Its `pip freeze` was unchanged afterwards (verifier).
-- **Evaluation inputs.** The validation seeds 190–199 (in distribution). The 549 goal-step records of the six primary cells (old wording, realistic and watching), read through the harness. I01's P (true people under the recorded constraints), recomputed with `phase1/i01_repairs/repairs.py`'s own code. I04's V1 and V3 rows from `phase1d/i04/`.
+- **Evaluation inputs.** The validation seeds 190–199 (in distribution). The 549 goal-step records of the six primary cells (old wording, realistic and watching), read through the harness. I01's P (true people under the recorded constraints), recomputed with `results/still-scenes/replay-harness/repairs/repairs.py`'s own code. I04's V1 and V3 rows from `results/still-scenes/learned-models/soft-density/`.
 - **Verifier.** An independent verifier rebuilt the inputs with its own code, loaded the checkpoints into its own model class, retrained the main model, re-sampled with the protocol seeds and with independent seeds, re-scored with the package scorer and re-measured latency in its own sidecar. Where the compute agent and the verifier differ, this page uses the verifier's final value; where the verifier could not settle a point, both are given (section 6).
 
-Paths below are relative to this folder (`phase2/flow_pilot/` in the research folder).
+Paths below are relative to this folder (`results/still-scenes/learned-models/flow-model-pilot/` in the research folder).
 - Protocol: `FROZEN.md`, `FROZEN.sha256`, `DEVIATIONS.md`, `DEVIATIONS.sha256`, `CHECKPOINTS.sha256`, `prefreeze/` (the format check).
 - Code (`code/`): `common.py`, `build_seeds.py`, `assemble.py`, `png_check.py`, `build_dev.py` (project venv); `flow.py`, `run_train.sh` (sidecar); `score_val.py`, `score_dev.py`, `tables.py`, `figs.py` (project venv).
 - Data (`data/`, about 1 GB): `seeds/` (per-seed rasters and labels), `train.npz`, `val.npz`, `dev.npz`, `dev.json`, `manifest.json`, and `png/` (10 visual checks of rasters and labels).
@@ -15,7 +15,7 @@ Paths below are relative to this folder (`phase2/flow_pilot/` in the research fo
 - Samples and results: `samples/` (the sidecar's samples and `latency.json`), `rows_val_*.jsonl`, `rows_{a,b}_{old,watch}_<model>.jsonl`, `rows_b_*_loso_*.jsonl`, `tables.txt` (tables D1–D2 and T1–T11), `summary.json`, `logs/`, `figs/`.
 - Post hoc (written after the tables; decides nothing): `posthoc/by_row.py`/`.txt`, `posthoc/line_geometry.py`/`.txt`.
 - Verifier: `verify/` (`v_*.py`, `out/`, `logs/`, `data/`, `samples/`).
-- Seeds: `../seeds/` (`gen_placeholder.py`, `manifest_placeholder.json`, `placeholder/seed110`–`seed199`, the generation, verify and reproduction logs).
+- Seeds: `results/still-scenes/scene-seeds/phase2/` (`gen_placeholder.py`, `manifest_placeholder.json`, `placeholder/seed110`–`seed199`, the generation, verify and reproduction logs).
 
 ## 0. Verdicts at a glance (exploratory)
 
@@ -42,7 +42,7 @@ Shared cautions:
 ## 1. What was done
 
 **Data and units** (FROZEN sections 1–3; `code/build_seeds.py`, `assemble.py`).
-- Train: seeds 110–189. Validation, which is also the in-distribution test: seeds 190–199. Scenes are loaded as `phase1b/i03/stageA/fitdata.py` does, after `H.guard_scene`, with an assert per scene that it holds development situations only.
+- Train: seeds 110–189. Validation, which is also the in-distribution test: seeds 190–199. Scenes are loaded as `results/still-scenes/perception/depth-blob-detector/stageA/fitdata.py` does, after `H.guard_scene`, with an assert per scene that it holds development situations only.
 - A unit is one (scene, episode) with one target and a non-empty acceptable region. e0 and e1 have the same regions and both are kept; tables give n episodes and n scenes.
 - **Raster.** 64 × 64 cells of 0.10 m around the target point (training: the true target's anchor ground point; evaluation: the recorded `result.target.world`), with x from the robot's start towards the target. Seven channels: free floor (`sgi.solver.floor`), people discs (0.25 m), each person's facing as cos and sin, the target disc, the target's seen face (`_seen_face`, a 0.5 m segment), and the robot disc. No situation, group, role, region, constraint or request text goes in. At training the people are the visible true people (`OraclePeople`), and the seen face is computed at `oracle_target`, because it is None at the anchor's ground point.
 - **Labels.** 32 poses per episode, drawn uniformly from the free region cells inside the raster, jittered within ±0.05 m, with the heading the region's rule gives. An episode with no free region cell inside the raster gets no labels and stays an evaluation unit, where the flow fails it.
@@ -268,7 +268,7 @@ The figures are illustrations chosen by `code/figs.py`, not a sample; the verifi
   - The verifier's own training loop on `train.npz` reproduced `models/main/best.npz` bit for bit (largest weight difference 0), with the same validation curve and best epoch 30. The LOSO models were checked from their logs, `env.json` and curves (best epochs 30, 24, 28 equal each curve's minimum), not retrained.
   - With the protocol seeds, every table figure and every per-record field (top-1, fallback, hit@1–5, P(success), raw top-1) agrees on 549 of 549 records in each setting, and every per-unit validation figure on 520 of 520.
 - **Data separation.** `train.npz` holds exactly seeds 110–189 and `val.npz` exactly 190–199, with no shared key. Gradient steps use only `train.npz`; `val.npz` enters only the validation loss and the checkpoint choice. No development key is among the training or validation keys, and no development raster equals any training or validation raster (smallest L1 distance 7). 320 training keys carry the names `eval_14_audience_3` or `eval_15_audience_5`; these are the generator's template ids at seeds 110–189, a shared name, not shared data.
-- **No held-out data.** `phase2/seeds/placeholder` holds exactly seed110–seed199. All 2,340 scenes and 4,680 episodes were scanned after `H.guard_scene`: 0 held-out or non-development episodes, no `eval_16`–`19`, group_photo or lift_wait name. Recorded runs and development scenes were read only through the harness.
+- **No held-out data.** `results/still-scenes/scene-seeds/phase2/placeholder` holds exactly seed110–seed199. All 2,340 scenes and 4,680 episodes were scanned after `H.guard_scene`: 0 held-out or non-development episodes, no `eval_16`–`19`, group_photo or lift_wait name. Recorded runs and development scenes were read only through the harness.
 - **Sidecar untouched.** An isolated `pip freeze` lists 160 packages, each at the version in I09's freeze of 17 Oct 21:32; no file in the environment is newer than that.
 - **Not independently recomputed:** the label self-check (95.7%), the post hoc line-geometry angles and the figures.
 
@@ -325,9 +325,9 @@ Incidental, with no effect on any result:
 **How well does it transfer to a left-out situation?**
 - **Not at all.** 0 of 100 groups, 0 of 60 audiences and 36 of 140 lines (28 with other seeds), against the main model's 100, 60 and 120 on the same units. Left without groups it does worse than the solver alone (0 against 100). As C5 warned, leaving one situation out is partly ill-posed: each situation has its own rule, and nothing in the raster says which rule applies.
 - **The more telling failure is within a situation**, from generator lines to realistic lines: 83 of 261 against C's 196. The short lines are worst (waiting_line_1: 5 of 51 against 35; post hoc). Post hoc, the geometry differs: generator lines start along the target's seen face (median 6 deg), realistic lines do not (median 128 deg). So the flow appears to have learned the generator's habit, standing behind the person who stands in front of the target's face. That is C5's "memorises the generator" risk.
-- C gets its lines from `come_after` (`i01/README.md`, Table 1a, new wording: the solver with no constraints scores 0 of 90 at lines for every model, and `come_after` alone matches C for 4 of 6 models). The flow receives no constraint, only the exclusions in its projection, so at lines it must infer the queue and its end from the raster alone.
+- C gets its lines from `come_after` (`results/still-scenes/replay-harness/sets-and-definitions/README.md`, Table 1a, new wording: the solver with no constraints scores 0 of 90 at lines for every model, and `come_after` alone matches C for 4 of 6 models). The flow receives no constraint, only the exclusions in its projection, so at lines it must infer the queue and its end from the raster alone.
 
-1. **Gate 1 on a wider generator, read for geometry.** I06's crowd variants give 92 configurations by the letter (`phase2/i06/README.md` section 7). But they lie within the existing situations, come from development seeds 0–2, and sit on the same 10 base structures, so they add no new line geometry. This pilot suggests the variety that matters is geometric: lines that do not start on the target's face, bent lines, lines beside a counter. A count would not show that. A check that the realistic layouts fall inside the generator's range on a measure frozen beforehand (the post hoc angle above, say) would.
+1. **Gate 1 on a wider generator, read for geometry.** I06's crowd variants give 92 configurations by the letter (`results/still-scenes/crowds/README.md` section 7). But they lie within the existing situations, come from development seeds 0–2, and sit on the same 10 base structures, so they add no new line geometry. This pilot suggests the variety that matters is geometric: lines that do not start on the target's face, bent lines, lines beside a counter. A count would not show that. A check that the realistic layouts fall inside the generator's range on a measure frozen beforehand (the post hoc angle above, say) would.
 2. **Gate 2's result**, still running.
 4. **A raster that holds long structures** (FROZEN section 10: 128 × 128 at 0.10 m), with training centred on the lifted target point.
 6. **Several sampling-seed sets per record**, since one alternative set moved GLM's K2 gap by 4.5 points.
@@ -376,7 +376,7 @@ the pipeline itself is unchanged, and the only models run are I09's local detect
 ```
 New:
 ```text
-the pipeline itself is unchanged, and the only models run are I09's local detectors and pose model, offline on the GPU (RT-DETRv2 and ViTPose; D-FINE on fit images only), and C5's exploratory flow-matching pilot, a small model trained and sampled on the GPU on generator seeds (`phase2/flow_pilot/README.md`).
+the pipeline itself is unchanged, and the only models run are I09's local detectors and pose model, offline on the GPU (RT-DETRv2 and ViTPose; D-FINE on fit images only), and C5's exploratory flow-matching pilot, a small model trained and sampled on the GPU on generator seeds (`results/still-scenes/learned-models/flow-model-pilot/README.md`).
 ```
 
 ### 6. Section 4.6: the generative experiment (optional)

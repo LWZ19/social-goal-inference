@@ -1,6 +1,6 @@
 # How to report a comparison on the realistic sets (I46)
 
-Numbers come from `phase1/i46_stats/` (`i46_stats.py`, tables `*.txt`) and RERUN.md's "New rows" table. Everything is offline, from the recorded development runs.
+Numbers come from `results/still-scenes/metrics-and-statistics/statistics/` (`i46_stats.py`, tables `*.txt`) and RERUN.md's "New rows" table. Everything is offline, from the recorded development runs.
 
 ## Unit: the layout
 
@@ -12,7 +12,7 @@ Numbers come from `phase1/i46_stats/` (`i46_stats.py`, tables `*.txt`) and RERUN
 
 ## Test: two-sided exact sign-flip by layout
 
-- **Statistic.** For each layout l, d_l is the mean over its 18 paired records of (success A - success B). T = sum of the d_l. The p value is the share of the 2^14 sign patterns with |T*| >= |T| (`rerun/stats/stats.py`, `signflip_int`).
+- **Statistic.** For each layout l, d_l is the mean over its 18 paired records of (success A - success B). T = sum of the d_l. The p value is the share of the 2^14 sign patterns with |T*| >= |T| (`results/still-scenes/metrics-and-statistics/stats-rerun/stats.py`, `signflip_int`).
 - **Report** the p value, the layouts favouring A / B / tied, and the floor 2 / 2^k for k non-tied layouts. Example: Qwen new wording, C vs E: p = 0.0078, 8/0/6, which is at the floor.
 - **At least 6 layouts must move** before p <= 0.05 is possible. On these sets no claim within one situation can reach it: the floor is 0.0625 for lines (5 layouts) and 0.25 for groups (3).
 - A claim made "for every model" needs Holm's correction across the models.

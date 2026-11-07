@@ -1,6 +1,6 @@
 # I04 phase 1d (plan step 7): frozen protocol
 
-The I04 lead wrote this on 18 Oct 2026, after the format check below and before any density, fold fit or metric was computed. Its sha256 is in `FROZEN.sha256`. This file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is scored. Paths are relative to `phase1d/i04/` unless they start with `phase1/` or `src/`.
+The I04 lead wrote this on 18 Oct 2026, after the format check below and before any density, fold fit or metric was computed. Its sha256 is in `FROZEN.sha256`. This file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is scored. Paths are relative to `results/still-scenes/learned-models/soft-density/` unless they start with `phase1/` or `src/`.
 
 **Pre-freeze format check** (`prefreeze/fmt_check.py`, log `prefreeze/fmt_check.log`, 4.4 s). It reads the 36 runs of I14 v0's cells through the harness. It computes no region membership, success, density or score.
 - Goal-step records match I14 v0. Old-wording realistic: Qwen 143, GLM 141, DeepSeek 157. Watching: 36 each. New wording: Qwen 144, GLM 141, DeepSeek 151, Haiku 146, Sonnet 143, Gemini 135. That is 549 primary and 860 new-wording records.
@@ -13,7 +13,7 @@ The I04 lead wrote this on 18 Oct 2026, after the format check below and before 
 - The prediction in section 9 uses I14's published T5 only.
 
 ## 1. Records and cells
-- Records: goal-step records (`H.Record.solver_step`) of the con runs, read only through `research_harness`, exactly as in `phase1/i14_v0/METRIC_NOTE.md` "Records".
+- Records: goal-step records (`H.Record.solver_step`) of the con runs, read only through `research_harness`, exactly as in `results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md` "Records".
 - **Primary cells:**
   - old-wording realistic (arms real, staffed and plain): s19 `qwen38_low`, s19 `glm53` and s20 `dsv41`;
   - watching: s19 `dev_seed0`–`2` `qwen38_low` and `glm53`, and s20 `dev_seed0`–`2` `dsv41`, situation `audience`.
@@ -38,7 +38,7 @@ The I04 lead wrote this on 18 Oct 2026, after the format check below and before 
 - Every mismatch is reported. A record that mismatches is left out of every table, and the count is given.
 
 ## 3. Per-cell outcome
-**Replica.** I14 v0's vectorised replica of `sgi.evaluate.score` (`phase1/i14_v0/i14.py` `replica()`) is applied to every F cell, with the cell's heading from section 4. Per cell it gives:
+**Replica.** I14 v0's vectorised replica of `sgi.evaluate.score` (`results/still-scenes/metrics-and-statistics/metric-v0/i14.py` `replica()`) is applied to every F cell, with the cell's heading from section 4. Per cell it gives:
 - matched (record level: the package's `matched_target_id` for the recorded place; a wrong target makes every cell 0);
 - reachable;
 - in the matched target's acceptable region;

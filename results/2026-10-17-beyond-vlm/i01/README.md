@@ -215,7 +215,7 @@ At the nobody-near scenes every method produces the same standard goal from the 
 | Gemini | E | 79 | 34 | 35 | 10 | 0 |
 | Gemini | C | 38 | 34 | 4 | 0 | 0 |
 
-On R and E, failures outside the region dominate for every model. On C, wrong targets are 50% (Qwen), 70% (Sonnet) and 89% (Gemini) of what is left. Heading is the cause once in all 4,536 records. The per-situation split is TABLE 1 of `rerun/i01_split/split_out.txt`.
+On R and E, failures outside the region dominate for every model. On C, wrong targets are 50% (Qwen), 70% (Sonnet) and 89% (Gemini) of what is left. Heading is the cause once in all 4,536 records. The per-situation split is TABLE 1 of `results/still-scenes/replay-harness/split/split_out.txt`.
 
 Where the wrong targets are (R records, shared by E and C): Sonnet 7 of 7 at eval_12. Qwen 12: 8 at eval_12, 3 at eval_09 (line of 6), 1 at eval_00. DeepSeek 24: 9 at eval_12, 7 at eval_04 (parcel), 8 elsewhere. Haiku 1, at eval_12. GLM 33: 11 at eval_06 (line of 1), 8 at eval_04, the rest spread. Gemini 34 of 34 at lines (eval_06, 08, 09 and 13 in every arm; eval_07 in staffed only).
 
@@ -334,7 +334,7 @@ Gate: the snap fixes under 60% of near misses, or far misses at lines are at lea
 | DeepSeek E, groups only (s23) | 11 of 15 (73%) | 73% | |
 | Old E sets (s16b/s20), groups only: Qwen / GLM / DeepSeek | 3 of 4 / 8 of 15 (53%) / 10 of 15 (67%) | | |
 
-Reading: as I34 words it (no split by situation), **the gate opens and the kill is not met** for every reading. Taken alone, groups at s23 reach the kill line for GLM and DeepSeek E (75%, 73%), but not on the old E sets where I34's evidence came from. Per model and method values are in T4 of `rerun/snap/snap_tables.txt`.
+Reading: as I34 words it (no split by situation), **the gate opens and the kill is not met** for every reading. Taken alone, groups at s23 reach the kill line for GLM and DeepSeek E (75%, 73%), but not on the old E sets where I34's evidence came from. Per model and method values are in T4 of `results/still-scenes/depth-fix/first-check/snap_tables.txt`.
 
 ### The 0.50–0.55 m strip
 
@@ -365,12 +365,12 @@ Reading: as I34 words it (no split by situation), **the gate opens and the kill 
 ## Scripts and outputs
 
 Deliverable 1:
-- `rerun/i01_baselines/i01_baselines.py`, `tables.py`, `check_empty.py`; outputs `tables.txt`, `records.jsonl`, `re_records.jsonl`, `check_empty.txt`, `run.log`.
+- `results/still-scenes/replay-harness/baselines/i01_baselines.py`, `tables.py`, `check_empty.py`; outputs `tables.txt`, `records.jsonl`, `re_records.jsonl`, `check_empty.txt`, `run.log`.
 
 Deliverable 2:
-- `rerun/i01_split/split.py`, `inspect_split.py`, `inspect2.py`, `tally.py`; outputs `split_out.txt` (TABLES 1–3 and claim checks), `inspect_out.txt`, `inspect2_out.txt`, `tally_out.txt`.
-- Verifier: `rerun/i01_split/verify/v_split.py`, `v_extra.py`, `v_cache.py`, `v_cache2.py`, `v_rescore.py` (with their `_out.txt` files).
+- `results/still-scenes/replay-harness/split/split.py`, `inspect_split.py`, `inspect2.py`, `tally.py`; outputs `split_out.txt` (TABLES 1–3 and claim checks), `inspect_out.txt`, `inspect2_out.txt`, `tally_out.txt`.
+- Verifier: `results/still-scenes/replay-harness/split/verify/v_split.py`, `v_extra.py`, `v_cache.py`, `v_cache2.py`, `v_rescore.py` (with their `_out.txt` files).
 
 Deliverable 3:
-- `rerun/snap/snap.py`, `summarize.py`, `n1n2.py`, `n1_s23.py`; outputs `snap_tables.txt` (T1–T7), `snap_records.jsonl`, `n1n2.txt`, `n1_s23.txt`.
-- Verifier: `rerun/snap/verify/v1_n1n2.py`, `v2_snap.py`, `v3_summary.py`, `v4_extra.py`, `v5_more.py` (with their `.txt` outputs and `v2_snap_records.jsonl`).
+- `results/still-scenes/depth-fix/first-check/snap.py`, `summarize.py`, `n1n2.py`, `n1_s23.py`; outputs `snap_tables.txt` (T1–T7), `snap_records.jsonl`, `n1n2.txt`, `n1_s23.txt`.
+- Verifier: `results/still-scenes/depth-fix/first-check/verify/v1_n1n2.py`, `v2_snap.py`, `v3_summary.py`, `v4_extra.py`, `v5_more.py` (with their `.txt` outputs and `v2_snap_records.jsonl`).

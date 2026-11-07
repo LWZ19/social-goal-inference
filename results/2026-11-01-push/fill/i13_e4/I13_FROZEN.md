@@ -2,7 +2,7 @@
 
 ## 1. What is fixed by hash
 
-- **The design.** `e4/E4_DESIGN.md`, sha256 `5ebf7fafbef4f974...` (full hash in `I13.sha256`).
+- **The design.** `results/still-scenes/new-situations/design/E4_DESIGN.md`, sha256 `5ebf7fafbef4f974...` (full hash in `I13.sha256`).
 
 ## 2. Scenes, models, methods
 
@@ -10,7 +10,7 @@
   if every layout favours C. On the development data, 5 layouts gave a floor of 0.0625, so even a clean sweep could
   not pass (`e4_score_test_out.txt`). At 12 layouts the floor is about 0.0005.
 - **Models:** the six current ones (Qwen 3.8, GLM-5.3, DeepSeek V4.1, Sonnet 5.5 low, Haiku 5.5, Gemini 3.8).
-- **Methods:** R (`cot`), E (`fsc`), C (`con`), with prompts and code unchanged. The configs are `e4/configs/*.yaml`
+- **Methods:** R (`cot`), E (`fsc`), C (`con`), with prompts and code unchanged. The configs are `results/still-scenes/new-situations/design/configs/*.yaml`
   (trials 3, final_test true).
 
 `e4_geometry.py` scores four geometry baselines with sgi's own scorer and a perfect click:
@@ -59,12 +59,12 @@ Rules, fixed now:
   mark the counter or the first leg.
 
     cd .
-    E=results/2026-11-01-push/e4
-    F=results/2026-11-01-push/fill/i13_e4
+    E=results/still-scenes/new-situations/design
+    F=results/still-scenes/new-situations
     # 0. render seeds 603-605 with the builder's command for 600-602 (placeholder renderer, seconds a scene)
     # 1. validity check, zero calls (before any call):
     PYTHONPATH= .venv/bin/python $F/e4_geometry.py $E/scenes > $F/e4_geometry_out.txt
-    # 2. runs, per model M (free models first; seeds in parallel as e3_models/run_held.sh):
+    # 2. runs, per model M (free models first; seeds in parallel as results/still-scenes/hidden-situations-and-more-models/run_held.sh):
     # 3. score (zero calls):
     PYTHONPATH= .venv/bin/python $F/e4_score.py runs/*_s26_e4_* > $F/e4_score_out.txt
 

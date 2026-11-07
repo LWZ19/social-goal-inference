@@ -5,7 +5,7 @@ the run logs. It is laid out so that a person or an AI agent can explore it, che
 reached.
 
 For a plain-language overview with charts, open
-[`2026-11-01-push/progress_page/robot-stand.html`](2026-11-01-push/progress_page/robot-stand.html) in a browser.
+[`results/page/robot-stand.html`](results/page/robot-stand.html) in a browser.
 
 ## The question
 
@@ -26,31 +26,31 @@ Two test beds:
    every 12-25 s, walks off and rejoins at the back. The score is the **share of time in the right spot** over a
    92-second run: every second, is the robot 0.5-1.2 m behind the last person waiting, within 0.6 m of the line,
    facing the front and at least 0.55 m from everyone (or, once first, within 0.6 m of the serving spot). See
-   `2026-11-01-push/moving/SCORING.md` and `SCORING_STRICT.md` (the "strict" scoring used in the results).
+   `results/moving-lines/design-and-scoring/SCORING.md` and `SCORING_STRICT.md` (the "strict" scoring used in the results).
 
 ## Main findings
 
 | Finding | Numbers | Where |
 |---|---|---|
-| The constraint method picks good spots far more often than pointing, on every model | Claude Sonnet 5.5: 96% vs 71%; Claude Haiku 5.5: 95% vs 60%; Qwen 3.8: 90% vs 78% (of 252 tries each) | `2026-11-01-push/EVIDENCE_AUDIT.md` row A1; `../docs/results/` |
-| It holds on 70 new scenes never used in development | e.g. Haiku at waiting lines: 92 of 100 vs 4 of 100 | `2026-11-01-push/fill/i12_still/` |
-| It holds on situations kept hidden until the end (lift, photo) and on two new ones (a bent line, someone at a machine) | wins on all 12 layouts of both new tests, over the six models together; GLM-5.3 is level on the machine test | `2026-11-01-push/e3_models/`, `2026-11-01-push/fill/i13_e4/`, `2026-11-01-push/e4/` |
-| A small people detector can replace one VLM question: faster on all six models, never less accurate | e.g. Qwen 107 → 83 s per answer | `2026-11-01-push/e2/` |
-| Moving lines: asking once and re-solving the spot as people move beats deciding once | 11 of 13 models; Sonnet 29% vs 6% of the time in the right spot | `2026-11-01-push/moving/`, `2026-11-01-push/e3_models/`, `2026-11-01-push/fill/i9_qwen_glm/` |
-| Re-solving beats asking the VLM again and again, with far fewer calls | Sonnet 32% vs 2-10%, 4 calls vs 22-29 per run | `2026-11-01-push/fill/i10_reask/RESULTS_I10.md` |
-| Remembering who to stand behind beats following the marked spot | 87 of 125 runs better | `2026-11-01-push/fill/i4_rtw/` |
-| Tracking people with the robot's own camera costs nothing measurable | mean change +0.4 points over 125 runs | `2026-11-01-push/fill/i5_ctd/RESULTS_I5.md` |
-| The biggest remaining loss is at the front of the line: where the counter serves | a test robot told the serving spot gains 4-13 points | `2026-11-01-push/fill/x1_ceilings/` |
+| The constraint method picks good spots far more often than pointing, on every model | Claude Sonnet 5.5: 96% vs 71%; Claude Haiku 5.5: 95% vs 60%; Qwen 3.8: 90% vs 78% (of 252 tries each) | `results/overview/EVIDENCE_AUDIT.md` row A1; `../docs/results/` |
+| It holds on 70 new scenes never used in development | e.g. Haiku at waiting lines: 92 of 100 vs 4 of 100 | `results/still-scenes/fresh-scenes/` |
+| It holds on situations kept hidden until the end (lift, photo) and on two new ones (a bent line, someone at a machine) | wins on all 12 layouts of both new tests, over the six models together; GLM-5.3 is level on the machine test | `results/still-scenes/hidden-situations-and-more-models/`, `results/still-scenes/new-situations/`, `results/still-scenes/new-situations/design/` |
+| A small people detector can replace one VLM question: faster on all six models, never less accurate | e.g. Qwen 107 → 83 s per answer | `results/still-scenes/people-finder/` |
+| Moving lines: asking once and re-solving the spot as people move beats deciding once | 11 of 13 models; Sonnet 29% vs 6% of the time in the right spot | `results/moving-lines/design-and-scoring/`, `results/still-scenes/hidden-situations-and-more-models/`, `results/moving-lines/school-models/` |
+| Re-solving beats asking the VLM again and again, with far fewer calls | Sonnet 32% vs 2-10%, 4 calls vs 22-29 per run | `results/moving-lines/re-asking/RESULTS_I10.md` |
+| Remembering who to stand behind beats following the marked spot | 87 of 125 runs better | `results/moving-lines/roles-vs-marked-spot/` |
+| Tracking people with the robot's own camera costs nothing measurable | mean change +0.4 points over 125 runs | `results/moving-lines/own-camera/RESULTS_I5.md` |
+| The biggest remaining loss is at the front of the line: where the counter serves | a test robot told the serving spot gains 4-13 points | `results/moving-lines/test-robots/` |
 
 The full list, about 110 findings with their strength (conclusive, suggestive, quick probe) and their files, is
-[`2026-11-01-push/EVIDENCE_AUDIT.md`](2026-11-01-push/EVIDENCE_AUDIT.md). The latest results are in
-[`2026-11-01-push/fill/RESULTS_7NOV.md`](2026-11-01-push/fill/RESULTS_7NOV.md) and the `RESULTS_*.md` file of each
+[`results/overview/EVIDENCE_AUDIT.md`](results/overview/EVIDENCE_AUDIT.md). The latest results are in
+[`results/overview/RESULTS_7NOV.md`](results/overview/RESULTS_7NOV.md) and the `RESULTS_*.md` file of each
 `fill/` item.
 
 **Six models:** the fresh scenes and the two new tests are scored with all six models in
-`fill/i12_still/i12_score_six_out.txt`, `fill/i13_e4/e4_score_six_out.txt` and, for the looser machine rule,
-`fill/i13_e4/e4_score_six_0p8_out.txt`. A few of GLM-5.3's answers failed on the school's server and are left out, as
-the outputs say. **Still running:** GLM-5.3's repeat runs for the noise check (`fill/x4_noise`).
+`results/still-scenes/fresh-scenes/i12_score_six_out.txt`, `results/still-scenes/new-situations/e4_score_six_out.txt` and, for the looser machine rule,
+`results/still-scenes/new-situations/e4_score_six_0p8_out.txt`. A few of GLM-5.3's answers failed on the school's server and are left out, as
+the outputs say. **Still running:** GLM-5.3's repeat runs for the noise check (`results/still-scenes/run-to-run-noise`).
 
 ## Layout
 
@@ -58,16 +58,16 @@ the outputs say. **Still running:** GLM-5.3's repeat runs for the noise check (`
 |---|---|
 | `2026-10-17-beyond-vlm/` | Still-scene analyses and ideas tested from 17 Oct: replays, ablations, statistics, perception, learned models, crowds. `REPORT.md` is the overview; `phase1*/`, `phase2/`, `phase3/` hold each step with its own README. |
 | `2026-11-01-push/` | From 1 Nov: moving lines, numbered marks, the people detector, more models, new tests, and the final checks. `SUMMARY.md` covers 1-2 Nov; `EVIDENCE_AUDIT.md` indexes everything. |
-| `2026-11-01-push/moving/` | Moving-line design, scoring, frozen test plans (`*_FROZEN.md`), deviations, and the run script `run_moving.py`. |
+| `results/moving-lines/design-and-scoring/` | Moving-line design, scoring, frozen test plans (`*_FROZEN.md`), deviations, and the run script `run_moving.py`. |
 | `2026-11-01-push/fill/` | The final checks of 6-7 Nov, one folder per item (see the glossary). |
-| `2026-11-01-push/progress_page/` | The plain-language results page and its pictures. |
+| `results/page/` | The plain-language results page and its pictures. |
 | `logs/` | The run logs, compressed (Git LFS). |
 
 ## Run logs
 
 ```bash
 git lfs install && git lfs pull                       # fetches results/logs/*.tar.gz
-tar xzf results/logs/moving-runs.tar.gz -C results     # simulator runs -> results/2026-11-01-push/moving/runs*/
+tar xzf results/logs/moving-runs.tar.gz -C results     # simulator runs -> results/data/moving/runs*/
 tar xzf results/logs/research-data.tar.gz -C results   # data files and other run folders of the analyses
 tar xzf results/logs/still-runs.tar.gz                 # still-scene runs -> runs/
 ```
@@ -134,8 +134,8 @@ the depth fix on Claude and Gemini.
 
 ## Questions worth asking
 
-- Why does the robot leave its place at the front of the line in some runs? (`fill/x1_ceilings/`, and any
+- Why does the robot leave its place at the front of the line in some runs? (`results/moving-lines/test-robots/`, and any
   `episode.json` where `ahead` drops to 0.)
 - Which still-scene situations still fail with the constraint method, and is the cause the VLM's answer or the
   solver? (`results.jsonl` scores and `answer.json` rules.)
-- How large is each model's run-to-run noise against the gaps between methods? (`fill/x4_noise/`.)
+- How large is each model's run-to-run noise against the gaps between methods? (`results/still-scenes/run-to-run-noise/`.)

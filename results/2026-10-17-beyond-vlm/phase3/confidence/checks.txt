@@ -10,23 +10,23 @@ R6 joins: PASS; I04 joined 1265 of 1265, flags equal 1265, cell equal 1265; A2 s
 R7 hashes: PASS; FROZEN.md 2a3a890a3b23ff466e8b72c63e6dbef9143d7738f68badc34a4fad6a17ccb4b3; replay_d.verify_hashes {'FROZEN.md': 'f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15', 'a1/eval_people.json': 'ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3', 'a2/CLARIFICATIONS.md': '0310bb553c3401a14c2d8f74f6dbc324a6cd7316dd1f94de849b71158fbc87dc'}
    (provenance, not in R7) replay_d.py and the 8 A2 row files against A2.sha256: all match
    input file hashes (provenance): 
-     0ec52e8b34000880045f118760340c7dad51f07eb44135d6ee57fae5c206286f  phase1d/i04/rows_new_deepseek.jsonl
-     ca7173aa2d1a141e7f225762588db34eeb2e53e1387c60ad5381b673e6c2c396  phase1d/i04/rows_new_gemini.jsonl
-     2f1fb7a324d573e49d27282e30bdd70e131756971b2b021a6afd104ff544d183  phase1d/i04/rows_new_glm.jsonl
-     b0402b0db0ade0004454c84b769c211da8e2b111489f20e7fc87680942de5124  phase1d/i04/rows_new_haiku.jsonl
-     c71fcf8d08b8d3084bceeb16b9e3c7aec1d7deffca7e5a38e252999657b43bcb  phase1d/i04/rows_new_qwen.jsonl
-     93a0f3030c32611c9a70f7d5bd26c842a84cb39084062f847df1e9c1780c9acd  phase1d/i04/rows_new_sonnet.jsonl
-     7ffacd774f339d9e69960277394dba9f3185c2bddd9b67b169d5b05aaa92b6f8  phase1d/i04/rows_old_deepseek.jsonl
-     78530b40c81becd2fa6dc8a51ae928291d59ad9c108baa8a5195a05ad2f3e9ad  phase1d/i04/rows_old_glm.jsonl
-     7c7b7156cf17b08867eced5bba40988a3dd70858edbbb3ff42fe69efb4342aa2  phase1d/i04/rows_old_qwen.jsonl
-     826b153b5ebf30de4f244901aa3f8ca41137c0d54c1171a7b4217409160dbf5d  phase1d/i04/rows_watch_deepseek.jsonl
-     245cd69df40a9e2df5efdd49abea6580131ded5cbacbcd244750b72355f6da58  phase1d/i04/rows_watch_glm.jsonl
-     624f329ba92e2940b4c919f353cc986c3261cf435d03a9bef19e541a94223442  phase1d/i04/rows_watch_qwen.jsonl
-     9b2d839f7ee0cbd1490111f901707191391fec92da44a6b24708b237e018606b  phase1/i14_v0/rows_oldwatch.jsonl
-     a9221ed5ca43782ee7008dd48755b186c8e8f80f278167a77f834f27e5f8928a  phase1/i14_v0/rows_new.jsonl
-     357183001f5dc3104039cc145aee94e4a4c485c8e61d84df306911b157fd8f2d  phase1/i14_v0/i14.py
-     e945172a53a6085880955504d0d017eb9b7336d7c328d4a7fada17583d751397  phase1/i01_repairs/repairs.py
-     ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3  phase1c/i09/a1/eval_people.json
+     0ec52e8b34000880045f118760340c7dad51f07eb44135d6ee57fae5c206286f  results/still-scenes/learned-models/soft-density/rows_new_deepseek.jsonl
+     ca7173aa2d1a141e7f225762588db34eeb2e53e1387c60ad5381b673e6c2c396  results/still-scenes/learned-models/soft-density/rows_new_gemini.jsonl
+     2f1fb7a324d573e49d27282e30bdd70e131756971b2b021a6afd104ff544d183  results/still-scenes/learned-models/soft-density/rows_new_glm.jsonl
+     b0402b0db0ade0004454c84b769c211da8e2b111489f20e7fc87680942de5124  results/still-scenes/learned-models/soft-density/rows_new_haiku.jsonl
+     c71fcf8d08b8d3084bceeb16b9e3c7aec1d7deffca7e5a38e252999657b43bcb  results/still-scenes/learned-models/soft-density/rows_new_qwen.jsonl
+     93a0f3030c32611c9a70f7d5bd26c842a84cb39084062f847df1e9c1780c9acd  results/still-scenes/learned-models/soft-density/rows_new_sonnet.jsonl
+     7ffacd774f339d9e69960277394dba9f3185c2bddd9b67b169d5b05aaa92b6f8  results/still-scenes/learned-models/soft-density/rows_old_deepseek.jsonl
+     78530b40c81becd2fa6dc8a51ae928291d59ad9c108baa8a5195a05ad2f3e9ad  results/still-scenes/learned-models/soft-density/rows_old_glm.jsonl
+     7c7b7156cf17b08867eced5bba40988a3dd70858edbbb3ff42fe69efb4342aa2  results/still-scenes/learned-models/soft-density/rows_old_qwen.jsonl
+     826b153b5ebf30de4f244901aa3f8ca41137c0d54c1171a7b4217409160dbf5d  results/still-scenes/learned-models/soft-density/rows_watch_deepseek.jsonl
+     245cd69df40a9e2df5efdd49abea6580131ded5cbacbcd244750b72355f6da58  results/still-scenes/learned-models/soft-density/rows_watch_glm.jsonl
+     624f329ba92e2940b4c919f353cc986c3261cf435d03a9bef19e541a94223442  results/still-scenes/learned-models/soft-density/rows_watch_qwen.jsonl
+     9b2d839f7ee0cbd1490111f901707191391fec92da44a6b24708b237e018606b  results/still-scenes/metrics-and-statistics/metric-v0/rows_oldwatch.jsonl
+     a9221ed5ca43782ee7008dd48755b186c8e8f80f278167a77f834f27e5f8928a  results/still-scenes/metrics-and-statistics/metric-v0/rows_new.jsonl
+     357183001f5dc3104039cc145aee94e4a4c485c8e61d84df306911b157fd8f2d  results/still-scenes/metrics-and-statistics/metric-v0/i14.py
+     e945172a53a6085880955504d0d017eb9b7336d7c328d4a7fada17583d751397  results/still-scenes/replay-harness/repairs/repairs.py
+     ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3  results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json
    pass-1 row file hashes: 
      4b3d2928151468ec77be52e4668b7ea50ad9371d9f94d6914bac60d8f19b9afb  rows_old_qwen.jsonl
      800db83d3cdab8593873c4943a8423db86c9a6be784542507c5f293f7997e99c  rows_old_glm.jsonl

@@ -108,7 +108,7 @@
 - **C − R is +65 to +93 in every batch,** well above the noise.
 - **Flips between batches:** 19-34% of records per method change between right and wrong, in both directions.
 
-## E3b: the older models on the moving headline (`i9_qwen_glm/i9_score_e3b_out.txt`)
+## E3b: the older models on the moving headline (`results/moving-lines/school-models/i9_score_e3b_out.txt`)
 
 - **Re-solving (CT2) beats asking once (R1) on strict share on 5 of 7 older models:**
 
@@ -125,7 +125,7 @@
     target).
   - Gemini 3 Flash, 13/11/1.
 
-## Item 9: GLM's 240 s secondary (`i9_qwen_glm/i9_score_long_out.txt`)
+## Item 9: GLM's 240 s secondary (`results/moving-lines/school-models/i9_score_long_out.txt`)
 
 - **Still latency-bound at 240 s:** 24 of 25 constraint episodes had no answer in time. Median first answer 217 s (C)
   and 173 s (R). CT2 vs R1 is 0/3/22.

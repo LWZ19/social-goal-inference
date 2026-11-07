@@ -10,8 +10,8 @@ src/sgi/geometry.py sha256 OK
 src/sgi/stages/goal.py sha256 OK
 docs/model_notes/tools/research_harness.py sha256 OK
 docs/model_notes/tools/replay_solver.py sha256 OK
-results/2026-10-17-beyond-vlm/rerun/lifting/lifting.py sha256 OK
-results/2026-10-17-beyond-vlm/rerun/lifting/frontsnap.py sha256 OK
+results/still-scenes/perception/lifting-rerun/lifting.py sha256 OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py sha256 OK
 S0.1 unit checks on synthetic depth (camera 640x480, f 554.3 px, 1.5 m high, pitched 10 deg down)
   (a) wall 20.0 m wide, box 0.5 m in front: components >=25 px 2, box object, wall structure (extent 6.56 m), expect wall structure -> PASS
   (d) component lift vs lifting.lift_at_depth on a one-component window: window one component True, |diff| 0.0e+00 m, vs sgi.geometry.lift 0.0e+00 m -> PASS
@@ -85,7 +85,7 @@ S0.2 fit checks on the worked-example scenes of H.examples(): 29 scenes (FROZEN.
     V4: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0
 
 ##############################################################################################################
-Reproduction of rerun/lifting (repro_lifting/diff.txt)
+Reproduction of results/still-scenes/overview/rerun-files/lifting (repro_lifting/diff.txt)
 ##############################################################################################################
 lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL
 frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL
@@ -111,7 +111,7 @@ A. Data and reproduction checks
   section 9: vectorised match mask vs match_target on sampled pixels of the 53 wrong-target records: 0 mismatches of 31800
   targets per episode: {1: 756}
   per-record agreement with rerun/lifting/lifting_records.tsv on the 57 wrong-target records: {'matched': 57, 'class same': 53, 'surface same': 53, 'oracle fix same': 53, 'oracle success same': 26, 'no point both': 4}; 0 unmatched []
-  reproduction of rerun/lifting itself (repro_lifting/diff.txt): lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL; frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL; lifting_records.tsv: 130 lines original, 130 reproduced, IDENTICAL
+  reproduction of results/still-scenes/overview/rerun-files/lifting itself (repro_lifting/diff.txt): lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL; frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL; lifting_records.tsv: 130 lines original, 130 reproduced, IDENTICAL
   front-surface snap (reference row), replayed per record with frontsnap.front_snap, in frontsnap.py's format:
     qwen38_low  {'right->right': 227, 'right->right (moved)': 5, 'right->wrong (moved)': 13, 'wrong->right (moved)': 1, 'wrong->wrong': 6}
     glm53       {'right->right': 205, 'right->right (moved)': 4, 'right->wrong (moved)': 15, 'wrong->right (moved)': 4, 'wrong->wrong': 13, 'wrong->wrong (moved)': 7}

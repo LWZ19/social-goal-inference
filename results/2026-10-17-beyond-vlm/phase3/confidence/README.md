@@ -1,6 +1,6 @@
 # Phase 3: confidence from perception disagreement (2026-10-18)
 
-Phase 1d found that no confidence signal tried so far separates C's failures from its successes. C is the people call plus the constraints call plus the solver. I04's density concentration gave AUROC 0.559, 0.303 and 0.540 on the old-wording realistic cells, and the solver's flags gave 0.435–0.659 (`phase1d/README.md` sections 1 and 5). That page suggested, untested, that a useful signal would have to come from upstream perception uncertainty, not from the solver's keys. This probe tests that suggestion with zero calls. It compares the VLM's people with I09's frozen detector people and asks whether the disagreement predicts when C fails, well enough to abstain or ask for help.
+Phase 1d found that no confidence signal tried so far separates C's failures from its successes. C is the people call plus the constraints call plus the solver. I04's density concentration gave AUROC 0.559, 0.303 and 0.540 on the old-wording realistic cells, and the solver's flags gave 0.435–0.659 (`results/still-scenes/overview/phase-notes/phase1d.md` sections 1 and 5). That page suggested, untested, that a useful signal would have to come from upstream perception uncertainty, not from the solver's keys. This probe tests that suggestion with zero calls. It compares the VLM's people with I09's frozen detector people and asks whether the disagreement predicts when C fails, well enough to abstain or ask for help.
 
 How it was made:
 - **Before hashing.** One format check through the harness (`prefreeze/format_check.py`, about 1 s, run twice; the second run added two counts). It read no success, score, `target_correct`, detector distance or re-solved place, and computed no signal. While choosing fields, the author printed one I04 row in full (one old-Qwen record, with its top-1 verdict and V1 concentration).
@@ -9,13 +9,13 @@ How it was made:
   - `DEVIATIONS_2.md` (hashed 17:43:57), after the first pass-2 attempt stopped at check R8 on one value at the tolerance boundary: R8 now compares in exact arithmetic (section 2). That attempt printed only R8's baseline numbers (S5b and the single flags), no P1–S4 or S6 number (`pass2.log`).
 - **Inputs.**
   - The 1,265 goal-step records of I14 version 0's cells other than s21 Qwen, read through the step-0 harness (`docs/model_notes/tools/research_harness.py`). Primary (judged): the 441 old-wording realistic records. Secondary: watching (108) and the five s23 new-wording con runs on the realistic arms (716).
-  - I09 A1's frozen detector people (`phase1c/i09/a1/eval_people.json`, hash-checked), loaded with A2's own loader.
-  - A2's setting D, built with A2's functions (`phase1c/i09/a2/replay_d.py`) and I01's `repairs.scene_info`, imported unchanged.
+  - I09 A1's frozen detector people (`results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`, hash-checked), loaded with A2's own loader.
+  - A2's setting D, built with A2's functions (`results/still-scenes/people-finder/early-detector/phase1c/a2/replay_d.py`) and I01's `repairs.scene_info`, imported unchanged.
   - I04's rows (`phase1d/i04/rows_*.jsonl`) for the flags and V1's concentration, and I14's rows for the checks.
 - **Compute.** CPU only and numpy only, at most 2 processes, `nice -n 10`, 2 BLAS threads. Pass 1 (every signal and checks R1–R7) took about 2.2 min on 2 processes; pass 2 (every table) about 1 s.
 - The full structured outputs of the protocol author, the compute agent and the verifier are in `agent_outputs.json`, unedited.
 
-Paths below are relative to this folder (`phase3/confidence/` in the research folder).
+Paths below are relative to this folder (`results/still-scenes/confidence-signal/` in the research folder).
 - `FROZEN.md` and `FROZEN.sha256`; `DEVIATIONS.md`, `DEVIATIONS_2.md` and their hashes; `prefreeze/` (the format check).
 - `code/confidence.py` (pass 1 and the `checks` mode) and `code/tables.py` (pass 2).
 - `rows_<cell>.jsonl` (11 files, one row per record), `checks.txt`, `pass1.log`, `pass2.log`, `tables.txt` (tables T0–T9) and `summary.json`.
@@ -86,7 +86,7 @@ Shared cautions:
 | R7, hashes | `FROZEN.sha256` and A2's `verify_hashes()` pass; A2's script and 8 row files match `A2.sha256` |
 | R8, AUROC code | Reproduces phase 1d's Tables 1.5 and 1.7 (V1 concentration and the single flags, per cell, pooled over 549, and s23) within ±0.0005, compared exactly |
 
-- **R8's first attempt** stopped on one value: watch Qwen's V1 concentration gave 0.3125 against the published 0.312. Phase 1d's own raw value is also 0.3125 (`phase1d/i04/summary.json`), printed as "0.312". The exact gap is 1/2000, inside the inclusive tolerance, but in floating point it evaluates to 5.000000000000004e-4. `DEVIATIONS_2.md` switched R8 to exact comparison before scoring resumed; the verifier judged the fix legitimate.
+- **R8's first attempt** stopped on one value: watch Qwen's V1 concentration gave 0.3125 against the published 0.312. Phase 1d's own raw value is also 0.3125 (`results/still-scenes/learned-models/soft-density/summary.json`), printed as "0.312". The exact gap is 1/2000, inside the inclusive tolerance, but in floating point it evaluates to 5.000000000000004e-4. `DEVIATIONS_2.md` switched R8 to exact comparison before scoring resumed; the verifier judged the fix legitimate.
 - **The verifier** reran R1–R8 with its own code: all pass. Its own rebuild of D's people and constraints equals A2's `build` in 1,157 of 1,157, and its own matcher equals A2's in 1,265 of 1,265.
 - **Leak check** (verifier). P1 uses only the re-solved place; D's success is stored for R5 only. The visible-truth people and oracle that `repairs.scene_info` returns are unpacked and discarded. `eval_people.json` holds no truth field. S6 and S6z standardise on the training fold, and the verifier's own leave-one-layout-out fit matches every out-of-fold AUROC to 1e-12. `target_correct` only chooses subsets.
 
@@ -281,7 +281,7 @@ Disclosed housekeeping (neither changes a number):
 **What it does not show.**
 - That P1 fails: the data cannot separate neither from success.
 - That S2 or S6z work on new records: they were not judged, and they were designed knowing A2's mechanism.
-- That these signals survive the detector's behaviour on unseen layouts. Phase 2's confirmation found 0.242 false people per image there, against 0.071 on these scenes (`phase2/i09/README.md` section 1). S2 counts every false detector person as disagreement, so on new layouts it would likely rise on successes too (untested).
+- That these signals survive the detector's behaviour on unseen layouts. Phase 2's confirmation found 0.242 false people per image there, against 0.071 on these scenes (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1). S2 counts every false detector person as disagreement, so on new layouts it would likely rise on successes too (untested).
 - Anything about social correctness: the labels are the project's own rules.
 
 **For other entries.**
@@ -300,7 +300,7 @@ Disclosed housekeeping (neither changes a number):
 Each item gives the exact old text from `REPORT.md` as it stands now and the proposed new text. Each old text occurs exactly once in the report (checked with Python's `str.count`). Applying items 1–12 in order works: on a copy in memory, each old text still occurs exactly once when its turn comes, and each new text occurs once afterwards. Items 1–8 alone, in order, also apply cleanly. Items 9–12 are optional. New text carries the tag [phase 3]; item 1 defines it. Before applying, keep a copy of the report as `REPORT.before-phase3-confidence.md` (item 8 names it).
 
 **Merging with another phase-3 page.** Another phase-3 page may propose its own [phase 3] definition, opening-line entry and revision-note bullet.
-- Item 1: keep one [phase 3] bullet in "How to read", right after the [phase 2] bullet. If another page's bullet is already there, do not add a second one. Add this page to that bullet's list of pages as "confidence from perception disagreement (`phase3/confidence/README.md`)", and carry over only what that bullet lacks from item 1: zero calls, CPU only, no new input (whitelisted development runs plus earlier phases' frozen outputs), and that this page's design is data-informed. If both pages are applied together, write one bullet that names both.
+- Item 1: keep one [phase 3] bullet in "How to read", right after the [phase 2] bullet. If another page's bullet is already there, do not add a second one. Add this page to that bullet's list of pages as "confidence from perception disagreement (`results/still-scenes/confidence-signal/README.md`)", and carry over only what that bullet lacks from item 1: zero calls, CPU only, no new input (whitelisted development runs plus earlier phases' frozen outputs), and that this page's design is data-informed. If both pages are applied together, write one bullet that names both.
 - Item 2: list every phase-3 page in one parenthesis in the opening line.
 - Item 8: the revision-note bullet goes at the very end of the revision note. If another bullet has been appended after this item's old text since this page was written, put this bullet after the last bullet instead, using that bullet's final sentence as the old text.
 - Items 3–7 and 9–12 touch sentences no other phase-3 page is expected to touch. If an old text no longer occurs exactly once, re-anchor on the same sentence.
@@ -318,7 +318,7 @@ C5's exploratory pilot), nothing has been built
 ```
 New:
 ```text
-C5's exploratory pilot) and phase 3's zero-call confidence probe (`phase3/confidence/README.md`) [phase 3], nothing has been built
+C5's exploratory pilot) and phase 3's zero-call confidence probe (`results/still-scenes/confidence-signal/README.md`) [phase 3], nothing has been built
 ```
 
 ### 3. Opening status line: what phase 3 answers
@@ -345,7 +345,7 @@ Old:
 New:
 ```text
   - Kill: net gain of +2 or less; more than 3 Qwen records lost; drift above 0.25 m; AUROC below 0.65.
-  - [phase 3] A one-hypothesis version has been measured (`phase3/confidence/README.md`): the shift of C's place when the solver re-runs with I09's detector people in place of the VLM's (A2's setting D) predicts C's failure with a pooled AUROC of 0.708 on the 441 old-wording realistic goal-step records (0.645, 0.738 and 0.688 by model; its own pre-registered verdict: neither). That sits between this entry's kill line (0.65) and success bar (0.72), on a simpler test with no sampling and no net-gain criteria. On the 404 records where D does not change the verdict it falls to 0.557 (post hoc, outcome-dependent subset). (inference) A K-sample version would have to show its value on those records.
+  - [phase 3] A one-hypothesis version has been measured (`results/still-scenes/confidence-signal/README.md`): the shift of C's place when the solver re-runs with I09's detector people in place of the VLM's (A2's setting D) predicts C's failure with a pooled AUROC of 0.708 on the 441 old-wording realistic goal-step records (0.645, 0.738 and 0.688 by model; its own pre-registered verdict: neither). That sits between this entry's kill line (0.65) and success bar (0.72), on a simpler test with no sampling and no net-gain criteria. On the 404 records where D does not change the verdict it falls to 0.557 (post hoc, outcome-dependent subset). (inference) A K-sample version would have to show its value on those records.
 ```
 
 ### 7. Section 7: a decision on confidence output
@@ -365,7 +365,7 @@ The report before them is kept as `REPORT.before-phase1d-check.md`.
 New:
 ```text
 The report before them is kept as `REPORT.before-phase1d-check.md`.
-- **Phase 3, confidence from perception disagreement (18 Oct).** A zero-call probe asked whether perception disagreement predicts when C fails (`phase3/confidence/README.md`), on the CPU, from whitelisted development runs and earlier phases' frozen outputs. The protocol note was frozen and hashed before any signal was computed against an outcome (data-informed: written knowing phase 1d's and A2's results), and an independent verifier reproduced every signal on all 1,265 records and all 2,725 table numbers with its own code. The judged signal P1, the shift of C's place when the solver re-runs with the VLM's people moved onto I09's detector people and the unsupported ones dropped (A2's setting D), is neither: AUROC for failure 0.645, 0.738 and 0.688 on the old-wording realistic cells (2 of 3 at 0.70 needed), pooled 0.708 against the flags' 0.595, kill line 0.60 not crossed. The verdict is fragile (dropping any one of 3 layouts, or using trial 1 or 2 alone, turns it into success; the success condition holds in half the bootstrap draws), and most of P1's ranking comes from the 37 records A2 had already shown would change (0.557 on the others; post hoc). Reported, not judged: people disagreement with the detector 0.741 pooled, trial disagreement 0.774 (two extra pipeline runs), and a zero-call combination 0.752 that keeps 0.878 success at 80% coverage; for the new-wording API models the perception signals carry little (P1 0.197–0.562). "How to read" defines [phase 3], and the opening lines, I04, I09, I12 and section 7 carry the result; optionally also section 1.2 (item 9), section 3.6, I39 and the I15 parked row. The report before these changes is kept as `REPORT.before-phase3-confidence.md`.
+- **Phase 3, confidence from perception disagreement (18 Oct).** A zero-call probe asked whether perception disagreement predicts when C fails (`results/still-scenes/confidence-signal/README.md`), on the CPU, from whitelisted development runs and earlier phases' frozen outputs. The protocol note was frozen and hashed before any signal was computed against an outcome (data-informed: written knowing phase 1d's and A2's results), and an independent verifier reproduced every signal on all 1,265 records and all 2,725 table numbers with its own code. The judged signal P1, the shift of C's place when the solver re-runs with the VLM's people moved onto I09's detector people and the unsupported ones dropped (A2's setting D), is neither: AUROC for failure 0.645, 0.738 and 0.688 on the old-wording realistic cells (2 of 3 at 0.70 needed), pooled 0.708 against the flags' 0.595, kill line 0.60 not crossed. The verdict is fragile (dropping any one of 3 layouts, or using trial 1 or 2 alone, turns it into success; the success condition holds in half the bootstrap draws), and most of P1's ranking comes from the 37 records A2 had already shown would change (0.557 on the others; post hoc). Reported, not judged: people disagreement with the detector 0.741 pooled, trial disagreement 0.774 (two extra pipeline runs), and a zero-call combination 0.752 that keeps 0.878 success at 80% coverage; for the new-wording API models the perception signals carry little (P1 0.197–0.562). "How to read" defines [phase 3], and the opening lines, I04, I09, I12 and section 7 carry the result; optionally also section 1.2 (item 9), section 3.6, I39 and the I15 parked row. The report before these changes is kept as `REPORT.before-phase3-confidence.md`.
 ```
 
 ### 9. Section 1.2, item 9 (optional)
@@ -377,7 +377,7 @@ Old:
 ```
 New:
 ```text
-(AUROC 0.303–0.559 on the old-wording realistic cells). [phase 3] A zero-call follow-up tested perception disagreement as the confidence signal instead (`phase3/confidence/README.md`): the shift of C's place under I09's detector people gives a pooled AUROC of 0.708 for failure, a fragile pre-registered neither, and the people disagreement with the detector gives 0.741 (reported).
+(AUROC 0.303–0.559 on the old-wording realistic cells). [phase 3] A zero-call follow-up tested perception disagreement as the confidence signal instead (`results/still-scenes/confidence-signal/README.md`): the shift of C's place under I09's detector people gives a pooled AUROC of 0.708 for failure, a fragile pre-registered neither, and the people disagreement with the detector gives 0.741 (reported).
 - **Decision gate**
 ```
 
@@ -389,7 +389,7 @@ Old:
 ```
 New:
 ```text
-**For us:** beat plain voting and random picks first. Disagreement across trials and across models is a cheap signal. [phase 3] Measured on the 441 old-wording realistic goal-step records (`phase3/confidence/README.md`): disagreement across C's three trials predicts failure with a pooled AUROC of 0.774 (but costs two extra runs), and disagreement between the VLM's people and a local detector's 0.741, against 0.595 for the solver's flags.
+**For us:** beat plain voting and random picks first. Disagreement across trials and across models is a cheap signal. [phase 3] Measured on the 441 old-wording realistic goal-step records (`results/still-scenes/confidence-signal/README.md`): disagreement across C's three trials predicts failure with a pooled AUROC of 0.774 (but costs two extra runs), and disagreement between the VLM's people and a local detector's 0.741, against 0.595 for the solver's flags.
 ```
 
 ### 11. I39: trial disagreement on the old records (optional)
@@ -401,14 +401,14 @@ Old:
 New:
 ```text
     - The pitched version that reuses GLM's plan tops out near 207.
-    - [phase 3] Phase 3's S4 (the largest place distance among an episode's three C trials, infinite when a trial has no place or their targets lie more than 1 m apart) gives AUROC 0.715 on old GLM, 0.840 on old Qwen and 0.669 on old DeepSeek, and 0.863 and 0.877 on s23 Haiku and Sonnet (`phase3/confidence/README.md`, reported, not judged). It is the only signal there that sees wrong targets well (0.841 pooled).
+    - [phase 3] Phase 3's S4 (the largest place distance among an episode's three C trials, infinite when a trial has no place or their targets lie more than 1 m apart) gives AUROC 0.715 on old GLM, 0.840 on old Qwen and 0.669 on old DeepSeek, and 0.863 and 0.877 on s23 Haiku and Sonnet (`results/still-scenes/confidence-signal/README.md`, reported, not judged). It is the only signal there that sees wrong targets well (0.841 pooled).
 ```
 
 ### 12. Section 4.5, the I15 parked row (optional)
 
 Old:
 ```text
-[phase 1] I04's first probe did not (0.303–0.559 on the old-wording realistic cells, `phase1d/README.md` section 1) |
+[phase 1] I04's first probe did not (0.303–0.559 on the old-wording realistic cells, `results/still-scenes/overview/phase-notes/phase1d.md` section 1) |
 ```
 New:
 

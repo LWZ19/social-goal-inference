@@ -18,7 +18,7 @@ Mirror control in room: the middle member, female_0, is turned 90 deg but stays 
   - sweet_spot, line of 2: the lone man (57%) and through him the pair (21-24%).
 - **F2. The solver's place-in-turn rule takes bystanders when lines are short.** `sgi.solver._turn` makes any
   unlisted, non-exempt person standing within 1.0 m of the place in turn, behind the last, the new last. This rule is
-  shared by C1, CT, CT2, CT3 and G. Real solver code at the nominal places (`bystanders_pre/turn_check_out.txt`):
+  shared by C1, CT, CT2, CT3 and G. Real solver code at the nominal places (`results/moving-lines/bystanders/pre/turn_check_out.txt`):
   - cafe, line of 1: the lone man;
   - cafe, line of 2: the pair's near member;
   - room, line of 2: the lone man and the pair's near member;
@@ -30,7 +30,7 @@ Mirror control in room: the middle member, female_0, is turned 90 deg but stays 
   (cafe_line2), 0.36 (room) and 0.05 (sweet_spot); Sonnet's is 0.11, 0.43 and 0.14.
   - Share comparisons therefore get their power mainly from room.
   - The primary measure below is capture, which does not depend on reaching the line.
-- **F4. CT3's join gate leaks a little under fidget** (`bystanders_pre/gate_fidget_out.txt`). The step-up branch
+- **F4. CT3's join gate leaks a little under fidget** (`results/moving-lines/bystanders/pre/gate_fidget_out.txt`). The step-up branch
   (0.55 m nearer the target within 20 s) is open about 1.5% of the time per bystander, and at least once in 17% of
   episodes. The walk branch (1.0 m) never opens, because fidget moves people at most 0.7 m.
 

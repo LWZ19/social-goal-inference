@@ -3,7 +3,7 @@
 The I11 Stage 0 lead wrote this note on 17 Oct 2026, before any snap variant of this batch scored an evaluation record. Its sha256 is in `FROZEN.sha256`, and the file is never edited. Any change goes into a dated addendum with its own hash, written before the data it affects is scored (section 10).
 
 - Scope: the C wrong targets of the realistic old-wording runs come first; the extras come after.
-- Error classes: those of `rerun/lifting/lifting.py`.
+- Error classes: those of `results/still-scenes/perception/lifting-rerun/lifting.py`.
 - Fixes replayed: the oracle snap-and-lift, and a pre-registered family of at most 4 depth-component snaps with one primary.
 - The REPORT's criteria are quoted verbatim, with their denominators defined here.
 - The I33 Stage B trigger is pre-registered here.
@@ -11,11 +11,11 @@ The I11 Stage 0 lead wrote this note on 17 Oct 2026, before any snap variant of 
 
 **Exposure (disclosed).** This note is not blind. Before writing it I read:
 - REPORT.md: entries I03, I11, I09 and I33, and in passing the entries printed around them.
-- The sibling I03 note (`phase1b/i03/FROZEN.md`), for its format only.
+- The sibling I03 note (`results/still-scenes/perception/depth-blob-detector/FROZEN.md`), for its format only.
 - RERUN.md: rows R36–R40, R55, R56 and the I11 summary line.
-- `phase1/README.md`, sections 0–1.
-- `i01/README.md`, line 229. It says by scene where the new-wording wrong targets lie (for example Sonnet 7 of 7 at eval_12, Gemini 34 of 34 at lines), but nothing about their pixels.
-- The code and outputs of `rerun/lifting/`. `lifting_out.txt` lists each of the 15 old-wording person wrong targets with its snap distance, its 5×5 window depth range, its body pixels in the window, the surface the lift landed on, and its class. It also lists the place near-misses. `frontsnap_out.txt` tallies the front-surface snap per model and class.
+- `results/still-scenes/overview/phase-notes/phase1.md`, sections 0–1.
+- `results/still-scenes/replay-harness/sets-and-definitions/README.md`, line 229. It says by scene where the new-wording wrong targets lie (for example Sonnet 7 of 7 at eval_12, Gemini 34 of 34 at lines), but nothing about their pixels.
+- The code and outputs of `results/still-scenes/perception/lifting-rerun/`. `lifting_out.txt` lists each of the 15 old-wording person wrong targets with its snap distance, its 5×5 window depth range, its body pixels in the window, the surface the lift landed on, and its class. It also lists the place near-misses. `frontsnap_out.txt` tallies the front-surface snap per model and class.
 
 From the worked-example scenes, read through `H.example`, I took only:
 - the camera: 640×480, fx = fy = 554.3 px, height 1.5 m, pitched 10° down;
@@ -26,7 +26,7 @@ From the worked-example scenes, read through `H.example`, I took only:
 Consequences:
 - **V3** exists because the occluder-capture rows show target pixels inside the lift window in 5 of 9 cases. It is data-informed.
 - **The I33 result on the 15 old-wording person records is not blind.** The rows I read suggest that trigger T1 catches about 11 of 15 (section 12). The new-wording person wrong targets are the first blind test, and they are reported beside (section 8).
-- **Nothing in sections 4–5 was chosen from evaluation records.** Each parameter comes from sensor geometry, a package constant, rerun/lifting's pre-fixed radius, or fit-data ground truth. Each one's source is given where it is defined.
+- **Nothing in sections 4–5 was chosen from evaluation records.** Each parameter comes from sensor geometry, a package constant, results/still-scenes/overview/rerun-files/lifting's pre-fixed radius, or fit-data ground truth. Each one's source is given where it is defined.
 
 ## 1. Data
 **Primary runs.** Old wording, realistic arms, method con, 252 records each. Each is selected with `H.runs(stage, arm, model, method='con')`, asserting exactly one match:
@@ -34,7 +34,7 @@ Consequences:
 - s19 `glm53`: `20261011-160500`, `-160352`, `-160452`.
 - s20 `dsv41`: `20261013-191337`, `-191345`, `-191402`.
 
-**Expected counts** (rerun/lifting, RERUN R39). These are recomputed; any difference is reported with its reason.
+**Expected counts** (results/still-scenes/overview/rerun-files/lifting, RERUN R39). These are recomputed; any difference is reported with its reason.
 
 | | Qwen | GLM | DeepSeek | All three | GLM + DeepSeek |
 |---|---|---|---|---|---|
@@ -52,7 +52,7 @@ Consequences:
 
 **Fit data.** The 28 worked-example scenes of `H.examples()`, used only for the S0 checks (section 10). Every parameter is fixed in this note, so nothing is fitted after the hash.
 
-**Fresh seeds** (`phase1b/fresh_seeds/`, seeds 100–109, from the I03 lead):
+**Fresh seeds** (`results/still-scenes/perception/fresh_seeds/`, seeds 100–109, from the I03 lead):
 - If present when measure M4 runs, they are an extra domain for M4 only, read directly.
 - They are used for nothing else, since they hold no model answers.
 - Seeds 3–99 are never generated or opened.
@@ -65,12 +65,12 @@ Consequences:
 | `src/sgi/geometry.py` | `99af62055b6998faafbf6748b7eece13adb427227c71821b5190fdcdbd4b4db2` |
 | `src/sgi/stages/goal.py` | `edce50f09990b80e5413c41caf19b543747f33a912e6e14c93aed5db1f7ba600` |
 | `docs/model_notes/tools/research_harness.py` | `391483778ec1c5a232909292862926724a6580fc5f9c307b1f3f9c789cee455c` |
-| `RD/rerun/lifting/lifting.py` | `10ec43fe1871ab89f749dfa3991498c03c856de9b125eeddcf9561ee9c80fe63` |
-| `RD/rerun/lifting/frontsnap.py` | `a45aae92673562fab43fd2f4dee9cecfac5c3b0b214fe641254a24d358671307` |
+| `results/still-scenes/perception/lifting-rerun/lifting.py` | `10ec43fe1871ab89f749dfa3991498c03c856de9b125eeddcf9561ee9c80fe63` |
+| `results/still-scenes/perception/lifting-rerun/frontsnap.py` | `a45aae92673562fab43fd2f4dee9cecfac5c3b0b214fe641254a24d358671307` |
 
 The run script checks these hashes first and stops if any file has changed.
 
-**Rules.** Reads go only through the harness. No model or network call is made. Nothing is written outside `phase1b/i11/`. At most 2 worker processes run at once, with `OMP_NUM_THREADS=2`, `OPENBLAS_NUM_THREADS=2` and `MKL_NUM_THREADS=2`.
+**Rules.** Reads go only through the harness. No model or network call is made. Nothing is written outside `results/still-scenes/perception/lifting/`. At most 2 worker processes run at once, with `OMP_NUM_THREADS=2`, `OPENBLAS_NUM_THREADS=2` and `MKL_NUM_THREADS=2`.
 
 ## 2. Shared definitions
 **Record sets.**
@@ -81,7 +81,7 @@ The run script checks these hashes first and stops if any file has changed.
 
 **True target.** `gt.target_ids[0]`. Every primary episode has one target. In an extra episode with several, the true target is the one whose body mask is nearest to the point, and the oracle uses the union of all their body masks.
 
-**Masks.** Imported unchanged from `rerun/lifting/lifting.py` (`scene_data`, `target_masks`, `nearest_pixel`, `window`, `lift_at_depth`, `surface`):
+**Masks.** Imported unchanged from `results/still-scenes/perception/lifting-rerun/lifting.py` (`scene_data`, `target_masks`, `nearest_pixel`, `window`, `lift_at_depth`, `surface`):
 - **Per-pixel lift:** each pixel's own depth, lifted at its centre (j + 0.5, i + 0.5). It equals `sgi.geometry.lift_all`.
 - **Body mask:** the target's approximate visible surface from ground truth, with `R_PERSON` = 0.30 m.
   - Person: within 0.30 m horizontally of that person, with 0.05 < z < 2.0 m, and that person is the nearest.
@@ -130,7 +130,7 @@ Each is computed once per scene image, from the depth and camera only.
   - Take q, the pixel of c whose centre is nearest (u, v), within R = 15 px (ties row-major).
   - Take Zc, the median depth of c's pixels in the 5×5 window centred on q.
   - Lift q's centre at Zc, and build the new target exactly as the oracle does.
-  - R is rerun/lifting's `SNAP_R`, fixed there before its counts. Using it for the oracle and every variant keeps the "share of the oracle gain" like for like.
+  - R is results/still-scenes/overview/rerun-files/lifting's `SNAP_R`, fixed there before its counts. Using it for the oracle and every variant keeps the "share of the oracle gain" like for like.
 
 ## 5. The variant family (all reported; none chosen on results)
 **V1 (primary): structure-gated snap.**
@@ -156,7 +156,7 @@ Each is computed once per scene image, from the depth and camera only.
 - **What it tests:** how sensitive V1 is to the component definition.
 
 **Reference row (not a variant).**
-- `rerun/lifting/frontsnap.py`, re-run unchanged.
+- `results/still-scenes/perception/lifting-rerun/frontsnap.py`, re-run unchanged.
 - It must reproduce 8 fixes and 37 breaks of 752. Otherwise the code is wrong and nothing is reported until that is resolved.
 
 ## 6. Replay and measures
@@ -288,6 +288,6 @@ Then M4, the I33 table, and the extras per model and run. Every number carries i
 Anything not defined in this note is labelled post hoc, including any reading of patterns in the records, extra cuts and alternative thresholds.
 
 ## 12. Predictions (inference, written before scoring)
-- **V1:** it can fix only lift-class records whose lift lands on the envelope. Of the 20 GLM + DeepSeek lift-class records, 11 are background leaks and 9 are occluder captures (rerun/lifting), so V1 is likely to reach at most about 11 of 46, and a share of at most about 0.55. **S4 is therefore likely to fail.** V1 was still chosen as primary because it is the rule with the fewest expected breaks, not to pass.
+- **V1:** it can fix only lift-class records whose lift lands on the envelope. Of the 20 GLM + DeepSeek lift-class records, 11 are background leaks and 9 are occluder captures (results/still-scenes/overview/rerun-files/lifting), so V1 is likely to reach at most about 11 of 46, and a share of at most about 0.55. **S4 is therefore likely to fail.** V1 was still chosen as primary because it is the rule with the fewest expected breaks, not to pass.
 - **V3:** it may add up to about 5 occluder captures, with breaks of unknown size.
 - **T1:** from the window ranges and landing surfaces in `lifting_out.txt`, it is expected to catch about 11 of 15 (all 6 background leaks and the 5 straddling occluder captures). That is between the kill line (10) and the success line (12). The 4 occluder captures whose window lies wholly on the occluder cannot be flagged by any rule that reads only the lift window.

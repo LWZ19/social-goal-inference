@@ -1,4 +1,4 @@
-results/2026-10-17-beyond-vlm/phase3/seeds/realistic_train/seed116: 14 scenes rendered, 0 skipped as unchanged, 1 dressed again
+results/still-scenes/scene-seeds/phase3/realistic_train/seed116: 14 scenes rendered, 0 skipped as unchanged, 1 dressed again
 
 ---
 INFO:sgi.synth.generate:rejected layouts: none

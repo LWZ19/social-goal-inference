@@ -3,16 +3,16 @@
 Plan step 5 (REPORT section 1.2; section 6, step 3b): I09 A1, a local person detector plus a pose model as the people source, scored against ground truth on the development scenes; and I09 A2, solver replays in which the VLM's recorded people are replaced by the detector's. The detector, the depth blobs (I03, `phase1b/`) and the six models' people lists are compared on the same scenes with the same scorer.
 
 How it was made:
-- One protocol note covers both steps: `i09/FROZEN.md` (sha256 `f315e96c…df15`). The I09 lead wrote and hashed it at 21:27, after a one-image API probe on a fit image (21:21) and before any detector or pose model processed an evaluation image. Changes and clarifications after the freeze are in hashed files: `i09/DEVIATIONS.md` (21:33), `i09/a1/ADDENDUM_FIX.md` (the one general fix, 21:42), `i09/DEVIATIONS_2.md` (21:49) and `i09/a2/CLARIFICATIONS.md` (21:57, before any replay).
+- One protocol note covers both steps: `results/still-scenes/people-finder/early-detector/phase1c/FROZEN.md` (sha256 `f315e96c…df15`). The I09 lead wrote and hashed it at 21:27, after a one-image API probe on a fit image (21:21) and before any detector or pose model processed an evaluation image. Changes and clarifications after the freeze are in hashed files: `results/still-scenes/people-finder/early-detector/phase1c/DEVIATIONS.md` (21:33), `results/still-scenes/people-finder/early-detector/phase1c/a1/ADDENDUM_FIX.md` (the one general fix, 21:42), `results/still-scenes/people-finder/early-detector/phase1c/DEVIATIONS_2.md` (21:49) and `i09/a2/CLARIFICATIONS.md` (21:57, before any replay).
 - **Two environments.** GPU inference ran in the separate torch environment, used read-only as a sidecar. It never imported the package, read image paths only from manifests that the project venv wrote through the step-0 harness (and the fresh-seed loader), checked each image's sha256, and refused held-out names. Its `pip freeze` was unchanged afterwards (both verifiers checked). Lifting, filtering, facing, scoring and replays ran in the torch-free project venv through the harness.
 - **Inputs.** Fit data is I03's: the worked examples plus fresh seeds 100–109 (read, not regenerated). Evaluation is the 68 whitelisted development scenes and the whitelisted recorded runs, each scored once.
 - **Verifiers.** An independent verifier recomputed each step with its own code. A1's verifier ran its own sidecar (raw detector and pose outputs bit-identical on 97 images), its own pipeline, scorer and timing. A2's verifier wrote its own replay. Where a compute agent and its verifier differ, this page uses the verifier's final value; where the verifier could not settle a point, both are given (section 5).
 
 Paths below are relative to this folder (`phase1c/` in the research folder).
 - `i09/`: `FROZEN.md` and its hash, `DEVIATIONS.md`, `DEVIATIONS_2.md` (each hashed), and `probe/` (the pre-freeze probe).
-- `i09/a1/`: the sidecar (`sidecar/infer.py`), `pipeline.py`, `common.py`, `selfcheck.py`/`.txt`, the manifests (`manifest_fit.json`, `manifest_eval.json`), the raw outputs (`raw_fit/`, `raw_eval/`, `timing/`), the fit (`fit_grid.txt`, `fit_rows.jsonl`, `chosen.json`, `FIT.sha256`), the fix (`ADDENDUM_FIX.md`, `fit_fix.txt`, `chosen_fix.json`, `FIT_FIX.sha256`), the evaluation (`tables.txt`, `rows.jsonl`, `people_rows.jsonl`, `summary.json`), the frozen people for A2 (`eval_people.json`), `env.txt`, `ORDER.txt` and `EVAL.sha256`.
-- `i09/a2/`: `CLARIFICATIONS.md`, `replay_d.py`, `selfcheck.txt`, `tables.txt`, per-record rows (`base_*.jsonl`, `rows_*.jsonl`), `summary.json`, the logs, `ORDER.txt` and `A2.sha256`.
-- Verifiers: `i09/verify_i09_a1/`, `i09/verify_i09_a2/`.
+- `results/still-scenes/people-finder/early-detector/phase1c/a1/`: the sidecar (`sidecar/infer.py`), `pipeline.py`, `common.py`, `selfcheck.py`/`.txt`, the manifests (`manifest_fit.json`, `manifest_eval.json`), the raw outputs (`raw_fit/`, `raw_eval/`, `timing/`), the fit (`fit_grid.txt`, `fit_rows.jsonl`, `chosen.json`, `FIT.sha256`), the fix (`ADDENDUM_FIX.md`, `fit_fix.txt`, `chosen_fix.json`, `FIT_FIX.sha256`), the evaluation (`tables.txt`, `rows.jsonl`, `people_rows.jsonl`, `summary.json`), the frozen people for A2 (`eval_people.json`), `env.txt`, `ORDER.txt` and `EVAL.sha256`.
+- `results/still-scenes/people-finder/early-detector/phase1c/a2/`: `CLARIFICATIONS.md`, `replay_d.py`, `selfcheck.txt`, `tables.txt`, per-record rows (`base_*.jsonl`, `rows_*.jsonl`), `summary.json`, the logs, `ORDER.txt` and `A2.sha256`.
+- Verifiers: `results/still-scenes/people-finder/early-detector/phase1c/verify_i09_a1/`, `results/still-scenes/people-finder/early-detector/phase1c/verify_i09_a2/`.
 
 ## 0. Verdicts at a glance
 
@@ -33,7 +33,7 @@ Shared cautions:
 
 ---
 
-## 1. I09 A1: detector plus pose as the people source (`i09/a1/`)
+## 1. I09 A1: detector plus pose as the people source (`results/still-scenes/people-finder/early-detector/phase1c/a1/`)
 
 ### What was done
 
@@ -63,9 +63,9 @@ Shared cautions:
   - Facing variant: the highest lower-domain share within 45 deg (unknown counted as wrong) over the chosen setting's matched fit people.
   - `fit_grid.txt`, `fit_rows.jsonl` and `chosen.json` were hashed into `FIT.sha256` before any evaluation manifest existed.
 - **One general fix**, as I03: allowed only if the choice misses a success bar measurable on fit data; one revision, of detection or of facing, designed from fit failures only and written as a hashed addendum; adopted only if the same rule picks it over the union of rows.
-- **Scorer.** `phase1b/i03/people_scorer.py`, unchanged. Recall = matched / visible (`sgi.run._matched_people`, within 0.5 m). False = an unmatched detection not within 0.5 m of a non-person target anchor.
+- **Scorer.** `results/still-scenes/perception/depth-blob-detector/people_scorer.py`, unchanged. Recall = matched / visible (`sgi.run._matched_people`, within 0.5 m). False = an unmatched detection not within 0.5 m of a non-person target anchor.
 - **Facing report.** By A0 view class, from the angle between the true yaw and the direction from the true person to the camera: frontal < 45, oblique 45–75, profile 75–105 (both ends in), back > 105 deg. Non-profile = frontal + oblique + back. Front/back correct = error < 90 deg. Unknown counts as wrong (180 deg in medians).
-- **A0-matched facing.** On each model's A0 pairs (`phase1/a0_facing/a0_pairs.jsonl`; arm, scene, person), the detector's yaw for the same true person. Primary measure: within 45 deg over detector-matched pairs, unknown counted as wrong; unmatched pairs are recall misses, counted and left out. The kill population is Gemini's 310 pairs (104 instances, 36 people, 8 layouts).
+- **A0-matched facing.** On each model's A0 pairs (`results/still-scenes/facing/a0_pairs.jsonl`; arm, scene, person), the detector's yaw for the same true person. Primary measure: within 45 deg over detector-matched pairs, unknown counted as wrong; unmatched pairs are recall misses, counted and left out. The kill population is Gemini's 310 pairs (104 instances, 36 people, 8 layouts).
 - **Runtime.** The deployed path: a decoded image → the detector at τ → ViTPose on the kept boxes → keypoints on the CPU, synchronised; batch 1, fp32; 5 warm-ups on F-real images, then each of the 42 E-real images timed once. The project side runs on the CPU with 2 threads. Criterion: median sidecar plus median project side ≤ 1.0 s.
 
 ### Fit and the one fix (fit data only)
@@ -161,7 +161,7 @@ Table 1.3. A0-matched facing: the detector's yaw for the same true person on eac
 
 ---
 
-## 2. I09 A2: solver replays with the detector's people (`i09/a2/`)
+## 2. I09 A2: solver replays with the detector's people (`results/still-scenes/people-finder/early-detector/phase1c/a2/`)
 
 ### What was done
 
@@ -274,7 +274,7 @@ Table 2.4. Placeholder C runs (`ph` + dev seeds 0–2), successes of 156 (second
 
 ## 3. Three people sources on the same scenes
 
-Table 3.1. E-real, like for like (as `phase1b/README.md` Table 1.2). The unit is one answer per (arm, scene, trial) with a people list; the detector and the blobs are re-weighted to each model's keys. Facing is full yaw within 45 deg for the models and the detector (among known, with the number unknown in brackets) and the axis (modulo 180 deg) for the blobs, which give no front or back.
+Table 3.1. E-real, like for like (as `results/still-scenes/overview/phase-notes/phase1b.md` Table 1.2). The unit is one answer per (arm, scene, trial) with a people list; the detector and the blobs are re-weighted to each model's keys. Facing is full yaw within 45 deg for the models and the detector (among known, with the number unknown in brackets) and the axis (modulo 180 deg) for the blobs, which give no front or back.
 
 | Model (keys with a list; visible) | VLM: recall / false per answer / facing | Detector, same keys: recall / false per key / facing | Blobs, same keys: recall / false per key / axis facing |
 |---|---|---|---|
@@ -369,7 +369,7 @@ Not settled (both readings given; neither changes a verdict):
 
 Incidental, with no effect on any result:
 - The only nondeterminism seen is up to 6.1e-5 px in keypoints between the timing pass and the raw pass, from a different pose batch size.
-- A1's compute agent read `phase1/a0_facing/a0_pairs.jsonl` (the view classes of the evaluation pairs) before choosing what to fix. Both sides report this, and it is why that choice is labelled data-informed.
+- A1's compute agent read `results/still-scenes/facing/a0_pairs.jsonl` (the view classes of the evaluation pairs) before choosing what to fix. Both sides report this, and it is why that choice is labelled data-informed.
 
 ---
 
@@ -382,7 +382,7 @@ Incidental, with no effect on any result:
 
 **I09, the replays.**
 - D reaches ground-truth people for GLM (202, the same 16 flips as I01's P) and for Qwen (236), and passes P for DeepSeek through position and yaw differences only (post hoc). The mechanism is I01's R4: dropping detections that no detector supports, with their numbers. Keeping them (D-keep) gains GLM only 3, as adding alone did in I01 (R3) and I03 (B-add). So a people source is worth what it lets the pipeline drop.
-- **The constraints remain.** Of the line failures D leaves, 12 of GLM's 14 use no `come_after`, and DeepSeek's 4 leave a listed member out of the line. As in `phase1b/README.md`, this points to the cheaper routes to "who do I come after" (I19, I24, I32, I05).
+- **The constraints remain.** Of the line failures D leaves, 12 of GLM's 14 use no `come_after`, and DeepSeek's 4 leave a listed member out of the line. As in `results/still-scenes/overview/phase-notes/phase1b.md`, this points to the cheaper routes to "who do I come after" (I19, I24, I32, I05).
 - **Facing.** The detector's facing lead over the VLMs is large, but on these sets facing errors cost C little (I01's R2 flips no line failure). DeepSeek's 7 position-and-yaw flips show the solver responds at about the 0.1 m and facing scale, but their sign may be luck. The facing lead would matter more on I06's crowd variants and at groups.
 
 **I03's pruning question (section 7).**
@@ -411,22 +411,22 @@ Each item gives the exact old text from `REPORT.md` and the proposed new text. E
 
 Old:
 ```text
-- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`phase1/README.md`, or `phase1b/README.md` for the second batch, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) also froze and hashed a protocol note before any evaluation scoring. Its only input outside the whitelist is fresh seeds 100–109, generated in that batch (I03's fit data, and an extra domain for I11's component check). Parts registered after earlier results on the same runs are marked data-informed.
+- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`results/still-scenes/overview/phase-notes/phase1.md`, or `results/still-scenes/overview/phase-notes/phase1b.md` for the second batch, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) also froze and hashed a protocol note before any evaluation scoring. Its only input outside the whitelist is fresh seeds 100–109, generated in that batch (I03's fit data, and an extra domain for I11's component check). Parts registered after earlier results on the same runs are marked data-informed.
 ```
 New:
 ```text
-- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`phase1/README.md`, `phase1b/README.md` for the second batch, or `phase1c/README.md` for step 3b, I09 A1–A2, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) and step 3b also froze and hashed a protocol note before any evaluation scoring. Their only input outside the whitelist is fresh seeds 100–109, generated in the second batch (fit data for I03 and I09 A1, and an extra domain for I11's component check). Step 3b also ran a local detector and pose model on the GPU, on whitelisted scenes and those seeds only; no provider model was called. Parts registered after earlier results on the same runs are marked data-informed.
+- **[phase 1]** marks a phase-1 result (17 Oct): computed through the step-0 harness from whitelisted development runs and recomputed by an independent verifier with its own code (`results/still-scenes/overview/phase-notes/phase1.md`, `results/still-scenes/overview/phase-notes/phase1b.md` for the second batch, or `results/still-scenes/overview/phase-notes/phase1c.md` for step 3b, I09 A1–A2, with its section). The second batch (I03 Stages A–B, I11 Stage 0, I33's Stage B trigger) and step 3b also froze and hashed a protocol note before any evaluation scoring. Their only input outside the whitelist is fresh seeds 100–109, generated in the second batch (fit data for I03 and I09 A1, and an extra domain for I11's component check). Step 3b also ran a local detector and pose model on the GPU, on whitelisted scenes and those seeds only; no provider model was called. Parts registered after earlier results on the same runs are marked data-informed.
 ```
 
 ### 2. Opening status line
 
 Old:
 ```text
-(`phase1/README.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics; `phase1b/README.md`: I03 Stages A–B, I11 Stage 0, I33's Stage B trigger), nothing has been built, and no model has been run. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's step A0, I14 version 0, the statistics half of I46, I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger.
+(`results/still-scenes/overview/phase-notes/phase1.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics; `results/still-scenes/overview/phase-notes/phase1b.md`: I03 Stages A–B, I11 Stage 0, I33's Stage B trigger), nothing has been built, and no model has been run. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's step A0, I14 version 0, the statistics half of I46, I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger.
 ```
 New:
 ```text
-(`phase1/README.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics; `phase1b/README.md`: I03 Stages A–B, I11 Stage 0, I33's Stage B trigger; `phase1c/README.md`: I09 A1–A2), nothing has been built into the pipeline, and no VLM has been run; the only models run are I09's local detector and pose model, offline on the GPU. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's steps A0 and A1–A2, I14 version 0, the statistics half of I46, I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger.
+(`results/still-scenes/overview/phase-notes/phase1.md`: I01 Steps 0–2, A0, I14 version 0, the I46 statistics; `results/still-scenes/overview/phase-notes/phase1b.md`: I03 Stages A–B, I11 Stage 0, I33's Stage B trigger; `results/still-scenes/overview/phase-notes/phase1c.md`: I09 A1–A2), nothing has been built into the pipeline, and no VLM has been run; the only models run are I09's local detector and pose model, offline on the GPU. The re-run already answers a few zero-call probes (finding 9), and phase 1 answers I01 Steps 0–2, I09's steps A0 and A1–A2, I14 version 0, the statistics half of I46, I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger.
 ```
 
 ### 3. Section 1.2, plan step 5 (done)
@@ -448,7 +448,7 @@ Old:
 New:
 ```text
   - 0 calls offline. Live: about 30 (up to about 120), then a full run of about 1,400.
-  - **Phase-1 result, A1–A2 (17 Oct; protocol frozen and hashed before any evaluation image, `phase1c/i09/FROZEN.md`; `phase1c/README.md` sections 1–4) [phase 1].**
+  - **Phase-1 result, A1–A2 (17 Oct; protocol frozen and hashed before any evaluation image, `results/still-scenes/people-finder/early-detector/phase1c/FROZEN.md`; `results/still-scenes/overview/phase-notes/phase1c.md` sections 1–4) [phase 1].**
     - Setup. A sidecar in the torch environment (used read-only; ViTPose only, no RTMW) runs the detector and the pose model; the torch-free project side lifts with depth. Fit data as I03: 21 realistic and 8 placeholder worked examples plus 260 fresh-seed scenes (289 images). A 192-setting grid covered the two detectors, score threshold, height band, a flat-surface test, a duplicate radius and a depth push. No setting met the false-people bar in both fit domains, so the stated fallback chose RT-DETRv2 at score 0.25 (band 1.00–2.30 m, flat test off).
     - Facing came from 4 declared variants. Fit data chose shoulders plus hips, with a face rule for the sign and a nose-against-ears rule for edge-on (profile) people. That choice failed on fit data: the face rule turned every back-view person around (143 of 143), because ViTPose reports confident face keypoints on people seen from behind. The one allowed general fix, written and hashed before evaluation, drops the face rule (fit: 36 of 36 and 505 of 513 within 45 deg). Choosing a facing fix over a detection fix is data-informed: its author had counted the view classes of the A0 evaluation pairs.
     - A1, scored once on the 42 realistic images: recall 116 of 118 = 0.983 (Wilson 95% 0.940–0.995; line members 48 of 48; counter staff 14 of 16, against the blobs' 3 of 16), 0.071 false people per image (3 in 42; layout bootstrap 0.000–0.190), 0 of 33 neighbour pairs merged, median position error 0.053 m. Both misses are counter staff with the lower body hidden, boxed but placed 0.62–0.65 m off.
@@ -469,12 +469,12 @@ A change would need pre-registering and testing on other sets; the placeholder p
 ```
 New:
 ```text
-A change would need pre-registering and testing on other sets; the placeholder panel splits 2 to 2. [phase 1] (inference) If I09's detector supplies the yaw, this question matters less: on the same A0 pairs its yaw is within 45 deg for 0.949–0.958 of every model's pairs, where the models score 0.547–0.906 (`phase1c/README.md` section 1).
+A change would need pre-registering and testing on other sets; the placeholder panel splits 2 to 2. [phase 1] (inference) If I09's detector supplies the yaw, this question matters less: on the same A0 pairs its yaw is within 45 deg for 0.949–0.958 of every model's pairs, where the models score 0.547–0.906 (`results/still-scenes/overview/phase-notes/phase1c.md` section 1).
 ```
 
 Old:
 ```text
-(inference) Before either arm is called a method, it would need a pre-registered test on fresh layouts (`phase1b/README.md` section 7).
+(inference) Before either arm is called a method, it would need a pre-registered test on fresh layouts (`results/still-scenes/overview/phase-notes/phase1b.md` section 7).
 ```
 New:
 
@@ -499,16 +499,16 @@ Old:
 ```
 New:
 ```text
-**Open:** no measurement of real-photo detectors on avatar renders. Ideas: I03, I09, I33, I10. [phase 1] I09 A1 made one: a COCO-trained RT-DETRv2 finds 116 of 118 visible people on the 42 realistic development images, but 49 of 58 on the placeholder scenes, where avatars seen side-on or from behind score below its threshold (`phase1c/README.md` section 1).
+**Open:** no measurement of real-photo detectors on avatar renders. Ideas: I03, I09, I33, I10. [phase 1] I09 A1 made one: a COCO-trained RT-DETRv2 finds 116 of 118 visible people on the 42 realistic development images, but 49 of 58 on the placeholder scenes, where avatars seen side-on or from behind score below its threshold (`results/still-scenes/overview/phase-notes/phase1c.md` section 1).
 ```
 
 ### 11. I33, kill: the recall line against I09's detector (optional)
 
 Old:
 ```text
-If Stage A here reused it unchanged, this kill line would fire on the realistic set by 0.01 (`phase1b/README.md` section 1).
+If Stage A here reused it unchanged, this kill line would fire on the realistic set by 0.01 (`results/still-scenes/overview/phase-notes/phase1b.md` section 1).
 ```
 New:
 ```text
-If Stage A here reused it unchanged, this kill line would fire on the realistic set by 0.01 (`phase1b/README.md` section 1). [phase 1] (inference) I09 A1's frozen detector finds 0.983 on the realistic images, with front-and-back facing, but 0.845 on the placeholder scenes. As Stage A's proposer it would clear this line on the realistic set and cross it on the placeholder one; swapping it in would need its own pre-registration (`phase1c/README.md` sections 1 and 6).
+If Stage A here reused it unchanged, this kill line would fire on the realistic set by 0.01 (`results/still-scenes/overview/phase-notes/phase1b.md` section 1). [phase 1] (inference) I09 A1's frozen detector finds 0.983 on the realistic images, with front-and-back facing, but 0.845 on the placeholder scenes. As Stage A's proposer it would clear this line on the realistic set and cross it on the placeholder one; swapping it in would need its own pre-registration (`results/still-scenes/overview/phase-notes/phase1c.md` sections 1 and 6).
 ```

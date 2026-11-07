@@ -1,7 +1,7 @@
 
 ## About this audit
 
-An index of every experiment and idea, with how strong its evidence is and where its files are. The follow-up runs it called for were done on 6-7 Nov; their results are in `fill/` (start with `fill/RESULTS_7NOV.md`).
+An index of every experiment and idea, with how strong its evidence is and where its files are. The follow-up runs it called for were done on 6-7 Nov; their results are in `fill/` (start with `results/overview/RESULTS_7NOV.md`).
 
 - **Read-only.** No model or simulator call was made for it.
   
@@ -38,7 +38,7 @@ An index of every experiment and idea, with how strong its evidence is and where
       partly built into the band (A9).
   - To conclude: Part 1 #12 (fresh seeds, cheap), or a sealed set of at least 20 new templates written blind (strong;
     needs new rows written).
-  - Priority: **needed** (the headline). Paths: `RD/REPORT.md` §1.1, `RD/RERUN.md`, `RD/i01/README.md`.
+  - Priority: **needed** (the headline). Paths: `results/still-scenes/overview/REPORT.md` §1.1, `results/still-scenes/overview/RERUN.md`, `results/still-scenes/replay-harness/sets-and-definitions/README.md`.
 - **A2. Old-wording gateway headline (s16b R and E; s19 and s20 C)**
   - Data: Qwen 175/214/234, GLM 129/145/186, DeepSeek 113/120/182 (R/E/C of 252).
   - Frozen: no.
@@ -115,7 +115,7 @@ An index of every experiment and idea, with how strong its evidence is and where
 
 ### C. Still scenes: metrics and statistics (RD)
 
-- **C1. I14 scoreboard version 0** (frozen `RD/phase1/i14_v0/METRIC_NOTE.md`)
+- **C1. I14 scoreboard version 0** (frozen `results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md`)
   - Result: S2 and S4 fail; runners-up carry no knowledge beyond spread. **Conclusive negative.**
   - Priority: nice.
 - **C2. I46 statistics and power**
@@ -170,11 +170,11 @@ An index of every experiment and idea, with how strong its evidence is and where
   - Priority: nice. A grounding fix, not social reasoning.
 - **D11. Detector people (E1a, E1b, E2)**
   - **E1a**, 13 sim frames: recall 75/75, 0.08 false per image. **Quick probe**, plain margin. Not worth more.
-  - **E1b**, development scenes (frozen `e1/E1_FROZEN.md`):
+  - **E1b**, development scenes (frozen `results/moving-lines/own-camera/detector-on-sim-frames/E1_FROZEN.md`):
     - Result: non-inferior on 4 models (Sonnet 124→132, DeepSeek 127=127, Qwen 131=131, GLM partial 63→73).
       **Suggestive**: the detector's own design data.
     - Superseded by E2.
-  - **E2**, fresh static scenes (frozen `e2/E2_FROZEN.md` 38b2ef01):
+  - **E2**, fresh static scenes (frozen `results/still-scenes/people-finder/E2_FROZEN.md` 38b2ef01):
     - Data: 40 layouts (seeds 500-504, 8 people rows) x 2 episodes x 2 trials. Three free models with bars; Sonnet,
       Haiku and Gemini as extras.
     - Limits: weak row-level tests, the "real" variant only, development types only.
@@ -285,12 +285,12 @@ One cell is scene x seed x model, with one episode per arm.
   - Recount (primary): CTt vs CT 12/2/1 (DeepSeek) and 8/1/6 (x-test-3); CT vs CT0 11/1/3 on Sonnet.
   - Strength: **quick probe, unreported.**
   - Priority: **needed** to score them (Part 1 #3). Extending them is nice.
-- **H10. Detector tracking (CTd)** (frozen `e1/e1d/E1D_FROZEN.md`, no bar)
+- **H10. Detector tracking (CTd)** (frozen `results/moving-lines/own-camera/detector-on-sim-frames/e1d/E1D_FROZEN.md`, no bar)
   - Data: Sonnet and DeepSeek, 15 cells each.
   - Result: −0.018 and −0.017 (5/6/4, 5/4/6). Tracks matched 0.89-0.93; 67-71% of tracks stale. **Quick probe.**
   - To conclude: Part 1 #5 (zero calls).
   - Priority: **needed**.
-- **H11. CTe, detector people plus tracking** (frozen `e1/e1c/E1C_FROZEN.md`, no bar)
+- **H11. CTe, detector people plus tracking** (frozen `results/moving-lines/people-finder/first-check/E1C_FROZEN.md`, no bar)
   - Data: Sonnet only, 15 cells.
   - Result:
     - First answer about 2.2 s faster.
@@ -426,7 +426,7 @@ One cell is scene x seed x model, with one episode per arm.
   replication).
 - **K4. Haiku 5.5 and Gemini 3.8 on the final moving test**: see I6. Priority nice (one sentence).
 
-### L. E4: new still-scene situations (`e4/E4_DESIGN.md`)
+### L. E4: new still-scene situations (`results/still-scenes/new-situations/design/E4_DESIGN.md`)
 
 - **L1. Bent line and someone using a machine**
   - Status: 12 scenes rendered (seeds 600-602 x 4 situations); no calls. The design is written, but not hashed, and
@@ -434,7 +434,7 @@ One cell is scene x seed x model, with one episode per arm.
   - Strength: no result yet.
   - To conclude: Part 1 #13.
 
-### M. Ideas round 2 shortlist (`ideas2/SHORTLIST.md`): what was tried
+### M. Ideas round 2 shortlist (`results/overview/ideas-round-2/SHORTLIST.md`): what was tried
 
 | idea | tried? | where, and the strength |
 |---|---|---|

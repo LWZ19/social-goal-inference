@@ -191,7 +191,7 @@ Arm-3 L1 failures by named cause (variant fails, base succeeds or fails; cause =
       [waiting_line] n 120: recorded 70.8, simulated 71.9, R5 82.5, gap +1.0
       [conversation_group] n 72: recorded 68.1, simulated 86.5, R5 87.5, gap +18.5
       [audience] n 36: recorded 63.9, simulated 85.8, R5 100.0, gap +21.9
-  R5 cross-check against phase1/i01_repairs rows_old_* (realistic arms): 756/756 records agree
+  R5 cross-check against results/still-scenes/overview/phase-notes/phase1-files/i01_repairs rows_old_* (realistic arms): 756/756 records agree
   K4 reading (FROZEN section 8): a model with |gap| > 10 has no noisy curve; the kill fires when every model misses. Valid models: ['Qwen 3.8', 'GLM-5.3', 'DeepSeek V4.1'] -> K4 does not fire
 
 Noisy curves (arm 4; mean over 20 draws per scene, then over scenes; L1). Only models with a valid noise model are reported (K4 reading).
@@ -268,7 +268,7 @@ Secondary arm (descriptive, decides nothing): rates fitted on the placeholder an
   DeepSeek V4.1: top n 80: arm 3 62.5, arm 4 54.3, separation +8.2; bases n 30: arm 3 100.0, arm 4 84.7, separation +15.3
 
 == 5. C5 gate-1 recount (FROZEN section 10; full table in score/c5_recount.txt) ==
-  C5 gate-1 recount on the widened generator (FROZEN.md section 10; phase1d/c5_gates/FROZEN.md readings kept)
+  C5 gate-1 recount on the widened generator (FROZEN.md section 10; results/still-scenes/learned-models/flow-model-gates/FROZEN.md readings kept)
   Development rows (both splits, both passes): 26, 22 distinct tuples (C5 PRIMARY 22)
   Variant configurations (row, family, level) with >= 1 accepted variant in seeds 0-2: 70
   PRIMARY' (decides): 92 distinct (recipe, amount, kind, bystanders, second group, family, level) -> gate 1 met (>= 30 met; 25-29 borderline)

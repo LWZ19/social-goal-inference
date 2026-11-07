@@ -1,11 +1,11 @@
-results/2026-10-17-beyond-vlm/phase1b/i11/FROZEN.md OK
+results/still-scenes/perception/lifting/FROZEN.md OK
 src/sgi/evaluate.py OK
 src/sgi/geometry.py OK
 src/sgi/stages/goal.py OK
 docs/model_notes/tools/research_harness.py OK
 docs/model_notes/tools/replay_solver.py OK
-results/2026-10-17-beyond-vlm/rerun/lifting/lifting.py OK
-results/2026-10-17-beyond-vlm/rerun/lifting/frontsnap.py OK
+results/still-scenes/perception/lifting-rerun/lifting.py OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py OK
 xph2: 15 runs
   20261010-122223_s10_glm53_none_con: 28 records, 4 s, tally {'allowed': 28}
   20261010-120459_s10_glm53_low_con: 28 records, 6 s, tally {'allowed': 28}

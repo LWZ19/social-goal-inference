@@ -1,7 +1,7 @@
 1c1
 < """Confirmatory test layouts (ideas2_1b/round4/CONFIRM_CT4PJ.md; RANGES.md: candidates 2000-2449 per base, the
 ---
-> """Item 11 layouts (fill/i11_ct3f/I11_FROZEN.md; RANGES.md: candidates 3000-3449 per base, the
+> """Item 11 layouts (results/moving-lines/best-version-new-layouts/I11_FROZEN.md; RANGES.md: candidates 3000-3449 per base, the
 12c12
 < Writes sim/scenarios/confirm4/<name>.yaml (the candidate plus its flags) and confirm_selection.json next to this file.
 ---

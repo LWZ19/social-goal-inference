@@ -5,7 +5,7 @@
 Does C beat R (the model marks the goal) and E (R with worked examples) on layouts no prompt was chosen on?
 
 Every still-scene method result except E2 is on the same 14 development layouts, where the context prompt was chosen.
-There C−R and C−E are positive for all six models at the layout level (`audit_fill/item1_item2/layout_tests_out.txt`).
+There C−R and C−E are positive for all six models at the layout level (`results/still-scenes/method-comparison/layout-level-tests/layout_tests_out.txt`).
 
 - **Rows:** the 14 first-pass eval rows:
   - eval_00 to eval_02 (no_one place, at 0°, 30° with a bystander, and 60°), eval_03 (deep place), eval_04 (object),
@@ -23,7 +23,7 @@ There C−R and C−E are positive for all six models at the layout level (`audi
 - **Methods:** R (`cot`), E (`fsc`) and C (`con`), with the s23 settings of E3's real-variant configs. The only change
   is 2 trials in place of 3 (`configs/*.yaml`; diffs in this note's hash set).
   - E's worked examples are the development examples, as in s23.
-  - R runs first; E and C reuse its plan and context answers through the cache, as `e3_models/run_static.sh`.
+  - R runs first; E and C reuse its plan and context answers through the cache, as `results/still-scenes/hidden-situations-and-more-models/run_static.sh`.
 - **Models:**
   - free: Qwen 3.8 low, GLM-5.3, DeepSeek V4.1;
 - **Records:** 70 layouts x 2 episodes x 2 trials = 280 per method per model.
@@ -66,7 +66,7 @@ These are new seeds of the same 14 templates, not new templates written blind. T
 generator's seeds of the development rows.
 
     cd .-scenes
-    I=results/2026-11-01-push/fill/i12_still
+    I=results/still-scenes/fresh-scenes
     ROWS="eval_00_no_one_place eval_01_no_one_place eval_02_no_one_place eval_03_no_one_deep_place eval_04_no_one_object eval_05_no_one_person eval_06_waiting_line_1 eval_07_waiting_line_2 eval_08_waiting_line_4 eval_09_waiting_line_6 eval_10_conversation_group_2 eval_11_conversation_group_3 eval_12_conversation_group_4 eval_13_waiting_line_3"
     for N in 510 511 512 513 514; do
       PYTHONPATH= .venv/bin/python -m sgi.synth.realistic.generate --variant real --seed $N --out $I/renders/seed$N --only $ROWS > $I/render_seed$N.log 2>&1; echo "$(date +%H:%M) seed $N exit $?"

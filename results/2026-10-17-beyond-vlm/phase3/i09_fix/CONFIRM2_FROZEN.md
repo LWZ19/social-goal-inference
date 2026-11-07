@@ -1,13 +1,13 @@
 # I09 second unseen-layout confirmation (A1 with fix 2, C07): frozen protocol
 
 Path roots:
-- Bare paths are relative to `phase3/i09_fix/`, the folder that holds this note.
+- Bare paths are relative to `results/still-scenes/people-finder/early-detector/fix/`, the folder that holds this note.
 - Paths that start with `phase1b/`, `phase1c/`, `phase2/` or `phase3/` are relative to the research folder `results/2026-10-17-beyond-vlm/`.
 - `.superpowers/` is git-ignored. The test scenes are never committed.
 
 ## 0. Purpose, and what a result would and would not show
 
-**Purpose.** I09 A1's frozen detector failed its first unseen-layout confirmation on false people alone: 44/182 = 0.242 per image against the 0.10 bar, with the other six success bars met (`phase2/i09/README.md` section 1; outcome "neither"). The fix step then chose fix 2 by a pre-registered rule on training seeds 110–115. Fix 2 is candidate C07: head re-lift, duplicate radius 0.30 m, A1's flat test, and dropping boxes too small for that test (`FIX_PROTOCOL.md`, `chosen_fix2.json`). It held on fit-validate (seeds 116–119) and on A1's development scenes.
+**Purpose.** I09 A1's frozen detector failed its first unseen-layout confirmation on false people alone: 44/182 = 0.242 per image against the 0.10 bar, with the other six success bars met (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1; outcome "neither"). The fix step then chose fix 2 by a pre-registered rule on training seeds 110–115. Fix 2 is candidate C07: head re-lift, duplicate radius 0.30 m, A1's flat test, and dropping boxes too small for that test (`FIX_PROTOCOL.md`, `chosen_fix2.json`). It held on fit-validate (seeds 116–119) and on A1's development scenes.
 
 The fix step itself flagged two limits:
 - fit-validate shares camera–staff geometry templates with fit-train (`DIAGNOSIS.md` section 7);
@@ -22,17 +22,17 @@ This is that confirmation. A1's frozen detector with fix 2 is scored once on new
 - **Real photographs or sensor depth.** The head re-lift reads 5×5 depth at head keypoints, and depth here is exact rendered depth.
 - **The pipeline with the detector in it.** That is the I09 live check, a separate step.
 
-**Not blind.** The fix was designed after the first confirmation's published aggregate failure, including its published post hoc classes (`phase2/i09/README.md` Table 1.5). It was tuned on seeds 110–115 and checked on 116–119. The test seeds are new layouts, and nobody has seen them.
+**Not blind.** The fix was designed after the first confirmation's published aggregate failure, including its published post hoc classes (`results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.5). It was tuned on seeds 110–115 and checked on 116–119. The test seeds are new layouts, and nobody has seen them.
 
 ## Exposure (disclosed)
 
 **What I read before writing:**
-- Of the first confirmation (`phase2/i09/`): `confirm/FROZEN.md`, `DEVIATIONS_1.md`, `DEVIATIONS_2.md`, `ORDER.txt`, the code of `confirm/sidecar/infer_confirm.py`, and `README.md` sections 0–1, which hold the published aggregates only.
+- Of the first confirmation (`results/still-scenes/people-finder/early-detector/phase2/`): `confirm/FROZEN.md`, `DEVIATIONS_1.md`, `DEVIATIONS_2.md`, `ORDER.txt`, the code of `confirm/sidecar/infer_confirm.py`, and `README.md` sections 0–1, which hold the published aggregates only.
 - Of the fix step (this folder):
   - in full: `FIX_PROTOCOL.md`, `chosen_fix2.json`, `fix_confirm.txt`, `fix/fixlib.py`, `fitlib.py` and `pathguard_fit.py`;
   - partly: `DIAGNOSIS.md` (its headings and section 7), the call sites in `fix/confirm_chosen.py`, the diff between `sidecar/infer_fit.py` and the first confirmation's driver, `raw_fit/meta.json`, and the field names and row counts of `confirm_rows.jsonl`.
-- The render log, stdout and manifest of training seeds 110–119 (`phase3/seeds/realistic_train/`).
-- A text search of the research folder, `src/`, `configs/`, `docs/` and `tests/` for mentions of seeds 213 and above. It found only mentions that seeds 213–219 were never rendered (REPORT, `phase2/i09/`, `phase3/metrics_v1/FACTCHECK.md`) and one mention of them as an option for another step (`phase3/confidence/README.md`, item 1).
+- The render log, stdout and manifest of training seeds 110–119 (`results/still-scenes/scene-seeds/phase3/realistic_train/`).
+- A text search of the research folder, `src/`, `configs/`, `docs/` and `tests/` for mentions of seeds 213 and above. It found only mentions that seeds 213–219 were never rendered (REPORT, `results/still-scenes/people-finder/early-detector/phase2/`, `results/still-scenes/metrics-and-statistics/metric-v1/FACTCHECK.md`) and one mention of them as an option for another step (`results/still-scenes/confidence-signal/README.md`, item 1).
 
 **What I computed.** The sha256 of every file this note pins (section 3), a `sha256sum -c` of `FIX.sha256`, `CHOSEN2.sha256`, `RAW_FIT.sha256` and `MANIFEST_FIT.sha256` (all OK), and section 1.7's existence check.
 
@@ -48,7 +48,7 @@ All 4 of C07's remaining fit-train false people are glass-booth staff. I also kn
 - C, 4 near hidden-by-rule staff;
 - D, 15 far and small boxes.
 
-**What I have not read.** No per-image or per-person row of the first confirmation: no `rows.jsonl`, `people_rows.jsonl`, `raw/` or `posthoc_false.txt`. I opened no file under `phase2/seeds/realistic/` and nothing of seeds 200–219.
+**What I have not read.** No per-image or per-person row of the first confirmation: no `rows.jsonl`, `people_rows.jsonl`, `raw/` or `posthoc_false.txt`. I opened no file under `results/still-scenes/scene-seeds/phase2/realistic/` and nothing of seeds 200–219.
 
 **What this note chooses, and what it does not.** It chooses no part of the method: the method is the fix step's recorded choice. It does not choose the test seeds. It fixes the mechanics, the report, and the definitions the brief leaves open (section 11).
 
@@ -143,7 +143,7 @@ Render rules (they turn the first confirmation's departures into rules):
 
 ## 3. The method: A1's frozen detector with fix 2 (C07), by import
 
-**Base setting.** A1's frozen choice, from `phase1c/i09/a1/chosen.json` and `chosen_fix.json`, unchanged:
+**Base setting.** A1's frozen choice, from `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen.json` and `chosen_fix.json`, unchanged:
 - RT-DETRv2-r50vd with score threshold τ 0.25;
 - height band `wide`, 1.00–2.30 m on z_top, with A1's top-touch exception;
 - depth push 0.20 m;
@@ -185,17 +185,17 @@ Render rules (they turn the first confirmation's departures into rules):
 | `manifest_fit.json` | `e597eb338303d54638fab3167df295ccce8230deb445059d6c1f18aaec1ee903` | C2 input |
 | `raw_fit/rtdetr_v2_r50vd.jsonl` | `bff284afbe93ec1441fab86a4b5ea9f1b1d76944849d44421aa1ca64941517c3` | C2 input |
 | `sidecar/infer_fit.py` | `7d5e30d973448fe8b39802c8248d8a1162909d8667659f4c709f7523a35cda95` | template of the new sidecar driver (C6) |
-| `phase1c/i09/a1/pipeline.py` | `4826be88d6939f3f5e4d14375a2fc9698abd94973ca46243d6697e263e5d063a` | `candidates`, `run_image`, `facing`, `push`, constants |
-| `phase1c/i09/a1/common.py` | `cdc33d742f6db5d09c3ad9a4557c1210ef10f8909484cee101ce983f9f8b2f53` | `score_scene`, `view_angle_deg`, `view_class`, `facing_summary`, `boot_ci`, `p90`, `thresholds_for` |
-| `phase1b/i03/people_scorer.py` | `e12776eaddac1de0af75b58f8a272cd0a13332596da626bcc81b085f5900d685` | `score_people`, `pool`, `wilson`, `exempt_points`, `truth_info`, `default_thresholds`, `check_thresholds`, `role_classes`, `FreshScene` |
-| `phase1c/i09/a1/sidecar/infer.py` | `bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484` | `run_pass`, the model functions, `BOX_MIN`, `POSE_MIN`, `SNAP` |
-| `phase1c/i09/a1/chosen.json` | `19b1e16340d810e75f8f772eeeabeaf4b788e09614e74d78d3afc206531119ff` | the base setting |
-| `phase1c/i09/a1/chosen_fix.json` | `fe8177165773f7208d417227c358adae7d04326bd29cb6c75d73ed87b3f83f52` | facing F5 |
-| `phase1c/i09/a1/ADDENDUM_FIX.md` | `3a7d185526e3d9801bd2adcdaf529bfbe744c1a636dc8e03d0f53de45d2e208c` | the facing fix's record |
-| `phase1c/i09/FROZEN.md` | `f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15` | A1's protocol and bars |
-| `phase1c/i09/a1/raw_eval/rtdetr_v2_r50vd.jsonl` | `8a03b82ca89bb82bdd0b10a8e56944b8562f3a580967087646e408dd4862a97d` | C2 input (development) |
-| `phase1c/i09/a1/eval_people.json` | `ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3` | C2 target (C00 people) |
-| `phase1c/i09/a1/manifest_eval.json` | `6c321c3800d0b76632da0711a2385dce4915a28e9cd1f563ff3f8a5782be0b22` | C2 input |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/pipeline.py` | `4826be88d6939f3f5e4d14375a2fc9698abd94973ca46243d6697e263e5d063a` | `candidates`, `run_image`, `facing`, `push`, constants |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/common.py` | `cdc33d742f6db5d09c3ad9a4557c1210ef10f8909484cee101ce983f9f8b2f53` | `score_scene`, `view_angle_deg`, `view_class`, `facing_summary`, `boot_ci`, `p90`, `thresholds_for` |
+| `results/still-scenes/perception/depth-blob-detector/people_scorer.py` | `e12776eaddac1de0af75b58f8a272cd0a13332596da626bcc81b085f5900d685` | `score_people`, `pool`, `wilson`, `exempt_points`, `truth_info`, `default_thresholds`, `check_thresholds`, `role_classes`, `FreshScene` |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/sidecar/infer.py` | `bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484` | `run_pass`, the model functions, `BOX_MIN`, `POSE_MIN`, `SNAP` |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen.json` | `19b1e16340d810e75f8f772eeeabeaf4b788e09614e74d78d3afc206531119ff` | the base setting |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen_fix.json` | `fe8177165773f7208d417227c358adae7d04326bd29cb6c75d73ed87b3f83f52` | facing F5 |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/ADDENDUM_FIX.md` | `3a7d185526e3d9801bd2adcdaf529bfbe744c1a636dc8e03d0f53de45d2e208c` | the facing fix's record |
+| `results/still-scenes/people-finder/early-detector/phase1c/FROZEN.md` | `f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15` | A1's protocol and bars |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/raw_eval/rtdetr_v2_r50vd.jsonl` | `8a03b82ca89bb82bdd0b10a8e56944b8562f3a580967087646e408dd4862a97d` | C2 input (development) |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json` | `ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3` | C2 target (C00 people) |
+| `results/still-scenes/people-finder/early-detector/phase1c/a1/manifest_eval.json` | `6c321c3800d0b76632da0711a2385dce4915a28e9cd1f563ff3f8a5782be0b22` | C2 input |
 | `configs/default.yaml` | `c651f4c484fff15d33290e13f28bc53c9221c8edd79c0b7a24f24a128098b4fc` | thresholds |
 
 Further assertions:
@@ -206,7 +206,7 @@ Further assertions:
 **The path guard.** `confirm2/pathguard2.py` uses the standard library only, so both environments load it, and follows `pathguard_fit.py`. It accepts a path only if all of these hold for the path as written and as resolved:
 - it lies under `<research>/phase3/i09_fix/confirm2/seeds/seed<k>/eval/<scene>/`;
 - it holds exactly one `seed<k>` component, with k in `SEED_LIST` (read from the verified addendum);
-- it contains none of `keep/heldout`, `s18`, `s20_held`, `eval_16`–`eval_19`, `group_photo`, `lift_wait`, `heldout`, `held_out`, `phase2/seeds` or `realistic_train` (case ignored).
+- it contains none of `keep/heldout`, `s18`, `s20_held`, `eval_16`–`eval_19`, `group_photo`, `lift_wait`, `heldout`, `held_out`, `results/still-scenes/overview/phase-notes/phase2-files/seeds` or `realistic_train` (case ignored).
 
 - It is `sidecar/infer_fit.py` with only these changes:
   - the constants: paths, manifest name, expected image count;
@@ -326,7 +326,7 @@ Any analysis not listed here is labelled post hoc.
 Sources:
 - `chosen_fix2.json` (sha256 above), in particular `fit_train`, `a1_fit_train` and `checks`;
 - `fix_confirm.txt`;
-- the published Table 1.1 of `phase2/i09/README.md` (sha256 `6045e5889ac03fd6b09da04d8d14e0c6ab8abbe2fda246767c41dd672367c638`) for A1 on the first confirmation.
+- the published Table 1.1 of `results/still-scenes/people-finder/early-detector/phase2/README.md` (sha256 `6045e5889ac03fd6b09da04d8d14e0c6ab8abbe2fda246767c41dd672367c638`) for A1 on the first confirmation.
 
 | Measure | C07, development E-real (42) | C07, fit-validate (56) | C07, fit-train (84; selection data) | A1 (C00), fit-validate (56) | A1, first confirmation (182; published) |
 |---|---|---|---|---|---|
@@ -389,7 +389,7 @@ A failed check stops the step. Its fix is logged in a hashed `confirm2/DEVIATION
 **Excluded data:**
 - No held-out situation, scene or run is read or instantiated: no `keep/heldout`, `s18`, `s20_held`, `eval_16`–`eval_19`, `group_photo` or `lift_wait`.
 - No seed 3–99 is generated or opened.
-- Nothing of seeds 200–219 other than the listed seeds is touched. Nothing of `phase2/seeds/realistic/` is opened.
+- Nothing of seeds 200–219 other than the listed seeds is touched. Nothing of `results/still-scenes/scene-seeds/phase2/realistic/` is opened.
 - No per-image or per-person row of the first confirmation is read.
 - Recorded runs and development scenes (C2 only) are read through the step-0 harness alone.
 

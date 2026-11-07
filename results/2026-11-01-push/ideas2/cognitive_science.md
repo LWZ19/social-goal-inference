@@ -85,7 +85,7 @@ prior, and this residual becomes the likelihood.
 
 **Failure attacked.**
 - All of CT3's leftover capture comes from bystanders the model named as waiting: DeepSeek 10/51 answers, 203 s;
-  Sonnet 13/29 answers, 322 s (SUMMARY §5; `moving/bystanders_post/README.md`).
+  Sonnet 13/29 answers, 322 s (SUMMARY §5; `results/moving-lines/bystanders/post-hoc/README.md`).
 - The follow check acts only after the line advances.
 
 **Borrowed intuition.** I1: inverse planning with one's own planner, "like me", self as simulator. I5: the dynamic

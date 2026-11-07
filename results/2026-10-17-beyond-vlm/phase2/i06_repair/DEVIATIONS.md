@@ -4,8 +4,8 @@ FROZEN.md sha256 `02432f62320c0ebb0924c0f0e5b4b2089d508eb4a85fd28cf56641c25e2756
 
 ## D1. File locations (18 Oct 2026, 06:45 +08:00, before any pass ran)
 
-- Code goes in `code/` (`rules.py`, `common.py`, `crowd.py`, `crowd_noisy.py`, `records.py`, `tables.py`, `run_*.sh`). FROZEN put it at the top of `phase2/i06_repair/`.
-- The final rows go at the top of `phase2/i06_repair/`, not in `out/`:
+- Code goes in `code/` (`rules.py`, `common.py`, `crowd.py`, `crowd_noisy.py`, `records.py`, `tables.py`, `run_*.sh`). FROZEN put it at the top of `results/still-scenes/crowds/facing-gate-repair/`.
+- The final rows go at the top of `results/still-scenes/crowds/facing-gate-repair/`, not in `out/`:
   - `rows_crowd.jsonl` (FROZEN: `out/crowd_rows.jsonl`);
   - `rows_noisy_<model>.jsonl` (FROZEN: `out/noisy_<model>.jsonl`);
   - `rows_records_<cell>.jsonl` (FROZEN: `out/records_<cell>.jsonl`).

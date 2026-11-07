@@ -9,7 +9,7 @@ Can a local detector replace C's people call, making the pipeline faster and one
 - **What is held fixed.** Each record's own recorded plan, evaluated subtask, target point and context check are passed to `pipeline.infer_goal`. A zero-call check confirmed that the injected inputs reproduce the recorded target world point in 60 of 60 records. Only the constraint method runs, at a fresh trial (30 + the recorded trial).
 - **Arms:**
   - **A0:** the VLM people call plus the constraints call, i.e. the current C, freshly drawn.
-  - **D:** I09 **A1**'s frozen detector people (`phase1c/i09/a1/eval_people.json`, sha256 `ffa59545…`), passed as the people source exactly as the D-live driver does, plus the constraints call.
+  - **D:** I09 **A1**'s frozen detector people (`results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`, sha256 `ffa59545…`), passed as the people source exactly as the D-live driver does, plus the constraints call.
     - There is no people call.
     - The constraints call sees the detector's numbered people.
     - Fix 2 is not used. Its unseen-layout confirmation never ran, and on these scenes it differs from A1 only by 2 missed staff and 3 false people.

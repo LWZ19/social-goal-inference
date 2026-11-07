@@ -7,7 +7,7 @@ BYSTANDERS_FROZEN.md's pilot (DeepSeek, seeds 10-14) found:
 - **The model's roster:** DeepSeek named a bystander in 1 of 15 answers.
 - **Share:** CT3 against CT2 was 5/2/8, +0.023, sign p 0.45, so "beats CT2" is NOT SHOWN.
 
-Post hoc, about the pilot (`bystanders_post/constraint_cells_out.txt`):
+Post hoc, about the pilot (`results/moving-lines/bystanders/post-hoc/constraint_cells_out.txt`):
 - 6 of the 15 cells were standard-goal answers: all 5 of room, and sweet_spot s14. In those, DeepSeek's context call
   said people don't matter, so nothing re-solved, every C arm was identical, and the robot drove through the line
   to the cart.

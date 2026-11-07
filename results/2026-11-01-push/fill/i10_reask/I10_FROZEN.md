@@ -1,6 +1,6 @@
 # Item 10: asking once and re-solving against re-asking (CT2 vs Rq0 and Cq; fresh cells; frozen before any re-asking episode on these cells; amendments 1 and 2 before any episode; amendment 3 as disclosed in it)
 
-## Question (the design's H1, `moving/DESIGN.md`)
+## Question (the design's H1, `results/moving-lines/design-and-scoring/DESIGN.md`)
 
 Is asking once and then re-solving on tracked people (CT2, about 4 calls an episode) as good at keeping the robot in
 line as asking again and again?
@@ -17,7 +17,7 @@ n 15: too few cells to decide.
   sgi.serve's local work (`experiment.py` 271-285). The machine is heavily loaded today (load 18-28 on 20 cores). New
   Rq0 and Cq episodes would get slower local turnaround than the CT2 episodes recorded earlier on a quieter machine.
   That tilts H10 towards CT2: the anti-conservative direction for a non-inferiority claim about CT2.
-- **The fix.** CT2 is re-run in the same invocation as Rq0 and Cq (`--arms CT2 Rq0 Cq`, into `moving/runs_i10/<model>/`).
+- **The fix.** CT2 is re-run in the same invocation as Rq0 and Cq (`--arms CT2 Rq0 Cq`, into `results/data/moving/runs_i10/<model>/`).
   It replays its cached first answer, and its re-solves are local, so it costs zero calls.
 - **H10 is judged on this concurrent CT2.** The earlier CT2 in `runs/<model>/` is read only for a repeat check (mean d
   and mean |d|), as in item 5.
@@ -84,7 +84,7 @@ n 15: too few cells to decide.
 - Superiority is not shown for Rq0.
 - Calls: CT2 4, Rq0 about 25-35 (DeepSeek, Sonnet), Cq about 20.
 
-    cd results/2026-11-01-push/moving
+    cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
     M=sgi_habitat.experiment_oracle
@@ -93,7 +93,7 @@ n 15: too few cells to decide.
     $P run_moving.py --model claude_sonnet55_low --out runs_i10/sonnet55_low --workers 1 --port-base 8840 --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms CT2 Rq0 Cq --max-rpm 30 > $F/run_sonnet.log 2>&1
     # after item 9:
     $P run_moving.py --model soclaas_qwen38_low --out runs_i10/soclaas_qwen38_low --workers 1 --port-base 8840 --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms CT2 Rq0 Cq --max-rpm 30 > $F/run_qwen.log 2>&1
-    cd .. && $P fill/i10_reask/i10_score.py > fill/i10_reask/i10_score_out.txt
+    cd .. && $P results/moving-lines/re-asking/i10_score.py > results/moving-lines/re-asking/i10_score_out.txt
 
 ## Cost
 
@@ -105,5 +105,5 @@ n 15: too few cells to decide.
 
 ## Scorer
 
-`i10_score.py`, using `fill/mcompare.py`. Tested with `--test` on the old seeds 0-2 episodes (CT in place of CT2). It
+`i10_score.py`, using `results/_lib/mcompare.py`. Tested with `--test` on the old seeds 0-2 episodes (CT in place of CT2). It
 reproduces their calls per episode: DeepSeek Rq0 30.4 and Cq 20.8; x-test-3 10.5 and 5.9.

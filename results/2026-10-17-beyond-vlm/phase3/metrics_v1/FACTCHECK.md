@@ -9,11 +9,11 @@ Paths are relative to `results/2026-10-17-beyond-vlm/`.
 | # | Where | Was | Now | Why |
 |---|---|---|---|---|
 | C1 | §2.1 (b) | "per-cell rates alone score +0.08 pooled and +0.35 at old Qwen" | "+0.32 at old Qwen (+0.35 if the base rate is pooled over all 549 primary records)" | Recomputed. With the base rate pooled over the 441 realistic records (0.769), old Qwen's Brier skill is +0.325. The +0.348 appears only with the rate pooled over all 549 primary records (0.760). The pooled +0.077 holds either way |
-| C2 | §4, label validity | "I06's lines, measured on oracle C only", then five bands | "I06's lines (criterion (c): at most 5%, L2 empty at most 2%; K2: above 30% or above 10%), with the bands between them added here" | I06 sets only the outer lines (`phase2/i06/README.md` §6). The 5–20%, 20–30% and 2–10% bands are this draft's additions |
-| C3 | D15, Why | "Same work, different load: 18.3 against 11.9 ms; 215.1 against 127.0 ms" | "The same span timed twice under different conditions, causes not settled" | I09 calls its pair the same machine under different load (`phase2/i09/README.md` §1). For the flow pilot the verifier names two other likely causes, an in-process GPU poller and a different projection code path, and timed only every third record (`phase2/flow_pilot/README.md` §6) |
-| C4 | Appendix B, fit seeds row | Source "REPORT I46" | "REPORT I46; gate 2: `phase1d/README.md` §2.2" | REPORT I46 names I03, I11 and I09 A1 as users of seeds 100–109, not gate 2 |
-| C5 | Appendix B, training seeds row | `phase2/flow_pilot/README.md` §7 | §1, §7 | The 110–189 / 190–199 split is stated in §1; §7 says the seeds are spent as training data |
-| C7 | Glossary; D4; D7; §2.1 "The confidence probe" | "now running", "tests it now", "until the confidence probe reports" | Says the results page appeared at 18:05, after the revision; adds a dated note: P1 neither (cells 0.645, 0.738, 0.688; pooled 0.708 against the flags' 0.595), model-only 0.658 confirmed, bar numbers not yet revisited | `phase3/confidence/README.md` §0, §4, §5 |
+| C2 | §4, label validity | "I06's lines, measured on oracle C only", then five bands | "I06's lines (criterion (c): at most 5%, L2 empty at most 2%; K2: above 30% or above 10%), with the bands between them added here" | I06 sets only the outer lines (`results/still-scenes/crowds/README.md` §6). The 5–20%, 20–30% and 2–10% bands are this draft's additions |
+| C3 | D15, Why | "Same work, different load: 18.3 against 11.9 ms; 215.1 against 127.0 ms" | "The same span timed twice under different conditions, causes not settled" | I09 calls its pair the same machine under different load (`results/still-scenes/people-finder/early-detector/phase2/README.md` §1). For the flow pilot the verifier names two other likely causes, an in-process GPU poller and a different projection code path, and timed only every third record (`results/still-scenes/learned-models/flow-model-pilot/README.md` §6) |
+| C4 | Appendix B, fit seeds row | Source "REPORT I46" | "REPORT I46; gate 2: `results/still-scenes/overview/phase-notes/phase1d.md` §2.2" | REPORT I46 names I03, I11 and I09 A1 as users of seeds 100–109, not gate 2 |
+| C5 | Appendix B, training seeds row | `results/still-scenes/learned-models/flow-model-pilot/README.md` §7 | §1, §7 | The 110–189 / 190–199 split is stated in §1; §7 says the seeds are spent as training data |
+| C7 | Glossary; D4; D7; §2.1 "The confidence probe" | "now running", "tests it now", "until the confidence probe reports" | Says the results page appeared at 18:05, after the revision; adds a dated note: P1 neither (cells 0.645, 0.738, 0.688; pooled 0.708 against the flags' 0.595), model-only 0.658 confirmed, bar numbers not yet revisited | `results/still-scenes/confidence-signal/README.md` §0, §4, §5 |
 
 The Status line also now points to this file.
 
@@ -21,7 +21,7 @@ The Status line also now points to this file.
 
 - **CHANGELOG.md** still gives "+0.35 at old Qwen" (row 1.3) and "+0.348 at old Qwen" (Checks line). It is the revision's record, so it was left as written. See C1.
 - **Holm floors (§1, D13).** "7 for 3 models, 8 for 6" is the number of non-tied layouts the *smallest* p in the family needs. Rows after it may have fewer: Sonnet C−E, with 7 non-tied layouts (p 0.0156), still passes Holm over 6 models. The wording is correct as a requirement; it is not a per-row floor.
-- **D13, "no per-situation claim can reach p ≤ 0.05".** This copies `phase1/i46_stats/HOW_TO_REPORT.md`, which argues it for lines (floor 0.0625) and groups (0.25). Nobody-near has 6 layouts (floor 0.031) but R and E are nearly identical there. The draft matches its source.
+- **D13, "no per-situation claim can reach p ≤ 0.05".** This copies `results/still-scenes/metrics-and-statistics/statistics/HOW_TO_REPORT.md`, which argues it for lines (floor 0.0625) and groups (0.25). Nobody-near has 6 layouts (floor 0.031) but R and E are nearly identical there. The draft matches its source.
 
 ## Every claim checked
 
@@ -31,44 +31,44 @@ The Status line also now points to this file.
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 1 | V3 fitted to σ ≈ 0.06 m | `phase1d/README.md` Table 1.1 (σ 0.059 in 16 of 19 folds) | Confirmed |
-| 2 | Band-uniform is gate 2's baseline, uniform at the usual target distance | `phase1d/README.md` §2.2 | Confirmed |
-| 3 | Family A: one confuser behind a line, six levels | `phase2/i06/README.md` §1 | Confirmed |
-| 4 | L2 = L1 minus a 0.3 m body gap to non-members and other groups' circles | `phase2/i06/README.md` §1; REPORT §7 | Confirmed |
-| 5 | Gateway models get the same prompt text under both wordings; new-wording people answers are cache copies | REPORT §8 "Wording change f1a488a"; `phase1/README.md` cautions | Confirmed |
-| 6 | Primary cells: s19 Qwen, s19 GLM, s20 DeepSeek, and watching | `phase1/i14_v0/METRIC_NOTE.md` "Records" | Confirmed |
-| 7 | MDD = difference found 80% of the time at two-sided 0.05 | `phase1/i46_stats/mdd_table.txt` | Confirmed |
+| 1 | V3 fitted to σ ≈ 0.06 m | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.1 (σ 0.059 in 16 of 19 folds) | Confirmed |
+| 2 | Band-uniform is gate 2's baseline, uniform at the usual target distance | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed |
+| 3 | Family A: one confuser behind a line, six levels | `results/still-scenes/crowds/README.md` §1 | Confirmed |
+| 4 | L2 = L1 minus a 0.3 m body gap to non-members and other groups' circles | `results/still-scenes/crowds/README.md` §1; REPORT §7 | Confirmed |
+| 5 | Gateway models get the same prompt text under both wordings; new-wording people answers are cache copies | REPORT §8 "Wording change f1a488a"; `results/still-scenes/overview/phase-notes/phase1.md` cautions | Confirmed |
+| 6 | Primary cells: s19 Qwen, s19 GLM, s20 DeepSeek, and watching | `results/still-scenes/metrics-and-statistics/metric-v0/METRIC_NOTE.md` "Records" | Confirmed |
+| 7 | MDD = difference found 80% of the time at two-sided 0.05 | `results/still-scenes/metrics-and-statistics/statistics/mdd_table.txt` | Confirmed |
 | 8 | Holm's procedure as stated | `HOW_TO_REPORT.md` (Holm across models) | Confirmed |
-| 9 | Visibility rule = the package's `is_visible` | `phase2/i09/README.md` §1 | Confirmed |
-| 10 | Confidence probe: disagreement between the VLM's people and the detector's | `phase3/confidence/FROZEN.md` §1 | Confirmed; status corrected (C7) |
-| 11 | Idea codes (I04, I06, I09, I14, I46, A0, C5 gate 2) | REPORT §4; `phase1/README.md` §3; `phase1d/README.md` | Confirmed |
+| 9 | Visibility rule = the package's `is_visible` | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Confirmed |
+| 10 | Confidence probe: disagreement between the VLM's people and the detector's | `results/still-scenes/confidence-signal/FROZEN.md` §1 | Confirmed; status corrected (C7) |
+| 11 | Idea codes (I04, I06, I09, I14, I46, A0, C5 gate 2) | REPORT §4; `results/still-scenes/overview/phase-notes/phase1.md` §3; `results/still-scenes/overview/phase-notes/phase1d.md` | Confirmed |
 
 ### Decision table
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 12 | D1: at 30 deg DeepSeek realistic top-1 falls 109 → 101 of 157; most cells flat | `phase1/README.md` §4 | Confirmed |
+| 12 | D1: at 30 deg DeepSeek realistic top-1 falls 109 → 101 of 157; most cells flat | `results/still-scenes/overview/phase-notes/phase1.md` §4 | Confirmed |
 | 13 | D2: 0.50 m is the human-norm edge; 0.55 m the closest this robot can stand; 0.55 m changes 12 R/E verdicts, no conclusion | REPORT §1.1 finding 8, §1.3 | Confirmed |
 | 14 | D3: SEWA 13 of 252 ≈ 5 points | Recomputed (5.2 points) | Confirmed |
 | 15 | D3: an MDD bar rejects 6 of 12 C−E/C−R rows | `mdd_table.txt` M3 against `tci_table.txt`: Qwen C−E, Qwen C−R, GLM C−R, Sonnet C−E, Sonnet C−R, Gemini C−E fall below their MDD | Confirmed |
 | 16 | D3: Qwen C−E +32 against MDD 33.1, p 0.0078 | `tci_table.txt`; `mdd_table.txt` | Confirmed |
 | 17 | D3: all 12 rows pass the proposed rule, Holm over 6 models included | `tci_table.txt` p values, Holm within each comparison type | Confirmed |
 | 18 | D3: 7 rows are strong (lower end ≥ 13) | `tci_table.txt`: GLM C−E, DeepSeek C−E and C−R, Haiku both, Sonnet C−E, Gemini C−R | Confirmed |
-| 19 | D4: Q2 serves a planner, Q1 a confidence or abstain signal | `phase1d/README.md` §5 | Confirmed; status corrected (C7) |
-| 20 | D5: I04's score rewarded a near-point mass; gate 2's rewards spread | `phase1d/README.md` §1, §2.2, §5 | Confirmed |
-| 21 | D6: I04's collapse line would fire on V3 in 549 of 549 | `phase1d/README.md` Table 1.6 note, §5 | Confirmed |
-| 22 | D7: a model-only signal scores pooled AUROC 0.658 | Recomputed (0.6578); `phase3/confidence/README.md` §5 | Confirmed |
+| 19 | D4: Q2 serves a planner, Q1 a confidence or abstain signal | `results/still-scenes/overview/phase-notes/phase1d.md` §5 | Confirmed; status corrected (C7) |
+| 20 | D5: I04's score rewarded a near-point mass; gate 2's rewards spread | `results/still-scenes/overview/phase-notes/phase1d.md` §1, §2.2, §5 | Confirmed |
+| 21 | D6: I04's collapse line would fire on V3 in 549 of 549 | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.6 note, §5 | Confirmed |
+| 22 | D7: a model-only signal scores pooled AUROC 0.658 | Recomputed (0.6578); `results/still-scenes/confidence-signal/README.md` §5 | Confirmed |
 | 23 | D7: it beats a pooled base rate, Brier skill +0.08 | Recomputed (+0.077) | Confirmed |
-| 24 | D8: uniform beats band-uniform by ≥ 0.10 nats in 2 of 3 gate-2 folds | `phase1d/README.md` Table 2.2 (+0.131, −0.105, +2.919) | Confirmed |
-| 25 | D9: AR recovers 57% and 69% over the room, 96% and 33% in the disc | `phase1/README.md` §4 | Confirmed |
-| 26 | D10: L2 mirrors the solver's 1.0 m standoff | REPORT §8 "Circularity" (own-space rule); `phase2/i06/README.md` §2 (1.0 m) | Confirmed |
-| 27 | D11: no joining rule succeeds at levels 3–6 | `phase2/i06_repair/README.md` §2 | Confirmed |
-| 28 | D12: 0.192 (0.170 with 4 more) against 0.242; above the 0.10 bar | `phase2/i09/README.md` Tables 1.1, 1.5; recomputed 35/182, 31/182, 44/182 | Confirmed |
+| 24 | D8: uniform beats band-uniform by ≥ 0.10 nats in 2 of 3 gate-2 folds | `results/still-scenes/overview/phase-notes/phase1d.md` Table 2.2 (+0.131, −0.105, +2.919) | Confirmed |
+| 25 | D9: AR recovers 57% and 69% over the room, 96% and 33% in the disc | `results/still-scenes/overview/phase-notes/phase1.md` §4 | Confirmed |
+| 26 | D10: L2 mirrors the solver's 1.0 m standoff | REPORT §8 "Circularity" (own-space rule); `results/still-scenes/crowds/README.md` §2 (1.0 m) | Confirmed |
+| 27 | D11: no joining rule succeeds at levels 3–6 | `results/still-scenes/crowds/facing-gate-repair/README.md` §2 | Confirmed |
+| 28 | D12: 0.192 (0.170 with 4 more) against 0.242; above the 0.10 bar | `results/still-scenes/people-finder/early-detector/phase2/README.md` Tables 1.1, 1.5; recomputed 35/182, 31/182, 44/182 | Confirmed |
 | 29 | D13: per-situation claims cannot reach p ≤ 0.05; E−R-sized effects need 18–28 records over 14 layouts | `HOW_TO_REPORT.md` | Confirmed (see flagged points) |
-| 30 | D14: seeds repeat a row with small jitter | `phase1d/README.md` §2.1 | Confirmed |
-| 31 | D14: I46's 20 came from resampling 14 layouts | `phase1/README.md` §5; `HOW_TO_REPORT.md` | Confirmed |
-| 32 | D14: seeds 213–219 hold the same 14 rows | `phase2/i09/README.md` §1 (each seed renders the same 14 ids) | Confirmed |
-| 33 | D15: 18.3 against 11.9 ms; 215.1 against 127.0 ms | `phase2/flow_pilot/README.md` Table 2.10, §6; `phase2/i09/README.md` §1 | Numbers confirmed; wording corrected (C3) |
+| 30 | D14: seeds repeat a row with small jitter | `results/still-scenes/overview/phase-notes/phase1d.md` §2.1 | Confirmed |
+| 31 | D14: I46's 20 came from resampling 14 layouts | `results/still-scenes/overview/phase-notes/phase1.md` §5; `HOW_TO_REPORT.md` | Confirmed |
+| 32 | D14: seeds 213–219 hold the same 14 rows | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 (each seed renders the same 14 ids) | Confirmed |
+| 33 | D15: 18.3 against 11.9 ms; 215.1 against 127.0 ms | `results/still-scenes/learned-models/flow-model-pilot/README.md` Table 2.10, §6; `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Numbers confirmed; wording corrected (C3) |
 | 34 | D16: the 42 group-joining scenarios or the predictor's outputs (I51); ethics review for a click pilot (I35) | REPORT §7 "For the mentor" | Confirmed |
 | 35 | D16: every label is the project's own rule | REPORT §8 "Circularity" | Confirmed |
 
@@ -76,50 +76,50 @@ The Status line also now points to this file.
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 38 | 252 = 14 layouts × 3 arms × 2 episodes × 3 trials; 18 records per layout | `phase1/README.md` §5; `HOW_TO_REPORT.md` | Confirmed |
-| 39 | Goal-step records 143, 141, 157 (441); 36 per watching cell; 549 | `METRIC_NOTE.md`; `phase1d/README.md` §1 | Confirmed |
-| 40 | 13 realistic goal-step layouts, none at `eval_04`; per cell 8, 11, 12; 2 watching rows | `phase3/confidence/FROZEN.md` pre-freeze check; `phase1d/README.md` §1 | Confirmed |
-| 41 | 520 generator episodes on seeds 100–109 | `phase1d/README.md` §2.2 | Confirmed |
-| 42 | 22 templates among the development rows; members move a median 0.00–0.48 m | `phase1d/README.md` §2.1 | Confirmed |
-| 43 | Templates: watching 2 (`eval_14`, `eval_15`, seeds 0–2), I06 10, I09 14 | `FROZEN.md` (layouts); `phase2/i06/README.md` §1; `phase2/i09/README.md` §1 | Confirmed |
-| 44 | s21 Qwen and s23 GLM and DeepSeek C people answers are cache copies | `phase1/README.md` cautions | Confirmed |
-| 45 | ICC 0.08–0.75; 252 records carry 18–107 independent ones | `phase1/README.md` §5 | Confirmed |
+| 38 | 252 = 14 layouts × 3 arms × 2 episodes × 3 trials; 18 records per layout | `results/still-scenes/overview/phase-notes/phase1.md` §5; `HOW_TO_REPORT.md` | Confirmed |
+| 39 | Goal-step records 143, 141, 157 (441); 36 per watching cell; 549 | `METRIC_NOTE.md`; `results/still-scenes/overview/phase-notes/phase1d.md` §1 | Confirmed |
+| 40 | 13 realistic goal-step layouts, none at `eval_04`; per cell 8, 11, 12; 2 watching rows | `results/still-scenes/confidence-signal/FROZEN.md` pre-freeze check; `results/still-scenes/overview/phase-notes/phase1d.md` §1 | Confirmed |
+| 41 | 520 generator episodes on seeds 100–109 | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed |
+| 42 | 22 templates among the development rows; members move a median 0.00–0.48 m | `results/still-scenes/overview/phase-notes/phase1d.md` §2.1 | Confirmed |
+| 43 | Templates: watching 2 (`eval_14`, `eval_15`, seeds 0–2), I06 10, I09 14 | `FROZEN.md` (layouts); `results/still-scenes/crowds/README.md` §1; `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Confirmed |
+| 44 | s21 Qwen and s23 GLM and DeepSeek C people answers are cache copies | `results/still-scenes/overview/phase-notes/phase1.md` cautions | Confirmed |
+| 45 | ICC 0.08–0.75; 252 records carry 18–107 independent ones | `results/still-scenes/overview/phase-notes/phase1.md` §5 | Confirmed |
 | 46 | Exact sign-flip test by layout; t interval over 14 layout means; no binomial, McNemar or Wald | `HOW_TO_REPORT.md` | Confirmed |
-| 47 | `eval_00`–`05` hold 1–6 goal-step records each | `phase1d/README.md` note under Table 1.3 | Confirmed |
+| 47 | `eval_00`–`05` hold 1–6 goal-step records each | `results/still-scenes/overview/phase-notes/phase1d.md` note under Table 1.3 | Confirmed |
 | 48 | The percentile bootstrap runs narrow with few clusters | `HOW_TO_REPORT.md`; REPORT §8 | Confirmed |
 | 49 | MDD over 14 layouts 18–28 (E−R-like), 33–79 (C−E-like) | `HOW_TO_REPORT.md`; `mdd_table.txt` M3 | Confirmed |
 | 50 | Paired live, one stage: 11–21 per batch | `HOW_TO_REPORT.md`; `mdd_table.txt` M2 | Confirmed |
 | 51 | Two independent batches: 24–32; 22 / 18 / 16 with 2 / 3 / 4 batches | `HOW_TO_REPORT.md`; `mdd_table.txt` M1 (from Qwen's 7.93) | Confirmed |
 | 52 | Floors 6 → 0.031; 7 → 0.016 (3 models); 8 → 0.0078 (6 models) | Recomputed: 2/2^k against 0.05/m | Confirmed (see flagged points) |
-| 54 | "m of k" bars on point estimates, as I04 and the probe do | `phase1d/README.md` §1 criterion (d); `FROZEN.md` §7 | Confirmed |
+| 54 | "m of k" bars on point estimates, as I04 and the probe do | `results/still-scenes/overview/phase-notes/phase1d.md` §1 criterion (d); `FROZEN.md` §7 | Confirmed |
 
 ### §2.1 Q1
 
 | # | Claim | Source | Result |
 |---|---|---|---|
 | 55 | Binary log, Brier and region log density proper; mean ln(ε + S) is not | Standard reasoning, no project source | Consistent; not a source claim |
-| 56 | ε = 1e-3, as I04 fitted | `phase1d/README.md` §1 | Confirmed |
+| 56 | ε = 1e-3, as I04 fitted | `results/still-scenes/overview/phase-notes/phase1d.md` §1 | Confirmed |
 | 57 | V0 −1.660 = (132/549) × ln 1e-3 plus a negligible term | Recomputed (−1.6601; 132 = 549 − 417) | Confirmed |
 | 58 | V0 −1.10 at ε 1e-2 and −2.21 at 1e-4 | Recomputed (−1.0997, −2.2144) | Confirmed |
-| 59 | Lift_room in I04's form ΣS/Σρ_room and v0's Σ top-1/Σρ_room | `phase1d/README.md` §1; `METRIC_NOTE.md` "Lift" | Confirmed |
-| 60 | hit@k places at least 0.6 m apart | `phase1d/README.md` §1 | Confirmed |
+| 59 | Lift_room in I04's form ΣS/Σρ_room and v0's Σ top-1/Σρ_room | `results/still-scenes/overview/phase-notes/phase1d.md` §1; `METRIC_NOTE.md` "Lift" | Confirmed |
+| 60 | hit@k places at least 0.6 m apart | `results/still-scenes/overview/phase-notes/phase1d.md` §1 | Confirmed |
 | 61 | Set success share = v0's P(success)@5 | `METRIC_NOTE.md` "Places" | Confirmed |
 | 62 | Method code reads only `result.*` | REPORT §8 "Leakage" | Confirmed |
 | 63 | Per-cell rates alone: +0.08 pooled | Recomputed (+0.077) | Confirmed |
 | 64 | Per-cell rates alone: +0.35 at old Qwen | Recomputed (+0.325 with the 441-record rate) | Corrected (C1) |
 | 65 | ECE 0.03–0.06 for a calibrated forecaster | Reviewer's simulation, labelled as such | Not checkable here; label is accurate |
 | 66 | Cell AUROCs rest on 9, 45 and 48 failures | 143−134, 141−96, 157−109 | Confirmed |
-| 67 | 34 of the 102 realistic failures are wrong targets | `FROZEN.md` exposure; `phase3/confidence/README.md` §1 | Confirmed |
+| 67 | 34 of the 102 realistic failures are wrong targets | `FROZEN.md` exposure; `results/still-scenes/confidence-signal/README.md` §1 | Confirmed |
 | 68 | Perfect ranker at 20% abstention: +6.3, +17.0, +17.4 | Recomputed | Confirmed |
 | 69 | Binormal AUROC 0.70: +1.9, +6.0, +5.9, mean +4.6 | Recomputed (+1.87, +5.98, +5.89; mean 4.58, record-weighted 4.61) | Confirmed |
-| 70 | Q1 bar (a): within 2 records is I04 (c)'s tolerance, one-sided | `phase1d/README.md` §1 criterion (c) (a hit@5 tolerance, applied here to top-1) | Confirmed |
-| 71 | I04's −1.660 and −1.452 hold for its 549 records | `phase1d/README.md` Table 1.2 | Confirmed |
-| 72 | Bar (a) is stricter than I04's (b) | I04 (b) = V1 above V3 pooled (`phase1d/README.md` §1) | Confirmed |
+| 70 | Q1 bar (a): within 2 records is I04 (c)'s tolerance, one-sided | `results/still-scenes/overview/phase-notes/phase1d.md` §1 criterion (c) (a hit@5 tolerance, applied here to top-1) | Confirmed |
+| 71 | I04's −1.660 and −1.452 hold for its 549 records | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.2 | Confirmed |
+| 72 | Bar (a) is stricter than I04's (b) | I04 (b) = V1 above V3 pooled (`results/still-scenes/overview/phase-notes/phase1d.md` §1) | Confirmed |
 | 73 | The any-flag baseline = any of the solver's three flags | `FROZEN.md` §4, S5a | Confirmed |
 | 74 | S6 is a combined signal | `FROZEN.md` §4 | Confirmed |
 | 75 | FROZEN.md sha256 `2a3a890a…cb4b3` | `FROZEN.sha256`; `sha256sum` of the file | Confirmed |
 | 76 | Probe success: AUROC ≥ 0.70 in 2 of 3 cells and pooled above the any-flag baseline; kill pooled < 0.60; coverage 0.8 and 0.5, point values | `FROZEN.md` §5, §7; neither deviation note changes them | Confirmed |
-| 77 | Qwen's cell has 9 failures; pooling rewards knowing the model (0.658) | `FROZEN.md`; `phase3/confidence/README.md` §5 | Confirmed |
+| 77 | Qwen's cell has 9 failures; pooling rewards knowing the model (0.658) | `FROZEN.md`; `results/still-scenes/confidence-signal/README.md` §5 | Confirmed |
 | 78 | The probe's README did not exist at revision time | README file time 18:05, after the 17:56 revision | Confirmed; dated note added (C7) |
 
 ### §2.2 Q2
@@ -127,40 +127,40 @@ The Status line also now points to this file.
 | # | Claim | Source | Result |
 |---|---|---|---|
 | 79 | F(rec): the solver's selectable cells, 0.05 m grid, the record's own VLM people | `METRIC_NOTE.md` "Floor" | Confirmed |
-| 80 | Generator floor: ground truth, connected to the robot's start, 0.10 m grid | `phase1d/README.md` §2.2 | Confirmed |
-| 81 | Region log density with 1% uniform mixed in | `phase1d/README.md` §2.2 | Confirmed |
+| 80 | Generator floor: ground truth, connected to the robot's start, 0.10 m grid | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed |
+| 81 | Region log density with 1% uniform mixed in | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed |
 | 82 | ln 0.01 ≈ −4.6 nats | Recomputed (−4.605) | Confirmed |
-| 83 | Band from the 5th to 95th percentile of training region-cell distances | `phase1d/README.md` §2.2 | Confirmed |
-| 84 | Sampler coverage: 64 samples, within 0.2 m | `phase2/flow_pilot/README.md` §1 | Confirmed |
+| 83 | Band from the 5th to 95th percentile of training region-cell distances | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed |
+| 84 | Sampler coverage: 64 samples, within 0.2 m | `results/still-scenes/learned-models/flow-model-pilot/README.md` §1 | Confirmed |
 | 85 | Forbidden kinds `ahead_in_line`, `group_space`, `audience_view` | `METRIC_NOTE.md` | Confirmed |
-| 86 | Uniform beats band by 0.131 and 2.919 nats | `phase1d/README.md` Table 2.2, recomputed | Confirmed |
-| 87 | Training subsample moved Δ about 0.9 nats (+1.955 against +2.843 to +2.906) | `phase1d/README.md` Table 2.3 | Confirmed |
-| 88 | Gate 2's rule: 2 of 3 left-out situations | `phase1d/README.md` §2.2 | Confirmed |
-| 89 | 3–5 templates per fold | Gate 1 per situation: lines 5, groups 5, audiences 3 (`phase1d/README.md` Table 2.1) | Confirmed |
+| 86 | Uniform beats band by 0.131 and 2.919 nats | `results/still-scenes/overview/phase-notes/phase1d.md` Table 2.2, recomputed | Confirmed |
+| 87 | Training subsample moved Δ about 0.9 nats (+1.955 against +2.843 to +2.906) | `results/still-scenes/overview/phase-notes/phase1d.md` Table 2.3 | Confirmed |
+| 88 | Gate 2's rule: 2 of 3 left-out situations | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed |
+| 89 | 3–5 templates per fold | Gate 1 per situation: lines 5, groups 5, audiences 3 (`results/still-scenes/overview/phase-notes/phase1d.md` Table 2.1) | Confirmed |
 | 90 | The control gains at most about 0.096 nats over uniform at audiences | Recomputed from room share 0.0916: 0.0961 without the mix, 0.0952 with 1% | Confirmed |
-| 91 | Group-ring mass V1 and V3 0.001; top place 0.0185 in audience view; uniform 0.0916; room shares lines 0.0016, groups 0.0030 | `phase1d/README.md` Table 1.6 forbidden-mass lines | Confirmed |
+| 91 | Group-ring mass V1 and V3 0.001; top place 0.0185 in audience view; uniform 0.0916; room shares lines 0.0016, groups 0.0030 | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.6 forbidden-mass lines | Confirmed |
 
 ### §2.3 Earlier results
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 92 | I14 v0: AR over the room 57% and 69%, above 50%; GLM's runners-up 99 against 104.0 and 107.0 | `phase1/README.md` §4, §6 | Confirmed |
-| 93 | I04: V1 −1.563 against V3 −1.452 (n 549); cell AUROCs 0.559, 0.303, 0.540 | `phase1d/README.md` §1, §3 | Confirmed |
-| 94 | C5 gate 2 against the stronger baseline: +1.823, −0.781, +1.195 | `phase1d/README.md` Table 2.2 and post hoc "against uniform" (uniform stronger at lines and audiences, band at groups) | Confirmed |
-| 95 | 2 of 3 in the verifier's draw too | `phase1d/README.md` §2.2 (+2.712, −0.771, +0.868) | Confirmed |
-| 96 | Δ positive in 0 of 100 conversation-group episodes | `phase1d/README.md` §2.2 post hoc | Confirmed |
-| 97 | Flow pilot: K1 22–30 points below P, K2 15–27 below C; K3 against V3 | `phase2/flow_pilot/README.md` §5 | Confirmed |
-| 98 | I06: 1.5% and 42.7% | `phase2/i06/README.md` §2 | Confirmed |
-| 99 | I09: 0.242, or 0.192 / 0.170, against 0.10 | `phase2/i09/README.md` §1 | Confirmed |
+| 92 | I14 v0: AR over the room 57% and 69%, above 50%; GLM's runners-up 99 against 104.0 and 107.0 | `results/still-scenes/overview/phase-notes/phase1.md` §4, §6 | Confirmed |
+| 93 | I04: V1 −1.563 against V3 −1.452 (n 549); cell AUROCs 0.559, 0.303, 0.540 | `results/still-scenes/overview/phase-notes/phase1d.md` §1, §3 | Confirmed |
+| 94 | C5 gate 2 against the stronger baseline: +1.823, −0.781, +1.195 | `results/still-scenes/overview/phase-notes/phase1d.md` Table 2.2 and post hoc "against uniform" (uniform stronger at lines and audiences, band at groups) | Confirmed |
+| 95 | 2 of 3 in the verifier's draw too | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 (+2.712, −0.771, +0.868) | Confirmed |
+| 96 | Δ positive in 0 of 100 conversation-group episodes | `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 post hoc | Confirmed |
+| 97 | Flow pilot: K1 22–30 points below P, K2 15–27 below C; K3 against V3 | `results/still-scenes/learned-models/flow-model-pilot/README.md` §5 | Confirmed |
+| 98 | I06: 1.5% and 42.7% | `results/still-scenes/crowds/README.md` §2 | Confirmed |
+| 99 | I09: 0.242, or 0.192 / 0.170, against 0.10 | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Confirmed |
 
 ### §2.4 Chance region
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 100 | Lift_room 8.78/8.90 matches mean S 0.749/0.760 | `phase1d/README.md` Table 1.2; ratios 0.987 and 0.986 | Confirmed |
+| 100 | Lift_room 8.78/8.90 matches mean S 0.749/0.760 | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.2; ratios 0.987 and 0.986 | Confirmed |
 | 101 | The region is 1.6–3.8% of reachable floor | REPORT I14 | Confirmed |
-| 102 | The disc leaves out about 90% of the watching region; top place outside it in 470 of 790 line records | `phase1/README.md` §4 | Confirmed |
-| 103 | AR recovery 96% → 57% and 33% → 69% | `phase1/README.md` §4 | Confirmed |
+| 102 | The disc leaves out about 90% of the watching region; top place outside it in 470 of 790 line records | `results/still-scenes/overview/phase-notes/phase1.md` §4 | Confirmed |
+| 103 | AR recovery 96% → 57% and 33% → 69% | `results/still-scenes/overview/phase-notes/phase1.md` §4 | Confirmed |
 | 104 | AF = top place plus 4 farthest-apart cells | `METRIC_NOTE.md` "Draws" | Confirmed |
 | 105 | REPORT §7 suggests a region around the region or the top place | REPORT §7 "Metrics and reporting" | Confirmed |
 
@@ -169,43 +169,43 @@ The Status line also now points to this file.
 | # | Claim | Source | Result |
 |---|---|---|---|
 | 106 | I04's kill 2 wording | REPORT I04 | Confirmed |
-| 107 | V1 above 0.9 in 312 of 549 (56.8%) | `phase1d/README.md` Table 1.6 | Confirmed |
-| 108 | V3 keeps more than 0.999 within 0.3 m in every record | `phase1d/README.md` note under Table 1.6 | Confirmed |
-| 109 | Top place succeeds in 417 of 549 | `phase1d/README.md` Table 1.2 | Confirmed |
-| 110 | A useful spread would need upstream uncertainty (untested) | `phase1d/README.md` §5 | Confirmed |
+| 107 | V1 above 0.9 in 312 of 549 (56.8%) | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.6 | Confirmed |
+| 108 | V3 keeps more than 0.999 within 0.3 m in every record | `results/still-scenes/overview/phase-notes/phase1d.md` note under Table 1.6 | Confirmed |
+| 109 | Top place succeeds in 417 of 549 | `results/still-scenes/overview/phase-notes/phase1d.md` Table 1.2 | Confirmed |
+| 110 | A useful spread would need upstream uncertainty (untested) | `results/still-scenes/overview/phase-notes/phase1d.md` §5 | Confirmed |
 
 ### §4 Crowd labels
 
 | # | Claim | Source | Result |
 |---|---|---|---|
 | 111 | L3 was not measured | REPORT §7; I06 measured L1 and L2 only | Confirmed |
-| 112 | 199 variants on 10 base structures × 3 seeds | `phase2/i06/README.md` cautions | Confirmed |
-| 113 | Oracle C disagrees in 3 of 199, all `eval_11`, one per seed; L2 never empty | `phase2/i06/README.md` §2 | Confirmed |
-| 114 | Solver keeps 1.0 m; L2 needs 0.85 m | `phase2/i06/README.md` §2 | Confirmed |
-| 115 | Simulated people: 2.1–4.5%; DeepSeek 4.0% in the verifier's run (§11) | `phase2/i06/README.md` §2, §11 | Confirmed |
-| 116 | Reference stop fails L2 in 85 of 199 (42.7%), all 72 of levels 2–6 | `phase2/i06/README.md` §2 | Confirmed |
-| 117 | Label-validity bands are I06's lines | `phase2/i06/README.md` §6 | Corrected (C2) |
+| 112 | 199 variants on 10 base structures × 3 seeds | `results/still-scenes/crowds/README.md` cautions | Confirmed |
+| 113 | Oracle C disagrees in 3 of 199, all `eval_11`, one per seed; L2 never empty | `results/still-scenes/crowds/README.md` §2 | Confirmed |
+| 114 | Solver keeps 1.0 m; L2 needs 0.85 m | `results/still-scenes/crowds/README.md` §2 | Confirmed |
+| 115 | Simulated people: 2.1–4.5%; DeepSeek 4.0% in the verifier's run (§11) | `results/still-scenes/crowds/README.md` §2, §11 | Confirmed |
+| 116 | Reference stop fails L2 in 85 of 199 (42.7%), all 72 of levels 2–6 | `results/still-scenes/crowds/README.md` §2 | Confirmed |
+| 117 | Label-validity bands are I06's lines | `results/still-scenes/crowds/README.md` §6 | Corrected (C2) |
 | 118 | Affected: R's and E's marked points, labels for C5 | REPORT §7 | Confirmed |
-| 119 | Levels 5–6: 0.6–0.8 m behind, facing within 30 deg | `phase2/i06/README.md` §1; REPORT §7 | Confirmed |
-| 120 | No rule succeeds at levels 3–6 (0.03–0.44 m); levels 4–6 left unjudged | `phase2/i06_repair/README.md` §2 | Confirmed |
+| 119 | Levels 5–6: 0.6–0.8 m behind, facing within 30 deg | `results/still-scenes/crowds/README.md` §1; REPORT §7 | Confirmed |
+| 120 | No rule succeeds at levels 3–6 (0.03–0.44 m); levels 4–6 left unjudged | `results/still-scenes/crowds/facing-gate-repair/README.md` §2 | Confirmed |
 
 ### §5 People perception
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 121 | The I03 people scorer is used unchanged | `phase2/i09/README.md` §1 | Confirmed |
-| 122 | The confirmation used every A1 bar but the runtime and best-VLM clauses | `phase2/i09/README.md` §1 | Confirmed |
-| 123 | Recall: greedy nearest-first one-to-one within 0.5 m; ≥ 0.95, kill < 0.90 | `phase2/i09/README.md` §1, Table 1.1 | Confirmed |
-| 124 | Line-member recall ≥ 0.95 | `phase2/i09/README.md` Table 1.1 | Confirmed |
-| 125 | False people: definition; ≤ 0.10, kill > 0.30 | `phase2/i09/README.md` §1, Table 1.1 | Confirmed |
-| 126 | Position error ≤ 0.15 m | `phase2/i09/README.md` Table 1.1 | Confirmed |
-| 127 | View classes and facing bars (25 deg, 0.85, 0.90, kill 0.70) | `phase2/i09/README.md` §1, Table 1.1 | Confirmed |
-| 128 | Facing kill 0.806 (Gemini 0.906 minus 10 points), or 0.70 with the school panel | `phase1/README.md` §3; `phase1c/README.md` §1 | Confirmed |
-| 129 | Runtime: warm deployed path, median sidecar plus median project side ≤ 1.0 s | `phase1c/README.md` §1 | Confirmed |
-| 130 | Staff recall 69 of 78 | `phase2/i09/README.md` Table 1.2 | Confirmed |
-| 131 | VLM people unit: one answer per (arm, scene, trial), cache copies not counted | `phase1/README.md` §3 | Confirmed |
-| 132 | 44 false people; 9 within 0.5 m of hidden staff; 4 at 0.52–0.61 m; 35/182, 31/182 | `phase2/i09/README.md` Table 1.5; recomputed | Confirmed |
-| 133 | "A scorer question" (I09 §3, §4 question 4) | `phase2/i09/README.md` §3, §4 | Confirmed |
+| 121 | The I03 people scorer is used unchanged | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Confirmed |
+| 122 | The confirmation used every A1 bar but the runtime and best-VLM clauses | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Confirmed |
+| 123 | Recall: greedy nearest-first one-to-one within 0.5 m; ≥ 0.95, kill < 0.90 | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, Table 1.1 | Confirmed |
+| 124 | Line-member recall ≥ 0.95 | `results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.1 | Confirmed |
+| 125 | False people: definition; ≤ 0.10, kill > 0.30 | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, Table 1.1 | Confirmed |
+| 126 | Position error ≤ 0.15 m | `results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.1 | Confirmed |
+| 127 | View classes and facing bars (25 deg, 0.85, 0.90, kill 0.70) | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, Table 1.1 | Confirmed |
+| 128 | Facing kill 0.806 (Gemini 0.906 minus 10 points), or 0.70 with the school panel | `results/still-scenes/overview/phase-notes/phase1.md` §3; `results/still-scenes/overview/phase-notes/phase1c.md` §1 | Confirmed |
+| 129 | Runtime: warm deployed path, median sidecar plus median project side ≤ 1.0 s | `results/still-scenes/overview/phase-notes/phase1c.md` §1 | Confirmed |
+| 130 | Staff recall 69 of 78 | `results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.2 | Confirmed |
+| 131 | VLM people unit: one answer per (arm, scene, trial), cache copies not counted | `results/still-scenes/overview/phase-notes/phase1.md` §3 | Confirmed |
+| 132 | 44 false people; 9 within 0.5 m of hidden staff; 4 at 0.52–0.61 m; 35/182, 31/182 | `results/still-scenes/people-finder/early-detector/phase2/README.md` Table 1.5; recomputed | Confirmed |
+| 133 | "A scorer question" (I09 §3, §4 question 4) | `results/still-scenes/people-finder/early-detector/phase2/README.md` §3, §4 | Confirmed |
 
 ### Appendix A Speed
 
@@ -214,19 +214,19 @@ The Status line also now points to this file.
 | 134 | Qwen C, 143 records: 61.6, 61.2, 49.3, 53.2 and 47.4 s | REPORT I21 | Confirmed |
 | 135 | Stage 23: 6 gateway jobs under the 85/min cap (§1.1, finding 8) | REPORT §1.1, finding 8 | Confirmed |
 | 136 | C and E compared under the same per-stage thinking policy | REPORT I22 | Confirmed |
-| 137 | I09: 55.6 ms warm (verifier 61.9); 215.1 ms un-warmed, every box ≥ 0.10 posed, shared machine (verifier 127.0) | `phase2/i09/README.md` §1; `phase1c/README.md` §1 | Confirmed |
-| 138 | Flow pilot: 18.3 ms (verifier 11.9, idle GPU); raster 78.5 ms; floor 110.8 ms | `phase2/flow_pilot/README.md` Table 2.10 | Confirmed |
+| 137 | I09: 55.6 ms warm (verifier 61.9); 215.1 ms un-warmed, every box ≥ 0.10 posed, shared machine (verifier 127.0) | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1; `results/still-scenes/overview/phase-notes/phase1c.md` §1 | Confirmed |
+| 138 | Flow pilot: 18.3 ms (verifier 11.9, idle GPU); raster 78.5 ms; floor 110.8 ms | `results/still-scenes/learned-models/flow-model-pilot/README.md` Table 2.10 | Confirmed |
 
 ### Appendix B Held-out data and seeds
 
 | # | Claim | Source | Result |
 |---|---|---|---|
-| 139 | 68 development scenes: 42 realistic, 26 placeholder | `phase1d/README.md` inputs | Confirmed |
+| 139 | 68 development scenes: 42 realistic, 26 placeholder | `results/still-scenes/overview/phase-notes/phase1d.md` inputs | Confirmed |
 | 140 | Tuning on the reporting sets needs fresh confirmation | REPORT §8 "Tuning on the reporting sets" | Confirmed |
-| 141 | Seeds 100–109 fit I03, I11, I09 A1 and gate 2 | REPORT I46; `phase1d/README.md` §2.2 | Confirmed; citation completed (C4) |
-| 142 | Seeds 110–189 trained the pilot; 190–199 chose its checkpoint; training only | `phase2/flow_pilot/README.md` §1, §7; REPORT I46 | Confirmed; citation completed (C5) |
-| 143 | Seeds 200–212: 182 images of the 14 rows; never fit; spent; a second confirmation needs its own pre-registration, other fit data and fresh layouts | `phase2/i09/README.md` §1, §3 | Confirmed |
-| 144 | Seeds 213–219: 98 images, unrendered, the same 14 rows | `phase2/i09/README.md` §1, §3 | Confirmed; citation completed (C6) |
+| 141 | Seeds 100–109 fit I03, I11, I09 A1 and gate 2 | REPORT I46; `results/still-scenes/overview/phase-notes/phase1d.md` §2.2 | Confirmed; citation completed (C4) |
+| 142 | Seeds 110–189 trained the pilot; 190–199 chose its checkpoint; training only | `results/still-scenes/learned-models/flow-model-pilot/README.md` §1, §7; REPORT I46 | Confirmed; citation completed (C5) |
+| 143 | Seeds 200–212: 182 images of the 14 rows; never fit; spent; a second confirmation needs its own pre-registration, other fit data and fresh layouts | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, §3 | Confirmed |
+| 144 | Seeds 213–219: 98 images, unrendered, the same 14 rows | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, §3 | Confirmed; citation completed (C6) |
 | 145 | I46's sealed bank: seeds 3–99 and blind situations; final run about 6,000 calls | REPORT I46; §6 ("I46 final test: about 6,000") | Confirmed |
 | 147 | Noise models fitted on development runs only | REPORT §8 (d) | Confirmed |
 
@@ -238,7 +238,7 @@ The Status line also now points to this file.
 |---|---|---|---|---|
 | A1 | Status | Updated with the probe's results (`A2_UPDATE.md`) | `A2_UPDATE.md` exists | Confirmed |
 | A2 | Summary 4 | Confidence judged within cells and against the flags | Bars (c), (d) in the draft | Confirmed; agrees with the body |
-| A3 | Glossary | Probe: `phase3/confidence/README.md`, 18 Oct; VLM people against a detector's | README §1 | Confirmed |
+| A3 | Glossary | Probe: `results/still-scenes/confidence-signal/README.md`, 18 Oct; VLM people against a detector's | README §1 | Confirmed |
 | A4 | Glossary | P1: shift of C's place when the solver re-runs under I09 step A2's setting D | README §1 signals table; FROZEN §4 | Confirmed |
 | A5 | Glossary | S2: people disagreement with the detector | README §1 (1 − F1) | Confirmed |
 | A6 | Glossary | S4: disagreement among C's trials, two extra runs | README §1 | Confirmed |

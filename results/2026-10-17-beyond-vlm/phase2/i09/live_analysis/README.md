@@ -60,10 +60,10 @@ written, tested with zero calls, and hashed on 18 Oct before any live run folder
 
 ```bash
 cd .-scenes
-LA=results/2026-10-17-beyond-vlm/phase2/i09/live_analysis
+LA=results/still-scenes/people-finder/early-detector/phase2/live_analysis
 (cd $LA && sha256sum -c ANALYSE.sha256)
 env PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 nice -n 10 .venv/bin/python $LA/analyse.py \
-    --runs results/2026-10-17-beyond-vlm/phase2/i09/live/runs --out $LA/result
+    --runs results/still-scenes/people-finder/early-detector/phase2/live/runs --out $LA/result
 ```
 
 **Exit codes:**

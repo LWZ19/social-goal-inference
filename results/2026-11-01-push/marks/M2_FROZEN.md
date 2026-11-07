@@ -21,7 +21,7 @@ H2: on the free models, marked plan calls with the "number plus point" rule do n
 
 ## The marks (truth-free; `m2lib.py` sha256 `8c26635a…`)
 - **Candidates.**
-  - **People:** I09 **A1**'s stored detector people for the scene (`phase1c/i09/a1/eval_people.json`; A1 frozen, not fix 2), the first 6 by score, marked at their torso pixel.
+  - **People:** I09 **A1**'s stored detector people for the scene (`results/still-scenes/people-finder/early-detector/phase1c/a1/eval_people.json`; A1 frozen, not fix 2), the first 6 by score, marked at their torso pixel.
   - **Components:** then the largest G1 depth components (as M1) whose mark point lies below 2.5 m and more than 0.5 m from every detected person.
   - At most 8 marks in all.
 - **Coverage precheck** (`m2_score.py --precheck`, zero calls): 84 of 84 realistic target instances have a mark that, picked, gives the right target. That covers 54 places, 24 people and 6 objects.

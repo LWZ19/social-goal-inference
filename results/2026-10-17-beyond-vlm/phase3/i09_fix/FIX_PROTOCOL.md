@@ -5,8 +5,8 @@ checks before any candidate is scored. Its sha256 is in `FIX_PROTOCOL.sha256`. N
 note is hashed; the code is written after it and its sha256 goes into `chosen_fix2.json`.
 
 Inputs known when this was written: `DIAGNOSIS.md`, `diagnose_tables.txt` and `whatif.txt` (fit-train, A1's fit
-data and A1's development scenes), and the published aggregates of `phase2/i09/README.md`. Fit-validate (seeds
-116-119) has not been scored or viewed by anyone. Paths are relative to `phase3/i09_fix/`.
+data and A1's development scenes), and the published aggregates of `results/still-scenes/people-finder/early-detector/phase2/README.md`. Fit-validate (seeds
+116-119) has not been scored or viewed by anyone. Paths are relative to `results/still-scenes/people-finder/early-detector/fix/`.
 
 ## 1. Data and roles
 
@@ -22,7 +22,7 @@ data and A1's development scenes), and the published aggregates of `phase2/i09/R
   checked against A1's `raw_fit/meta.json`). No detector or pose pass, no GPU job, no new model.
 - Fit scenes are read only through `fitlib.load_fit_scene` (fit path guard, then `H.guard_scene`); A1's development
   scenes only through the harness (`H.distinct_scenes`, `H.scene`).
-- Nothing from seeds 200-219, `phase2/seeds/realistic/`, the confirmation's rows, people rows, raw outputs or
+- Nothing from seeds 200-219, `results/still-scenes/scene-seeds/phase2/realistic/`, the confirmation's rows, people rows, raw outputs or
   per-row post hoc detail is read. Seeds 3-99 are not touched.
 
 ## 2. The common base (unchanged in every candidate)

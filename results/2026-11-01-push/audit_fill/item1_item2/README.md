@@ -35,24 +35,24 @@ takes about 3 s.
 - **Item 1, new wording.** Qwen 3.8 low uses `s21_{variant}_qwen38_low_{cot,fsc,con}`. GLM-5.3, DeepSeek V4.1,
   Haiku 5.5, Sonnet 5.5 low and Gemini 3.8 low use `s23_{variant}_<short>_{cot,fsc,con}`.
 - **Item 1, old wording.** Qwen and GLM take R and E from s16b and C from s19. DeepSeek takes R, E and C from s20,
-  never s20_held. These are the runs of the earlier `rerun/stats/stats.py`.
+  never s20_held. These are the runs of the earlier `results/still-scenes/metrics-and-statistics/stats-rerun/stats.py`.
 - **Item 1 source.** Every item 1 run comes from
   `cs6244_project-scenes/docs/model_notes/tools/research_runs.txt`. The script checks each run's recorded scenes
   folder against the whitelist.
-- **Item 2.** These are E3 runs `s24_{variant}_<entry>_{cot,fsc,con}`, the names `e3_models/run_static.sh` gives,
+- **Item 2.** These are E3 runs `s24_{variant}_<entry>_{cot,fsc,con}`, the names `results/still-scenes/hidden-situations-and-more-models/run_static.sh` gives,
   for seven entries: gemini3_flash, gemini31_flash_lite, gemini35_flash_lite, gemini36_flash, claude_haiku45,
   claude_sonnet46_low and claude_sonnet5_low.
   - These runs come after the frozen whitelist, so they are not on it. Each name has exactly one folder.
-  - The script checks each run's scenes folder against `e3_models/scenes_dirs.yaml`.
+  - The script checks each run's scenes folder against `results/still-scenes/hidden-situations-and-more-models/scenes_dirs.yaml`.
   - The script never opens held runs or `held_configs/`.
 
 ## Checks (all pass; see the end of the output)
 
 - **Item 1 totals.** R/E/C totals match the earlier report (`EVIDENCE_AUDIT.md` A1 and A2,
   `docs/results/README.md`) for all 9 model x wording rows.
-- **Item 2 totals.** R/E/C totals match `e3_models/results_all_out.txt` for the 7 older models. The 3 current
+- **Item 2 totals.** R/E/C totals match `results/still-scenes/hidden-situations-and-more-models/results_all_out.txt` for the 7 older models. The 3 current
   models in that file also match their s23 runs.
-- **Earlier stats.** All 15 layout-level tests of the earlier `rerun/stats/stats_output.txt` are reproduced: old
+- **Earlier stats.** All 15 layout-level tests of the earlier `results/still-scenes/metrics-and-statistics/stats-rerun/stats_output.txt` are reproduced: old
   wording C−E for 3 models, and new wording C−E and C−R for 6 models. The C and X totals, the two-sided p and all 14
   per-layout nets match.
 - **New tests.** Old-wording C−R and E−R, and new-wording E−R, are new here.

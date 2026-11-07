@@ -1,7 +1,7 @@
 # I09 A1: deviations and clarifications (part 1)
 
 ## D1. File locations (deviation in paths only, no change in method)
-The dispatch puts every A1 file under `a1/`. The note's paths map as follows; all are relative to `phase1c/i09/`.
+The dispatch puts every A1 file under `a1/`. The note's paths map as follows; all are relative to `results/still-scenes/people-finder/early-detector/phase1c/`.
 
 | Note | Used |
 |---|---|

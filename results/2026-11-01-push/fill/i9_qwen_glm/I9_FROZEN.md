@@ -11,7 +11,7 @@ Qwen 3.8 and GLM-5.3 are missing.
 ## Protocol (unchanged from the other models, so the table stays one table)
 
 - **Scenes:** the 5 evaluation scenes. **Seeds** 10-14 (25 cells). Episodes of 92 s.
-- **Arms:** C1 on seeds 10-12 only, and R1, CT and CT2 on 10-14, as `e3_models/sim_headline.sh`.
+- **Arms:** C1 on seeds 10-12 only, and R1, CT and CT2 on 10-14, as `results/still-scenes/hidden-situations-and-more-models/sim_headline.sh`.
   - C1, CT and CT2 share one first answer per cell through the cache; R1 has its own.
 - **Why seeds 10-14 and not new seeds:** C1, R1, CT and CT2 were fixed before seeds 10-14 were first used, and their
   code is unchanged. Nothing was ever tuned on these models.
@@ -47,7 +47,7 @@ Qwen 3.8 and GLM-5.3 are missing.
 
 ## Secondary: the same cells with 240 s episodes (cache-only, zero calls; reported, labelled)
 
-- **What:** R1 and CT2, re-run with `--seconds 240` into `moving/runs_i9long/<model>`. Their first answers come from
+- **What:** R1 and CT2, re-run with `--seconds 240` into `results/data/moving/runs_i9long/<model>`. Their first answers come from
   the 92 s run's cache, because the request frame at 2 s is the same.
 - **Why:** it separates the method from the model's latency. The answer, once it arrives, is used for 150 s or more.
 - **Reading:** the same test as H9, labelled "secondary: with time for a slow model's answer to arrive". It does not
@@ -61,7 +61,7 @@ Qwen 3.8 and GLM-5.3 are missing.
   are usable.
 - **R1** (plan + marking, two calls) arrives sooner, so the 92 s comparison is tilted towards R1 for these models.
 
-    cd results/2026-11-01-push/moving
+    cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
     M=sgi_habitat.experiment_oracle
@@ -76,7 +76,7 @@ Qwen 3.8 and GLM-5.3 are missing.
     for m in soclaas_qwen38_low soclaas_glm53; do
       SGI_CACHE_ONLY=1 $P run_moving.py --model $m --out runs_i9long/$m --workers 2 --port-base $PB --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms R1 CT2 --seconds 240 > $F/run_${m}_long.log 2>&1
     done
-    cd .. && $P fill/i9_qwen_glm/i9_score.py > fill/i9_qwen_glm/i9_score_out.txt && $P fill/i9_qwen_glm/i9_score.py --long > fill/i9_qwen_glm/i9_score_long_out.txt
+    cd .. && $P results/moving-lines/school-models/i9_score.py > results/moving-lines/school-models/i9_score_out.txt && $P results/moving-lines/school-models/i9_score.py --long > results/moving-lines/school-models/i9_score_long_out.txt
 
 ## Cost
 
@@ -88,7 +88,7 @@ Qwen 3.8 and GLM-5.3 are missing.
 
 ## Scorer
 
-- `i9_score.py`, using `fill/mcompare.py`. It prints every model's same 25 cells (E3b's models as they finish), the
+- `i9_score.py`, using `results/_lib/mcompare.py`. It prints every model's same 25 cells (E3b's models as they finish), the
   first-answer latency, and the episodes with no answer in time.
 - Tested on the existing runs, it reproduces the E3 table: CT2 vs R1 strict Sonnet 21/2/2, DeepSeek 19/3/3, Haiku
   19/2/4, Gemini 18/6/1.

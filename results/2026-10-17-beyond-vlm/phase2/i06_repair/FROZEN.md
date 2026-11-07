@@ -1,9 +1,9 @@
 # I06 repair probe: a facing gate on joining a line (frozen protocol)
 
 **Sources.**
-- `phase2/i06/README.md` (sections 1–3), `phase2/i06/FROZEN.md` (family A's geometry, section 4) and `phase2/i06/score/` (`lib.py`, `arms.py`, `noisy.py`, `noise.py`, `tables.py`, `rows_oracle.jsonl`, `work/`, `noise_model.json`).
-- `phase1/i01_repairs/repairs.py` and its `rows_*.jsonl`; `phase1/README.md` section 4 (I14's cells) and `phase1/i14_v0/i14.py`.
-- `phase1c/i09/a2/replay_d.py`, `rows_*.jsonl` and `base_ph_*.jsonl`; `phase1c/README.md`; `phase2/i09/README.md` section 1.
+- `results/still-scenes/crowds/README.md` (sections 1–3), `results/still-scenes/crowds/FROZEN.md` (family A's geometry, section 4) and `results/still-scenes/crowds/score/` (`lib.py`, `arms.py`, `noisy.py`, `noise.py`, `tables.py`, `rows_oracle.jsonl`, `work/`, `noise_model.json`).
+- `results/still-scenes/replay-harness/repairs/repairs.py` and its `rows_*.jsonl`; `results/still-scenes/overview/phase-notes/phase1.md` section 4 (I14's cells) and `results/still-scenes/metrics-and-statistics/metric-v0/i14.py`.
+- `results/still-scenes/people-finder/early-detector/phase1c/a2/replay_d.py`, `rows_*.jsonl` and `base_ph_*.jsonl`; `results/still-scenes/overview/phase-notes/phase1c.md`; `results/still-scenes/people-finder/early-detector/phase2/README.md` section 1.
 - Package code: `src/sgi/solver.py` (sha256 `10ece70f521eff2b1224267fa0b91bfac546d5740f85622073989a16c6c5d800`; `_turn` at lines 514–541). Tools: `docs/model_notes/tools/research_harness.py` (`resolve`) and `replay_solver.py` (`solve_again`).
 
 ## 0. What the protocol author read and ran before hashing
@@ -11,12 +11,12 @@
 **Code read:** the solver (`_bodies`, `_line_end`, `_behind`, `_turn`, `_settle`, `solve`); I06's scoring code; I01's `repairs.py`; A2's `replay_d.py`; the harness's `resolve`, which calls `sgi.solver.solve` through `replay_solver.solve_again`; and I14's record selection.
 
 **Row files read**, for counts and keys only. These are R0 or recorded values; no repair outcome exists yet.
-- `phase2/i06/score/rows_oracle.jsonl`.
+- `results/still-scenes/crowds/score/rows_oracle.jsonl`.
   - R0 line failures under oracle C and L1: A1 12, A2 12, A3 15, A4 15, A5 15, A6 15, B1 8, C1 3, D2 4, E2 4, which is 103. There are none at groups or audiences.
   - 99 scenes have a non-empty `joined_waiting`, and every joiner is a non-member (`det['i']`). All 99 are R0 failures, and none is a base.
   - 153 variants are relevant for (i): A 84, B 12, C 12, D 15, E 30.
 - `phase1/i01_repairs/rows_{old,new}_*.jsonl`, `phase1c/i09/a2/rows_{old,new}_*.jsonl` and `phase1c/i09/a2/base_ph_*.jsonl`. These give the goal-step counts and R0 targets in Table 5.1. The watching cells' goal steps are all audience records of `eval_14_audience_3` and `eval_15_audience_5`, 12 per dev seed. The fields used later are `C_rec`, `C`, `P`, `D` and `D_d.joined`.
-- The keys of `phase2/i06/score/rows_noisy_glm.jsonl` and of `work/noisy_models_glm_seed0.jsonl`.
+- The keys of `results/still-scenes/crowds/score/rows_noisy_glm.jsonl` and of `work/noisy_models_glm_seed0.jsonl`.
 
 **Ran:** `precheck/format_check.py` (log in `precheck/format_check.log`), 06:30:57–06:31:00 on 18 Oct. It is R0 only: the package's own `_turn`, wrapped in a pass-through call counter. It found:
 - A function installed as `sgi.solver._turn` at run time is the one the solver calls. That holds both through I06's `lib.solve_c` and through `research_harness.resolve` (1 call in each line solve checked).
@@ -28,14 +28,14 @@
 - No repair rule was written or run.
 - No one's facing was looked at, in any scene or record, for anyone the solver absorbed.
 - Nothing was read from `keep/heldout`, s18 or s20_held runs, eval_16–19, synth seeds 3–99 or seeds 200–212, and no group_photo or lift_wait row was instantiated.
-- Nothing outside `phase2/i06_repair/` was written.
+- Nothing outside `results/still-scenes/crowds/facing-gate-repair/` was written.
 
 ## 1. Question and scope
 
 - **Question (lead):** does a facing gate on joining remove most absorption failures without breaking real lines?
 - **Background (lead).**
   - Under oracle people and reference constraints, the solver fails only at lines. 99 of the 103 line failures come from failure (i): `sgi.solver._turn` lets a detected non-listed person join the line when their own space covers the place in turn and they stand behind the last member, whatever way they face.
-  - I09's frozen detector gives facing within 45 deg for 0.969 of non-profile people on unseen layouts (`phase2/i09/README.md` section 1). So a facing-aware rule is usable with a local people source.
+  - I09's frozen detector gives facing within 45 deg for 0.969 of non-profile people on unseen layouts (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1). So a facing-aware rule is usable with a local people source.
 - **Zero calls.** No model-provider or network call, and no GPU. Nothing in the package changes: the repair is research code installed at run time in the probe's own process (section 2).
 
 ## 2. The rules
@@ -84,7 +84,7 @@ def gate(body, last_body, cos_min):
 
 ## 3. Arm 1: I06 crowd variants, oracle C (primary for S1 and K2)
 
-- **Scenes.** The 229 kept scenes, from `lib.kept_scenes()`: 30 bases and 199 variants, seeds 0–2. They are loaded with `lib.load`, which uses `H.guard_scene`. I06's `score/lib.py`, `noise.py` and `noise_model.json` are imported from `phase2/i06/score/` unchanged, and their sha256 values are recorded at start. Thresholds come from `lib.load_config()` (the default config, as in I06).
+- **Scenes.** The 229 kept scenes, from `lib.kept_scenes()`: 30 bases and 199 variants, seeds 0–2. They are loaded with `lib.load`, which uses `H.guard_scene`. I06's `score/lib.py`, `noise.py` and `noise_model.json` are imported from `results/still-scenes/crowds/score/` unchanged, and their sha256 values are recorded at start. Thresholds come from `lib.load_config()` (the default config, as in I06).
 - **The arm** is I06's arm 3, unchanged: `lib.solve_c(inputs, truth, et, th)`. That means the oracle target, the reference context check (`reference_people_matter`), `OraclePeople` numbered by `number_people`, I01 R5's reference constraints, and `solver.solve`.
   - It runs per scene, per episode (e0, e1) and per rule (R0, RF90, RF60, RN).
   - In the 24 scenes where people do not matter, the standard goal is used under every rule, as in I06.
@@ -155,7 +155,7 @@ Table 5.1. Cells, goal steps and R0 targets (counts from the row files named in 
 | Sonnet new | s23 `sonnet55_low` | real, staffed, plain | 143 | 134 | 134 | 134 |
 | Gemini new | s23 `gemini38_low` | real, staffed, plain | 135 | 109 | 109 | 109 |
 
-- These are the six primary cells of I14 (`phase1/README.md` section 4). The watching cells keep only audience goal steps, as `i14.py` does.
+- These are the six primary cells of I14 (`results/still-scenes/overview/phase-notes/phase1.md` section 4). The watching cells keep only audience goal steps, as `i14.py` does.
 - The secondary runs are the design's list, with the realistic arms, as in I01, I14 and A2 (choice). s21 `qwen38_low` is not in the design's list, so it is left out (choice).
 
 **Settings.** Every goal step is re-solved under R0, RF90, RF60 and RN in each setting that applies.
@@ -165,10 +165,10 @@ Table 5.1. Cells, goal steps and R0 targets (counts from the row files named in 
   - Unmatched detections are dropped.
   - Missed visible true people whose marks project are added as `OraclePeople` makes them, numbered max + 1, + 2, … in ground-truth order.
   - The constraints are `repairs.strip(recorded constraints, dropped numbers)`.
-  - `phase1/i01_repairs/repairs.py` is imported unchanged, for `scene_info` and `strip`. The lines of `solver_row` that build `p_p` and `c_strip` are copied verbatim (choice: copied rather than calling `solver_row`, which runs 15 arms).
+  - `results/still-scenes/replay-harness/repairs/repairs.py` is imported unchanged, for `scene_info` and `strip`. The lines of `solver_row` that build `p_p` and `c_strip` are copied verbatim (choice: copied rather than calling `solver_row`, which runs 15 arms).
   - All 11 cells.
 - **(c) The frozen I09 detector people with the recorded constraints:** A2's D.
-  - `phase1c/i09/a2/replay_d.py` is imported unchanged, and its `verify_hashes()` must pass.
+  - `results/still-scenes/people-finder/early-detector/phase1c/a2/replay_d.py` is imported unchanged, and its `verify_hashes()` must pass.
   - The detector people are `load_detector_people()[(str(ref.scenes_dir), rec.scene_id)]`, with `M` computed as in `arms_step`.
   - `people, cons = build(det, recorded constraints, dets, match_xy(det, dets), False, M, obs, th)`, then `H.resolve(rec, people=people, constraints=cons)`.
   - Realistic cells only: the 3 primary realistic cells and the 5 secondary cells. The design says "on the realistic records where A2 has them", so D is not computed for the watching cells (choice).
@@ -245,7 +245,7 @@ Table 5.1. Cells, goal steps and R0 targets (counts from the row files named in 
 5. `tables.py` writes `tables.txt` and `summary.json`, with the verdict computed by code.
 6. `README.md` is the results page. Its writer runs no new arm, and any tally it makes is marked.
 
-**Files** (choice), all under `phase2/i06_repair/`:
+**Files** (choice), all under `results/still-scenes/crowds/facing-gate-repair/`:
 - `precheck/`;
 - `rules.py`;
 - `crowd.py` → `out/crowd_rows.jsonl`, one row per scene and rule, with both episodes inside;
@@ -264,7 +264,7 @@ Table 5.1. Cells, goal steps and R0 targets (counts from the row files named in 
 - Zero model or network calls.
 - Recorded runs and scenes are read only through the step-0 harness. The I06 scenes are loaded by `lib.load`, which uses `H.guard_scene`.
 - Nothing is read from `keep/heldout`, any s18 or s20_held run, eval_16–19 scene data, or synth seeds 3–99 or 200–212. No group_photo or lift_wait row is instantiated.
-- Writes go only under `phase2/i06_repair/`. Nothing in `src/`, `tests/`, `configs/`, `docs/`, `REPORT.md` or any earlier phase folder changes.
+- Writes go only under `results/still-scenes/crowds/facing-gate-repair/`. Nothing in `src/`, `tests/`, `configs/`, `docs/`, `REPORT.md` or any earlier phase folder changes.
 
 ## 9. Cautions
 

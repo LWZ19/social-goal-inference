@@ -2,7 +2,7 @@
 
 ## Inputs
 
-- **Runs:** `moving/runs_i10/{dsv41, sonnet55_low}`, 75 episodes each (CT2, Rq0 and Cq x 25 cells).
+- **Runs:** `results/data/moving/runs_i10/{dsv41, sonnet55_low}`, 75 episodes each (CT2, Rq0 and Cq x 25 cells).
   - 0 failed first or later answers, and 0 HTTP 429s.
 - **DeepSeek's amendment 3 run condition met:** the rolling median of its own calls peaked at 16.4 s (run 1) and 4.2 s
   (run 2), against 36 s (`gateway_check_dsv41_run{1,2}.txt`).

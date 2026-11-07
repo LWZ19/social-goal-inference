@@ -4,7 +4,7 @@
 
 Does C with detector people (D) beat the current C (A0) on static scenes, in both speed and accuracy?
 
-- E1b (`../e1/RESULTS.md`) found D level with or better than A0, with one call fewer.
+- E1b (`results/moving-lines/own-camera/detector-on-sim-frames/RESULTS.md`) found D level with or better than A0, with one call fewer.
 - But that was on the development scenes, where the detector A1 was fitted on part of them. Its development check was
   not blind.
 - This test repeats the comparison once, on scenes that do not exist yet, with everything fixed in advance.
@@ -30,7 +30,7 @@ The goal step's inputs are the model's own context check, as in C. The arms run 
 A0b; then D, A0b, A0; then A0b, A0, D), so drift in the gateway falls on all three alike.
 
 **Detector setting: A1, as frozen** (rtdetr_v2_r50vd, tau 0.25, band wide, d_dup 0.5, d_push 0.2, F5 facing; served
-by `../e1/e1d/detector_service.py`). Why A1 and not fix 2:
+by `results/moving-lines/own-camera/detector-on-sim-frames/e1d/detector_service.py`). Why A1 and not fix 2:
 1. E1b's evidence is A1's. A confirmatory test runs the configuration that produced the evidence. Switching would test
    two changes at once.
 3. On the development scenes fix 2 differs from A1 by only 2 missed staff and 3 false people (`E1_FROZEN.md`).
@@ -166,7 +166,7 @@ Per model:
   - A stand-in method (`Capture`) receives exactly what `infer_goal` hands a method.
   - Each arm's method then runs on it, and its result is merged as `infer_goal`'s last lines do.
   - The plan call is added to each result as `sgi.run.run_episode` adds it, and scoring is `sgi.evaluate.score`.
-- **Dry run** with the mock back end, cache off, on the spent person-snap scenes (`group4/snapset/run_scenes_v2`) and
+- **Dry run** with the mock back end, cache off, on the spent person-snap scenes (`results/still-scenes/group-of-four-case/snapset/run_scenes_v2`) and
   their A1 people file. Checked:
   - two shards split the units;
   - the order rotates;

@@ -27,4 +27,4 @@ Written by the I09 A1 compute agent on 17 Oct 2026, about 21:50 +08:00. This is 
 - The pre-fix choice F4 is also reported on E-real, both on matched people and A0-matched. These lines are labelled POST HOC and change no verdict.
 - `people_rows.jsonl` and `eval_people.json` carry all five variants' yaws for transparency. Only F5 is scored.
 
-**C23. Module names.** `phase1b/i03/stageA` contains `fit_grid.py` and `evaluate.py`. A1 code therefore loads its own `fit_grid.py` by path.
+**C23. Module names.** `results/still-scenes/perception/depth-blob-detector/stageA` contains `fit_grid.py` and `evaluate.py`. A1 code therefore loads its own `fit_grid.py` by path.

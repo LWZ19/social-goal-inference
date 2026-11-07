@@ -1,7 +1,7 @@
 1c1,2
 < """BYSTANDERS_CONFIRM_FROZEN.md scored (zero calls): bars C1, C2 and R on DeepSeek seeds 15-44, cafe and sweet_spot
 ---
-> """X2 copy (X2_FROZEN.md amendment 1): moving/bystanders_confirm_score.py with only two lines guarded for an episode with no
+> """X2 copy (X2_FROZEN.md amendment 1): results/moving-lines/bystanders/bystanders_confirm_score.py with only two lines guarded for an episode with no
 > answer (an empty answers list) and its import path. Original docstring: BYSTANDERS_CONFIRM_FROZEN.md scored (zero calls): bars C1, C2 and R on DeepSeek seeds 15-44, cafe and sweet_spot
 10c11
 < sys.path.insert(0, str(Path(__file__).resolve().parent))

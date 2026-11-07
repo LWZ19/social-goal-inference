@@ -13,7 +13,7 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
 
 ## Amendment 1 (6 Nov; before any RTw total was sent or read)
 
-- **The fix.** RTw and CT2 are re-run together in one invocation (`--arms CT2 RTw`, into `moving/runs_i4/<model>/`).
+- **The fix.** RTw and CT2 are re-run together in one invocation (`--arms CT2 RTw`, into `results/data/moving/runs_i4/<model>/`).
   Both are cache-only, at zero calls. **H4 is judged on these.**
 - **Repeat checks.** The first RTw run and the earlier CT2 in `runs/<model>/` are read only as repeat checks (mean d,
   mean |d|).
@@ -53,7 +53,7 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
 - Under the primary scoring the gap is smaller, and may not be significant, as on seeds 0-2.
 - The anchor leaves the queue in most RTw episodes: it follows the served person away.
 
-    cd results/2026-11-01-push/moving
+    cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
     M=sgi_habitat.experiment_oracle
@@ -68,7 +68,7 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
     SGI_CACHE_ONLY=1 $P run_moving.py --model soclaas_qwen38_low --out runs_i4/soclaas_qwen38_low --workers 2 --port-base $PB --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms CT2 RTw
     SGI_CACHE_ONLY=1 $P run_moving.py --model soclaas_glm53 --out runs_i4/soclaas_glm53 --workers 2 --port-base $PB --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms CT2 RTw
     # score (zero calls):
-    cd .. && $P fill/i4_rtw/i4_score.py > fill/i4_rtw/i4_score_out.txt
+    cd .. && $P results/moving-lines/roles-vs-marked-spot/i4_score.py > results/moving-lines/roles-vs-marked-spot/i4_score_out.txt
 
 ## Cost
 
@@ -78,6 +78,6 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
 
 ## Scorer
 
-`i4_score.py`, using `fill/mcompare.py`, which uses summarise_fresh's `measures` and `sign_p`. Tested on old data with
+`i4_score.py`, using `results/_lib/mcompare.py`, which uses summarise_fresh's `measures` and `sign_p`. Tested on old data with
 `--test` (seeds 0-2, CT in place of CT2). It reproduces the earlier figures, e.g. Sonnet RTw 0.155 and CT 0.198
 primary; DeepSeek CT vs RTw 8/2/5 strict.

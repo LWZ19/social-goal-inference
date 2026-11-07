@@ -10,7 +10,7 @@ The compute agent wrote this on 18 Oct 2026, after pass 2's first attempt (17:43
 
 ## Why this is the comparison, not the AUROC code
 
-- **Phase 1d's own value is the same.** The raw value in `phase1d/i04/summary.json` (`auroc_all/watch_qwen/V1`) is 0.3125, identical to this code's. Watch Qwen has 4 failures and 32 successes, and 0.3125 = 40/128.
+- **Phase 1d's own value is the same.** The raw value in `results/still-scenes/learned-models/soft-density/summary.json` (`auroc_all/watch_qwen/V1`) is 0.3125, identical to this code's. Watch Qwen has 4 failures and 32 successes, and 0.3125 = 40/128.
 - **The published 0.312 is that value printed.** Phase 1d printed 0.3125 to 3 decimals, and Python's round-half-even formatting turns 0.3125 into "0.312".
 - **The exact gap is inside the tolerance.** |0.3125 − 0.312| = 1/2000 = 0.0005 exactly, which is within the note's inclusive ±0.0005. In binary floating point, 0.3125 − 0.312 evaluates to 5.000000000000004e-4, because 0.312 has no exact binary form. That is why the float comparison `abs(got - expected) <= 0.0005` failed.
 

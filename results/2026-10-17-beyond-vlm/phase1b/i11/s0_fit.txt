@@ -4,8 +4,8 @@ src/sgi/geometry.py sha256 OK
 src/sgi/stages/goal.py sha256 OK
 docs/model_notes/tools/research_harness.py sha256 OK
 docs/model_notes/tools/replay_solver.py sha256 OK
-results/2026-10-17-beyond-vlm/rerun/lifting/lifting.py sha256 OK
-results/2026-10-17-beyond-vlm/rerun/lifting/frontsnap.py sha256 OK
+results/still-scenes/perception/lifting-rerun/lifting.py sha256 OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py sha256 OK
 S0.1 unit checks on synthetic depth (camera 640x480, f 554.3 px, 1.5 m high, pitched 10 deg down)
   (a) wall 20.0 m wide, box 0.5 m in front: components >=25 px 2, box object, wall structure (extent 6.56 m), expect wall structure -> PASS
   (d) component lift vs lifting.lift_at_depth on a one-component window: window one component True, |diff| 0.0e+00 m, vs sgi.geometry.lift 0.0e+00 m -> PASS

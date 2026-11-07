@@ -29,7 +29,7 @@
 - **F(rec)** = `sgi.solver.floor(observation, the record's own people list, the run's recorded
   thresholds).selectable`: exactly the cells C's solver ranked for this record (0.05 m cells in the robot's frame,
   centres from `Floor.centres()`). Not the ground-truth grid, so the baselines get no oracle people. (The snap
-  replay, `rerun/snap/snap.py`, used the same floor model.) Check: all 5 recorded places must lie on F cells.
+  replay, `results/still-scenes/depth-fix/first-check/snap.py`, used the same floor model.) Check: all 5 recorded places must lie on F cells.
 - **Disc**: the F cells whose centre is within 3.0 m (+1e-9) of the recorded target's lifted point
   (`result.target.world` x, y), the point the solver was given, not the true target.
 - **Whole room**: all F cells.

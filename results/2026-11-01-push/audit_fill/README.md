@@ -4,7 +4,7 @@ the figures it was checked against.
 
 ## Item 1: layout-level tests for the still-scene headline
 
-Files: `item1_item2/layout_tests.py`, `layout_tests_out.txt`, `README.md`.
+Files: `results/still-scenes/method-comparison/layout-level-tests/layout_tests.py`, `layout_tests_out.txt`, `README.md`.
 
 - **Test:** an exact two-sided sign-flip over the 14 development layouts. Records are paired by (variant, scene,
   episode, trial), 18 pairs per layout.
@@ -14,7 +14,7 @@ Files: `item1_item2/layout_tests.py`, `layout_tests_out.txt`, `README.md`.
 - **Old wording:**
   - C−R: p 0.0049-0.0078.
   - C−E: Qwen p 0.031 (6 untied layouts: one more tie loses it), GLM 0.0078, DeepSeek 0.00098.
-- **Checks:** every total and all 15 tests of the earlier `rerun/stats/stats_output.txt` reproduce exactly.
+- **Checks:** every total and all 15 tests of the earlier `results/still-scenes/metrics-and-statistics/stats-rerun/stats_output.txt` reproduce exactly.
 
 ## Correction to EVIDENCE_AUDIT.md row A3
 
@@ -27,13 +27,13 @@ Files: `item1_item2/layout_tests.py`, `layout_tests_out.txt`, `README.md`.
 - C beats both R and E on five models: Gemini 3, 3.1 Lite, 3.5 Lite and 3.6, and Sonnet 5 (C−R p 0.047, C−E 0.031).
 - Haiku 4.5: C−R p 0.036, C−E 0.023.
 - **Sonnet 4.6 is the exception:** C−R −4 (p 0.875), C−E 0 (p 1).
-- Totals reproduce `e3_models/results_all_out.txt`.
+- Totals reproduce `results/still-scenes/hidden-situations-and-more-models/results_all_out.txt`.
 - Caveat: the s24 runs post-date the whitelist and were taken by the names in `run_static.sh`. Each has one folder of
   84 records, and its scenes match `scenes_dirs.yaml`.
 
 ## Item 3: CT0, CTo and CTt on seeds 0-2
 
-Files: `item3_item6/item3_ct0_cto_ctt.py`, `item3_out.txt`. Development seeds, descriptive.
+Files: `results/moving-lines/cut-ins-and-decomposition/item3_ct0_cto_ctt.py`, `item3_out.txt`. Development seeds, descriptive.
 
 **Mean share, frozen / strict:**
 - DeepSeek: C1 0.03/0.02, CT0 0.14/0.04, CT 0.18/0.12, CTo 0.29/0.21, CTt 0.32/0.27.
@@ -49,7 +49,7 @@ Files: `item3_item6/item3_ct0_cto_ctt.py`, `item3_out.txt`. Development seeds, d
 
 ## Item 6: cut-ins normalised by exposure
 
-Files: `item3_item6/item6_cutin_exposure.py`, `item6_out.txt`, `item6_cells_out.txt`.
+Files: `results/moving-lines/cut-ins-and-decomposition/item6_cutin_exposure.py`, `item6_out.txt`, `item6_cells_out.txt`.
 
 - **Exposure** = samples within 1.0 m of the line's axis, the only place a cut-in can happen.
 - **All four figures in SUMMARY §7 reproduce.**
