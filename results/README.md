@@ -98,6 +98,15 @@ Run scripts from the repository root with `PYTHONPATH=src python <script>`; they
 - The notes were cleaned for sharing (some planning text removed), and the original hash files were left out because
   cleaned files no longer match them. Older notes may name the earlier folder names (item numbers such as `i10` or
   `x1`); the glossary below maps them.
+- **Frozen hash checks:** many scripts check the sha256 of their frozen plan or code before running. Those values
+  refer to the original files; the copies here were cleaned (paths, wording), so those checks stop such scripts. The
+  stored outputs are the record, and every script that could run here was re-run against its stored output.
+- **Old folder names inside run settings and data:** run `config.yaml` files and some data files still name the
+  original folders of the development scene sets. Those sets are in `data/dev_scenes/`, and the replay harness
+  (`still-scenes/analysis-scripts/harness/`) maps the old names there.
+- **Simulator scenarios:** the generated scenario folders `sim/scenarios/{sweep,pilot3,confirm4,i11}` are not
+  committed; `moving-lines/test-layouts/select_{sweep,pilot,confirm,i11}.py` rebuild them byte for byte, so run those
+  first before re-running moving-line scripts that read the line's shape.
 
 ## Glossary
 
