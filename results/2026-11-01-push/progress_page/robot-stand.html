@@ -487,6 +487,15 @@
         <div class="num"><span class="big">Fewer on Haiku</span><span class="what">more on Gemini, whose decide-once version rarely gets near the line at all</span></div>
       </div>
     </div>
+    <div class="plate" id="moving-bumps">
+      <h3>Does the robot bump into people?</h3>
+      <p>We measured how close the robot came to anyone, every second of every run.</p>
+      <div class="numbers mini">
+        <div class="num"><span class="big">2%</span><span class="what">of the time within 0.55 m of someone when updating, against 7% when deciding once by pointing and 10% when asking again after every answer</span></div>
+        <div class="num"><span class="big">Mostly standing still</span><span class="what">for the updating robot, 3 in 4 of its closest moments came while it stood still and a person walked into it</span></div>
+      </div>
+      <p class="note">The simulated people stop for at most 2 seconds when something is in their way, then walk on. About a quarter of runs still have at least one moment closer than 0.3 m.</p>
+    </div>
     <div class="plate" id="moving-counter">
       <h3>Next step: knowing where the counter serves</h3>
       <p>The biggest remaining loss is at the front of the line. A test robot told exactly where the counter serves did better on all four models, so watching where customers are served is the first thing to add.</p>
@@ -612,6 +621,17 @@
           <div class="num"><span class="big">Only at lines</span><span class="what">failures in crowds came from people near the line being counted as waiting</span></div>
         </div>
         <p class="note">That is the problem the bystander check in moving lines solves.</p>
+      </article>
+
+      <article class="idea">
+        <span class="chip none">No gain</span>
+        <h3>Fixing the front of the line</h3>
+        <p>The video's robot backs away from the front and waits beside the counter. Two rules: once in line, never step back while its spot is free; and when the last person ahead is served, take where they stood, even if they rejoin the line behind.</p>
+        <div class="numbers mini">
+          <div class="num"><span class="big">40 → 8</span><span class="what">seconds spent stepping back after joining, 50 runs</span></div>
+          <div class="num"><span class="big">About the same</span><span class="what">time in the right spot (+1 point on DeepSeek and on Claude Sonnet)</span></div>
+        </div>
+        <p class="note">It came close to people less often, but it still waits in the wrong place at the front: it does not know where the counter serves.</p>
       </article>
 
     </div>
