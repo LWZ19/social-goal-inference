@@ -1,6 +1,6 @@
 """Shared scorer for the fill-in moving designs (EVIDENCE_AUDIT.md Part 1). Zero calls; read-only.
 
-Paired comparisons of whole-episode share in line by (model, scenario, seed), exactly as moving/summarise_fresh.py's
+Paired comparisons of whole-episode share in line by (model, scenario, seed), exactly as moving-lines/design-and-scoring/summarise_fresh.py's
 `paired`:
 - measures() gives share_strict (SCORING_STRICT.md) and share_frozen (SCORING.md, the primary scoring);
 - a win, loss or tie compares the two shares, with a tie only when they are equal within 1e-9;
@@ -14,9 +14,11 @@ import statistics
 import sys
 from pathlib import Path
 
-PUSH = Path(__file__).resolve().parents[1]
-MOVING = PUSH / "moving"
-sys.path.insert(0, str(MOVING))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths  # noqa: E402
+
+MOVING = paths.MOVING_RUNS           # run folders are named relative to it, e.g. "runs_i10/dsv41"
+sys.path.insert(0, str(paths.DESIGN))
 from summarise_fresh import measures, sign_p  # noqa: E402
 
 EVAL5 = ("cafe_slots", "room_coffee_cart_slots", "cafe_line2_moving", "cafe_line6_moving", "sweet_spot_line2_moving")
