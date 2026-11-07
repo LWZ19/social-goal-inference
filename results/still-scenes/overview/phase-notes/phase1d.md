@@ -31,6 +31,7 @@ Paths below are relative to this folder (`phase1d/` in the research folder).
 | **C5 gate 1** (configuration count) | **Not met.** 22 distinct configurations (15 under the coarse reading) against 30; C2's Source A kill fires (below 25) | The generator holds about 22 templates, which fresh seeds repeat with small jitter. |
 | **C5 gate 2** (KDE transfer, leaving one situation out) | **Met.** 2 of 3 folds clear 0.10 nats per region cell: waiting_line +1.955, conversation_group −0.781, audience +4.113 (frozen draw); 2 of 3 in every subsample draw checked | A density learned from generator layouts covers the regions of an unseen situation better than a distance band, except at groups. The audience margin rests partly on a weak band. |
 | **C5 gate 3** (I04 on the I14 harness; judged here) | **Met** | The baseline exists and is verified. V3, not V1, is the one to beat. |
+| **C5 gates overall** | **Not passed** (gate 1 fails) | By the REPORT's rule the flow-matching probe may not start: the generator must be widened first with I06's crowd builder. the project's exploratory pilot has already run (phase 2) and is a kill. |
 
 Shared cautions:
 - **What the scores measure.** Every score here is agreement with the project's own reference rules (regions and heading), not social correctness. For gate 2 the rules also generated the training data.
@@ -260,10 +261,12 @@ Table 2.3. The primary folds under four training subsamples (configuration FS3, 
 
 | Draw | waiting_line | conversation_group | audience | Folds ≥ 0.10 |
 |---|---|---|---|---|
+| Compute check (the note's seeding, as the check spelled it) | +1.955 | −0.781 | +4.113 | 2 |
 | Verifier, main | +2.843 | −0.771 | +3.787 | 2 |
 | Verifier, salt 1 | +2.906 | −0.770 | +4.138 | 2 |
 | Verifier, salt 2 | +2.874 | −0.773 | +4.263 | 2 |
 
+- **Why waiting_line moves.** 2,336 of its 12,490 test region cells (19%) have 3 or more people in the corridor to the target (f8 ≥ 3). No training region cell does, and only 16 training floor cells have f8 = 3, all outside regions. With h ≈ 0.22 SD, one unit of f8 is about 12 bandwidths, so outside the training support the KDE acts as a nearest-point switch. The compute check's draw happens to hold one of those 16 cells, which drives 13–45% of the region cells in lines of 3 or more to the floor. It was the only draw of 12 checked with such a point. Inner cross-validation cannot see this, because inside the training situations the draws agree within 0.01 nats.
 - The seed bootstrap resamples test seeds only, so its intervals (0.054 wide at waiting_line) leave out this training-subsample variation of about 0.95 nats.
 
 Table 2.4. In-distribution ceiling (leave one seed out, all four situations; secondary) and the transfer gap.
@@ -352,6 +355,7 @@ Table 2.5. Development transfer: trained on all 260 fresh scenes, tested on the 
 
 ---
 
+## 4. Where the compute checks and the verifiers differ
 Every criterion verdict agrees. The I04 verifier reproduced every reported number and every per-record held-out value. The C5 verifier reproduced gate 1, the cells, the features and every inner choice; it differs only where a random training subsample enters.
 
 Settled by the verifier (its value is used above):
@@ -473,6 +477,8 @@ Old:
   - Kill: does not beat V3; more than 90% of the mass within 0.3 m of the top place in over 80% of records.
 ```
 New:
+    - Held-out mean log score, pooled (n 549): V1 −1.563, V2 −1.576, V3 −1.452; the hard top place scores −1.660. V1 − V3 = −0.111 (layout bootstrap 95% −0.188 to −0.035); V1 is below V3 in 5 of 6 primary cells. Mean probability of success: V1 0.670, V3 0.749, top place 0.760 (417 of 549).
+    - Criteria: (a) not met, pooled Lift_room 7.85 against 10 (V3 8.78, top place 8.90; the note predicted this from I14's table T5); (b) not met; (c) met, density hit@5 within 2 of the lexicographic hit@5 in all 6 primary cells (pooled 450 against 453); (d) not met, concentration AUROC 0.559, 0.303 and 0.540 on the old-wording realistic cells. Kill 1 fires; kill 2 does not (concentration above 0.9 in 312 of 549, 56.8%). Verdict: kill; V2 is a kill too. An independent verifier reproduced every number and all 57 fold choices.
 
 ### 7. C2, first probe: the Step 0 result
 
@@ -481,6 +487,7 @@ Old:
   - Kill: Source A has fewer than about 30 configurations; KDE gains under 0.1 nats; parsing takes more than 8 h. Keep Step 1 whatever happens.
 ```
 New:
+  - **Step 0 result (18 Oct; run as C5's gate 1, `results/still-scenes/learned-models/flow-model-gates/FROZEN.md`; `results/still-scenes/overview/phase-notes/phase1d.md` section 2) [phase 1].** The generator's 26 development rows hold 22 distinct (recipe, amount, kind, bystanders, second group) configurations, and 15 when only the situation, the structure's size, the bystanders and a second group count. 9 of the 22 are nobody-near rows that differ in the target's kind, the view angle or, in one row, a bystander; 13 have a people structure. Across fresh seeds 100–109 a row's structure members move at most about 1 m once the rigid move is removed (median 0.00–0.48 m per row). The note read "about 30" as a kill below 25 and borderline at 25–29; 22 is below 30 under every reading the verifier tried (at most 26), so Source A's kill fires. (inference) As the generator stands, Source A is about 22 templates repeated with jitter, and the 13 with people match the reviewer's guess. Step 1, the CongreG8 ring check, is kept as this entry says; it has not run and still needs the download decision. C5's gate 2 tested a KDE on generator layouts against the band-uniform baseline with this entry's 0.1-nat line and clears it in 2 of 3 leave-one-situation-out folds, but it is not Step 2 (no real joiners, no preference key, no development replay).
 
 ### 8. C5, gates before any training: the three results
 
@@ -491,6 +498,7 @@ Old:
   3. I04's soft density (V1, with V3 as its control) exists on the I14 harness as the baseline to beat.
 ```
 New:
+  2. A non-neural conditional density (a KDE over reference-region cells relative to the target and the people) transfers, in at least 2 of 3 leave-one-situation-out folds, against a band-uniform baseline. [phase 1] Met (`results/still-scenes/overview/phase-notes/phase1d.md` section 2). On fresh seeds 100–109, a ratio KDE over target- and people-relative features beats the band-uniform baseline by at least 0.10 nats per region cell in 2 of 3 folds: waiting_line +1.955 (n 140 episodes), conversation_group −0.781 (n 100), audience +4.113 (n 60). The verifier's three other training subsamples give +2.84 to +2.91 and +3.79 to +4.26 for the passing folds; 2 of 3 pass in every draw. The band covers only 29% of the audience region (post hoc), and two of the chosen features mirror the rules' geometry.
 
 ### 9. C5, the exploratory pilot: the phase-1d outputs are now entered
 
@@ -563,8 +571,10 @@ New:
 the 3 m disc leaves out about 90% of the watching region, and the top place lies outside it in 470 of 790 line records. [phase 1] I04's first probe (`results/still-scenes/overview/phase-notes/phase1d.md` sections 1 and 5) adds two points for a v1. Its fit score, the mean of ln(1e-3 + P(success)), rewards concentration whenever the top place usually succeeds: the fitted Gaussian control keeps more than 0.999 of its mass within 0.3 m of the top place in every record, so I04's own collapse line would fire on the control. And C5's gate 2 scored a different question, how well a density covers the whole acceptable region (the mean log density over region cells). (inference) A v1 should say which question a density answers, the chance that the chosen pose is acceptable or where all acceptable poses lie, and choose its score to match.
 ```
 
+### 16. Section 7: C5's training question and the text-embedding decision
 Old:
 New:
+A further step would need the project's agreement, gate 1 on a wider generator and its own held-out design (gate 2 is now met); the embedding decision matters only if it continues. [phase 1] The zero-call gates have results (`results/still-scenes/overview/phase-notes/phase1d.md` section 2): gate 1 not met on the generator as it stands (22 configurations), gate 2 met (a map-only KDE transfers in 2 of 3 leave-one-situation-out folds and fails at conversation groups), gate 3 met; so the gates do not pass. Every gate used map features only, so none bears on the embedding question.
 
 ### 17. Revision note
 
@@ -573,6 +583,7 @@ Old:
 The repair probe's edits came after this pass (report before them: `REPORT.before-repair.md`) and are checked with phase 1d's.
 ```
 New:
+- **Phase 1d, the distribution track (18 Oct; moved up by the project).** I04's first probe and C5's zero-call gates are done (`results/still-scenes/overview/phase-notes/phase1d.md`), on the CPU with zero calls. Each track froze and hashed a protocol note before anything was counted, fitted or scored, and an independent verifier reproduced every verdict with its own code. I04 is a pre-registered kill: on the 549 primary goal-step records V1, the soft density over the solver's keys, has a held-out mean log score of −1.563 against −1.452 for its Gaussian control V3, which fitted to a near-point mass on the top place (σ about 0.06 m); its concentration does not predict failure (AUROC 0.303–0.559 on the old-wording realistic cells), and only criterion (c) holds. C5's gate 1 is not met (22 generator configurations against about 30; C2's Source A kill fires); gate 2 is met (a ratio KDE beats the band-uniform baseline in 2 of 3 leave-one-situation-out folds, in every subsample draw checked, and loses at conversation groups); gate 3 is met (judged on the page: I04's V1 and V3 exist on the I14 harness and were verified). So C5's gates do not pass; the exploratory pilot had run earlier under the project's override. I06's held gate-1 recount (92 by the letter) now enters C5's gate 1. "How to read", the opening lines, sections 1.2 (item 9 and the distribution paragraph), 4.6 and 6 (steps 7 and 8), I04, C2, C5 and section 7 (the metric list, C5's training question) carry the results, and so, optionally, do summary item 5, the I15 parked row, section 4.7 and section 6's cut order. The report before these changes is kept as `REPORT.before-phase1d.md`.
 
 ### 18. Summary item 5: C5's gates (optional)
 

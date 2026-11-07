@@ -18,6 +18,7 @@ The frozen person-snap test (`results/still-scenes/group-of-four-case/SNAP_FROZE
 - Per model: target_correct with the depth lift against with the snap; fixed and broken; detector recall of the target.
 - H3, no harm, is the line that matters: broken records on the controls, and none on object targets. The free models
   had 0 breaks in 432.
+## Run (run; from the repository)
 
     cd .
     G=results/still-scenes/group-of-four-case
@@ -25,7 +26,7 @@ The frozen person-snap test (`results/still-scenes/group-of-four-case/SNAP_FROZE
     for M in claude_haiku55 gemini_fast claude_sonnet55_low; do
       PYTHONPATH= .venv/bin/python -m sgi.run --config $G/snapset/plan_only.yaml --model $M --scenes $G/snapset/run_scenes_v2 --name snap_plan_$M > $X/log_$M.log 2>&1; echo "$(date +%H:%M) $M exit $?"
     done
-    cd $G && python3 snap_score.py --runs $(ls -d runs/*_snap_plan_claude_* runs/*_snap_plan_gemini_fast) --scenes snapset/run_scenes_v2 --people snapset/snap_people.json > ../fill/x5_snap_paid/x5_score_out.txt
+    cd $G && python3 snap_score.py --runs $(ls -d runs/*_snap_plan_claude_* runs/*_snap_plan_gemini_fast) --scenes snapset/run_scenes_v2 --people snapset/snap_people.json > results/still-scenes/depth-fix/paid-models/x5_score_out.txt
 
 ## Cost
 

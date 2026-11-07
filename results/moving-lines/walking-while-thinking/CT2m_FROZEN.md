@@ -1,4 +1,5 @@
 # CT2m and Rm: move while thinking (frozen 2026-11-02 ~01:45, before it is built and before any fresh-seed result)
+is known at 23-27% of the constraint method's latency (after the plan call). Critiqued by the analysis.
 
 ## Method (latency hiding; names no situation)
 

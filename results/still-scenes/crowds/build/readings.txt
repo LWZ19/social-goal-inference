@@ -1,5 +1,8 @@
 I06 build: the builder's readings of points FROZEN.md leaves open (none changes a rule the note fixes)
 
+Written by the build agent on 18 Oct 2026, during the build (before any scoring). FROZEN.md sha256
+a83c0ffe0cf5fafd9f007fee478d5899c9f858d2eb77629f01885cbeccef693e (verified with sha256sum -c before starting).
+
 1. Draw order inside one attempt (the note fixes the stream, not the order): shirts first (recipes._shirts, once per
    attempt, k = number of people the family adds, taken = the base figures' colours); then the family's draws:
    - A: the facing sign s (recipes._sign), then up to 200 recipes._person calls (each draws the +-0.05 m, +-0.15 rad
@@ -29,11 +32,11 @@ I06 build: the builder's readings of points FROZEN.md leaves open (none changes 
 8. c4, c6, c7 measure from the camera's ground position; c3 and c5 from the robot's centre, as the note writes.
 9. The base scenes written as level 0 (scenes/seed<N>/eval_..) have regions and no tour, as the note says ("No tour is
    built"). Their rgb.png and depth.npy are byte-identical to the package's writer's, and their scene.json equals the
-   package's apart from the tour entries and the targets' tour_frames (build/byte_identity.txt).
+   package's apart from the tour entries and the targets' tour_frames (results/still-scenes/crowds/build/byte_identity.txt).
 10. Person tables: "relevant" is sgi.gt.derive's relevant_people of each episode (e0 and e1 recorded separately);
     "visible fraction" = samples seen of 9 (derive._sample_seen at the 9 heights); the pixel share
     (generate._share_shown on that person's figure alone) is recorded for every relevant person in the bases and E
     variants (and the E person), and for every person under 9 of 9 in any variant.
-11. Output places: the build task puts logs, the manifest and the checks under build/. The note's names are kept:
-    build/manifest.jsonl (and build/manifest.json, as the task asks), build/labels.txt, builder/base_check.txt (a copy
-    in build/base_check.txt), scenes/seed<N>/. Logs are in build/logs/.
+11. Output places: the build task puts logs, the manifest and the checks under results/still-scenes/crowds/build The note's names are kept:
+    results/still-scenes/crowds/build/manifest.jsonl (and results/still-scenes/crowds/build/manifest.json, as the task asks), results/still-scenes/crowds/build/labels.txt, results/still-scenes/crowds/builder/base_check.txt (a copy
+    in results/still-scenes/crowds/build/base_check.txt), scenes/seed<N>/. Logs are in build/logs/.

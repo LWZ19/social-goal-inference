@@ -1,6 +1,6 @@
 # Live check: the offline analysis and its tests
 
-**Question.** Once the live run exists, what does the frozen reading of `live/FROZEN.md` say? And is the analysis
+**Question.** Once the live run exists, what does the frozen reading of `results/still-scenes/people-finder/early-detector/phase2/live/FROZEN.md` say? And is the analysis
 correct before any live data are seen?
 
 **Result.** No live run was made, so `analyse.py` has no result.
@@ -48,7 +48,7 @@ The step-0 harness is in this repo (`results/still-scenes/analysis-scripts/harne
 in `data/dev_scenes/`.
 - `verify/v_baselines.py` re-runs here and writes `baselines.json` byte for byte.
 - `analyse.py` stops at `live/FROZEN.sha256`, which was left out. It also checks `ANALYSE.sha256`,
-  `live/BUILD.sha256` and the phase-1c `A2.sha256`, also left out, and the pinned hash of `live/FROZEN.md`, which
+  `live/BUILD.sha256` and the phase-1c `A2.sha256`, also left out, and the pinned hash of `results/still-scenes/people-finder/early-detector/phase2/live/FROZEN.md`, which
   cleaning changed.
 - `make_synthetic.py` stops at the pinned hash of phase-1c's `eval_people.json`, which cleaning changed (absolute path
   prefixes were removed). It also reads `live/BUILD.sha256`.
@@ -66,12 +66,12 @@ in `data/dev_scenes/`.
 
 # I09 live check: the offline analysis (`live_analysis/`)
 
-`analyse.py` is the analysis that `live/FROZEN.md` sections 5–6 say runs after the live run of arm D-live. It was
+`analyse.py` is the analysis that `results/still-scenes/people-finder/early-detector/phase2/live/FROZEN.md` sections 5–6 say runs after the live run of arm D-live. It was
 written, tested with zero calls, and hashed on 18 Oct before any live run folder existed.
 
 - **Hash.** `ANALYSE.sha256` holds the sha256 of `analyse.py` (`45b83a6e70577acb…2566e`), `make_synthetic.py` and
   `run_tests.py`. They were hashed at 2026-10-18T05:42:50+0800.
-- **Before hashing.** At 05:42:50 `live/runs/` did not exist (`test -e` false, `ls` "No such file or directory"). It
+- **Before hashing.** At 05:42:50 `results/still-scenes/people-finder/early-detector/phase2/live/runs/` did not exist (`test -e` false, `ls` "No such file or directory"). It
   was still absent right after hashing and after the tests were re-run on the hashed code (`ORDER.txt`).
 - **Reads.** The recorded runs only through the step-0 harness. Nothing under `live/` was written.
 
@@ -147,13 +147,13 @@ It takes about 2 s.
 ## Tests (zero calls; `run_tests.py`, results in `test_out/TESTS.json`): 25 of 25 pass
 
 **(i) The driver's dry-run folders (parsing, refusals, validity).**
-- `live/dryrun/a_mock`:
+- `results/still-scenes/people-finder/early-detector/phase2/live/dryrun/a_mock`:
   - without flags it refuses (exit 2: mock folders are not read);
   - with `--accept-mock --allow-incomplete` it reads the 10 GLM records and exits 3. Failed checks: mode mock, the
     first build's driver sha256, 10 of 84 records, upstream unequal, no check file, no ledger.
-- `live/dryrun/a_pythonpath_mock` (2 DeepSeek records) and `verify_i09_live_build/a_mock` (16 GLM records; each folder
+- `results/still-scenes/people-finder/early-detector/phase2/live/dryrun/a_pythonpath_mock` (2 DeepSeek records) and `results/still-scenes/people-finder/early-detector/phase2/verify_i09_live_build/a_mock` (16 GLM records; each folder
   matched to one check-file entry): exit 3.
-- `live/dryrun/c_cap/c6_main` (fake-gateway live format, both models stopped by the cap): exit 3. The 2 refused ledger
+- `results/still-scenes/people-finder/early-detector/phase2/live/dryrun/c_cap/c6_main` (fake-gateway live format, both models stopped by the cap): exit 3. The 2 refused ledger
   lines and the stopped invocations are flagged.
 - `c6_main_full`: refused strict (exit 2); exit 3 with `--allow-incomplete`.
 - `b2_count_only_filled`: the latest of three complete GLM real folders is taken (013304).
@@ -233,4 +233,5 @@ It takes about 2 s.
 - `make_synthetic.py` and `synthetic/` (with `VARIANTS.json`);
 - `run_tests.py` and `test_out/`.
 
+## Amendment (18 Oct, the analysis, before any live run)
 See `LEAD_DECISIONS.md`: two validity checks changed (a stopped invocation now gates; a folder left by an invocation stopped from outside is reported), the lock line is information only, the tests were re-run against driver e5e79093 (25 of 25 pass), and the result is computed with `--count-vlm-errors-as-failures` as FROZEN.md 5.1 says. `ANALYSE.sha256` now also holds `LEAD_DECISIONS.md`.

@@ -182,6 +182,30 @@ WHAT PRUNE / RELOCATE ACT ON (solver steps)
   ph   GLM       pruned 54 (matched 0, unmatched 54), exempt 0; reloc pairs 12 (moved median 4.25 m; were matched 0); BrelocP pruned 42; recompute differs 0; close pairs 0; Breloc vs unpaired verdict differs 0
   ph   DeepSeek  pruned 29 (matched 0, unmatched 29), exempt 2; reloc pairs 20 (moved median 3.79 m; were matched 0); BrelocP pruned 11; recompute differs 0; close pairs 0; Breloc vs unpaired verdict differs 0
 
+NUMBER COLLISIONS (post hoc check of the compute agent's claim)
+  old Qwen: steps with dangling numbers taken by added people 0
+  old GLM: steps with dangling numbers taken by added people 4
+      ('real_eval_10_conversation_group_2', 'e0', 1, [], [1, 2], [1, 2], True, True)
+      ('real_eval_10_conversation_group_2', 'e1', 1, [], [1, 2], [1, 2], True, False)
+      ('plain_eval_12_conversation_group_4', 'e0', 2, [], [1, 2, 3, 4], [1, 2, 3, 4], False, False)
+      ('plain_eval_12_conversation_group_4', 'e1', 2, [], [1, 2, 3, 4], [1, 2, 3, 4], True, True)
+  old DeepSeek: steps with dangling numbers taken by added people 0
+  new Qwen: steps with dangling numbers taken by added people 0
+  new GLM: steps with dangling numbers taken by added people 5
+      ('real_eval_10_conversation_group_2', 'e0', 1, [], [1, 2, 4], [1, 2], True, True)
+      ('real_eval_10_conversation_group_2', 'e1', 1, [], [1, 2], [1, 2], True, True)
+      ('staffed_eval_09_waiting_line_6', 'e1', 1, [], [0, 1, 2, 3, 4, 5], [1, 2, 3, 4, 5], False, True)
+      ('plain_eval_12_conversation_group_4', 'e0', 2, [], [1, 2], [1, 2], True, True)
+      ('plain_eval_12_conversation_group_4', 'e1', 2, [], [1, 2, 3], [1, 2, 3], True, True)
+  new DeepSeek: steps with dangling numbers taken by added people 1
+      ('plain_eval_10_conversation_group_2', 'e1', 2, [1, 2, 3], [4], [4], False, False)
+  new Haiku: steps with dangling numbers taken by added people 0
+  new Sonnet: steps with dangling numbers taken by added people 0
+  new Gemini: steps with dangling numbers taken by added people 0
+  ph Qwen: steps with dangling numbers taken by added people 0
+  ph GLM: steps with dangling numbers taken by added people 0
+  ph DeepSeek: steps with dangling numbers taken by added people 0
+
 CACHE-COPY CHECK (people lists per (arm, scene, trial), new vs old)
   Qwen: shared keys 72, identical 72; new keys 72, old keys 72
   GLM: shared keys 72, identical 72; new keys 72, old keys 76

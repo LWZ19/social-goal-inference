@@ -17,6 +17,7 @@ So far there are only 15 Sonnet cells. On Qwen, dropping the people call is a la
 - **Models:** DeepSeek V4.1 and Qwen 3.8 (free; Qwen after item 9 has cached its answers).
 - **Cells:** the 5 evaluation scenes, seeds 10-14, so 25 cells per model.
 
+## Bars (judged once, after all episodes and the mechanics check)
 - **X3-speed (per model):** CTe's first answer arrives earlier than CTd's in more cells than not, exact two-sided sign
   test p ≤ 0.05.
   - The sim pauses for the request-frame detection, so its warm time (about 0.16 s) is added to CTe's when stating
@@ -34,10 +35,11 @@ So far there are only 15 Sonnet cells. On Qwen, dropping the people call is a la
 - X3-quality holds; CTe matched CTd within the spread on Sonnet (+0.07, 9/4/2).
 - On Qwen, CTe may turn a latency-bound arm into one that acts within the episode.
 
+## Run (run; from `moving/`; detector and tracker as item 5, venv per `fill/i5_ctd/RUN_PROVENANCE.txt`)
     cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
-    F=../fill/x3_cte
+    F=results/moving-lines/people-finder
     # start the detector service (port 8899) and tracker_service.py (port 8897) exactly as item 5, with its health guard
     # stop both services by PID; then score (zero calls):
     cd .. && $P results/moving-lines/people-finder/x3_score.py > results/moving-lines/people-finder/x3_score_out.txt

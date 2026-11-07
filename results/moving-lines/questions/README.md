@@ -1,3 +1,4 @@
+# Questions on the moving-people results (analysis, 2 Nov)
 # Open questions on CT2: what carries its gain, and why moving early did not help
 
 **Question.** Post hoc, on the fresh-seed runs: why did moving while thinking (CT2m) not get the robot in line

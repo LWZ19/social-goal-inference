@@ -1,12 +1,14 @@
 # I09 live check (phase 2): frozen protocol
 
 ---
+## 1. Question (decision 1)
 
 Does the C pipeline keep A2's gain when the constraints call itself sees the detector's numbered people, with no VLM
 people call at all? A2 (`results/still-scenes/overview/phase-notes/phase1c.md` section 2) replayed recorded constraints that were written against the
 VLM's own people, re-addressed to the detector's people. Here the model writes its constraints against the detector's
 people: they are numbered on the image and listed in the request exactly as the package numbers and lists any people
 source's people.
+## 2. Arm D-live (decision 2)
 
 - **Configuration.** The recorded C configuration (`config.yaml`, through `H.recorded_config`) of these runs, at trial
   t0 only, with ONE change: the people source is the frozen A1 detector people instead of the VLM people call.
@@ -26,6 +28,7 @@ source's people.
   Recorded t0 goal steps (records with a people call; each also made a constraints call): **GLM 48** (real 17,
   staffed 16, plain 15), **DeepSeek 54** (18, 20, 16): **102** in all, under the cap of 120 and under 60 per model. None
   of the 102 recorded t0 constraints calls needed a validation or transient retry.
+## 3. People source DetectorPeople (decision 3)
 
 - A class with OraclePeople's interface (`sgi.run.OraclePeople`): `__call__(observation) -> PeopleFound`, with
   `calls=[]`, `call_time_s=0.0` and the geometry time measured.
@@ -48,6 +51,7 @@ source's people.
   th), trial=trial)`; the driver's replacement returns `pipeline.constraint_inferrer(DetectorPeople(...),
   trial=trial)` for the scene being run, so the trial still goes into the constraints call's cache key.
 
+## 4. Baselines (no calls; decision 4)
 All at t0, on the same 84 records per model; counted before this note.
 
 | Model | Recorded C t0 (lines of 30) | A2 D replay t0 (lines) | I01 P t0 (lines) |
@@ -58,6 +62,7 @@ All at t0, on the same 84 records per model; counted before this note.
 Sources: recorded C = the records' `score.success` (also column `C_rec` of the A2 rows); D replay = column `D` of
 `phase1c/i09/a2/rows_old_{glm53,dsv41}.jsonl` at trial 0; I01 P = column `P` of the same files, which A2 checked
 record for record against `phase1/i01_repairs/rows_old_*` (and that file gives 69 and 70 at t0 too).
+## 5. Measures (decision 5)
 
 Each is reported per model with its n. **[builder]** definitions:
 
@@ -86,11 +91,14 @@ Each is reported per model with its n. **[builder]** definitions:
    measures `people_found_share`, `people_unmatched`, `members_precision`, `members_recall` (the package computes them
    because `run.people` reads `vlm`); validation and transient retries; calls made.
 
+## 6. Pre-registered reading (decision 6)
 On successes over the 84 t0 records per model:
 - **Consistent with A2** if D-live is at least recorded C t0 for both models AND at least the D replay t0 minus 3 for
   both: GLM >= max(64, 69 − 3) = **66** and DeepSeek >= max(65, 71 − 3) = **68**.
 - **Contradicts A2** if D-live is below recorded C t0 for both: GLM <= 63 and DeepSeek <= 64.
 - **Mixed** otherwise.
+recorded runs: recorded C per trial is GLM 64 / 65 / 57 and DeepSeek 65 / 60 / 57 of 84 (t0 / t1 / t2), and the D
+## 7. Calls (decision 7)
 
 - **[builder] A call** is one request sent to the provider's back end: every attempt counts, the validation retry
   and transient retries included. It is counted before it is sent.

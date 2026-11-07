@@ -1,3 +1,4 @@
+# Post-hoc 1 on the DeepSeek sweep (analysis, 3 Nov 2026): labelled exploratory
 
 Written before computing anything below. C1 failed (`results/moving-lines/test-layouts/score_dsv41_out.txt`, sha256 3791113d). Nothing
 here changes that verdict or any frozen file. The 72 sweep layouts are spent for confirmatory use: whatever this

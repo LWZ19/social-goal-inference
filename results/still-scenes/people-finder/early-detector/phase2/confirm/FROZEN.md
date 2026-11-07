@@ -6,6 +6,7 @@ Path roots:
 - Bare paths are relative to this folder, `results/still-scenes/people-finder/early-detector/phase2/confirm/`.
 - Paths that start with `phase1b/`, `phase1c/` or `phase2/` are relative to the research folder `results/2026-10-17-beyond-vlm/`.
 
+## 0. Purpose and the analysis researcher's rulings
 - it rests on 14 layouts;
 - it needed one data-informed facing fix (`results/still-scenes/people-finder/early-detector/phase1c/a1/ADDENDUM_FIX.md`);
 - the false-people interval spans its bar (layout bootstrap 0.000–0.190 against 0.10).
@@ -46,6 +47,7 @@ I also know that in seed 0 the vendor at the second stall stands outside the obs
 
 **What this note chooses, and what it does not.** It chooses no part of the method: the method is A1's frozen choice. It chooses the test-set mechanics, the report, and definitions the rulings leave open (section 11).
 
+## 1. The test set (decision 2)
 **1.1 Seeds.**
 - They are not part of I46's sealed seeds (3–99) and are never used for fitting.
 - A1's fit data was seed 0's worked examples plus placeholder seeds 100–109. Its development scenes were seed 0's eval rows plus development seeds 0–2. No layout of seeds 200–219 has been drawn before.
@@ -100,6 +102,7 @@ Nothing is written into `data/`.
 **Each entry holds:** seed, row number, row id, scene id, folder, the rgb path, and the sha256 of `rgb.png`, `depth.npy`, `scene.json` and `render_job.json`. It also holds the render job's attempt and renderer version.
 
 **Order:** seed ascending, then row ascending. The manifest also lists every seed left out, with the reason.
+## 3. The method (decision 3): A1's frozen pipeline, reused by import
 
 **Setting.** From `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen.json` and `chosen_fix.json`, unchanged:
 - RT-DETRv2-r50vd with score threshold τ 0.25;
@@ -135,6 +138,7 @@ Nothing is written into `data/`.
 - D-FINE is not loaded.
 
 **Project side** (project venv, 2 BLAS threads). For each image: `P.run_image(raw, depth, cam, setting, "F5")`. Only F5 is scored and reported. No situation, label or row is read before the people are produced; roles and rows are used for tabulation only.
+## 4. The scorer and definitions (decision 4)
 
 **Loading.** Test scenes are loaded the way I03 loaded its fresh seeds: `H.guard_scene(folder)`, then `PS.FreshScene(load_scene(folder))`. The sha256 of `rgb.png`, `depth.npy` and `scene.json` is checked against the manifest.
 
@@ -152,6 +156,7 @@ Nothing is written into `data/`.
 - **Facing error:** |wrap(yaw_det − yaw_true)| in degrees, for matched people. **Within 45** means error ≤ 45 deg. **Front/back correct** means error < 90 deg. An unknown yaw counts as wrong, and as 180 deg in medians. Coverage (matched people with a known yaw) is reported.
 - **Role class** (`PS.role_classes`): staff (has a role), line (group at a target of a waiting_line episode), group (group at a target of a conversation_group episode; the scorer's audience and group_photo cases cannot occur in these rows), and other.
 - **Line members:** role class "line".
+## 5. Criteria (decision 5): judged once, on the pooled test set
 
 Success needs all of:
 
@@ -171,6 +176,7 @@ A kill fires on any of:
 |---|---|---|
 | K1 | recall below 0.90 | all visible people |
 | K2 | more than 0.30 false people per image | all test images |
+| K3 | facing within 45 deg below 0.70 | all matched people, unknown wrong (decision 5) |
 
 **How it is judged:**
 - Bars are judged on the point estimates, as in A1. Intervals are reported and not judged.

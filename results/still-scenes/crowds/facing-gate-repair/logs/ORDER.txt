@@ -1,10 +1,10 @@
 FROZEN.md verified 06:40; rules.py written and static check passed 06:43; DEVIATIONS D1-D2 hashed 06:43
-R0 arm 1 started 06:43:41, out/r0_crowd.txt written 2026-10-18 06:47:34.298107422 +0800
-out/r0_records_a.txt written 2026-10-18 06:57:11.353735014 +0800
-out/r0_records_b.txt written 2026-10-18 06:57:11.353850329 +0800
-out/r0_records_c.txt written 2026-10-18 06:57:11.353931530 +0800
-out/r0_noisy_qwen.txt written 2026-10-18 07:13:06.881642124 +0800
-out/r0_noisy_glm.txt written 2026-10-18 07:13:07.674978406 +0800
-out/r0_noisy_dsv.txt written 2026-10-18 07:13:08.461467224 +0800
+R0 arm 1 started 06:43:41, results/still-scenes/crowds/facing-gate-repair/out/r0_crowd.txt written 2026-10-18 06:47:34.298107422 +0800
+results/still-scenes/crowds/facing-gate-repair/out/r0_records_a.txt written 2026-10-18 06:57:11.353735014 +0800
+results/still-scenes/crowds/facing-gate-repair/out/r0_records_b.txt written 2026-10-18 06:57:11.353850329 +0800
+results/still-scenes/crowds/facing-gate-repair/out/r0_records_c.txt written 2026-10-18 06:57:11.353931530 +0800
+results/still-scenes/crowds/facing-gate-repair/out/r0_noisy_qwen.txt written 2026-10-18 07:13:06.881642124 +0800
+results/still-scenes/crowds/facing-gate-repair/out/r0_noisy_glm.txt written 2026-10-18 07:13:07.674978406 +0800
+results/still-scenes/crowds/facing-gate-repair/out/r0_noisy_dsv.txt written 2026-10-18 07:13:08.461467224 +0800
 repair passes started 2026-10-18 07:13:31 +0800
 repair passes finished 08:00:27; tables.py run 08:00:47; verdict computed by code: method_candidate

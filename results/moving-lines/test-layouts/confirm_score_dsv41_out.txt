@@ -1,4 +1,4 @@
-# CONFIRM_CT4PJ.md scored: DeepSeek V4.1 Flash (primary) (runs_confirm4/dsv41, sweep/confirm_selection.json)
+# CONFIRM_CT4PJ.md scored: DeepSeek V4.1 Flash (primary) (results/data/moving/runs_confirm4/dsv41, results/moving-lines/test-layouts/confirm_selection.json)
 
 - layouts 72; episodes: CT3F 72, CT4 72, CT4P 72, CT4PJ 72
 - strict share in line from the first service, mean over layouts with a value: CT3F 0.208 (n 66), CT4 0.119 (n 66), CT4P 0.107 (n 66), CT4PJ 0.159 (n 66)

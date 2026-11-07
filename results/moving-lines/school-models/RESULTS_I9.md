@@ -48,6 +48,7 @@
 - **What it pointed to:** the efficient pipeline (CTe, extra X3), which drops the people call. Tested 7 Nov: on Qwen
   both arms stayed latency-bound, and on DeepSeek CTe did worse (`results/overview/RESULTS_7NOV.md`).
 
+## E3b (the descriptive run; complete 7 Nov)
 All 7 older models are in `i9_score_e3b_out.txt`. CT2 beats R1 on strict share on 5 of 7: Sonnet 4.6 14/3/8, Sonnet
 5 17/3/5, Gemini 3.1 Flash Lite 22/2/1, Gemini 3.5 Flash Lite 20/2/3, Gemini 3.6 Flash 18/5/2. Not shown: Haiku 4.5
 (5/2/18; 10 of its 25 constraint answers unusable) and Gemini 3 Flash (13/11/1). See `results/overview/RESULTS_7NOV.md`.

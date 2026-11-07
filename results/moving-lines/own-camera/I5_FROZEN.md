@@ -19,6 +19,7 @@ bound is −0.054, so too few cells to exclude a loss of 0.05.
   - Pooled for the bar: Sonnet 5.5 low (seeds 10-19, 50 cells), DeepSeek V4.1, Haiku 5.5 and Gemini 3.8 (10-14, 25
     each). That is 125 cells.
   - Reported only: Qwen 3.8 and GLM-5.3 after item 9.
+## Bars (judged once, after all episodes and the mechanics check)
 
 - **H5 (primary).** Pooled over the 125 cells, the one-sided 95% paired-t lower bound of mean(CTd − CT2) on
   whole-episode strict share must be above −0.05.
@@ -31,6 +32,7 @@ bound is −0.054, so too few cells to exclude a loss of 0.05.
 - **Reported, no bar:** per model; the sign test; the repeat check; tracking quality (live tracks matched to a true
   person, id switches, stale share, first-match rate, detector ms), as `summarise_fresh.tracking` prints it.
 
+## Mechanics (the run checks before sending totals)
 - Both arms per cell, exit 0, no `vlm_error` (a cache miss would show as one).
 - The same first-answer pose as the cell's earlier CT2.
 - The detector service answers throughout: detection frames with errors are counted in the tracking table.
@@ -42,6 +44,7 @@ bound is −0.054, so too few cells to exclude a loss of 0.05.
 - Under the primary scoring the bound is lower, but probably above −0.05.
 - Matched tracks about 0.9; about two thirds of tracks stale (out of view, held at the last position).
 
+## Run (run; from `moving/`; cache-only; 2 workers suggested)
 - The detector service needs about 1.3 GB of GPU, alongside the sim workers.
 - The tracker service keys each episode by its output path, so parallel workers and successive models never share a
   tracker.

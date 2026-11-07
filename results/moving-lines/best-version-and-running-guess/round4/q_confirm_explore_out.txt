@@ -1,6 +1,6 @@
-# EXPLORATORY follow-ups to the confirmatory test (sweep/confirm_selection.json; not claims)
+# EXPLORATORY follow-ups to the confirmatory test (results/moving-lines/test-layouts/confirm_selection.json; not claims)
 
-## runs_confirm4/dsv41
+## results/data/moving/runs_confirm4/dsv41
 
 - layouts with all values: 66 of 72
 
@@ -27,7 +27,7 @@
 - lag True  restless False: CT4PJ - CT3F mean -0.071, 5/9/3, n 17; CT4PJ - CT4P mean -0.010, 3/5/9, n 17
 - lag True  restless True : CT4PJ - CT3F mean -0.046, 3/9/4, n 16; CT4PJ - CT4P mean -0.021, 6/5/5, n 16
 
-## runs_confirm4/sonnet55_low
+## results/data/moving/runs_confirm4/sonnet55_low
 
 - layouts with all values: 71 of 72
 

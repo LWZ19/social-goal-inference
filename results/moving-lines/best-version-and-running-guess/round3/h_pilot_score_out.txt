@@ -1,4 +1,4 @@
-# Round 3 pilot scored against PILOT_PREDICTIONS.md: runs_pilot3/dsv41
+# Round 3 pilot scored against PILOT_PREDICTIONS.md: results/data/moving/runs_pilot3/dsv41
 
 - episodes: 120 (CT2 24, CT3F 24, CT4 24, W0 24, CT5 24)
 

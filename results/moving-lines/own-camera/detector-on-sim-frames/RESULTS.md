@@ -1,3 +1,4 @@
+# E1: faster people-finding (the project's efficiency track)
 # E1: faster people-finding
 
 ## E1a: the detector on Habitat sim frames (zero calls; one 16 s GPU pass, peak 1.3 GB)
@@ -33,6 +34,7 @@
 - **Arms.** A0 (VLM people plus constraints) against D (A1 detector people plus constraints) at fresh trials.
 - **Judged.** D non-inferior within A0's redraw floor.
 
+## E1d: detector tracking for CT (frozen `e1d/E1D_FROZEN.md`, sha256 0ba6b552; the run wires the sim side)
 ## E1d: detector tracking for CT (frozen `e1d/E1D_FROZEN.md`)
 
 - **Detector service.** A1 frozen, behind `POST /detect`. Its output is identical to E1a's batch pass. Warm round trip: median 133 ms (90th percentile 221 ms). About 1.3 GB of GPU.
@@ -40,6 +42,7 @@
 - **Arms.** CTd against CT2 (oracle tracks), on the same cached answers and fresh seeds.
 - **Prediction.** Keep-up mostly preserved; losses from staleness.
 
+## E1c: detector people at answer time for CT (frozen `results/moving-lines/people-finder/first-check/E1C_FROZEN.md`; the run ran it, Sonnet, seeds 10–12, 15 episodes)
 ## E1c: detector people at answer time for CT (frozen `results/moving-lines/people-finder/first-check/E1C_FROZEN.md`; Sonnet, seeds 10–12, 15 episodes)
 
 Post hoc, zero calls: the scripts and outputs are `results/moving-lines/people-finder/first-check/cte_*.py` and `cte_*_out.txt`.
@@ -73,6 +76,7 @@ Post hoc, zero calls: the scripts and outputs are `results/moving-lines/people-f
   - The cause is the people text: positions only with no descriptions, plus the extra people. Detector people change what the model asks for.
   - Whether that helps is not shown: of the 9 episodes that gained it, 4 had fewer cut-ins, 3 about equal and 2 slightly more.
   - E1b's records do not keep the constraint content, so the same shift there cannot be checked.
+- **Reading (inference, agreed with the run).** CTe matches CTd's quality, with the first answer about 2.2 s (about 17%) sooner once detection is counted and no people call. The other gains are within the spread of nearly identical arms.
 - **Reading (inference).** CTe matches CTd's quality, with the first answer about 2.2 s (about 17%) sooner once detection is counted and no people call. The other gains are within the spread of nearly identical arms.
 - **Direct redraw floor (Sonnet repeats, 2 Nov; `results/moving-lines/people-finder/first-check/cte_floor.py`, `cte_floor_out.txt`).**
   - CT and CT2 were rerun on the same 15 cells with the same cached first answer (the same pose in 15 of 15), so only the sim's timing differs.

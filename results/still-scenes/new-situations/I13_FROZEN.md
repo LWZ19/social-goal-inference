@@ -12,6 +12,7 @@
 - **Models:** the six current ones (Qwen 3.8, GLM-5.3, DeepSeek V4.1, Sonnet 5.5 low, Haiku 5.5, Gemini 3.8).
 - **Methods:** R (`cot`), E (`fsc`), C (`con`), with prompts and code unchanged. The configs are `results/still-scenes/new-situations/design/configs/*.yaml`
   (trials 3, final_test true).
+## 3. Pre-call validity check (zero calls; the run runs it on all 24 scenes before any model call)
 
 `e4_geometry.py` scores four geometry baselines with sgi's own scorer and a perfect click:
 - **G0, C's people-blind standard goal:** do people change the goal?
@@ -57,6 +58,7 @@ Rules, fixed now:
   the bend's geometry lets a straight extension land within the half ring with the right heading.
 - **Bent line:** E4-R holds. C follows the last member's direction, as the rule does, while pointing models often
   mark the counter or the first leg.
+## 6. Run (run)
 
     cd .
     E=results/still-scenes/new-situations/design

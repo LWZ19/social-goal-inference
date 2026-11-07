@@ -1,6 +1,6 @@
-# Round 6 part C, EXPLORATORY: the decision's trade-off on CT4PJ's joined stretches (sweep/confirm_selection.json)
+# Round 6 part C, EXPLORATORY: the decision's trade-off on CT4PJ's joined stretches (results/moving-lines/test-layouts/confirm_selection.json)
 
-## runs_confirm4/dsv41
+## results/data/moving/runs_confirm4/dsv41
 
 | choice | joined re-solves | right last, sim agrees | right last, all joined | switches per minute joined |
 |---|---|---|---|---|
@@ -24,7 +24,7 @@
 | C2 move 0 | 4857 | 0.527 | 0.445 | 9.29 |
 | C2 move x2 | 4857 | 0.525 | 0.442 | 7.45 |
 
-## runs_confirm4/sonnet55_low
+## results/data/moving/runs_confirm4/sonnet55_low
 
 | choice | joined re-solves | right last, sim agrees | right last, all joined | switches per minute joined |
 |---|---|---|---|---|

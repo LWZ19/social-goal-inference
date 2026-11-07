@@ -5,6 +5,7 @@ Written by the I09 confirmation compute agent on 18 Oct 2026, at about 04:40 +08
 - `manifest.json` did not exist, the compute agent had loaded no test scene, and no detector or pose model had processed any test image.
 
 Its sha256 is in `DEVIATIONS_1.sha256`. This file is never edited. None of the items below changes the method, the scorer, the thresholds or the criteria.
+## Part A. What the render step reported doing differently from FROZEN's text (disclosed; facts, not rulings)
 
 ## Part B. Clarifications by the compute agent (implementation details the note leaves open)
 

@@ -5,6 +5,7 @@ test-time compute against latency; distillation; motion as a label. No model cal
 Every number below is post hoc on logged runs (seeds 10-44 of the bystander scenes, both models), so read them as
 leads, not results.
 
+the tracks logged every 0.5 s, and `queue_ids`), plus `CT2/001/answer.json` and the scenario YAMLs.
 - `roster_consistency.py`: how often each person is named under `come_after`, per scene, over first answers whose
   frames are near-identical (seeds change only fidget and walkers).
 - `named_facing.py`: the model's own people-stage heading for each person it named, against the bearing to its

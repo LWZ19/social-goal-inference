@@ -5,6 +5,7 @@
 - **CTd:** its first answer still comes from the VLM people call, so the people call's latency stays in the time to the first answer, which is the largest D1 failure class.
 - **E1c removes it,** with the rest of CTd unchanged.
 
+## Arm CTe (the run wires it) against CTd
 - **The first answer.**
   - The request frame's detector tracker snapshot (E1d's service and `tracker.py`, unchanged) supplies its live, non-stale tracks as the people of the first answer.
   - They go into /goal's `people` field and the constraint method takes them as its people source, so there is no people call.

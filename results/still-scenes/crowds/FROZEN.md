@@ -275,6 +275,7 @@ A failure **fires in a variant** when its detector is true in the variant and fa
     - the top level's paired drop is ≥ 10 points;
     - ≥ 50% of the top level's failures carry a named cause, (i)–(v).
 - **(b) "At least 2 of the 4 documented failures fire in at least 10% of relevant variants."** On arm 3, by section 7's definitions.
+- **(c) "L1 and L2 verdicts differ in at most 5% of episodes. Between 5% and 20% passes, with side-by-side reporting and an project decision. L2 empty in at most 2%."**
 - **(d) "At least 70% of variants pass `check_scene`, and full oracle scores 100%."**
   - Pass rate = accepted / planned variants (270), where a variant is accepted within its attempts. Rejections of every kind count against it, `no_spot` included.
   - Full oracle (arm 1) must score 100% under L1 on every accepted variant and every base.
@@ -335,6 +336,7 @@ Under `results/still-scenes/learned-models/flow-model-gates/FROZEN.md` (it exist
 - `free -m` before each heavy job. A job starts only with ≥ 3,000 MiB available; otherwise it polls every 5 minutes and logs the wait.
 - Estimates (guess): generation 270 variants × up to 6 attempts, about 3–6 s an attempt, under 1 h on 2 workers; arms 1–3 minutes; noise about 33,000 solves, about 1–2 h on 2 workers.
 - Scenes take about 0.5 GB under `scenes/`, which the research folder's `.gitignore` keeps out of git.
+## 12. Disclosures
 
 - **Designed to trigger known failures.** I know the documented failures (BRIEF 3.5, constraint_method.md), and A–E are built around them: A around (i); B and D around (ii) and (iv); E around hidden floor. The firing rates measure known bugs in generated crowds; they do not discover new ones. A is expected to fail at nearly every level under L1.
 - **Labels are the project's own rules.** L1 is the members-only reference rule; L2 is this probe's stricter variant. Neither is social ground truth, and L2 mirrors the solver's own-space rule. The reference constraints are circular (they read the situation and the true group).
@@ -344,5 +346,6 @@ Under `results/still-scenes/learned-models/flow-model-gates/FROZEN.md` (it exist
 - **One code path differs from the package's.** Arm 3 re-implements the constraint inferrer's last step, so that it can pass reference constraints; the equivalence check guards it. The builder re-implements `_in_clear_view` without its 22-deg cone; the self-test guards it.
 - **Not generated or opened:** seeds 3–219; any held-out row, scene or run (group_photo, lift_wait, eval_16–19, s18, s20_held, the replay and pre-flight folders); eval_20 and eval_21 as base layouts.
 
+## 13. Points for the project (the defaults above stand until a dated addendum changes them, before the affected data are scored)
 2. **Noise validation target.** The REPORT's kill compares the simulated C with the recorded C. The recorded C also holds the models' own constraint errors (I01: R5 − C = +7.9 and +9.5 points for GLM and DeepSeek). Keep the REPORT's line (my default), or validate against R5 (people noise only)?
 4. **Room unchanged.** Variants keep the base room and furnishings, so the drop is the people's. A later VLM crowd run may want re-furnished scenes instead (the package's `_with_more_people`).

@@ -152,6 +152,12 @@ Table 1.4. Breaks (R0 L1 success -> failure) and flips (R0 failure -> success), 
         L1 flip: seed 2 i06_s2_D2_eval_08_waiting_line_4 row 8 D2 waiting_line
         L1 flip: seed 2 i06_s2_D2_eval_13_waiting_line_3 row 13 D2 waiting_line
 
+Table 1.5. Not judged: A4-A6 (cue-threshold ruling) and E2, L1 successes per rule.
+  A4               n 15: R0 0, RF90 0, RF60 0, RN 0
+  A5               n 15: R0 0, RF90 0, RF60 0, RN 0
+  A6               n 15: R0 0, RF90 0, RF60 0, RN 0
+  E2 (R0 failures) n  4: R0 0, RF90 0, RF60 0, RN 0
+
 Table 1.6. Failure (i) firing: det_i in the variant and not in its base under the same rule; denominator I06's 153 relevant variants (relevant[i]).
   R0  : 99/153 = 64.7%; by family A 84/84, B 8/12, C 3/12, D 4/15, E 0/30
   RF90: 60/153 = 39.2%; by family A 52/84, B 4/12, C 1/12, D 3/15, E 0/30

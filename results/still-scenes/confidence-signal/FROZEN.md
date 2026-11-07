@@ -188,6 +188,7 @@ Every signal comes from recorded data, the frozen detector people and the packag
 - **Kill:** P1's pooled AUROC is below 0.60.
 - **Otherwise:** neither. If the success and kill conditions both hold, the verdict is kill (choice, as in I04).
 - P1b, S2, S3, S4, S5, S6 and S6z are reported, not judged. The bootstrap intervals are reported beside the verdict and do not enter it.
+## 8. Prediction (the, verbatim)
 
 > P1 helps for GLM and DeepSeek, whose people answers carry phantoms that the detector does not confirm, and barely for Qwen, whose people answers are nearly perfect; S4 (trial disagreement) is the strongest single signal but costs extra calls; wrong-target failures stay invisible to P1-S3.
 

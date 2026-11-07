@@ -1,5 +1,6 @@
 # E1b: detector people in place of the VLM people call, static benchmark (frozen before any call, 2 Nov 2026)
 
+## Question (the project's efficiency track)
 Can a local detector replace C's people call, making the pipeline faster and one call cheaper without losing accuracy? The proposal itself names this design. It was never tested live; the D-live check was dropped as underpowered.
 
 ## Design
@@ -35,6 +36,7 @@ Can a local detector replace C's people call, making the pipeline faster and one
   - a constraints call that writes worse with unfamiliar numbering.
 - **Time saved per people-matter record:** about 16 s for Qwen, 2–4 s for GLM and DeepSeek.
 
+## Calls (the run runs them)
 - **Free:** Qwen 432, GLM 423, DeepSeek 453; 1,308 in all, at most 13 a minute per process.
 
 ## What comes next

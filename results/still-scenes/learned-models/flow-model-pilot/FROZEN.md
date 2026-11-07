@@ -49,6 +49,7 @@ These facts shaped the seen-face target, the label exclusion and section 10. Not
 
 The development records and scenes are for evaluation only, and are read only through `research_harness`.
 
+## 2. Raster (decision 4: only what the pipeline knows at inference)
 **Geometry.**
 - 64 × 64 cells of 0.10 m.
 - The origin o is the target point:
@@ -75,6 +76,7 @@ The development records and scenes are for evaluation only, and are read only th
 
 Nothing else goes in: no situation, group, role, scene name, region, forbidden region or request text.
 
+## 3. Labels (decision 5)
 - **Region cells:** raster cells that are free in channel 1 and whose centre lies in the union of the target's acceptable polygons (`point_in_polygon`).
 - **Poses:** 32 per episode.
   - Cells are drawn uniformly with replacement (choice).
@@ -88,6 +90,7 @@ Nothing else goes in: no situation, group, role, scene name, region, forbidden r
 - **Label:** (x/3.2, y/3.2, cos, sin), with x and y in metres.
 - **Self-check** (training data only): the 6(i) replica scores every label pose. The shares in the region, within the heading tolerance and reachable are reported.
 
+## 4. Model and training (decision 6; torch sidecar, GPU)
 **Architecture.** The widths, norms, activations and the sum below are choices.
 - **Encoder:** 4 blocks of conv 3×3 stride 2 → GroupNorm(8) → SiLU, with channels 7→32→64→128→256 (64² → 4²). Then flatten and Linear(4096→256).
 - **Time embedding:** sinusoidal, with 64 frequencies exp(−ln(10⁴)·k/64) applied to 1000·t (sin and cos). Then an MLP 128→256→256 with SiLU.
@@ -137,6 +140,7 @@ Nothing else goes in: no situation, group, role, scene name, region, forbidden r
 
 The projection runs in numpy inside the sidecar, so the latency covers sampling and projection in one process (choice).
 
+## 6. Evaluation (decision 7), scored once per model
 **(i) Validation seeds 190–199.** Per situation and pooled, with n episodes and n scenes.
 - **Success** means all of:
   - inside an acceptable region of the target;
@@ -192,6 +196,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
 - each LOSO model on its left-out situation's development records, setting (b);
 - tables by situation.
 
+## 7. Criteria (decision 8): C5's words, with readings fixed here; all exploratory
 **Terms.**
 - Models: Qwen 3.8, GLM-5.3-Flash and DeepSeek V4.1 Flash.
 - "Pooled per model": over that model's realistic and watching cells, n 179, 177 and 193.
@@ -210,6 +215,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
 
 **Precedence** (choice): a kill overrides success; anything else is "neither". C5's "holds on fresh seeds" is reported from (i), not judged.
 
+## 8. Order, guards and compute (decision 9 and the hard rules)
 **Order.**
 1. This note and its hash.
 2. Rasters and labels for seeds 110–199 (project venv, at most 2 processes), with counts and the self-check; then the development arrays for (a) and (b), with the reproduction asserts.
@@ -232,6 +238,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
 - A code fix made after any number was read goes into a hashed deviation note.
 - Every number has its n. Anything undeclared here is post hoc, and anything chosen after seeing these results is data-informed.
 
+## 9. Disclosures
 - **Exploratory.**
   - Gate 1 was overridden.
   - Training and test layouts share the generator's templates (22 configurations), so (i) measures fit to the generator.
@@ -245,6 +252,7 @@ The projection runs in numpy inside the sidecar, so the latency covers sampling 
   - a 0.00–0.15 m shift between the training centre (anchor ground point) and the evaluation centre (a lifted surface point);
   - channel 7 is almost always empty.
 
+## 10. For the analysis before step 2 (a change needs a hashed addendum before any raster is built)
 - **Raster extent.** At ±3.2 m:
   - waiting_line_6 has no region inside the raster (seed 100);
   - audience_4–5 and waiting_line_4 lose about 40% of theirs.

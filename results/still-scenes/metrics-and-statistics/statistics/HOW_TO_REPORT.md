@@ -31,6 +31,7 @@ Numbers come from `results/still-scenes/metrics-and-statistics/statistics/` (`i4
 - **In-sample prompt.** The context prompt was chosen in-sample on these sets.
 - **Run-to-run noise.**
   - One 3-trial batch has an SD of 6-8 records.
+  - the Qwen 7.9 is reproduced as the pooled SD of the three batch totals in Qwen's 9-draw pool, R and E: 7.93, with df 4 (95% CI about 5 to 24).
   - The within-batch estimators give 6.0-6.2 for Qwen and 3.9-6.2 for the other five models (item binomial, pooled over R, E and C). They miss batch-to-batch shifts. Qwen E's batch totals 214 / 204 / 196 (s16b / s22 / s21) suggest such shifts exist.
 
 ## Minimum detectable differences for live A/B runs (80% power, two-sided 0.05)

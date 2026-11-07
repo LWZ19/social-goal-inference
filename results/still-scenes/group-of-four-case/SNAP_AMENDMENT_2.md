@@ -8,6 +8,7 @@ that amendment 1's bearing rule and its own bearing list disagree. The error is 
 - **cg4 35 deg** is exactly 0.396, and check 8 rejects it in 47 of 50 seeds.
 
 The rule as written ("median share in the bin") gives 40-55% only 4 layouts and no cg3.
+## decision
 
 **The selection is `snapset/selected_v2_literal.csv` (sha256 prefix 56cd80f7): amendment 1's bearing list, as frozen.**
 - **The binding criterion is each layout's own cylinder share,** as amendment 1 says ("a layout enters a bin by its

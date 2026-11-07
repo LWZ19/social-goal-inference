@@ -1,8 +1,9 @@
+# Round 7, part D: the reading rule for CT3FT, fixed before its totals (analysis, 4 Nov)
 
 ## Background
 
 - **CT3FT** is CT3F with only the target point moved to the true counter point, as in CTt and CT4PJT. It runs with
-  zero calls on DeepSeek's cached CT2 answers and the 72 confirm layouts, into `runs_ceiling4/dsv41`. It is
+  zero calls on DeepSeek's cached CT2 answers and the 72 confirm layouts, into `results/data/moving/runs_ceiling4/dsv41`. It is
   description only.
 
 ## Gaps
@@ -15,7 +16,7 @@ Same measure and pairing as `c_gaps.py`:
 - band top 1.2 m (the decision) and 1.5 m (reported beside it).
 
 The gaps:
-- **G1, target for the best arm:** CT3FT − CT3F (CT3F from `runs_confirm4/dsv41`, same cached answers).
+- **G1, target for the best arm:** CT3FT − CT3F (CT3F from `results/data/moving/runs_confirm4/dsv41`, same cached answers).
 - **G2, who once the target is right:** CT4OT − CT3FT. This is the room left for who-waits work over CT3F's rules
   when both have the true counter point.
 - **Reported, no rule:**
@@ -35,6 +36,7 @@ is the smallest effect with useful power at 72 layouts (`CONFIRM_CT4PJ.md` §3),
 |---|---|---|---|---|
 | A | above 0.071 | below 0.05 | **first.** The counter point alone lifts the existing best arm to within 0.05 of the true-everything arm | **closed** (future work). With a right target, CT3F's rules leave under 0.05 for who-waits work |
 | B | 0.05 to 0.071 | 0.05 to 0.071 | **first** | **second, only after lead 1.** Who-waits work pays only once the target is right |
+| C | below 0.05 | above 0.071 | the target point alone does not lift CT3F by a testable amount. Only its front-place half stays a lead (PF) | alone it cannot beat CT3F (CT4O − CT3F +0.010). Who and target are needed together, so **both go to the project as one design question** |
 
 Further rules:
 - **Uncertainty.** If G1's lower bound is below 0, outcome A or B is reported as "point estimate only". With 66
@@ -44,5 +46,5 @@ Further rules:
 
 ## Script
 
-`e_ct3ft.py` prints all of the above mechanically from `runs_ceiling4/dsv41` and `runs_confirm4/dsv41`. It is
+`e_ct3ft.py` prints all of the above mechanically from `results/data/moving/runs_ceiling4/dsv41` and `results/data/moving/runs_confirm4/dsv41`. It is
 hashed with this note. It was checked on pilot logs with stand-in arms before the totals.

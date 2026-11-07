@@ -1,5 +1,6 @@
+# CT4P direction check: the port is exact, and the bar's premise failed (analysis, 3 Nov; Q1-Q4 not yet read)
 
-- **The port is exact** (`round4/e_ct4p_port.py`, output `e_ct4p_port_out.txt`). For every CT4P re-solve with
+- **The port is exact** (`results/moving-lines/best-version-and-running-guess/round4/e_ct4p_port.py`, output `e_ct4p_port_out.txt`). For every CT4P re-solve with
   `direction_source` "path", I recomputed the back tangent from the logged roster and tracks, using a Resolver with
   `path_memory` True and `line_span_m` 0.5 built from the cached answer and the tracks at the photo.
   - 3,070 of 3,070 match the logged `solve_direction` to within 1e-3.

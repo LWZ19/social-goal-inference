@@ -1,8 +1,10 @@
+# Ideas round 2: shortlist (run's synthesis, 2 Nov night)
 
 Inputs:
 
 No model calls were made. Every number below is post hoc, on cells that frozen tests have already judged. These
 numbers motivate designs; they are not results.
+## 0. Numbers re-checked by the run
 
 Cut-in samples (`cut_in` flag per 1-s sample; SCORING.md: the robot more than 0.25 m ahead, along the line, of a
 member who is ahead of it in queue order).
@@ -109,6 +111,7 @@ The question: is checking "is this ringed person waiting?" easier for VLMs than 
 - **Stress replays S1-S4,** applied to CT3 as well: noise, lagging members, restless bystanders, and stale or switched
   tracks.
 
+### Bold, needing the project
 - **H1. Ask people, not the ruler (reviewer 1).** About 20-30 raters on about 100 clips calibrate "in line" and
   "cut in". It needs raters and probably an IRB exemption check.
 - **D1. Hindsight co-motion labels distilled into a fast still-frame model on the A100 (ml_reasoning 5).** After M1.
@@ -126,9 +129,14 @@ The question: is checking "is this ringed person waiting?" easier for VLMs than 
 
 | Phase | What | Calls | Who |
 |---|---|---|---|
+| 1a | Event scorer, and a re-score of every frozen comparison with it | 0 | run |
+| 1b | Offline design study on the logged tracks: the parts of M1 one at a time and together, under S1-S4; choose CT4's design and freeze its parameters on the development cells | 0 | analysis, plus a checks |
+| 1c | Write the non-queue moving scenes and check that geometry fails there | 0 | run |
+| 2 | Implement CT4 in `sgi.resolve` (TDD, off by default), then cache-only sim reruns of the 88 bystander and 45 original cells | 0 model calls | run |
 
 **What would kill M1 before any call:** at phase 1b, no design halves CT3's capture with at most 2 of 244 false
 drops and cut-ins no higher than CT2's, under S1-S3.
+## 4. For the analysis to challenge
 
 1. Is M1 one idea, or five fixes under one name? What is the smallest version that still carries the reframing?
 2. Which development cells are design data, and which seeds stay fresh? Proposal: seeds 10-44 are design data;
@@ -137,6 +145,7 @@ drops and cut-ins no higher than CT2's, under S1-S3.
    the belief's most likely explanation?
 4. Is a non-queue scene where geometry fails buildable with scripted humans, or does it need reactive ones?
 5. Phase order: should F1 run first, because it is cheap and stands alone?
+## 5. After the analysis's challenge (`research_session_challenge.md`), agreed
 
 1. **The primary comparison is pre-registered as CT4-min against CT3-fix.** CT3-fix is CT3 + the group test +
    evidence from the photo + anchored re-derivation: the best bolt-on version of the same evidence.

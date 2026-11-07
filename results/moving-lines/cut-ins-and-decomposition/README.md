@@ -1,3 +1,4 @@
+# Audit items 3 and 6: zero-call re-scoring of logged moving-people episodes (6 Nov)
 # Cut-ins and where the updating gain comes from
 
 **Question.** Two re-scorings of logged moving-line runs (audit items 3 and 6, 6 Nov): which part of re-solving
@@ -28,6 +29,12 @@ summaries.
 Read-only. No model call and no simulator run. Inputs are `results/data/moving/runs/<model>/<scenario>/seed<N>/<arm>/episode.json`
 (91 samples at 1 Hz each). Scoring uses `results/moving-lines/design-and-scoring/summarise_fresh.py`'s `measures` and `sign_p`, imported unchanged.
 
+| File | What |
+|---|---|
+| `item3_ct0_cto_ctt.py` → `item3_out.txt` | Item 3: CT0, CTo and CTt on seeds 0-2 |
+| `item6_cutin_exposure.py` → `item6_out.txt` | Item 6: cut-ins normalised by exposure |
+| `item6_cutin_exposure.py --cells` → `item6_cells_out.txt` | The same, plus every cell's counts |
+## Definitions
 ### Definitions
 
 - **Share (frozen, primary):** the share of samples with the logged `in_line` flag (SCORING.md).
@@ -49,6 +56,7 @@ Read-only. No model call and no simulator run. Inputs are `results/data/moving/r
     beside it.
   - Cells left out for zero exposure are counted by which arm had none.
 
+## Arms (item 3; `sim/sgi_habitat/experiment_oracle.py` docstring)
 ### Arms (item 3; `sim/sgi_habitat/experiment_oracle.py` docstring)
 
 All arms share C1's first answer; only the re-solves differ.
@@ -62,6 +70,7 @@ All arms share C1's first answer; only the re-solves differ.
 - **CTt (oracle ceiling, not a method):** CT, with the target point moved to the queue's true counter point (slot 0's
   face point). The model's people and constraints are kept.
 
+## Cells
 ### Cells
 
 - **Item 3:**

@@ -1,3 +1,4 @@
+# Evidence audit: every experiment and idea, and how strong its evidence is (analysis, 6 Nov 2026)
 
 ## About this audit
 
@@ -68,6 +69,7 @@ An index of every experiment and idea, with how strong its evidence is and where
   - **Quick probe** (old code, single runs).
   - Priority: nice as one line of history; not worth re-running. Path: `docs/results/README.md`.
 - **A7. Schema field descriptions (commit f1a488a)**
+  - Result: a no-op for gateway models. Qwen's plan calls had identical server token counts in 252 of 252.
   - Priority: **needed** as a methods footnote.
 - **A8. Model tiers**
   - Result: two tiers (Qwen, Sonnet, Gemini, plus Haiku on C; then GLM and DeepSeek). Nothing orders the top tier.
@@ -99,6 +101,7 @@ An index of every experiment and idea, with how strong its evidence is and where
   - Result: at lines, the solver alone and the standard goal score 0 of 90 for every model, and come_after alone equals
     C for 4 of 6 models. At groups, the solver alone is at least C. **Conclusive** for these sets.
   - Priority: **needed**: C's gain at lines is recognising whom to come after.
+  - Result: target found 86.5-99.6% by model. C's 233 failures split into 111 wrong targets, 66 right-target line
 - **B4. I34 Stage 0: R and E through C's clearance snap**
   - Result: fixes 168 and breaks 0. C's margin over the best of R and E shrinks to +14 to +72 (Gemini: 9).
     **Conclusive** as an exact replay. Stage 1 (R-BEV, 120 calls) not run.
@@ -186,6 +189,7 @@ An index of every experiment and idea, with how strong its evidence is and where
     - The frozen harm bar fails for all four. But it was judged against 0, not a redraw. Against the post hoc redraw
       floor the marks are inside noise for DeepSeek, Qwen and x-test-3.
     - **Conclusive as frozen but uninformative.** Priority nice: show the floor beside it.
+  - **M2, GLM's gain** (post hoc): target right 215→237, layout p 0.011; end success 155→177 against a redraw of 36/42.
   - **M2P, prompt vs drawn marks** (frozen; DeepSeek, 60 cells): the drawn labels pull the click. **Suggestive.**
     Not worth more.
   - **M2d, two-call design** (zero calls): no gain. **Quick probe.**
@@ -200,6 +204,8 @@ An index of every experiment and idea, with how strong its evidence is and where
 - **E2'. C5 gates**
   - Result: gate 1 not met (22 generator configurations against about 30). **Conclusive.**
   - Priority: not worth it. Keep "22 templates" for sealed-set design.
+    - In distribution 500/520. Leaving one situation out: 36/140 lines, 0/100 groups, 0/60 audiences.
+    - With recorded people, 312/549 against C's 417. Kill.
 
 ### F. Crowds (RD)
 
@@ -226,6 +232,7 @@ An index of every experiment and idea, with how strong its evidence is and where
 - **G5. I47, standard-goal geometry**: **untested**; targets 45 of C's 233 failures. A zero-call replay of about 8 h.
   Priority nice (the top zero-call gap).
 
+### H. Moving lines: the experiments (`moving/`, `results/moving-lines/questions/`, `e1/`)
 One cell is scene x seed x model, with one episode per arm.
 
 - **H1. Headline: CT2 and CT v1 against R1 on fresh seeds**
@@ -318,6 +325,8 @@ One cell is scene x seed x model, with one episode per arm.
     model.
   - To conclude more widely: a school model (about 240 calls, 2.5 sim-h).
   - Priority: nice (CT3F has replaced CT3).
+  - Result: capture and roster bars fail; the roles bar passes (17/1/11). With bystanders CT2's lead over R1 disappears
+    for Sonnet (4/3/13). **Conclusive.**
 - **H18. CT3 no-harm on the original scenes**: Sonnet 30 cells +0.015; DeepSeek 15 cells +0.007; 0 false drops.
   **Conclusive.** Priority **needed** (one line).
 - **H19. CT3b**: 18/8/34 vs CT2, p 0.076. **Suggestive**, no gain. Priority not worth it.
@@ -349,11 +358,13 @@ One cell is scene x seed x model, with one episode per arm.
   - No evidence.
   - Priority: not worth it before the report. Future work. State that every moving result is queue-only.
 
+### I. Moving lines: the role-belief family and the test itself (this analysis; `results/moving-lines/best-version-and-running-guess/`)
 - **I1. CT4 vs CT3F under late steppers** (frozen `CT4_FROZEN.md` 2df880ff)
   - Data: DeepSeek; 72 sweep layouts; 6 arms.
   - Result: the claim fails, 14/14/1 on the 36 lag layouts. Reported: both new arms about double CT3 on right last; CT4
     recall 0.80-0.87 vs 0.51-0.64. **Conclusive negative.**
   - Priority: **needed** as a stated failed prediction (written up). No runs.
+  - Result: CT3F ahead on right last (5/15, p 0.041); strict share CT3F 0.22, CT3 0.17, CT4 0.12. **Suggestive**,
 - **I3. No-harm of CT3F and CT4 on the original scenes** (DeepSeek, 40 cells; comparisons named before the run)
   - Result: CT3F beats CT3, 0.400 vs 0.337 (25/7/8, p 0.002), with fewer cut-ins; CT4 0.259.
     **Suggestive-to-conclusive**, one model.
@@ -399,6 +410,7 @@ One cell is scene x seed x model, with one episode per arm.
   - Motivation: the serving spot targets the two largest gaps (front place +0.25, counter point +0.11). Walking away's
     room over CT3F with the model's counter is about +0.01.
   - Never built.
+### J. Hidden situations (the run scores these; numbers as reported in `results/still-scenes/hidden-situations-and-more-models/PLAN.md`)
 
 - **J1. Latest models on lift and picture-taking** (Sonnet 5.5, Haiku 5.5, Gemini 3.8; 36 records per situation per
   method; `--final-test`)
@@ -406,6 +418,7 @@ One cell is scene x seed x model, with one episode per arm.
     - lift: Sonnet 33/31/36, Haiku 7/7/32, Gemini 15/20/28;
     - photo: Sonnet 2/2/4, Haiku 0/1/9, Gemini 6/3/0.
   - Strength: **suggestive** for lift. Weak for photo, whose success rule is debatable.
+  - Notes: RD's synthesis notes a 4-layout held-out test cannot reach p < 0.05 at the layout level. The earlier models'
 
 ### K. More models (E3; descriptive)
 
@@ -444,6 +457,8 @@ One cell is scene x seed x model, with one episode per arm.
 | Ambiguity sweep | yes, as the test-set generator | H21: the added-value plot never drawn |
 | Is checking a role easier than listing roles? | no | not worth it |
 | Event-based scoring and stress replays | partly | the stress replays did not transfer; a harm-ratio scorer was never written (nice, zero calls) |
+| Human raters | no (project declined) | not worth it |
+| Real motion from JRDB | no (project: later) | not worth it now |
 | Distilling co-motion labels into a fast model | no | future work |
 | Latency ideas (contingent prefix, arrivals as demonstrations) | no; related CT2m failed | future work |
 | Ask again, closed question, when the evidence turns | no | not worth it |

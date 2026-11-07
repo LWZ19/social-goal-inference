@@ -10,6 +10,7 @@ The I04 lead wrote this on 18 Oct 2026, after the format check below and before 
 - **Reproduction.** For the first goal-step record of each run, `sgi.solver._over_floor` was called on resolve()'s inputs. Picks 1–5 gave the recorded place and runners-up at 0.0 m. The heading rule below gave the recorded headings to within 0.0 rad.
 
 **Exposure (disclosed).**
+- the analysis knows I14 v0's results on these same records: the tables, the 3 m disc's poor coverage at watching, the runner-up recoveries (AR 96% and 33% for DeepSeek) and Lift_room per cell.
 - The prediction in section 9 uses I14's published T5 only.
 
 ## 1. Records and cells

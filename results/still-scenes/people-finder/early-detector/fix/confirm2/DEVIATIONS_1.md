@@ -20,7 +20,7 @@ cd .-scenes; timeout 120 grep -rIl -E 'seed ?(21[3-9]|2[2-9][0-9])\b|seeds 2(1[3
 
 **Correction.** In the frozen note's "Exposure (disclosed)" section, the sentence "No per-image or per-person row of the first confirmation: no `rows.jsonl`, `people_rows.jsonl`, `raw/` or `posthoc_false.txt`. I opened no file under `results/still-scenes/scene-seeds/phase2/realistic/` and nothing of seeds 200–219." is to be read as follows:
 
-> "No per-image or per-person row of the first confirmation was read. A process of mine (the text search above) opened the files listed in `confirm2/DEVIATIONS_1.md` section 1, including 364 files under `results/still-scenes/scene-seeds/phase2/realistic/` and `posthoc_false.txt`, but printed only the names of matching files outside `results/still-scenes/scene-seeds/phase2/`. I read no content of any of them."
+> "No per-image or per-person row of the first confirmation was read. A process of mine (the text search above) opened the files listed in `results/still-scenes/people-finder/early-detector/fix/confirm2/DEVIATIONS_1.md` section 1, including 364 files under `results/still-scenes/scene-seeds/phase2/realistic/` and `posthoc_false.txt`, but printed only the names of matching files outside `results/still-scenes/scene-seeds/phase2/`. I read no content of any of them."
 
 ## 2. Section 12's premise (verifier minor point (c))
 

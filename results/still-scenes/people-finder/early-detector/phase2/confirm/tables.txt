@@ -150,6 +150,9 @@ K1 | 0.981 | [0.971, 0.990] | [0.968, 0.992]
 K2 | 0.242 | [0.198, 0.280] | [0.176, 0.313]
 K3 | 0.969 | [0.954, 0.982] | [0.953, 0.982]
 
+== Runtime (not judged; FROZEN.md section 6) ==
+Detector pass, t_det_s + t_pose_s per image (detector at score >= 0.05, ViTPose on boxes >= 0.10, no warm-up): median 215.1 ms, p90 401.8 ms (n 182); project side (P.run_image, 2 BLAS threads): median 3.4 ms, p90 8.0 ms. GPU NVIDIA GeForce RTX 4060 Laptop GPU, memory.used before start 15 MiB, peak allocated 855.1 MiB. The GPU is shared and this is not A1's deployed timing path (that thresholds at tau before ViTPose and warms up 5 times).
+
 == POST HOC (not listed in FROZEN.md section 6; descriptive, changes no verdict) ==
 Per seed: images | recall | line | false | non-profile within 45 | profile front/back | all within 45
 seed 200 | 14 | 38/40 | 16/16 | 4 | 22/22 | 16/16 | 38/38

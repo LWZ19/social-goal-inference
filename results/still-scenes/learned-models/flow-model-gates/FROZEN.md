@@ -85,6 +85,7 @@ These facts shaped the episode weighting, the subsample sizes and gate 1's frame
 - Also the region mass M = Σ_region q, and lift = M / (n_region / N_floor).
 - Fold value = the mean over the fold's test episodes, with n episodes and n scenes. Lift and mass are means of per-episode values.
 - Δ = S_KDE - S_band.
+- **Described, outside the rule ( choice):** seed-cluster bootstrap 95% intervals for Δ (2,000 draws, `default_rng(0)`) and the count of seeds whose Δ > 0.
 
 **Selection, inside each fold's training data only.**
 - **Grid:** {FS1, FS2, FS3} × m ∈ {0.5, 1, 2, 4}.
@@ -111,6 +112,7 @@ These facts shaped the episode weighting, the subsample sizes and gate 1's frame
 
 **Compute.** At most 2 processes, `nice -n 10`, 2 threads each. Estimated at about 5 CPU-hours, most of it the ceiling's inner CV. A longer run changes nothing in this protocol.
 
+## 4. Disclosures and honesty
 - **What the reference regions are.** They are the project's own rules (`src/sgi/gt/regions.py`). Every gate-2 number measures agreement with those rules, not social correctness. Fresh seeds come from the same generator, and the 68 development scenes were authored alongside the rules.
 - **My exposure.** I read the generator's rows and recipes and the rule code before designing the features, so every feature is informed by them. Specifically:
   - The three people rules share the 0.5–1.2 m join distance from the nearest member, which f4 measures.

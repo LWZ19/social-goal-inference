@@ -1,4 +1,4 @@
-# Round 7 part D, POST HOC DESCRIPTION (sweep/confirm_selection.json; runs_ceiling4/dsv41; runs_confirm4/dsv41)
+# Round 7 part D, POST HOC DESCRIPTION (results/moving-lines/test-layouts/confirm_selection.json; results/data/moving/runs_ceiling4/dsv41; results/data/moving/runs_confirm4/dsv41)
 
 ## 1. Layouts where OW scores below 0.5 (reading T)
 

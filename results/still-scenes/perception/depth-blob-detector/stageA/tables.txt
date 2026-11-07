@@ -79,3 +79,27 @@ per model and set (listed keys): recall k/n | false/answer
 
 VLM checks: {'keys': 990, 'keys without a people list': 412}
 49 s
+
+== Process record (appended by hand after the evaluation output above; every number from the files named) ==
+Fresh seeds (step 1, ../gen_fresh.py; ../../fresh_seeds/manifest.json): seeds 100-109, 26 scenes each, 260 in all
+  (no_one 110, waiting_line 70, conversation_group 50, audience 30); 0 rejected layouts; held-out rows (group_photo,
+  lift_wait) skipped before any draw; 0 held-out episodes written. Time per scene: mean 4.13 s, min 1.9, max 9.8;
+  104.4-116.1 s per seed (log: gen_fresh.log). Worktree commit f1a488a, src and configs unmodified.
+Scorer (step 2, ../people_scorer.py): self-check on fit data (true people as detections): 289 of 289 fit scenes
+  give recall 1, 0 false, 0 merges, facing 1 (selfcheck.txt). F-real holds 39 visible people (note said 42; see
+  ../DEVIATIONS.md D1), F-ph 585. Matching reproduces the recorded sgi.run._matched_people measures on 96 of 96
+  recorded records over 8 runs and 6 models (matched count and unmatched count; check_matching.txt), run after the
+  fit freeze (D2).
+Fit (step 3, fit_grid.py; ../fit_selection.json, ../FIT.sha256): 216 settings on F-real 21 + F-ph 268; 8 feasible
+  (fb <= 0.10 in both domains), all with F-real recall 33/39; chosen z_lo 0.40, z_hi 1.90, top_lo 1.50, split_r 0.35,
+  foot_lo 0.30, foot_hi 0.70 (top_hi 1.85) by the lower max fb tie-break; fit metrics F-real 33/39 = 0.846, 0 false,
+  0/9 merged; F-ph 579/585 = 0.990, 4 false (0.015/scene), 0/143 merged. Facing variant: band (1.0-1.6 m), fit axis
+  accuracy F-real 24/33, F-ph 578/579 (all points: 18/33, 523/579).
+One general fix (../ADDENDUM_FIX.md, hashed before it was run; fit_fix.py; ../fit_selection_fix.json): the chosen
+  setting missed the F-real recall bar, all 6 F-real misses being staff merged with structure at the clip. Fix =
+  drop clip-reaching height-map cells. Re-fit: 0 of 216 settings feasible; the lowest worst-domain false-body
+  rate was 1.72 per scene (at the original's setting, where F-real recall rose to 35/39); the 34 settings with recall
+  1 in both domains had 6.1-10.1 per scene; the fix's own pick (step 4a) had F-real 39/39, F-ph 579/585 with 2.14 and
+  2.64 per scene. The rule on the union of 432 rows kept the ORIGINAL detector. chosen.json records it.
+Evaluation (step 4): rows.jsonl written once in the first pass; the VLM part of that pass stopped on a set-name
+  lookup and was re-run reading the blob rows back (../DEVIATIONS_POST_EVAL.md P1).

@@ -194,6 +194,7 @@ Table 5.1. Cells, goal steps and R0 targets (counts from the row files named in 
 ## 6. Pre-registered criteria (verbatim) and their readings
 
 **Verbatim (lead; judged on point estimates):**
+- S1 (crowds): under oracle C and L1, RF90 turns at least 50% of R0's line failures in families A1-A3, B, C and D into successes (R0: A1-A3 39 failures, B 8, C 3, D 4 at lines; recount from the rows), and adds no failure in any I06 base or group/audience variant. A4-A6 are reported separately and not judged (the project's and mentor's cue-threshold decision).
 - S2 (no harm on real records): in setting (a), RF90 has at most 1 break in each of the six primary cells, and its net (flips - breaks) is >= 0 in every primary cell. The same is reported for (b) and (c), and for the new-wording runs, not judged.
 - K1: RF90 has 3 or more breaks in any primary cell in setting (a), or a negative pooled net in (a).
 - K2: RF90 fixes fewer than 25% of the judged I06 failures.
@@ -214,6 +215,7 @@ Table 5.1. Cells, goal steps and R0 targets (counts from the row files named in 
   - If any R0 reproduction in arm 1 or in setting (a) fails and is not resolved under section 5's rule, no verdict is given.
   - `tables.py` computes the verdict from these readings.
 - **Not judged.** RF60 and RN everywhere, settings (b) and (c), the new-wording runs, and arm 1b.
+## 7. Prediction (, verbatim, written before computing)
 
 > RF90 fixes almost all A1-A3 failures by construction and some B-D failures; breaks on real records are rare because real waiting people mostly face the line's front, but VLM yaw errors (GLM within-45 about 0.55 for oblique/profile views) could turn real joiners away in setting (a).
 

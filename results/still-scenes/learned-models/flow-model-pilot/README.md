@@ -1,3 +1,4 @@
+# Phase 2: the C5 (I52) flow-matching pilot, exploratory results (2026-10-18)
 # Flow-matching pilot (C5)
 
 **Question.** Can a small flow-matching sampler, trained on generated scenes, propose acceptable places as well as the hand-written solver?
@@ -300,6 +301,7 @@ FROZEN section 7 readings; all exploratory. "Verifier's seeds" are the verifier'
 
 | Criterion | Value (n) | Outcome | Verifier's seeds |
 |---|---|---|---|
+| Gate 1: at least about 30 generator configurations | 22 (`results/still-scenes/learned-models/flow-model-gates/gate1.txt`) | Not met; **overridden by the project** (18 Oct) | — |
 | Gate 2: a KDE transfers in at least 2 of 3 LOSO folds | still running | No result | — |
 | Gate 3: I04 V1 and V3 on the I14 harness | rows and verification summary exist | Met | — |
 | S1: flow(b) ≥ C − 3 pp for at least 2 of 3 models (one-sided) | 0 of 3: −26.8, −15.8, −15.0 (n 179, 177, 193); two-sided also 0 of 3 | Not met | 0 of 3 (−25.1, −11.3, −16.1) |
@@ -321,6 +323,7 @@ Settled by the verifier (its value or reading is used above):
 3. **What entered training.** The verifier confirmed that gradient steps used only seeds 110–189, that seeds 190–199 served only for the checkpoint choice, and that no development record entered training. The 320 training keys that carry development-like scene names are generator template ids.
 
 Not settled (both given; neither changes a verdict):
+- **Latency.** The compute check measured a median of 18.3 ms (p90 32.5 ms) over all 549 records, the frozen measurement. The verifier re-measured 11.9 ms (p90 16.0 ms) over every third record (n 183) on an idle GPU. The verifier names two likely causes: the compute check's in-process `nvidia-smi` poller and a different projection code path. The writer adds a third, also inference: the compute check's own `nvidia-smi` log shows GPU use well above its own during its passes (memory in use up to 1,386 MiB against a mean of 317 MiB in (b); a mean of 898 MiB and utilisation up to 100% in (a)), which fits the Blender render seen at training. Either value is at least 27 times under the 0.5 s bar.
 - **Not recomputed** by the verifier: the label self-check, the post hoc line geometry and the figures. The LOSO models were checked from logs and curves, not retrained.
 - **Gate 2** had no result when the compute agent wrote, when the verifier checked (`inner_ceiling.log` updated at 04:52), or when this page was written (logs updated at 06:21).
 
@@ -374,11 +377,17 @@ Old:
   - Kill: (a) more than 10 points below the solver with true people; or (b) more than 10 points below C for every model; or no better than I04 V3, the Gaussian control.
 ```
 New:
+    - Setup. Training data: placeholder-generator seeds 110–189 (decision; development situations only), 4,018 labelled episodes with 128,576 label poses drawn from the reference regions; seeds 190–199 chose the checkpoint and form the in-distribution test. The input is a 64 × 64 raster of 0.10 m cells round the target (floor, people discs with facing, target, seen face, robot), with no situation label, constraint or request text. The model is a CNN encoder with a FiLM MLP (2.1 M parameters), trained with rectified flow and sampled with 16 Euler steps, 64 samples per record. On the 549 goal-step records the samples snap to the solver's floor, those no worse than the solver's place on its exclusions are kept, the densest kept sample is the top pose, and the solver's place is the fallback when none is kept (136 of 549).
+    - In distribution (seeds 190–199, 520 episodes): top-1 500 (96.2%), level with the solver under reference constraints (500, circular) and above the solver alone (300); the 20 misses are waiting_line_6 episodes whose region lies outside the raster. Leaving one situation out does not transfer: 36 of 140 lines, 0 of 100 groups, 0 of 60 audiences.
+    - Setting (b), each model's recorded people: top-1 312 of 549 (56.8%) against recorded C's 417 (76.0%); per model Qwen −26.8, GLM −15.8 and DeepSeek −15.0 points (n 179, 177, 193). Setting (a), true people: 320 against I01 P's 461. Against I04, pooled: Lift_room 6.66 against V1's 7.85 and V3's 8.78, hit@5 388 against 450 and 451, P(success) 0.568 against 0.670 and 0.749. Sampling plus projection: median 18.3 ms on the 4060 (the verifier re-measured 11.9 ms).
+    - The loss sits at lines: 83 of 261 line records against C's 196. The flow wins at the watching records (94 against 78 of 108), but those are the generator's own audience rows at seeds 0–2, so the win is probably partly in distribution (inference). Post hoc (not recomputed by the verifier): in generator lines the nearest person stands along the target's seen face (median 6 deg, n 140), in the realistic line records a median 128 deg away (n 146).
 
 ### 3. Section 6, step-8 row
 
 Old:
+| 8 (bold, optional) | After step 7 | **C5 (I52), the flow-matching placement model.** First its three zero-call gates (C2 Step 0's configuration count, the KDE transfer check, I04 as the baseline). Then the probe, only if all three pass. Not counted in the do-first total. | Gates about 1–2 d; probe about 3–5 d (guess) | 0 | Announce GPU use; the project rules on the text-embedding variant |
 New:
+| 8 (bold, optional) | After step 7 | **C5 (I52), the flow-matching placement model.** First its three zero-call gates (C2 Step 0's configuration count, the KDE transfer check, I04 as the baseline). Then the probe, only if all three pass. Not counted in the do-first total. **Exploratory pilot run 18 Oct** (`results/still-scenes/learned-models/flow-model-pilot/README.md`) [phase 2]: the project overrode gate 1 (22 configurations against about 30); gate 2 had no result yet; trained on generator seeds 110–189 by a decision. Verdict kill: with recorded people, top-1 312 of 549 against C's 417 (15–27 points below C for every model) and below I04's V1 and V3; in distribution 500 of 520; no transfer to a left-out situation; 18 ms median sampling plus projection. | Gates about 1–2 d; probe about 3–5 d (guess). The pilot used about 15 GPU-minutes, after 115 min of seed generation on the CPU | 0 | Announce GPU use; the project rules on the text-embedding variant. Any further C5 step needs the project's agreement, gate 1 on a wider generator, gate 2's result and its own held-out design |
 
 ### 4. Revision note
 
@@ -387,6 +396,7 @@ Old:
 and add step-3b notes to the opening lines, Programmes A and C, section 6's cut order, I46's seeds, section 7's runs and section 8's render threat.
 ```
 New:
+- **Phase 2, C5 flow-matching pilot (18 Oct; exploratory).** the project overrode C5's gate 1 (22 configurations against about 30) and decided that generator seeds 110–199 are the pilot's training data (placeholder generator, development situations only, outside I46's seeds 3–99). The pilot is done offline (`results/still-scenes/learned-models/flow-model-pilot/README.md`): a small flow model was trained and sampled on the GPU in the read-only torch environment, and no provider model was called. Its protocol note was frozen and hashed before any raster or model, and an independent verifier reproduced every scored number, retraining the main checkpoint bit for bit. Verdict kill (exploratory): with each model's recorded people the flow's top-1 is 312 of 549 against C's 417, 15–27 points below C for every model; with true people it is 320 against I01 P's 461; it is below I04's V1 and V3 on lift and hit@5. It scores 500 of 520 in distribution, does not transfer to a left-out situation, and samples plus projects in a median 18 ms. Gate 2 had no result when the page was written. "How to read" defines [phase 2], and C5 and section 6 (step 8) carry the result, and so do the opening lines and section 4.6.
 
 ### 5. Opening lines: the models run (optional, recommended)
 
@@ -406,3 +416,4 @@ Old:
 It would also need its own held-out design, fixed beforehand: fresh seeds plus at least one new situation written blind (I46). I04's soft density would be the baseline it must beat (guess at the gating thresholds).
 ```
 New:
+It would also need its own held-out design, fixed beforehand: fresh seeds plus at least one new situation written blind (I46). I04's soft density would be the baseline it must beat (guess at the gating thresholds). [phase 2] An exploratory pilot ran on 18 Oct with gate 1 overridden by the project (`results/still-scenes/learned-models/flow-model-pilot/README.md`). It fits the generator (500 of 520 in distribution), but its C5 verdict is kill: 15–27 points below C with each model's recorded people, below I04's soft density and its Gaussian control, and no transfer to a left-out situation. (inference) It bears out reasons 2 and 3 above: it did not transfer to a situation it had not seen, and I04's cheaper density beat it.

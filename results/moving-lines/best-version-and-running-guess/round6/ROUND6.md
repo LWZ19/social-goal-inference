@@ -1,9 +1,10 @@
+# Round 6: does goal jitter cost the role belief its place, or follow from losing it? (analysis, 3 Nov)
 
 Written before running anything below on the confirm runs. Exploratory: the confirmatory test is scored
-(`round4/CONFIRM_RESULT.md`), and nothing here is a claim.
+(`results/moving-lines/best-version-and-running-guess/round4/CONFIRM_RESULT.md`), and nothing here is a claim.
 
 Starting point:
-- `round4/q_confirm_explore_out.txt` ec0459bd: CT3F's goal jumps 8.9 and 7.6 times a minute after the first service, against CT4PJ's 13.7 and 13.9.
+- `results/moving-lines/best-version-and-running-guess/round4/q_confirm_explore_out.txt` ec0459bd: CT3F's goal jumps 8.9 and 7.6 times a minute after the first service, against CT4PJ's 13.7 and 13.9.
 - On the layouts where CT4PJ trails CT3F, CT4PJ jumps more on 28 of 34 and 37 of 44.
 - Rank correlation of d(strict) with d(jumps): −0.25 and −0.29.
 

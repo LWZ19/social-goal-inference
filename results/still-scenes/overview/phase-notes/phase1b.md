@@ -431,6 +431,7 @@ Table 4.1. Trigger catches and false triggers.
 | Kill 3: > 60% unfixable and the live check gains < 2 of 10 | 21/46 = 46% unfixable; no live check run | Cannot fire |
 | **Overall (B-add)** | | **Neither success nor kill** |
 | Prediction in the note (inference): B-add trips kill 1 | | Did not hold, by one record |
+| Secondary arms, same bars (lines GLM / DeepSeek; fixable; flips vs breaks) | B-prune 55 / 74, 18/25, 22 vs 1. B-relocate 57 / 71, 16/25, 20 vs 1. B-relocate-prune 57 / 74, 18/25, 24 vs 1 | All bars met, no kill. Secondary results; whether pruning is allowed is a decision |
 
 ### I11 Stage 0
 
@@ -456,6 +457,7 @@ Table 4.1. Trigger catches and false triggers.
 | Prediction in the note (data-informed): about 11 of 15 | 11 | Held |
 
 ---
+## 6. Where the compute checks and the verifiers differ
 
 Every criterion verdict agrees. The verifiers reproduced every reported number with their own code: all Stage A rows; 2,736 records × 4 arms in Stage B; all 3,716 I11 records, with 0 field differences. What differs is wording and description.
 
@@ -513,6 +515,7 @@ Incidental, with no effect on any result:
 **I46.** Seeds 100–109 are now fit data: I03 fitted its thresholds on them, and I11 measured its components on them. They must stay out of the sealed set. Seeds 3–99 remain unopened and reserved.
 
 **I11.**
+- **Lift errors are real** (43.5% of GLM's and DeepSeek's wrong targets). A snap to the true target's mask fixes every one of them and breaks no right-target record, unlike the front snap (37 breaks). A target mask good enough to snap to is therefore worth having. It could come from SAM 3, if the project allows it, or from the VLM through marks.
 - **Zero-call depth components get only background leaks** (V1 9 of 46, 0.45 of the gain).
   - Occluder captures need the object behind, which V3 finds sometimes (data-informed).
   - A parcel always merges with its table, so components cannot isolate a parcel.
@@ -557,6 +560,7 @@ Old:
 4. I03: depth-blob audit. I11 Stage 0: wrong-target decomposition with snap-and-lift.
 ```
 New:
+4. I03: depth-blob audit. I11 Stage 0: wrong-target decomposition with snap-and-lift. Done 17 Oct (`results/still-scenes/overview/phase-notes/phase1b.md`), each under a protocol note frozen and hashed before any evaluation scoring. I03 Stage A is neither success nor kill (realistic recall 0.890; every miss is counter staff). Stage B's primary add-only arm is neither (GLM lines 42 to 44, DeepSeek 68 to 70); the relocate and prune arms pass its bars as secondary results, and pruning needs a decision. I11 Stage 0 is neither: the oracle snap-and-lift meets S1–S3, but depth components reach 0.45 of its gain against 0.70. I33's trigger catches 11 of 15 (neither).
 
 ### 4. Section 6, step-3 row (done)
 
@@ -565,12 +569,15 @@ Old:
 | 3 | Days 8–11 | I03 Stages A–B; I11 Stage 0 (shared mask and blob code; gives I33 Stage B) | First result: about 2 d each; about 3.5 d together | 0 | — |
 ```
 New:
+| 3 | Days 8–11 | I03 Stages A–B; I11 Stage 0 (shared mask and blob code; gives I33 Stage B). **Done 17 Oct** (`results/still-scenes/overview/phase-notes/phase1b.md`): protocol notes frozen and hashed before scoring; fit seeds 100–109. I03 Stage A neither; Stage B add-only neither, with the relocate and prune arms passing its bars as secondary results; I11 Stage 0 neither (S4 fails, 0.45 of the oracle gain); I33 Stage B neither (11 of 15). | First result: about 2 d each; about 3.5 d together | 0 | — (pruning remains a decision; L3's gate is not met by the primary arm) |
+### 5. Seed decision: I03 Stage A line
 
 Old:
 ```text
 - Stage A: detector quality. Thresholds are re-derived from scratch against ground-truth positions only, on whitelisted dev scenes plus fresh seeds 3–12. No threshold is taken from the pilot. Ignore blobs within 0.5 m of the target point.
 ```
 New:
+### 6. Seed decision: section 6, shared CPU
 
 Old:
 ```text
@@ -588,6 +595,12 @@ Old:
   - More than 60% of failures unfixable offline, and the optional 10–20-call check gains fewer than 2 of 10.
 ```
 New:
+  - Stage A fit, on fit data only (21 realistic and 8 placeholder worked examples, 260 fresh-seed scenes; 216 settings): keep 0.40–1.90 m, top at least 1.50 m, split radius 0.35 m, footprint 0.30–0.70 m. The one allowed general fix (dropping clip-height cells) was tried on fit data and not adopted: every fixed setting had at least 1.72 false bodies per scene in one fit domain.
+  - Stage A, scored once on the 68 development scenes. Realistic (42 images): recall 105 of 118 = 0.890 (Wilson 95% 0.821–0.934), 0.143 false bodies per scene, 0 of 33 neighbour pairs merged, median xy error 0.077 m. Placeholder (26 scenes): 58 of 58, 0 false, 0 of 11 merged.
+  - Every non-staff person is found (line members 64 of 64, group members 60 of 60, others 36 of 36). All 13 misses are counter staff whose blob joins tall structure at the 1.90 m clip (staff recall 3 of 16). The 6 false bodies are two blobs of one layout, repeated in its three arms (post hoc).
+  - Stage B (old wording, 252 records per model; step 0 reproduces 1,301 of 1,301 solver places). Add-only: GLM lines 42 to 44 (bar 47), DeepSeek 68 to 70 (bar 71), Qwen 234 unchanged, 2 of 25 fixable line failures recovered (bar 13), 4 flips and 1 break over 756. Verdict: neither. Kill 1 misses by one record (DeepSeek's +2 comes from one people answer), so the note's prediction that it would fire did not hold. The flips are I01 R3's, record for record: the solver uses an added body only when it joins the line, which happened in 2 of the 24 GLM line failures that received real missed people.
+  - Secondary arms, same bars, all met with no kill: add-plus-prune GLM 55 / DeepSeek 74 lines (18 of 25 fixable recovered); relocate (data-informed: its 40 px radius was registered after I01 on these runs) 57 / 71 (16 of 25); relocate-plus-prune 57 / 74 (18 of 25). The gain is I01's R4 mechanism: the moved detections lie a median 3.5–4.2 m from their blobs. Pruning also drops 34–44 detections per model (summed over solver steps) that are real staff the blobs miss, and it breaks 2 records at the new wording (DeepSeek, Haiku).
+  - (inference) Add-only is closed as a C fix on these sets. What remains is relocating or pruning (a decision, below) and the constraints: of the line failures the best arm leaves, GLM's mostly state no `come_after` (11 of 14) and DeepSeek's leave a listed member out of the line (9 of 9).
 
 ### 8. I11, first probe: the Stage 0 result
 
@@ -643,8 +656,11 @@ New:
     - [phase 1] I03's people scorer is ready for A1 (17 Oct): `results/still-scenes/perception/depth-blob-detector/people_scorer.py`, `score_people(people, scene, th=None, *, exempt_xy=(), facing='full')`. It calls the package's own matching (`sgi.run._matched_people`) and visibility test, and returns recall, false people, merged neighbour pairs, xy error, full-yaw and axis facing, and misses by role. The rows to compare against, on the same scenes: the depth blobs (`results/still-scenes/perception/depth-blob-detector/stageA/rows.jsonl`; realistic recall 0.890, 0.143 false per image, every miss counter staff, axis facing 0.686) and the six models' recorded people lists (`results/still-scenes/perception/depth-blob-detector/stageA/vlm_rows.jsonl`; realistic recall 0.842–0.994, 0.028–0.342 false per answer; `results/still-scenes/overview/phase-notes/phase1b.md` section 1). (inference) A1 could freeze on I03's fit data (the worked examples and fresh seeds 100–109), so that all three people sources share one split.
 ```
 
+### 12. Section 7: the pruning decision (optional)
 Old:
+- Whether pruning listed people is allowed in the I03 method. [phase 1] (inference) This decision, or one letting the audit move listed people, now carries most of I03's value: in I01's replay, dropping unmatched detections (R4) flips 15 of GLM's 29 line failures and adding missed people (R3) flips 2 (DeepSeek 4 and 2 of 15).
 New:
+- Whether pruning listed people is allowed in the I03 method. [phase 1] (inference) This decision, or one letting the audit move listed people, now carries most of I03's value: in I01's replay, dropping unmatched detections (R4) flips 15 of GLM's 29 line failures and adding missed people (R3) flips 2 (DeepSeek 4 and 2 of 15). [phase 1] I03 Stage B tested both with real blobs: relocating and the two prune arms pass every Stage B bar (GLM lines 55–57, DeepSeek 71–74), while add-only does not. Pruning also drops 34–44 detections per model that are real counter staff the blobs miss, and it breaks 2 records at the new wording. Relocating drops no one, but its 40 px radius was registered after I01 on the same runs, and DeepSeek lands exactly on its bar (`results/still-scenes/overview/phase-notes/phase1b.md` section 2).
 
 ### 13. Section 6, L3's gate (optional)
 
@@ -699,3 +715,4 @@ Old:
 Short [phase 1] notes also go into Programme A's thesis, I03, I04, I11 and the I36 parked row.
 ```
 New:
+- **Phase 1, second batch (17 Oct).** I03 Stages A–B, I11 Stage 0 and I33's Stage B trigger are done, zero-call. Each ran under a protocol note frozen and hashed before any evaluation scoring, and each was recomputed by an independent verifier (`results/still-scenes/overview/phase-notes/phase1b.md`). I03 Stage A is neither success nor kill (realistic recall 0.890; every miss is counter staff). Stage B's primary add-only arm is neither, while the relocate and prune arms pass its bars as secondary results. I11 Stage 0 is neither (S1–S3 met; depth components reach 0.45 of the oracle gain against 0.70). I33's trigger is neither (11 of 15). Seed decision: I03's fitting seeds moved from 3–12 to 100–109, and seeds 3–99 are reserved for the I46 sealed set. "How to read", sections 1.2 and 6 (step 3, the shared-CPU note) and I03, I09, I11 and I33 carry the results; optionally also the opening lines, L3's gate, I46, section 7 and finding 9.

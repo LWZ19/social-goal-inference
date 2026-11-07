@@ -29,7 +29,7 @@ These are the scenes of I09 A1. Fit and evaluation layouts come from different g
 
 **Thresholds.** Visibility on evaluation scenes uses the run's recorded config. On fit scenes it uses `configs/default.yaml`. The scorer asserts that `person_radius_m` is 0.25, `visibility_min_samples` is 3 and `visibility_depth_tolerance_m` is 0.3 in every case.
 
-**Fresh seeds** (`i03/gen_fresh.py`, a single process):
+**Fresh seeds** (`results/still-scenes/perception/depth-blob-detector/gen_fresh.py`, a single process):
 - `cfg = load_config(DEFAULT_CONFIG)`.
 - For each seed k from 100 to 109, the output goes to `fresh_seeds/seed<k>/`.
 - First pass: set `rng = np.random.default_rng(k)`. For every row of `_SPLITS`, call `_write_scene(out/split, index, row, rng, cfg, counts)` if `row[0] in cfg.dev_situations`.
@@ -76,7 +76,7 @@ These are the scenes of I09 A1. Fit and evaluation layouts come from different g
 3. Break ties in this order: lower max_D mp_D, then lower max_D fb_D, then the least restrictive setting. Least restrictive means larger split_r, then lower z_lo, higher z_hi, lower top_lo, lower foot_lo and higher foot_hi.
 4. If no setting is feasible, take the lowest max_D fb_D among settings with min recall ≥ 0.95. Failing that, take the highest min recall among settings with max_D fb_D ≤ 0.30. Failing that, take the lowest max_D fb_D.
 
-**Freeze.** The 216-row table and the choice go to `i03/fit_selection.json`, with its hash in `FIT.sha256`. Both are written before Stage A code loads any evaluation scene.
+**Freeze.** The 216-row table and the choice go to `results/still-scenes/perception/depth-blob-detector/fit_selection.json`, with its hash in `FIT.sha256`. Both are written before Stage A code loads any evaluation scene.
 
 **One general fix.** The REPORT's kill line allows "one general fix".
 - It applies only if the chosen setting misses a Stage A success bar on fit data.
@@ -85,7 +85,7 @@ These are the scenes of I09 A1. Fit and evaluation layouts come from different g
 - It replaces the original only if it wins under the same ordering.
 - It is never made after seeing evaluation data. The kill bars are judged after it.
 
-## 4. Scorer (`i03/people_scorer.py`; I09 A1 reuses it unchanged)
+## 4. Scorer (`results/still-scenes/perception/depth-blob-detector/people_scorer.py`; I09 A1 reuses it unchanged)
 `score_people(people, scene, th=None, *, exempt_xy=(), facing="full") -> dict`
 
 **Inputs.**

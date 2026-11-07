@@ -30,6 +30,7 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
   - Reported only: x-test-3 (10-12, 15). Qwen 3.8 and GLM-5.3 (10-14, 25 each) are added once item 9 has cached
     their R1 answers.
 
+## Bars (judged once, after all RTw episodes and the mechanics check)
 - **H4 (primary).** Pooled over the 125 cells, on whole-episode strict share in line (SCORING_STRICT.md, as the
   headline): CT2 wins > losses, and the exact two-sided sign test gives p ≤ 0.05.
   - Ties are exact equality, as in `summarise_fresh.paired`.
@@ -42,6 +43,7 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
 - **Descriptive:** the RTw episodes whose anchor left the queue, and those with no anchor (the point more than 3 m from
   anyone).
 
+## Mechanics (the run checks before sending totals)
 - One RTw episode per cell, exit 0.
 - No answer with a `vlm_error`: a cache miss would show as one.
 - R1's answer is the cached one, with the same pose.
@@ -52,6 +54,7 @@ The old evidence is 15 episodes per model on seeds 0-2. It is significant only p
 - H4 holds under strict scoring, with CT2 ahead by about 0.1-0.2.
 - Under the primary scoring the gap is smaller, and may not be significant, as on seeds 0-2.
 - The anchor leaves the queue in most RTw episodes: it follows the served person away.
+## Run (run; from `moving/`; cache-only; 2 workers suggested, alongside item 5)
 
     cd results/moving-lines/design-and-scoring
     P=.venv/bin/python

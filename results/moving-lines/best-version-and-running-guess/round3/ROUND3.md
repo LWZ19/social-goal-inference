@@ -1,3 +1,4 @@
+# Round 3: decide with the belief (analysis, 3 Nov 2026)
 
 ## 1. What step A found (`a_flicker.py`, `a_flicker_out.txt`)
 
@@ -65,6 +66,7 @@ Per tick from delivery, against the dump's truth:
 
 Conditions: clean, S2m, S3, S23m. Compared: frozen CT4-min with the 0.5 threshold, CT5 with the threshold, and CT5
 with the decision.
+## 6. Measurement rule for a blocked place in turn (draft for the run; caution 3)
 
 The sim's `in_line` needs a spot behind the last that is 0.5-1.2 m from them, with heading within 45° and no human
 within 0.55 m. When a non-waiter stands there, no such spot may exist, and no arm can be "in line".
@@ -125,6 +127,7 @@ Files: `b_calibrate*_out.txt`, `c_eval_out.txt` (V0-V4), `c_eval_window_out.txt`
   the snapshot as the mean over that window halves roster changes (0.148 to 0.076 clean; 0.231 to 0.101 under S3)
   and last switches (16 to 10 a minute). The cost is a later admission of the newest joiner: right last 0.49 to
   0.39 on clean fit seeds.
+  The price is many "far" ticks (0.60-0.76): the robot comes after anyone whose P(waits) is at least 0.2.
 - **Cost sensitivity, reported only.** The frozen point sits mid-range: ratio 8 and a doubled move cost score
   slightly lower on their own costs, and ratio 2 and no move cost score higher. Nothing is changed.
 
@@ -134,6 +137,7 @@ Files: `b_calibrate*_out.txt`, `c_eval_out.txt` (V0-V4), `c_eval_window_out.txt`
 
 Whether "far" (standing behind a possible non-waiter) costs time in line, and whether halving the flicker buys time
 in line, are closed-loop questions.
+## 8. Port (for the `src/sgi/roles.py` and the CT arm in `serve.py`)
 
 1. **`RoleBelief`: a `STATIC_WIN_S` parameter**, 0 for CT4 and 5.0 for CT5.
    - In `step`, after the static vector is built: append `(t, np.log(static))` to a history, drop entries older than
@@ -153,6 +157,7 @@ in line, are closed-loop questions.
 4. **Log per re-solve:** `choice`, the expected cost of each candidate, `marginals`, `roster`, and the history
    frames as for CT4. This allows a reproduction check against `ct5.py` (bar 0.95 on the choice, as in
    CT4_FROZEN §5).
+## 9. Update to section 6 (3 Nov, after the band check, `results/moving-lines/best-version-and-running-guess/round3_check/`)
 
 - **A blocked place almost never happens from the first service on.**
   - Robot idle, `band_free` is false on 1.4% of design frames and 0.4% of spent-sweep "ours" frames.
@@ -185,7 +190,9 @@ in line, are closed-loop questions.
 
 ## 11. Before stage 2 output (3 Nov, ~07:00)
 
-- **The flicker carries to Sonnet** (`posthoc/REPLICATE_SONNET.md`, expectation hashed before running). Roster
+  (recall 0.92-0.93, almost no empty ticks), but it stands in line less. Strict share from the first service:
+  CT3F 0.223, CT4 0.121. On overall strict share, CT3F is ahead in 7 of 8 model × flag cells (DeepSeek's "both" is
+- **The flicker carries to Sonnet** (`results/moving-lines/best-version-and-running-guess/posthoc/REPLICATE_SONNET.md`, expectation hashed before running). Roster
   changes per re-solve: CT4 0.138, CT3F 0.053. Pose moves per minute: 23.1 against 9.2.
 - **Follow-up questions, fixed now** in case the pilot gives the "P1-P3 hold, P4 fails" outcome. They are
   exploratory and reported only:

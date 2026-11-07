@@ -1,3 +1,4 @@
+# Round 3 pilot: predictions written before stage 2 exists (analysis, 3 Nov 2026)
 
 Offline replay on the 24 pilot layouts: robot-idle dumps, CT2's first answers, `g_pilot_predict_out.txt`. No CT3F,
 CT4, W0 or CT5 output existed when this was written. This is a pilot on design data, so nothing here is a claim. It

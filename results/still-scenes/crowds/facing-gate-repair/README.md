@@ -43,6 +43,7 @@ Paths below are relative to this folder (`results/still-scenes/crowds/facing-gat
 | S2, real records (arm 2, setting (a)) | **Holds.** 0 breaks in each of the six primary cells; nets 0, 0, +1, 0, 0, 0 | Barely tested: R0 absorbed someone in only 4 of the 549 primary goal steps. |
 | K1 | Does not fire (most breaks in a cell: 0; pooled net +1) | |
 | Not judged: RF60, RN, settings (b) and (c), new wording, arm 1b | Crowds: RF60 fixes 30 and RN 35 of 54, with no break. Records: in (b) and (c) RF90 changes nothing in any cell; RN loses up to 5 successes per cell. Arm 1b: RF90 raises mean line L1 by 0.10–0.14 per model, with 0 per-draw breaks | Real lines need some absorption, and the people absorbed there face the line's front, so the gate keeps them. |
+| **Repair probe overall** | **Method candidate** (computed by `tables.py`; recomputed by the verifier's own code) | A proposal for the project, not a change. check and verifier differ on four minor points, none a criterion value, so under FROZEN section 9 the verdict waits for the analysis. |
 
 Shared cautions:
 - **Development records.** Already studied in I01, I14 and A2. The watching cells have n 36. Judgements rest on point estimates.
@@ -142,6 +143,7 @@ Table 2.4. The people R0 absorbed (e0), with the gate's f · u towards the curre
 | D2 | 4 | −0.587 / +0.666 / +0.949 | 3 | 3 |
 
 - **A3 sits on RF90's boundary**, as the note predicted: the confuser faces 90° off the line, with up to ±0.15 rad of jitter. RF90 lets 7 of 15 in, so the jitter decides the gate there.
+- **But no rule succeeds at A3**, not even RN. The compute check's reason is that the turned-away confuser's own 1.0 m space covers the place in turn. The verifier showed that this is not enough: under RN that space also covers the place in turn at A1 and A2, where RN succeeds 24 of 24. What separates A3 is how close the confuser stands. Writer's tally from the verifier's RN rows (the nearest candidate's distance from the place in turn), extending the verifier's A1–A3 figures to A4–A6:
 
 | Level | Confuser's distance from the place in turn | RN success |
 |---|---|---|
@@ -269,6 +271,7 @@ Table 4.2. The four primary goal steps with an absorption in setting (a) (`table
 | s20 real, `real_eval_13_waiting_line_3`, e1, 2 | #1: −0.389 | F | **S (flip)** | S (flip) | S (flip) |
 | s20 staffed, `staffed_eval_13_waiting_line_3`, e1, 1 | #1: +0.218 | F | F | F | F |
 | s20 dev_seed2, `eval_15_audience_5`, e0, 2 | #3: +0.986 | S | S | S | S |
+- **The one near-break** (the verifier's nuance; not a disagreement). In `real_eval_09` e0 trial 1, R0 had two candidates: #1 (f · u −0.338, 0.333 m from the place in turn) and #2 (f · u +0.451, 0.340 m). RF90 turned #1 away and let #2 in, so the success held; RF60 and RN turned both away and broke. With true people (setting (b)) the same #1 faces the line's front (f · u +0.996; writer's reading of the verifier's rows), so the model's yaw was wrong there. This is the risk the analysis predicted, VLM yaw errors turning real joiners away, seen once; RF90's 0 breaks depended on a second person standing there.
 
 ### What RN costs, and who is absorbed on real records
 
@@ -296,8 +299,10 @@ Table 4.3. RN's breaks, that is how often absorption is needed (`tables.txt` Tab
 | K1 "RF90 has 3 or more breaks in any primary cell in setting (a), or a negative pooled net in (a)." | Most breaks in a cell: 0; pooled net +1 | Does not fire |
 | K2 "RF90 fixes fewer than 25% of the judged I06 failures." | 29 of 54; fires at 13 or fewer | Does not fire |
 | R0 reproduction in arm 1 and setting (a) (otherwise no verdict) | Full (229 of 229 scenes; 1,265 of 1,265 goal steps) | Met |
+| **Verdict** "method candidate if S1 and S2 hold and no kill fires; kill if K1 or K2 fires; otherwise neither. A method candidate is still only a proposal for the project (pipeline change), not a change." | Computed by `tables.py`; recomputed by the verifier's own code | **Method candidate**; the verdict waits for the analysis (FROZEN section 9) |
 
 - Not judged, as the design says: RF60 and RN, settings (b) and (c), the new-wording runs and arm 1b (sections 2–4).
+- **the prediction** (verbatim): "RF90 fixes almost all A1-A3 failures by construction and some B-D failures; breaks on real records are rare because real waiting people mostly face the line's front, but VLM yaw errors (GLM within-45 about 0.55 for oblique/profile views) could turn real joiners away in setting (a)." Against the outcome: A1–A2 yes (24 of 24), A3 no (0 of 15, and no rule could); B–D some (5 of 15); the people absorbed on the records face the line's front (f · u ≥ 0.629 in (b) and (c)); a model's yaw turned a real joiner away once, in a DeepSeek record rather than a GLM one, and caused no break.
 
 ---
 
@@ -325,6 +330,7 @@ Not a disagreement:
 
 **For failure (i).**
 - A facing gate fixes the clear cases: a confuser facing away from the line (A1–A2, 24 of 24) and some B–D cases. It breaks nothing on I06's crowds, and nothing on the development records in any setting.
+- It does not fix most of what remains of failure (i), for two reasons the probe measured. First, some unlisted people near a line's end face its front (B clusters and D bystanders, f · u up to +0.99); facing cannot tell them from waiting people, and only position or other context could. Second, at A3–A6 the confuser stands 0.03–0.44 m from the place in turn. There no join rule succeeds under L1, not even nobody joining, so those scenes are a labelling question (the cue-threshold decision), not a solver question.
 - Never absorbing is not an option. On real records, with true or detector people, RN loses up to 5 successes per DeepSeek cell, because the waiting list misses real waiting people who stand and face as members do (f · u 0.93–1.00). The facing gate keeps every one of them. So the gate sits between R0 and RN: it keeps the absorptions real lines need and drops the ones that face away.
 
 **How strong the evidence is.**
@@ -424,6 +430,8 @@ Old:
 The zero-call curves do not answer RQ2; that still needs the VLM crowd run.
 ```
 New:
+  - Crowds (I06's 229 scenes, oracle C, L1). Of the 54 judged line failures (A1–A3, B1, C1, D2), RF90 turns 29 into successes (A1 12 of 12, A2 12 of 12, A3 0 of 15, B1 2 of 8, C1 2 of 3, D2 1 of 4; 27 needed) and breaks nothing anywhere. RF60 fixes 30 and RN 35, also with no break. Failure (i) fires in 60 of 153 relevant variants under RF90 (R0 99). A3–A6 stay at 0 under every rule, RN included: there the confuser stands 0.03–0.44 m from the place in turn, against 0.55–0.94 m at A1–A2. Several B and D confusers face the line's front (f · u up to +0.99), so RF90 fixes 5 of the 15 B–D failures, where RN fixes 11.
+  - Criteria: S1 holds (29 of 54; no break at the 30 bases or the 46 group and audience variants); S2 holds (0 breaks per primary cell; nets 0, 0, +1, 0, 0, 0); K1 and K2 do not fire. Verdict, computed by code: method candidate, a proposal for the project and not a change. An independent verifier coded the gate itself and reproduced every R0 target and every count. check and verifier differ on four minor points that change no criterion (a bytecode cache written into an earlier phase folder, a wrong time in `DEVIATIONS.md`, one rounded median, the reason A3 fails), so the note has the verdict wait for the analysis.
 
 ### 9. I19: the payoff on crowded lines
 
@@ -482,6 +490,7 @@ Old:
 "How to read" defines [phase 2], and C5 and section 6 (step 8) carry the result, and so do the opening lines and section 4.6.
 ```
 New:
+- **Phase 2, I06 repair probe (18 Oct).** A follow-up to I06's first probe tested a facing gate on joining a line, with zero calls (`results/still-scenes/crowds/facing-gate-repair/README.md`): research copies of `sgi.solver._turn`, the primary one adding a single condition (an unlisted person may join only when facing into the line's front half-plane), installed at run time in the probe's own process, so the package is unchanged. The protocol note was frozen and hashed before any repair rule was coded (data-informed: the rules answer the first probe's failure (i)). An independent verifier coded the gate itself and reproduced every R0 target (I06's arm 3 and noisy draws, the recorded successes, I01's P and A2's D) and every count. Verdict method candidate (S1 and S2 hold, no kill fires): the primary gate turns 29 of 54 judged crowd failures into successes (27 needed) with no break, and breaks nothing on the development records, where only 4 of 549 primary goal steps had an absorption. It is a proposal for the project, not a change, and the note has the verdict wait for the analysis, since check and verifier differ on four minor points that change no criterion. "How to read" lists the page under [phase 2], and the opening lines, finding 2, sections 1.2 (step 6) and 1.3, I06, I19, section 6 (the decision gate), Programme B and section 7 (the heading question, crowd labels) carry the result; optionally also section 5's start recommendation.
 
 ### 15. Section 5, "Which to start with": Programme B's condition (optional)
 

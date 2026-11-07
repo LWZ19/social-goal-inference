@@ -69,6 +69,13 @@ dsv41 ('waiting_line', 'near', 'reach', 'gap<0.3') 5
 dsv41 ('waiting_line', 'near', 'reach', 'gap>=0.3') 10
 dsv41 ('waiting_line', 'near', 'unreach', 'gap<0.3') 9
 
+=== N1 summary, scores recorded: E (fsc) failures at groups with the right target ===
+near = distance to region <= 0.3 m; on a body (judge) = min_body_gap_m < 0.3 (robot's edge within 0.3 m of a body disc, i.e. personal-space intrusion); overlap = min_body_gap_m < 0 (robot disc overlaps a body disc of radius 0.25 m)
+qwen38_low  n   5  marked-point   5  near   4  on-body(gap<0.3)   3  near&on-body   3  overlap(gap<0)   2  near&overlap   2  unreachable   4
+glm53       n  16  marked-point  16  near  15  on-body(gap<0.3)  14  near&on-body  13  overlap(gap<0)  12  near&overlap  11  unreachable  12
+dsv41       n  23  marked-point  23  near  15  on-body(gap<0.3)  18  near&on-body  12  overlap(gap<0)  18  near&overlap  12  unreachable  17
+pooled      n  44  marked-point  44  near  34  on-body(gap<0.3)  35  near&on-body  28  overlap(gap<0)  32  near&overlap  25  unreachable  33
+
 === N1 part 1 (near.py block 1), scores now: failures with the right target and a distance to the region; all sources ===
 qwen38_low  cot conversation_group  n  10 med 0.02 <=0.15:   9 <=0.3:   9 <=0.5:  10 inreg_fail 4
 qwen38_low  cot no_one              n   8 med 0.11 <=0.15:   5 <=0.3:   6 <=0.5:   8 inreg_fail 0
@@ -120,6 +127,13 @@ dsv41 ('waiting_line', 'far', 'unreach', 'gap>=0.3') 2
 dsv41 ('waiting_line', 'near', 'reach', 'gap<0.3') 5
 dsv41 ('waiting_line', 'near', 'reach', 'gap>=0.3') 10
 dsv41 ('waiting_line', 'near', 'unreach', 'gap<0.3') 9
+
+=== N1 summary, scores now: E (fsc) failures at groups with the right target ===
+near = distance to region <= 0.3 m; on a body (judge) = min_body_gap_m < 0.3 (robot's edge within 0.3 m of a body disc, i.e. personal-space intrusion); overlap = min_body_gap_m < 0 (robot disc overlaps a body disc of radius 0.25 m)
+qwen38_low  n   5  marked-point   5  near   4  on-body(gap<0.3)   3  near&on-body   3  overlap(gap<0)   2  near&overlap   2  unreachable   4
+glm53       n  16  marked-point  16  near  15  on-body(gap<0.3)  14  near&on-body  13  overlap(gap<0)  12  near&overlap  11  unreachable  12
+dsv41       n  23  marked-point  23  near  15  on-body(gap<0.3)  18  near&on-body  12  overlap(gap<0)  18  near&overlap  12  unreachable  17
+pooled      n  44  marked-point  44  near  34  on-body(gap<0.3)  35  near&on-body  28  overlap(gap<0)  32  near&overlap  25  unreachable  33
 
 === N2: median distance to the region of failed records with the right target at waiting lines ===
 -- scores recorded; marked points only (source direct_marking)

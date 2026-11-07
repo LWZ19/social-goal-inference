@@ -491,3 +491,8 @@ T9. Pre-registered criteria for P1 (441 primary records; point estimates) and th
   P1 pooled AUROC 0.708 [0.564, 0.828] against S5a (flags) pooled 0.595 [0.526, 0.678]: strictly above True
   Success condition: False; kill condition (pooled P1 < 0.60): False
   VERDICT: NEITHER
+
+  Prediction (the , verbatim): "P1 helps for GLM and DeepSeek, whose people answers carry phantoms that the detector does not confirm, and barely for Qwen, whose people answers are nearly perfect; S4 (trial disagreement) is the strongest single signal but costs extra calls; wrong-target failures stay invisible to P1-S3."
+  Part 1 (P1 >= 0.70 in old GLM and old DeepSeek, < 0.60 in old Qwen): old GLM 0.738, old DeepSeek 0.688, old Qwen 0.645 (9 failures) -> does not hold
+  Part 2 (S4 strictly highest pooled primary AUROC among P1, S2, S3, S4, S5a, S5b): P1 0.708, S2 0.741, S3 0.691, S4 0.774, S5a 0.595, S5b 0.459 -> holds
+  Part 3 (pooled primary wrong-target AUROC < 0.60 for each of P1, S2, S3): P1 0.624, S2 0.716, S3 0.613 -> does not hold

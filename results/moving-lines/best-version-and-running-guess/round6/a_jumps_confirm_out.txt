@@ -1,6 +1,6 @@
-# Round 6, EXPLORATORY: goal jumps and leaving (sweep/confirm_selection.json; not claims)
+# Round 6, EXPLORATORY: goal jumps and leaving (results/moving-lines/test-layouts/confirm_selection.json; not claims)
 
-## runs_confirm4/dsv41
+## results/data/moving/runs_confirm4/dsv41
 
 ### J-a: layouts where CT4PJ jumps more than CT3F (jumps per minute from the first service)
 
@@ -27,7 +27,7 @@
 - fired: n 48, mean -0.044, share of the total gap 0.66
 - never: n 18, mean -0.062, share of the total gap 0.34
 
-## runs_confirm4/sonnet55_low
+## results/data/moving/runs_confirm4/sonnet55_low
 
 ### J-a: layouts where CT4PJ jumps more than CT3F (jumps per minute from the first service)
 

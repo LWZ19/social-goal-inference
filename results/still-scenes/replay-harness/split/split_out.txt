@@ -15,6 +15,7 @@ Definitions (all from the recorded score of each record; a rescore check is prin
   reported in the column `out&unr`.
 Realistic arms pooled: real, staffed, plain (84 records each per run, 252 per model x method).
 
+
 ==========================================================================================================================
 TABLE 1. New wording: Qwen s21, others s23; realistic arms pooled (real+staffed+plain), 3 trials
 ==========================================================================================================================

@@ -56,6 +56,14 @@ ratio qwen36_35/qwen38:
    people       med tok/s x1.89   sum-ratio tok/s x2.05   med out tok x1.32   med latency x0.59
    plan         med tok/s x1.65   sum-ratio tok/s x1.72   med out tok x1.18   med latency x0.65
 
+-- the judge lat.py reading, per run (every call, cached included); success = recorded score.success
+s8_none_qwen36_35          n=84 succ 45 tok/s med 97  plan:1.6s/194t context:0.6s/35t
+s8_convlm_qwen36_35        n=84 succ 69 tok/s med 112  plan:1.6s/194t context:0.6s/35t people:1.7s/245t constraints:3.8s/474t
+s8_conorc_qwen36_35        n=84 succ 71 tok/s med 108  plan:1.6s/194t context:0.6s/35t constraints:3.3s/460t
+s8_none_qwen38             n=84 succ 43 tok/s med 59  plan:2.5s/165t context:0.7s/35t
+s8_convlm_qwen38           n=84 succ 65 tok/s med 63  plan:2.5s/165t context:0.7s/35t people:2.9s/185t constraints:5.8s/384t
+s8_conorc_qwen38           n=84 succ 67 tok/s med 62  plan:2.5s/165t context:0.7s/35t constraints:5.2s/360t
+
 -- matched calls: same s8 method, same (scene, episode, trial, stage), fresh in both models
 convlm people       pairs  19  med tok ratio x1.08 (qwen36 more in 16/19)  med latency ratio x0.64 (qwen36 faster in 19/19)  med tok/s 125.7 vs 65.4 (x1.92)
 convlm constraints  pairs  38  med tok ratio x1.12 (qwen36 more in 24/38)  med latency ratio x0.57 (qwen36 faster in 36/38)  med tok/s 123.3 vs 68.7 (x1.79)

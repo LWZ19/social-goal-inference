@@ -1,3 +1,4 @@
+# CT4P.md deviation (run's port, accepted by the analysis, 3 Nov, before any CT4P output)
 
 CT4P.md said to build the role arm's Resolver with `path_memory` True and `line_span_m` 0.5. That Resolver's
 `inputs()` still drops people from the answer's other constraints, and its drop rule depends on `line_direction`

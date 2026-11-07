@@ -79,6 +79,7 @@ Marks should take over only the first job. The design to test is therefore "numb
 **What this means for M2 (inference).**
 - **The free-model run mainly measures harm.** That covers marks breaking a right choice, losing location information, binding errors and number bias. It can say little about benefit, except for GLM.
 
+## M2: harm check on the free models (frozen `M2_FROZEN.md`, sha256 `c709374a…`; sent to the run, not run yet)
 - **Arms.** Paired plan calls, unmarked (A0) and marked (A2, "number plus point"), at fresh trials 3–5.
 - **Size.** 84 realistic episodes × 3 trials, for Qwen low, GLM and DeepSeek (x-test-3 after a smoke check): 504 calls per model.
 - **Judged (harm).** Right→wrong at most 2% of A0-right per model, and a plan-exact drop of at most 2%.
@@ -106,6 +107,7 @@ Marks should take over only the first job. The design to test is therefore "numb
   - A type filter (type-then-mark) would have blocked about 9 harms but also about 6 gains, so it was dropped.
 - **Number salience:** mild. Centre-nearest picks are 49 and 60, against 39 and 40 by chance. The K=7 excess is correct picks of centred targets.
 
+### M2P: prompt or drawn marks? (frozen `M2P_FROZEN.md`, sha256 `ab0b1453…`; sent to the run)
 - A fresh 2×2 for DeepSeek on the 20 episodes behind the 28 pairs, trials 6–8: 240 calls.
 - Arms: the pipeline or the marks prompt, crossed with an unmarked or a marked image.
 - Decision rule as frozen.

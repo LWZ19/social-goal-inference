@@ -34,6 +34,7 @@
 - Sonnet's CT3 − CT2 share gain is larger than DeepSeek's (+0.023), because its answers arrive sooner, while the
   lines still have the states where capture happens (F2).
 
+## Disclosure (added at freezing, no other change)
 - After writing this note and its scorer, I ran the scorer as a format check with its model filter relaxed. It read
   DeepSeek cells for seeds 10-19, which included the first confirmation seeds (15-19) already on disk.
 - So I saw an interim mix of pilot and partial-confirmation numbers. BYSTANDERS_CONFIRM_FROZEN.md and its scorer were

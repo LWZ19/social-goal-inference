@@ -1,4 +1,5 @@
-# Round 7 part C, DESCRIPTIVE: the ceiling read by ROUND7.md (sweep/confirm_selection.json; runs_ceiling4/dsv41; runs_confirm4/dsv41)
+# Round 7 part C, DESCRIPTIVE: the ceiling read by ROUND7.md (results/moving-lines/test-layouts/confirm_selection.json; results/data/moving/runs_ceiling4/dsv41; results/data/moving/runs_confirm4/dsv41)
+
 
 ## Band top 1.2 m (frozen, the decisions)
 

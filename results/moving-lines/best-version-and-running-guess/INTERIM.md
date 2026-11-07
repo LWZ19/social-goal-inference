@@ -1,3 +1,4 @@
+# Phase 1b, interim (analysis, 3 Nov; zero calls; design data, post hoc; nothing frozen)
 
 ## Method
 

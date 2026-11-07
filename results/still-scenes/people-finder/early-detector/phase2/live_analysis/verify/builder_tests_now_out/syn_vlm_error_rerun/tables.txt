@@ -13,6 +13,12 @@ TEST INPUT: the run folders are SYNTHETIC (built by make_synthetic.py from recor
   vlm_error_rerun: recorded t0 records of 20261013-191402_s20_plain_dsv41_con, people call taken out; NOT a live result
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+== Reading [PRE-REGISTERED (FROZEN 6): the reading]
+  successes at t0: GLM 63 of 84, DeepSeek 65 of 84 (the rule is on 84 per model)
+  rule: consistent with A2 if GLM >= 66 and DeepSeek >= 68; contradicts A2 if GLM <= 63 and DeepSeek <= 64; mixed otherwise
+  READING: mixed
+  note: vlm_error records left after one re-run are counted as failures (FROZEN 5.1; FROZEN 6 defines complete as no cap stop). The dispatch's summary said the reading needs no vlm_error left; decided separately.
+
 == 0. Inputs: the folders taken
   plain dsv41: 20261019-011002_s24_i09_plain_dsv41_con [latest complete]
   plain glm53: 20261019-002002_s24_i09_plain_glm53_con [latest complete]

@@ -1,6 +1,6 @@
-# Round 6 part C, EXPLORATORY: the decision's trade-off on CT4PJ's joined stretches (sweep/pilot_selection.json)
+# Round 6 part C, EXPLORATORY: the decision's trade-off on CT4PJ's joined stretches (results/moving-lines/test-layouts/pilot_selection.json)
 
-## runs_pilot3/dsv41
+## results/data/moving/runs_pilot3/dsv41
 
 | choice | joined re-solves | right last, sim agrees | right last, all joined | switches per minute joined |
 |---|---|---|---|---|

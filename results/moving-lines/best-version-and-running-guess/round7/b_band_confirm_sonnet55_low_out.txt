@@ -1,4 +1,4 @@
-# Round 7 part B, DESCRIPTIVE: band top 1.2 m (frozen) against 1.5 m (sweep/confirm_selection.json, runs_confirm4/sonnet55_low)
+# Round 7 part B, DESCRIPTIVE: band top 1.2 m (frozen) against 1.5 m (results/moving-lines/test-layouts/confirm_selection.json, results/data/moving/runs_confirm4/sonnet55_low)
 
 | arm | episodes | strict at 1.2 | strict at 1.5 | 'too far' seconds at 1.2 that pass at 1.5 |
 |---|---|---|---|---|

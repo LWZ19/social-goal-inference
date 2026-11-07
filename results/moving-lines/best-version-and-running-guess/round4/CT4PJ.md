@@ -55,6 +55,7 @@ the commitment rule.
 
 - `m_ct4pj_score.py` (to be frozen alongside this note).
 
+## Port clarifications (run's two notes, added at freezing; predictions and readings unchanged)
 1. **Where the join test's in-turn flag and place come from.** In belief mode `Resolver.record()` is never called.
    So each re-solve records the solver's own `in_turn` (`turn_m` ≤ 0.3, as logged) and the solved `pose_world`,
    as the Resolver's `record()` would. The next re-solve's join test reads those.

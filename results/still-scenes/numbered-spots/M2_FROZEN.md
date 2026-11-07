@@ -53,6 +53,7 @@ H2: on the free models, marked plan calls with the "number plus point" rule do n
 - **Any model fails either:** stop before Gemini. The failure is then studied (binding, salience, location) before any redesign.
 - **Gain:** reported, not judged. The free models hold too few wrong-object cases for a test: about 15 against a paired noise of 11–21 per model.
 
+## Call plan (free gateway, run by the run)
 - **Smoke of x-test-3 first:**
   - `--models soclaas_qwen38_next_low --trials 3 --episodes 3`: 6 calls.
   - Check that the mark field parses. x-test-3 joins the run only if it does.

@@ -316,6 +316,7 @@ Table 5.3. Power of a sealed set of n fresh layouts, two-sided (exact values whe
 | C − E: Sonnet; C − R: Qwen, GLM, Sonnet | 0.145 | 0.788 | 0.979 | 1.000 |
 | C − R: DeepSeek (Monte Carlo) | 0.375 | 0.916 | 0.994 | 1.000 |
 
+- In 11 of 12 cells every non-zero layout difference favours C, so power is P(Bin(n, k/14) ≥ 6) with k non-zero layouts (k = 8, 9 and 7 for the three exact rows). The first check's 10,000-draw values agree within Monte Carlo error.
 - Smallest n with power ≥ 0.80: 14, or 20 for the four k = 7 cells.
 - Why 8 layouts is weak: p ≤ 0.05 needs at least 6 non-tied layouts, and the nobody-near layouts are usually tied.
 
@@ -365,6 +366,7 @@ Per model, the calibration verdict is not uniform. glm53 (real +5) and qwen3vl (
 |---|---|
 | Facing accuracy per model and situation: within 45, median, unknown, 45-deg confusion, view split | Delivered (six models, 267–310 pairs each) |
 | One answer per (arm, scene, trial); cache copies not counted | Met |
+| I09 kill and success bars | Not applicable to the VLMs: they reviewer the detector in A1. A0 supplies the bar of 0.806. |
 
 ### I14 version 0
 
@@ -385,13 +387,17 @@ Per model, the calibration verdict is not uniform. glm53 (real +5) and qwen3vl (
 | Tasks 1–5 (ICC, t-intervals, power curve, batch SD 7.9, reporting note) | All delivered and checked | Met |
 | I14's item: reproduce p = 0.031, 0.0078, 0.00098 and the power table | Confirmed in RERUN R05/R34; power replay identical | Met |
 | Success: protocol file plus fresh seeds at 100% under full oracle | Not part of this task | Not applicable |
+| Success / kill: a blind author commits ≥ 2 situations by about 2026-10-31 | Deadline not reached; an project action | Not applicable |
 | Kill: more than 40 layouts needed per situation | 0 of 24 cells | Does not fire |
 
 ---
 
+## 7. Where the first check and the verifier differ
 Not settled; both are given:
 1. **I01 "at most 2 successes lost".** REPORT does not say whether this covers all situations or only lines. Over all solver steps, DeepSeek P loses 4 (not met). Over line steps it loses 1 (met). The overall Step-1 verdict is the same either way, because R3 fails.
 2. **I14 S3.** The frozen note limits S3 to the two DeepSeek cells (met). REPORT's wording is unqualified, and on it GLM fails (99 vs 107 old, 89 vs 98 new). The overall verdict does not change.
+3. **I01 calibration, pooled or per model.** REPORT does not say. The first check chose pooled as primary after the fact (met). Per model, 2 of 5 models meet the kill's share clause by the letter.
+4. **Bootstrap intervals depend on the seed.** Calibration pooled share [0.64, 2.10] (first check) vs [0.66, 2.0] (verifier); qwen3vl real gain lower bound 2 vs 1 (so qwen3vl is only barely distinguishable from 0). I14's recovery intervals move by a few points (old GLM's upper bound by more: 733% vs 669%). No conclusion changes.
 
 Settled by the verifier (its value is used above):
 - I01 mechanism: 18 of 29 GLM failures (not 20) list a detection 3.7–4.6 m off; the 14 that stay break down 8 / 1 / 3 / 2 (not 8 / 1 / 4 / 1); in the recorded people, 2 of DeepSeek's 7 stays miss a member.
@@ -496,6 +502,7 @@ Old:
 | 2 | Days 5–7 | I46 statistics and I14 version 0 | First result: I46 about 1 d, I14 about 2 d; about 2.5 d together | 0 | Freeze the metric note first |
 ```
 New:
+| 2 | Days 5–7 | I46 statistics and I14 version 0. **Done 17 Oct** (`results/still-scenes/overview/phase-notes/phase1.md`): the metric note was frozen before computing (v0); I14's kill tests do not fire, but S2 and S4 fail; I46's tasks are done and its 40-layout kill line does not fire. | First result: I46 about 1 d, I14 about 2 d; about 2.5 d together | 0 | Freeze the metric note first (done; agreeing the list is still the project's and the mentor's) |
 
 ### 8. Section 6, day-6 row
 
@@ -575,6 +582,10 @@ Old:
 - Kill (the set story, not the code): the anchored baselines recover at least 80% on both DeepSeek cells, or the unconditional random-5 is at least the solver's any-of-5 for GLM or DeepSeek.
 ```
 New:
+  - K1 and K2 do not fire. Random-5 in the 3 m disc expects 61.5 (GLM) and 63.1 (DeepSeek) hits, against the solver's any-of-5 of 99 and 123. No anchored baseline recovers 80% on both DeepSeek cells.
+  - S2 fails. The top place plus 4 random disc cells recovers 96% of DeepSeek's realistic +14 (layout bootstrap about 65–146%) and 33% of the watching +10 (about 4–60%). Post hoc, drawing over the whole room: 57% and 69%.
+  - The skeptic's 85–95% comes in at 77–80%: random-5 in the disc lands in the region (heading aside) in about 78% of right-target group records.
+  - The 3 m disc is a poor chance region away from groups. It leaves out about 90% of the watching region and 10–17% of the realistic one, and the top place lies outside it in 470 of 790 line records.
 
 ### 15. I46, What: fresh seeds sized
 
@@ -594,6 +605,9 @@ Old:
   - The final run is about 6,000 calls.
 ```
 New:
+  - The kill line "more than 40 layouts needed per situation" does not fire: 0 of 24 lines and groups cells need more than 40 (6, or 14 where a layout is tied). That design resamples 3–5 values and is degenerate, and 6 per situation is the test's floor, not a powered size.
+  - the Qwen batch SD of 7.9 reproduces as 7.93 (pooled SD of three batch totals, df 4, exact 95% CI 4.8–22.8). A live A/B detects about 24–32 records between two independent 3-trial batches, 11–21 when paired within one stage, and 18–79 when generalising over 14 layouts (80% power, two-sided 0.05).
+  - The one-page reporting note is `results/still-scenes/metrics-and-statistics/statistics/HOW_TO_REPORT.md` (two fixes pending: R and E are only nearly identical at nobody-near, since DeepSeek differs in 3 of 108; and 6 layouts per situation is a floor).
 
 ### 17. Section 8, batch noise (optional)
 

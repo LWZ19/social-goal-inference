@@ -1,8 +1,15 @@
+--- /tmp/score_sweep_v1.py	2026-11-03 00:32:45.873961321 +0800
++++ score_sweep.py	2026-11-03 00:33:14.991790255 +0800
+@@ -19,9 +19,10 @@
+   - the same comparison on excursion-only (18) and clean (18) layouts, predicted ties (an untied win rate in
+     0.35-0.65), and on lag-flagged "ours" layouts (20), predicted CT4 ahead;
+   - by flag cell: capture (seconds with a bystander as the solver's last, not vacated; 0.5 s a tick), recall
 -    (the summed |roster ∩ queue| over the summed |queue|), and empty (the share of ticks with a queue standing
 -    where the solver's last is None and the tick is not vacated). Predicted: CT3F lower capture in every cell;
 -    CT4 higher recall and lower empty in every cell;
 +    (the summed |roster ∩ ahead| over the summed |ahead|, over ticks with someone ahead), and empty (the share of
 +    ticks with someone ahead where the solver's last is None and the tick is not vacated). Over `ahead`, not the
++    whole queue: once the robot has joined, people behind it do not bear on its goal (research's check,
 +    3 Nov). Predicted: CT3F lower capture in every cell; CT4 higher recall and lower empty in every cell;
    - cut-in samples, and strict share in line (`summarise_fresh.measures`, unchanged): no prediction;
    - on "ours" layouts:
@@ -70,6 +77,7 @@
 -    return dict(w=w, l=l, t=t, missing=missing, p=sign_p(w, l), mean=statistics.mean(ds) if ds else None)
 +    return dict(w=w, l=l, t=t, missing=missing, asym=asym, p=sign_p(w, l), mean=statistics.mean(ds) if ds else None)
  
+ 
  def fmt(c):
      rate = c["w"] / (c["w"] + c["l"]) if c["w"] + c["l"] else float("nan")
      mean = f"{c['mean']:+.3f}" if c["mean"] is not None else "-"
@@ -77,6 +85,7 @@
      return (f"{c['w']}/{c['l']}/{c['t']} (wins/losses/ties), untied win rate {rate:.2f}, sign p {c['p']:.3f}, "
 -            f"mean d {mean}, missing {c['missing']}")
 +            f"mean d {mean}, missing {c['missing']}{asym}")
+ 
  
  def report(root: Path, claim: bool) -> None:
 @@ -135,30 +151,68 @@
@@ -198,5 +207,6 @@
 -              f"history_t missing {no_hist}; first answer not from the cache {uncached}")
 +              f"history_t missing {no_hist}; vacated ticks with someone ahead {vac}; first answer not CT2's "
 +              f"(uncached or another pose) {len(not_ct2)}{' ' + str(not_ct2) if not_ct2 else ''}")
+ 
  
  def main(argv) -> int:

@@ -46,6 +46,7 @@ Paths below are relative to this folder (`results/still-scenes/confidence-signal
 | Analysis | Pre-registered outcome | One-line reading (inference) |
 |---|---|---|
 | **P1, re-solve shift under the detector's people** (judged) | **Neither.** AUROC for failure 0.645 (old Qwen), 0.738 (old GLM), 0.688 (old DeepSeek): 1 of 3 cells reaches 0.70, and 2 are needed. Pooled 0.708 [0.564, 0.828], above the flags' 0.595; the kill line (below 0.60) is not crossed | A modest signal, and the verdict sits on the line between neither and success. Most of its ranking comes from the 37 records A2 had already shown would change. |
+| the prediction | Part 1 does not hold; part 2 holds; part 3 does not hold | Trial disagreement (S4) is the strongest single signal, as predicted. Wrong-target failures are not invisible to the perception signals (0.61–0.72). |
 | S2, people disagreement with the detector (reported) | Not judged. Pooled 0.741; cells 0.869 / 0.801 / 0.650 | The detector-only signal ranks failures better than P1 and needs no solver run. |
 | S4, trial disagreement (reported) | Not judged. Pooled 0.774 | Strongest single signal, but it costs two extra full pipeline runs per goal step. |
 | S6z, zero-call combination of P1, S2 and S3 (reported) | Not judged. Pooled 0.752 | Abstaining on the least confident 20% raises C's success among the kept records from 0.769 to 0.878 and catches 59.0 of 102 failures (random 20.4). |
@@ -308,6 +309,7 @@ Disclosed housekeeping (neither changes a number):
 - **I12.** P1's pooled 0.708 sits between I12's kill line (0.65) and its success bar (0.72), on a different and simpler test (no K = 32 sampling, no net-gain criteria).
 - **I09.** The detector gains a second possible use, as a confidence check on the VLM's people, at about 56 ms with no extra model call. That use inherits the detector's open false-people question.
 
+## 8. Questions for the project
 3. **Scope of a confidence output.** Is an abstain or ask-for-help output in scope for the pipeline at all, beyond the (x, y, θ) goal? Possibly with the mentor.
 4. **Trial disagreement.** Is S4's cost (two extra full pipeline runs per goal step) acceptable for the cases only it sees (wrong targets, the API models' placement failures)? This ties into I02's and I39's open cost and panel questions.
 5. **I15.** Does a perception-disagreement AUROC of 0.708–0.741 meet the parked row's revival condition, which names I14 or I04?
@@ -345,11 +347,13 @@ C5's exploratory pilot) and phase 3's zero-call confidence probe (`results/still
 
 Old:
 New:
+[phase 3] Phase 3's confidence probe (18 Oct, zero calls) is neither for its judged signal, the shift of C's place when the solver re-runs with I09's detector people (pooled AUROC for C's failure 0.708; 1 of 3 cells at 0.70, 2 needed), and the verdict is fragile. Every other probe below is a plan, and every live step needs the project's agreement.
 
 ### 4. I04: the phase-3 follow-up on confidence
 
 Old:
 New:
+  - **Phase-3 follow-up on confidence (18 Oct; protocol frozen and hashed before any signal was computed against an outcome, `results/still-scenes/confidence-signal/FROZEN.md`; `results/still-scenes/confidence-signal/README.md`) [phase 3].** On the 441 old-wording realistic goal-step records, signals from perception disagreement rank C's failures far better than the density's concentration (pooled AUROC 0.459 there): the judged signal P1, the shift of C's place when the solver re-runs with I09's detector people (A2's setting D), gives 0.645, 0.738 and 0.688 by model and 0.708 pooled, a pre-registered neither (2 of 3 cells at 0.70 needed; flags 0.595; kill line 0.60). Reported, not judged: the people disagreement with the detector (1 − F1) 0.741, trial disagreement 0.774 (two extra pipeline runs), and a zero-call combination 0.752, which keeps 0.878 success at 80% coverage against a base of 0.769. (inference) The confidence that a soft density lacked comes, on these records, from comparing perception sources. It is data-informed (designed knowing A2's results), P1's verdict is fragile, and for the new-wording API models, whose failures are not perception, the perception signals carry little (P1 0.197–0.562).
 
 ### 5. I09: a second use, as a confidence check
 
@@ -375,6 +379,7 @@ Old:
 - Per-situation comparisons reported as descriptive only, since 3–5 layouts cannot reach p < 0.05 (I46).
 ```
 New:
+- [phase 3] Confidence from perception disagreement (`results/still-scenes/confidence-signal/README.md` sections 7–8). Its judged signal (the shift of C's place under I09's detector people) is neither, on a fragile margin, and the people disagreement with the detector (pooled AUROC 0.741) and a zero-call combination (0.752; abstaining on 20% catches 59 of 102 failures) are reported, not judged. For the project: whether an abstain or ask-for-help output is in scope beyond the (x, y, θ) goal; whether to confirm on C records the design did not see (fresh trials, which need calls, or new layouts), and which signal to reviewer there; and whether trial disagreement (pooled 0.774, the only signal that sees wrong targets well) is worth two extra pipeline runs per goal step.
 
 ### 8. Revision note
 

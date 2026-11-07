@@ -167,6 +167,7 @@ and A1 frozen is scored on fit-validate or the development scenes.
 For information only (not checks): the same numbers on A1's F-real and F-ph fit data, and the fit-validate rows
 broken down by the diagnosis's post hoc classes (A-D) computed with the same rules as `diagnose.py`.
 
+## 8. Secondary scorer variant (for a decision; never used for selection or checks)
 Identical to I03's scorer, except that a detection the scorer counts as false is counted as exempt instead when it
 lies within 0.6 m (world xy) of a counter staff member (a true person with a role) who fails `is_visible` but whose
 marked point (x, y, 1.1 m) projects into the picture (`sgi.geometry.project`, `in_image`). Recall, matching and

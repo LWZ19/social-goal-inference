@@ -107,6 +107,7 @@
 - **Evidence (0 calls, done).** 1-D replay: in band 1.00 of the time against 0.71 for the CT-like policy.
   Idealised: a 0.13 calibration gap, and no turning. Next: a sim follower mode on oracle tracks, cached answers.
 - **Prediction / refutation.** Predicted: out-of-line seconds per service (in line before) at most 3, redraw mean
+  |d| <= 0.05, bent line above 0.2. Refuted if Spot's turn-then-walk run oscillates, or hand-over errors
   bring back RT's "follow the served person away".
 - **Score.** Payoff 4, uncertainty 3, cost about 1 day. It changes the story from "the solver gives a pose" to
   "the solver gives a leader and a law".

@@ -12,3 +12,4 @@
 - ex-member: 127/155 bouts break a bound (0.819); by path 7, by away 120
 - never a member: 292/499 bouts break a bound (0.585); by path 145, by away 147
 - bar (member bouts at most 5%): FAIL
+

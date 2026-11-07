@@ -1,3 +1,4 @@
+# Step 0: re-run of the computed numbers
 
 Ledger for REPORT.md, written 2026-10-17. Every number below was recomputed from the recorded development runs through the step-0 harness (`docs/model_notes/tools/research_harness.py`), then checked a second time by an independent verifier with its own code. No model or network call was made and nothing was tuned.
 
@@ -21,9 +22,13 @@ Ledger for REPORT.md, written 2026-10-17. Every number below was recomputed from
 | refuted | 0 |
 | cannot reproduce | 3 (R50, R74, R75) |
 | disputed | 0 |
+| run figure re-measured, labelled "new" by the verifier | 1 (R33, the "2–6 s" call times; its range must change) |
+- R02 (81% never found): both "corrected", but the first check said no subset gives 0.81. The verifier found two (0.809, 0.812).
+- R03 (person wrong targets "on an occluder or the wall"), R63 (member lists 1–3%), R67 (cascade gate 216/201): first check "confirmed", verifier "corrected".
 
 ### Most important corrections
 
+1. **Latency (I21, finding 4).** The reviewer's 62.9 → 50.6 s, 9.8 → 7.7 s, 54.6 → 48.7 s and "A2 at most 0.9 s" are the real set alone, not the three realistic sets. Over the three sets: 61.2 → 49.3 s (n 143), 9.8 → 8.0 s (n 141), 53.2 → 47.4 s, and A2 saves 1.2 s for Qwen. The percentages hold (about 19.5% and 11%). The 62.9 vs 61.6 s gap is mostly subset, not accounting.
 3. **Finding 8, two tiers.** The C gaps between the top models do not come from target finding at nobody-near scenes (1 of 44 gap records). Qwen loses placement of the standard goal there; Gemini loses wrong targets at lines.
 4. **Finding 8, groups.** The solver-alone and C group rows count goal steps but say "of 54". Over all 54 records: SA 46/49/44/53/47/54, C 46/48/34/53/47/54. The conclusion stands.
 5. **Blob pilot (I03, I33).** Real and staffed recall depend on a split rule the pilot did not state (36–42 and 34–39 of 42). Placeholder is 42 of 42, not 41. Only about half the staff misses are behind counters. The facing null of 0.24–0.28 is not chance: chance is 0.50 for an axis taken modulo 180 deg.
@@ -36,6 +41,7 @@ Ledger for REPORT.md, written 2026-10-17. Every number below was recomputed from
 Each item gives the exact old fragment (with its REPORT line number at the time of writing) and the proposed new text.
 
 **A1. Line 36 (1.1 item 1). Row R02.**
+- Old: "[computed] About 81% of GLM's missed group members are people the people call never found."
 - New: "[re-run] Of GLM's 74 missed line members (s19 realistic, 83 line goal steps), 56 (76%) are people the people call never found. On failed goal steps only it is about 80% (51 of 64 at lines; 55 of 68 with group members)."
 
 **A2. Line 38 (1.1 item 1). Row R03.**
@@ -62,12 +68,14 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 - New: "Counter staff can still be partly hidden. In the whitelist re-run every miss was a staff member. In the settings that reproduce the pilot's 39 and 37, 4 of the 8 misses are hidden behind a counter-like surface and 4 are fully visible staff whose blob merges with tall structure."
 
 **A8. Line 622 (I03 Why). Row R36.**
+- Old: "[computed, pending whitelist re-run] The pilot found 34 of 34 people on realistic_plain, 39 of 42 on real, 37 of 42 on staffed and 41 of 42 on placeholder dev scenes."
 - New: "[re-run] Counting people inside the image, depth blobs find 34 of 34 on realistic_plain, 36–42 of 42 on real and 34–39 of 42 on staffed (the range spans split rules the pilot did not state; 39 and 37 reproduce under some of them), and 42 of 42 on placeholder dev scenes (eval_00–13 plus one dev seed of eval_14/15), not 41. Every non-staff person is found. Real and staffed hold 56 people each; 14 staff per set stand outside the image. With the pilot's thresholds, false body-sized blobs run about 0.6–2.6 per realistic image."
 
 **A9. Line 628 (I03 Better than expected). Row R56.**
 - New: "[re-run] The facing axis (modulo 180 deg) came within 45 deg for 0.68–0.70 of people on the realistic sets with a torso-band PCA (0.82–0.84 with all blob points), against a chance level of 0.50."
 
 **A10. Lines 671–674 (I11 Why). Row R40.**
+- Old: "[computed, pending whitelist re-run] Over 57 wrong-target C records:" … "place targets: 0 of 23."
 - New: "[re-run] Of 57 wrong-target C records, 53 have a point (4 GLM no_target records have none). Recoverable by an oracle snap-and-lift:" … "place targets: 5 of 23 (6 of 23 with the package's match mask; 0 of 23 only with a floor-only mask that cannot see the desk or kiosk)." (Person 15 of 15 and parcel 6 of 15 stand.)
 
 **A11. Lines 721–724 (I21 Why). Rows R41–R44.**
@@ -85,6 +93,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 - New: "Qwen C: 65 of 84 at none (s8, median record time 8.4 s), against 74 at low at 26.2 s (brief section 3.1; the low cell is s12, which is not on the whitelist and was not re-checked)."
 
 **A14. Line 778 (I22 gate). Row R53.**
+- Old: "(currently 49 of 52 vs 51 of 52 [computed])"
 - New: "(49 of 52 vs 51 of 52 as pooled, but 11 none-side draws are counted twice. Without them it is 38 of 41 vs 40 of 41, or 37 of 40 vs 40 of 40, depending on which low draw trial 0 is paired with, so the gate sits at its boundary. The s8/s19_ph half also changes the context prompt.)"
 
 **A15. Line 888 (I33 Why). Row R56.**
@@ -93,6 +102,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 
 **A16. Line 962 (I02 Why). Row R59.**
 - Old: "while the constraint kinds differ in 17 of 19 and 21 of 22. The variance sits in the constraints."
+- New: "while the number of constraints differs in 17 of 19 and 21 of 22 (the reviewer script compared counts; the true kinds differ in 19 of 19 and 22 of 22, and in 22 of 24 and 26 of 26 all-success episodes too). Re-solving each failing trial with a succeeding trial's people fixes 16 of 19 (GLM) and 17 of 22 (DeepSeek) mixed episodes; its constraints fix 2 of 19 and 11 of 22. The deciding variance sits mostly in where the people are placed, not in the constraints."
 
 **A17. Line 1018 (I19 Why) and line 1682 (Appendix B, I19). Rows R02, R63.**
 - Old (1018): "Most of GLM's member misses are people never found, so expanders cannot recover them. Member lists are only 1–3% of the visible constraints output, so the latency claim is dropped."
@@ -113,14 +123,17 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 **A20. Line 1315 (I16 parked row) and line 1676 (Appendix B, I16). Row R72.**
 - Old (1315): "About 3.9% of straight-line approaches cross a forbidden polygon today."
 - New: "The straight approach to 3.3% of C goal poses (25 of 752, s19/s20 realistic) crosses a forbidden polygon, and 0.3% for C successes (2 of 602); the earlier 3.9% could not be reproduced."
+- Old (1676): "(about 3.9% cross a forbidden polygon [computed])"
 - New: "(3.3% of C goal poses cross a forbidden polygon, 0.3% of C successes [re-run])"
 
 **A21. Line 1322 (I44 parked row). Rows R73–R75.**
+- Old: "In its favour, qwen3.6:35b scored 136 against 127 of 168 with C against Qwen 3.8 (brief section 6.2, P-9). Against it, [computed]: it decodes about 1.7× faster per token but writes more tokens; paired 4 wins, 9 losses against Qwen low."
 - New: "In its favour, on the listed runs qwen3.6:35b leads Qwen 3.8 (both thinking off) with C by 69 vs 65 (convlm) and 71 vs 67 (conorc) of 84, not significant; the brief's 136 vs 127 of 168 pools an unlisted run and was not checked. It produces about 1.8× the output tokens per second on fresh calls (1.7× counting cached copies) and writes about 1.2× the tokens, so a fresh call takes about 0.6× as long. Against it: the '4 wins, 9 losses' could not be reproduced; against Qwen 3.8 low C on the same 84 placeholder records it is 0 wins, 10 losses, confounded by thinking level and prompt version."
 
 **A22. Line 1648 (Appendix B, I02). Rows R58, R59, R60.**
 - Old: "(+2/+5/+2 episodes, by the skeptic's arithmetic)"
 - New: "(+2.0/+4.3/+2.0 episodes over the per-trial mean)"
+- Old: "Steelman [computed]: the variance sits in constraints, not people, and the 6-sample cross-model vote reaches 78 of 84."
 - New: "Steelman [re-run]: the 6-sample pool has at least 3 successes in 78 of 84 (a strict majority, at least 4 of 6, in 56). The re-run's swap test puts most of the deciding variance in the people answer, not the constraints."
 
 **A23. Line 1666 (Appendix B, I11). Rows R03, R40.**
@@ -167,12 +180,15 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 
 **R02. 81% never found** (1.1 item 1; I19 Why, line 1018)
 - REPORT: "About 81% of GLM's missed group members are people the people call never found."
+- reviewer: about 81%; subset not stated, no saved script.
 - Re-run: depends on the subset. All realistic line goal steps: 0.757 (56 of 74 missed members, 83 steps). Failed line goal steps: 0.797 (51 of 64). Failed goal steps with conversation-group members: 0.809 (55 of 68). Failed line steps with the ph arm pooled in: 0.812 (69 of 85). The 29 line failures of R01: 0.857 (42 of 49). Lines and groups, all steps: 0.733 (74 of 101). DeepSeek s20: 0.606 (20 of 33).
 - Definition: the package's one-to-one matching (`sgi.run._matched_people`, 0.5 m). A missed member has no matched `come_after` number; never found means no detected person is matched to them. The recomputed found share and members recall equal the recorded ones in 141 of 141 and 83 of 83 records. Caution: only 17 of the 74 missed members have no detection at all within 1.0 m; most have a nearby detection that one-to-one matching gave to a neighbour. With "found" = any detection within 0.5 m, the share is 0.716.
+- Verdict: **corrected**. About 80% holds only on failure-restricted subsets; over all missed members it is 76%. The report must name its subset. (The first check said no subset gives 0.81; the verifier found 0.809 and 0.812.)
 - Scripts: `results/still-scenes/perception/perception-rerun/perception.py`, `p1_variants.py`, `p1_variants2.py`; `results/still-scenes/perception/perception-rerun/verify/v_p1alt.py`, `v_p1scan.py`.
 
 **R03. Person wrong targets: 15 px, 1.0–12.3 m** (1.1 item 1)
 - REPORT: "There are 15 wrong-target records whose target is a person. In all of them, the true target's pixels lie within 15 px of the model's point, and the depth under the point landed 1.0–12.3 m away, on an occluder or the wall."
+- reviewer: 15 of 15; 1.0–12.3 m; occluder or wall.
 - Re-run: 15 of 15 within 15 px (max 13.95 px; 8 within 3 px). Landed 1.03–12.34 m from the true person: 9 on the occluding person p3 in front (1.03–1.11 m), 6 behind the target (2 on the wall, 1 at the foot of the wall, 3 on the floor 1.65–3.07 m short of the wall). The centre pixel is off the target in 15 of 15. n = 15 (Qwen 5, GLM 2, DeepSeek 8; eval_12 13, eval_10 1, eval_11 1).
 - Definition: the 15 person-target C wrong targets of R40. Body mask = each pixel's own depth lifted, inside a 0.30 m cylinder (0.25 and 0.35 m give the same result). "Landed" = horizontal distance from the recorded lifted point to the true person.
 - Scripts: `results/still-scenes/perception/lifting-rerun/lifting.py`, `crops.py`; `results/still-scenes/perception/lifting-rerun/verify/v_lift.py`.
@@ -184,6 +200,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 - Scripts: `results/still-scenes/replay-harness/baselines/tables.py` (tables.txt, old wording); `results/still-scenes/replay-harness/baselines/verify/v3_tables.py`.
 
 **R05. Layout sign-flip p values** (1.1 item 6; I14 line 532)
+- REPORT: "[computed] Exact sign-flip tests clustered by layout keep C > E for all three models: p = 0.031 (Qwen), 0.0078 (GLM), 0.00098 (DeepSeek)."
 - Re-run: two-sided 0.03125 (2/64) / 0.0078125 (8/1024) / 0.00097656 (2/2048). One-sided values are half. Successes C vs E: 234 vs 214, 186 vs 145, 182 vs 120 of 252. Layouts favouring C / E / tied: 6/0/8, 9/1/4, 11/0/3. n = 252 pairs and 14 layouts per model. Rescoring all 1,512 records with the current scorer changes 0 verdicts.
 - Definition: E = s16b fsc (Qwen, GLM), s20 fsc (DeepSeek); C = s19/s20 con; paired on (scene, episode, trial). Layout = scene id without the arm prefix. Statistic = sum of the 14 layout mean differences. All 2^14 sign patterns enumerated. clus.py uses |sum|, so the report's values are two-sided.
 - Verdict: **confirmed**. The report should say "two-sided".
@@ -208,6 +225,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 
 **R09. Records, rescore, solver replay** (1.1 item 8)
 - REPORT: "4,536 records and 12,512 calls, all ok. The rescore reproduces every verdict, and the solver replay reproduces 860 of 860 C poses."
+- Re-run: 4,536 new-wording records, 0 not ok. H.rescore gives the recorded verdict in 4,536 of 4,536 (verifier; the first check 7,308 of 7,308 including old wording). A full re-solve returns all 860 C goal-step poses (moved 0 m). The call count was not re-counted.
 - Verdict: **confirmed** (12,512 calls not checked).
 - Scripts: `results/still-scenes/replay-harness/split/split.py`; `results/still-scenes/replay-harness/split/verify/v_rescore.py`; `results/still-scenes/replay-harness/baselines/verify/v2_recorded.py`.
 
@@ -440,6 +458,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 - Scripts: `results/still-scenes/speed/latency/explore2.py`; `results/still-scenes/speed/latency/verify/l7_keyfix.py`.
 
 **R47. About −20% and C at 1.8× E** (I21 Payoff)
+- REPORT: "About −20% per deployed episode in replay" and "C stays at about 1.8× E for Qwen (computed, replay)."
 - Re-run: −19.5% per goal-step record over three sets (n 143); −19.6% on the real set. Over all 252 C records, including 109 standard-goal records, −17.1% (39.5 → 32.7 s). E (s16b fsc, 143 goal-step records) serial 27.9 s; C concurrent / E = 49.3 / 27.9 = 1.77× (same 143 episodes); 1.73× on the real set; serial C/E 2.19×. Stage 21: 57.7 / 34.7 = 1.66×.
 - Verdict: **confirmed**. "Per deployed episode" means per goal-step episode with no people cache.
 - Scripts: as R41.
@@ -476,6 +495,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 - Scripts: as R51.
 
 **R53. Gate: 49 of 52 vs 51 of 52** (I22 First probe, line 778)
+- REPORT: "None within 2 of low on pooled right-target goal steps (currently 49 of 52 vs 51 of 52 [computed])."
 - Re-run: 49 of 52 vs 51 of 52, as recorded and after re-solving (0 places moved). Pool = s10 none vs low matched (11) + s8 vs s19_ph matched (41). But s10 none is byte-identical to s8 trial 0 (28 of 28 records), so 11 none draws are counted twice. Duplicate-free: 38 of 41 vs 40 of 41 (s8 vs s19_ph alone, passes at the boundary) or 37 of 40 vs 40 of 40 (fails by one). The swing is one record, eval_10 e0 t0. The s8/s19_ph half also changes the context prompt (+80 input tokens).
 - Scripts: as R51; `results/still-scenes/thinking-levels/verify/v4_ctx.py`, `v5_inp.py`.
 
@@ -537,6 +557,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 **R63. Member lists are 1–3% of the output** (I19 Why; Appendix B I19)
 - REPORT: "Member lists are only 1–3% of the visible constraints output, so the latency claim is dropped."
 - Re-run: GLM s19 / DeepSeek s20 distinct constraints answers (141 / 157; reasoning_tokens 0, so raw text is the whole output). Characters: list contents 0.72% / 0.91% without brackets, 1.16% / 1.38% with brackets, 3.33% / 3.71% with the "people" key. Against recorded output tokens: about 3.7–3.9% (values) and 7.1–7.5% (with key). s23 is similar (3.8–3.9% and 7.3%).
+- Verdict: **corrected** (unit). In decode tokens, the unit latency depends on, the lists are about 4–7%. The latency claim stays dropped. First check: "confirmed".
 - Scripts: `results/still-scenes/perception/perception-rerun/perception.py`; `results/still-scenes/perception/perception-rerun/verify/v_p2tok.py`.
 
 **R64. GLM C and Qwen C time and success** (I39 Why)
@@ -559,10 +580,12 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 
 **R67. Disagreement gate** (I39 Why, line 1063)
 - REPORT: "A gate built on disagreement between two samples reaches AUROC 0.73–0.75, and 216 of 252 at 50% escalation, against 201 for random escalation."
+- Re-run: three-sample disagreement (dis, distance to both other trials): fail AUROC 0.728, 215–216 at 50% (two records tie at the cutoff; 216 is the favourable order). Two-sample disagreement (dis1): with partner trial t + 1 (the reviewer's), AUROC 0.752 and 218; with partner t + 2, AUROC 0.661 and 215. Random escalation: 201 for random.seed(0); expected 203.4 (2000 seeds, 5–95% 198–209). reviewer-accounted latency at 50%: 33.9 s (dis), 32.9 s (dis1), before the extra GLM sample.
 - Scripts: `results/still-scenes/combining-models/cascade/cascade.py`; `results/still-scenes/combining-models/cascade/verify/robust.py`, `verify.py`.
 
 **R68. Plan reuse tops out near 207** (I39 Why)
 - REPORT: "The pitched version that reuses GLM's plan tops out near 207."
+- Re-run: 207 of 252 (reviewer proxy: escalated succeeds only if Qwen succeeded and GLM's target is right). A real re-solve with GLM's target and Qwen's people and constraints: ceiling 212, 209 at 60% escalation, below the probe's 210 bar at any useful fraction.
 - Verdict: **confirmed**.
 - Scripts: `results/still-scenes/combining-models/cascade/cascade.py`; `results/still-scenes/combining-models/cascade/verify/replay_s19.py`.
 
@@ -589,6 +612,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 
 **R72. I16: 3.9% of approaches cross a forbidden polygon** (I16 row; Appendix B I16)
 - REPORT: "About 3.9% of straight-line approaches cross a forbidden polygon today."
+- reviewer: 3.9% (no saved definition).
 - Re-run: robot start to recorded C goal pose, against every forbidden region of the episode's truth. Segment meets a polygon (ending inside counts): 25 of 752 = 3.3% (Qwen 0, GLM 14 of 248, DeepSeek 11). Pass-through only: 24 of 752 = 3.2%. C successes: 2 of 602 = 0.3%. Episodes with a forbidden region: 25 of 428 = 5.8%. 20 of the 25 cross ahead-in-line regions, 5 group space. Robot-body sweep (0.30 m): 9.2%. No reading tried by either agent gives 3.9% (range 0.1–6.0%).
 - Verdict: **corrected**: use 3.3% (25 of 752) and 0.3% for successes; 3.9% cannot be reproduced.
 - Scripts: `results/still-scenes/other-checks/flags/flags_misc.py` (m3), `m3_variants.py`; `results/still-scenes/other-checks/flags/verify/v_m3.py`, `v_m3b.py`, `v_m3c.py`.
@@ -601,6 +625,7 @@ Each item gives the exact old fragment (with its REPORT line number at the time 
 
 **R74. I44: 4 wins, 9 losses against Qwen low** (I44 row)
 - REPORT: "paired 4 wins, 9 losses against Qwen low."
+- Re-run: no pairing of listed runs gives 4 / 9 for qwen3.6 against Qwen low (both checks searched all placeholder Qwen 3.8 runs, 5 score fields, many keyings and situation subsets). Like-for-like C against Qwen 3.8 low C (s19 ph, 84 records): 0 wins, 10 losses (convlm, p 0.002), 1 / 9 (conorc, p 0.021). Against Qwen low E: 11 / 9; against Qwen low R: 22 / 8. Against Qwen 3.8 off (s8): 13 / 9.
 - Verdict: **cannot reproduce**. The direction against Qwen low C holds and is stronger, but it mixes thinking level and prompt version.
 - Scripts: `results/still-scenes/other-checks/i44/search_q2.py`; `results/still-scenes/other-checks/i44/verify/v2_q2.py`, `v3_allpairs.py`.
 
@@ -704,11 +729,13 @@ The I01 new-wording rows (solver alone, people-blind goal, target found vs place
 - **I16 context.** Pass-through crossings: C 3.2%, R 1.5%, E 0.9% (n 752 each). R and E instead end inside forbidden regions (38 and 35 records, against 1 for C).
 - **I11 Stage 0 probe** (old wording). C and E target points are identical in 756 of 756 pairs. The oracle snap fixes 26 of 53 wrong targets (22 become full successes); GLM + DeepSeek 20 of 46 (16 full), meeting three of the four first-probe criteria (the depth-component criterion was not tested). The one zero-call rule tried (front-surface snap) fixes 8 and breaks 37 of 752. Placeholder adds 15 wrong targets (5 fixed). `results/still-scenes/perception/lifting-rerun/`.
 - **GLM phantom mechanism.** 13 of the 20 distinct phantoms sit within 25 px (median 15.7 px) of a line member who was never found; matched detections sit a median 5.1 px from their own person. DeepSeek behaves the same way (7 of 8). Plausible, not proven.
+- **I09 context.** Realistic people are 14 layouts rendered three times: 16 distinct line members, 9 group members, 9 others, 22 staff, of whom only 8 are in the image. Group members face the camera at 7.6–172.8 deg (median 74.4). Visible staff: median 59.1 deg, 3 of 8 frontal (the first check's all-staff median of 28.5 included 14 staff out of view; verifier "corrected"). `results/still-scenes/speed/profile/`.
 - **Blob pilot extras.** False body-sized blobs: 0.6–2.6 per realistic image across split rules, about 1 at a middle rule (Stage A's kill line is 0.3); 0 on dev seeds. Median xy error of matched blobs 0.075–0.077 m (realistic), just inside I33's 0.08 m bar. `results/still-scenes/perception/depth-blob-pilot/`.
 - **I44.** Turning thinking off cuts the C goal-step call about 4× (0.23–0.27×, mostly by writing about 5× fewer tokens); swapping Qwen 3.8 for qwen3.6 at thinking off cuts it about 1.7× (0.59–0.60×). This supports Appendix B's "the speed comes mostly from thinking off". `results/still-scenes/other-checks/i44/`.
 
 ---
 
+## Disclosures
 ### Reads beyond the plan
 
 - Source code under `src/sgi` (goal.py, types.py, evaluate.py, polygons.py, gt) for definitions (flags_misc, snap and others).

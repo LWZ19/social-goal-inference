@@ -1,0 +1,5 @@
+started 2026-11-06 13:19
+HEAD d50a7b3f99241f096d1a1d2dd76793b839ecca9e
+uncommitted diff sha256 ee4d7a5e1dc9f8e6 (E4 scenes/rule, older model entries, CT3FT arm; none touch CT2 or CTd)
+ 14 files changed, 526 insertions(+), 40 deletions(-)
+guard 13:22: the script now stops if the detector is not healthy after 180 s (it carried on before).

@@ -1,0 +1,7 @@
+sidecar pass A: n 42 median 61.1 ms, p90 115.9 ms, max 118.7 ms
+sidecar pass B: n 42 median 60.5 ms, p90 116.1 ms, max 125.3 ms
+compute agent's sidecar timing (results/still-scenes/people-finder/early-detector/phase1c/a1/timing/timing.jsonl): n 42 median 54.9 ms, p90 103.0 ms
+timing pass vs raw pass: 42/42 images keypoints within 1 px; max kp diff 6.10e-05 px; max box diff 0.00e+00 px
+verifier project side (box_base computes the flat share too, so an upper bound; 2 threads): median 0.75 ms, p90 2.98 ms; deployed = eval path people in 42/42
+compute agent's project side: median 0.70 ms, p90 2.53 ms
+criterion (verifier): median sidecar 61.1 + median project 0.75 = 61.9 ms <= 1000 ms: True

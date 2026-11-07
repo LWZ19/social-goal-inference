@@ -1,4 +1,4 @@
-# Port checks (totals only): runs_confirm4/dsv41
+# Port checks (totals only): results/data/moving/runs_confirm4/dsv41
 
 - episodes: CT4P 66 (left out {'answer without people or target': 6}), CT4PJ 66 (left out {'answer without people or target': 6})
 - CT4P direction: 6807/6808 path re-solves match (0.9999); fallbacks 2842, of which with a path in the rebuild 0 -> PASS

@@ -1,5 +1,6 @@
+# Round 5: a belief shaped by the queue's process (analysis, 3 Nov; design data only, zero calls)
 
-Written before any round 5 belief was run. Motivation: `round4/RESULTS_D.md` (c5f99d64). The role belief's excess
+Written before any round 5 belief was run. Motivation: `results/moving-lines/best-version-and-running-guess/round4/RESULTS_D.md` (c5f99d64). The role belief's excess
 false members over CT3F are:
 - ex-members: served customers walking off, kept at P(waits) ≥ 0.5 for a median 4-6 s;
 - unnamed walkers: half of them are moving at the time.

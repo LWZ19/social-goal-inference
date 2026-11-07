@@ -3,6 +3,7 @@
 ## Why
 D1's main threat to validity is oracle tracking: CT re-solves on the sim's true positions. E1a showed that A1's detector is near perfect on Habitat frames (75/75, 0.08 false people per image, 0.077 m error). That makes a tracker built only from the robot's own camera feasible.
 
+## The people source (built here; the run wires the sim and resolve side)
 - **`detector_service.py`**, in the torch sidecar, read-only, offline.
   - A1's frozen RT-DETRv2 + ViTPose (infer.py, sha256 asserted) behind `POST /detect` on 127.0.0.1:8899.
   - Its answer has the fields of A1's raw pass line.
@@ -17,6 +18,7 @@ D1's main threat to validity is oracle tracking: CT re-solves on the sim's true 
   - Matched tracks take the new position and yaw, with no smoothing.
   - **Cadence:** every re-solve frame, i.e. 2 Hz, the frame the robot sees at that moment.
 
+## Wiring (the run)
 - At each re-solve, the sim posts its robot camera's rgb to `/detect`.
 - The resolve side runs `people_from_raw` and `Tracker.update` with that frame's depth and camera, and passes `Tracker.as_people()` to `Resolver` in place of the true tracks.
 - The first match of the VLM's numbers to track ids stays as now: one to one (Hungarian), 0.75 m gate, at the first re-solve.

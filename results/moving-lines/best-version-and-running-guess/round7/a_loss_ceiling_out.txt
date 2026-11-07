@@ -1,4 +1,4 @@
-# Round 7, DESCRIPTIVE: where strict time in line is lost (sweep/confirm_selection.json, runs_ceiling4/dsv41)
+# Round 7, DESCRIPTIVE: where strict time in line is lost (results/moving-lines/test-layouts/confirm_selection.json, results/data/moving/runs_ceiling4/dsv41)
 
 ### OW: 66 episodes with a window, 4591 window seconds
 

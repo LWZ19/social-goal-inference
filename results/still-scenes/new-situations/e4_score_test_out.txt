@@ -1,5 +1,6 @@
 # E4 (I13_FROZEN.md): success by situation, model and method; layout-level sign-flip
 
+
 ## conversation_group (conversation_group)
 
 | model | records per method | R | E | C | C-R layout W/L/T, net, p | C-E layout W/L/T, net, p |

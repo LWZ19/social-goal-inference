@@ -121,6 +121,13 @@ Gemini 3.8 low  | 310 (104, 36, 8) | 307 (3) | 307/310 | 292/307 = 0.951 [0.865,
                   by A0 view class, detector k/n (model's own k): frontal 27/27 (25); oblique 64/64 (54); profile 156/171 (155); back 45/45 (44)
 Facing kill population, Gemini's pairs: primary 292/307 = 0.951 against 0.806 (fires below); school-panel reading against 0.70: not below
 
+== Runtime (FROZEN.md section 9; DEVIATIONS.md C15) ==
+GPU NVIDIA GeForce RTX 4060 Laptop GPU, driver 595.91.07, torch 2.14.1+cu126 (CUDA 12.6); detector rtdetr_v2_r50vd at tau 0.25, ViTPose on boxes >= tau, batch 1, fp32; 5 warm-ups on F-real images; each of the 42 E-real images timed once.
+sidecar (decoded image -> keypoints on CPU, synchronised): median 54.9 ms, p90 103.0 ms (file read + decode, not counted: median 5.4 ms)
+project side (steps 1-7 + F5, CPU, threads {'OMP_NUM_THREADS': '2', 'OPENBLAS_NUM_THREADS': '2', 'MKL_NUM_THREADS': '2'}): median 0.7 ms, p90 2.5 ms
+criterion: median sum 55.6 ms (<= 1000 ms: True); p90 sum 105.5 ms; peak GPU memory allocated 626.7 MiB (reserved 788.0; nvidia-smi poll 931 MiB total in use)
+keypoints of the timing pass vs the raw evaluation pass: 42/42 images within 1 px (max diff 0.0001 px; boxes max diff 0.00e+00 px); deployed-path people equal the evaluation path's in 42/42 images
+
 == A1 criteria (FROZEN.md section 10), judged on E-real; E-ph reported against the same bars ==
 E-real values: recall 116/118 = 0.9831; line 48/48; false 3/42 = 0.0714 per image; median xy 0.0527 m (n 116); non-profile median 6.41 deg, within 45 59/59; profile front/back 57/57; runtime 55.6 ms; A0-matched facing on Gemini's pairs 0.951
 E-real success bars: {'recall>=0.95': True, 'line recall>=0.95': True, 'false<=0.10': True, 'median xy<=0.15': True, 'non-profile median<=25': True, 'non-profile within45>=0.85': True, 'profile front/back>=0.90': True, 'runtime<=1.0 s': True}

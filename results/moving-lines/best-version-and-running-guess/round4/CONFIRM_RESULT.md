@@ -1,7 +1,8 @@
+# Confirmatory result for CT4PJ, read against CONFIRM_CT4PJ.md section 8 (analysis, 3 Nov)
 
 - `o_confirm_score.py` f536382f, run once per model;
-- `sweep/confirm_score_dsv41_out.txt` bf2f51eb;
-- `sweep/confirm_score_sonnet55_low_out.txt` 74d6b929.
+- `results/moving-lines/test-layouts/confirm_score_dsv41_out.txt` bf2f51eb;
+- `results/moving-lines/test-layouts/confirm_score_sonnet55_low_out.txt` 74d6b929.
 
 Mechanical checks passed for both models before scoring:
 - DeepSeek: port check 0.9999 and 0.9938.
@@ -54,7 +55,7 @@ Strict share in line from the first service, mean over the same layouts for ever
 
 - **Withdrawn:** "CT4PJ ties CT3F" (`CT4PJ.md` pilot reading, `n_ct4pj_release_out.txt`). The best estimate of the commitment rule's effect drops from +0.122 to about +0.05.
 - **Stands, as description only:** the observer's own place in the order is the largest single part of the role belief's deficit found so far, and it is positive on both models. It is significant only on the second model, which was not the test.
-- **Section 8's next design is already spent.** The process-structured belief was built offline in round 5 (`round5/ROUND5.md`, `RESULTS_1.md`) and failed its own written bar:
+- **Section 8's next design is already spent.** The process-structured belief was built offline in round 5 (`results/moving-lines/best-version-and-running-guess/round5/ROUND5.md`, `RESULTS_1.md`) and failed its own written bar:
   - v1 failed false fires;
   - v2 to v4 lost recall or raised empty;
   - on the design cells, v4 only traded far for cut.
@@ -78,6 +79,6 @@ The dry run on the pilot (design data) only tests the code. It reproduces 14/4/6
 If the confirm runs show the same, the open question is how a belief should become a goal that doesn't jitter. That is about the decision layer, not the belief.
 
 Any arm built from E1-E4 needs:
-- a fresh candidate range declared in `sweep/RANGES.md` before drawing (for example 3000-3449);
+- a fresh candidate range declared in `results/moving-lines/test-layouts/RANGES.md` before drawing (for example 3000-3449);
 - a frozen note;
 - the same mechanical checks.

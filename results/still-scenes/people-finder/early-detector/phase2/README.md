@@ -75,6 +75,7 @@ Paths below are relative to this folder (`results/still-scenes/people-finder/ear
 | Step | Outcome | One-line reading (inference) |
 |---|---|---|
 | (A) Unseen-layout confirmation, 182 layouts (seeds 200–212) | **Neither** (pre-registered). 6 of 7 success bars met; false people 44/182 = 0.242 per image against the 0.10 bar; no kill clause fired | Recall, placement and facing carry over to new layouts; false people do not, and most of them sit around counter staff (post hoc). |
+| (B) Live-check build | Not a result. Protocol frozen before the driver; 17 of 17 zero-call dry-run checks pass. The verifier found a lock defect that can let two concurrent runs of one model pass the per-model cap | Ready for the run once the lock is fixed, or under a strict one-run-at-a-time rule; the project or lead decides. No live result yet. |
 | I09 as a method | Phase 1's A1–A2 success on the development scenes stands; the unseen-layout confirmation does not confirm it | Before the detector is called a method, it would need a new pre-registered fix and fresh layouts. |
 
 Shared cautions:
@@ -101,8 +102,9 @@ Shared cautions:
 - **The manifest** (`confirm/manifest.json`, sha256 `cf2937ab…`, written at 04:41:03 from the files, not from a status file):
   - seeds 200–212 are complete, each with exactly the 14 ids, and there is no `examples/` folder;
   - every render job says `real`, the folder's seed, Blender 4.5.14, and thresholds equal to `configs/default.yaml` key by key;
-  - 2,574 names under `seeds/realistic` were checked; none contains group_photo, lift_wait, heldout, held_out or eval_16–19;
+  - 2,574 names under `results/still-scenes/scene-seeds/phase2/realistic` were checked; none contains group_photo, lift_wait, heldout, held_out or eval_16–19;
   - situations per scene: no_one 78, waiting_line 65, conversation_group 39;
+  - the render check's own per-scene hashes agree on 182 of 182 scenes.
 
 ### The method and the scorer (frozen; nothing re-tuned)
 
@@ -243,6 +245,7 @@ Table 1.5. POST HOC: where the 44 false people come from (`confirm/posthoc_false
 | **Overall** | | **Neither** |
 | Prediction (FROZEN.md section 12; inference) | recall 0.95–0.99 (0.981); line ≥ 0.98 (0.995); false 0.03–0.15 (**0.242**); position 0.05–0.07 m (0.061); non-profile median < 15 deg (10.3); profile front/back ≥ 0.95 (1.000) | Held, except false people, which landed above the range |
 
+### Where the checks differ
 Every criterion verdict agrees, and the verifier found no discrepancy in any reported number. Three departures from the note's text remain; none changes the verdict.
 1. **The render trial, not disclosed.** FROZEN 1.4 says one generate command per seed, and seed 200 had two. The trial's scene was kept, and its 131.4 s were counted on the clock, as 1.4 defines the clock. Without the trial, the sum after seed 212 would have been 10,671.5 s, and seed 213 would also have been rendered. S3 would still fail: a 14th seed with no false person at all would give 44/196 = 0.224.
 2. **The verifier's own detector pass.** FROZEN section 9 step 7 says the optional verifier runs no detector or pose model on a test image. The verifier's dispatch asked for its own sidecar pass, so it ran one, once, after scoring had finished, only to compare raw outputs. It was bit-identical and is logged in `verify_i09_confirm/v_order.txt`.
@@ -343,6 +346,7 @@ Builder total: 17 of 17 checks pass. Verifier: everything it re-ran passes excep
   - `FROZEN.md` was hashed before the driver existed.
   - The prompts, the expected calls, the baselines, the reading thresholds, the trial spread and the recorded latencies all reproduce.
   - The sidecar is untouched, and no held-out scene, run or seed was read.
+### The request, now with the run (`live/REQUEST.md`)
 
 - **The steps.**
   1. Check `FROZEN.sha256`.
@@ -379,6 +383,7 @@ Builder total: 17 of 17 checks pass. Verifier: everything it re-ran passes excep
 - **What it can test.** It runs on the development scenes, where the detector had 3 false people in 42 images, so it cannot show what the unseen-layout rate would do. On unseen layouts the constraints call would see an extra numbered person about once every four images, often at the counter; the dry-run image of `real_eval_08` shows one such disc. Whether that hurts the constraints is open.
 - **What a result would show.** A "consistent" result would show that A2's gain survives when the model writes its constraints against the detector's people. It would also measure the saving from dropping the people call (recorded medians 2.1 s for GLM and 3.7 s for DeepSeek, against about 0.06 s for the detector). It would test neither Qwen nor unseen layouts, and one trial resolves only large effects.
 
+## 4. Questions for the project and the analysis
 3. **Lead.** Should the confirmation's departures be accepted and recorded in a hashed `DEVIATIONS_2.md`? They are `DEVIATIONS_1.md` R1–R4, the render trial that was not disclosed, and the verifier's own detector pass.
 
 ---
@@ -402,6 +407,10 @@ Old:
 Calling it a method would also need a confirmation on unseen layouts, with nothing re-tuned.
 ```
 New:
+    - Verdict: neither. Six of seven success bars are met and no kill clause fires. Recall 510 of 520 = 0.981 (Wilson 95% 0.965–0.990; development 0.983); line members 207 of 208; median position error 0.061 m; non-profile facing median 10.3 deg, with 278 of 287 within 45 deg; profile front/back right for 223 of 223; all matched people within 45 deg 494 of 510 = 0.969 (kill line 0.70). False people: 44 in 182 images = 0.242 per image (layout bootstrap 0.176–0.313) against the 0.10 bar. That is about 3.4 times the development rate (0.071) and above the note's predicted 0.03–0.15. It stays under the 0.30 kill line, though the bootstrap's upper end crosses it.
+    - (inference) Recall, position and facing carry over to unseen layouts of the same rows, and the facing fix holds (back views 76 of 77 within 45 deg). False people do not: the 14 development layouts under-sampled them. So by its own pre-registered standard the detector is not yet a method, and no kill fired. Any change the breakdown suggests (counter-staff placement, the duplicate rule, the threshold, or how the scorer treats people hidden by rule) is data-informed. It would need a new pre-registration and fresh unseen layouts; seeds 200–212 are spent as test data.
+    - Pre-registered reading on successes of 84: consistent with A2 if GLM ≥ 66 and DeepSeek ≥ 68 (recorded C t0 64 and 65; A2's D replay 69 and 71); contradicts A2 if GLM ≤ 63 and DeepSeek ≤ 64; otherwise mixed. One trial resolves only large effects (recorded C per trial: GLM 64/65/57, DeepSeek 65/60/57).
+    - The driver passes 17 of 17 zero-call dry-run checks, and its verifier reproduced them. The verifier found one defect to settle before going live: a refused invocation deletes a running invocation's lock, and the ledger is read only at start. So two concurrent runs of one model can pass the per-model cap (114 sends against 60, shown with a fake gateway and zero model calls), and the request's advice on exit codes would make that easy to trigger. The request is with the run; no live result yet.
 
 ### 3. Revision note
 
@@ -415,6 +424,7 @@ New:
 
 Old:
 New:
+### 5. Section 6, step-3b row: the live check's agreement (optional)
 
 Old:
 New:

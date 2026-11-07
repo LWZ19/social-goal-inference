@@ -1,3 +1,4 @@
+# CT4-min against CT3-fix-gated: frozen designs and claim (analysis, 3 Nov 2026)
 
 Frozen after phase 1b, before any fresh call. Design data only: seeds 10-44 of the bystander and original scenes,
 offline, zero calls. I have not opened `results/moving-lines/test-layouts/human_dump/`, `results/moving-lines/test-layouts/renders/`, or any fresh output. The
@@ -66,6 +67,7 @@ Right last share, bystander cells, DeepSeek / Sonnet:
 - **Original scenes:** CT4-min wins 10-12 of 13 cells (DeepSeek) and 28 of 28 (Sonnet) in every condition.
 - **Restless bystanders defeat both** (capture rises several-fold). Neither design solves them.
 
+## 4. Pre-registered claim (judged once, after all fresh cells; the run scores)
 Data: the 72 frozen sweep layouts (`results/moving-lines/test-layouts/selection.json`, scenario sha256 047f49a5), one seed each.
 - Ties are |d| < 0.01. Tests are exact two-sided sign tests over layouts.
 
@@ -105,6 +107,7 @@ CT3-fix-gated on right last: wins > losses and p ≤ 0.05.
 - *C1 fails:* no robustness claim. M1 reduces to a unifying account that ties the bolt-ons, and the trade-off is
   reported as measured.
 
+## 5. Before any fresh call (run)
 - **The closed-loop reproduction check.** On at least 6 design bystander cells (3 DeepSeek, 3 Sonnet), cache-only,
   each ported arm's logged per-re-solve last must agree in at least 0.95 of re-solves with this folder's offline code
   fed that run's own logged tracks. CT3's offline replay agreed 0.975-0.995 with its logs.

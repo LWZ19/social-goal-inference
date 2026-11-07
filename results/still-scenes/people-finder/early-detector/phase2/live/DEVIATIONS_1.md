@@ -13,6 +13,7 @@ Written before any live call of this check. `runs/` holds only the two count-onl
 - **The records are mixed-version.** A DeepSeek live result therefore mixes two versions within each record. A difference against the s20 baseline may come partly from the model change rather than from the detector's people.
 - **GLM is not affected,** as far as is known.
 
+## decision (lead)
 - **The reading stays as frozen.** Its verdict ("consistent", "contradicts" or "mixed") is computed exactly as `FROZEN.md` section 5 says.
 - **DeepSeek carries a caveat.** The README reports DeepSeek's part of the result with this caveat attached: "possibly confounded by the x-test-2 version change (DEVIATIONS_1.md)". GLM's part is the cleaner half of the evidence.
 - **The design for future comparisons.** Every comparison that involves `x-test-2` pairs the arms within one stage, on the same deployment. The propose-and-select study plans this already.

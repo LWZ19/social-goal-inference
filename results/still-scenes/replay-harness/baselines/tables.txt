@@ -221,3 +221,4 @@ dsv41         pooled     252  113  120   182   182  128  118  196       95      
     dsv41         32/36  3/18
 
 -- sanity: C now != C rec in 0 of 756 records; standard goal recomputed for 311 source=standard records, max distance from the recorded pose 0.00e+00 m, 0 moved > 1e-6 m
+

@@ -1,0 +1,55 @@
+=== OLD wording: s19 GLM, s20 DeepSeek, s19 Qwen (C)
+tallies {'allowed': 252} {'allowed': 252} {'allowed': 252}
+F1/F4 GLM s19: n=84 trials/ep={3: 84} any=78 maj=64 all=44 per-trial=[64, 65, 57] total=186 mean=62.00 gain=+2.00
+F1/F4 DS s20: n=84 trials/ep={3: 84} any=79 maj=65 all=38 per-trial=[65, 60, 57] total=182 mean=60.67 gain=+4.33
+Qwen s19: n=84 trials/ep={3: 84} any=84 maj=80 all=70 per-trial=[76, 76, 82] total=234 mean=78.00 gain=+2.00
+=== F2 mixedC
+F2 GLM s19: mixed=19 allfailC=2 people-count differs=2 judge-literal kinds differs=17 constraint-count differs=17 true kind multiset differs=19 true kind set differs=19 same people count & true kinds differ=17 unwrapped entries=0
+F2 DS s20: mixed=22 allfailC=2 people-count differs=7 judge-literal kinds differs=21 constraint-count differs=21 true kind multiset differs=22 true kind set differs=22 same people count & true kinds differ=15 unwrapped entries=0
+GLM s19 loose: mixed(all 3 trials)=34 with>=2 C steps=28 people differs=3 true kinds differ=27
+DS s20 loose: mixed(all 3 trials)=41 with>=2 C steps=32 people differs=9 true kinds differ=32
+=== F3 cross
+F3 GLM+DS old (n=84): any=83 >=3of6=78 >=4of6=56 all=27 mean/sample=61.33
+=== N7 old 3-model
+N7 Qwen+GLM+DS old (n=84): any=84 >=3of9=84 >=4of9=83 >=5of9=81 all=22 mean/sample=66.89
+=== NEW wording: s23 GLM, DS; s21 Qwen; s23 others (C)
+qwen38_low s21 tally {'allowed': 252}
+N5 qwen38_low s21: n=84 trials/ep={3: 84} any=83 maj=80 all=65 per-trial=[73, 78, 77] total=228 mean=76.00 gain=+4.00
+glm53 s23 tally {'allowed': 252}
+N5 glm53 s23: n=84 trials/ep={3: 84} any=76 maj=58 all=36 per-trial=[57, 57, 56] total=170 mean=56.67 gain=+1.33
+dsv41 s23 tally {'allowed': 252}
+N5 dsv41 s23: n=84 trials/ep={3: 84} any=79 maj=67 all=39 per-trial=[60, 66, 59] total=185 mean=61.67 gain=+5.33
+haiku55 s23 tally {'allowed': 252}
+N5 haiku55 s23: n=84 trials/ep={3: 84} any=83 maj=82 all=75 per-trial=[81, 80, 79] total=240 mean=80.00 gain=+2.00
+sonnet55_low s23 tally {'allowed': 252}
+N5 sonnet55_low s23: n=84 trials/ep={3: 84} any=84 maj=82 all=76 per-trial=[81, 82, 79] total=242 mean=80.67 gain=+1.33
+gemini38_low s23 tally {'allowed': 252}
+N5 gemini38_low s23: n=84 trials/ep={3: 84} any=74 maj=71 all=69 per-trial=[72, 70, 72] total=214 mean=71.33 gain=-0.33
+=== N2 mixedC new
+N2 GLM s23: mixed=18 allfailC=3 people-count differs=1 judge-literal kinds differs=16 constraint-count differs=16 true kind multiset differs=17 true kind set differs=17 same people count & true kinds differ=16 unwrapped entries=0
+N2 DS s23: mixed=19 allfailC=1 people-count differs=5 judge-literal kinds differs=19 constraint-count differs=19 true kind multiset differs=19 true kind set differs=19 same people count & true kinds differ=14 unwrapped entries=0
+GLM s23 loose: mixed(all 3 trials)=40 with>=2 C steps=27 people differs=5 true kinds differ=26
+DS s23 loose: mixed(all 3 trials)=40 with>=2 C steps=28 people differs=8 true kinds differ=28
+=== N3 cross new
+N3 GLM+DS s23 (n=84): any=84 >=3of6=71 >=4of6=59 all=21 mean/sample=59.17
+=== N6 6-model pooled
+N6 6 models (n=84): any=84 >=9of18=84 >=10of18=84 >=12of18=79 all=17 mean/sample=71.06
+N6 per-model-majority vote: >=4of6=82 >=3of6=84 n=84
+pair qwen38_low+glm53 (n=84): any=84 >=3of6=82 >=4of6=68 all=29 mean/sample=66.33
+pair qwen38_low+dsv41 (n=84): any=84 >=3of6=81 >=4of6=75 all=33 mean/sample=68.83
+pair qwen38_low+haiku55 (n=84): any=84 >=3of6=84 >=4of6=82 all=56 mean/sample=78.00
+pair qwen38_low+sonnet55_low (n=84): any=84 >=3of6=82 >=4of6=82 all=61 mean/sample=78.33
+pair qwen38_low+gemini38_low (n=84): any=84 >=3of6=82 >=4of6=72 all=55 mean/sample=73.67
+pair glm53+dsv41 (n=84): any=84 >=3of6=71 >=4of6=59 all=21 mean/sample=59.17
+pair glm53+haiku55 (n=84): any=84 >=3of6=78 >=4of6=73 all=35 mean/sample=68.33
+pair glm53+sonnet55_low (n=84): any=84 >=3of6=83 >=4of6=74 all=33 mean/sample=68.67
+pair glm53+gemini38_low (n=84): any=82 >=3of6=73 >=4of6=67 all=34 mean/sample=64.00
+pair dsv41+haiku55 (n=84): any=84 >=3of6=84 >=4of6=78 all=35 mean/sample=70.83
+pair dsv41+sonnet55_low (n=84): any=84 >=3of6=82 >=4of6=77 all=38 mean/sample=71.17
+pair dsv41+gemini38_low (n=84): any=84 >=3of6=78 >=4of6=67 all=33 mean/sample=66.50
+pair haiku55+sonnet55_low (n=84): any=84 >=3of6=84 >=4of6=83 all=70 mean/sample=80.33
+pair haiku55+gemini38_low (n=84): any=83 >=3of6=81 >=4of6=73 all=64 mean/sample=75.67
+pair sonnet55_low+gemini38_low (n=84): any=84 >=3of6=84 >=4of6=73 all=62 mean/sample=76.00
+=== cache-copy check: s23 people vs s19/s20 people (same arm, scene, episode, trial)
+glm53: people lists both present=134 identical=134; people calls cached 141/141; constraints calls cached 0/141
+dsv41: people lists both present=144 identical=144; people calls cached 149/151; constraints calls cached 2/151

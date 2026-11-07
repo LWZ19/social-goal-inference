@@ -56,6 +56,7 @@ Paths below are relative to this folder (`results/still-scenes/crowds/` in the r
 | Noise model: K4 | **Valid for all three models.** Simulated minus recorded C: Qwen +0.3, GLM +5.4, DeepSeek +6.2 points (n 408 each); K4 does not fire | Against people noise alone (R5) the gaps are −1.2, −2.5 and −4.5. The score verifier's own validation did not finish. |
 | Noisy separation: criterion (e) | **Not met.** Top level (n 80): Qwen +2.2, GLM +8.0, DeepSeek +8.9 points | In this i.i.d. model crowds do not amplify noise: GLM and DeepSeek separate by 17–18 points on the bases already. |
 | K1 | Does not fire (lowest oracle-C cell is 0%) | |
+| **I06 first probe overall** | **Neither.** (a), (c) and (d) met; (b) and (e) not met; no kill line fires. the project decides | One documented failure confirmed at a high rate in generated crowds, plus a post hoc hidden-floor mechanism; no failure inside the region was tested. |
 | C5 gate-1 recount | **Met by the letter.** 92 configurations (63 and 49 under the stricter readings), against 30 | The widening adds diversity within the existing situations only. |
 
 Shared cautions:
@@ -307,6 +308,7 @@ Table 5.1. Noisy C (arm 4) under L1: mean over 20 draws per scene, then over sce
 - **Crowds do not amplify the noise here** (writer's reading of Table 5.1). At B1, C1, D2, D5 and E1, no model's separation exceeds its separation on the bases by more than 2 points (largest excess: Qwen at D2, +6.2 against +4.2). E2 is the exception for all three: +10.6, +25.0 and +24.1, against +4.2, +18.3 and +17.2 on the bases.
 - **Secondary arm** (rates fitted on the placeholder answers alone; decides nothing): top level +1.2, +7.8, +8.2; bases +1.3, +18.7, +15.3.
 - **Detectors under noise** (descriptive, not differenced against the base; % of variant draws): (i) is true in 45.5 (Qwen), 32.9 (GLM) and 34.6 (DeepSeek); (iii) in 1.4, 2.0 and 2.4; (iv) and (v) in 0.
+- The score verifier checked the separations' arithmetic from the scoring check's per-scene rows (top level +2.19, +8.00, +8.88; bases +4.17, +18.33, +17.17; without A6 +2.69, +10.69, +11.46; A1 23.3, 36.3, 37.1%). Its own re-simulation did not finish.
 
 ![Noisy curves](score/curves_noisy.png)
 
@@ -326,6 +328,8 @@ Figure 5.1 (`score/curves_noisy.png`). Oracle C and each model's noisy C, per fa
 | K1 "Oracle C at least 95% everywhere, and noise within 5 points." | Lowest arm-3 cell 0% (A1–A6) | Does not fire |
 | K2 "L1/L2 disagreement above 30%, or L2 empty above 10%." | 1.5%, 0.0% | Does not fire |
 | K3 "More than 50% of layouts rejected." (read as variants) | 71/270 = 26.3% | Does not fire |
+| K4 "The noise model misses the recorded C by more than 10 points." (fires only when every model misses) | +0.3, +5.4, +6.2 | Does not fire (rests on the scoring check's validation) |
+| **Verdict** (build the full pass when (a)–(e) hold and no kill fires) | (a), (c), (d) met; (b), (e) not met; no kill | **Neither; the project decides** |
 | Post hoc, reported only: (e) without A6 | GLM +10.7, DeepSeek +11.5, Qwen +2.7 (n 65) | Would be met for 2 models; changes no verdict |
 
 - (a) can be met through A by construction, since A was built around failure (i) (disclosed in FROZEN section 9).
@@ -350,11 +354,13 @@ Figure 5.1 (`score/curves_noisy.png`). Oracle C and each model's noisy C, per fa
 
 ---
 
+## 8. Where the compute checks and the verifiers differ
 Settled by the verifier (its value is used above):
 1. **Base labels in the build manifest.** `builder/label_checks.py` merges label rows by scene id alone, and base ids repeat across seeds. So the 20 base entries of seeds 0 and 1 in `build/manifest.json` and `manifest.jsonl` carry seed 2's label fields (`l1_cells_e0`, `l2_cells_e0`, `rep_point_moved_m`; for example seed 0 `eval_06`: 708 stored, 719 true), and `build/labels.txt`'s base lines are seed 2's 10 rows counted three times. All 30 bases do pass, on the per-seed rows (`labels_rows_seed{0,1,2}.jsonl`) and in the verifier's own runs. The scoring read the per-seed rows keyed by (seed, scene id), so no number on this page is affected. The manifest is left as written; anyone reading base labels from it should re-key it first.
 3. **Order.** The build's `self_test.txt` (01:49:57) and `base_check.txt` (01:49:55) predate the last edit of `builder/crowd.py` (01:51:41) by about two minutes, so they tested an earlier version. No effect: the verifier's own checks accept 21 of 21 and reproduce the final builder's decision at every attempt. `readings.txt` (01:53:45) and `DEVIATIONS.md` (01:54:04) were written about two minutes after variant generation began (01:51:59), before any scoring. The note allows addenda before the affected data are scored, and the readings change no rule.
 
 Found while writing (the tables' values are used above):
+5. **"0/69".** Both the scoring check's and the score verifier's summaries say the full oracle fails L2 in "A2–A6 (0/69)", and their situation lines say oracle C scores "A 0/69" at lines. `score/tables.txt`, the verifier's own `verify_i06_score/out/summary_oracle.txt` and `score/rows_oracle.jsonl` give 0 of 72 for A2–A6 (12 + 4 × 15) and 0 of 84 for A at lines (every A variant is at a line). The arm-1 disagreement total, 85 = 72 + 8 + 4 + 1, agrees with the tables. This looks like a slip in the summaries; it changes no verdict.
 
 - **Arm-4 L1/L2 disagreement** (2.1%, 4.5%, 4.1%): not recomputed.
 - **C5 recount:** PRIMARY' 92 and STRUCTURE 63 verified by hand; LOWER' 49 and the EMPIRICAL 0.13 m median not recomputed (the verifier's `v_c5.py` was written but not run).
@@ -372,6 +378,8 @@ Found while writing (the tables' values are used above):
 - Audiences are thinly tested (8 kept variants of 36 planned), and D5 exists only at groups. A full pass would need families whose top levels exist in every situation, or reporting by situation.
 - Perception noise costs GLM and DeepSeek 17–18 points on the plain bases, and in this i.i.d. model crowds add little to that, except E2. The probe therefore gives no zero-call reason to expect C to degrade faster in crowds than in plain scenes. That is a property of the noise model (density-independent, in-sample) as much as of the solver; real VLM people answers in crowds are untested.
 
+- **The L1/L2 decision, with the mentor.** Criterion (c) passes for the solver (1.5%), but that agreement is built in. L1's own representative point fails L2 in 85 of 199 variants (42.7%), including every A2–A6 variant. So the decision matters for methods that aim near the region's reference point: R's and E's marked points, and labels sampled for C5. It does not matter for the solver. The cue threshold decides how family A is read. At A6 the confuser stands on the place in turn that L1 marks as correct, facing like a member; L1 counts joining behind it as a failure. The probe's criteria come out the same without A5–A6, so the threshold changes the reading of A, not the verdict.
+- **The occlusion decision for family F.** The probe gives no occlusion evidence. Family E never hid a relevant member (37 of 37 kept their visible samples), because the scene check's visibility rule held and E aimed at the region's reference point. F's partly hidden target, and any variant that hides a member, still need the decision, and so does live check L4. The hidden-floor mechanism above suggests what such scenes would test besides grounding: whether the solver can stand on floor the depth image does not show.
 - **The VLM crowd run's size.** The REPORT's guess is about 2,000 calls: 14 layouts × 3 crowd levels × 3 trials × about 5.3 calls per episode × 3 models. The probe suggests where the levels should go. Oracle C bends only at lines, so the line levels are where C can be compared with R and E: for example A1 (a clear "not waiting" cue the solver ignores), A6, and B1 or D2. Whether R and E, which see the image, read a confuser's facing better than the solver does is an open question that family A can answer. Groups and audiences do not bend under oracle C, but R and E were never tested there in crowds.
   - A lines-only version at the same cost per episode would be 15 line layouts (5 rows × 3 seeds) × 3 levels × 3 trials × 5.3 × 3 models ≈ 2,100 calls (guess).
   - The variants are placeholder renders with unchanged rooms. A realistic run would need Blender re-renders, and possibly re-furnished rooms (FROZEN point 4).
@@ -403,6 +411,13 @@ Old:
   - The noise model misses the recorded C by more than 10 points. Then report oracle curves only.
 ```
 New:
+  - Scope. Families A–E, zero calls. Family F was deferred: it needs generator support for a second same-kind target and the project's occlusion decision, so L4 still waits on it. Base layouts: the 10 development rows of seeds 0–2 that a family applies to (lines `eval_06`–`09` and `13`, groups `eval_10`–`12`, audiences `eval_14`–`15`), reproduced with the package's generator; the 14 with a whitelisted copy are identical to it. Variants keep the base room, add non-members only, and leave the L1 regions unchanged (199 of 199).
+  - Build. 199 of 270 planned variants kept (73.7%; 65 found no spot, 6 failed the visibility check), plus the 30 bases. Every label check passes on all 229 scenes, and full oracle scores 100% under L1. Which levels exist depends on the situation: D5 only at groups (8 of 9; 0 of 21 elsewhere), B and C none at the line of 6 or the audience of 5, and 8 of 36 planned audience variants were kept. E as built never hid a relevant member (visible samples unchanged in 37 of 37), so it tests hidden floor, not occlusion.
+  - Oracle C (oracle people, reference constraints) under L1: bases 30 of 30; A 0 of 84, at every level; B1 13 of 21 (drop 38.1); C1 17 of 20 (15.0); D2 25 of 29 (13.8); D5 8 of 8; E1 21 of 21; E2 12 of 16 (25.0). Every failure is at a line: all 46 group and audience variants succeed, and the solver with no constraints also succeeds in every group scene.
+  - Documented failures. (i), bystanders behind a line taken as waiting, fires in 99 of 153 relevant line variants (64.7%; without family A, 15 of 69) and explains all 99 failures in A–D. (ii), (iii) and (iv) fire 0 times (0 of 199, 0 of 38, 0 of 8), post hoc because the frozen families keep added people at least 1.2 m from the members and outside the structure's space. E2's 4 line failures have no named cause; post hoc, the added person hides most of the floor at the place in turn, and the solver stops 0.35–0.46 m short, outside the region, with no flag.
+  - L1/L2. Oracle C disagrees in 3 of 199 (1.5%; all E1 at one group layout where the standard goal is used), and L2 is never empty. That agreement is built in (the solver keeps 1.0 m, L2 needs 0.85 m): the full oracle's own stop fails L2 in 85 of 199 (42.7%), including all 72 variants of A2–A6.
+  - Noise model (fitted in-sample on the seven development runs per model; i.i.d.). Simulated minus recorded C: +0.3 (Qwen), +5.4 (GLM), +6.2 (DeepSeek) points, n 408 each, so all three are valid; against I01's R5 construction the gaps are −1.2, −2.5 and −4.5. Separation from oracle C at the top level (A6, B1, C1, D5, E2; n 80): +2.2, +8.0 and +8.9 points; on the bases +4.2, +18.3 and +17.2. Post hoc, without A6 (where oracle C is 0% and noise can only help): +2.7, +10.7 and +11.5.
+  - Criteria: (a) met (A 100.0, B 38.1, C 15.0; also met without A); (b) not met (only (i)); (c) met; (d) met (73.7%, full oracle 100%); (e) not met. No kill line fires (K3: 26.3% rejected; K4: no model misses). Verdict: neither, and the project decides.
 
 ### 3. Section 6, step-4 row
 
@@ -411,11 +426,14 @@ Old:
 | 4 | Days 14–17 | I06 probe with families A–F, about 400 placeholder scenes (about 200 CPU-minutes, 10–20 min wall on 20 CPUs). Family F's zero-call label check runs before family F is used. | First result: about 3 d; family F about 1 d more (guess). The full pass is about 14 person-days, more than 2 weeks in the worse case. | 0 | Rules L1/L2 and family F written first; announce the shared CPU |
 ```
 New:
+| 4 | Days 14–17 | I06 probe with families A–F, about 400 placeholder scenes (about 200 CPU-minutes, 10–20 min wall on 20 CPUs). Family F's zero-call label check runs before family F is used. **First probe done 18 Oct** (`results/still-scenes/crowds/README.md`) [phase 2]: families A–E only (F deferred), 199 of 270 planned variants kept plus 30 bases, under a protocol note frozen and hashed before any variant was built. Verdict neither: (a), (c) and (d) met, (b) and (e) not met, no kill fired. Oracle C fails only at lines, by bystanders absorbed behind the line (99 of 153 relevant variants); the noise separation at the top level is 2.2–8.9 points. | First result: about 3 d; family F about 1 d more (guess). The full pass is about 14 person-days, more than 2 weeks in the worse case. The first probe's build and scoring ran in about 4 h of wall time (18 Oct). | 0 | Rules L1/L2 and family F written first; announce the shared CPU. Family F still needs the project's occlusion decision and generator support for a second same-kind target |
 
 ### 4. Section 6, the decision-gate row
 
 Old:
+| Gate | About day 17 | **Decision gate** with the project, after the I06 probe returns: results so far; choose a programme; confirm the metric list; approve the live checks. | — | — | project |
 New:
+| Gate | About day 17 | **Decision gate** with the project, after the I06 probe returns: results so far; choose a programme; confirm the metric list; approve the live checks. [phase 2] The I06 first probe returned on 18 Oct as neither (`results/still-scenes/crowds/README.md` section 9). It brings to the gate: the programme choice (B's case was conditional on the probe passing); the L1/L2 decision and the cue threshold, with the mentor (the solver agrees with L2 by construction, while L1's own reference point fails L2 in 42.7% of variants); the occlusion decision for family F (family E never hid a member, so the probe has no occlusion evidence); whether to add a family that crowds the region itself; and the VLM crowd run's size and levels. | — | — | project |
 
 ### 5. Programme B: experiment 2
 
@@ -437,6 +455,7 @@ Old:
 - B may be the main contribution of the term, but only if the I06 probe passes (guess). That is why the decision gate waits for the probe.
 ```
 New:
+- B may be the main contribution of the term, but only if the I06 probe passes (guess). That is why the decision gate waits for the probe. [phase 2] The first probe did not pass: it is neither, with no kill line fired (`results/still-scenes/crowds/README.md`). (inference) Its zero-call curves add one measured failure rate (bystanders absorbed behind a line, 64.7% of relevant line variants) and a post hoc hidden-floor mechanism, but no failure inside the region, since the frozen families kept non-members out of it. B's remaining case rests on the VLM crowd run (step 8, the only route to RQ2 for R and E), or on a second frozen probe that crowds the region after the L1/L2 decision.
 
 ### 7. Finding 9: the other constraint kinds in crowds
 
@@ -464,12 +483,15 @@ Old:
 - Crowd labels: L1 (members only), L2 (minus a 0.3 m gap to non-members and minus other groups' circles), or L3 (L2 with a fallback). The cue-strength threshold for ambiguous episodes (I06, I18). *Mentor input wanted.*
 ```
 New:
+- Crowd labels: L1 (members only), L2 (minus a 0.3 m gap to non-members and minus other groups' circles), or L3 (L2 with a fallback). The cue-strength threshold for ambiguous episodes (I06, I18). *Mentor input wanted.* [phase 2] I06's first probe measured both on 199 crowd variants (`results/still-scenes/crowds/README.md` section 2). For the solver they barely differ: oracle C disagrees in 3 of 199 (1.5%) and L2 is never empty, but that agreement is built in, since the solver keeps 1.0 m from people and L2 needs 0.85 m. L1's own reference point (the full oracle's stop) fails L2 in 85 of 199 (42.7%), including all 72 variants with a confuser 0.6–1.6 m behind a line (A2–A6). (inference) So the decision matters for methods that aim near the region's reference point (R's and E's marked points, labels sampled for C5), not for the solver. The cue threshold decides how family A is read: at A5–A6 the confuser stands 0.6–0.8 m behind the line, facing within 30 deg of the line's facing, and L1 counts joining behind it as a failure; the probe's criteria come out the same without A5–A6.
+### 10. Section 7: the occlusion decision
 
 Old:
 ```text
 - Whether "all relevant people visible" may be relaxed for occlusion scenes (I06 family F's partly occluded target, I30, I17), and whether bystanders near a line change its acceptable region.
 ```
 New:
+- Whether "all relevant people visible" may be relaxed for occlusion scenes (I06 family F's partly occluded target, I30, I17), and whether bystanders near a line change its acceptable region. [phase 2] I06's first probe gives no occlusion evidence: its family E puts a person on the line of sight to the region's reference point, but the scene check's visibility rule held, and no relevant member lost a visible sample (37 of 37 E variants). Post hoc, it found that hidden floor matters: with a person 2 m from the camera, 4 of 15 line variants failed because that person hid most of the floor at the place in turn and the solver stopped 0.35–0.46 m short, outside the region, with no flag. Family F, and any variant that hides a member, still need this decision (`results/still-scenes/crowds/README.md` sections 1 and 3). On bystanders near a line: the probe kept each line's L1 region unchanged, and the solver took non-members about 0.6–2.5 m from a line as waiting in 99 of 153 relevant variants.
 
 ### 11. Revision note
 
@@ -478,6 +500,7 @@ Old:
 and add step-3b notes to the opening lines, Programmes A and C, section 6's cut order, I46's seeds, section 7's runs and section 8's render threat.
 ```
 New:
+- **Phase 2, I06 first probe (18 Oct).** I06's first crowd probe is done (`results/still-scenes/crowds/README.md`), with zero calls: families A–E on the development layouts of seeds 0–2 (199 of 270 planned variants kept, plus 30 bases), built from new `[seed, 2, …]` streams so the existing scenes stay byte-identical. Family F was deferred (generator support and the project's occlusion decision). The protocol note was frozen and hashed before any variant was built, and independent verifiers reproduced the build from its streams and the oracle arms scene for scene; the score verifier's own noise validation did not finish. Verdict neither: (a), (c) and (d) met, (b) and (e) not met, no kill fired. Oracle C fails only at lines, by bystanders absorbed behind the line (99 of 153 relevant variants); the solver's agreement with L2 is built in, while L1's own stop fails L2 in 42.7% of variants; noisy perception separates from oracle C by 2.2–8.9 points at the top level. The C5 gate-1 recount on the widened generator gives 92 configurations. "How to read" defines [phase 2], and I06, section 6 (step 4 and the decision gate), Programme B and section 5's start recommendation, finding 9, C5's gate 1 and section 7 (crowd labels, occlusion) carry the results; optionally also section 1.2 (step 6) and section 8's circularity bullet.
 
 ### 12. Section 1.2, phase-2 step 6 (optional)
 
@@ -504,3 +527,7 @@ New:
 ---
 
 ## 11. After this page was written: the score verifier's noise runs (the research lead, 18 Oct)
+
+  78.7 (GLM) and 79.4 (DeepSeek) against recorded 93.4, 73.3 and 73.0: gaps +0.3, +5.4 and +6.4 (scoring step +0.3,
+  record, and R5 equals I01's rows on 252 of 252 per model. All three models are valid; K4 does not fire.
+  L1/L2 disagreement for DeepSeek is 4.0% (scoring step 4.1%).

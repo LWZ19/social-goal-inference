@@ -12,6 +12,7 @@ the development failure's mechanism.
 
 I chose the threshold below after seeing this geometry. No model output and no detector output exist for these
 scenes.
+## decision
 
 - **Primary occluded set (H1, H2) = occluded scenes whose nearer-surface gap at the chest point is at most 0.5 body
   half-widths** (`anchor_gap.py`: depth more than 0.3 m nearer; half-width = fx × 0.22 m / depth). That gives

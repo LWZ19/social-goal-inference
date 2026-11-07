@@ -52,6 +52,7 @@ All 4 of C07's remaining fit-train false people are glass-booth staff. I also kn
 
 **What this note chooses, and what it does not.** It chooses no part of the method: the method is the fix step's recorded choice. It does not choose the test seeds. It fixes the mechanics, the report, and the definitions the brief leaves open (section 11).
 
+## 1. Test set (to be named by the project)
 Timing:
 - The addendum is dated and hashed before any test scene is rendered. Its file time must precede the start of the first generate command on any listed seed (check C5).
 

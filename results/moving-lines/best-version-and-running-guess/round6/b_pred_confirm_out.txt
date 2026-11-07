@@ -1,6 +1,6 @@
-# Round 6 part B, EXPLORATORY: committing in the wrong place, and a frozen predecessor (sweep/confirm_selection.json)
+# Round 6 part B, EXPLORATORY: committing in the wrong place, and a frozen predecessor (results/moving-lines/test-layouts/confirm_selection.json)
 
-## runs_confirm4/dsv41
+## results/data/moving/runs_confirm4/dsv41
 
 | choice | joined re-solves | sim says not in line | episodes with any | right last, sim agrees | right last, all joined | switches per minute joined |
 |---|---|---|---|---|---|---|
@@ -8,7 +8,7 @@
 | CT4PJ | 4857 | 0.394 | 38/72 | 0.493 | 0.442 | 8.08 |
 | frozen | 4857 | 0.394 | (CT4PJ's) | 0.371 | 0.273 | 0.75 |
 
-## runs_confirm4/sonnet55_low
+## results/data/moving/runs_confirm4/sonnet55_low
 
 | choice | joined re-solves | sim says not in line | episodes with any | right last, sim agrees | right last, all joined | switches per minute joined |
 |---|---|---|---|---|---|---|

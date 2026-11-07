@@ -1,3 +1,7 @@
+I09 live check: offline analysis of FROZEN.md sections 5-6 (arm D-live)
+generated 2026-10-18T05:53:51+0800; analyse.py sha256 45b83a6e70577acb3d33a3ee2f61f8c14c41cd8ee71b5f471f9aa2307082566e (ANALYSE.sha256: 45b83a6e70577acb3d33a3ee2f61f8c14c41cd8ee71b5f471f9aa2307082566e; match: True)
+runs folder: results/still-scenes/people-finder/early-detector/phase2/live_analysis/verify/defects/p01_crash_then_rerun/runs
+code: harness docs/model_notes/tools/research_harness.py; sgi src/sgi/__init__.py
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 TEST INPUT: the run folders are SYNTHETIC (built by make_synthetic.py from recorded data): NOT A RESULT

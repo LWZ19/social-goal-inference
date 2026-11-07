@@ -1,3 +1,4 @@
+# I01 deliverables: re-run tables for the run
 # Sets and definitions of the replay harness
 
 **Question.** What are the sets, definitions and headline tables the replay analyses share?
@@ -28,6 +29,7 @@ RD = `results/2026-10-17-beyond-vlm`. Paths below are relative to RD. The ledger
 - **New wording**: Qwen 3.8 low from s21; GLM-5.3, DeepSeek V4.1 Flash, Haiku 5.5, Sonnet 5.5 low and Gemini 3.8 low from s23.
 - **Old wording**: Qwen and GLM R and E from s16b, C from s19; DeepSeek R, E and C from s20.
 - **Methods**: R = marked point (cot); E = R plus 2 worked examples (fsc); C = people call, constraints call and solver (con).
+- **Success** is the recorded `score.success`. Rescoring with the current package scorer gives the same verdict in every record checked (4,536 of 4,536 new-wording records by the verifier; 7,308 of 7,308 by the first check).
 - **Situation names**: "nobody near" = no_one; "lines" = waiting_line; "groups" = conversation_group. No audience situation exists in these sets.
 
 ---
@@ -147,6 +149,8 @@ SG per model at eval_10 + eval_11 (of 36) / eval_12 (of 18): Qwen 36 / 6, GLM 34
 
 GLM has 4 line records with no target (no_target); they keep their recorded failure in SG too. At the old wording SA − C at groups is −1 / +1 / +11.
 
+### Checks against the figures (REPORT 1.1, finding 8)
+| run's figure | Re-run | Result |
 |---|---|---|
 | Totals R / E / C: Qwen 179/196/228; GLM 132/123/170; DeepSeek 120/126/185; Haiku 151/148/240; Sonnet 178/178/242; Gemini 164/173/214 | identical, 18 of 18 | agree |
 | Solver alone at groups 46/48/44/53/47/53 of 54 | 46/49/44/53/47/54 of 54 (all records); 46/48/44/53/47/53 over goal steps (n 54/53/54/54/54/53) | differ: denominator |
@@ -272,9 +276,12 @@ GLM's 4 not-ok records are at lines, the same 4 keys in R, E and C. C at the peo
 | E, 9 draws (same) | 756 | 614 | 728 | 84.3% | 195/261 (74.7%) |
 | C, 6 draws (s19 + s21) | 504 | 462 | 485 | 95.3% | 171/175 (97.7%) |
 
+### Checks against the figures
+| run's figure | Re-run | Result |
 |---|---|---|
 | Given the right target, R succeeds at lines 57% (Gemini), 51% (Qwen), 28% (Sonnet), 21% (GLM), 15% (DeepSeek), 7% (Haiku) | 32/56, 44/87, 25/90, 15/72, 13/85, 6/90 | agree |
 | On C, the people scenes give Sonnet 134, Haiku 132, Qwen 131 of 144 | 134, 132, 131 | agree |
+| "the gaps in the totals come from target finding at the nobody-near scenes" | 1 of 44 gap records is a wrong target at a nobody-near scene (Table 2d) | differ (corrected; the first check called it refuted) |
 | E gains nothing within a single batch (pooled +3); Qwen's 9-trial pool gives +24 | s23 E − R: −9 / +6 / −3 / 0 / +9 = +3; Qwen pool +24 per 252 | agree |
 | Central estimates R 180.7, E 204.7 of 252 (section 8) | 542/3 = 180.7, 614/3 = 204.7 | agree |
 | Strip: of in-region, right-heading, unreachable R/E poses, Gemini 22 of 24 and Qwen 11 of 15 overlap the body by up to 5 cm; the rest at 0.00–0.02 | Gemini R 13 + E 9 = 22 of 14 + 10; Qwen R 5 + E 6 = 11 of 7 + 8 (the 15 includes one R and one E at nobody-near scenes); the rest +0.002 to +0.015 m | agree |
@@ -353,6 +360,7 @@ Reading: as I34 words it (no split by situation), **the gate opens and the kill 
 
 ### The 0.50–0.55 m strip
 
+### Checks against the figures (mechanisms, REPORT 1.1 finding 8) and I34
 | Figure | Re-run | Result |
 |---|---|---|
 | Sonnet's R point lands a median 54 px low, 1–1.7 m toward the camera | n 89: 54.6 px below the region's representative point; −1.35 m (IQR −1.61 to −1.23). Failures (n 64): 65 px, −1.47 m, all beside the line on the camera side | agree ("its words say behind" not checked) |
@@ -362,6 +370,7 @@ Reading: as I34 words it (no split by situation), **the gate opens and the kill 
 | I34: failures of E at groups are mostly near misses that land on a body (old wording) | 28 of 44 (64%) near and within 0.3 m of a body; 25 of 44 overlap | agree |
 | I34: failed marked points at lines lie a median 0.34, 0.88, 0.35 m from the region | E failures (s16b/s20): 0.34 (n 18), 0.88 (n 55), 0.35 (n 62); R gives 0.51, 0.60, 0.74 | agree (these are E's) |
 | New wording, E group failures near and within 0.3 m of a body | 67 of 93 (72%); snapD fixes 54 of them (snapP 59) | new |
+Verifier corrections to the first check here: GLM's camera-side count is 110 of 117 (not 107), and the gate reading above replaces the first check's "kill met at groups for GLM and DeepSeek E".
 
 ---
 

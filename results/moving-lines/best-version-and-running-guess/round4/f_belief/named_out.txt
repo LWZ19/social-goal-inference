@@ -15,3 +15,4 @@
 - walker ticks at P >= 0.5: 1969; named by the answer 1288 (0.65), not named 681
   - named: 61 people, seconds at P >= 0.5 per person: median 10.0, max 24.0
   - not named: 33 people, seconds at P >= 0.5 per person: median 9.0, max 35.0
+

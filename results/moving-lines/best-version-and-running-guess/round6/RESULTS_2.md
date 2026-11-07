@@ -1,3 +1,4 @@
+# Round 6 results, part C and a correction to part B (exploratory, zero calls; for the project first)
 
 Inputs:
 - `c_tradeoff_pilot_out.txt` and `c_tradeoff_confirm_out.txt`; questions and readings in `ROUND6_C.md`.
@@ -47,6 +48,7 @@ Right last where the sim agrees, scored as in section 1, and switches per minute
   - The pilot shows a margin reaching the corner; the confirm logs show none; C2 reaches on none.
   - So the result is mixed: no principled rule is demonstrated. The recommendation is R1's: close the role-belief line and write it up.
 
+## 3. The explanation for the project
 CT3F's lead over the role belief is information, not decision.
 - No hold-or-switch rule on the role belief's evidence reaches CT3F's accuracy on fresh layouts, whatever its threshold.
 - The principled cost rule does worse than the role arm's own choice.

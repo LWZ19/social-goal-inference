@@ -1,3 +1,4 @@
+# EVIDENCE_AUDIT Part 1a, zero-call items 1, 2, 3, 6 and 7 (analysis, 6 Nov)
 # Method comparison, layout by layout
 
 **Question.** Does the constraint method (C) beat pointing (R) and pointing with worked examples (E) when each of the
@@ -24,6 +25,7 @@ the repository root (see `layout-level-tests/README.md`).
 All of these were re-scored from existing records. No model call and no simulator run was made. Each item reproduces
 the figures it was checked against.
 
+## Item 1: layout-level tests for the still-scene headline
 ### Item 1: layout-level tests for the still-scene headline
 
 Files: `results/still-scenes/method-comparison/layout-level-tests/layout_tests.py`, `layout_tests_out.txt`, `README.md`.
@@ -38,12 +40,14 @@ Files: `results/still-scenes/method-comparison/layout-level-tests/layout_tests.p
   - C−E: Qwen p 0.031 (6 untied layouts: one more tie loses it), GLM 0.0078, DeepSeek 0.00098.
 - **Checks:** every total and all 15 tests of the earlier `results/still-scenes/metrics-and-statistics/stats-rerun/stats_output.txt` reproduce exactly.
 
+## Correction to EVIDENCE_AUDIT.md row A3
 ### Correction to EVIDENCE_AUDIT.md row A3
 
 "No E−R difference is significant at the layout level" holds for the new wording only.
 - Under the old wording, Qwen's E−R is +39, 8/0/6 layouts, p 0.0078.
 - Among the older models, Gemini 3 Flash's E−R is +13, p 0.031.
 
+## Item 2: E3's seven older models, layout-level (descriptive)
 ### Item 2: E3's seven older models, layout-level (descriptive)
 
 - C beats both R and E on five models: Gemini 3, 3.1 Lite, 3.5 Lite and 3.6, and Sonnet 5 (C−R p 0.047, C−E 0.031).
@@ -53,6 +57,7 @@ Files: `results/still-scenes/method-comparison/layout-level-tests/layout_tests.p
 - Caveat: the s24 runs post-date the whitelist and were taken by the names in `run_static.sh`. Each has one folder of
   84 records, and its scenes match `scenes_dirs.yaml`.
 
+## Item 3: CT0, CTo and CTt on seeds 0-2
 ### Item 3: CT0, CTo and CTt on seeds 0-2
 
 Files: `results/moving-lines/cut-ins-and-decomposition/item3_ct0_cto_ctt.py`, `item3_out.txt`. Development seeds, descriptive.
@@ -69,6 +74,7 @@ Files: `results/moving-lines/cut-ins-and-decomposition/item3_ct0_cto_ctt.py`, `i
 - The true counter point (CTt) lifts CT a lot on DeepSeek (+0.15) and a little on x-test-3. The true roster (CTo) is
   inconsistent.
 
+## Item 6: cut-ins normalised by exposure
 ### Item 6: cut-ins normalised by exposure
 
 Files: `results/moving-lines/cut-ins-and-decomposition/item6_cutin_exposure.py`, `item6_out.txt`, `item6_cells_out.txt`.
@@ -88,6 +94,7 @@ Files: `results/moving-lines/cut-ins-and-decomposition/item6_cutin_exposure.py`,
     through the line.
 - **Caveat:** the rate test against R1 drops every `cafe_slots` cell, where R1 has no exposure.
 
+## Item 7: marks outputs saved (in `marks/`)
 ### Item 7: marks outputs saved (in `results/still-scenes/numbered-spots/`)
 
 - `m5_check_out.txt`: Gemini 29 of 38 wrong targets name a person (22 a person waiting in line); the other models 2-7.

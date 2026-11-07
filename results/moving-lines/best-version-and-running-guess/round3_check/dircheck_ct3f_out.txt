@@ -1,4 +1,4 @@
-CT3F (runs_pilot3/dsv41_dircheck): median 52.1 deg over high-error layouts; re-solves 1765
+CT3F (results/data/moving/runs_pilot3/dsv41_dircheck): median 52.1 deg over high-error layouts; re-solves 1765
   cafe_1090     163.6  (n 152)
   cafe_1081       nan  (n 0)
   cafe_1031       0.0  (n 139)
@@ -11,7 +11,7 @@ CT3F (runs_pilot3/dsv41_dircheck): median 52.1 deg over high-error layouts; re-s
   cafe_1002       0.0  (n 94)
   cafe_1001       0.0  (n 147)
   cafe_1000       0.0  (n 115)
-CT4P (runs_pilot3/dsv41): median 50.0 deg over high-error layouts; re-solves 3531
+CT4P (results/data/moving/runs_pilot3/dsv41): median 50.0 deg over high-error layouts; re-solves 3531
   cafe_1090     147.2  (n 152)
   cafe_1081      43.0  (n 140)
   cafe_1031      17.9  (n 149)

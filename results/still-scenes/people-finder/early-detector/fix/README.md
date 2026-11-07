@@ -3,7 +3,7 @@
 **Question.** Why does the frozen detector of `../phase1c/` report false people on new realistic layouts, and does a post-processing fix chosen by a rule frozen in advance remove them without losing people?
 
 **Result.**
-- Diagnosis: on new training seeds 110–115 (84 images) the frozen detector finds 226/238 people with 0.202 false people per image, close to the unseen-layout rate of `../phase2/` (0.242). Four causes explain all 17 false people and all 12 misses: occluded staff torsos lifted onto the counter, a duplicate radius that drops line neighbours, staff behind glass that the rendered depth treats as opaque, and small boxes on pictures of people.
+- Diagnosis: on new training seeds 110–115 (84 images) the frozen detector finds 226/238 people with 0.202 false people per image, close to the unseen-layout rate of `results/still-scenes/overview/phase-notes/phase2-files/` (0.242). Four causes explain all 17 false people and all 12 misses: occluded staff torsos lifted onto the counter, a duplicate radius that drops line neighbours, staff behind glass that the rendered depth treats as opaque, and small boxes on pictures of people.
 - Fix: the frozen rule chose C07 (head re-lift, 0.30 m duplicate radius, flat test, tiny-box drop). On the held-back seeds 116–119 (56 images) it finds 164/164 with 2 false people (0.036 per image [0.004, 0.129]) against 157/164 and 12 (0.214) for the frozen detector; on the 42 development scenes 118/118 with 0 false. Outcome "confirmed", resting on the held-back seeds, since the development check was not blind.
 - An independent re-computation reproduced every number, and its detector re-run on seed 116 is bit-identical.
 - The second confirmation on unseen layouts is frozen (`CONFIRM2_FROZEN.md`, with `confirm2/DEVIATIONS_1.md`) but was not run.
@@ -76,8 +76,10 @@ This step has no pass/fail verdict of its own. It reports a diagnosis, a fix wit
 
 | Step | Outcome | One-line reading (inference) |
 |---|---|---|
+| Render, seeds 110–119 | 10 of 10 seeds complete, 140 layouts, every command exit 0; 4,075.6 s of rendering (395.5–420.6 s per seed) | Training data, by a decision that seeds 110–199 are training data. |
 | Diagnosis on fit-train (A1 frozen, 84 images) | Recall 226/238 = 0.950; false people 17/84 = **0.202** per image. Four mechanisms explain all 17 false people and all 12 misses | The training renders reproduce the confirmation's failure (0.242), so it could be studied without test data. |
 | Fix 2 (C07), chosen by the frozen rule | Fit-train 238/238 and 4/84 = 0.048. Fit-validate (held back): recall 164/164 [0.977, 1.000], false **2/56 = 0.036** [0.004, 0.129], against A1's 12/56 = 0.214. Development: 118/118 and 0 false (A1 116/118 and 3). Outcome **confirmed** | The fix clears the displaced-staff, line-merge and far-box failures on these seeds. What is left sits beside staff whom the visibility rule calls hidden. |
+| Second unseen-layout confirmation | Protocol frozen and hashed; nothing rendered; waits for the project's test seeds | Ready to run once the project names at least 10 never-rendered seeds. |
 | Verifier | Every number reproduced (0 differences); the detector re-run is bit-identical. Two integrity findings | The development check was not blind, so "confirmed" rests on fit-validate. A text search opened spent test-seed files, printing names only. |
 | I09 as a method | Unchanged: not yet a method | It needs the second confirmation. |
 
@@ -324,6 +326,7 @@ Table 3.1. The comparators the note records (section 7 of the note; the verifier
 
 ---
 
+## 4. Where the checks differ
 **The numbers agree.** The verifier re-scored everything with its own code (`verify/vlib.py`, `verify/vscore.py`). It implemented the blocks from the protocol's text and imported only A1's pipeline, I03's scorer, the harness and sgi, never `fitlib.py` or `fix/`.
 - **0 differences.** All 11 candidates on fit-train; C00 and C07 on fit-validate, the development scenes, F-real and F-ph; every interval; the secondary scorer, the M3 audit and the post hoc classes; and 1,036 per-image rows, down to each kept detection's position.
 - **The same choice and outcome.** On its numbers the rule picks C07, and the outcome is "confirmed". The fix step's post hoc claims also hold.
@@ -378,6 +381,7 @@ Table 3.1. The comparators the note records (section 7 of the note; the verifier
 
 ---
 
+## 6. Questions for the project (and the analysis)
 1. **The test seeds.** Name at least 10 seeds that have never been rendered: for example 213–219 plus at least three from 220 up, or ten or more from 220 up.
    - The confidence page names 213–219 as an option for its own confirmation. Say whether any seed is shared, and in which order; the seed note must record it.
    - More than 10 seeds may be listed. The 3 h clock then decides how many are used (about 13–26).
@@ -439,6 +443,7 @@ Old:
 and the verdict is fragile. Every other probe below is a plan
 ```
 New:
+and the verdict is fragile. [phase 3] Phase 3's I09 detector fix (18 Oct, zero calls) chose a fix by a pre-registered rule on training seeds 110–115 and confirmed it on the held-back seeds 116–119 (0.036 false people per image against A1's 0.214, recall 164 of 164); a second unseen-layout confirmation is frozen and waits for the project's test seeds. Every other probe below is a plan
 
 ### 4. Section 1.2, item 5 (I09)
 
@@ -447,6 +452,8 @@ Old:
 so by its own pre-registered standard the detector is not yet a method, and no kill fired (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1).
 ```
 New:
+so by its own pre-registered standard the detector is not yet a method, and no kill fired (`results/still-scenes/people-finder/early-detector/phase2/README.md` section 1). [phase 3] A fix chosen by a pre-registered rule on training seeds 110–115 (re-lifting occluded counter staff from their head keypoints, a 0.30 m duplicate radius, A1's flat test, and dropping boxes too small for that test) gives 0.036 false people per image on the held-back seeds 116–119 (A1 0.214) with recall 164 of 164, and 0 false with 118 of 118 on the development scenes; a second unseen-layout confirmation is frozen and waits for the project's test seeds (`results/still-scenes/people-finder/early-detector/fix/README.md`).
+### 5. Section 1.3: the project's decisions for I09's second confirmation
 
 Old:
 ```text
@@ -461,6 +468,8 @@ Old:
 which would raise the disagreement on successes too (untested).
 ```
 New:
+    - Fix 2, chosen by code under the frozen rule from 11 candidates: re-lift a box from its nearest head keypoint when that lies more than 0.30 m behind the torso median; a 0.30 m duplicate radius; A1's flat test on; and drop boxes too small for that test (4 parameters; no situation label, role or scene name is read). Fit-train: recall 238 of 238, 4 false = 0.048 per image. Checks: fit-validate recall 164 of 164 (Wilson 95% 0.977–1.000) and 2 false in 56 images = 0.036 (exact Poisson 0.004–0.129) against A1's 12 = 0.214; development 118 of 118 with 0 false (A1 116 and 3). Outcome: confirmed. Placeholder fit scenes are unchanged (513 of 585). All 4 false people left on fit-train are glass-booth staff, and both on fit-validate lie beside a counter staff member the visibility rule calls hidden; a secondary scorer that exempts such detections (never judged) gives 0 and 1.
+    - An independent verifier reproduced every number with its own code (0 differences over 1,036 image rows) and re-ran the detector on one seed bit for bit. It found two integrity problems, neither changing a number: the development check was not blind (the diagnosis had already scored the head re-lift there, 118 of 118 and 0 false, before the rule was frozen), so only fit-validate was a blind check; and the protocol author's recursive text search opened files of the spent seeds 200–212, printing file names only.
 
 ### 7. Section 6, step-3b row (optional)
 
@@ -469,6 +478,7 @@ Old:
 The unseen-layout confirmation (seeds 200–212) is neither: 0.242 false people per image against 0.10 (`results/still-scenes/people-finder/early-detector/phase2/README.md`) |
 ```
 New:
+### 8. Section 7, runs: the second confirmation and the glass decision
 
 Old:
 ```text
@@ -504,6 +514,7 @@ Old:
 The report before these changes is kept as `REPORT.before-phase3-confidence.md`.
 ```
 New:
+- **Phase 3, I09 detector fix and second-confirmation protocol (18 Oct).** A zero-call step addressed the false people that made I09's unseen-layout confirmation neither (`results/still-scenes/people-finder/early-detector/fix/README.md`). It rendered training seeds 110–119 (140 realistic layouts of the 14 first-pass eval rows, by a decision, outside I46's seeds 3–99) and ran A1's frozen detector on them. On seeds 110–115 it traced all 17 false people and 12 misses to four mechanisms: occluded counter-staff torsos, a duplicate radius that drops line neighbours, staff behind glass whom the visibility rule calls hidden, and small boxes on pictures of people. It then chose fix 2 by a rule frozen and hashed before any candidate was scored. Fix 2 holds on the held-back seeds 116–119 (0.036 false people per image against A1's 0.214, recall 164 of 164) and on the development scenes (0 false, 118 of 118). An independent verifier reproduced every number; it found that the development check was not blind and that a text search opened files of the spent seeds 200–212 (file names printed only). A second unseen-layout confirmation is frozen and hashed and waits for the project's test seeds; nothing has been rendered for it. "How to read" lists the page under [phase 3], and the opening lines, section 1.2 (item 5), section 1.3, I09 and section 7's runs carry the result; optionally also section 6 (step 3b), I46's seeds and section 8's synthetic-render threat. The report before these changes is kept as `REPORT.before-phase3-i09-fix.md`.
 
 ---
 

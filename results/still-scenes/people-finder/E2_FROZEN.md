@@ -37,6 +37,7 @@ by `results/moving-lines/own-camera/detector-on-sim-frames/e1d/detector_service.
 
 Fix 2 is not used anywhere in E2.
 
+## 3. Scenes (built by the run; logged in `E2_DEVIATIONS.md` before any model call)
 - **Rows: the 8 people rows of the eval split.**
   - `eval_06_waiting_line_1`, `eval_07_waiting_line_2`, `eval_08_waiting_line_4`, `eval_09_waiting_line_6`,
     `eval_13_waiting_line_3`;
@@ -62,6 +63,7 @@ Fix 2 is not used anywhere in E2.
 - **Logged before any model call:** the sha256 of `manifest.csv` and of `e2_people.json`. The driver refuses a
   people file whose sha256 differs from the one it is given.
 
+## 4. Calls (the run runs them)
 - **Models, free:** Qwen 3.8 low (`soclaas_qwen38_low`), GLM-5.3 (`soclaas_glm53`), DeepSeek V4.1
   (`soclaas_dsv41`).
   - Config: `sgi.serve.make_config(model)`, the current C, the same as E1b. No worked examples, because C's goal step

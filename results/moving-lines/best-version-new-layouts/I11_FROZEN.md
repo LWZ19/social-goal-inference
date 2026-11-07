@@ -21,6 +21,7 @@ from the first service:
   prior is the 3 Nov sweep ("ours" layouts, DeepSeek, spent): strict from the first service, CT3F 0.226 against CT3
   0.118.
 
+## Layouts (the run only; never shown to the analysis before scoring)
 - **Generate:** `make_sweep.py --start 3000 --per-base 450`.
 - **Select:** `select_i11.py`, a copy of `select_confirm.py` with only the docstring, OUT, CAND, the header label and the
   output file changed (the diff is in this note's hash set).
@@ -59,6 +60,7 @@ with both values.
   claimed for DeepSeek.
 - **Reported:** whole-episode strict share, cut-in samples, CT3 − CT2, mean d and the paired-t lower bound.
 
+## Mechanics (the run checks before sending totals)
 - 72 layouts per arm, exit 0, no `vlm_error`.
 - CT3F's and CT3's first answer is CT2's (the same pose).
 - `check_mech.py` faults none. Re-run a CT2 episode that had a gateway outage (`vlm_error` first answer) before the
@@ -69,6 +71,7 @@ with both values.
 - H11a passes by a wide margin (as on the confirmation layouts).
 - H11b passes, with CT3F ahead by about 0.08-0.12 and more wins than losses by about 2 to 1.
 - CT3F has more cut-in samples than CT3, as CT3F had more than CT4PJ on the confirmation layouts.
+## Run (run; from `moving/`; free calls for CT2 only; 2 workers)
 
     cd .
     PYTHONPATH=sim ~/miniforge3/envs/sgi-habitat/bin/python results/moving-lines/test-layouts/make_sweep.py --start 3000 --per-base 450 --out results/moving-lines/test-layouts/i11_candidates

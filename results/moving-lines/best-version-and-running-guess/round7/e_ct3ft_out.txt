@@ -1,4 +1,4 @@
-# Round 7 part D, DESCRIPTIVE: CT3FT by ROUND7_D.md (sweep/confirm_selection.json; runs_ceiling4/dsv41; runs_confirm4/dsv41)
+# Round 7 part D, DESCRIPTIVE: CT3FT by ROUND7_D.md (results/moving-lines/test-layouts/confirm_selection.json; results/data/moving/runs_ceiling4/dsv41; results/data/moving/runs_confirm4/dsv41)
 
 ## Band top 1.2 m (the decision)
 
@@ -39,4 +39,7 @@ Reading (ROUND7_D.md):
 | reported: CT3FT - CT4PJT (CT3FT - CT4PJT) | 66 | +0.052 | +0.027 | +0.025 | 32/24/10 | 0.350 | +0.013 |
 
 Reading (ROUND7_D.md):
+- outcome C: target alone does not lift CT3F testably; who and target together go to the project as one question
 - G1 front part +0.026 of +0.048: the gain is at the front
+
+The outcome differs between band tops ({1.2: 'B', 1.5: 'C'}): both go to the project.

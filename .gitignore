@@ -106,3 +106,4 @@ cs6244_goal_inference_mvp.zip
 /results/moving-lines/design-and-scoring/queue_*
 /results/moving-lines/design-and-scoring/runs_*.out
 /results/moving-lines/design-and-scoring/run_rat.sh
+/results/**/*.tsv

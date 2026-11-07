@@ -21,6 +21,8 @@ the frozen primary scoring; the strict scoring adds a side check and a 0.6 m fir
 flatter R in the failure analysis, frozen before the fresh seeds).
 
 ### What CT2 is (CT2_FROZEN.md) and why
+parts off, CT2 reproduces CT (-0.009 / -0.011), so the gain lies in the named parts. Removing the forward ratchet
+alone removes most of it (Sonnet -0.077, 12/30/7; DeepSeek -0.063, 4/13/8). Removing re-admission, or re-admission
 
 **How to read CT2 against CT.** The ratchet is a goal-following fix: CT's symmetric 0.3 m / 25 deg replace threshold
 left the robot behind as the line moved up in small steps, and the 1.0 m standoff plus that threshold produced near
@@ -48,6 +50,7 @@ stepping out of line: CT2 0 cut-in samples against CT 5 (the frozen prediction h
 - The navigation map is not the source: CT on the first picture's floor (CTv) 0.17 against CT 0.18.
 - Re-asking is not free stability: R re-asked every 10 s or as fast as possible scores below R asked once (0.14-0.16
   against 0.20), at 20-30 calls an episode against CT's 4.
+## 2. Efficiency: one model call fewer, same accuracy (E1, analysis's design)
 
 - **E1b (static development scenes):** a pretrained detector (RT-DETRv2 + ViTPose, ~60 ms) in place of the VLM's
   people call. Sonnet 124 -> **132** of 143, DeepSeek 127 -> **127** of 151 (both non-inferior to the redraw floor);
@@ -83,8 +86,10 @@ model knows who queues. Distractor scenes (a chatting pair by the counter, two l
   Future work (not run): speculative execution on a situation-agnostic prior; its ceiling from the logs is the
   plan-to-answer time (Sonnet 9.5 s, x-test-3 35.5 s).
 - **Re-solving only on settled tracks (CTs):** no effect (5/7/3, 15 episodes, +0.01).
+  215 -> 237, end success 155 -> 177, layout-level p = 0.011); nothing beyond run-to-run noise for DeepSeek, Qwen,
 
 ## 5. Beating CT2: bystanders and motion evidence (CT3), 2 Nov afternoon
+the model's roles (geometry found the right people 15/15), so **bystander scenes** were built
 
 **Found before any cell (zero calls):** CT2's solver takes any unnamed, still person standing just behind the last as
 the new last (`solver._turn`), so CT2 can throw away a roster the model got right.
@@ -115,6 +120,9 @@ roles), timing-matched. Zero extra calls.
 - **The model's roles matter:** the geometry chain takes bystanders into the line in 14/15 (pilot) and is captured in
   51/60 cells (confirmation); CT3 beats it on both models. "Knows who queues" is model-dependent, and not in order of
   model strength (Sonnet names bystanders more often than DeepSeek).
+  substantive result is capture. In room with bystanders DeepSeek answered "people do not matter" 5/5 and drove
+  through the line, a model-side failure nothing re-solved can fix; 5/60 confirmation answers found no target. Two
+  With bystanders, CT2's lead over the marked point disappears for Sonnet (4/3/13): the headline in section 1 is
 
 ## 6. Still scenes: C's misses are a depth error; a person snap (2 Nov evening)
 
@@ -143,6 +151,7 @@ roles), timing-matched. Zero extra calls.
   with a small, narrow effect, not a general gain over C, and about turning a click into a position, not social
   reasoning.
 
+18 Oct) lost to the recorded C (56.8% against 76.0%) and failed on unseen situations; its limits were circular labels
 ## 7. Caveats
 
 - Every moving-people number is in simulation, five straight-line evaluation scenes, 3-10 seeds; per-episode share
@@ -159,6 +168,7 @@ roles), timing-matched. Zero extra calls.
     beside it. DeepSeek still has +0.17 at 2.0 m.
   - So against R the claim rests on "in line means on the line's axis". That is a natural social criterion, frozen
     before the fresh seeds, but the report should state it.
+  - Bystander scenes: CT3 has more than CT2 (DeepSeek 1,036 against 881, more in 21 of 75 pairs and fewer in 14;
 - Tracking is oracle except in CTd/CTe. CTd's live tracks match a true person 89% of the time, with 2% id switches;
   71% of tracks at any moment are stale (out of view, held at the last position).
 - Sim latency pauses for the request-frame detection (0.16 s warm), so it isn't counted. CTe's gain is stated after
@@ -189,6 +199,9 @@ bystander), on DeepSeek, scored once by a frozen scorer (`results/moving-lines/t
     named before the run).
   - CT4 knows who waits much better: recall 0.80-0.87 against 0.51-0.64 in every cell. Ticks with someone ahead but
     no one to follow: 0.02-0.05 against 0.14-0.25.
+  - CT4's roster is liberal and overconfident in the middle. People it rates 0.5-0.7 are waiting only a third of the
+  - Thresholded at 0.5, the roster flickers: it changes between consecutive re-solves 17% of the time against 5%. The
+    goal jumps more than 0.3 m on 20% of re-solves against 13%.
 - **Reading:** one belief seeded by the VLM's answer replaces the pile of rules and matches the best of them, with
   better perception of who waits. But turning that belief into a single roster throws its uncertainty away, and the
   robot pays for it in time in line.
@@ -202,6 +215,8 @@ bystander), on DeepSeek, scored once by a frozen scorer (`results/moving-lines/t
 
 ### 8b. The same comparison on Sonnet, and no-harm on the original scenes (3 Nov, reported, not claims)
 
+  - right last, layouts with late steppers: CT4 against CT3F 5/15, p 0.041. CT3F is ahead here, so the claim fails
+  - CT4 again knows who waits better (recall 0.92-0.93 in every cell, almost no ticks with no one to follow);
 - **No-harm on the original scenes** (DeepSeek, 4 scenes x seeds 20-29; `results/data/moving/runs_noharm/dsv41/`):
   - CT3F beats CT3 on time in line (strict): 0.400 against 0.337, 25/7/8, p 0.002; after the first service 0.501
     against 0.421, p 0.001; fewer cut-ins (4.6 against 7.5);
@@ -226,6 +241,8 @@ bystander), on DeepSeek, scored once by a frozen scorer (`results/moving-lines/t
   - **but neither gives back time in line.** Strict, from the first service: CT3F 0.188, W0 0.072, CT4 0.068,
     CT5 0.036 (CT5 against CT4 2/11, p 0.022). The goal still jumps about twice as often as CT3F's;
   - no confirmatory test.
+- **Where the robot goes** (exploratory): CT5 lines up behind a bystander on 49% of ticks with someone ahead,
+  against 34% for CT4 and 23% for CT3F. Its rule comes after anyone with a 0.2 chance of waiting, the belief rates
 
 ### 8d. Why the belief stood in the wrong place: the robot is part of the queue it infers (3 Nov, pilot)
 
@@ -294,6 +311,8 @@ each step, and all 17 hashes in `ROUND6.sha256` were checked.
     0.57 and 0.56, against 0.66 and 0.71.
   - On the pilot logs it does, at m 0.7. The pilot overstated the role belief a second time.
   - CT5's cost decision with its fixed costs switches 8-10 times a minute and is no more accurate.
+- **Future work only:** round 5's "walking away" signal fires on 81% of ex-members' walks and 1-6% of members'.
+### 8g. Is the test right? Ceilings and the band edge (3 Nov evening, project's question)
 
 - **Band edge (rescoring, zero calls):** with the in-line band's top at 1.5 m instead of 1.2 m, every method rises
   by only 0.02-0.03. CT3F stays ahead of CT4PJ on both models. Most "too far" seconds are far beyond the edge,
@@ -312,8 +331,15 @@ each step, and all 17 hashes in `ROUND6.sha256` were checked.
     0.85-0.95 m straight down it (median 0.69 m from slot 0). Solver geometry, not information; not to be tuned.
   - Post hoc: the full truth about who waits, with the model's counter, only reaches CT3F (+0.010, p 0.78). So
     walking away passes its fixed bar against CT4PJ, but on its own it is unlikely to beat CT3F.
+    first 43% of its window, the methods 12-20%. A question for the project, not a change.
   - Leads (flagged): where served customers stood, from the wait's tracks (one observation for both the counter
     point and the front place); a zero-call CT3FT cell (CT3F with the true counter) to separate the two.
+  CT3F given the true counter point: 0.261 against CT3F's 0.208 (+0.053, lower bound +0.013, but 27 wins / 23
+  losses, sign p 0.67; at band top 1.5 m +0.048, p 0.16). The rule's outcome is B at 1.2 m and C at 1.5 m, decided
+  by the 0.05 bar's edge, so it goes to the project. Who is ahead, once the counter is right: CT4OT − CT3FT +0.068
+  (36/17, p 0.013). For the best arm the counter point and who waits each add about 0.05-0.07; neither alone lifts
+  rest is the solver's front place. Front shares of the strict score: OW 52%, CT4OT 25%, CT3FT 17%, CT3F 9%,
+  CT4PJ 5%.
 
 ### 8h. Still scenes: detector people beat C's people call, faster at no loss (E2, frozen, 4-5 Nov)
 

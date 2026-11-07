@@ -1,5 +1,5 @@
 Phase 3 confidence, POST HOC exposure follow-up (README section 8, question 6). Changes no verdict.
-Generated 2026-10-18 18:13:04 +0800 by followup/exposure.py; frozen measure code imported unchanged from code/tables.py (sha256 331d32af5e6bcb33...).
+Generated 2026-10-18 18:13:04 +0800 by results/still-scenes/confidence-signal/followup/exposure.py; frozen measure code imported unchanged from results/still-scenes/confidence-signal/code/tables.py (sha256 331d32af5e6bcb33...).
 Hashes re-verified: FROZEN.md 2a3a890a3b23..., DEVIATIONS.md afe309386928..., DEVIATIONS_2.md b728f2d591c2...
 Rows: rows_old_qwen.jsonl 4b3d29281514..., rows_old_glm.jsonl 800db83d3cda..., rows_old_deepseek.jsonl 3e156c8a1462...
 Failure is the positive class; AUROC by midranks (ties half, +inf ties and ranks top). Intervals: the frozen primary layout-cluster bootstrap (2,000 paired draws, seed 20261018, first matrix), 95% percentile; dN = draws dropped (no failure or no success in the resample).

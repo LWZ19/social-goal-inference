@@ -1,3 +1,4 @@
+# Items 1 and 2: layout-level tests for the still-scene method comparison
 # Layout-level tests of the method comparison
 
 **Question.** Is the constraint method's (C) lead over pointing (R) and pointing with examples (E) still there when
@@ -28,6 +29,7 @@ the last check stops with a KeyError; with the full file the output is reproduce
 `layout_tests.py` reads finished runs and writes `layout_tests_out.txt`. It makes no model or provider call and
 imports no model or pipeline code.
 
+## Definitions
 ### Definitions
 
 - **Methods.** R = the model marks the goal point (`cot` runs). E = R with worked examples (`fsc` runs). C = the
@@ -54,6 +56,7 @@ imports no model or pipeline code.
     records;
   - records of scenes eval_16 to eval_19.
 
+## Runs
 ### Runs
 
 - **Item 1, new wording.** Qwen 3.8 low uses `s21_{variant}_qwen38_low_{cot,fsc,con}`. GLM-5.3, DeepSeek V4.1,
@@ -70,6 +73,7 @@ imports no model or pipeline code.
   - The script checks each run's scenes folder against `results/still-scenes/hidden-situations-and-more-models/scenes_dirs.yaml`.
   - The script never opens held runs or `held_configs/`.
 
+## Checks (all pass; see the end of the output)
 ### Checks (all pass; see the end of the output)
 
 - **Item 1 totals.** R/E/C totals match the earlier report (`EVIDENCE_AUDIT.md` A1 and A2,

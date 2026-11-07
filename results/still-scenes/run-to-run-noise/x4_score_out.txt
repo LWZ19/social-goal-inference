@@ -27,3 +27,4 @@
 - flips s23 -> noise1 (right->wrong / wrong->right): R 33/38 of 252; E 34/46 of 252; C 27/52 of 252
 - flips s23 -> noise2 (right->wrong / wrong->right): R 34/40 of 252; E 37/48 of 252; C 26/60 of 252
 - flips noise1 -> noise2 (right->wrong / wrong->right): R 23/24 of 252; E 40/39 of 252; C 23/32 of 252
+

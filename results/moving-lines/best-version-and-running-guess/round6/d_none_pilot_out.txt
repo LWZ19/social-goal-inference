@@ -1,6 +1,6 @@
-# Right last while in line, split by the sim's last (sweep/pilot_selection.json; exploratory)
+# Right last while in line, split by the sim's last (results/moving-lines/test-layouts/pilot_selection.json; exploratory)
 
-## runs_pilot3/dsv41
+## results/data/moving/runs_pilot3/dsv41
 
 | arm | sim's last is a person: n, right | sim's last is none: n, right | arm says none when a person is ahead |
 |---|---|---|---|

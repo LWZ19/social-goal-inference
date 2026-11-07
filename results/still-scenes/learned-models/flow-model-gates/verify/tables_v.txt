@@ -1,4 +1,4 @@
-C5 gate 2: independent verifier tables (verify/kde_v.py). Agreement with the project reference rules only.
+C5 gate 2: independent verifier tables (results/still-scenes/learned-models/flow-model-gates/verify/kde_v.py). Agreement with the project reference rules only.
 folds available: ['DEV', 'LOSO_audience', 'LOSO_conversation_group', 'LOSO_waiting_line', 'LOSeed_100', 'LOSeed_101', 'LOSeed_102', 'LOSeed_103', 'LOSeed_104', 'LOSeed_105', 'LOSeed_106', 'LOSeed_107', 'LOSeed_108', 'LOSeed_109']; rows 956
 
 == Inner-CV choices (verifier) ==

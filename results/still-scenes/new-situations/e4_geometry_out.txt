@@ -50,11 +50,14 @@ seed605_03_machine_use_ticket e1 [machine_use]: G0 x(r0h0t1u0); G3 ok(r1h1t1u1)
 | situation | baseline | success |
 |---|---|---|
 | machine_use | G0 standard goal | 0/24 |
+| machine_use | G3 behind the user | 24/24 |
 | waiting_line | G0 standard goal | 0/24 |
 | waiting_line | G1 local extension | 24/24 |
 | waiting_line | G2 straight extension | 0/24 |
 
 Validity rules (I13_FROZEN.md section 3, fixed before any model call):
+- machine_use: G0 passes 0/24: people matter
+  G3 behind the user passes 24/24: the success area can be stood in
 - waiting_line: G0 passes 0/24: people matter
   G2 passes 0/24: the bend is tested
   G1 local extension passes 24/24: the success area can be stood in

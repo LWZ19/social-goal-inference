@@ -1,9 +1,10 @@
 # score_sweep.py run once on the complete DeepSeek sweep, 2026-11-03 03:35:27 +0800
-# command (from moving/): python3 sweep/score_sweep.py runs_sweep/dsv41
-# 7cea0c9ea1f4c9e46ceb7754c4353ea8592fb096b4a6d698415594f91e97387b  sweep/score_sweep.py
+# command (from moving/): python3 results/moving-lines/test-layouts/score_sweep.py results/data/moving/runs_sweep/dsv41
+# 7cea0c9ea1f4c9e46ceb7754c4353ea8592fb096b4a6d698415594f91e97387b  results/moving-lines/test-layouts/score_sweep.py
 # ee0d3b9fb55a96729a5fc4e07f2c0aa456d3bc15aa5ea5bc672f0ffb65ede102  summarise_fresh.py
-# 9d7d34dab647172b0352f907a01132ed21032f30a18ab7ea5853ae253f9418cc  sweep/selection.json
-# mechanical checks before scoring: runs_sweep/dsv41/check_mech_out.txt (faults: none)
+# 9d7d34dab647172b0352f907a01132ed21032f30a18ab7ea5853ae253f9418cc  results/moving-lines/test-layouts/selection.json
+# mechanical checks before scoring: results/data/moving/runs_sweep/dsv41/check_mech_out.txt (faults: none)
+
 
 # dsv41: 432 episodes over 72 layouts
 

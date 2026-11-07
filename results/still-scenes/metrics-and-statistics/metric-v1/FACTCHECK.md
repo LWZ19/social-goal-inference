@@ -13,6 +13,7 @@ Paths are relative to `results/2026-10-17-beyond-vlm/`.
 | C3 | D15, Why | "Same work, different load: 18.3 against 11.9 ms; 215.1 against 127.0 ms" | "The same span timed twice under different conditions, causes not settled" | I09 calls its pair the same machine under different load (`results/still-scenes/people-finder/early-detector/phase2/README.md` §1). For the flow pilot the verifier names two other likely causes, an in-process GPU poller and a different projection code path, and timed only every third record (`results/still-scenes/learned-models/flow-model-pilot/README.md` §6) |
 | C4 | Appendix B, fit seeds row | Source "REPORT I46" | "REPORT I46; gate 2: `results/still-scenes/overview/phase-notes/phase1d.md` §2.2" | REPORT I46 names I03, I11 and I09 A1 as users of seeds 100–109, not gate 2 |
 | C5 | Appendix B, training seeds row | `results/still-scenes/learned-models/flow-model-pilot/README.md` §7 | §1, §7 | The 110–189 / 190–199 split is stated in §1; §7 says the seeds are spent as training data |
+| C6 | Appendix B, seeds 213–219 row | `results/still-scenes/people-finder/early-detector/phase2/README.md` §3 | §1, §3 | a decision (seeds 200–219 a test set, never for fitting) and the 14 rows are in §1 |
 | C7 | Glossary; D4; D7; §2.1 "The confidence probe" | "now running", "tests it now", "until the confidence probe reports" | Says the results page appeared at 18:05, after the revision; adds a dated note: P1 neither (cells 0.645, 0.738, 0.688; pooled 0.708 against the flags' 0.595), model-only 0.658 confirmed, bar numbers not yet revisited | `results/still-scenes/confidence-signal/README.md` §0, §4, §5 |
 
 The Status line also now points to this file.
@@ -71,11 +72,13 @@ The Status line also now points to this file.
 | 33 | D15: 18.3 against 11.9 ms; 215.1 against 127.0 ms | `results/still-scenes/learned-models/flow-model-pilot/README.md` Table 2.10, §6; `results/still-scenes/people-finder/early-detector/phase2/README.md` §1 | Numbers confirmed; wording corrected (C3) |
 | 34 | D16: the 42 group-joining scenarios or the predictor's outputs (I51); ethics review for a click pilot (I35) | REPORT §7 "For the mentor" | Confirmed |
 | 35 | D16: every label is the project's own rule | REPORT §8 "Circularity" | Confirmed |
+| 36 | Seeds 200–212: decision, never for fitting, spent as I09's test | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, §3; REPORT "How to read" | Confirmed |
 
 ### §1 Primary metric
 
 | # | Claim | Source | Result |
 |---|---|---|---|
+| 37 | Robot radius 0.30 m, person radius 0.25 m, heading within 45 deg | `configs/default.yaml` (folder); `METRIC_NOTE.md` | Confirmed |
 | 38 | 252 = 14 layouts × 3 arms × 2 episodes × 3 trials; 18 records per layout | `results/still-scenes/overview/phase-notes/phase1.md` §5; `HOW_TO_REPORT.md` | Confirmed |
 | 39 | Goal-step records 143, 141, 157 (441); 36 per watching cell; 549 | `METRIC_NOTE.md`; `results/still-scenes/overview/phase-notes/phase1d.md` §1 | Confirmed |
 | 40 | 13 realistic goal-step layouts, none at `eval_04`; per cell 8, 11, 12; 2 watching rows | `results/still-scenes/confidence-signal/FROZEN.md` pre-freeze check; `results/still-scenes/overview/phase-notes/phase1d.md` §1 | Confirmed |
@@ -91,6 +94,7 @@ The Status line also now points to this file.
 | 50 | Paired live, one stage: 11–21 per batch | `HOW_TO_REPORT.md`; `mdd_table.txt` M2 | Confirmed |
 | 51 | Two independent batches: 24–32; 22 / 18 / 16 with 2 / 3 / 4 batches | `HOW_TO_REPORT.md`; `mdd_table.txt` M1 (from Qwen's 7.93) | Confirmed |
 | 52 | Floors 6 → 0.031; 7 → 0.016 (3 models); 8 → 0.0078 (6 models) | Recomputed: 2/2^k against 0.05/m | Confirmed (see flagged points) |
+| 53 | Live margins of 1–3 records sit in a batch SD of 6–8; the stage-23 check | REPORT §8 "Run-to-run noise" | Confirmed |
 | 54 | "m of k" bars on point estimates, as I04 and the probe do | `results/still-scenes/overview/phase-notes/phase1d.md` §1 criterion (d); `FROZEN.md` §7 | Confirmed |
 
 ### §2.1 Q1
@@ -228,6 +232,7 @@ The Status line also now points to this file.
 | 143 | Seeds 200–212: 182 images of the 14 rows; never fit; spent; a second confirmation needs its own pre-registration, other fit data and fresh layouts | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, §3 | Confirmed |
 | 144 | Seeds 213–219: 98 images, unrendered, the same 14 rows | `results/still-scenes/people-finder/early-detector/phase2/README.md` §1, §3 | Confirmed; citation completed (C6) |
 | 145 | I46's sealed bank: seeds 3–99 and blind situations; final run about 6,000 calls | REPORT I46; §6 ("I46 final test: about 6,000") | Confirmed |
+| 146 | `keep/heldout/seed0-2` for the final held-out test; `eval_16`–`19`, s18, s20_held spent; REPORT does not say whether that test and I46's run are one or two | REPORT §8 "Held-out discipline", disclosure (a); REPORT I46 | Confirmed |
 | 147 | Noise models fitted on development runs only | REPORT §8 (d) | Confirmed |
 
 ## A2 update check (2026-10-18)
@@ -251,6 +256,7 @@ The Status line also now points to this file.
 | A13 | D4 | Confirming needs records the probe did not use | README §0 cautions, §8 q1 | Confirmed |
 | A14 | D7 | Revised bars: cells with ≥ 20 failures, paired win over the flags, abstention against the flags | Draft bars (c), (d) | Confirmed (see F1) |
 | A15 | D7 | Valid only on records the probe did not use | Draft bars, last line | Confirmed |
+| A16 | D7 | +4 stays a placeholder until the project rules on an abstain output | README §8 q3 | Confirmed |
 | A17 | D7 | Model identity alone: pooled AUROC 0.658 | README §0, §5; `exposure.txt` Table A | Confirmed |
 | A18 | D7 | Flags' pooled AUROC 0.595 | README Table 3.2 | Confirmed |
 | A19 | D7 | Brier skill +0.08 against a pooled base rate | Earlier check #23 (+0.077) | Confirmed, unchanged |
@@ -267,6 +273,7 @@ The Status line also now points to this file.
 | A30 | Bar (c) | Old Qwen's 9 failures gave P1 0.392–1.000 | README Table 3.2 | Confirmed |
 | A31 | Bar (c) | Paired intervals against the flags ran ±0.13–0.18 | README §3 (P1 − flags [−0.088, +0.273], half-width 0.181); §10 / Table F (S2 − flags [−0.083, +0.182], 0.133) | Recomputed; confirmed (see F4) |
 | A32 | Bar (c) | 400–440 records need a gap near 0.15–0.2 | Lower half-widths 0.154 (S2, 404) and 0.200 (P1, 441) | Recomputed; confirmed (see F4) |
+| A33 | Bar (d) | Scope of an abstain output awaits the project | README §8 q3 | Confirmed |
 | A34 | Bars, last line | Set before: 0.70, 0.60, 20% abstention, bars (a), (b) | 0.70 in `METRIC_LIST_v1_DRAFT.first.md` (17:41); 0.60 and 20% in CHANGELOG 1.5, 1.7 (17:56 revision, before the README at 18:05) | Confirmed (see F8) |
 | A35 | §2.1 probe | FROZEN.md sha256 `2a3a890a…cb4b3` | `sha256sum` of `FROZEN.md` | Confirmed |
 | A36 | §2.1 probe | P1 neither; cells; 2 of 3 needed; pooled 0.708 against 0.595 | README §0, §4 | Confirmed |

@@ -81,6 +81,8 @@ before it solves, so evidence seen during the wait (who stepped up, who did not 
   LANDSCAPE). Slow Brain, Fast Planner decays a stale choice by geometric similarity (VERIFIED in LANDSCAPE). OOSM
   filters (intuition 1) do the same for numeric measurements. What is new is retrodicting a symbolic,
   identity-referencing social answer and replaying its validity rules over the wait.
+  CT3 against CT3 plus replay (sim time only, no model). Predicted: named-bystander seconds fall by at least 40%
+  for DeepSeek (618 -> at most 370) and at least 25% for Sonnet. False drops of true members do not rise (CT3 had
 - **Risks.** (a) Scripted humans: co-motion is near-deterministic here (Z3), so replay looks better than it will on
   real people. (b) Detector tracks are 71% stale at any moment (SUMMARY §7). A person held at their last position
   "did not follow", which is a false drop unless missing data counts as no evidence. That is a design rule here,
@@ -175,6 +177,7 @@ informative event and that event's likelihood ratio). Ask only for bits the worl
      would have saved.
   2. Then the structural-error cells (room DeepSeek 5, no_target 5, sweet s30): a track surprise, e.g. the planned
      path crosses still people who co-move. Re-ask once from a side view: about 11 cells x 4 calls = 44 free calls.
+     3 of 11.
 - **Risks.** Likelihood ratios measured in a scripted sim; the expected time to the next event depends on service
   time; the decision needs a horizon, so the episode length becomes a parameter.
 - **Scores.** Payoff 4, uncertainty 3, cost 1.5 days.

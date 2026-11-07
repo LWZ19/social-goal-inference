@@ -12,6 +12,7 @@ The re-asking arms make about 6-37 calls an episode.
 **Old evidence:** 15 episodes per model on seeds 0-2, against CT v1, under the primary scoring. Under strict rescoring
 Rq0 was about level with CT. The `--test` run of the scorer on those episodes gives lower bounds of −0.07 to −0.12 at
 n 15: too few cells to decide.
+## Amendment 1 (6 Nov, before any item 10 episode; the point)
 
 - **The issue.** An answer lands in the sim at its send time plus its wall latency, and that latency includes
   sgi.serve's local work (`experiment.py` 271-285). The machine is heavily loaded today (load 18-28 on 20 cores). New
@@ -57,6 +58,7 @@ n 15: too few cells to decide.
   Every later answer is a fresh call.
 - **CT2 is re-run concurrently,** cache-only (amendment 1).
 - **Scenes:** the 5 evaluation scenes, seeds 10-14 (25 cells per model).
+## Bars (judged once, after all episodes and the mechanics check)
 
 - **H10-Rq0 (primary).** Pooled over the models' cells, the one-sided 95% paired-t lower bound of mean(CT2 − Rq0) on
   whole-episode strict share must be above −0.05 (CT2 non-inferior).
@@ -71,6 +73,7 @@ n 15: too few cells to decide.
 - **Reported:** per model; the primary scoring; superiority (sign test, wins > losses, p ≤ 0.05); Rq0 vs R1 (does
   re-asking help the marked point?); calls per episode, mean and maximum.
 
+## Mechanics (the run checks before sending totals)
 - One episode per arm per cell, exit 0.
 - The first answer is the cached one (the same pose as R1's or CT2's).
 - Re-asked answers that ended in `vlm_error` are counted per episode (an outage mid-episode is part of re-asking's
@@ -83,12 +86,13 @@ n 15: too few cells to decide.
   data had Rq0 about level with CT. A pass is likely but not certain.
 - Superiority is not shown for Rq0.
 - Calls: CT2 4, Rq0 about 25-35 (DeepSeek, Sonnet), Cq about 20.
+## Run (run; from `moving/`; 1 worker per model, as the re-asking arms call often)
 
     cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
     M=sgi_habitat.experiment_oracle
-    F=../fill/i10_reask
+    F=results/moving-lines/re-asking
     $P run_moving.py --model soclaas_dsv41 --out runs_i10/dsv41 --workers 1 --port-base 8840 --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms CT2 Rq0 Cq --max-rpm 30 > $F/run_dsv41.log 2>&1
     $P run_moving.py --model claude_sonnet55_low --out runs_i10/sonnet55_low --workers 1 --port-base 8840 --module $M --scenarios $EVALF --seeds 10 11 12 13 14 --arms CT2 Rq0 Cq --max-rpm 30 > $F/run_sonnet.log 2>&1
     # after item 9:

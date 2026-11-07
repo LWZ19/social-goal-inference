@@ -7,6 +7,23 @@ Cross-check (FROZEN section 8): recall computed I03's way (one answer per (run, 
       records 408, solver steps 237, answers shared by both episodes 128, unequal lists kept both 0, answers whose episodes have different groups 0, target ids [('target_id_t0', 128)]
   cross-check: PASS
 
+Noise-model parameters per model (fit on the seven development runs; n given; pooled over both domains as ruled; per domain below)
+Qwen 3.8 (s19 qwen38_low): 114 answers, 480 visible-person outcomes
+  p_miss[member] = 2/372 = 0.005  (mislocated 10, located 360)
+  p_miss[other] = 1/84 = 0.012  (mislocated 0, located 83)
+  p_miss[staff] = 1/24 = 0.042  (mislocated 1, located 22)
+  q_mis = 11/476 = 0.023; mislocation offsets: own (own n 11)
+  located offsets n 465: radial median +0.097 m, lateral median +0.006 m, |offset| median 0.104 m, p90 0.145 m
+  mislocation offsets used n 11: radial median -0.820 m, |offset| median 0.820 m, max 4.072 m
+  false people per answer: mean 0.009, distribution {0: 113, 1: 1}; offsets pooled over the three models (all seven runs) (own n 1, unanchored 0); yaw None share 0.000
+      false offset |d| median 3.872 m, radial median +3.776 m
+  yaw[frontal]: own; located 36, known 36, p_unknown 0.000, |err| median 18.0 deg, within 45 0.972
+  yaw[oblique]: own; located 72, known 72, p_unknown 0.000, |err| median 18.7 deg, within 45 0.778
+  yaw[profile]: own; located 250, known 250, p_unknown 0.000, |err| median 23.6 deg, within 45 0.780
+  yaw[back]: own; located 107, known 107, p_unknown 0.000, |err| median 14.1 deg, within 45 0.869
+  [realistic] answers 72; p_miss member 1/225, other 1/63, staff 1/24; q_mis 11/309; false/answer 0.014
+  [placeholder] answers 42; p_miss member 1/147, other 0/21, staff 0/0; q_mis 0/167; false/answer 0.000
+
 GLM-5.3 (s19 glm53): 118 answers, 485 visible-person outcomes
   p_miss[member] = 49/372 = 0.132  (mislocated 19, located 304)
   p_miss[other] = 8/86 = 0.093  (mislocated 3, located 75)

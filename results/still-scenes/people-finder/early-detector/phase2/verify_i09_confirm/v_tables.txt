@@ -1,3 +1,8 @@
+v_score 2026-10-18T05:00:18+0800; 182 test images; 560 detector people
+people: verifier re-implementation vs phase1c P.run_image (F5): scenes/people differing beyond 1e-9: 0 (max |diff| 4.44e-16); vs compute agent's rows.jsonl det_people: 0 (max |diff| 4.44e-16)
+C3 (verifier's scorer): 182/182 scenes with recall 1, 0 false, all within 45 deg
+person rows: verifier 520, compute 520; keys equal True; field differences none
+scene rows: field differences vs compute rows.jsonl none
 
 == Criteria, pooled test set (verifier), point estimates ==
 S1: 0.9808 (510/520) Wilson [0.965, 0.990]; layout boot [0.9682, 0.9919]; seed boot [0.9711, 0.9903]; met; compute flag True; flags and both intervals equal to compute: True

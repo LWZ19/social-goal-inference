@@ -1,4 +1,4 @@
-# Round 7, DESCRIPTIVE: where strict time in line is lost (sweep/pilot_selection.json, runs_pilot3/dsv41)
+# Round 7, DESCRIPTIVE: where strict time in line is lost (results/moving-lines/test-layouts/pilot_selection.json, results/data/moving/runs_pilot3/dsv41)
 
 ### CT3F: 24 episodes with a window, 1663 window seconds
 

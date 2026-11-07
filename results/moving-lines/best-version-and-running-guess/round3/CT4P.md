@@ -53,6 +53,7 @@ direction, so that CT4 against CT3F measures the belief.
   where to stand. Draft a confirmatory note for CT4-P against CT3F on candidates 2000-2449.
 - Every outcome is reported. Nothing here is tuned. CT4-P has no parameter of its own.
 
+## Checks before scoring (run)
 - `check_mech` clean; every CT4-P episode replays CT2's first answer from the cache with the same pose.
 - `l_ct4p_score.py` prints the share of re-solves using the fallback. Its direction check: the median angle
   between `solve_direction` and the true axis at the true last is below 15° on the high-error layouts. If not, the

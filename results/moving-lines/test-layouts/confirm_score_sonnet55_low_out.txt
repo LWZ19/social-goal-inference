@@ -1,4 +1,4 @@
-# CONFIRM_CT4PJ.md scored: Sonnet 5.5 low (reported, not claimed) (runs_confirm4/sonnet55_low, sweep/confirm_selection.json)
+# CONFIRM_CT4PJ.md scored: Sonnet 5.5 low (reported, not claimed) (results/data/moving/runs_confirm4/sonnet55_low, results/moving-lines/test-layouts/confirm_selection.json)
 
 - layouts 72; episodes: CT3F 72, CT4 72, CT4P 72, CT4PJ 72
 - strict share in line from the first service, mean over layouts with a value: CT3F 0.246 (n 71), CT4 0.131 (n 71), CT4P 0.124 (n 71), CT4PJ 0.174 (n 71)

@@ -175,6 +175,7 @@ answer's life:
     10 cells x 4 calls = 40 free calls.
   - **Kill:** false alarms above 20% on no-people-matter scenes, or DeepSeek still says "no" in half the re-asks.
 - **Risks.**
+  - Its measured benefit is on one model (Sonnet 10 of 10 "yes"), so the project may read it as a weak-model patch. It
   - The scripted line is unusually regular.
 - **Scores:** payoff 3, uncertainty 3, cost 1 day.
 

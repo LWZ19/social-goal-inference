@@ -200,6 +200,7 @@ Tags:
   - Instead of writing coordinates, it selects image tokens, then a subpatch, then a location. 70.7% on PointBench.
   - **For us:** choosing inside the model beats writing coordinates, but it needs training.
 - **B. Zheng, B. Gou, J. Kil, H. Sun, Y. Su, "SeeAct: GPT-4V(ision) is a Generalist Web Agent, if Grounded", arXiv 2401.01614 (ICML 2024).** VERIFIED (abstract).
+- **B. Gou et al., "UGround", ICLR 2025, arXiv 2410.05243.** Pixel-level grounding beats agents that choose among SoM or HTML candidates by up to 20% absolute. UNVERIFIED (search snippet).
 - **H.-T. L. Chiang et al., "Mobility VLA", arXiv 2407.07775.** A long-context VLM picks a goal frame from a tour video, so it selects from candidates. VERIFIED (abstract).
 - **"SeeGround" / "Zero-Shot 3D Visual Grounding from Vision-Language Models", arXiv 2412.04383 / 2505.22429.** The VLM predicts an object ID on rendered views, then retrieves the 3D box. UNVERIFIED (search).
 - **M. Lu, A. Xiao, D. Hsu, "MIGU", arXiv 2609.24995, Sept 2026.** VERIFIED (abstract).
@@ -228,6 +229,7 @@ This is new: no paper we found reports any of these.
 
 | Metric | Definition |
 |---|---|
+| TICP, time in correct place | Fraction of ticks where the current goal (x, y, θ) passes the per-tick judge. The ground-truth region is recomputed from the evolved ground-truth people. |
 | Correct at arrival | Whether the goal is correct at the moment the robot arrives. |
 | Cut-in | The robot's final place is ahead of someone who was already waiting when the robot started. |
 | Lost place | Someone who arrived after the robot ends ahead of it. |

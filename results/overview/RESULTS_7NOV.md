@@ -130,6 +130,7 @@
 - **Still latency-bound at 240 s:** 24 of 25 constraint episodes had no answer in time. Median first answer 217 s (C)
   and 173 s (R). CT2 vs R1 is 0/3/22.
 - **GLM cannot be judged on the moving protocol** at today's gateway speed. `RESULTS_I9.md` is updated.
+## E4 interim: bent waiting lines and someone using a machine (run's scoring; five models, GLM running)
 
 - **The validity check passed** before any call:
   - the people-blind goal fails every scene, so people matter;

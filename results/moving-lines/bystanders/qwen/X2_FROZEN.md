@@ -26,6 +26,7 @@ capture bars. No school-panel model has run it.
     `results/data/moving/runs_x2/soclaas_qwen38_low_long/`.
   - The bars are read there as a labelled secondary.
 
+## Amendment 1 (7 Nov, before any X2 total was read; the scorer crashed on an empty answer list)
 - **What happened.** `bystanders_confirm_score.py` raised IndexError on its first pass over Qwen's runs: in a CT2
   episode with no answer at all, `answers` is an empty list and `[0]` fails. DeepSeek's confirmation never had one.
 - **The fix.** `x2_score.py` is a copy with only those two lines guarded (`(… .get("answers") or [{}])[0]`) and its
@@ -39,6 +40,7 @@ capture bars. No school-panel model has run it.
 - **Share (bar C1):** small, as on DeepSeek (+0.018). It may not reach p ≤ 0.05 at n 60.
 - **Roles (bar R):** CT3 beats the geometry chain if Qwen's rosters name few bystanders. Sonnet named them in 13 of
   29 answers, DeepSeek in 10 of 51.
+## Run (run; from `moving/`; 2 workers)
 
     cd results/moving-lines/design-and-scoring
     P=.venv/bin/python

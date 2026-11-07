@@ -72,6 +72,29 @@ per line member (arm scene pid group ang ang_axis ang_robot dist_xy Z@1m dist_ro
   staffed  staffed_eval_13_waiting_line_3         p1         g0           88.2   89.8   88.2  4.82  4.83  5.02
   staffed  staffed_eval_13_waiting_line_3         p2         g0           75.2   83.7   75.5  4.92  4.88  5.12
 
+=== The note: all five lines seen side-on at 4.4-6.2 m ===
+distinct line layouts: ['eval_06_waiting_line_1', 'eval_07_waiting_line_2', 'eval_08_waiting_line_4', 'eval_09_waiting_line_6', 'eval_13_waiting_line_3'] ; line instances: 15
+line member horizontal distance camera->person (m): n=48 min=4.2 q25=4.8 median=5.5 q75=5.8 max=6.0 mean=5.3
+line member optical depth Z at 1.0 m height (m): n=48 min=4.2 q25=4.8 median=5.5 q75=5.7 max=5.8 mean=5.2
+line member horizontal distance robot pose->person (m): n=48 min=4.4 q25=5.0 median=5.7 q75=6.0 max=6.2 mean=5.5
+per line (arm scene group n axis side_on_deg dmin dmax dcentroid):
+  plain    plain_eval_06_waiting_line_1           g0         n=1 facing  86.3  4.19  4.19  4.19
+  real     real_eval_06_waiting_line_1            g0         n=1 facing  86.3  4.19  4.19  4.19
+  staffed  staffed_eval_06_waiting_line_1         g0         n=1 facing  86.3  4.19  4.19  4.19
+  plain    plain_eval_07_waiting_line_2           g0         n=2 pca     87.9  4.19  4.21  4.19
+  real     real_eval_07_waiting_line_2            g0         n=2 pca     87.9  4.19  4.21  4.19
+  staffed  staffed_eval_07_waiting_line_2         g0         n=2 pca     87.9  4.19  4.21  4.19
+  plain    plain_eval_08_waiting_line_4           g0         n=4 pca     89.7  5.49  5.55  5.48
+  real     real_eval_08_waiting_line_4            g0         n=4 pca     89.7  5.49  5.55  5.48
+  staffed  staffed_eval_08_waiting_line_4         g0         n=4 pca     89.7  5.49  5.55  5.48
+  plain    plain_eval_09_waiting_line_6           g0         n=6 pca     85.8  5.71  6.04  5.74
+  real     real_eval_09_waiting_line_6            g0         n=6 pca     85.8  5.71  6.04  5.74
+  staffed  staffed_eval_09_waiting_line_6         g0         n=6 pca     85.8  5.71  6.04  5.74
+  plain    plain_eval_13_waiting_line_3           g0         n=3 pca     85.3  4.82  4.92  4.83
+  real     real_eval_13_waiting_line_3            g0         n=3 pca     85.3  4.82  4.92  4.83
+  staffed  staffed_eval_13_waiting_line_3         g0         n=3 pca     85.3  4.82  4.92  4.83
+side-on angle of line axis to camera ray (deg, 90 = side-on): n=15 min=85.3 q25=85.8 median=86.3 q75=87.9 max=89.7 mean=87.0
+
 === NEW. Same angle for group members, staff, others (context) ===
 group : n=27 min=7.6 q25=49.1 median=74.4 q75=104.4 max=172.8 mean=84.8
         hist 15-deg: [0,15):3  [15,30):0  [30,45):3  [45,60):3  [60,75):6  [75,90):3  [90,105):3  [105,120):0  [120,135):0  [135,150):0  [150,165):3  [165,180):3

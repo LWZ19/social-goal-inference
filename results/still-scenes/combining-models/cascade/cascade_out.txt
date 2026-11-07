@@ -1,0 +1,178 @@
+====================================================================================================
+PAIR s19 glm53 -> s19 qwen38_low (judge pair)
+records: cheap 252, strong 252, unpaired 0
+N paired=252; cheap goal-step records=141; cheap succ all=186/252 (73.8%); strong succ all=234/252 (92.9%)
+(cheap ok, strong ok, cheap goalstep) counts: {(False, False, True): 3, (False, True, False): 21, (False, True, True): 42, (True, False, False): 8, (True, False, True): 7, (True, True, False): 82, (True, True, True): 89}
+K1-type: cheap goal-step fails=45; strong succ on them=42; cheap target_correct on them=31; strong ok & cheap target correct=28
+   strong-only gains among goal-step=42; losses (cheap ok, strong fail)=7; cheap non-goal-step fails=21 (not escalatable)
+   same matched target cheap vs strong (cheap goal-step): 120/141
+   by situation (cheap goal-step): (situation, cheap ok, strong ok) -> {('conversation_group', False, True): 3, ('conversation_group', True, False): 6, ('conversation_group', True, True): 45, ('no_one', False, True): 1, ('no_one', True, True): 3, ('waiting_line', False, False): 3, ('waiting_line', False, True): 38, ('waiting_line', True, False): 1, ('waiting_line', True, True): 41}
+latency (K5-type; brief definition = mean record measures.latency_s over goal-step episodes):
+   cheap : own goal-step n=141 (solver_step n=141); record latency_s mean (median) over own goal-step = 11.6 (10.1); provider-only mean over own goal-step = 9.8; record latency_s all = 8.0; people+constraints provider over own goal-step = 6.7; cached calls share = 782/782
+   strong: own goal-step n=143 (solver_step n=143); record latency_s mean (median) over own goal-step = 61.6 (59.3); provider-only mean over own goal-step = 61.2; record latency_s all = 39.8; people+constraints provider over own goal-step = 47.7; cached calls share = 790/790
+   judge: cheap provider mean over cheap goal-step = 9.8; strong full provider over cheap goal-step keys = 59.7
+constraint kinds seen: [('keep_out_of_shared_space', 148), ('within_distance', 129), ('face', 99), ('visible_to', 78), ('come_after', 75), ('keep_out_of_view', 53)]
+AUROC over cheap goal-step records (n=141; fails=45; gains=42):
+   ca    AUROC fail=0.62  AUROC gain=0.601
+   gap   AUROC fail=0.361  AUROC gain=0.353
+   exc   AUROC fail=0.511  AUROC gain=0.512
+   np    AUROC fail=0.318  AUROC gain=0.342
+   dis   AUROC fail=0.728  AUROC gain=0.713
+   dis1  AUROC fail=0.752  AUROC gain=0.728
+   dis mean: fail=3.022 succ=1.756
+curves (Qwen-own-plan version): frac[escalated]:successes/252 (judge latency s = cheap provider + strong people+constraints when escalated / sequential full strong provider when escalated), mean over cheap goal-step records
+   dis: 0.0[0]:186 (9.8s/9.8s)  0.1[14]:193 (15.4s/16.9s)  0.2[28]:198 (20.2s/23.1s)  0.3[42]:205 (25.5s/29.9s)  0.4[56]:209 (30.5s/36.0s)  0.5[70]:216 (33.9s/40.8s)  0.6[85]:219 (38.5s/46.8s)  0.8[113]:221 (47.9s/58.7s)  1.0[141]:221 (56.4s/69.5s)
+   ca+dis: 0.0[0]:186 (9.8s/9.8s)  0.1[14]:192 (14.9s/16.5s)  0.2[28]:200 (20.3s/23.3s)  0.3[42]:205 (25.2s/29.5s)  0.4[56]:210 (29.6s/35.1s)  0.5[70]:214 (33.2s/40.2s)  0.6[85]:219 (38.1s/46.3s)  0.8[113]:218 (48.4s/59.1s)  1.0[141]:221 (56.4s/69.5s)
+   dis1: 0.0[0]:186 (9.8s/9.8s)  0.1[14]:193 (15.1s/16.5s)  0.2[28]:200 (20.0s/22.9s)  0.3[42]:207 (24.5s/28.6s)  0.4[56]:212 (29.1s/34.7s)  0.5[70]:218 (32.9s/39.7s)  0.6[85]:219 (37.8s/45.9s)  0.8[113]:217 (47.8s/58.5s)  1.0[141]:221 (56.4s/69.5s)
+   oracle: 0.0[0]:186 (9.8s/9.8s)  0.1[14]:200 (14.8s/16.1s)  0.2[28]:214 (19.2s/21.8s)  0.3[42]:228 (22.7s/26.6s)  0.4[56]:228 (27.0s/32.3s)  0.5[70]:226 (31.5s/38.0s)  0.6[85]:223 (36.5s/44.4s)  0.8[113]:222 (46.5s/57.1s)  1.0[141]:221 (56.4s/69.5s)
+   random seed0: 0.0[0]:186 (9.8s/9.8s)  0.1[14]:187 (14.3s/15.5s)  0.2[28]:190 (19.1s/21.7s)  0.3[42]:195 (24.0s/27.7s)  0.4[56]:195 (28.9s/34.0s)  0.5[70]:201 (33.9s/40.4s)  0.6[85]:203 (37.9s/45.9s)  0.8[113]:212 (46.9s/57.5s)  1.0[141]:221 (56.4s/69.5s)
+   random expectation: 0.0:186.0  0.1:189.5  0.2:193.0  0.3:196.4  0.4:199.9  0.5:203.4  0.6:207.1  0.8:214.0  1.0:221.0
+   random @0.5 over 2000 seeds: mean 203.4, 5-95% [198, 209]
+plan-reuse curves (judge proxy: escalated ok = strong ok AND cheap target_correct):
+   dis: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:195 (20.2s/23.1s)  0.3[42]:201 (25.5s/29.9s)  0.4[56]:204 (30.5s/36.0s)  0.5[70]:206 (33.9s/40.8s)  0.6[85]:207 (38.5s/46.8s)  1.0[141]:207 (56.4s/69.5s)
+   ca+dis: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:198 (20.3s/23.3s)  0.3[42]:201 (25.2s/29.5s)  0.4[56]:203 (29.6s/35.1s)  0.5[70]:203 (33.2s/40.2s)  0.6[85]:207 (38.1s/46.3s)  1.0[141]:207 (56.4s/69.5s)
+   dis1: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:198 (20.0s/22.9s)  0.3[42]:201 (24.5s/28.6s)  0.4[56]:202 (29.1s/34.7s)  0.5[70]:204 (32.9s/39.7s)  0.6[85]:205 (37.8s/45.9s)  1.0[141]:207 (56.4s/69.5s)
+   oracle: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:204 (19.2s/21.8s)  0.3[42]:214 (22.7s/26.6s)  0.4[56]:214 (27.0s/32.3s)  0.5[70]:212 (31.5s/38.0s)  0.6[85]:209 (36.5s/44.4s)  1.0[141]:207 (56.4s/69.5s)
+   plan-reuse proxy, best over non-oracle gates: 207 (dis1 @ 1.0); ceiling (escalate all) = 207; oracle best = 214
+plan-reuse curves (solver replay: H.resolve on the cheap record with its own target and plan, strong people+constraints; 136 replayed, 5 with no strong constraints fall back to the proxy):
+   replay ok on cheap goal-step = 122/141; on cheap fails = 29/45; proxy on cheap fails = 28/45
+   dis: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:196 (20.2s/23.1s)  0.3[42]:202 (25.5s/29.9s)  0.4[56]:205 (30.5s/36.0s)  0.5[70]:207 (33.9s/40.8s)  0.6[85]:209 (38.5s/46.8s)  1.0[141]:212 (56.4s/69.5s)
+   ca+dis: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:199 (20.3s/23.3s)  0.3[42]:202 (25.2s/29.5s)  0.4[56]:204 (29.6s/35.1s)  0.5[70]:204 (33.2s/40.2s)  0.6[85]:208 (38.1s/46.3s)  1.0[141]:212 (56.4s/69.5s)
+   dis1: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:199 (20.0s/22.9s)  0.3[42]:202 (24.5s/28.6s)  0.4[56]:204 (29.1s/34.7s)  0.5[70]:205 (32.9s/39.7s)  0.6[85]:208 (37.8s/45.9s)  1.0[141]:212 (56.4s/69.5s)
+   oracle: 0.0[0]:186 (9.8s/9.8s)  0.2[28]:214 (18.7s/21.2s)  0.3[42]:215 (23.7s/27.6s)  0.4[56]:213 (27.9s/33.1s)  0.5[70]:213 (32.4s/38.8s)  0.6[85]:212 (37.7s/45.6s)  1.0[141]:212 (56.4s/69.5s)
+   solver-replay plan reuse, best over non-oracle gates: 212 (dis1 @ 1.0); ceiling = 212; oracle best = 215
+====================================================================================================
+PAIR NEW s23 glm53 -> s21 qwen38_low
+records: cheap 252, strong 252, unpaired 0
+N paired=252; cheap goal-step records=141; cheap succ all=170/252 (67.5%); strong succ all=228/252 (90.5%)
+(cheap ok, strong ok, cheap goalstep) counts: {(False, False, False): 3, (False, False, True): 8, (False, True, False): 24, (False, True, True): 47, (True, False, False): 8, (True, False, True): 5, (True, True, False): 76, (True, True, True): 81}
+K1-type: cheap goal-step fails=55; strong succ on them=47; cheap target_correct on them=33; strong ok & cheap target correct=28
+   strong-only gains among goal-step=47; losses (cheap ok, strong fail)=5; cheap non-goal-step fails=27 (not escalatable)
+   same matched target cheap vs strong (cheap goal-step): 114/141
+   by situation (cheap goal-step): (situation, cheap ok, strong ok) -> {('conversation_group', False, False): 3, ('conversation_group', False, True): 3, ('conversation_group', True, False): 5, ('conversation_group', True, True): 42, ('waiting_line', False, False): 5, ('waiting_line', False, True): 44, ('waiting_line', True, True): 39}
+latency (K5-type; brief definition = mean record measures.latency_s over goal-step episodes):
+   cheap : own goal-step n=141 (solver_step n=141); record latency_s mean (median) over own goal-step = 20.0 (18.0); provider-only mean over own goal-step = 18.3; record latency_s all = 15.8; people+constraints provider over own goal-step = 11.4; cached calls share = 645/786
+   strong: own goal-step n=144 (solver_step n=144); record latency_s mean (median) over own goal-step = 72.0 (71.9); provider-only mean over own goal-step = 71.2; record latency_s all = 47.4; people+constraints provider over own goal-step = 54.3; cached calls share = 648/792
+   judge: cheap provider mean over cheap goal-step = 18.3; strong full provider over cheap goal-step keys = 71.3
+constraint kinds seen: [('keep_out_of_shared_space', 147), ('within_distance', 140), ('face', 99), ('come_after', 78), ('visible_to', 66), ('keep_out_of_view', 53)]
+AUROC over cheap goal-step records (n=141; fails=55; gains=47):
+   ca    AUROC fail=0.604  AUROC gain=0.601
+   gap   AUROC fail=0.38  AUROC gain=0.404
+   exc   AUROC fail=0.536  AUROC gain=0.527
+   np    AUROC fail=0.373  AUROC gain=0.33
+   dis   AUROC fail=0.782  AUROC gain=0.748
+   dis1  AUROC fail=0.766  AUROC gain=0.718
+   dis mean: fail=3.342 succ=1.619
+curves (Qwen-own-plan version): frac[escalated]:successes/252 (judge latency s = cheap provider + strong people+constraints when escalated / sequential full strong provider when escalated), mean over cheap goal-step records
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:179 (24.1s/25.8s)  0.2[28]:184 (28.1s/31.7s)  0.3[42]:193 (34.2s/39.6s)  0.4[56]:199 (39.4s/46.4s)  0.5[70]:206 (44.2s/52.9s)  0.6[85]:212 (48.9s/59.2s)  0.8[113]:214 (61.8s/75.1s)  1.0[141]:212 (72.7s/89.5s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:177 (24.2s/26.0s)  0.2[28]:182 (28.5s/32.0s)  0.3[42]:191 (34.4s/39.7s)  0.4[56]:195 (40.0s/46.9s)  0.5[70]:202 (44.0s/52.6s)  0.6[85]:208 (48.6s/59.6s)  0.8[113]:212 (61.2s/75.1s)  1.0[141]:212 (72.7s/89.5s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:178 (23.7s/25.6s)  0.2[28]:184 (29.4s/33.1s)  0.3[42]:191 (34.2s/39.5s)  0.4[56]:198 (38.3s/45.3s)  0.5[70]:206 (43.4s/51.9s)  0.6[85]:207 (50.5s/60.5s)  0.8[113]:213 (61.7s/75.0s)  1.0[141]:212 (72.7s/89.5s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:184 (23.1s/24.9s)  0.2[28]:198 (28.4s/31.7s)  0.3[42]:212 (32.9s/37.9s)  0.4[56]:217 (38.7s/45.3s)  0.5[70]:216 (44.4s/52.8s)  0.6[85]:216 (50.6s/60.7s)  0.8[113]:215 (62.3s/75.6s)  1.0[141]:212 (72.7s/89.5s)
+   random seed0: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:173 (23.5s/25.2s)  0.2[28]:176 (28.9s/32.3s)  0.3[42]:180 (34.2s/39.1s)  0.4[56]:186 (39.8s/46.5s)  0.5[70]:193 (45.3s/53.8s)  0.6[85]:200 (50.8s/61.1s)  0.8[113]:210 (61.3s/74.8s)  1.0[141]:212 (72.7s/89.5s)
+   random expectation: 0.0:170.0  0.1:174.2  0.2:178.3  0.3:182.5  0.4:186.7  0.5:190.9  0.6:195.3  0.8:203.7  1.0:212.0
+   random @0.5 over 2000 seeds: mean 190.9, 5-95% [186, 196]
+plan-reuse curves (judge proxy: escalated ok = strong ok AND cheap target_correct):
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:179 (28.1s/31.7s)  0.3[42]:186 (34.2s/39.6s)  0.4[56]:190 (39.4s/46.4s)  0.5[70]:195 (44.2s/52.9s)  0.6[85]:196 (48.9s/59.2s)  1.0[141]:193 (72.7s/89.5s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:180 (28.5s/32.0s)  0.3[42]:187 (34.4s/39.7s)  0.4[56]:190 (40.0s/46.9s)  0.5[70]:192 (44.0s/52.6s)  0.6[85]:194 (48.6s/59.6s)  1.0[141]:193 (72.7s/89.5s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:180 (29.4s/33.1s)  0.3[42]:186 (34.2s/39.5s)  0.4[56]:189 (38.3s/45.3s)  0.5[70]:192 (43.4s/51.9s)  0.6[85]:191 (50.5s/60.5s)  1.0[141]:193 (72.7s/89.5s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:187 (28.4s/31.7s)  0.3[42]:196 (32.9s/37.9s)  0.4[56]:198 (38.7s/45.3s)  0.5[70]:197 (44.4s/52.8s)  0.6[85]:197 (50.6s/60.7s)  1.0[141]:193 (72.7s/89.5s)
+   plan-reuse proxy, best over non-oracle gates: 196 (dis @ 0.6); ceiling (escalate all) = 193; oracle best = 198
+plan-reuse curves (solver replay: H.resolve on the cheap record with its own target and plan, strong people+constraints; 141 replayed, 0 with no strong constraints fall back to the proxy):
+   replay ok on cheap goal-step = 114/141; on cheap fails = 31/55; proxy on cheap fails = 28/55
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (28.1s/31.7s)  0.3[42]:189 (34.2s/39.6s)  0.4[56]:193 (39.4s/46.4s)  0.5[70]:198 (44.2s/52.9s)  0.6[85]:200 (48.9s/59.2s)  1.0[141]:198 (72.7s/89.5s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:183 (28.5s/32.0s)  0.3[42]:190 (34.4s/39.7s)  0.4[56]:193 (40.0s/46.9s)  0.5[70]:195 (44.0s/52.6s)  0.6[85]:197 (48.6s/59.6s)  1.0[141]:198 (72.7s/89.5s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (29.4s/33.1s)  0.3[42]:189 (34.2s/39.5s)  0.4[56]:192 (38.3s/45.3s)  0.5[70]:196 (43.4s/51.9s)  0.6[85]:195 (50.5s/60.5s)  1.0[141]:198 (72.7s/89.5s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:198 (29.2s/32.6s)  0.3[42]:200 (35.0s/40.1s)  0.4[56]:200 (40.0s/47.0s)  0.5[70]:200 (45.6s/54.2s)  0.6[85]:199 (50.7s/61.0s)  1.0[141]:198 (72.7s/89.5s)
+   solver-replay plan reuse, best over non-oracle gates: 200 (dis @ 0.6); ceiling = 198; oracle best = 200
+====================================================================================================
+PAIR NEW s23 glm53 -> s23 sonnet55_low
+records: cheap 252, strong 252, unpaired 0
+N paired=252; cheap goal-step records=141; cheap succ all=170/252 (67.5%); strong succ all=242/252 (96.0%)
+(cheap ok, strong ok, cheap goalstep) counts: {(False, False, True): 3, (False, True, False): 27, (False, True, True): 52, (True, False, True): 7, (True, True, False): 84, (True, True, True): 79}
+K1-type: cheap goal-step fails=55; strong succ on them=52; cheap target_correct on them=33; strong ok & cheap target correct=32
+   strong-only gains among goal-step=52; losses (cheap ok, strong fail)=7; cheap non-goal-step fails=27 (not escalatable)
+   same matched target cheap vs strong (cheap goal-step): 114/141
+   by situation (cheap goal-step): (situation, cheap ok, strong ok) -> {('conversation_group', False, False): 1, ('conversation_group', False, True): 5, ('conversation_group', True, False): 6, ('conversation_group', True, True): 41, ('waiting_line', False, False): 2, ('waiting_line', False, True): 47, ('waiting_line', True, False): 1, ('waiting_line', True, True): 38}
+latency (K5-type; brief definition = mean record measures.latency_s over goal-step episodes):
+   cheap : own goal-step n=141 (solver_step n=141); record latency_s mean (median) over own goal-step = 20.0 (18.0); provider-only mean over own goal-step = 18.3; record latency_s all = 15.8; people+constraints provider over own goal-step = 11.4; cached calls share = 645/786
+   strong: own goal-step n=143 (solver_step n=143); record latency_s mean (median) over own goal-step = 16.6 (14.0); provider-only mean over own goal-step = 15.6; record latency_s all = 13.5; people+constraints provider over own goal-step = 8.4; cached calls share = 584/790
+   judge: cheap provider mean over cheap goal-step = 18.3; strong full provider over cheap goal-step keys = 15.5
+constraint kinds seen: [('keep_out_of_shared_space', 147), ('within_distance', 140), ('face', 99), ('come_after', 78), ('visible_to', 66), ('keep_out_of_view', 53)]
+AUROC over cheap goal-step records (n=141; fails=55; gains=52):
+   ca    AUROC fail=0.604  AUROC gain=0.616
+   gap   AUROC fail=0.38  AUROC gain=0.378
+   exc   AUROC fail=0.536  AUROC gain=0.538
+   np    AUROC fail=0.373  AUROC gain=0.379
+   dis   AUROC fail=0.782  AUROC gain=0.78
+   dis1  AUROC fail=0.766  AUROC gain=0.762
+   dis mean: fail=3.342 succ=1.619
+curves (Qwen-own-plan version): frac[escalated]:successes/252 (judge latency s = cheap provider + strong people+constraints when escalated / sequential full strong provider when escalated), mean over cheap goal-step records
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:181 (19.3s/19.9s)  0.2[28]:186 (20.0s/21.1s)  0.3[42]:195 (20.9s/22.5s)  0.4[56]:201 (21.7s/24.5s)  0.5[70]:208 (22.3s/25.8s)  0.6[85]:214 (23.2s/27.7s)  0.8[113]:216 (24.8s/30.9s)  1.0[141]:215 (26.6s/33.8s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:179 (19.3s/19.9s)  0.2[28]:184 (20.1s/21.1s)  0.3[42]:193 (21.0s/22.8s)  0.4[56]:199 (21.7s/24.3s)  0.5[70]:205 (22.3s/26.0s)  0.6[85]:211 (23.2s/27.8s)  0.8[113]:214 (24.9s/30.8s)  1.0[141]:215 (26.6s/33.8s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:180 (19.0s/19.6s)  0.2[28]:187 (19.9s/21.2s)  0.3[42]:196 (20.6s/22.9s)  0.4[56]:201 (21.6s/24.7s)  0.5[70]:211 (22.4s/26.1s)  0.6[85]:210 (23.2s/27.6s)  0.8[113]:215 (24.9s/30.7s)  1.0[141]:215 (26.6s/33.8s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:184 (19.1s/19.8s)  0.2[28]:198 (19.9s/21.4s)  0.3[42]:212 (20.6s/22.7s)  0.4[56]:221 (21.7s/24.8s)  0.5[70]:221 (22.4s/26.6s)  0.6[85]:221 (23.3s/28.0s)  0.8[113]:217 (25.0s/31.0s)  1.0[141]:215 (26.6s/33.8s)
+   random seed0: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:173 (19.0s/20.0s)  0.2[28]:176 (19.8s/21.3s)  0.3[42]:181 (20.5s/23.1s)  0.4[56]:186 (21.4s/24.5s)  0.5[70]:193 (22.4s/26.1s)  0.6[85]:202 (23.3s/27.9s)  0.8[113]:214 (24.9s/30.8s)  1.0[141]:215 (26.6s/33.8s)
+   random expectation: 0.0:170.0  0.1:174.5  0.2:178.9  0.3:183.4  0.4:187.9  0.5:192.3  0.6:197.1  0.8:206.1  1.0:215.0
+   random @0.5 over 2000 seeds: mean 192.3, 5-95% [187, 197]
+plan-reuse curves (judge proxy: escalated ok = strong ok AND cheap target_correct):
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:180 (20.0s/21.1s)  0.3[42]:187 (20.9s/22.5s)  0.4[56]:191 (21.7s/24.5s)  0.5[70]:197 (22.3s/25.8s)  0.6[85]:198 (23.2s/27.7s)  1.0[141]:195 (26.6s/33.8s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:181 (20.1s/21.1s)  0.3[42]:188 (21.0s/22.8s)  0.4[56]:193 (21.7s/24.3s)  0.5[70]:194 (22.3s/26.0s)  0.6[85]:196 (23.2s/27.8s)  1.0[141]:195 (26.6s/33.8s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (19.9s/21.2s)  0.3[42]:190 (20.6s/22.9s)  0.4[56]:191 (21.6s/24.7s)  0.5[70]:195 (22.4s/26.1s)  0.6[85]:193 (23.2s/27.6s)  1.0[141]:195 (26.6s/33.8s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:187 (19.9s/21.4s)  0.3[42]:197 (20.6s/22.7s)  0.4[56]:201 (21.7s/24.8s)  0.5[70]:201 (22.4s/26.6s)  0.6[85]:201 (23.3s/28.0s)  1.0[141]:195 (26.6s/33.8s)
+   plan-reuse proxy, best over non-oracle gates: 198 (dis @ 0.6); ceiling (escalate all) = 195; oracle best = 201
+plan-reuse curves (solver replay: H.resolve on the cheap record with its own target and plan, strong people+constraints; 140 replayed, 1 with no strong constraints fall back to the proxy):
+   replay ok on cheap goal-step = 117/141; on cheap fails = 32/55; proxy on cheap fails = 32/55
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:181 (20.0s/21.1s)  0.3[42]:188 (20.9s/22.5s)  0.4[56]:192 (21.7s/24.5s)  0.5[70]:198 (22.3s/25.8s)  0.6[85]:200 (23.2s/27.7s)  1.0[141]:201 (26.6s/33.8s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (20.1s/21.1s)  0.3[42]:189 (21.0s/22.8s)  0.4[56]:194 (21.7s/24.3s)  0.5[70]:195 (22.3s/26.0s)  0.6[85]:197 (23.2s/27.8s)  1.0[141]:201 (26.6s/33.8s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (19.9s/21.2s)  0.3[42]:190 (20.6s/22.9s)  0.4[56]:192 (21.6s/24.7s)  0.5[70]:196 (22.4s/26.1s)  0.6[85]:196 (23.2s/27.6s)  1.0[141]:201 (26.6s/33.8s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:198 (19.7s/21.3s)  0.3[42]:202 (20.8s/23.1s)  0.4[56]:202 (21.5s/24.4s)  0.5[70]:202 (22.4s/26.0s)  0.6[85]:202 (23.5s/27.8s)  1.0[141]:201 (26.6s/33.8s)
+   solver-replay plan reuse, best over non-oracle gates: 201 (dis1 @ 1.0); ceiling = 201; oracle best = 202
+====================================================================================================
+PAIR NEW s23 glm53 -> s23 gemini38_low
+records: cheap 252, strong 252, unpaired 0
+N paired=252; cheap goal-step records=141; cheap succ all=170/252 (67.5%); strong succ all=214/252 (84.9%)
+(cheap ok, strong ok, cheap goalstep) counts: {(False, False, False): 2, (False, False, True): 20, (False, True, False): 25, (False, True, True): 35, (True, False, False): 3, (True, False, True): 13, (True, True, False): 81, (True, True, True): 73}
+K1-type: cheap goal-step fails=55; strong succ on them=35; cheap target_correct on them=33; strong ok & cheap target correct=20
+   strong-only gains among goal-step=35; losses (cheap ok, strong fail)=13; cheap non-goal-step fails=27 (not escalatable)
+   same matched target cheap vs strong (cheap goal-step): 100/141
+   by situation (cheap goal-step): (situation, cheap ok, strong ok) -> {('conversation_group', False, True): 6, ('conversation_group', True, True): 47, ('waiting_line', False, False): 20, ('waiting_line', False, True): 29, ('waiting_line', True, False): 13, ('waiting_line', True, True): 26}
+latency (K5-type; brief definition = mean record measures.latency_s over goal-step episodes):
+   cheap : own goal-step n=141 (solver_step n=141); record latency_s mean (median) over own goal-step = 20.0 (18.0); provider-only mean over own goal-step = 18.3; record latency_s all = 15.8; people+constraints provider over own goal-step = 11.4; cached calls share = 645/786
+   strong: own goal-step n=135 (solver_step n=135); record latency_s mean (median) over own goal-step = 19.0 (18.8); provider-only mean over own goal-step = 17.1; record latency_s all = 13.8; people+constraints provider over own goal-step = 9.0; cached calls share = 576/774
+   judge: cheap provider mean over cheap goal-step = 18.3; strong full provider over cheap goal-step keys = 16.8
+constraint kinds seen: [('keep_out_of_shared_space', 147), ('within_distance', 140), ('face', 99), ('come_after', 78), ('visible_to', 66), ('keep_out_of_view', 53)]
+AUROC over cheap goal-step records (n=141; fails=55; gains=35):
+   ca    AUROC fail=0.604  AUROC gain=0.536
+   gap   AUROC fail=0.38  AUROC gain=0.471
+   exc   AUROC fail=0.536  AUROC gain=0.519
+   np    AUROC fail=0.373  AUROC gain=0.404
+   dis   AUROC fail=0.782  AUROC gain=0.699
+   dis1  AUROC fail=0.766  AUROC gain=0.689
+   dis mean: fail=3.342 succ=1.619
+curves (Qwen-own-plan version): frac[escalated]:successes/252 (judge latency s = cheap provider + strong people+constraints when escalated / sequential full strong provider when escalated), mean over cheap goal-step records
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:177 (19.1s/20.0s)  0.2[28]:177 (20.0s/21.6s)  0.3[42]:179 (20.9s/23.3s)  0.4[56]:182 (21.7s/25.0s)  0.5[70]:188 (22.4s/26.5s)  0.6[85]:189 (23.0s/28.1s)  0.8[113]:194 (25.0s/31.7s)  1.0[141]:192 (26.7s/35.0s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:174 (19.2s/20.0s)  0.2[28]:174 (20.0s/21.6s)  0.3[42]:177 (20.9s/23.4s)  0.4[56]:179 (21.7s/25.0s)  0.5[70]:182 (22.3s/26.4s)  0.6[85]:185 (23.2s/28.1s)  0.8[113]:189 (25.0s/31.7s)  1.0[141]:192 (26.7s/35.0s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:173 (19.1s/20.0s)  0.2[28]:175 (20.0s/21.7s)  0.3[42]:181 (20.8s/23.3s)  0.4[56]:183 (21.4s/24.8s)  0.5[70]:190 (22.2s/26.5s)  0.6[85]:192 (23.2s/28.3s)  0.8[113]:195 (24.9s/31.6s)  1.0[141]:192 (26.7s/35.0s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:184 (19.2s/19.9s)  0.2[28]:198 (20.0s/21.6s)  0.3[42]:204 (20.8s/23.2s)  0.4[56]:204 (21.7s/24.8s)  0.5[70]:203 (22.6s/26.5s)  0.6[85]:201 (23.4s/28.3s)  0.8[113]:196 (25.1s/31.7s)  1.0[141]:192 (26.7s/35.0s)
+   random seed0: 0.0[0]:170 (18.3s/18.3s)  0.1[14]:171 (19.1s/19.9s)  0.2[28]:173 (20.0s/21.5s)  0.3[42]:177 (20.9s/23.3s)  0.4[56]:178 (21.8s/25.0s)  0.5[70]:181 (22.6s/26.6s)  0.6[85]:186 (23.4s/28.4s)  0.8[113]:194 (25.0s/31.7s)  1.0[141]:192 (26.7s/35.0s)
+   random expectation: 0.0:170.0  0.1:172.2  0.2:174.4  0.3:176.6  0.4:178.7  0.5:180.9  0.6:183.3  0.8:187.6  1.0:192.0
+   random @0.5 over 2000 seeds: mean 181.0, 5-95% [175, 186]
+plan-reuse curves (judge proxy: escalated ok = strong ok AND cheap target_correct):
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:172 (20.0s/21.6s)  0.3[42]:174 (20.9s/23.3s)  0.4[56]:175 (21.7s/25.0s)  0.5[70]:180 (22.4s/26.5s)  0.6[85]:179 (23.0s/28.1s)  1.0[141]:177 (26.7s/35.0s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:172 (20.0s/21.6s)  0.3[42]:175 (20.9s/23.4s)  0.4[56]:176 (21.7s/25.0s)  0.5[70]:176 (22.3s/26.4s)  0.6[85]:175 (23.2s/28.1s)  1.0[141]:177 (26.7s/35.0s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:172 (20.0s/21.7s)  0.3[42]:177 (20.8s/23.3s)  0.4[56]:177 (21.4s/24.8s)  0.5[70]:179 (22.2s/26.5s)  0.6[85]:179 (23.2s/28.3s)  1.0[141]:177 (26.7s/35.0s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:187 (20.0s/21.6s)  0.3[42]:189 (20.8s/23.2s)  0.4[56]:189 (21.7s/24.8s)  0.5[70]:188 (22.6s/26.5s)  0.6[85]:186 (23.4s/28.3s)  1.0[141]:177 (26.7s/35.0s)
+   plan-reuse proxy, best over non-oracle gates: 180 (dis @ 0.5); ceiling (escalate all) = 177; oracle best = 189
+plan-reuse curves (solver replay: H.resolve on the cheap record with its own target and plan, strong people+constraints; 132 replayed, 9 with no strong constraints fall back to the proxy):
+   replay ok on cheap goal-step = 115/141; on cheap fails = 30/55; proxy on cheap fails = 20/55
+   dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (20.0s/21.6s)  0.3[42]:189 (20.9s/23.3s)  0.4[56]:193 (21.7s/25.0s)  0.5[70]:199 (22.4s/26.5s)  0.6[85]:198 (23.0s/28.1s)  1.0[141]:199 (26.7s/35.0s)
+   ca+dis: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:183 (20.0s/21.6s)  0.3[42]:190 (20.9s/23.4s)  0.4[56]:195 (21.7s/25.0s)  0.5[70]:195 (22.3s/26.4s)  0.6[85]:197 (23.2s/28.1s)  1.0[141]:199 (26.7s/35.0s)
+   dis1: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:182 (20.0s/21.7s)  0.3[42]:191 (20.8s/23.3s)  0.4[56]:191 (21.4s/24.8s)  0.5[70]:194 (22.2s/26.5s)  0.6[85]:194 (23.2s/28.3s)  1.0[141]:199 (26.7s/35.0s)
+   oracle: 0.0[0]:170 (18.3s/18.3s)  0.2[28]:198 (20.0s/21.6s)  0.3[42]:200 (20.9s/23.3s)  0.4[56]:200 (21.6s/24.9s)  0.5[70]:200 (22.5s/26.6s)  0.6[85]:200 (23.4s/28.3s)  1.0[141]:199 (26.7s/35.0s)
+   solver-replay plan reuse, best over non-oracle gates: 199 (dis1 @ 1.0); ceiling = 199; oracle best = 200
+====================================================================================================
+SUMMARY (successes of N; escalation fractions are of the cheap model's goal-step records)
+s19 glm53 -> s19 qwen38_low (judge pair): N=252 cheap=186 strong=234 goal-step n=141 | fails 45, strong fixes 42 | oracle@0.3=228 | dis@0.5=216 ca+dis@0.5=214 dis1@0.5=218 random-seed0@0.5=201 random-mean@0.5=203.4 | AUROC fail/gain dis=0.728/0.713 dis1=0.752/0.728 | plan-reuse proxy best=207 | plan-reuse replay best=212
+NEW s23 glm53 -> s21 qwen38_low: N=252 cheap=170 strong=228 goal-step n=141 | fails 55, strong fixes 47 | oracle@0.3=212 | dis@0.5=206 ca+dis@0.5=202 dis1@0.5=206 random-seed0@0.5=193 random-mean@0.5=190.9 | AUROC fail/gain dis=0.782/0.748 dis1=0.766/0.718 | plan-reuse proxy best=196 | plan-reuse replay best=200
+NEW s23 glm53 -> s23 sonnet55_low: N=252 cheap=170 strong=242 goal-step n=141 | fails 55, strong fixes 52 | oracle@0.3=212 | dis@0.5=208 ca+dis@0.5=205 dis1@0.5=211 random-seed0@0.5=193 random-mean@0.5=192.3 | AUROC fail/gain dis=0.782/0.78 dis1=0.766/0.762 | plan-reuse proxy best=198 | plan-reuse replay best=201
+NEW s23 glm53 -> s23 gemini38_low: N=252 cheap=170 strong=214 goal-step n=141 | fails 55, strong fixes 35 | oracle@0.3=204 | dis@0.5=188 ca+dis@0.5=182 dis1@0.5=190 random-seed0@0.5=181 random-mean@0.5=181.0 | AUROC fail/gain dis=0.782/0.699 dis1=0.766/0.689 | plan-reuse proxy best=180 | plan-reuse replay best=199

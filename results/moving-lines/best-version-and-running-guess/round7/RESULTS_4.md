@@ -1,5 +1,7 @@
+# Round 7 results, part D: CT3FT read by ROUND7_D.md (description only; for the project first)
 
 Inputs:
+- Run: `results/data/moving/runs_ceiling4/dsv41` CT3FT, 72 of 72, cache-only with zero calls. the checks passed: mech
 - The rule and script were hashed before the totals: `ROUND7_D.md` 919218e9, `e_ct3ft.py` 19798987.
 - Outputs:
   - `e_ct3ft_out.txt`;
@@ -8,10 +10,12 @@ Inputs:
 
 Nothing here picks a method or changes the frozen result or the test.
 
+## 1. The fixed reading: the outcome differs between band tops, so both go to the project
 | | 1.2 m (the decision) | 1.5 m |
 |---|---|---|
 | G1, CT3FT − CT3F (the counter point for the best arm) | +0.053, lower bound +0.013; 27/23/16, sign p 0.67 | +0.048, lower bound +0.008; 31/20/15, p 0.16 |
 | G2, CT4OT − CT3FT (who, once the target is right) | +0.068, lower bound +0.018; 36/17/13, p 0.013 | +0.082, lower bound +0.033; 36/22/8, p 0.087 |
+| outcome | **B**: lead 1 first, lead 2 second | **C**: who and target go to the project together |
 
 - **G1 sits on the 0.05 bar** at both tops, so the letter is decided by the bar's edge, not by the data.
   - Its t lower bound is above 0, but the sign test is not close. The true counter point helps on 27 layouts and
@@ -44,6 +48,7 @@ Nothing here picks a method or changes the frozen result or the test.
 - **With someone ahead and the right person named,** CT3FT's goal is right 0.75 of the time (CT3F 0.70), and the
   robot is there 0.60 of that, like every arm.
 
+## 4. How much of each score comes from the front (a decision; 1.2 m, DeepSeek, n 66)
 | arm | strict | front part | share from the front |
 |---|---|---|---|
 | OW (ideal place) | 0.640 | 0.333 | 52% |
@@ -57,6 +62,7 @@ Nothing here picks a method or changes the frozen result or the test.
 The front is half of the ideal robot's score, and a twentieth to a quarter of the methods'. The methods reach the
 front less (12-20% of their window, against OW's 43%) and pass there far less often.
 
+## 5. For the project
 The fixed rule sends this to you because B and C split on the bar's edge. My reading:
 - The counter point and the front place (lead 1, where served customers stood) are the next thing to try.
 - Who-waits work comes after, measured on top of a right counter point.

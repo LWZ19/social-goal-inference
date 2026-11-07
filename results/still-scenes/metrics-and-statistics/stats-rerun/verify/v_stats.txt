@@ -34,6 +34,14 @@ t(0.975,13) = 2.16037
   [ds] waiting_line: d=[10, 10, 4, 12, 10] two-sided p=0.0625 one-sided=0.0312
   [ds] conversation_group: d=[3, 2, 6] two-sided p=0.2500 one-sided=0.1250
 
+=== S4 power ===
+[qwen] design V (draw 14 layouts w/ replacement from observed d, exact sign-flip, alpha .05, 10000 draws, seed 12345): power two-sided=0.599 (MC SE 0.005) one-sided=0.789
+[glm] design V (draw 14 layouts w/ replacement from observed d, exact sign-flip, alpha .05, 10000 draws, seed 12345): power two-sided=0.924 (MC SE 0.003) one-sided=0.973
+[ds] design V (draw 14 layouts w/ replacement from observed d, exact sign-flip, alpha .05, 10000 draws, seed 12345): power two-sided=0.999 (MC SE 0.000) one-sided=1.000
+[qwen] judge replay (clus.py loop): [(8, 0.09), (14, 0.62), (20, 0.91), (30, 1.0)]
+[glm] judge replay (clus.py loop): [(8, 0.38), (14, 0.91), (20, 1.0), (30, 1.0)]
+[ds] judge replay (clus.py loop): [(8, 0.77), (14, 1.0), (20, 1.0), (30, 1.0)]
+
 === ICC (one-way, by layout) ===
 [qwen] ICC_C=0.080 ICC_E=0.114
 [glm] ICC_C=0.317 ICC_E=0.486

@@ -1,6 +1,8 @@
+# Round 7 results: the ceiling check, read by ROUND7.md (description only; for the project first)
 
 Inputs:
-- CT4PJ and CT3F come from `runs_confirm4/dsv41`, which replays the same cached answers.
+- Runs: `results/data/moving/runs_ceiling4/dsv41`, 72 of 72 each of OW, CT4OT, CT4O and CT4PJT, all cache-only with zero calls. The
+- CT4PJ and CT3F come from `results/data/moving/runs_confirm4/dsv41`, which replays the same cached answers.
 - Each arm has 66 layouts with a window: 5 first answers have no target, and 1 episode has no service.
 - Scripts and readings were hashed before the totals: `ROUND7.md`, `ROUND7_B.md`, `c_gaps.py`.
 - Outputs: `c_gaps_ceiling_out.txt`, `a_loss_ceiling_out.txt`, `b_band_ceiling_out.txt`. `d_post.py` and
@@ -81,6 +83,7 @@ Paired gaps:
   - OW is first for 43% of its window and passes 0.78 there. The methods are first for 12-20% of theirs.
 - **Following is the same for every arm.** Given a right goal, the robot is there at about 0.57-0.60 of re-solves
   for every arm. OW passes 0.54 with someone ahead. Right goals don't fix following.
+## 4. What this suggests (flagged leads, not proposals; each needs the project, design checks on pilot logs, and a fresh range)
 
 1. **Where to stand at the front, and the target point, have one observation in common: where served customers
    stood.**
@@ -93,6 +96,7 @@ Paired gaps:
 3. **One more zero-call cell would settle 1 against 2:** CT3F with the true counter point ("CT3FT", as CTt). If CT3FT
    is near CT4OT, the target point alone lifts the existing best arm and who-waits work adds little.
 
+## 5. For the project: questions about the test, not changes
 - **The front phase.** Should the never-served robot keep being scored, to the end of the episode, on 0.6 m from
   slot 0? This decides much of every good arm's score.
 - **Sonnet's H1 sign test** passes at 1.2 m but not at 1.5 m (`ROUND7_B.md`; the mean is unchanged).

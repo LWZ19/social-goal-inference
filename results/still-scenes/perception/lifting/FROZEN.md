@@ -65,6 +65,7 @@ Consequences:
 | `src/sgi/geometry.py` | `99af62055b6998faafbf6748b7eece13adb427227c71821b5190fdcdbd4b4db2` |
 | `src/sgi/stages/goal.py` | `edce50f09990b80e5413c41caf19b543747f33a912e6e14c93aed5db1f7ba600` |
 | `docs/model_notes/tools/research_harness.py` | `391483778ec1c5a232909292862926724a6580fc5f9c307b1f3f9c789cee455c` |
+| `docs/model_notes/tools/replay_solver.py` (modified in the folder; `H.resolve` runs it) | `eed1dcc1bb0287208e98a4b150236486b7c23d12613859b1dc92890b7d3af243` |
 | `results/still-scenes/perception/lifting-rerun/lifting.py` | `10ec43fe1871ab89f749dfa3991498c03c856de9b125eeddcf9561ee9c80fe63` |
 | `results/still-scenes/perception/lifting-rerun/frontsnap.py` | `a45aae92673562fab43fd2f4dee9cecfac5c3b0b214fe641254a24d358671307` |
 

@@ -10,6 +10,7 @@
 - **Fresh still scenes (GLM still running).**
   - On 70 new layouts no prompt was tuned on, the constraint method beat pointing on all five finished models, each
     clearly (p < 0.0001). For example, Haiku 260 against 151 successes of 280, and Sonnet 257 against 198.
+  - the analysis is as large as on the layouts we developed on. It comes mostly from waiting lines: pointing 4-52 of 100,
 - **New situations: a bent waiting line, and someone using a machine (GLM still running).**
   - The constraint method won on all 12 layouts in both situations, on all five finished models (p 0.0005, the
     strongest result possible with 12 layouts).

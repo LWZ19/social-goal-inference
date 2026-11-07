@@ -1,3 +1,4 @@
+# E4: two new test situations (decision, 6 Nov 2026). Written before any scene exists or any model call.
 
 ## 1. A waiting line that bends (situation `waiting_line`, new layouts)
 

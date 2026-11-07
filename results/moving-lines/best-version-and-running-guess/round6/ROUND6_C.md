@@ -47,7 +47,7 @@ The rule:
 
 ## Logs each step uses
 
-| | pilot logs (`runs_pilot3/dsv41`, design 1000-1199) | confirm logs (`runs_confirm4/dsv41`, `sonnet55_low`; spent) |
+| | pilot logs (`results/data/moving/runs_pilot3/dsv41`, design 1000-1199) | confirm logs (`results/data/moving/runs_confirm4/dsv41`, `sonnet55_low`; spent) |
 |---|---|---|
 | C1 curve | described | described |
 | C2 point | the test of R2 | the test of R2, description only |

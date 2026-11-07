@@ -1,5 +1,6 @@
 # Round 4, step B: PL offline (ROUND4.md cc30d5e0)
 
+
 ## Design cells × conditions: 129 cells
 
 | Variant | condition | right | cut | far | empty | last switches / min |

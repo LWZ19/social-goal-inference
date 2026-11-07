@@ -22,6 +22,7 @@ df 4. GLM's two same-prompt C runs differed by 16.
   - C − R and C − E within each batch;
   - record-level flips between batches.
 
+## Amendment 1b (7 Nov; a decision)
 - GLM's per-call timeout is 600 s (`timeout_s: 600.0` on soclaas_glm53 only) in this item's 18 configs, for the X4
   GLM runs not yet started. GLM runs already running keep 180 s; their vlm_errors are re-run later at 600 s.
 - timeout_s is not in the cache key.
@@ -34,6 +35,7 @@ df 4. GLM's two same-prompt C runs differed by 16.
 - **Caveat:** in s23, the gateway models' C people answers were cache copies of s19 and s20, so s23's C is not a fully
   independent draw of the people call. The two new batches are.
 
+## Run (run; from the repository; per model, variants in parallel, R first, as `results/still-scenes/hidden-situations-and-more-models/run_static.sh`)
 ## Cost
 
 - **Calls:** about 2,100 per batch per model (756 records x about 2.8), so about 8,400 free calls in all.

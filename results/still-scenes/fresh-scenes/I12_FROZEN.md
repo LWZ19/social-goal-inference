@@ -7,6 +7,7 @@ Does C beat R (the model marks the goal) and E (R with worked examples) on layou
 Every still-scene method result except E2 is on the same 14 development layouts, where the context prompt was chosen.
 There C−R and C−E are positive for all six models at the layout level (`results/still-scenes/method-comparison/layout-level-tests/layout_tests_out.txt`).
 
+## Scenes (the run renders; the analysis never opens them before scoring)
 - **Rows:** the 14 first-pass eval rows:
   - eval_00 to eval_02 (no_one place, at 0°, 30° with a bystander, and 60°), eval_03 (deep place), eval_04 (object),
     eval_05 (person);
@@ -65,6 +66,8 @@ There C−R and C−E are positive for all six models at the layout level (`resu
 These are new seeds of the same 14 templates, not new templates written blind. The result generalises over the
 generator's seeds of the development rows.
 
+## Run (run)
+    # 1. render (scenes folder; one Blender at a time; about 67 s a scene, about 16 min a seed, about 80 min for 5 seeds)
     cd .-scenes
     I=results/still-scenes/fresh-scenes
     ROWS="eval_00_no_one_place eval_01_no_one_place eval_02_no_one_place eval_03_no_one_deep_place eval_04_no_one_object eval_05_no_one_person eval_06_waiting_line_1 eval_07_waiting_line_2 eval_08_waiting_line_4 eval_09_waiting_line_6 eval_10_conversation_group_2 eval_11_conversation_group_3 eval_12_conversation_group_4 eval_13_waiting_line_3"

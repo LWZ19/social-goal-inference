@@ -1,3 +1,4 @@
+# I09 A1: the one general fix (FROZEN.md section 5, decision 4)
 
 Written by the I09 A1 compute agent on 17 Oct 2026, about 21:50 +08:00. This is after `a1/FIT.sha256` (21:39:53) and before any evaluation manifest exists or any evaluation image is processed. Its sha256 is in `a1/ADDENDUM_FIX.sha256`. This file is never edited.
 
@@ -47,5 +48,5 @@ So the choice of a facing revision over a detection revision is labelled **data-
 - Facing does not enter the detection metrics, so the 192 rows and the chosen setting stay as they are. The re-fit script asserts this by recomputing them.
 - Facing selection runs again over the union F1–F5, with section 4's metric and rule: within 45 deg, unknown counted as wrong, over the chosen setting's matched fit people. The lower domain is maximised, and ties go to the higher pooled value, then the earlier variant.
 - F5 is adopted only if this rule picks it.
-- The results go to `a1/fit_fix.txt` and `a1/chosen_fix.json`, hashed into `a1/FIT_FIX.sha256` before the evaluation manifest is written.
+- The results go to `results/still-scenes/people-finder/early-detector/phase1c/a1/fit_fix.txt` and `results/still-scenes/people-finder/early-detector/phase1c/a1/chosen_fix.json`, hashed into `a1/FIT_FIX.sha256` before the evaluation manifest is written.
 - The kill bars are judged after the fix. The section 4 unit check is unaffected, because it concerns F1.

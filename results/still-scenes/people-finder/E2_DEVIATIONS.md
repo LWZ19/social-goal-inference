@@ -1,3 +1,4 @@
+# E2: deviations and log (E2_FROZEN.md 38b2ef01; E2.sha256, 5 entries, all OK when checked by the run)
 
 5. **2026-11-04 02:05, renders done.** Seeds 500-504 each exit 0, 72 images a seed, no errors in the logs.
 6. **Assembly:** seeds 500-504 all ok (assemble_log.txt), 40 scenes in run_scenes/. Seeds 505-509 not rendered.
@@ -21,12 +22,14 @@
       orders 54/53/50; no vlm_error; meta HEAD d50a7b3, empty diff, people 7d3693c5.
     - Qwen: 159 people-matter units; every arm ok on all 159; 1749 listed calls all ok; no retries; orders
       54/52/53; no vlm_error; same meta.
+    - Cached calls: the 2 smoke units in full, plus A0/A0b people calls (DeepSeek 73/71, Qwen 61/64). The people call
 16. **08:4x, GLM finished its first pass:** 160 of 160 units, exit 0. Mechanics (mech_soclaas_glm53.txt): 154
     people-matter units; 38 units with a vlm_error (arm errors A0 18, A0b 24, D 10; 52 failed calls of 1694 listed;
     182 transient retries); orders 53/50/51; meta HEAD d50a7b3, empty diff, people 7d3693c5. The driver logs no
     error text, so the error kind is not known.
 17. **08:43, GLM resume (§4: --resume re-runs units written with a vlm_error),** the same 4 shards at 6 a minute.
     Units still failing after it are left out of every arm and counted, as §5 says.
+    (§5). If more than 16 of GLM's 160 units (10%) are left out, GLM's result is reported as "partial" beside the bars.
 21. **20:52, pass 2 done:** 30 -> 25 units with a vlm_error (5 cleared). Every remaining failure is a constraints call
     that gives up after about 550 s; the same units fail again, so it looks unit-specific, not an outage.
 22. **20:52, pass 3 started** under item 19's rule (pass 2 cleared some), same 4 shards, HEAD d50a7b3, empty diff.
@@ -56,3 +59,5 @@
     160 distinct units over 382 record lines; 11 units still with a vlm_error, left out of every arm (8 conversation
     group, 3 waiting line); 149 clean units, 143 people-matter, every arm ok on all 143; orders 53/44/46; meta HEAD
     d50a7b3, empty diff, people 7d3693c5. 11 of 160 is within the 16-unit limit, so GLM is not "partial".
+    holds: A, G, S1 and S2 for Qwen, GLM and DeepSeek. H2 holds pooled (net +41, p 0.0001), and for GLM and Qwen.
+    run's recount of GLM's latest rows matches (A0 100, A0b 93, D 125 of 143; gain 26, harm 1).

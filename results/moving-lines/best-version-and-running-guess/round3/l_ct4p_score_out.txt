@@ -1,4 +1,4 @@
-# CT4P.md scored: runs_pilot3/dsv41, arm CT4P
+# CT4P.md scored: results/data/moving/runs_pilot3/dsv41, arm CT4P
 
 - episodes: CT3F 24, CT4 24, CT4P 24
 - direction check: median angle to the true axis at the true last, high-error layouts: 50.0° (bar < 15) -> FAIL: stop, the port is wrong; fallback on 461 of 3531 re-solves

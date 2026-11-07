@@ -20,6 +20,7 @@
 - The same rule applies to every model, situation and target kind. Nothing in it may change after the first plan call
   on a new scene.
 
+## Scenes (built by the run; the recipe is logged in DEVIATIONS before any plan call)
 - **Occluded set (primary):** 12 layouts. Each has a person target with 15–70% of its silhouette hidden by a nearer
   person, by `occlusion.py` on scene truth. That is the cylinder model used before any model call.
   - Bins are fixed at 15–40% and 40–70%, at least 5 layouts each.

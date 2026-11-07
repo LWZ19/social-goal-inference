@@ -1,5 +1,7 @@
+# conversation_group_4: why C misses there, and what would fix it (zero calls, 2 Nov 2026)
 # The group-of-four case: a hidden target person
 
+## Answer
 **Question.** Why does the constraint method miss on one development layout, `conversation_group_4` ("go to the
 person in red"), and does snapping the click onto the detected person fix it on new scenes?
 
@@ -65,6 +67,7 @@ names pointed at `data/dev_scenes/`, all five reproduce their outputs exactly.
 So "target_correct = false" here is a grounding failure in our code, upstream of the people and constraints steps.
 That is why E1b's arms A0 and D and the recorded run miss the same records: E1b injected the recorded target point.
 
+## Evidence (`g4_targets_out.txt`, `vote_tally_out.txt`)
 ### Evidence (`g4_targets_out.txt`, `vote_tally_out.txt`)
 
 All six models click the same woman, inside one 15 px column. Success depends only on the click's height relative
@@ -84,6 +87,7 @@ to the arm:
 - **Voting doesn't fix it.** Majority of 3 draws gives Sonnet 0.61 -> 0.67, Qwen 0.56 -> 0.67, DeepSeek
   0.50 -> 0.67. Taking the median click of 3 is worse (2/6, 2/6, 3/6), because the median sits on the boundary.
 
+## A fix, tested post hoc on all development records (`snap_sweep.py`, `snap_all_success*.py`)
 ### A fix, tested post hoc on all development records (`snap_sweep.py`, `snap_all_success*.py`)
 
 **Person snap.** If the click lies inside a detected person's box, take the person whose box centre is nearest the
@@ -100,6 +104,7 @@ click horizontally (relative to box width), at their detected position, 1.1 m up
 - Person targets afterwards: Sonnet 72/72, Qwen 72/72, Haiku 72/72, Gemini 72/72, GLM 70/72, DeepSeek 69/72.
 - 25 of the 27 target fixes are in conversation_group_4.
 
+## What this is and isn't
 ### What this is and isn't
 
 - It is not a weak-model hack. Sonnet gains as much as Qwen, and the failure is in our lift, not in any model.
@@ -111,12 +116,15 @@ click horizontally (relative to box width), at their detected position, 1.1 m up
 - **For "beat C":** static C has almost no social headroom here. Its misses in this scene are all lift misses,
   shared by R, E and C alike.
 
+## Follow-up (same day)
 ### Follow-up (same day)
 
 - `occlusion.py` measures, from scene truth, how much of a person target a nearer person hides. conversation_group_4's
   target is 35% hidden, and every other development person target is 0%. So the development set has exactly one
   occluded person target, which explains why 25 of the 27 fixes sit there.
+  - Group-bearing overrides give mixed situations in both bins (15-40% and 40-55%).
 
+## Frozen test result (snap_score_out.txt, scorer 265bb538)
 ### Frozen test result (snap_score_out.txt, scorer 265bb538)
 
 - **Primary 8:** the depth lift is right in 125/144 and the snap in 136/144 (11 fixed, 0 broken). Far 4: 72/72 both

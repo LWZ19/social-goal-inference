@@ -149,6 +149,7 @@ Table 1.3. A0-matched facing: the detector's yaw for the same true person on eac
 - Sidecar (decoded image to keypoints on the CPU): median 54.9 ms, p90 103.0 ms. File read and decode (median 5.4 ms) are not counted.
 - Project side (lift, filters, F5; 2 threads): median 0.7 ms, p90 2.5 ms. It is fast partly because the chosen setting has the flat test off.
 - **Criterion: median sum 55.6 ms (≤ 1.0 s).** p90 sum 105.5 ms. Peak GPU memory 626.7 MiB allocated (931 MiB in use on `nvidia-smi`).
+- The verifier's two re-measures give sidecar medians of 61.1 and 60.5 ms (p90 about 116 ms) and a sum of 61.9 ms, about 11% slower, on the same idle GPU. Its timing script reproduces the check's 54.9 ms from the check's own timing file.
 - The timing pass's keypoints agree with the raw pass within 1 px in 42 of 42 images (largest gap 6.1e-5 px, from a different pose batch size). The deployed path gives the same people as the evaluation path in 42 of 42.
 
 ### Checks
@@ -350,6 +351,7 @@ Table 3.2. Whole-domain summary (per image for the detector and the blobs).
 
 ---
 
+## 5. Where the compute checks and the verifiers differ
 Every criterion verdict agrees. The verifiers reproduced every reported number with their own code: the raw detector and pose outputs bit for bit, all 192 fit rows, every evaluation person, and A2's records under every arm. What differs is wording, description and two measurements.
 
 Settled by the verifier (its value is used above):
@@ -362,6 +364,7 @@ Settled by the verifier (its value is used above):
 
 Not settled (both readings given; neither changes a verdict):
 - **Bootstrap lower bounds** depend on the random-number implementation: E-real recall 0.954 (agent) against 0.953 (verifier); A0 on Gemini's pairs 0.865 against 0.869.
+- **Runtime.** The check measured a median sum of 55.6 ms (sidecar 54.9 ms); the verifier measured 61.9 ms (sidecar 61.1 and 60.5 ms in two passes), about 11% slower on the same idle GPU. Each image is timed once, as frozen. Either value is at least 16 times under the 1.0 s bar.
 - **A2, distinct-answer counts for the dropped detections** (the bracketed figures in section 2). The two episodes of a scene and trial share one people answer but have separate constraints. The compute agent counts by the first record: GLM's `come_after` [18] and DeepSeek's [10]; named in a constraint [11] / [26] / [22]. Counting a detection if any episode names it gives `come_after` [20] and [13], and named [12] / [29] / [22]. The totals over solver steps agree exactly.
 - **A2, the secondary bars.** "Same bars" for the new wording and the placeholder runs was applied relative to each run set's own C and P (Qwen C − 2; GLM and DeepSeek max(P − 3, C)). Under the primary numbers instead, new-wording Qwen 230 < 232 and GLM 190 < 199. These results are secondary and not judged.
 - **A2, descriptive line classes.** 24 records differ between the two implementations, all new-wording wrong-target records that are not line failures (Gemini 23, DeepSeek 1); the verifier did not leave the target number out of the waiting set. No reported table uses them, and every line-failure class agrees.
@@ -433,11 +436,14 @@ New:
 
 Old:
 New:
+5. I09 A1–A2 (moved up, project, 17 Oct): a local detector plus pose model as the people source, scored with I03's people scorer, so the VLM's list, the depth blobs and the detector are compared on the same scenes. Done 17 Oct (`results/still-scenes/overview/phase-notes/phase1c.md`), under a protocol note frozen and hashed before any evaluation image was processed, on I03's fit data. Both steps are pre-registered successes, so I09 is a success overall. A1 (RT-DETRv2 plus ViTPose): realistic recall 0.983, 0.071 false people per image, median position error 0.053 m, facing within 45 deg for 0.951 of Gemini's A0 pairs (Gemini itself 0.906), about 0.06 s warm on the 4060. It passed only through the one allowed general fix, to facing, and choosing a facing fix over a detection fix was data-informed. Placeholder recall is 0.845 (reported, not judged). A2, with the VLM's detections moved onto the detector's people and the unsupported ones dropped: Qwen 236, GLM 202, DeepSeek 199 of 252 (recorded C 234, 186, 182; bars 232, 199, 190).
 
 ### 4. Section 6, step-3b row (done)
 
 Old:
+| 3b | Days 12–13 | **I09 A1–A2** (moved up, project, 17 Oct). RT-DETRv2 or D-FINE plus ViTPose, run read-only in the separate torch environment on whitelisted development scenes only. A1 freezes its settings on the example layouts, then reports once on the 42 realistic eval images and the placeholder dev scenes. A2 replays the solver with the recorded constraints re-addressed to the detected people. It reuses I03's people scorer (recall, false people, position error, facing), so the VLM's people list, the depth blobs and the detector are compared on the same scenes. | A1 about 6 h by the probe entry; about 2 d with A2 (guess) | 0 | Announce GPU use to the run |
 New:
+| 3b | Days 12–13 | **I09 A1–A2** (moved up, project, 17 Oct). RT-DETRv2 or D-FINE plus ViTPose, run read-only in the separate torch environment on whitelisted development scenes only. A1 freezes its settings on the example layouts, then reports once on the 42 realistic eval images and the placeholder dev scenes. A2 replays the solver with the recorded constraints re-addressed to the detected people. It reuses I03's people scorer (recall, false people, position error, facing), so the VLM's people list, the depth blobs and the detector are compared on the same scenes. **Done 17 Oct** (`results/still-scenes/overview/phase-notes/phase1c.md`): protocol note frozen and hashed before any evaluation image; fitted on I03's split (worked examples plus seeds 100–109) by the decision. A1 success (RT-DETRv2 plus ViTPose: realistic recall 0.983, A0-matched facing 0.951, about 0.06 s warm), after the one general fix to facing, whose choice is data-informed; placeholder recall 0.845 (reported only). A2 success on its primary arm (Qwen 236, GLM 202, DeepSeek 199 of 252). | A1 about 6 h by the probe entry; about 2 d with A2 (guess) | 0 | Announce GPU use to the run. The I09 live check (about 30–120 calls) needs the project's agreement |
 
 ### 5. I09, first probe: the A1 and A2 results
 
@@ -472,6 +478,7 @@ New:
 A change would need pre-registering and testing on other sets; the placeholder panel splits 2 to 2. [phase 1] (inference) If I09's detector supplies the yaw, this question matters less: on the same A0 pairs its yaw is within 45 deg for 0.949–0.958 of every model's pairs, where the models score 0.547–0.906 (`results/still-scenes/overview/phase-notes/phase1c.md` section 1).
 ```
 
+### 7. Section 7: the pruning decision
 Old:
 ```text
 (inference) Before either arm is called a method, it would need a pre-registered test on fresh layouts (`results/still-scenes/overview/phase-notes/phase1b.md` section 7).
@@ -490,6 +497,7 @@ New:
 
 Old:
 New:
+- **Phase 1, step 3b (17 Oct).** I09 A1–A2 are done (`results/still-scenes/overview/phase-notes/phase1c.md`), offline: a local detector and pose model ran on the GPU, and no provider model was called. The protocol note was frozen and hashed before any evaluation image was processed, and independent verifiers reproduced every number (the raw detector outputs bit for bit). A1 is a pre-registered success on the realistic images (recall 0.983, 0.071 false people per image, A0-matched facing 0.951, about 0.06 s warm), but only through the one allowed fix to facing, whose choice is data-informed; placeholder recall is 0.845 (reported only). A2 is a success on its primary arm (Qwen 236, GLM 202, DeepSeek 199 of 252), so I09 is a success overall. the analysis still has to confirm the sidecar's seed-folder reading (seed0–2 under `keep/dev_new` allowed for the whitelisted placeholder scenes). "How to read", the opening lines, sections 1.2 and 6 (step 3b), I09 and section 7 (the heading question, pruning, torch) carry the results; optionally also section 3.2 and I33.
 
 ### 10. Section 3.2: detectors on avatar renders (optional)
 

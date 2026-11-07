@@ -47,15 +47,16 @@ than CT3F on 10 and fewer on 6.
 - Per-layout shares are zero-heavy: in the pilot, 8 of 24 layouts were at 0.04 or less for every arm. At n 72 the t
   interval is adequate; the bootstrap (section 7) is the check.
 
-- **Candidates:** `sweep/confirm_candidates`, from `make_sweep.py --start 2000 --per-base 450`.
+## 4. Layouts (names as the run set them)
+- **Candidates:** `results/moving-lines/test-layouts/confirm_candidates`, from `make_sweep.py --start 2000 --per-base 450`.
 - **Quotas:** the pilot's mix times 3: ours 48, chain 12, mixed 6, easy 6, half from each base (72 layouts, the same
   count as the 3 Nov sweep).
 - **Stress flags** (lag, restless) are crossed 2 × 2 and assigned in turn along the distance order, balanced where
   the count allows. Mixed and easy have 3 per base, so they cannot be balanced within those cells.
 - **Outputs:**
-  - `sim/scenarios/confirm4`, `sweep/confirm_selection.json`, `sweep/jobs_confirm.txt`;
-  - robot-idle dumps in `sweep/confirm_dump`;
-  - runs in `runs_confirm4/dsv41` and `runs_confirm4/sonnet55_low`.
+  - `sim/scenarios/confirm4`, `results/moving-lines/test-layouts/confirm_selection.json`, `results/moving-lines/test-layouts/jobs_confirm.txt`;
+  - robot-idle dumps in `results/moving-lines/test-layouts/confirm_dump`;
+  - runs in `results/data/moving/runs_confirm4/dsv41` and `results/data/moving/runs_confirm4/sonnet55_low`.
 
 ## 5. Arms and models
 
@@ -67,15 +68,16 @@ than CT3F on 10 and fewer on 6.
 - Every arm is as frozen and ported for the pilot: CT4P.md with CT4P_DEVIATION.md, and CT4PJ.md with its port
   clarifications. No parameter changes; CT4PJ has no parameter of its own.
 
+## 6. Procedure (run; the analysis sees nothing from 2000-2449 before scoring)
 3. DeepSeek: CT2 (first answers), then CT3F, CT4P, CT4PJ and CT4, replaying the cache.
 4. Mechanical checks:
    - `check_mech`, and every arm replaying CT2's first answer with the same pose;
-   - `round4/p_port_checks.py RUN_ROOT sweep/confirm_selection.json sweep/confirm_dump`: totals only, bars as in
+   - `results/moving-lines/best-version-and-running-guess/round4/p_port_checks.py RUN_ROOT results/moving-lines/test-layouts/confirm_selection.json results/moving-lines/test-layouts/confirm_dump`: totals only, bars as in
      its docstring (0.99 match for CT4P's direction and CT4PJ's "behind", boundary cases allowed; no "behind"
      last; no fallback with a path).
    - Below a bar: stop and fix the port; scores unread.
 5. Sonnet: announce, then the same steps 3 and 4.
-6. `round4/o_confirm_score.py RUN_ROOT sweep/confirm_selection.json LABEL` once per model. Output saved, hashed and
+6. `results/moving-lines/best-version-and-running-guess/round4/o_confirm_score.py RUN_ROOT results/moving-lines/test-layouts/confirm_selection.json LABEL` once per model. Output saved, hashed and
    read-only, then sent.
 
 **Missing values.** A layout whose CT2 first answer has no usable result, or which has no strict value for an arm of

@@ -1,5 +1,6 @@
 # Round 5, check 2 (EXPLORATORY: QB v2's bound was chosen after check 1)
 
+
 ## Design cells × 4 conditions, pooled (129 cells)
 
 | Variant | recall | false: ex-member | false: walker | false: named bystander | false: other bystander | right | cut | far | empty | switches / min | proxy goal in line |

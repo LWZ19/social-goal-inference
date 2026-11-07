@@ -1,3 +1,4 @@
+# Sweep layouts: the fresh test set for ideas round 2 (3 Nov, zero calls)
 # Test layouts: new layouts for fresh moving-line tests
 
 **Question.** Which new layouts give fresh tests of the moving-line methods that the bystander scenes cannot (their
@@ -101,6 +102,7 @@ Why: the bystander scenes' seeds are not independent tests. The service clock is
      and `selection.json`. One seed (0) per layout. The unit of analysis is the layout.
    - Output summary: `select_out.txt`.
 
+## Scoring "ours" cells (pre-registered with the analysis)
 - At the photo, the only place in line is 0.5-0.75 m behind the last member. The solver's 1.0 m standoff is blocked
   by the non-member in every "ours" layout (`standoff_valid` 0 of 40).
 - A man on the axis 1.2-1.6 m behind the last member reads as waiting to a person too, so squeezing in front of him

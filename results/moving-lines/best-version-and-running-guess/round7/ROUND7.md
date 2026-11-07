@@ -1,3 +1,4 @@
+# Round 7: readings for the ceiling check, fixed before the totals (analysis, 3 Nov)
 
 - **OW:** no solver. The goal is the sim's ideal place: 0.85 m behind the true last person ahead on the axis, or
   slot 0.
@@ -57,7 +58,7 @@ strict share; it asserts equality with `score_sweep.episode_scores`.
 ## 3. Readings, fixed now
 
 The quantities are means of paired per-layout differences over layouts with all values, on DeepSeek. CT4PJ comes
-from `runs_confirm4/dsv41`, which uses the same cached answers.
+from `results/data/moving/runs_confirm4/dsv41`, which uses the same cached answers.
 - **Place and follow:** OW − CT4OT.
 - **Target:** CT4OT − CT4O.
 - **Who:** CT4O − CT4PJ.
@@ -89,6 +90,7 @@ The split depends on the order of the steps. With a wrong target, who barely mat
 
 **Mixed:** all shares are reported. The next step goes to the largest share that is at least 0.05.
 
+## 4. One request to the run (zero calls)
 The 2 × 2 has one cell missing: CT4PJ with the true target and the model's roster ("CT4PJ-T", as CTt for CT3).
 - Without it, who is measured only with the model's target, and on the layouts where the target is wrong it reads as
   zero.

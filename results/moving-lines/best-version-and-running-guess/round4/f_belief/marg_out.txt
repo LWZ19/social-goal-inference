@@ -13,3 +13,4 @@
 - walker: n 8603, mean P 0.28, share P >= 0.5 0.23, share 0.2 <= P < 0.5 0.17
 - bystander at P >= 0.5 (1443 ticks): side from axis median 1.26 m; along minus true tail median 0.71 m (share behind the tail 0.81); speed median 0.00 m/s, share moving > 0.3 m/s 0.01
 - walker at P >= 0.5 (1969 ticks): side from axis median 1.10 m; along minus true tail median -0.10 m (share behind the tail 0.44); speed median 0.25 m/s, share moving > 0.3 m/s 0.48
+

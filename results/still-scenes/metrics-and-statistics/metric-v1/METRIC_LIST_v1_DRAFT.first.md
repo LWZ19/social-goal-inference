@@ -1,3 +1,4 @@
+# I14 metric list, version 1 (draft for the project and the mentor)
 
 ---
 
@@ -115,6 +116,7 @@ L1: members-only regions, as today. L2: L1 minus cells within a 0.3 m body gap o
 - L1's own reference stop fails L2 in 85 of 199 (42.7%), all 72 A2–A6 variants included.
 
 **v1 rule.**
+- Report L1 and L2 side by side, with the disagreement and L2-empty rates against I06's lines: disagreement ≤ 5% passes, 5–20% needs side-by-side reporting and an project decision, above 30% is a kill; L2 empty ≤ 2% passes, above 10% is a kill (REPORT I06, "First probe").
 - **L1 is primary pending the mentor** (D4). A claim that holds under one label only is reported as label-dependent.
 - **Affected methods:** those aiming near the region's reference point, that is R's and E's marked points and labels sampled for learned samplers such as C5 (REPORT §7). The choice also moves Q2's region cells in crowds. It does not affect the solver or the perception metrics.
 - **Cue threshold.** At A5–A6 the confuser stands 0.6–0.8 m behind the line, facing within 30 deg of it, and L1 counts joining behind it as failure (REPORT §7). Until the mentor rules, report family A with and without A5–A6; I06's verdict is the same either way (`results/still-scenes/crowds/README.md` §9). No join rule fixes A3–A6, where the confuser stands 0.03–0.44 m from the place in turn (`results/still-scenes/crowds/facing-gate-repair/README.md` §2).
@@ -162,6 +164,7 @@ Rules (proposal): median and p90 with n; fresh calls and cache hits apart; load 
 | Fit seeds 100–109 | Yes (I03, I11, I09 A1, gate 2) | Not for methods fitted on them | REPORT I46 |
 | Training seeds 110–199 | Training only (110–189 trained the pilot, 190–199 chose its checkpoint) | No | `results/still-scenes/learned-models/flow-model-pilot/README.md` §7 |
 | Seeds 200–212 (182 layouts) | Proposal: development use only | No: spent as I09's test | `results/still-scenes/people-finder/early-detector/phase2/README.md` §3 |
+| Seeds 213–219 (98 layouts, unrendered) | No | Reserve for a later pre-registered test (project) | `results/still-scenes/people-finder/early-detector/phase2/README.md` §3 |
 | Sealed seeds 3–99 | No; never generated or opened | Only as I46's sealed set | REPORT I46 |
 | `keep/heldout`, `eval_16`–`19` (group photo, lift wait), runs s18 and s20_held | No; never read | Only the one final test (about 6,000 calls) | REPORT §8, "Held-out discipline"; I46 |
 

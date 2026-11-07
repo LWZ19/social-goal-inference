@@ -1,3 +1,4 @@
+# E3: more models (decision, 6 Nov 2026). Descriptive only: nothing here changes a frozen result.
 
 1. Older models, still scenes (the 17 Oct six-model protocol, s23): three realistic sets x 14 layouts x 2 episodes x
    3 trials = 252 per method; methods pointing (cot), pointing with examples (few_shot_cot), constraint method.
@@ -44,5 +45,7 @@
   0.145, CT4P 0.132 (n 71; 1 no_target). Same order as the other models.
 - **E3 complete (6 Nov ~10:00).** Progress page updated (version 9): older-model chart, hidden-situation rows for the
   latest models, moving-line headline and final-test rows for Haiku 5.5 and Gemini 3.8, timeline.
+  CT4PJ > CT4P repeats on four models (DeepSeek 0.208/0.159/0.107 frozen; Sonnet 0.246/0.174/0.124; Haiku
+  0.232/0.216/0.170, n 55; Gemini 0.231/0.193/0.132). The joined-line rule helps by about +0.05 and the hand-built
 - 2026-11-06 13:09: E3b started after the E4 build finished: the 7 older entries are in configs/default.yaml (same settings as the E3 config: calibrated point formats, Claude paced at 25 a minute). Two lanes: Claude (sonnet46 -> sonnet5 -> haiku45, ports 8970+), Gemini (36 -> 3 -> 3.5 Lite -> 3.1 Lite, ports 8990+), 2 workers each.
 - 2026-11-06 17:03: E3b Claude lane resumed (Sonnet 4.6 from 37/90, then Sonnet 5, Haiku 4.5), ports 8970+; run_moving now survives a stuck episode. Gemini lane resumes when GPU allows.

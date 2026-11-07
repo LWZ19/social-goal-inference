@@ -1,6 +1,6 @@
-# Round 6, EXPLORATORY: goal jumps and leaving (sweep/pilot_selection.json; not claims)
+# Round 6, EXPLORATORY: goal jumps and leaving (results/moving-lines/test-layouts/pilot_selection.json; not claims)
 
-## runs_pilot3/dsv41
+## results/data/moving/runs_pilot3/dsv41
 
 ### J-a: layouts where CT4PJ jumps more than CT3F (jumps per minute from the first service)
 

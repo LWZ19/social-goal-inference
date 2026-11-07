@@ -1,0 +1,7 @@
+Post hoc (verifier): primary-fold Delta = S_ratio - S_band under four training subsamples; configuration FS3 m=0.5 (every inner CV's choice).
+draw            waiting_line  conversation_group  audience   folds >= 0.10
+compute agent        +1.955          -0.781       +4.113        2
+verifier main        +2.843         -0.771       +3.787        2
+verifier salt 1      +2.906         -0.770       +4.138        2
+verifier salt 2      +2.874         -0.773       +4.263        2
+n = 140 / 100 / 60 episodes (70 / 50 / 30 scenes) in every draw. The compute agent's draw is the only one of 12 checked (its own, mine, salts 1-10) that puts a training point with f8 >= 3 (one non-region cell) into the waiting_line fold's sample (diag_f8_draws.txt).

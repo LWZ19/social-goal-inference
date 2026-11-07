@@ -1,3 +1,5 @@
+C5 (I52) flow-matching pilot: tables. Protocol: FROZEN.md (sha256 a60f1d62...767f); deviations and clarifications: DEVIATIONS.md (hash in DEVIATIONS.sha256); checkpoints hashed in CHECKPOINTS.sha256 before any evaluation sample was drawn.
+EXPLORATORY. Gate 1 overridden by the project; train and test layouts share the generator templates (22 configurations); labels are the project's reference rules, so agreement measures fit to those rules, not social correctness.
 
 == D1. Data (seeds 110-189 train, 190-199 validation; units = (scene, episode); e0 and e1 both kept) ==
 train: 4160 units in 2080 scenes; left out: none
@@ -14,6 +16,14 @@ val: 520 units in 260 scenes; left out: none
   unlabelled units by situation / row: {'waiting_line / waiting_line_6': 20}
   share of the extended region cells inside the raster, by row (train): audience / audience_3: 0.6186, audience / audience_4: 0.6103, audience / audience_5: 0.5595, conversation_group / conversation_group_2: 1.0, conversation_group / conversation_group_3: 1.0, conversation_group / conversation_group_4: 1.0, no_one / no_one_deep_place: 1.0, no_one / no_one_lift: 1.0, no_one / no_one_object: 1.0, no_one / no_one_person: 1.0, no_one / no_one_place: 1.0, no_one / no_one_screen: 1.0, waiting_line / waiting_line_1: 1.0, waiting_line / waiting_line_2: 1.0, waiting_line / waiting_line_3: 1.0, waiting_line / waiting_line_4: 0.5808, waiting_line / waiting_line_6: 0.0008
   label self-check (train, I14 replica on every label pose): no_one: n 56320, in region 0.9585, heading ok 0.9585, reachable 0.9973, all three 0.9561; ALL: n 128576, in region 0.9647, heading ok 0.9647, reachable 0.9915, all three 0.9568; waiting_line: n 31296, in region 0.9603, heading ok 0.9603, reachable 0.9891, all three 0.9500; conversation_group: n 25600, in region 0.9722, heading ok 0.9722, reachable 0.9896, all three 0.9623; audience: n 15360, in region 0.9843, heading ok 0.9843, reachable 0.9780, all three 0.9639
+
+== D2. Training (rectified flow; AdamW 1e-3, wd 0.01, cosine over 30 epochs; batch 256; fp32; seed 0) ==
+model                      left out             tr units tr poses va poses epochs best ep  best val  wall s peak MiB stopped
+main                       none                     4018   128576    16000     30      30   0.24571   236.6     2030 epochs
+loso_waiting_line          waiting_line             3040    97280    12160     30      30   0.28978   179.2     1929 epochs
+loso_conversation_group    conversation_group       3218   102976    12800     30      24   0.18543   193.1     1930 epochs
+loso_audience              audience                 3538   113216    14080     30      28   0.25461   198.5     1970 epochs
+env: NVIDIA GeForce RTX 4060 Laptop GPU, driver 595.91.07, torch 2.14.1+cu126, CUDA 12.6, cuDNN 91002, 2134148 parameters
 
 == T1. (i) Validation seeds 190-199 (in-distribution test; also picked the checkpoint, so mildly optimistic) ==
 Success = in the target's acceptable region, reachable on robot_grid(truth), heading within 45 deg (I14 replica, checked against sgi.evaluate.score). Flow: 64 raw samples per unit; top pose = densest of the 64 raw samples. Coverage = share of region cells (0.10 m lattice extended beyond the raster, on the floor) with a raw sample within 0.2 m; n = units with at least one region cell. B0/B1 = solver top-1 with oracle people, oracle target and standard_goal (B1: reference constraints, circular, a reference only).
@@ -76,6 +86,12 @@ MODEL glm           177 |  0.519  0.551  0.663   |   6.16   6.54   7.87   |  117
 MODEL deepseek      193 |  0.531  0.612  0.674   |   6.42   7.39   8.14   |  129  153  156  156
 POOLED 549          549 |  0.568  0.670  0.749   |   6.66   7.85   8.78   |  388  450  451  453
 
+== T6. Latency on the 4060 (sidecar; arrays in host memory -> top pose and hit@5 places: encoder, 16 Euler steps over 64 samples, copy back, snap, validity, density, picks; 10 untimed warm-ups, then each record once) ==
+setting (b): n 549, median 18.30 ms, p90 32.47 ms, mean 21.71 ms, max 71.82 ms; torch peak alloc 18 MiB; nvidia-smi {'n': 24, 'mem_used_max_mib': 1386, 'mem_used_mean_mib': 317.2916666666667, 'util_max_pct': 27, 'util_mean_pct': 11.166666666666666}
+setting (a): n 549, median 20.41 ms, p90 46.87 ms, mean 28.23 ms, max 80.20 ms; torch peak alloc 18 MiB; nvidia-smi {'n': 30, 'mem_used_max_mib': 1586, 'mem_used_mean_mib': 897.6666666666666, 'util_max_pct': 100, 'util_mean_pct': 49.766666666666666}
+reported apart (project venv, setting b, n 549): painting the raster median 78.5 ms (p90 100.3); _over_floor (solver work C already does) median 110.8 ms (p90 137.1); the hand-off between the two environments (files on disk) was not timed per record.
+env: NVIDIA GeForce RTX 4060 Laptop GPU, driver 595.91.07, torch 2.14.1+cu126, CUDA 12.6
+
 == T7. C5 criteria (FROZEN.md section 7; exploratory) ==
 Qwen 3.8 (qwen38_low)          n 179: flow(b) 65.9% vs C 92.7% (-26.8 pp); flow(a) 64.8% vs P 94.4% (-29.6 pp)
 GLM-5.3-Flash (glm53)          n 177: flow(b) 51.4% vs C 67.2% (-15.8 pp); flow(a) 57.6% vs P 79.7% (-22.0 pp)
@@ -122,3 +138,5 @@ MODEL qwen         n  179: (b) raw   90/179 (50.3%) snapped  118/179 (65.9%) | (
 MODEL glm          n  177: (b) raw   87/177 (49.2%) snapped   91/177 (51.4%) | (a) raw   92/177 (52.0%) snapped  102/177 (57.6%)
 MODEL deepseek     n  193: (b) raw   99/193 (51.3%) snapped  103/193 (53.4%) | (a) raw  107/193 (55.4%) snapped  102/193 (52.8%)
 POOLED 549         n  549: (b) raw  276/549 (50.3%) snapped  312/549 (56.8%) | (a) raw  294/549 (53.6%) snapped  320/549 (58.3%)
+
+EXPLORATORY. Gate 1 overridden by the project; train and test layouts share the generator templates (22 configurations); labels are the project's reference rules, so agreement measures fit to those rules, not social correctness.

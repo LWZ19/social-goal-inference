@@ -17,6 +17,7 @@ Qwen 3.8 and GLM-5.3 are missing.
   code is unchanged. Nothing was ever tuned on these models.
 - **Models:** `soclaas_qwen38_low` and `soclaas_glm53` (free), with the current C prompts and settings.
 
+## Bars (judged once per model, after its episodes and the mechanics check)
 - **H9 (per model).** CT2 vs R1, whole-episode strict share in line, ties exact as in `summarise_fresh.paired`. CT2 wins
   > losses, and the exact two-sided sign test gives p ≤ 0.05.
 - **Reported:** the same under the primary scoring; CT vs R1; C1; and the first answer's latency.
@@ -28,10 +29,12 @@ Qwen 3.8 and GLM-5.3 are missing.
   - A cell still failing after them is left out of both arms of the comparison and counted.
   - `parse_failed` is the model's own answer and stays.
 
+## Amendment 1: sim runs that time out (6 Nov, before any item 9 total; the question)
 - **What happened.** Some GLM episodes never finished: run_moving's subprocess limit (488 s) ended them while the sim
   was still waiting for the first answer, so no episode.json exists.
 - **Cached latency.** A cache hit replays the stored answer's own latency (experiment.py receive()), so a re-run cell
   gets no speed advantage.
+## Amendment 2: rate-limit retries on GLM's answers (6 Nov, before any item 9 total; the disclosure)
 
 - **What happened.** From 15:58, DeepSeek and Qwen still-scene calls (items 12 and 13) ran alongside GLM's live moving
   runs. GLM's serve logs show 10 HTTP 429s (16:02-16:26; none before 15:58), each retried after a short wait. The
@@ -60,12 +63,13 @@ Qwen 3.8 and GLM-5.3 are missing.
 - **GLM:** slower, with more outages. Likely latency-bound at 92 s, with a secondary in CT2's favour if its answers
   are usable.
 - **R1** (plan + marking, two calls) arrives sooner, so the 92 s comparison is tilted towards R1 for these models.
+## Run (run; from `moving/`; live free calls; 2 workers per model, one model at a time)
 
     cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
     EVALF="cafe_slots room_coffee_cart_slots cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
     M=sgi_habitat.experiment_oracle
-    F=../fill/i9_qwen_glm
+    F=results/moving-lines/school-models
     PB=8800
     for m in soclaas_qwen38_low soclaas_glm53; do
       $P run_moving.py --model $m --out runs/$m --workers 2 --port-base $PB --module $M --scenarios $EVALF --seeds 10 11 12 --arms C1 R1 CT CT2 > $F/run_${m}_a.log 2>&1; echo "$(date +%H:%M) $m 10-12 exit $?"

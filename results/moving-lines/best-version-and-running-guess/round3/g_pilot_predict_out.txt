@@ -1,5 +1,6 @@
 # Offline predictions for the round 3 pilot: 24 layouts with a CT2 answer
 
+
 | Arm | right | cut | far | empty | last switches / min | roster changes / tick |
 |---|---|---|---|---|---|---|
 | CT4 | 0.400 | 0.263 | 0.323 | 0.014 | 14.2 | 0.163 |

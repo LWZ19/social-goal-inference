@@ -1,4 +1,4 @@
-# Port checks (totals only): runs_confirm4/sonnet55_low
+# Port checks (totals only): results/data/moving/runs_confirm4/sonnet55_low
 
 - episodes: CT4P 71 (left out {'answer without people or target': 1}), CT4PJ 71 (left out {'answer without people or target': 1})
 - CT4P direction: 9914/9914 path re-solves match (1.0000); fallbacks 167, of which with a path in the rebuild 0 -> PASS

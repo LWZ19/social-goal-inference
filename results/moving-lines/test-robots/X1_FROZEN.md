@@ -38,6 +38,7 @@ This decides the order of the two future-work leads: the counter point (lead 1) 
 - X1-consistent is borderline: the counter point matters only where the model's target is off, which varies by model
   (Gemini's targets were worst on still scenes).
 
+## Run (run; from `moving/`; cache-only; 2-4 workers)
     # stage B (reported), per model, then round7's decomposition:
     #   a <entry> <dir> "OW CT4OT CT4O CT4PJT CT4PJ" B
     #   cd results/moving-lines/design-and-scoring/ideas2_1b && $P round7/c_gaps.py sweep/confirm_selection.json runs_x1/<dir> runs_x1/<dir>

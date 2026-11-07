@@ -1,6 +1,25 @@
+==============================================================================================================
+PART 4. Run-to-run noise: SD of one 3-trial batch of 252 records
+The figures (REPORT section 8): one 3-trial batch has an SD of about 6-8 records (Qwen 7.9).
+Qwen 9-draw pool (R = cot, E = fsc): batch 1 = s16b trials 0-2, batch 2 = s22 trials 3-5, batch 3 = s21 trials 0-2; s22 trials 0-2 dropped (cache copies of s16b). Each batch: 3 trials x 84 items (arm, scene, episode) = 252.
+Estimators of the SD of one batch total:
+  (a) SD of the 3 batch totals (df 2 per method; R and E pooled: df 4).
+  (b) SD of the 9 single-trial totals (84 records each) x sqrt(3) (df 8 per method; assumes independent trials).
+  (c) item binomial: sqrt(3 * sum_i s_i^2), s_i^2 = unbiased variance of item i's 9 outcomes (holds the items fixed; assumes independence across items and trials).
 
   R: runs 20261010-201358_s16b_real_qwen38_low_cot, 20261010-201359_s16b_staffed_qwen38_low_cot, 20261010-201401_s16b_plain_qwen38_low_cot, 20261017-114056_s22_real_qwen38_low_cot, 20261017-114058_s22_staffed_qwen38_low_cot, 20261017-114059_s22_plain_qwen38_low_cot, 20261017-012658_s21_real_qwen38_low_cot, 20261017-012700_s21_staffed_qwen38_low_cot, 20261017-012701_s21_plain_qwen38_low_cot
   E: runs 20261010-202647_s16b_real_qwen38_low_fsc, 20261010-202635_s16b_staffed_qwen38_low_fsc, 20261010-202550_s16b_plain_qwen38_low_fsc, 20261017-121440_s22_real_qwen38_low_fsc, 20261017-121408_s22_staffed_qwen38_low_fsc, 20261017-121157_s22_plain_qwen38_low_fsc, 20261017-020507_s21_real_qwen38_low_fsc, 20261017-020339_s21_staffed_qwen38_low_fsc, 20261017-020401_s21_plain_qwen38_low_fsc
+
+  Qwen R: batch totals s16b/s22t3-5/s21 = 175 / 188 / 179 (sum 542 of 756, mean 180.7 of 252)
+    trial totals (of 84): [58, 56, 61, 55, 62, 62, 58, 69, 61] (keys [('s16b', 0), ('s16b', 1), ('s16b', 2), ('s21', 0), ('s21', 1), ('s21', 2), ('s22t3-5', 3), ('s22t3-5', 4), ('s22t3-5', 5)])
+    (a) 6.66   (b) 7.23   (c) 6.24
+  Qwen E: batch totals s16b/s22t3-5/s21 = 214 / 204 / 196 (sum 614 of 756, mean 204.7 of 252)
+    trial totals (of 84): [70, 72, 72, 67, 63, 66, 68, 68, 68] (keys [('s16b', 0), ('s16b', 1), ('s16b', 2), ('s21', 0), ('s21', 1), ('s21', 2), ('s22t3-5', 3), ('s22t3-5', 4), ('s22t3-5', 5)])
+    (a) 9.02   (b) 4.96   (c) 5.72
+  Pooled R and E (root mean variance): (a) 7.93 (df 4)   (b) 6.20 (df 16)   (c) 5.98
+    approx 95% CI for pooled (a): 4.8 to 23.7 (chi-square, df 4, Wilson-Hilferty quantiles)
+    approx 95% CI for pooled (b): 4.6 to 9.5 (chi-square, df 16, Wilson-Hilferty quantiles)
+  -> The Qwen 7.9 is reproduced by (a) pooled over R and E: 7.93.
 
 Paired E-R (same stage and trial share the target draw; no_one records are identical in R and E):
   E-R per batch: [39, 16, 17] (mean +24.0); SD of batch differences (df 2) 13.00; item-level paired SD 7.00; independent-batch reference sqrt(2) x pooled (a) = 11.21, sqrt(2) x pooled (c) = 8.46

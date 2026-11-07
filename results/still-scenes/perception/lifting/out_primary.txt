@@ -118,6 +118,19 @@ C. Fixes (FROZEN.md sections 3-6). fixes = wrong -> right; breaks = right -> wro
     background leak  n=12 s {'structure': 4, 'floor': 6, 'object': 2}; V1 moved 10, fixed 9; V3 moved 10, fixed 9
   replay paths used (moved records, all fixes): {'standard': 639, 'solver': 971}
 
+D. I11 Stage 0 criteria (REPORT.md I11 "First probe", verbatim in FROZEN.md section 7)
+  S1 lift classes >= 40% of 46 (>= 19): 20/46 (43.5%) -> MET (over 50: 20/50 (40.0%))
+  S2 oracle fixes >= 15 of 46 and breaks <= 2 of 454: fixes 20/46, breaks 0/454 -> MET
+  S3 >= 8 of the oracle's fixed records among the 46 become full successes: 16/20 -> MET
+  S4 V1 reaches >= 70% of the oracle gain: V1 gain 9 (fixes 9 - breaks 0) / oracle gain 20 (fixes 20 - breaks 0) = 0.45 -> NOT MET
+  Kill: lift classes < 20% of 46 (<= 9): 20 -> no; oracle fixes < 6: 20 -> no; oracle breaks > 5 of 454: 0 -> no
+  VERDICT (I11 Stage 0): NEITHER
+  V1 as a zero-call rule: fixes 9/46 (kill if < 6), breaks 0/454 (kill if > 5) -> V1 not killed; S4 not met
+  V2 (no verdict): fixes 9/46, breaks 1/454, share 0.40; against the bars: share >= 0.70 no, fixes < 6 no, breaks > 5 no
+  V3 (no verdict): fixes 10/46, breaks 0/454, share 0.50; against the bars: share >= 0.70 no, fixes < 6 no, breaks > 5 no
+  V4 (no verdict): fixes 9/46, breaks 0/454, share 0.45; against the bars: share >= 0.70 no, fixes < 6 no, breaks > 5 no
+  front-snap reference: fixes 7/46, breaks 24/454, share -0.85
+
 E. I33 Stage B trigger (FROZEN.md section 8). T1: lift on floor or structure, or the 5x5 window holds >= 2
    labels (floor, structure, object components; fragments ignored). T2: T1 or another object within 15 px.
   person wrong targets: n=15 ({'dsv41': 8, 'glm53': 2, 'qwen38_low': 5}) [layouts 3, model x layout 5]

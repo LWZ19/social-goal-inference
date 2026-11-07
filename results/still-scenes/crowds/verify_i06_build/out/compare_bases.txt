@@ -70,7 +70,7 @@
   whitelisted bases checked: 14
   sanity: seeds 1-2 eval_06..13 differ from seed 0's whitelisted copies: 16/16
 
-3. The build's byte-identity folders (build/byte_identity), re-hashed here:
+3. The build's byte-identity folders (results/still-scenes/crowds/build/byte_identity), re-hashed here:
   seed 0: package ['eval_00_no_one_place', 'eval_01_no_one_place', 'eval_02_no_one_place', 'eval_03_no_one_deep_place', 'eval_04_no_one_object', 'eval_05_no_one_person', 'eval_06_waiting_line_1', 'eval_07_waiting_line_2']; builder same folders True
     eval_00_no_one_place: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
     eval_01_no_one_place: package == builder (every file sha256) True; package == my reproduction (fingerprint) None

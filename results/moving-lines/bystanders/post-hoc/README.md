@@ -46,3 +46,4 @@ after k missed follows would remove more capture but adds false drops (DeepSeek,
 
 1. **Pilot, cafe s11.** A served member walked back up the line, and a follow check that was due from an advance made
    before she was re-admitted dropped her. CT3b (DEVIATIONS 13) cancels such checks.
+     `CT2/001/answer.json`).

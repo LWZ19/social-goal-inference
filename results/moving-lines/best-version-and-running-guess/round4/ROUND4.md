@@ -1,5 +1,6 @@
+# Round 4: choose a place, not a person to follow (analysis, 3 Nov; design data only, zero calls)
 
-Written before any round 4 decision rule was run. Evidence: `round3/FOLLOWUPS.md` (dcbbe5d5).
+Written before any round 4 decision rule was run. Evidence: `results/moving-lines/best-version-and-running-guess/round3/FOLLOWUPS.md` (dcbbe5d5).
 
 ## 1. The idea
 
