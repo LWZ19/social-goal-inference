@@ -34,7 +34,7 @@ Two test beds:
 |---|---|---|
 | The constraint method picks good spots far more often than pointing, on every model | Claude Sonnet 5.5: 96% vs 71%; Claude Haiku 5.5: 95% vs 60%; Qwen 3.8: 90% vs 78% (of 252 tries each) | `2026-11-01-push/EVIDENCE_AUDIT.md` row A1; `../docs/results/` |
 | It holds on 70 new scenes never used in development | e.g. Haiku at waiting lines: 92 of 100 vs 4 of 100 | `2026-11-01-push/fill/i12_still/` |
-| It holds on situations kept hidden until the end (lift, photo) and on two new ones (a bent line, someone at a machine) | wins on all 12 layouts of both new tests | `2026-11-01-push/e3_models/`, `2026-11-01-push/fill/i13_e4/`, `2026-11-01-push/e4/` |
+| It holds on situations kept hidden until the end (lift, photo) and on two new ones (a bent line, someone at a machine) | wins on all 12 layouts of both new tests, over the six models together; GLM-5.3 is level on the machine test | `2026-11-01-push/e3_models/`, `2026-11-01-push/fill/i13_e4/`, `2026-11-01-push/e4/` |
 | A small people detector can replace one VLM question: faster on all six models, never less accurate | e.g. Qwen 107 → 83 s per answer | `2026-11-01-push/e2/` |
 | Moving lines: asking once and re-solving the spot as people move beats deciding once | 11 of 13 models; Sonnet 29% vs 6% of the time in the right spot | `2026-11-01-push/moving/`, `2026-11-01-push/e3_models/`, `2026-11-01-push/fill/i9_qwen_glm/` |
 | Re-solving beats asking the VLM again and again, with far fewer calls | Sonnet 32% vs 2-10%, 4 calls vs 22-29 per run | `2026-11-01-push/fill/i10_reask/RESULTS_I10.md` |
@@ -47,8 +47,10 @@ The full list, about 110 findings with their strength (conclusive, suggestive, q
 [`2026-11-01-push/fill/RESULTS_7NOV.md`](2026-11-01-push/fill/RESULTS_7NOV.md) and the `RESULTS_*.md` file of each
 `fill/` item.
 
-**Still running:** GLM-5.3's runs for the fresh scenes (`fill/i12_still`), the two new tests (`fill/i13_e4`) and the
-repeat-run noise check (`fill/x4_noise`). Their tables show the other five models.
+**Six models:** the fresh scenes and the two new tests are scored with all six models in
+`fill/i12_still/i12_score_six_out.txt`, `fill/i13_e4/e4_score_six_out.txt` and, for the looser machine rule,
+`fill/i13_e4/e4_score_six_0p8_out.txt`. A few of GLM-5.3's answers failed on the school's server and are left out, as
+the outputs say. **Still running:** GLM-5.3's repeat runs for the noise check (`fill/x4_noise`).
 
 ## Layout
 
