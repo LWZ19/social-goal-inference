@@ -1,3 +1,22 @@
+# Facing gate on joining a line (repair probe on the crowd scenes)
+
+**Question.** Does a rule that lets a non-listed person join a waiting line only if they face into the line's front half-plane (RF90) fix the crowd failures where the solver absorbs a bystander, without breaking cases that already work?
+
+**Result.** On the crowd scenes RF90 turns 29 of the 54 judged line failures into successes (27 were needed) and breaks none of the 30 bases or 46 group and audience variants; 24 of the 29 are the A1 and A2 variants, which the gate removes by construction, and A3 stays at 0 of 15 under every rule. On 549 primary development goal steps RF90 has 0 breaks in each of six cells (nets 0, 0, +1, 0, 0, 0), but only 4 steps had an absorption to change. On simulated people (arm 1b) it raises mean line success by 0.10 to 0.14 per model with 0 breaks. The baseline rule is reproduced exactly everywhere (229 of 229 scenes, 10,080 of 10,080 noisy draws, 1,265 of 1,265 goal steps).
+
+**Files.**
+- `FROZEN.md`, `DEVIATIONS.md`, `logs/`: protocol, the one change after it, hash and order logs.
+- `code/`: `rules.py` (the four rules R0, RF90, RF60, RN), `common.py`, `crowd.py` (arm 1), `crowd_noisy.py` (arm 1b), `records.py` (arm 2), `tables.py`, `run_*.sh`.
+- `tables.txt`, `summary.json`, `rows_crowd.jsonl`, `rows_noisy_*.jsonl`, `rows_records_*.jsonl`: results; `out/r0_*.txt`: baseline reproductions; `work/`: per-pass rows.
+- `precheck/format_check.py`: baseline format check before the freeze.
+- `verify/`: independent re-implementation (`vturn.py`, `v_*.py`) with its reports in `out/`.
+
+**Reproduce.** From the repository root with `PYTHONPATH=src`: `bash results/still-scenes/crowds/facing-gate-repair/code/run_crowd_r0.sh`, then `run_r0_rest.sh`, `run_repair.sh`, and `python results/still-scenes/crowds/facing-gate-repair/code/tables.py`. These use the step-0 harness (`results/still-scenes/analysis-scripts/harness/`) and the development scenes in `data/dev_scenes/` (release dev-scenes-v1), which are in this repository, but also the rendered crowd-variant images, which are not (see `../README.md`), and `common.start()` asserts the sha256 of the original `FROZEN.md` and `src/sgi/solver.py`, which no longer match the files here. The verifier analyses run here and reproduce their stored reports: `python results/still-scenes/crowds/facing-gate-repair/verify/v_arm1.py` (also `v_arm1b.py`, `v_arm2.py`).
+
+**Data.** `data/dev_scenes/` (release dev-scenes-v1); `results/logs/research-data.tar.gz` (row files, `work/`, `verify/out/`); the baseline rows come from `../score/` and `../../replay-harness/repairs/`.
+
+## Notes
+
 # Phase 2: I06 repair probe, a facing gate on joining a line (2026-10-18)
 
 How it was made:

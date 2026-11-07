@@ -1,8 +1,53 @@
-# Sweep layouts: the fresh test set for ideas round 2 (3 Nov, zero calls)
+# Test layouts: new layouts for fresh moving-line tests
+
+**Question.** Which new layouts give fresh tests of the moving-line methods that the bystander scenes cannot (their
+seeds barely change the picture), and how are they drawn, checked and chosen?
+
+**Result.** Four sets, each drawn by `make_sweep.py` from its own candidate range (`RANGES.md`), checked by
+`sweep_report.py` and chosen by a `select_*.py`: the sweep (72 of 900 candidates), the round 3 pilot (24 of 400),
+the confirmation (72 of 900) and the new-layouts test (72 of 900). On the sweep, the frozen test C1 failed: CT4
+against CT3F on the right last person, 36 lag-flagged layouts, DeepSeek V4.1 Flash, 14/14/1 wins/losses/ties, sign
+p 1.0; CT4 did have higher recall and fewer empty re-solves in every flag cell.
+
+**Files.**
+- `make_sweep.py`: draws candidates (simulator Python); `pilot_make_out.txt` its log.
+- `sweep_report.py`: which model-free rules take the lone non-member; `report_out.txt`, `pilot_report_out.txt`,
+  `confirm_report_out.txt` (the new-layouts one is `../best-version-new-layouts/sweep_report_out.txt`).
+- `select_sweep.py`, `select_pilot.py`, `select_confirm.py`, `select_i11.py`: the selections; outputs
+  `select_out.txt`, `pilot_select_out.txt`, `confirm_select_out.txt`, `i11_select_out.txt`, the `*selection.json`
+  files and the scenario files in `sim/scenarios/{sweep,pilot3,confirm4,i11}/`.
+- `score_sweep.py`: the sweep's frozen scorer (`../best-version-and-running-guess/CT4_FROZEN.md` section 4);
+  `score_dsv41_out.txt`, `score_sonnet55_low_out.txt`; `score_sweep_v1_to_v2.diff` its one change before scoring.
+- `check_mech.py`: mechanical checks of a run folder (`*_mech_*_out.txt`, and `check_mech_out.txt` inside some run
+  folders); `check_ceiling.py`, `check_ct3ft.py`: cache and oracle checks of the test-robot arms
+  (`ceiling_cache_dsv41_out.txt`, `ct3ft_cache_dsv41_out.txt`).
+- `confirm_port_*_out.txt`, `confirm_score_*_out.txt`: the confirmation's port checks and scores, made by
+  `../best-version-and-running-guess/round4/p_port_checks.py` and `o_confirm_score.py`.
+- `confirm_cache_*_out.txt`: cache checks of the confirmation runs; the script that wrote them is not in the repository.
+- `render_first.py` and `renders/`: each sweep layout's first picture. `human_dump/`, `pilot_dump/`, `confirm_dump/`:
+  people positions over time with the robot idle (made by `../best-version-and-running-guess/dump_humans.py`;
+  `dump_out.txt`, `pilot_dump_out.txt`, `confirm_dump_out.txt` are the logs).
+- `jobs_*.txt`: the "scenario seed" lists given to `run_moving.py --jobs`; `selected_names.txt`: the sweep's names.
+- `RUN_NOTE.md`: the run log of every set; `RANGES.md`: the candidate ranges.
+
+**Reproduce.** From the repository root (`L=results/moving-lines/test-layouts`):
+
+    PYTHONPATH=src .venv/bin/python $L/sweep_report.py $L/candidates      # rewrites candidates/report.json, same bytes
+    PYTHONPATH=src .venv/bin/python $L/select_sweep.py                    # writes sim/scenarios/sweep/ and selection.json
+    PYTHONPATH=src .venv/bin/python $L/score_sweep.py results/data/moving/runs_sweep/dsv41
+    PYTHONPATH=src .venv/bin/python $L/check_mech.py results/data/moving/runs_confirm4/dsv41 CT2 CT3F CT4P CT4PJ CT4
+
+The scenario folders `sim/scenarios/{sweep,pilot3,confirm4,i11}/` are not committed: run the four `select_*.py`
+first (they rebuild them byte for byte from the candidates) before anything that reads them, including new runs.
+
+**Data.** `logs/bulk.tar.gz` (the candidate folders), `logs/research-data.tar.gz` (the selection files,
+`candidates.json` and `report.json`, the people dumps), `logs/moving-runs.tar.gz` (the run folders).
+
+## Sweep layouts: the fresh test set for ideas round 2 (3 Nov, zero calls)
 
 Why: the bystander scenes' seeds are not independent tests. The service clock is fixed (the first service comes at
 16 s in every cafe and sweet_spot seed), and the photo barely changes between seeds; Sonnet names the lone man in
-0.78 of near-identical frames. A fresh test needs new layouts (`ideas2/research_session_challenge.md` Q2;
+0.78 of near-identical frames. A fresh test needs new layouts (the ideas review, Q2;
 `results/overview/ideas-round-2/SHORTLIST.md` section 5).
 
 ## Steps (all zero calls)

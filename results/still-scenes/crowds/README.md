@@ -1,3 +1,32 @@
+# Crowded scenes: how many extra people break goal inference (still scenes)
+
+**Question.** When bystanders, a second group or a person who looks like a line member are added around a target group, how often does the zero-call solver, given the true people and the reference constraints, still choose a correct place?
+
+**Result.** On 229 crowd scenes (199 variants and 30 base layouts, 3 seeds) the full oracle succeeds on 229 of 229. With the reference constraints (oracle C) the success rate falls by 100 points when a confuser stands behind a line (family A, from 1.3 m), by 38.1 (n 21) with a nearby cluster of three (B), 15.0 (n 20) with a second group (C), and 13.8 (n 29) with bystanders (D2); an added person in the camera line (E) does not hurt on L1. Only one of the pre-registered failure modes fired (bystanders absorbed behind a line, 99 of 153 relevant variants). A noise model fitted on three models' recorded perception errors reproduces their recorded success within +0.3 (Qwen), +5.4 (GLM) and +6.2 (DeepSeek) points, and does not show crowds amplifying noise. A C5 gate-1 recount on the widened generator gives 92 configurations against 30.
+
+**Files.**
+- `FROZEN.md`, `DEVIATIONS.md`: the protocol written before scoring and the one change made after it.
+- `precheck/`: format and depth checks run before the freeze.
+- `builder/`: the crowd generator (`crowd.py`), base reproduction, variant generation, label checks, byte-identity proof, self-test, contact sheets.
+- `build/`: manifests, label counts, per-seed base and variant tables, `byte_identity.txt`, `self_test.txt`, `readings.txt`.
+- `scenes/seed0..2/`: the 229 kept scenes (`scene.json` only; the rendered `rgb.png` and `depth.npy` are not in the repository).
+- `score/`: arms, noise model, validation, noisy arm, tables (`tables.txt`, `summary.json`), C5 recount, and the row files `rows_*.jsonl`.
+- `verify_i06_build/`, `verify_i06_score/`: independent re-implementations and their outputs in `out/`.
+- `facing-gate-repair/`: a follow-up experiment (own README).
+
+**Reproduce.** Run from the repository root with `PYTHONPATH=src`.
+- Scoring: `bash results/still-scenes/crowds/score/run_arms.sh`, `run_validate.sh MODEL...`, `run_noisy.sh MODEL`, then `python results/still-scenes/crowds/score/tables.py`.
+- Build: `python results/still-scenes/crowds/builder/reproduce_bases.py SEED`, `generate_variants.py SEED`, `label_checks.py rows SEED`, then `label_checks.py summary`.
+- The step-0 harness is in this repository (`results/still-scenes/analysis-scripts/harness/`); the development scenes it reads come from `data/dev_scenes/` (release dev-scenes-v1). The rendered images of the crowd variants (`rgb.png`, `depth.npy` in `scenes/`) are not in the repository: regenerate them with `builder/reproduce_bases.py` and `builder/generate_variants.py`, which takes more than 10 minutes per seed (the script resumes from the manifest if stopped).
+- The scoring and re-check scripts check the sha256 of the original `FROZEN.md` and `src/sgi/solver.py`; the files in this repository no longer match those pinned values, so they stop at the assertion (the pinned values are left as they are).
+- `builder/reproduce_bases.py SEED` needs only the package generator. Run with its output redirected to a scratch folder, it reproduces `build/bases_seed{0,1,2}.jsonl` and every base `scene.json` (and the recorded file hashes) exactly.
+- Run here unchanged: `precheck/depth_check.py`, `precheck/format_check.py`, `builder/byte_identity.py compare` (after regenerating the scene images), `builder/base_check.py` (differs from the stored text only in the printed scene folders), `verify_i06_build/v_summary.py`, `v_selftest.py`, `v_compare_bases.py` and `builder/self_test.py` (the last two need the regenerated base layouts).
+- What does run here: `python results/still-scenes/crowds/verify_i06_score/v_compare_noise.py qwen glm dsv` (same text as `verify_i06_score/out/compare_validation_lead.txt`) and `v_boot30.py`.
+
+**Data.** `data/dev_scenes/` (release dev-scenes-v1) for the development scenes; `results/logs/research-data.tar.gz` (row and work files beside the notes) and `results/logs/still-runs.tar.gz` (the `runs/` folders that the noise fit reads). The seed folders and rendered images are not part of either.
+
+## Notes
+
 # Phase 2, step 4: I06 first probe, crowd variants with zero-call solver curves (2026-10-18)
 
 Plan step 4 (REPORT section 6; REPORT I06, "First probe"): crowd variants of the development layouts of seeds 0–2, scored with zero calls. The solver is run with oracle people and reference constraints under two labels (L1, L2), then with people simulated from a noise model fitted on development runs. The page also recounts C5's gate 1 on the widened generator. Its outputs are solver-degradation curves, not RQ2 curves: R and E were not run, and C with real VLM perception needs the VLM crowd run (Programme B step 8).

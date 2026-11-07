@@ -1,3 +1,23 @@
+# Confidence signal from perception disagreement
+
+**Question.** Does disagreement between the model's people answer and a frozen depth detector's people predict when the people-plus-constraints-plus-solver method (C) fails, well enough to abstain or ask for help?
+
+**Result.** Pre-registered verdict "neither". The judged signal P1 (re-solve shift under the detector's people) has AUROC 0.645 (old Qwen), 0.738 (old GLM) and 0.688 (old DeepSeek), pooled 0.708 [0.564, 0.828], against 0.595 for the solver's flags; one cell of three reaches 0.70 where two were needed. Reported only: detector disagreement S2 pooled 0.741, trial disagreement S4 0.774 (costs two extra runs), zero-call combination S6z 0.752.
+
+**Files.**
+- `FROZEN.md`, `DEVIATIONS.md`, `DEVIATIONS_2.md`: the plan and the two later notes.
+- `code/confidence.py` (pass 1: signals and checks R1-R7), `code/tables.py` (pass 2: all tables).
+- `rows_<cell>.jsonl` (11 cells), `checks.txt`, `tables.txt`, `summary.json`: outputs.
+- `prefreeze/`: the one format check made before the plan was fixed.
+- `followup/`: exposure check (`exposure.py`, `exposure.txt`) with its independent re-check.
+- `verify/`: independent re-implementation (`v_pass1.py`, `v_tables.py`, `v_compare.py`, `v_break.py`, `v_exposure.py`) and outputs.
+
+**Reproduce.** From the repository root, with `PYTHONPATH=src`: `python results/still-scenes/confidence-signal/code/tables.py` rebuilds `tables.txt` and `summary.json` from the stored rows (it checks the hash of `FROZEN.md` and needs the `*.sha256` files, which are not in this repository). `followup/exposure.py` and the `verify/` comparisons (`v_tables.py`, `v_compare.py`, `v_break.py`, `v_exposure.py`) run from stored rows. Pass 1 (`code/confidence.py`, `verify/v_pass1.py`) reads runs and scenes through the step-0 harness (`results/still-scenes/analysis-scripts/harness/`, `data/dev_scenes/`) and then checks the hash files of the earlier A1/A2 people-finder step, which are not in this repository, so it stops there. `prefreeze/format_check.py` runs here.
+
+**Data.** `results/logs/research-data.tar.gz` (the `rows_*.jsonl`, `summary.json`) and `data/dev_scenes/` (release dev-scenes-v1); inputs come from `../learned-models/soft-density/`, `../metrics-and-statistics/metric-v0/`, `../people-finder/early-detector/phase1c/` and `../replay-harness/repairs/`.
+
+## Notes
+
 # Phase 3: confidence from perception disagreement (2026-10-18)
 
 Phase 1d found that no confidence signal tried so far separates C's failures from its successes. C is the people call plus the constraints call plus the solver. I04's density concentration gave AUROC 0.559, 0.303 and 0.540 on the old-wording realistic cells, and the solver's flags gave 0.435–0.659 (`results/still-scenes/overview/phase-notes/phase1d.md` sections 1 and 5). That page suggested, untested, that a useful signal would have to come from upstream perception uncertainty, not from the solver's keys. This probe tests that suggestion with zero calls. It compares the VLM's people with I09's frozen detector people and asks whether the disagreement predicts when C fails, well enough to abstain or ask for help.

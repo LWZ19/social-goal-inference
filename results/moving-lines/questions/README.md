@@ -1,3 +1,32 @@
+# Open questions on CT2: what carries its gain, and why moving early did not help
+
+**Question.** Post hoc, on the fresh-seed runs: why did moving while thinking (CT2m) not get the robot in line
+sooner, which of CT2's five parts carries its gain over CT, and is that gain an artefact of the scoring?
+
+**Result.** The forward ratchet (taking any goal more than 0.08 m up the line) carries most of CT2's gain: without it
+CT2 keeps +0.007 of +0.084 over CT on Sonnet and +0.015 of +0.078 on DeepSeek, while switching off re-admission and
+the vacated place keeps it all (+0.083, +0.085). The ratchet's gain is a band-edge effect (at a 1.5 m band top CT2
+beats CT by only +0.008 and +0.033), but CT2's lead over R1 holds at every band top with the side check (Sonnet
++0.28 to +0.31). Moving early helps only when the plan's target point predicts the place, which for a line is its back.
+
+**Files.**
+- Frozen post hoc plans: `CT2_NORA_POSTHOC.md`, `CT2_NORV_POSTHOC.md`, `CT2_NONE_RAT_POSTHOC.md`.
+- Q1 (moving early): `ct2m_diag.py`, `ct2m_by_scene.py`, `ct2m_geom.py`, `ct2m_ahead.py`, `ct2_settle.py`, `ct2m_x3.py`.
+- Q2 (what carries the gain): `ct2_attrib.py`, `ct2_attrib2.py`, `ct2_noreadmit_cells.py`; scorers of the frozen
+  ablations `nora_score.py`, `norv_score.py`, `norv_classes.py`, `none_rat_score.py`.
+- Q3 (an interim from a geometry guess): `interim_ceiling.py`.
+- Scoring checks: `ratchet_band.py`, `headline_band.py`.
+- Each script's output is `<script>_out.txt`. The findings in detail follow below.
+
+**Reproduce.** From the repository root, for any script here (no arguments):
+
+    PYTHONPATH=src .venv/bin/python results/moving-lines/questions/nora_score.py
+
+The run folders now hold later episodes too (DeepSeek's bystander scenes and seeds 15-44), so some counts grow on a
+re-run (for example "CT2-nora present in 25/40 cells" against 25/25); on the episodes that existed when each output
+was written, the outputs are the same.
+
+**Data.** `logs/moving-runs.tar.gz` (`results/data/moving/runs/`).
 
 ## Q1: why CT2m did not bring first-in-line earlier
 Scripts: `ct2m_diag.py`, `ct2m_by_scene.py`, `ct2m_geom.py`, `ct2m_ahead.py`, `ct2_settle.py`.

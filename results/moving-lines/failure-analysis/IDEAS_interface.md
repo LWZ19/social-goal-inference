@@ -1,6 +1,6 @@
 # Ideas through the interface lens: what we ask the model, and how its answer binds to geometry
 
-Written 2026-11-02 by a brainstorm agent. No model calls; read-only; seeds 10-12 not opened. All numbers are
+Written 2026-11-02. No model calls; read-only; seeds 10-12 not opened. All numbers are
 post hoc on evaluation episodes (seeds 0-2), so they are leads to confirm on fresh seeds, not results.
 
 **Static check used below ("in line at the frame").** The solved first-frame goal, scored with SCORING.md's in-line

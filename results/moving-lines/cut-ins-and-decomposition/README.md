@@ -1,17 +1,34 @@
-# Audit items 3 and 6: zero-call re-scoring of logged moving-people episodes (6 Nov)
+# Cut-ins and where the updating gain comes from
+
+**Question.** Two re-scorings of logged moving-line runs (audit items 3 and 6, 6 Nov): which part of re-solving
+carries the gain over deciding once (item 3: `CT0`, and the test robots `CTo` and `CTt`), and does `CT2` cause more
+cut-ins once its extra time beside the line is allowed for (item 6)?
+
+**Result.** Item 3, descriptive (development seeds 0-2): telling `CT` the true serving spot (`CTt`) helps DeepSeek
+most (+0.133 primary share, 12/2/1, p 0.013), and re-solving as people move (`CT` over `CT0`) carries Sonnet's gain
+(11/1/3, p 0.006). Item 6: on Sonnet `CT2` has more cut-in samples than `R1` (481 against 162; more in 25 cells,
+fewer in 4), but it also spends far more time beside the line (exposure 3313 against 1182 samples), so its cut-ins
+per exposed second are close to `R1`'s (0.145 against 0.137). The recounts match all four numbers quoted in the
+summaries.
+
+**Files.**
+- `item3_ct0_cto_ctt.py`: item 3, `CT0`, `CTo` and `CTt` on seeds 0-2; output `item3_out.txt`.
+- `item6_cutin_exposure.py`: item 6, cut-ins normalised by exposure; output `item6_out.txt`, and with `--cells`
+  (every cell's counts as well) `item6_cells_out.txt`.
+- The definitions, arms and cells are below.
+
+**Reproduce.** From the repository root:
+`PYTHONPATH=src python results/moving-lines/cut-ins-and-decomposition/item3_ct0_cto_ctt.py > item3_out.txt`;
+`item6_cutin_exposure.py` the same way, with or without `--cells`. All three reproduce their stored outputs exactly.
+
+**Data.** `results/logs/moving-runs.tar.gz` (`runs/` in `results/data/moving/`).
+
+## Notes
 
 Read-only. No model call and no simulator run. Inputs are `results/data/moving/runs/<model>/<scenario>/seed<N>/<arm>/episode.json`
 (91 samples at 1 Hz each). Scoring uses `results/moving-lines/design-and-scoring/summarise_fresh.py`'s `measures` and `sign_p`, imported unchanged.
 
-| File | What |
-|---|---|
-| `item3_ct0_cto_ctt.py` → `item3_out.txt` | Item 3: CT0, CTo and CTt on seeds 0-2 |
-| `item6_cutin_exposure.py` → `item6_out.txt` | Item 6: cut-ins normalised by exposure |
-| `item6_cutin_exposure.py --cells` → `item6_cells_out.txt` | The same, plus every cell's counts |
-
-Run with `.venv/bin/python <script> > <out>`.
-
-## Definitions
+### Definitions
 
 - **Share (frozen, primary):** the share of samples with the logged `in_line` flag (SCORING.md).
 - **Share (strict):** SCORING_STRICT.md, as in `summarise_fresh.in_line(x, "strict")`:
@@ -32,7 +49,7 @@ Run with `.venv/bin/python <script> > <out>`.
     beside it.
   - Cells left out for zero exposure are counted by which arm had none.
 
-## Arms (item 3; `sim/sgi_habitat/experiment_oracle.py` docstring)
+### Arms (item 3; `sim/sgi_habitat/experiment_oracle.py` docstring)
 
 All arms share C1's first answer; only the re-solves differ.
 
@@ -45,7 +62,7 @@ All arms share C1's first answer; only the re-solves differ.
 - **CTt (oracle ceiling, not a method):** CT, with the target point moved to the queue's true counter point (slot 0's
   face point). The model's people and constraints are kept.
 
-## Cells
+### Cells
 
 - **Item 3:**
   - Scenarios: `cafe`, `room_coffee_cart`, `cafe_line2_moving`, `cafe_line6_moving` and `sweet_spot_line2_moving`;

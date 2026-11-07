@@ -42,7 +42,7 @@ capture bars. No school-panel model has run it.
 
     cd results/moving-lines/design-and-scoring
     P=.venv/bin/python
-    F=../fill/x2_bystanders_qwen
+    F=results/moving-lines/bystanders/qwen
     $P run_moving.py --model soclaas_qwen38_low --out runs_x2/soclaas_qwen38_low --workers 2 --port-base 8900 \
       --module sgi_habitat.experiment_oracle --scenarios cafe_line2_bystanders sweet_spot_line2_bystanders \
       --seeds $(seq 15 44) --arms CT2 CT3 Gl > $F/run.log 2>&1

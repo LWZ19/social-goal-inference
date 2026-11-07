@@ -1,9 +1,30 @@
 # Bystanders: post hoc diagnosis (after the frozen judgements; zero calls)
 
-Files:
-- `constraint_cells.py`: the pilot restricted to constraint answers;
+**Question.** After the frozen bystander judgements, where do CT3's gains and its leftover capture come from?
+
+**Result.** The gains track capture: in the confirmation CT3 beats CT2 14/3/9 (+0.045) in the 26 cells where CT2 was
+captured and is level elsewhere (3/3/28). All of CT3's leftover 203 s come from bystanders the model named as
+waiting, where the join gate does not apply; Sonnet's 322 s likewise all come from named bystanders. Dropping a person
+after k missed follows would remove more capture but adds false drops (DeepSeek, k=1: 20 of 96).
+
+**Files.**
+- `constraint_cells.py`: the pilot restricted to constraint answers (`constraint_cells_out.txt`).
 - `confirm_diag.py`: the confirmation's no-answer cells, false drops, where the leftover capture comes from, and wins
-  split by capture.
+  split by capture (`confirm_diag_out.txt`).
+- `sonnet_named_split.py`: Sonnet's capture split by whether the model named the bystander (`sonnet_named_split_out.txt`).
+- `named_kind.py`: which bystander each answer names, lone or pair (`named_kind_out.txt`).
+- `evidence_replay.py`: CT3's capture if a person were dropped after k missed follows (`evidence_replay_out.txt`).
+- `latency_window.py`: whether the line was served while the model was thinking (`latency_window_out.txt`).
+
+**Reproduce.** From the repository root (`B=results/moving-lines/bystanders/post-hoc`, `R=results/data/moving/runs`):
+
+    PYTHONPATH=src .venv/bin/python $B/confirm_diag.py        # likewise constraint_cells.py, named_kind.py, sonnet_named_split.py
+    PYTHONPATH=src .venv/bin/python $B/evidence_replay.py $R/dsv41 $R/sonnet55_low
+    PYTHONPATH=src .venv/bin/python $B/latency_window.py $R/dsv41 $R/sonnet55_low
+
+**Data.** `logs/moving-runs.tar.gz` (`results/data/moving/runs/`).
+
+## Notes
 
 ## Pilot (seeds 10-14)
 

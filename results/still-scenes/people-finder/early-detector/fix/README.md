@@ -1,3 +1,33 @@
+# Early people detector: diagnosis, fix and frozen second confirmation (I09 phase 3)
+
+**Question.** Why does the frozen detector of `../phase1c/` report false people on new realistic layouts, and does a post-processing fix chosen by a rule frozen in advance remove them without losing people?
+
+**Result.**
+- Diagnosis: on new training seeds 110–115 (84 images) the frozen detector finds 226/238 people with 0.202 false people per image, close to the unseen-layout rate of `../phase2/` (0.242). Four causes explain all 17 false people and all 12 misses: occluded staff torsos lifted onto the counter, a duplicate radius that drops line neighbours, staff behind glass that the rendered depth treats as opaque, and small boxes on pictures of people.
+- Fix: the frozen rule chose C07 (head re-lift, 0.30 m duplicate radius, flat test, tiny-box drop). On the held-back seeds 116–119 (56 images) it finds 164/164 with 2 false people (0.036 per image [0.004, 0.129]) against 157/164 and 12 (0.214) for the frozen detector; on the 42 development scenes 118/118 with 0 false. Outcome "confirmed", resting on the held-back seeds, since the development check was not blind.
+- An independent re-computation reproduced every number, and its detector re-run on seed 116 is bit-identical.
+- The second confirmation on unseen layouts is frozen (`CONFIRM2_FROZEN.md`, with `confirm2/DEVIATIONS_1.md`) but was not run.
+
+**Files.**
+- `FIX_PROTOCOL.md`: the candidates, the selection rule and the checks, fixed before any candidate was scored.
+- Diagnosis: `pathguard_fit.py` (the training-seed path guard), `fitlib.py`, `manifest_fit.py`, `sidecar/infer_fit.py`, `score_fit.py`, `diagnose.py`, `whatif.py`, `figs.py`; `DIAGNOSIS.md`, `diagnose_tables.txt`, `whatif.txt`.
+- Fix: `fix/fixlib.py`, `fix/select_candidates.py`, `fix/confirm_chosen.py`; `fix_select.txt`, `fix_confirm.txt`, `fix_tables.txt`, `chosen_fix2.json`, `chosen_fix2_precheck.json`.
+- `fix_posthoc/`: facing of the re-lifted people (post hoc).
+- `verify/`: the independent re-computation (`vlib.py`, `vscore.py` with `v_compare.txt`; `vposthoc.py`, `vmed.py`, `vc2.py`; `sidecar_verify.py`, the seed-116 detector re-run in `raw_seed116/`).
+- `CONFIRM2_FROZEN.md`, `confirm2/DEVIATIONS_1.md`: the frozen second confirmation.
+- Not in this repository: the figures (`figs/`), the `*.sha256` files, the run logs and the `pip freeze` records that the notes below list.
+
+**Reproduce.** From the repository root, with `PYTHONPATH=src`:
+- `python results/still-scenes/people-finder/early-detector/fix/verify/sidecar_verify.py --compare-only` compares the stored seed-116 re-run with `raw_fit/` (14 images, 234 boxes, 1,479 keypoints, 0 differences).
+- Everything else reads the development scenes through the step-0 harness (`results/still-scenes/analysis-scripts/harness/`, with the scenes in `data/dev_scenes/`), but is still blocked here:
+  - `fitlib.py` and `verify/vlib.py` check sha256 pins of the first evaluation's code and data. Several of those files have changed since, so every script that imports them stops at that check.
+  - Scoring also needs the RGB and depth images of seeds 110–119, which are not in this repository.
+  - The sidecars need a GPU and the pinned model snapshots.
+
+**Data.** `results/logs/research-data.tar.gz` (the manifest, raw detector outputs, `*.jsonl` rows and `*.json` summaries beside these notes). The training-seed scene files are in `../../../scene-seeds/phase3/realistic_train/`. The development scenes are in `data/dev_scenes/` (release `dev-scenes-v1`). The first evaluation's code and data come from `../phase1c/`, the scorer from `../../../perception/depth-blob-detector/`.
+
+## Notes
+
 # Phase 3: I09 detector fix and the frozen second confirmation (2026-10-18)
 
 - **Render.** Training seeds 110–119 were rendered as realistic layouts of the same 14 rows.

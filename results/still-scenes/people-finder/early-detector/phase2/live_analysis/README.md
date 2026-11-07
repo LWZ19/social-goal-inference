@@ -1,3 +1,69 @@
+# Live check: the offline analysis and its tests
+
+**Question.** Once the live run exists, what does the frozen reading of `live/FROZEN.md` say? And is the analysis
+correct before any live data are seen?
+
+**Result.** No live run was made, so `analyse.py` has no result.
+- On zero-call inputs, its 25 tests all pass (`test_out/TESTS.json`). These are the driver's dry-run folders and
+  synthetic copies of the recorded runs.
+  - The recorded C copy reads "mixed": GLM 64, DeepSeek 65.
+  - The A2 replay copy reads "consistent": GLM 69, DeepSeek 71.
+  - The boundary and refusal cases behave as frozen.
+- An independent re-check (`verify/`) found the following.
+  - The baselines reproduce: GLM C 64, D 69, P 69; DeepSeek C 65, D 71, P 70.
+  - Its own measures differ from the analysis's in 0 places.
+  - The analysis catches 32 of 32 planted defects, and 33 of 33 on regenerated inputs.
+  - 5 of 5 guard cases refuse.
+
+**Files.**
+- `analyse.py`: the analysis. `before_amend_45b83a6e/analyse.py` is its frozen earlier version, which reads paths
+  relative to its own folder.
+- `make_synthetic.py` writes `synthetic/`, the test inputs. `synthetic_before_amend/` holds the inputs made before the
+  amendment.
+- `run_tests.py` writes `test_out/`, the 25 tests. `test_out_before_amend/` holds the results from before the
+  amendment.
+- `ORDER.txt`: when the files were hashed and re-tested.
+- `verify/`: the independent re-check.
+  - `v_baselines.py` writes `baselines.json`.
+  - `v_measures.py` writes `MEASURES.json` and `measures_out/`.
+  - `v_builder_tests.py` writes `BUILDER_TESTS.json`, `builder_tests_out/` and `guard_copies/`.
+  - `v_regen.py` writes `BUILDER_TESTS_NOW.json`, `builder_tests_now_out/` and `synthetic_now/`.
+  - `v_defects.py` writes `DEFECTS*.json`, `defects*/` and `defects*_out/`.
+  - `VERIFY.json` is the summary.
+- `verify/guard_copies/a2/`, `a2b/`: copies of `phase1c/a2` with one row changed, made by `v_builder_tests.py` for
+  the guard tests. Their `tables.txt` and `summary.json` are copies of phase1c's outputs.
+
+**Reproduce.** Run from the repository root:
+
+```bash
+LA=results/still-scenes/people-finder/early-detector/phase2/live_analysis
+PYTHONPATH=src python $LA/make_synthetic.py
+PYTHONPATH=src python $LA/run_tests.py
+PYTHONPATH=src python $LA/analyse.py --runs results/still-scenes/people-finder/early-detector/phase2/live/runs \
+    --out $LA/result --count-vlm-errors-as-failures
+PYTHONPATH=src python $LA/verify/v_baselines.py        # also v_measures, v_builder_tests, v_regen, v_defects
+```
+
+The step-0 harness is in this repo (`results/still-scenes/analysis-scripts/harness/`), and the development scenes go
+in `data/dev_scenes/`.
+- `verify/v_baselines.py` re-runs here and writes `baselines.json` byte for byte.
+- `analyse.py` stops at `live/FROZEN.sha256`, which was left out. It also checks `ANALYSE.sha256`,
+  `live/BUILD.sha256` and the phase-1c `A2.sha256`, also left out, and the pinned hash of `live/FROZEN.md`, which
+  cleaning changed.
+- `make_synthetic.py` stops at the pinned hash of phase-1c's `eval_people.json`, which cleaning changed (absolute path
+  prefixes were removed). It also reads `live/BUILD.sha256`.
+- `run_tests.py` and the other `verify/` scripts run `analyse.py`. They call `.venv/bin/python` at the repository
+  root.
+
+**Data.**
+- `research-data.tar.gz`: `synthetic*/`, `test_out*/` data files and `verify/`. It also holds the A2 and I01 rows
+  that the analysis reads: `results/still-scenes/people-finder/early-detector/phase1c/a2/rows_old_*.jsonl` and
+  `results/still-scenes/replay-harness/repairs/rows_old_*.jsonl`.
+- `still-runs.tar.gz`: the six recorded runs.
+- The development scenes: `data/dev_scenes/`, from the `dev-scenes-v1` release.
+
+## Notes
+
 # I09 live check: the offline analysis (`live_analysis/`)
 
 `analyse.py` is the analysis that `live/FROZEN.md` sections 5–6 say runs after the live run of arm D-live. It was

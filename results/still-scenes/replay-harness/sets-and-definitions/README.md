@@ -1,3 +1,18 @@
+# Sets and definitions of the replay harness
+
+**Question.** What are the sets, definitions and headline tables the replay analyses share?
+
+**Result.** Three deliverables: solver-alone and people-blind standard-goal rows for six models, every score split into target found and placement given the right target, and R and E marked points replayed through the clearance snap. The old text below holds all tables.
+
+**Files.**
+- `README.md`: this page and the full tables (under Notes)
+
+**Reproduce.** The tables come from `replay-harness/baselines/`, `replay-harness/split/` and `depth-fix/first-check/`. The scripts import the harness in `results/still-scenes/analysis-scripts/harness/` and read the development scenes from `data/dev_scenes/` (release dev-scenes-v1).
+
+**Data.** `results/logs/still-runs.tar.gz` (unpacks to `runs/` at the repo root); development scenes in `data/dev_scenes/` (release dev-scenes-v1).
+
+## Notes
+
 
 1. The solver-alone row and the people-blind standard-goal row, for all six models.
 2. Every score split into "target found" and "placement given the right target".

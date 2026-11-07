@@ -1,3 +1,52 @@
+# Early people detector, phase 2: unseen-layout confirmation and live-check build
+
+**Question.** Does the frozen phase-1c people detector keep its accuracy on realistic layouts it has never seen, and
+can the constraints call work from the detector's numbered people instead of a VLM people call?
+
+**Result.**
+- **Unseen-layout confirmation** (`confirm/`, 182 new layouts in seeds 200–212): **neither** under the frozen rule.
+  Six of seven success bars were met: recall 510/520 = 0.981, line members 207/208, median position error 0.061 m,
+  non-profile facing median 10.3 deg. False people were 44/182 = 0.242 per image against a bar of 0.10. No kill rule
+  fired. An independent re-implementation (`verify_i09_confirm/`) matched the detector pass bit for bit on 182 of 182
+  images, and it matched every score.
+- **Live check** (`live/`, `live_analysis/`): the driver, its zero-call dry runs (17 of 17 checks pass) and the
+  offline analysis (25 of 25 tests pass) were built. A count-only pass found exactly the expected 48 GLM and 54
+  DeepSeek constraints calls, and no plan, locate or context miss. The live run itself was not made, so there is no
+  live-check result.
+
+**Files.**
+- `confirm/`: the confirmation (protocol, scripts, tables). See its README.
+- `verify_i09_confirm/`: an independent re-implementation of the confirmation.
+  - Scripts: `v_manifest.py`, `sidecar/v_infer.py`, `v_compare_raw.py`, `v_c2.py`, `v_pipe.py`, `v_score.py`,
+    `v_posthoc.py`, and its own path guard `v_guard.py`.
+  - Outputs: `v_compare_raw.txt`, `v_c2.txt`, `v_tables.txt`, `v_posthoc.txt`, and the data files `raw/`,
+    `v_images.json`, `v_people_rows.jsonl`, `v_summary.json`.
+- `live/`: the live-check protocol, driver and dry runs. See its README.
+- `live_analysis/`: the offline analysis of the live check and its tests. See its README.
+- `verify_i09_live_build/`, `verify_i09_live_fix/`: archived test sandboxes for the driver (git-ignored).
+- The Notes below hold the full write-up of both steps.
+
+**Reproduce.** Run from the repository root with `PYTHONPATH=src`. The commands are in each subfolder's README.
+- The step-0 harness is in this repo (`results/still-scenes/analysis-scripts/harness/`). The development scenes go in
+  `data/dev_scenes/` (release `dev-scenes-v1`).
+- Re-run here with identical output: `live_analysis/verify/v_baselines.py` (`baselines.json`) and the guard-copy
+  `selfcheck.py` files.
+- Most steps still stop at a hash check. They check the original `*.sha256` files, which were left out, or pinned
+  hashes of data and notes that cleaning changed (absolute path prefixes were removed). The pinned values are kept
+  as they were.
+- The confirmation also reads the rendered test scenes in `results/still-scenes/scene-seeds/phase2/realistic/`.
+  Their pictures and depth are not included.
+- The detector passes need a GPU and the model weights. The live run needs the model gateway.
+
+**Data.**
+- `research-data.tar.gz`: the json and jsonl beside the notes (raw detector passes, rows, summaries, manifests,
+  synthetic test inputs, count-only reports).
+- `still-runs.tar.gz`: the six recorded runs that the live check replays (in `runs/`).
+- The development scenes: `data/dev_scenes/`, from the `dev-scenes-v1` release.
+- `bulk.tar.gz`: the test sandboxes and the package copy `live/src_202c165/`.
+
+## Notes
+
 # Phase 2: I09 unseen-layout confirmation and live-check build (2026-10-18)
 
 - **(A) Unseen-layout confirmation.** A1's frozen detector, with nothing re-tuned, scored once on realistic layouts it has never seen (seeds 200–212). This step is complete.

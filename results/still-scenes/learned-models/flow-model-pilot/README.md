@@ -1,4 +1,24 @@
-# Phase 2: the C5 (I52) flow-matching pilot, exploratory results (2026-10-18)
+# Flow-matching pilot (C5)
+
+**Question.** Can a small flow-matching sampler, trained on generated scenes, propose acceptable places as well as the hand-written solver?
+
+**Result.** No: the pilot is killed under its own criteria. On the 549 development goal-step records it gets 312 top-1 (56.8 percent) against the recorded solver's 417 (76.0 percent); on in-distribution validation seeds it gets 500 of 520 (96.2 percent). It does not transfer to an unseen situation (left-out lines 36 of 140, groups 0 of 100, audiences 0 of 60).
+
+**Files.**
+- `FROZEN.md`, `DEVIATIONS.md`, `*.sha256` : the frozen protocol and hashes.
+- `code/` : data building (`build_seeds.py`, `assemble.py`, `build_dev.py`), the torch sampler (`flow.py`, `run_train.sh`), scoring (`score_val.py`, `score_dev.py`), `tables.py`, `figs.py`.
+- `tables.txt`, `summary.json`, `rows_*.jsonl`, `samples/`, `models/`, `data/` : results, samples, checkpoints metadata and inputs.
+- `posthoc/` : by-row and line-geometry analyses written after the tables.
+- `prefreeze/` : the format check before the freeze.
+- `verify/` : an independent rebuild, retrain and re-score.
+
+**Reproduce.** From the repo root: build the data with `code/build_seeds.py K` and `code/assemble.py`, train with `code/run_train.sh` (GPU), then `code/score_val.py`, `code/score_dev.py`, `code/tables.py`. Uses the step-0 replay harness in `results/still-scenes/analysis-scripts/harness/` and the development scenes in `data/dev_scenes/` (release dev-scenes-v1). Training also needs a GPU and the torch environment. `posthoc/by_row.py` was re-run and its stored output is identical; `code/tables.py` runs and reproduces `summary.json` (its `tables.txt` has a few more lines than the stored one). The other steps need `data/*.npz`, samples, checkpoints or fresh-seed images that are not stored here, or take more than 10 minutes.
+
+**Data.** `logs/still-runs.tar.gz`, `logs/bulk.tar.gz` (seeds and large arrays), plus the seed scenes in `results/still-scenes/scene-seeds/phase2/`.
+
+## Notes
+
+### Phase 2: the C5 (I52) flow-matching pilot, exploratory results (2026-10-18)
 
 How it was made:
 - **Protocol.** The pilot lead wrote `FROZEN.md` (sha256 `a60f1d62…767f`) at 01:18:12 and hashed it at 01:18:17, after a format check (`prefreeze/`: 16 scenes of seed 100 and the first goal-step record of 4 primary runs; no metric) and before any raster, label or model existed.
