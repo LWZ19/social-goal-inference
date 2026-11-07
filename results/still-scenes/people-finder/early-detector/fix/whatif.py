@@ -38,7 +38,7 @@ import fitlib as F  # noqa: E402
 from sgi.geometry import _depth_at, lift  # noqa: E402
 
 P, PS, C, H = F.P, F.PS, F.C, F.H
-sys.path.insert(0, str(F.RESEARCH / "phase1b/i03/stageA"))
+sys.path.insert(0, str(F.I03 / "stageA"))
 import fitdata as FD  # noqa: E402
 
 HEAD = (0, 1, 2, 3, 4)

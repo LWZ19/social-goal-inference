@@ -1,11 +1,12 @@
 """Item 11 (I11_FROZEN.md): CT3F against CT2 (and CT3, reported) on a fresh layout range, DeepSeek. Zero calls;
 read-only.
 
-    .venv/bin/python fill/i11_ct3f/i11_score.py SELECTION_JSON RUN_ROOT [RUN_ROOT ...]
-    (paths relative to moving/; e.g. sweep/i11_selection.json runs_i11/dsv41)
+    .venv/bin/python results/moving-lines/best-version-new-layouts/i11_score.py SELECTION_JSON RUN_ROOT [RUN_ROOT ...]
+    (SELECTION_JSON relative to results/moving-lines/, RUN_ROOT relative to results/data/moving/;
+     e.g. test-layouts/i11_selection.json runs_i11/dsv41)
 
 Measure (as the confirmatory test, CONFIRM_CT4PJ.md): strict share in line from the first service after delivery,
-sweep/score_sweep.py's episode_scores()["after_service_strict"]. Ties |d| < 0.01. Exact two-sided sign test over
+test-layouts/score_sweep.py's episode_scores()["after_service_strict"]. Ties |d| < 0.01. Exact two-sided sign test over
 layouts with both values; paired-t one-sided 95% lower bound reported. Whole-episode strict share and cut-ins are
 reported.
 """
@@ -15,10 +16,12 @@ import statistics
 import sys
 from pathlib import Path
 
-PUSH = Path(__file__).resolve().parents[2]
-MOVING = PUSH / "moving"
-sys.path.insert(0, str(MOVING))
-sys.path.insert(0, str(MOVING / "sweep"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+MOVING = paths.MOVING_RUNS                 # run folders, e.g. runs_i11/dsv41
+sys.path.insert(0, str(paths.DESIGN))
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
 from score_sweep import episode_scores  # noqa: E402
 from summarise_fresh import measures, sign_p  # noqa: E402
 
@@ -59,7 +62,7 @@ def compare(sc, sel, a, b, key):
 
 
 def main():
-    sel = json.loads((MOVING / sys.argv[1]).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sys.argv[1]).read_text())["layouts"]
     print(f"# Item 11: CT3F against CT2 ({sys.argv[1]})")
     for root in sys.argv[2:]:
         sc = score(root, sel)

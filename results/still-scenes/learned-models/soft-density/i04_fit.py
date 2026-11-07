@@ -20,7 +20,7 @@ import time
 
 import numpy as np
 
-HERE = 'results/2026-10-17-beyond-vlm/phase1d/i04'
+HERE = 'results/still-scenes/learned-models/soft-density'
 PRIMARY = ['old_qwen', 'old_glm', 'old_deepseek', 'watch_qwen', 'watch_glm', 'watch_deepseek']
 GAMMAS = (1, 3, 10, 30)
 TS = np.geomspace(0.005, 5, 25)

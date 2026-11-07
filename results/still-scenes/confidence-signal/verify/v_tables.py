@@ -18,7 +18,12 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 CONF = HERE.parent
-RD = CONF.parents[1]
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
+I14D = RD / "metrics-and-statistics" / "metric-v0"
+I04D = RD / "learned-models" / "soft-density"
 assert hashlib.sha256((CONF / "FROZEN.md").read_bytes()).hexdigest() == \
     "2a3a890a3b23ff466e8b72c63e6dbef9143d7738f68badc34a4fad6a17ccb4b3"
 INF = float("inf")
@@ -38,13 +43,13 @@ def load():
     for g in ("oldwatch", "s23"):
         rows += [json.loads(line) for line in open(HERE / f"vrows_{g}.jsonl")]
     i04 = {}
-    for p in sorted((RD / "phase1d" / "i04").glob("rows_*.jsonl")):
+    for p in sorted(I04D.glob("rows_*.jsonl")):
         for line in open(p):
             r = json.loads(line)
             i04[r["key"]] = r
     i14 = {}
     for name in ("rows_oldwatch.jsonl", "rows_new.jsonl"):
-        for line in open(RD / "phase1" / "i14_v0" / name):
+        for line in open(I14D / name):
             r = json.loads(line)
             if r["stage"] == "s21":
                 continue

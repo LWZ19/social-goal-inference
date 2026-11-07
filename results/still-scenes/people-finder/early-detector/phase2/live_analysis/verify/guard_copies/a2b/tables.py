@@ -8,8 +8,10 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-RD = HERE.parents[2]
-I01 = RD / "phase1" / "i01_repairs"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+I01 = paths.STILL / "replay-harness" / "repairs"
 MODELS = {"old": ["qwen38_low", "glm53", "dsv41"],
           "new": ["qwen38_low", "glm53", "dsv41", "haiku55", "sonnet55_low", "gemini38_low"],
           "ph": ["qwen38_low", "glm53", "dsv41"]}

@@ -13,10 +13,12 @@ import time
 import traceback
 from pathlib import Path
 
-RD = Path('results/2026-10-17-beyond-vlm')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(RD / 'phase1c/i09/a2'))
+sys.path.insert(0, str(RD / 'people-finder/early-detector/phase1c/a2'))
 import replay_d as A2  # noqa: E402  (unchanged; it imports repairs as R and the harness as H)
 R = A2.R
 H = A2.H
@@ -102,7 +104,7 @@ def solve(rec, rule, people=None, constraints=None):
 
 
 def main(cells):
-    assert hashlib.sha256((RD / 'phase2/i06_repair/FROZEN.md').read_bytes()).hexdigest() == FROZEN_SHA
+    assert hashlib.sha256((RD / 'crowds/facing-gate-repair/FROZEN.md').read_bytes()).hexdigest() == FROZEN_SHA
     assert hashlib.sha256(Path(V.S.__file__).read_bytes()).hexdigest() == SOLVER_SHA
     hashes = A2.verify_hashes()
     print('replay_d hashes ok', hashes, flush=True)

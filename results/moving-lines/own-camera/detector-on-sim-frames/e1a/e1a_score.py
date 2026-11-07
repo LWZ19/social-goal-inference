@@ -16,8 +16,11 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-RD = Path('results/2026-10-17-beyond-vlm')
-SIM = Path('.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/sim_bench/frozen')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+A1 = paths.STILL / 'people-finder/early-detector/phase1c/a1'                  # A1's frozen people pipeline
+SIM = paths.REPO / '.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/sim_bench/frozen'   # not in this repository
 sys.dont_write_bytecode = True
 
 
@@ -30,8 +33,8 @@ def load(name, path):
 
 
 def main():
-    P = load('a1pipeline', RD / 'phase1c/i09/a1/pipeline.py')
-    setting = json.loads((RD / 'phase1c/i09/a1/chosen.json').read_text())
+    P = load('a1pipeline', A1 / 'pipeline.py')
+    setting = json.loads((A1 / 'chosen.json').read_text())
     s = setting.get('setting', setting)
     from sgi.geometry import Camera
     from sgi.geometry import project

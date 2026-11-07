@@ -31,14 +31,14 @@ import time
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi import solver  # noqa: E402
 from sgi.geometry import project, to_robot_xy, wrap_angle  # noqa: E402
 from sgi.stages.goal import _poses  # noqa: E402
 from sgi.types import DetectedPerson  # noqa: E402
 
-HERE = 'results/2026-10-17-beyond-vlm/rerun/snap'
+HERE = 'results/still-scenes/depth-fix/first-check'
 MODELS = [('qwen38_low', 's21'), ('glm53', 's23'), ('dsv41', 's23'), ('haiku55', 's23'), ('sonnet55_low', 's23'),
           ('gemini38_low', 's23')]
 ARMS = ('real', 'staffed', 'plain')

@@ -21,22 +21,25 @@ import statistics  # noqa: E402
 import time  # noqa: E402
 from pathlib import Path  # noqa: E402
 
-HERE = Path(__file__).resolve().parent                     # phase2/i09/confirm
-RESEARCH = Path("results/2026-10-17-beyond-vlm")
-WORKTREE = Path(".-scenes")
-assert HERE == RESEARCH / "phase2/i09/confirm", HERE
-A1 = RESEARCH / "phase1c/i09/a1"
-SEEDS = RESEARCH / "phase2/seeds/realistic"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+HERE = Path(__file__).resolve().parent                     # early-detector/phase2/confirm
+RESEARCH = paths.STILL                                     # results/still-scenes
+WORKTREE = paths.REPO                                      # the repository root
+assert HERE == RESEARCH / "people-finder/early-detector/phase2/confirm", HERE
+A1 = RESEARCH / "people-finder/early-detector/phase1c/a1"
+SEEDS = RESEARCH / "scene-seeds/phase2/realistic"
 
 PINNED = {   # FROZEN.md section 3
     A1 / "pipeline.py": "4826be88d6939f3f5e4d14375a2fc9698abd94973ca46243d6697e263e5d063a",
     A1 / "common.py": "cdc33d742f6db5d09c3ad9a4557c1210ef10f8909484cee101ce983f9f8b2f53",
-    RESEARCH / "phase1b/i03/people_scorer.py": "e12776eaddac1de0af75b58f8a272cd0a13332596da626bcc81b085f5900d685",
+    RESEARCH / "perception/depth-blob-detector/people_scorer.py": "e12776eaddac1de0af75b58f8a272cd0a13332596da626bcc81b085f5900d685",
     A1 / "sidecar/infer.py": "bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484",
     A1 / "chosen.json": "19b1e16340d810e75f8f772eeeabeaf4b788e09614e74d78d3afc206531119ff",
     A1 / "chosen_fix.json": "fe8177165773f7208d417227c358adae7d04326bd29cb6c75d73ed87b3f83f52",
     A1 / "ADDENDUM_FIX.md": "3a7d185526e3d9801bd2adcdaf529bfbe744c1a636dc8e03d0f53de45d2e208c",
-    RESEARCH / "phase1c/i09/FROZEN.md": "f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15",
+    RESEARCH / "people-finder/early-detector/phase1c/FROZEN.md": "f315e96c1145ad9f2c86128d16711bb5305690d99f5d8513c0177290c474df15",
     WORKTREE / "configs/default.yaml": "c651f4c484fff15d33290e13f28bc53c9221c8edd79c0b7a24f24a128098b4fc",
 }
 DEV_ROWS = {  # FROZEN.md section 7 (as in a1/EVAL.sha256)
@@ -100,8 +103,8 @@ import research_harness as H  # noqa: E402
 from sgi.geometry import in_image, project  # noqa: E402
 
 assert Path(C.__file__).resolve() == A1 / "common.py" and Path(P.__file__).resolve() == A1 / "pipeline.py"
-assert Path(PS.__file__).resolve() == RESEARCH / "phase1b/i03/people_scorer.py"
-assert Path(H.__file__).resolve() == WORKTREE / "docs/model_notes/tools/research_harness.py"
+assert Path(PS.__file__).resolve() == RESEARCH / "perception/depth-blob-detector/people_scorer.py"
+assert Path(H.__file__).resolve() == WORKTREE / "results/still-scenes/analysis-scripts/harness/research_harness.py"
 
 
 def frozen_setting():

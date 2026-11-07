@@ -1,6 +1,6 @@
 """Check the powering path of kde_v.Model.logs against one exp per config (all 16 grid configs, 40 points)."""
 import sys
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-gates/verify')
 import numpy as np
 import kde_v as K
 fresh = K.load('fresh')

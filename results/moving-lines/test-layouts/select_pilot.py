@@ -15,13 +15,16 @@ Writes sim/scenarios/pilot3/<name>.yaml (the candidate plus its flags) and pilot
 """
 import hashlib
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 
 import yaml
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[4]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+ROOT = paths.REPO
 OUT = ROOT / "sim" / "scenarios" / "pilot3"
 CAND = HERE / "pilot_candidates"
 QUOTA = {"ours": 16, "chain": 4, "mixed": 2, "easy": 2}

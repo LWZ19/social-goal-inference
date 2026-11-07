@@ -1,10 +1,10 @@
 """Verifier: fresh seeds hold only seeds 100-109, 26 scenes each, and no held-out situation in any episode."""
 import collections, json, sys
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.config import load_config
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 cfg = load_config()
 held = set(cfg.held_out_situations)
 print("held_out_situations", sorted(held), "dev", sorted(cfg.dev_situations))

@@ -1,5 +1,5 @@
 """Independent verifier for I03 Stage B: tables and criteria from my own rows (v_rows_*.jsonl), FROZEN.md section 8.
-Reads phase1/i01_repairs/rows_{old,new}_*.jsonl for I01's P / R3 / R4 and the pre-registered line-failure sets.
+Reads replay-harness/repairs/rows_{old,new}_*.jsonl for I01's P / R3 / R4 and the pre-registered line-failure sets.
 Writes v_tables.txt and v_summary.json. No model, no network.
 """
 from __future__ import annotations
@@ -10,8 +10,10 @@ import statistics
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-RD = HERE.parents[2]
-I01 = RD / "phase1" / "i01_repairs"
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+I01 = paths.STILL / "replay-harness" / "repairs"
 ARMS = ("Badd", "Bprune", "Breloc", "BrelocP")
 MODELS = {"old": ["qwen38_low", "glm53", "dsv41"],
           "new": ["qwen38_low", "glm53", "dsv41", "haiku55", "sonnet55_low", "gemini38_low"],

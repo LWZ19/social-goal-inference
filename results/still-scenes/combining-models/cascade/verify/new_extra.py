@@ -1,8 +1,8 @@
 import sys, io, contextlib
 from collections import Counter
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/cascade/verify')
+sys.path.insert(0, 'results/still-scenes/combining-models/cascade/verify')
 import verify as V
 OUT=[]
 def p(*a):
@@ -36,4 +36,4 @@ for nm,Q in [('NEW-1 Q21',Q21),('NEW-2 S23',S23),('NEW-3 M23',M23)]:
         V.analyse(G23,Q,nm,do_replay=True)
     for line in V.OUT:
         if line.startswith('replay') or line.startswith('plan-reuse'): p(nm,'|',line)
-open('results/2026-10-17-beyond-vlm/rerun/cascade/verify/new_extra_out.txt','w').write('\n'.join(OUT)+'\n')
+open('results/still-scenes/combining-models/cascade/verify/new_extra_out.txt','w').write('\n'.join(OUT)+'\n')

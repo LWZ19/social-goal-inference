@@ -486,7 +486,7 @@ def main():
     # I01 cross-check of R5 on the realistic arms
     i01 = {}
     for key, fname in (('qwen', 'qwen38_low'), ('glm', 'glm53'), ('dsv', 'dsv41')):
-        p = L.RES / 'phase1/i01_repairs' / f'rows_old_{fname}.jsonl'
+        p = L.RES / 'replay-harness/repairs' / f'rows_old_{fname}.jsonl'
         for l in p.read_text().splitlines():
             if l:
                 r = json.loads(l)

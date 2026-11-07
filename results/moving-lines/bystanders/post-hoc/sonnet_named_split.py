@@ -3,9 +3,12 @@ bystander? Per cell: named bystanders (CT2's answer), capture by arm, and for CT
 was a named bystander or an un-named one (gate open)."""
 import sys
 from collections import defaultdict
-sys.path.insert(0, 'results/2026-11-01-push/moving')
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+sys.path.insert(0, str(Path(__file__).resolve().parents[1])); sys.path.insert(0, str(paths.DESIGN))
 from bystanders_score import load, cells, capture, named_bystanders, measures, BYS
-by = cells([e for e in load(['runs/sonnet55_low'], set(BYS), set(range(10, 20))) if e['label'].startswith('claude_sonnet')])
+by = cells([e for e in load([paths.MOVING_RUNS / 'runs/sonnet55_low'], set(BYS), set(range(10, 20))) if e['label'].startswith('claude_sonnet')])
 groups = defaultdict(lambda: defaultdict(float))
 cause = defaultdict(float)
 for k, v in sorted(by.items()):

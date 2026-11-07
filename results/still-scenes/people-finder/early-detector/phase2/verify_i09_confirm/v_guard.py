@@ -1,14 +1,19 @@
 """Verifier's own test-set path guard (standard library only; loaded by path in both environments).
 
 check(path): the path, as written (normalised) and resolved, must be absolute, lie under
-<research>/phase2/seeds/realistic/seed<k>/eval/<scene>/... with 200 <= k <= 219 and exactly one seed<k> component,
-and contain none of the banned substrings (case ignored).
+<results>/still-scenes/scene-seeds/phase2/realistic/seed<k>/eval/<scene>/... with 200 <= k <= 219 and exactly one
+seed<k> component, and contain none of the banned substrings (case ignored).
 """
 import os
 import re
+import sys
+from pathlib import Path
 
-RESEARCH = "results/2026-10-17-beyond-vlm"
-SEEDS_ROOT = RESEARCH + "/phase2/seeds/realistic"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+RESEARCH = str(paths.STILL)                        # absolute results/still-scenes
+SEEDS_ROOT = RESEARCH + "/scene-seeds/phase2/realistic"
 BANNED = ("keep/heldout", "s18", "s20_held", "eval_16", "eval_17", "eval_18", "eval_19", "group_photo", "lift_wait",
           "heldout", "held_out", "/.env", ".cache")
 _SEED = re.compile(r"seed(\d+)")

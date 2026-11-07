@@ -1,7 +1,7 @@
 """Zero calls. SNAP_AMENDMENT_1's scene set, picked mechanically from layouts_v2.csv (scan_v2.py), written to
 selected_v2.csv for render_subset_v2.py.
 
-    PYTHONPATH= .venv/bin/python results/2026-11-01-push/group4/snapset/select_v2.py [--bearings rule|literal]
+    PYTHONPATH= .venv/bin/python results/still-scenes/group-of-four-case/snapset/select_v2.py [--bearings rule|literal]
 
 --bearings rule (default): the allowed bearings the amendment's rule gives on bearing_sweep_out.txt as printed
   (median in the bin, chest covered in <= 10 of 20). literal: the list the amendment's text gives, with "70 and 75

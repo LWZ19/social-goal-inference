@@ -1,7 +1,7 @@
 """Extra X3 (X3_FROZEN.md): CTe (detector people for the first answer, plus detector tracking) against CTd (the model's
 people call for the first answer, plus detector tracking), run together into runs_x3/<model>. Zero calls; read-only.
 
-    .venv/bin/python fill/x3_cte/x3_score.py [--test]
+    .venv/bin/python results/moving-lines/people-finder/x3_score.py [--test]
     (--test: the earlier Sonnet cells, seeds 10-12, in runs/sonnet55_low)
 """
 import math
@@ -9,7 +9,7 @@ import statistics
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 from summarise_fresh import sign_p  # noqa: E402
 

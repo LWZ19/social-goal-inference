@@ -45,7 +45,7 @@ def render_stopped() -> dict:
                 cmd = Path(f"/proc/{pid}/cmdline").read_bytes().replace(b"\0", b" ").decode(errors="replace")
             except OSError:
                 continue
-            if "sgi.synth.realistic.generate" in cmd or ("blender" in cmd and "cs6244_project-scenes" in cmd):
+            if "sgi.synth.realistic.generate" in cmd or ("blender" in cmd and str(CL.WORKTREE) in cmd):
                 running.append(cmd[:200])
     assert not running, f"render processes still running: {running}"
     return stops[-1]

@@ -1,6 +1,6 @@
 """Post-hoc 1 (POSTHOC_1.md): labelled exploratory, DeepSeek sweep logs only. Zero calls.
 
-    python3 ideas2_1b/posthoc/posthoc1.py runs_sweep/dsv41   (from moving/)
+    python3 results/moving-lines/best-version-and-running-guess/posthoc/posthoc1.py runs_sweep/dsv41   (RUN_ROOT relative to results/data/moving/)
 """
 import json
 import sys
@@ -10,14 +10,16 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-MOVING = HERE.parent.parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+MOVING = paths.MOVING_RUNS                # run folders are named relative to it, e.g. "runs_sweep/dsv41"
 ARMS = ("CT2", "CT3", "Gl", "CT3F", "CT4")
 CLASSES = ("right", "vacated", "empty", "bystander", "ex-member", "other non-member", "short, last listed",
            "short, last dropped", "behind robot")
 
 
 def load(root):
-    sel = json.loads((MOVING / "sweep" / "selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "selection.json").read_text())["layouts"]
     eps = {}
     for lay in sel:
         for arm in ARMS:

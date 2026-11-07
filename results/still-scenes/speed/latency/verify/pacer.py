@@ -1,6 +1,6 @@
 """Split record latency_s - sum(call latency_s) into pacer/retry time (latency_total_s - latency_s) and time outside calls."""
 import sys, statistics as st
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 for stage, model in (("s19", "qwen38_low"), ("s19", "glm53"), ("s21", "qwen38_low")):
     pac, out, n = [], [], 0

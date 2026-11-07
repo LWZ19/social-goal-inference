@@ -1,8 +1,8 @@
 #!/bin/bash
 # Arm 4 for one model (all kept scenes, seeds 0-2), then the secondary arm on top-level variants and bases. One worker.
 # Waits for >= 3,000 MiB available before starting (polls every 5 minutes, logged).
-cd results/2026-10-17-beyond-vlm/phase2/i06/score
-PY=.venv/bin/python
+cd "$(dirname "$0")"
+PY=${PY:-python}
 export PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 m=$1
 while [ "$(free -m | awk '/Mem:/{print $7}')" -lt 3000 ]; do echo "$(date) waiting for memory" >> logs/noisy_wait.log; sleep 300; done

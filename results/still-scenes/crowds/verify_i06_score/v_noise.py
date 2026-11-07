@@ -191,10 +191,10 @@ def make_pools(by_model):
 
 
 def fit():
-    spec = importlib.util.spec_from_file_location('people_scorer', V.RES / 'phase1b/i03/people_scorer.py')
+    spec = importlib.util.spec_from_file_location('people_scorer', V.RES / 'perception/depth-blob-detector/people_scorer.py')
     PS = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(PS)
-    vrows = [json.loads(x) for x in (V.RES / 'phase1b/i03/stageA/vlm_rows.jsonl').read_text().splitlines() if x]
+    vrows = [json.loads(x) for x in (V.RES / 'perception/depth-blob-detector/stageA/vlm_rows.jsonl').read_text().splitlines() if x]
     by_model, lines, cross = {}, [], {}
     for key in FIT:
         ans, urows, tally = collect(key)

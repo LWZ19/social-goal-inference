@@ -1,7 +1,7 @@
 #!/bin/bash
 # R0 passes of arm 2 (all settings) and arm 1b (3 models x 3 seeds), copy check active. Two workers at most.
-cd results/2026-10-17-beyond-vlm/phase2/i06_repair/code
-PY=.venv/bin/python
+cd "$(dirname "$0")"
+PY=${PY:-python}
 export PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 L=../logs
 free -m | head -2 > $L/r0_rest_free.log

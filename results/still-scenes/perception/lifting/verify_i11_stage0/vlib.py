@@ -21,24 +21,27 @@ os.environ.setdefault('OMP_NUM_THREADS', '2')
 os.environ.setdefault('OPENBLAS_NUM_THREADS', '2')
 os.environ.setdefault('MKL_NUM_THREADS', '2')
 
-WT = Path('.-scenes')
-RD = WT / 'results/2026-10-17-beyond-vlm'
-OUT = RD / 'phase1b/i11/verify_i11_stage0'
-sys.path.insert(0, str(WT / 'docs/model_notes/tools'))
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+WT = paths.REPO
+RD = paths.STILL / 'perception'                  # holds lifting/ and lifting-rerun/
+OUT = RD / 'lifting/verify_i11_stage0'
+sys.path.insert(0, str(WT / 'results/still-scenes/analysis-scripts/harness'))
 import research_harness as H  # noqa: E402
 from sgi.evaluate import match_target  # noqa: E402
 from sgi.geometry import pixel_to_point  # noqa: E402
 from sgi.types import GroundedTarget, Point  # noqa: E402
 
 PINS = {
-    RD / 'phase1b/i11/FROZEN.md': '11f7b32746c7fc0be414883b430d59ddef98d2388fd89e082e40361b637a9165',
+    RD / 'lifting/FROZEN.md': '11f7b32746c7fc0be414883b430d59ddef98d2388fd89e082e40361b637a9165',
     WT / 'src/sgi/evaluate.py': '198f11ae6adf6e8a7eda4bb2f8c78f982baaf38f15cbe6f8ff6276eb66086ca1',
     WT / 'src/sgi/geometry.py': '99af62055b6998faafbf6748b7eece13adb427227c71821b5190fdcdbd4b4db2',
     WT / 'src/sgi/stages/goal.py': 'edce50f09990b80e5413c41caf19b543747f33a912e6e14c93aed5db1f7ba600',
-    WT / 'docs/model_notes/tools/research_harness.py': '391483778ec1c5a232909292862926724a6580fc5f9c307b1f3f9c789cee455c',
-    WT / 'docs/model_notes/tools/replay_solver.py': 'eed1dcc1bb0287208e98a4b150236486b7c23d12613859b1dc92890b7d3af243',
-    RD / 'rerun/lifting/lifting.py': '10ec43fe1871ab89f749dfa3991498c03c856de9b125eeddcf9561ee9c80fe63',
-    RD / 'rerun/lifting/frontsnap.py': 'a45aae92673562fab43fd2f4dee9cecfac5c3b0b214fe641254a24d358671307',
+    WT / 'results/still-scenes/analysis-scripts/harness/research_harness.py': '391483778ec1c5a232909292862926724a6580fc5f9c307b1f3f9c789cee455c',
+    WT / 'results/still-scenes/analysis-scripts/harness/replay_solver.py': 'eed1dcc1bb0287208e98a4b150236486b7c23d12613859b1dc92890b7d3af243',
+    RD / 'lifting-rerun/lifting.py': '10ec43fe1871ab89f749dfa3991498c03c856de9b125eeddcf9561ee9c80fe63',
+    RD / 'lifting-rerun/frontsnap.py': 'a45aae92673562fab43fd2f4dee9cecfac5c3b0b214fe641254a24d358671307',
 }
 
 # constants from FROZEN.md

@@ -1,6 +1,6 @@
 """M3 variant: the start taken at the camera's floor position (T_world_camera x, y) instead of observation.robot."""
 import sys, collections, math
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.polygons import point_in_polygon
 from sgi.geometry import to_world_xy

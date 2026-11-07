@@ -14,7 +14,7 @@ import time
 import numpy as np
 import torch
 
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase2/flow_pilot/verify')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-pilot/verify')
 import v_sidecar as S  # noqa: E402  (my own sidecar module: model class, guards, GPU gate)
 
 

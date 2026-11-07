@@ -1,5 +1,5 @@
 import sys, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -14,4 +14,4 @@ def rtgs(r): return r.solver_step and bool(r.score.get('target_correct'))
 s8 = list(H.records('s8_convlm_qwen38'))
 p('s8 t0 rtgs', sum(rtgs(r) for r in s8 if r.trial==0), 'succ', sum(rtgs(r) and r.score['success'] for r in s8 if r.trial==0))
 p('unmatched none dedup (s8 only):', sum(rtgs(r) and r.score['success'] for r in s8), '/', sum(rtgs(r) for r in s8))
-open('results/2026-10-17-beyond-vlm/rerun/thinking/verify/v3_cfg.txt','w').write(OUT.getvalue())
+open('results/still-scenes/thinking-levels/verify/v3_cfg.txt','w').write(OUT.getvalue())

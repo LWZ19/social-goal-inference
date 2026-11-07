@@ -216,7 +216,7 @@ def fit():
         all_answers[key] = answers
         i03_check[key] = (i03_matched, i03_visible, dict(counts))
     # I03 cross-check against phase1b/i03/stageA/vlm_rows.jsonl (same runs)
-    vrows = [json.loads(l) for l in (L.RES / 'phase1b/i03/stageA/vlm_rows.jsonl').read_text().splitlines() if l]
+    vrows = [json.loads(l) for l in (L.RES / 'perception/depth-blob-detector/stageA/vlm_rows.jsonl').read_text().splitlines() if l]
     say('Cross-check (FROZEN section 8): recall computed I03\'s way (one answer per (run, scene, trial) = union of the '
         'records\' people lists, all visible people, staff included) against vlm_rows.jsonl\'s pooled recall')
     check_ok = True

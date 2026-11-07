@@ -1,10 +1,13 @@
 """POST HOC (after the judged cells): the frozen readings restricted to cells whose model answer is a constraint
 answer (6 of 15 judged cells were standard-goal answers: no re-solving, every C arm identical). Zero calls."""
 import json, sys
-sys.path.insert(0, 'results/2026-11-01-push/moving')
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+sys.path.insert(0, str(Path(__file__).resolve().parents[1])); sys.path.insert(0, str(paths.DESIGN))
 from bystanders_score import load, cells, capture, paired, BYS
 from summarise_fresh import sign_p
-by = cells(load(['runs/dsv41'], set(BYS), set(range(10, 15))))
+by = cells(load([paths.MOVING_RUNS / 'runs/dsv41'], set(BYS), set(range(10, 15))))
 keep = {k: v for k, v in by.items() if (v['CT'].get('answers') or [{}])[0].get('source') == 'constraints'}
 print(f'cells with a constraint answer: {len(keep)} of {len(by)}')
 cap = {(k, a): capture(v[a]) for k, v in keep.items() for a in ('CT2', 'Gl', 'CT3', 'CT3-j')}

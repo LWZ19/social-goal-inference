@@ -3,7 +3,7 @@ the training data of the waiting_line fold (all floor cells, and my subsample / 
 import json, sys, collections
 from pathlib import Path
 import numpy as np
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-gates/verify')
 import kde_v as K
 fresh = K.load('fresh')
 T = K.V.parent / 'cache'

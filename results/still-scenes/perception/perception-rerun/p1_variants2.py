@@ -1,6 +1,6 @@
 """P1: package matching rule on further subsets (GLM s19 / s23, DeepSeek s20 / s23)."""
 import sys
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/perception')
+sys.path.insert(0, 'results/still-scenes/perception/perception-rerun')
 import perception as P
 for stage, model in [('s19', 'glm53'), ('s20', 'dsv41'), ('s23', 'glm53'), ('s23', 'dsv41')]:
     rows = [a for a in (P.analyse(r) for r in P.recs_of(stage, model, P.REAL)) if a is not None]

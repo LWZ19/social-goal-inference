@@ -3,7 +3,7 @@ and the robot's bearing from the group centre at 0-90 degrees (today fixed at 90
 share by occlusion.py's cylinder model, and how often its anchor (chest, 1.1 m) is covered by a person more than
 0.3 m nearer, a proxy for scene check 5, which rejects the layout (the generator would draw again). The module
 constant is patched in this process only; no tracked file changes.
-    PYTHONPATH= .venv/bin/python results/2026-11-01-push/group4/snapset/bearing_sweep.py"""
+    PYTHONPATH= .venv/bin/python results/still-scenes/group-of-four-case/snapset/bearing_sweep.py"""
 import importlib.util
 from pathlib import Path
 

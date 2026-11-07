@@ -15,12 +15,20 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
+
+def here(stored) -> str:
+    """A scene folder as a stored file names it (the recorded absolute path without its local root), as it lies
+    here: through the harness's relocated() and from the repository root."""
+    return str((H.main_checkout() / H.relocated(stored)).resolve())
+
 HERE = Path(__file__).resolve().parent
-RD = HERE.parents[2]
-I01 = RD / "phase1" / "i01_repairs"
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+I01 = paths.STILL / "replay-harness" / "repairs"
 
 NEAR = 0.5
 PX = 40.0
@@ -43,7 +51,7 @@ def load_blobs():
     out = {}
     for folder, e in v.items():
         for d, i in e["listed"]:
-            out[(d, i)] = e["blobs"]
+            out[(here(d), i)] = e["blobs"]
     return out
 
 

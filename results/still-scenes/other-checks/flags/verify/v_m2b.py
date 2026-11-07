@@ -2,7 +2,7 @@
 vs a normal but no clear in-view step before it, vs the robot already inside the standoff. Current code on the recorded
 target; harness only."""
 import sys, math, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.geometry import surface_normal_xy
 out = []

@@ -1,10 +1,10 @@
 """CT4_FROZEN.md section 4's "no-harm on fresh original-scene seeds 20-29" (reported, not a claim): DeepSeek,
 cafe_line2_moving, room_coffee_cart_slots, sweet_spot_line2_moving and cafe_line6_moving, seeds 20-29, arms CT2, CT3,
 CT3F and CT4. The note names no measure for it, so this reports the sweep's own per-episode measures (the frozen
-`sweep/score_sweep.episode_scores`, imported unchanged): strict share in line, right last, cut-in samples, and share
+`test-layouts/score_sweep.episode_scores`, imported unchanged): strict share in line, right last, cut-in samples, and share
 after the first service; each arm paired with CT3 by scene and seed (exact sign test, ties |d| < 0.01). Zero calls.
 
-    python3 noharm_report.py runs_noharm/dsv41
+    python3 noharm_report.py results/data/moving/runs_noharm/dsv41   (from the repo root)
 """
 import json
 import statistics
@@ -12,7 +12,9 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE / "sweep"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
 sys.path.insert(0, str(HERE))
 from score_sweep import episode_scores  # noqa: E402
 from summarise_fresh import sign_p  # noqa: E402

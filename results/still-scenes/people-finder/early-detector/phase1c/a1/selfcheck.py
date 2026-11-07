@@ -12,8 +12,8 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03/stageA')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector/stageA')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector')
 import pipeline as P  # noqa: E402
 from sgi.geometry import Camera, RobotPose, camera_on_robot, project, wrap_angle  # noqa: E402
 

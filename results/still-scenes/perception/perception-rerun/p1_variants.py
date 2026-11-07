@@ -1,7 +1,7 @@
 """P1 definition search: which reading of 'missed members never found' gives the report's ~81% (GLM s19 con, realistic).
 Also: is the phantom the last listed person the solver queues behind (s23 / s19 GLM lines)."""
 import math, sys, collections
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/perception')
+sys.path.insert(0, 'results/still-scenes/perception/perception-rerun')
 import perception as P
 from sgi.types import DetectedPerson
 

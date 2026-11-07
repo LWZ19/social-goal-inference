@@ -1,6 +1,6 @@
 """Independent verifier for I46 cluster statistics. Reads runs only through research_harness."""
 import sys, re, math, collections, itertools, random
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 import numpy as np
 
@@ -246,4 +246,4 @@ p('all 12 favour C:', all((newres[m][0]['A'] > newres[m][0]['B']) and (newres[m]
 ob = [(m, l, v) for m, r in old.items() for l, v in zip(r['lays'], r['d']) if v < 0]
 p('old wording C below E cells (of 42):', ob)
 
-open('results/2026-10-17-beyond-vlm/rerun/stats/verify/v_stats.txt', 'w').write('\n'.join(OUT) + '\n')
+open('results/still-scenes/metrics-and-statistics/stats-rerun/verify/v_stats.txt', 'w').write('\n'.join(OUT) + '\n')

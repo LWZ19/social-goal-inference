@@ -2,7 +2,8 @@
 Zero calls; read-only. Stops before J2-J5 if J1 fails.
 
     .venv/bin/python round4/m_ct4pj_score.py runs_pilot3/dsv41 [NEW BASE]
-    (from ideas2_1b/; NEW defaults to CT4PJ and BASE to CT4P. Other arms are a dry run of the code, not a result.)
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/; NEW defaults to CT4PJ and
+    BASE to CT4P. Other arms are a dry run of the code, not a result.)
 """
 import json
 import statistics
@@ -14,9 +15,12 @@ sys.path.insert(0, str(HERE.parent / "round3"))
 from i_followups import MOVING, first_service_t, in_line, line_of, pos, sign_p  # noqa: E402
 from score_sweep import episode_scores  # noqa: E402
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
 
 def load(root, arms):
-    sel = json.loads((MOVING / "sweep" / "pilot_selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "pilot_selection.json").read_text())["layouts"]
     eps = {}
     for lay in sel:
         for arm in arms:

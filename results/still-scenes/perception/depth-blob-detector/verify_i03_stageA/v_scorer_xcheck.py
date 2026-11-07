@@ -3,9 +3,9 @@ sets that exercise matching ties, exemption, near-hidden, merges and merged pair
 plus the step-2 self-check (true people as detections) with the verifier's scorer on all 289 fit scenes."""
 import random, sys, math
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector')
 import research_harness as H
 import people_scorer as PS            # frozen scorer, imported only to compare numbers
 import v_core as C, v_fit as F

@@ -19,7 +19,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-gates/verify')
 import kde_v as K  # noqa: E402
 
 V = K.V

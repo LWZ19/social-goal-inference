@@ -1,9 +1,9 @@
 """Are Qwen s21 C people answers copies of s19's? Are Haiku/Sonnet/Gemini people cache hits shared between the two
 episodes of one scene and trial?"""
 import sys, collections, io, json
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-OUT = 'results/2026-10-17-beyond-vlm/rerun/i01_split/verify/v_cache2_out.txt'
+OUT = 'results/still-scenes/replay-harness/split/verify/v_cache2_out.txt'
 buf = io.StringIO()
 def p(*a):
     s = ' '.join(str(x) for x in a); print(s); buf.write(s + '\n')

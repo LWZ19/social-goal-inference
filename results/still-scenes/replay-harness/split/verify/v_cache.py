@@ -1,8 +1,8 @@
 """Cache structure: s22 trials 3-5 freshness; s23 C goal-stage caching; old-wording not-ok keys."""
 import sys, collections, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-OUT = 'results/2026-10-17-beyond-vlm/rerun/i01_split/verify/v_cache_out.txt'
+OUT = 'results/still-scenes/replay-harness/split/verify/v_cache_out.txt'
 buf = io.StringIO()
 def p(*a):
     s = ' '.join(str(x) for x in a); print(s); buf.write(s + '\n')

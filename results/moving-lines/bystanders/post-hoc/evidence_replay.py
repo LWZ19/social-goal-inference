@@ -1,4 +1,4 @@
-"""Evidence that accumulates, replayed on CT3's logged tracks (post hoc, zero calls; for ideas2/research_session.md).
+"""Evidence that accumulates, replayed on CT3's logged tracks (post hoc, zero calls; for the second ideas round).
 
 CT3 drops a named person only on one chain of events: the waiting person directly ahead of them, among those still
 taken as waiting, advances 0.4 m and they do not follow within 5 s. This replay asks what a rule that counts every
@@ -15,7 +15,7 @@ has not walked 1 m or stepped 0.55 m nearer; captured bystanders never moved mor
 people who were in the sim's queue at that time (false drops), over bystander and original scenes.
 Tracks are logged only from the answer's delivery, so evidence from the latency window is not used here.
 
-    python3 evidence_replay.py runs/dsv41 runs/sonnet55_low
+    python3 evidence_replay.py results/data/moving/runs/dsv41 results/data/moving/runs/sonnet55_low   (from the repo root)
 """
 import json
 import math

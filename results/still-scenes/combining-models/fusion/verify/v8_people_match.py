@@ -1,7 +1,7 @@
 """F2/N2 caveat: in mixed episodes with equal people count, are the people the same places? Optimal matching of xy
 between every pair of C trials; worst matched distance per episode."""
 import sys, collections, io, itertools, math
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 import numpy as np
 OUT = io.StringIO()
@@ -35,4 +35,4 @@ for st, m in [('s19', 'glm53'), ('s20', 'dsv41'), ('s23', 'glm53'), ('s23', 'dsv
     ws.sort()
     p(st, m, 'mixed eps with same people count', samecount, 'worst matched xy gap: median %.2f m' % ws[len(ws)//2],
       '<=0.25m', sum(w <= 0.25 for w in ws), '<=0.5m', sum(w <= 0.5 for w in ws), '>1m', sum(w > 1 for w in ws))
-open('results/2026-10-17-beyond-vlm/rerun/fusion/verify/v8_people_match_out.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/combining-models/fusion/verify/v8_people_match_out.txt', 'w').write(OUT.getvalue())

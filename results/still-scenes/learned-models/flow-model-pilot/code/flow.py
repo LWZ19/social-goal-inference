@@ -29,7 +29,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-BASE = 'results/2026-10-17-beyond-vlm/phase2/flow_pilot'
+BASE = 'results/still-scenes/learned-models/flow-model-pilot'
 FREE_MIB = 3000
 POLL_S = 300
 N_SAMPLES = 64

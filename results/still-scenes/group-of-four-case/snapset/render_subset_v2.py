@@ -1,8 +1,8 @@
 """SNAP_AMENDMENT_1's render driver. WRITTEN, NOT RUN. Uses the GPU: announce it first (models none, calls none).
 
 Run from the scenes worktree, which has Blender (.tools/) and the prepared assets (assets/realistic/_cache):
-    cd .-scenes
-    G=results/2026-11-01-push/group4/snapset
+    cd .
+    G=results/still-scenes/group-of-four-case/snapset
     PYTHONPATH= .venv/bin/python $G/render_subset_v2.py render   --selected $G/selected_v2.csv --out $G/real_v2
     PYTHONPATH= .venv/bin/python $G/render_subset_v2.py assemble --selected $G/selected_v2.csv --out $G/real_v2 \
         --scenes $G/run_scenes_v2

@@ -2,6 +2,8 @@
 
     .venv/bin/python round7/d_post.py SELECTION_JSON SCENARIO_DIR CEILING_ROOT \
         CONFIRM_ROOT
+    (SELECTION_JSON relative to results/moving-lines/, the roots relative to results/data/moving/, SCENARIO_DIR
+    relative to the repo.)
 
 1. ROUND7 reading T asks for the layouts where OW scores below 0.5, with their reasons: per layout, OW's strict share,
    its share of window seconds at the front, its arrival loss, its top failing reason, and the selection's flags.
@@ -18,6 +20,8 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(HERE))
 from a_loss import MOVING, REPO, Line, episode as loss_episode, off, window  # noqa: E402
 from c_gaps import gap, load  # noqa: E402
@@ -25,7 +29,7 @@ from c_gaps import gap, load  # noqa: E402
 
 def main():
     sel_path, scen_dir, croot, froot = sys.argv[1:5]
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     names = [lay["name"] for lay in sel]
     sc = {**load(sel, croot, ("OW", "CT4OT", "CT4O", "CT4PJT")), **load(sel, froot, ("CT4PJ", "CT3F"))}
     print(f"# Round 7 part D, POST HOC DESCRIPTION ({sel_path}; {croot}; {froot})\n")

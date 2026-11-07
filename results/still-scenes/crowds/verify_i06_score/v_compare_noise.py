@@ -5,9 +5,9 @@ from pathlib import Path
 
 import numpy as np
 
-I06 = Path('results/2026-10-17-beyond-vlm/phase2/i06')
+I06 = Path(__file__).resolve().parents[1]
 OUT = I06 / 'verify_i06_score/out'
-I01 = I06.parents[1] / 'phase1/i01_repairs'
+I01 = I06.parent / 'replay-harness/repairs'
 NAME = {'qwen': 'qwen38_low', 'glm': 'glm53', 'dsv': 'dsv41'}
 
 

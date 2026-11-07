@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 a = H.runs(stage='s8', model='qwen36_35', method='convlm')[0]
 others = [H.runs(stage='s19', arm='ph', model='qwen38_low')[0], H.runs(stage='s10', model='qwen38_low', method='con')[0], H.runs(stage='s16b', arm='ph', model='qwen38_low', method='fsc')[0]]

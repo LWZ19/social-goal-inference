@@ -20,8 +20,14 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 I03 = HERE.parent
 sys.path.insert(0, str(I03))
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
+
+
+def here(stored) -> str:
+    """A scene folder as a stored file names it (the recorded absolute path without its local root), as it lies
+    here: through the harness's relocated() and from the repository root."""
+    return str((H.main_checkout() / H.relocated(stored)).resolve())
 import blobs as B  # noqa: E402
 import people_scorer as PS  # noqa: E402
 
@@ -54,7 +60,7 @@ def main():
     stage_a = {}
     for line in (I03 / "stageA" / "rows.jsonl").read_text().splitlines():
         r = json.loads(line)
-        stage_a[r["folder"]] = r
+        stage_a[here(r["folder"])] = r
     assert sha(I03 / "stageA" / "rows.jsonl") == (I03 / "stageA" / "ROWS.sha256").read_text().split()[0]
     distinct = H.distinct_scenes()
     assert len(distinct) == 68, len(distinct)

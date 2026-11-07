@@ -1,6 +1,6 @@
 #!/bin/bash
 # Records (2 workers), then the noisy arm (9 jobs, 2 workers).
-cd results/2026-10-17-beyond-vlm/phase2/i06_repair/verify
+cd "$(dirname "$0")"
 ./job.sh records_A v_records.py old_qwen38_low old_glm53 old_dsv41 watch_qwen38_low watch_glm53 watch_dsv41 new_gemini38_low &
 ./job.sh records_B v_records.py new_glm53 new_dsv41 new_haiku55 new_sonnet55_low
 wait

@@ -18,8 +18,14 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
+
+
+def here(stored) -> str:
+    """A scene folder as a stored file names it (the recorded absolute path without its local root), as it lies
+    here: through the harness's relocated() and from the repository root."""
+    return str((H.main_checkout() / H.relocated(stored)).resolve())
 
 HERE = Path(__file__).resolve().parent
 I03 = HERE.parent
@@ -129,8 +135,8 @@ def main():
     assert sha(I03 / "stageA" / "chosen.json") == "0ae61bae1893ad9681783b36b245c8a429f2bc0d8df8efad0ef569cd879125ae"
     assert chosen["detector"] == "original" and chosen["drop_clip"] is False
     s = chosen["setting"]
-    cache = json.loads((I03 / "stageB" / "blob_cache.json").read_text())["scenes"]
-    rowsA = {json.loads(l)["folder"]: json.loads(l) for l in (I03 / "stageA" / "rows.jsonl").open()}
+    cache = {here(k): v for k, v in json.loads((I03 / "stageB" / "blob_cache.json").read_text())["scenes"].items()}
+    rowsA = {here(json.loads(l)["folder"]): json.loads(l) for l in (I03 / "stageA" / "rows.jsonl").open()}
     out, diffs = {}, []
     ds = H.distinct_scenes()
     print("distinct scenes", len(ds))

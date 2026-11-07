@@ -3,7 +3,10 @@ against the four group members. Target = p0, 'the person in red'. A person targe
 projection is within 0.75 m of p0 AND p0 is the nearest person to it (sgi.evaluate._indicates).
 Run with the scenes WT venv:  .venv/bin/python g4_targets.py"""
 import sys, json, math, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+sys.path.insert(0, str(paths.HARNESS))   # research_harness.py and its run list
 import research_harness as H
 wl = H.whitelist()
 P = {'p0': (4.487, -4.456), 'p1': (3.770, -5.391), 'p2': (4.818, -6.096), 'p3': (5.480, -5.060),

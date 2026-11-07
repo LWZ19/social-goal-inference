@@ -1,6 +1,6 @@
 """Exploration (no scoring): list the fit runs and their record counts through the harness."""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 PLAN = [("s19", "qwen38_low"), ("s19", "glm53"), ("s20", "dsv41")]
 ARMS = ("real", "staffed", "plain", "ph", "dev_seed0", "dev_seed1", "dev_seed2")

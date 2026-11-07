@@ -1,6 +1,8 @@
-import json, re, math
+import json, re, math, sys
 from pathlib import Path
-R = Path('results/2026-11-01-push/moving/runs/sonnet55_low')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+R = paths.MOVING_RUNS / 'runs/sonnet55_low'
 def parse(p):
     t = (p / '001' / 'inference.txt').read_text()
     ppl = [tuple(map(float, m)) for m in re.findall(r'#\d+ .*?at \((-?[\d.]+), (-?[\d.]+)\)', t, re.S)]

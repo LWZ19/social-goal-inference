@@ -1,11 +1,11 @@
 import sys
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.scene import load_scene
 from sgi.config import DEFAULT_CONFIG, load_config
 from sgi.gt.derive import prepare
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 cfg = load_config(DEFAULT_CONFIG)
 for split, sid in [('eval','eval_05_no_one_person'),('eval','eval_08_waiting_line_4'),('eval','eval_12_conversation_group_4'),('eval','eval_15_audience_5'),('eval','eval_00_no_one_place')]:
     f = FRESH/'seed100'/split/sid

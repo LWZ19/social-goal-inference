@@ -17,10 +17,10 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 import m1_coverage as M
+import paths  # noqa: E402  (results/_lib/paths.py, on sys.path through m1_coverage)
 
 X = M.X
-EVAL_PEOPLE = Path('results/2026-10-17-beyond-vlm/'
-                   'phase1c/i09/a1/eval_people.json')
+EVAL_PEOPLE = paths.STILL / 'people-finder/early-detector/phase1c/a1/eval_people.json'
 MAX_MARKS = 8
 MAX_PEOPLE = 6
 DEDUP_M = 0.5

@@ -21,7 +21,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i01_repairs')
+sys.path.insert(0, 'results/still-scenes/replay-harness/repairs')
 import v_common as V  # noqa: E402
 import research_harness as H  # noqa: E402
 import repairs  # noqa: E402
@@ -201,8 +201,8 @@ def part_dev():
             meta[m['key']] = m
     assert len(meta) == 549 and set(meta) == set(recs)
     i04 = {}
-    for f in sorted((Path(V.ROOT) / 'phase1d' / 'i04').glob('rows_old_*.jsonl')) + \
-            sorted((Path(V.ROOT) / 'phase1d' / 'i04').glob('rows_watch_*.jsonl')):
+    for f in sorted(Path(V.SOFT_DENSITY).glob('rows_old_*.jsonl')) + \
+            sorted(Path(V.SOFT_DENSITY).glob('rows_watch_*.jsonl')):
         for r in jl(f):
             i04[r['key']] = r
     assert set(meta) <= set(i04)

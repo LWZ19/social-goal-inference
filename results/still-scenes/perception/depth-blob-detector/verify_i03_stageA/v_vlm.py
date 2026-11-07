@@ -7,9 +7,15 @@ import math
 import sys
 from pathlib import Path
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import research_harness as H  # noqa: E402
+
+
+def here(stored) -> str:
+    """A scene folder as a stored file names it (the recorded absolute path without its local root), as it lies
+    here: through the harness's relocated() and from the repository root."""
+    return str((H.main_checkout() / H.relocated(stored)).resolve())
 import v_core as C  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
@@ -22,7 +28,7 @@ MODELS = [("Qwen 3.8", "s19", "qwen38_low", ("real", "staffed", "plain", "ph", "
           ("Gemini 3.8 low", "s23", "gemini38_low", ("real", "staffed", "plain"))]
 blob = {}
 for r in map(json.loads, open(HERE / "eval_rows_off0.000.jsonl")):
-    blob[r["folder"]] = r
+    blob[here(r["folder"])] = r
 
 
 def main():
@@ -111,7 +117,7 @@ def main():
     # compare with the compute agent's vlm_rows.jsonl (as data)
     theirs = {}
     for t in map(json.loads, open(I03 / "stageA" / "vlm_rows.jsonl")):
-        theirs[(t["model"], t["arm"], str(Path(t["folder"]).resolve()), t["trial"])] = t
+        theirs[(t["model"], t["arm"], here(t["folder"]), t["trial"])] = t
     nd = 0
     for r in rows:
         t = theirs.get((r["model"], r["arm"], r["folder"], r["trial"]))

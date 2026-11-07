@@ -1,7 +1,7 @@
 """Staff in-image check and identity of layouts across arms (scene ids carry an arm prefix)."""
 import sys, math, collections
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 REAL = ("real", "staffed", "plain")
 out = []
@@ -54,4 +54,4 @@ for k, d in sorted(layouts.items()):
         if o[3] != b[3]: P(f"  episodes differ in {k} {arms[0]} vs {a}")
     P(f"{k:28s} arms={arms} people={[len(d[a][2]) for a in arms]} staff={[sum(1 for v in d[a][2].values() if v[4]) for a in arms]}")
 P(f"non-staff person pairs compared {npair}, differing {ndiff}; camera/robot differ in {cam_diff} arm pairs")
-open('results/2026-10-17-beyond-vlm/rerun/profile/verify/v_staff_identity.txt', 'w').write("\n".join(out) + "\n")
+open('results/still-scenes/speed/profile/verify/v_staff_identity.txt', 'w').write("\n".join(out) + "\n")

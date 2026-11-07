@@ -1,7 +1,7 @@
 #!/bin/bash
 # Validation of the noise model, one model after another in one worker (the other worker slot is used elsewhere).
-cd results/2026-10-17-beyond-vlm/phase2/i06/score
-PY=.venv/bin/python
+cd "$(dirname "$0")"
+PY=${PY:-python}
 export PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 for m in "$@"; do
   free -m | head -2 >> logs/validate_free.log

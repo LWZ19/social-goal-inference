@@ -13,9 +13,9 @@ import pickle
 
 import numpy as np
 
-V = 'results/2026-10-17-beyond-vlm/phase1d/i04/verify'
-C = 'results/2026-10-17-beyond-vlm/phase1d/i04'
-I14D = 'results/2026-10-17-beyond-vlm/phase1/i14_v0'
+V = 'results/still-scenes/learned-models/soft-density/verify'
+C = 'results/still-scenes/learned-models/soft-density'
+I14D = 'results/still-scenes/metrics-and-statistics/metric-v0'
 GAMMAS = (1, 3, 10, 30)
 TS = np.geomspace(0.005, 5, 25)
 SIGMAS = np.geomspace(0.05, 3, 25)

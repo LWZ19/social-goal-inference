@@ -3,7 +3,7 @@
 1. re-solve errors; 2. a missing `history_t` or `truth`; 3. crashed or empty episodes;
 4. arms that do not replay CT2's first answer from the cache.
 
-Usage: python3 check_mech.py RUN_ROOT [ARMS...]
+Usage: python3 check_mech.py RUN_ROOT [ARMS...]   (relative to the working directory, e.g. results/data/moving/runs_sweep/dsv41)
 """
 import collections
 import json

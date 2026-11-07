@@ -6,7 +6,7 @@ Only pixels within WIN px of the model's point are examined (enough for radii up
 """
 import sys, math, collections, statistics as stt
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.evaluate import match_target, score as pkg_score
 from sgi.polygons import point_in_polygon, distance_to_polygon, distance_to_boundary
@@ -15,7 +15,7 @@ from sgi.types import GroundedTarget, Point, GoalResult
 from sgi.geometry import pixel_to_point
 from sgi.stages.goal import standard_goal
 
-D = 'results/2026-10-17-beyond-vlm/rerun/lifting/verify/'
+D = 'results/still-scenes/perception/lifting-rerun/verify/'
 WIN = 32
 SETS = sys.argv[1] if len(sys.argv) > 1 else 'realistic'
 ARMS = {'realistic': ('real', 'staffed', 'plain'), 'ph': ('ph',)}[SETS]

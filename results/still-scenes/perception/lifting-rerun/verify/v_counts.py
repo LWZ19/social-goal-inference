@@ -1,8 +1,8 @@
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.evaluate import match_target
-OUT = 'results/2026-10-17-beyond-vlm/rerun/lifting/verify/v_counts.txt'
+OUT = 'results/still-scenes/perception/lifting-rerun/verify/v_counts.txt'
 lines = []
 def p(*a):
     s = ' '.join(str(x) for x in a); print(s); lines.append(s)

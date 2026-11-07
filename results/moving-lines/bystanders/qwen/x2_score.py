@@ -1,4 +1,4 @@
-"""X2 copy (X2_FROZEN.md amendment 1): moving/bystanders_confirm_score.py with only two lines guarded for an episode with no
+"""X2 copy (X2_FROZEN.md amendment 1): results/moving-lines/bystanders/bystanders_confirm_score.py with only two lines guarded for an episode with no
 answer (an empty answers list) and its import path. Original docstring: BYSTANDERS_CONFIRM_FROZEN.md scored (zero calls): bars C1, C2 and R on DeepSeek seeds 15-44, cafe and sweet_spot
 bystander scenes. Uses bystanders_score.py's functions unchanged (capture, rosters, the frozen strict share).
 
@@ -8,7 +8,10 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "moving"))   # X2 copy: the scorer's own folder
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # X2 copy: the scorer's own folder
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
 from bystanders_score import capture, cells, load, paired, false_drops, CAPTURED_S  # noqa: E402
 from summarise_fresh import sign_p  # noqa: E402
 

@@ -1,5 +1,5 @@
 import sys, collections, statistics as st, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -61,4 +61,4 @@ for ref in H.runs():
         rr = list(H.records(ref)); s = sum(bool(r.score['success']) for r in rr)
         lat = [r.latency_s for r in rr if r.latency_s is not None]
         p(ref.name, '%d/%d' % (s, len(rr)), 'lat med %.1f mean %.1f' % (st.median(lat), st.mean(lat)))
-open('results/2026-10-17-beyond-vlm/rerun/thinking/verify/v2_extra.txt','w').write(OUT.getvalue())
+open('results/still-scenes/thinking-levels/verify/v2_extra.txt','w').write(OUT.getvalue())

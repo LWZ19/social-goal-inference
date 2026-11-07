@@ -1,6 +1,6 @@
 """Independent verifier for cluster 'thinking' (I22). Harness only."""
 import sys, collections, statistics as st, io, json
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -225,4 +225,4 @@ for s in ('plan','context','people','constraints'):
     for c in cs: u[(c.get('raw_text'), (c.get('usage') or {}).get('output_tokens'))] = c
     uL = [c.get('latency_s') or 0 for c in u.values()]; uT = [(c.get('usage') or {}).get('output_tokens') or 0 for c in u.values()]
     p(s, 'calls', len(cs), 'mean lat %.1f med %.1f mean tok %.0f' % (st.mean(L), st.median(L), st.mean(T)), '| unique', len(u), 'mean lat %.1f tok %.0f' % (st.mean(uL), st.mean(uT)))
-open('results/2026-10-17-beyond-vlm/rerun/thinking/verify/v1_main.txt','w').write(OUT.getvalue())
+open('results/still-scenes/thinking-levels/verify/v1_main.txt','w').write(OUT.getvalue())

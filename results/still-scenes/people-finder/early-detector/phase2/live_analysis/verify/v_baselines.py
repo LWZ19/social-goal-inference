@@ -11,9 +11,11 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent
-RD = HERE.parents[3]                      # .../2026-10-17-beyond-vlm
-WT = RD.parents[2]
-sys.path.insert(0, str(WT / "docs" / "model_notes" / "tools"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL                          # results/still-scenes
+WT = paths.REPO                           # the repository root
+sys.path.insert(0, str(paths.HARNESS))
 import research_harness as H  # noqa: E402
 
 RUNS = {"glm53": ("s19", {"real": "20261011-160500_s19_real_glm53_con",
@@ -68,8 +70,8 @@ for model, (stage, names) in RUNS.items():
                 for p in r.get("people") or []:
                     schema["people_keys"].update(p.keys())
         print(model, arm, folder, "records", n)
-    a2 = {(r["arm"], r["scene"], r["episode"], r["trial"]): r for r in rows(RD / "phase1c/i09/a2" / f"rows_old_{model}.jsonl")}
-    i01 = {(r["arm"], r["scene"], r["episode"], r["trial"]): r for r in rows(RD / "phase1/i01_repairs" / f"rows_old_{model}.jsonl")}
+    a2 = {(r["arm"], r["scene"], r["episode"], r["trial"]): r for r in rows(RD / "people-finder/early-detector/phase1c/a2" / f"rows_old_{model}.jsonl")}
+    i01 = {(r["arm"], r["scene"], r["episode"], r["trial"]): r for r in rows(RD / "replay-harness/repairs" / f"rows_old_{model}.jsonl")}
     assert set(a2) == set(rec_succ) == set(i01), (len(a2), len(rec_succ), len(i01))
     mism_crec = sum(a2[k]["C_rec"] != rec_succ[k] for k in a2)
     mism_p = sum(a2[k]["P"] != i01[k]["P"] for k in a2)

@@ -1,7 +1,7 @@
 """Round 4, step B: PL (ROUND4.md, cc30d5e0) against the threshold rule and CT5's cost rule, offline on the 24 pilot
 layouts (robot idle) with the proxy goal, and on the round 3 design cells × 4 conditions (classes only). Zero calls.
 
-    .venv/bin/python round4/b_pl.py [pilot|design|both]   (from ideas2_1b/)
+    .venv/bin/python round4/b_pl.py [pilot|design|both]   (from best-version-and-running-guess/)
 """
 import math
 import sys

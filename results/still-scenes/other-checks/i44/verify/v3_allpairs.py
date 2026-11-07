@@ -1,6 +1,6 @@
 """Which pairs of placeholder runs (s8, s10, s16b ph, s19 ph) give 4 wins / 9 losses on recorded success?"""
 import sys, collections, itertools
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 refs = H.runs(stage='s8') + H.runs(stage='s10') + H.runs(stage='s16b', arm='ph') + H.runs(stage='s19', arm='ph')
 D = {r.name: {(x.scene_id, x.episode_id, x.trial): bool(x.score.get('success')) for x in H.records(r)} for r in refs}
@@ -27,4 +27,4 @@ for a, b in itertools.permutations(D, 2):
             out.append(f"{a} vs {b} [{kind}] W={w} L={l}")
 txt = '\n'.join(out)
 print(txt)
-open('results/2026-10-17-beyond-vlm/rerun/i44/verify/v3_allpairs.txt', 'w').write(txt + '\n')
+open('results/still-scenes/other-checks/i44/verify/v3_allpairs.txt', 'w').write(txt + '\n')

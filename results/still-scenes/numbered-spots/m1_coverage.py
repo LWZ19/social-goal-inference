@@ -14,8 +14,9 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-WT = Path('.-scenes')
-I11 = WT / 'results/2026-10-17-beyond-vlm/phase1b/i11'
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+I11 = paths.STILL / 'perception/lifting'
 sys.path.insert(0, str(I11))
 import i11lib as X  # noqa: E402  (imports research_harness as X.H, lifting as X.L)
 

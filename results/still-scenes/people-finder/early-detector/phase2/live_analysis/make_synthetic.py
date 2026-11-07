@@ -27,9 +27,11 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 HERE = Path(__file__).resolve().parent
-RD = HERE.parents[2]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths                                        # noqa: E402
+RD = paths.STILL                                    # results/still-scenes
 LIVE = HERE.parent / "live"
-HARNESS_DIR = RD.parents[2] / "docs" / "model_notes" / "tools"
+HARNESS_DIR = paths.HARNESS                         # results/still-scenes/analysis-scripts/harness
 sys.path.insert(0, str(HARNESS_DIR))
 import yaml                                         # noqa: E402
 
@@ -38,7 +40,7 @@ import research_harness as H                        # noqa: E402
 MODELS = {"glm53": "s19", "dsv41": "s20"}
 ARMS = ("real", "staffed", "plain")
 PEOPLE_SOURCE = "detector_i09_a1_frozen"
-EVAL_PEOPLE = RD / "phase1c" / "i09" / "a1" / "eval_people.json"
+EVAL_PEOPLE = RD / "people-finder" / "early-detector" / "phase1c" / "a1" / "eval_people.json"
 EVAL_PEOPLE_SHA256 = "ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3"
 FIRST_BUILD_DRIVER = "e6e73181d47cfeb1d22ec9fcc91bcdbb6ec625e32dc002be4a877e75d2cf9470"
 
@@ -86,7 +88,7 @@ def load_recorded() -> dict:
 
 
 def a2_d(model: str) -> dict:
-    rows = [json.loads(line) for line in (RD / "phase1c" / "i09" / "a2" / f"rows_old_{model}.jsonl")
+    rows = [json.loads(line) for line in (RD / "people-finder" / "early-detector" / "phase1c" / "a2" / f"rows_old_{model}.jsonl")
             .read_text().splitlines() if line.strip()]
     return {(r["arm"], r["scene"], r["episode"]): bool(r["D"]) for r in rows if r["trial"] == 0}
 

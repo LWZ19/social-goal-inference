@@ -3,6 +3,7 @@
     python3 bystanders_score.py runs/dsv41                                   # judged: *_bystanders, seeds 10-14
     python3 bystanders_score.py runs/dsv41 --nh runs/dsv41 runs/sonnet55_low # plus the no-harm runs (M5, P6)
     python3 bystanders_score.py runs/dsv41 --dev                             # seeds 0-2: format check only
+    (run folders are read relative to the working directory: from the repo root, results/data/moving/runs/dsv41)
 
 Log format (DEVIATIONS 12): per resolve `last` (the solver's _turn last, a track id = scenario human index; None where
 no place in turn is used), `turn_joined`, `exempt`, `non_followers` {id: t}; the first resolve also has
@@ -29,10 +30,12 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
 from summarise_fresh import measures, sign_p  # noqa: E402  (the frozen strict scoring, unchanged)
 
-ROOT = Path(__file__).resolve().parents[4]
+ROOT = paths.REPO
 BYS = ["cafe_line2_bystanders", "room_coffee_cart_bystanders", "sweet_spot_line2_bystanders"]
 ORIG = ["cafe_line2_moving", "room_coffee_cart_slots", "sweet_spot_line2_moving"]
 ARMS = ["R1", "C1", "CT", "CT2", "Gl", "CT3", "CT3-j"]

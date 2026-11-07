@@ -1,14 +1,14 @@
 """Item 5 (I5_FROZEN.md): CTd (people tracked from the robot's own camera) against CT2 (the sim's true positions) on
 the fresh headline cells: non-inferiority. Zero calls; read-only.
 
-    .venv/bin/python fill/i5_ctd/i5_score.py
+    .venv/bin/python results/moving-lines/own-camera/i5_score.py
 """
 import math
 import statistics
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 from summarise_fresh import tracking  # noqa: E402
 

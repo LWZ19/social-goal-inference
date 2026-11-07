@@ -20,8 +20,10 @@ import json
 import sys
 from pathlib import Path
 
-RD = Path('results/2026-10-17-beyond-vlm')
-sys.path.insert(0, str(RD / 'phase2/i06/score'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
+sys.path.insert(0, str(RD / 'crowds/score'))
 import lib as L  # noqa: E402  (I06's, unchanged)
 import noise as N  # noqa: E402  (I06's, unchanged)
 from lib import H  # noqa: E402
@@ -45,7 +47,7 @@ def main():
     S._turn = counting
     cfg = L.load_config()
     th = cfg.thresholds
-    arms = {r['scene_id']: r for r in map(json.loads, open(RD / 'phase2/i06/score/work/arms_seed0.jsonl'))}
+    arms = {r['scene_id']: r for r in map(json.loads, open(RD / 'crowds/score/work/arms_seed0.jsonl'))}
     entries = {e['scene_id']: e for e in L.kept_scenes() if e['seed'] == 0}
     for sid in ('eval_06_waiting_line_1', 'i06_s0_A1_eval_06_waiting_line_1'):
         e = entries[sid]
@@ -66,7 +68,7 @@ def main():
               f'{list(c["note"].joined_waiting)}; equal to I06 arm 3: {same}')
     doc = json.loads((L.SCORE / 'noise_model.json').read_text())
     model = N.Model(doc['models']['glm'])
-    noisy = {r['scene_id']: r for r in map(json.loads, open(RD / 'phase2/i06/score/work/noisy_models_glm_seed0.jsonl'))}
+    noisy = {r['scene_id']: r for r in map(json.loads, open(RD / 'crowds/score/work/noisy_models_glm_seed0.jsonl'))}
     for sid in ('eval_06_waiting_line_1', 'i06_s0_A1_eval_06_waiting_line_1'):
         e = entries[sid]
         inputs, truth = L.load(e)

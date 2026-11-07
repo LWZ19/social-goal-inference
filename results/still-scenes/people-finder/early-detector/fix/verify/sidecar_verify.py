@@ -20,12 +20,15 @@ import os  # noqa: E402
 import re  # noqa: E402
 import subprocess  # noqa: E402
 import time  # noqa: E402
+from pathlib import Path  # noqa: E402
 
-RESEARCH = "results/2026-10-17-beyond-vlm"
-FIX = RESEARCH + "/phase3/i09_fix"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402  (standard library only)
+
+FIX = str(paths.STILL / "people-finder/early-detector/fix")
 VER = FIX + "/verify"
-SEEDS = RESEARCH + "/phase3/seeds/realistic_train"
-INFER = RESEARCH + "/phase1c/i09/a1/sidecar/infer.py"
+SEEDS = str(paths.STILL / "scene-seeds/phase3/realistic_train")
+INFER = str(paths.STILL / "people-finder/early-detector/phase1c/a1/sidecar/infer.py")
 INFER_SHA = "bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484"
 SEED = 116
 ROWS = ("real_eval_00_no_one_place", "real_eval_01_no_one_place", "real_eval_02_no_one_place",
@@ -36,7 +39,8 @@ ROWS = ("real_eval_00_no_one_place", "real_eval_01_no_one_place", "real_eval_02_
 OUTDIR = VER + f"/raw_seed{SEED}"
 MAN = VER + f"/manifest_seed{SEED}.json"
 DET = "rtdetr_v2_r50vd"
-BAD = re.compile(r"phase2/seeds|held_?out|(^|[_/])s18|s20_held|eval_1[6-9]|group_photo|lift_wait", re.I)
+BAD = re.compile(r"phase2/seeds|scene-seeds/phase2|held_?out|(^|[_/])s18|s20_held|eval_1[6-9]|group_photo|lift_wait",
+                 re.I)
 
 
 def log(*a):

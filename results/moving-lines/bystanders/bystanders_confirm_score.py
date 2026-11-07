@@ -1,13 +1,16 @@
 """BYSTANDERS_CONFIRM_FROZEN.md scored (zero calls): bars C1, C2 and R on DeepSeek seeds 15-44, cafe and sweet_spot
 bystander scenes. Uses bystanders_score.py's functions unchanged (capture, rosters, the frozen strict share).
 
-    python3 bystanders_confirm_score.py runs/dsv41
+    python3 bystanders_confirm_score.py results/data/moving/runs/dsv41   (from the repo root)
 """
 import sys
 from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
 from bystanders_score import capture, cells, load, paired, false_drops, CAPTURED_S  # noqa: E402
 from summarise_fresh import sign_p  # noqa: E402
 

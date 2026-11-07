@@ -3,14 +3,16 @@ constraint solver with the snapped target (H.resolve: recorded people and constr
 the full success. Also: does H.resolve with the recorded target reproduce the recorded success (sanity)?"""
 import sys, json, collections
 from pathlib import Path
-sys.path.insert(0, 'results/2026-11-01-push/group4')
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+sys.path.insert(0, str(paths.HARNESS))   # research_harness.py and its run list
 import research_harness as H
 from sgi.evaluate import match_target
 import importlib.util
-spec = importlib.util.spec_from_file_location('ss', 'results/2026-11-01-push/group4/snap_sweep.py')
+spec = importlib.util.spec_from_file_location('ss', Path(__file__).resolve().parent / 'snap_sweep.py')
 src = open(spec.origin).read().split('tally = collections')[0]      # definitions only, not the sweep
-ns = {}
+ns = {'__file__': spec.origin}                       # snap_sweep.py finds results/_lib from its own path
 exec(compile(src, spec.origin, 'exec'), ns)
 DET, snap, wl = ns['DET'], ns['snap'], ns['wl']
 tot = collections.Counter()

@@ -1,6 +1,6 @@
 """Probe: load a few scenes through the harness and print the people truth, image size and load time."""
 import sys, time
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 want = {'staffed_eval_06_waiting_line_1', 'eval_06_waiting_line_1', 'real_eval_12_conversation_group_4'}

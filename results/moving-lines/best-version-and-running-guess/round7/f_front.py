@@ -1,7 +1,7 @@
 """Round 7, POST HOC DESCRIPTION (after e_ct3ft_out.txt): CT3F and CT3FT at re-solves with nobody ahead (the robot
 first): the share where the arm knows nobody is ahead (`last` None), and its goal's distance to slot 0. Zero calls.
 
-    .venv/bin/python round7/f_front.py     (from ideas2_1b/)
+    .venv/bin/python round7/f_front.py
 """
 import json
 import math
@@ -11,10 +11,12 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from a_loss import MOVING, REPO, Line, window  # noqa: E402
 
-sel = json.loads((MOVING / "sweep/confirm_selection.json").read_text())["layouts"]
+sel = json.loads((paths.MOVING / "test-layouts/confirm_selection.json").read_text())["layouts"]
 for arm, root in (("CT3FT", "runs_ceiling4/dsv41"), ("CT3F", "runs_confirm4/dsv41")):
     d0, none, n = [], 0, 0
     for lay in sel:

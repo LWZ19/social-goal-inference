@@ -3,7 +3,7 @@
   2. for one seed and a patched configuration, a plain sgi.synth.generate.accepted_layouts run (the call the realistic
      generator makes) with the same in-process patch gives the same twin ids and the same people as scan_v2's replay
      with the saved and restored generator state.
-    PYTHONPATH= nice -n 10 .venv/bin/python results/2026-11-01-push/group4/snapset/check_v2.py [SEED CONFIG]
+    PYTHONPATH= nice -n 10 .venv/bin/python results/still-scenes/group-of-four-case/snapset/check_v2.py [SEED CONFIG]
 """
 import csv
 import sys

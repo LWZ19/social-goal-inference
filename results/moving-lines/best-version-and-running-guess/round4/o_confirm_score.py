@@ -1,8 +1,9 @@
 """Scores CONFIRM_CT4PJ.md: H1, then H2 only if H1 passes, plus the reported measures. Zero calls; read-only.
 
     .venv/bin/python round4/o_confirm_score.py RUN_ROOT SELECTION_JSON LABEL
-    (from ideas2_1b/; RUN_ROOT relative to moving/, e.g. runs_confirm/dsv41; SELECTION_JSON relative to moving/.)
-A dry run on the pilot (runs_pilot3/dsv41 sweep/pilot_selection.json) tests the code; it is not a result.
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/, e.g. runs_confirm4/dsv41;
+    SELECTION_JSON relative to results/moving-lines/, e.g. test-layouts/confirm_selection.json.)
+A dry run on the pilot (runs_pilot3/dsv41 test-layouts/pilot_selection.json) tests the code; it is not a result.
 """
 import json
 import math
@@ -19,6 +20,9 @@ from i_followups import MOVING, first_service_t  # noqa: E402
 from score_sweep import episode_scores  # noqa: E402
 from summarise_fresh import measures, sign_p  # noqa: E402
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
 ARMS = ("CT3F", "CT4", "CT4P", "CT4PJ")
 DELTA = 0.05
 TIE = 0.01
@@ -33,7 +37,7 @@ def t95(df):
 
 
 def load(root, sel_path):
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     eps = {}
     for lay in sel:
         for arm in ARMS:

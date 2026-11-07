@@ -5,7 +5,7 @@ import collections
 import json
 import re
 
-HERE = 'results/2026-10-17-beyond-vlm/phase1/i14_v0'
+HERE = 'results/still-scenes/metrics-and-statistics/metric-v0'
 MODELS = ['qwen38_low', 'glm53', 'dsv41', 'haiku55', 'sonnet55_low', 'gemini38_low']
 SHORT = dict(qwen38_low='Qwen', glm53='GLM', dsv41='DeepSeek', haiku55='Haiku', sonnet55_low='Sonnet',
              gemini38_low='Gemini')

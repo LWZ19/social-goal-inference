@@ -4,7 +4,7 @@ Runs the frozen generate command once per seed, one seed at a time, in ascending
 
     cd <worktree> && PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 nice -n 10 \
       .venv/bin/python -m sgi.synth.realistic.generate --variant real --seed k \
-      --out results/2026-10-17-beyond-vlm/phase2/seeds/realistic/seed<k> --only <the 14 ids>
+      --out results/still-scenes/scene-seeds/phase2/realistic/seed<k> --only <the 14 ids>
 
 One addition to the environment, which changes no output: TMPDIR points at render/tmp, so that the generator's
 temporary folders (the placeholder layouts it replays, Blender's job folders) stay inside this agent's folder.
@@ -38,14 +38,17 @@ import sys
 import time
 from pathlib import Path
 
-WT = Path(".-scenes")
-RESEARCH = WT / "results/2026-10-17-beyond-vlm"
-CONFIRM = RESEARCH / "phase2/i09/confirm"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+WT = paths.REPO                                    # the repository root
+RESEARCH = paths.STILL                             # results/still-scenes
+CONFIRM = RESEARCH / "people-finder/early-detector/phase2/confirm"
 RENDER = CONFIRM / "render"
 LOGS = RENDER / "logs"
 STATE = RENDER / "state.json"
 EVENTS = RENDER / "render_events.jsonl"
-SEEDS_ROOT = RESEARCH / "phase2/seeds/realistic"
+SEEDS_ROOT = RESEARCH / "scene-seeds/phase2/realistic"
 SEEDS_REL = SEEDS_ROOT.relative_to(WT)
 FROZEN = CONFIRM / "FROZEN.md"
 FROZEN_SHA = "f55341c03cd5e1d38c91b7e0142ef10f0870ccb2b43c5bf4edfac07d1996e751"
@@ -186,7 +189,7 @@ def check_names() -> list[str]:
 
 def check_seed(seed: int, expected: list[str]) -> dict:
     """The per-seed assertions. Returns {"complete": bool, "problems": [...], "scenes": {...}}."""
-    sys.path.insert(0, str(WT / "docs/model_notes/tools"))
+    sys.path.insert(0, str(WT / "results/still-scenes/analysis-scripts/harness"))
     import research_harness as H                     # noqa: E402  guard_scene refuses held-out or excluded names
     from sgi.config import load_config, DEFAULT_CONFIG
     from sgi.scene import load_scene

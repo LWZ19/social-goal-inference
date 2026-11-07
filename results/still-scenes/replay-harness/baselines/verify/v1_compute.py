@@ -1,12 +1,12 @@
 """Independent recomputation for i01_baselines: per C record, recorded C, SA (solver, recorded people, no
 constraints), CA (solver, only come_after kept), SG (people-blind standard goal). Writes one jsonl row per record."""
 import sys, json, time
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.stages.goal import standard_goal
 from sgi.types import GroundedTarget
 
-OUT = 'results/2026-10-17-beyond-vlm/rerun/i01_baselines/verify/'
+OUT = 'results/still-scenes/replay-harness/baselines/verify/'
 which = sys.argv[1]
 ARMS = ("real", "staffed", "plain")
 if which == "new":

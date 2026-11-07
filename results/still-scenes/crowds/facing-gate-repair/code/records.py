@@ -20,10 +20,10 @@ import common as C
 C.start()
 sys.path.insert(0, str(C.A2))
 sys.path.insert(0, str(C.I01))
-sys.path.insert(0, str(C.WT / 'docs/model_notes/tools'))
+sys.path.insert(0, str(C.WT / 'results/still-scenes/analysis-scripts/harness'))
 import research_harness as H  # noqa: E402
-import repairs as REP  # noqa: E402  (phase1/i01_repairs/repairs.py, unchanged)
-import replay_d as A2D  # noqa: E402  (phase1c/i09/a2/replay_d.py, unchanged)
+import repairs as REP  # noqa: E402  (replay-harness/repairs/repairs.py, unchanged)
+import replay_d as A2D  # noqa: E402  (people-finder/early-detector/phase1c/a2/replay_d.py, unchanged)
 import rules as RU  # noqa: E402
 
 REAL = ('real', 'staffed', 'plain')

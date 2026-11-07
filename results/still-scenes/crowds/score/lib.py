@@ -1,6 +1,6 @@
 """I06 scoring library (FROZEN.md sha256 a83c0ffe...693e, sections 5-9). Research code: imports the sgi package and
 changes nothing in it. No model, no network, no torch. Recorded runs and whitelisted scenes are read only through
-docs/model_notes/tools/research_harness.py; the crowd scenes are this probe's own (phase2/i06/scenes), guarded with
+results/still-scenes/analysis-scripts/harness/research_harness.py; the crowd scenes are this probe's own (phase2/i06/scenes), guarded with
 H.guard_scene before loading.
 
 Arms (FROZEN section 6), per scene and episode:
@@ -25,13 +25,15 @@ from pathlib import Path
 
 import numpy as np
 
-WT = Path('.-scenes')
-RES = WT / 'results/2026-10-17-beyond-vlm'
-I06 = RES / 'phase2/i06'
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+WT = paths.REPO
+RES = paths.STILL
+I06 = Path(__file__).resolve().parents[1]
 BUILD = I06 / 'build'
 SCORE = I06 / 'score'
 FROZEN_SHA = 'a83c0ffe0cf5fafd9f007fee478d5899c9f858d2eb77629f01885cbeccef693e'
-sys.path.insert(0, str(WT / 'docs/model_notes/tools'))
+sys.path.insert(0, str(WT / 'results/still-scenes/analysis-scripts/harness'))
 import research_harness as H  # noqa: E402
 
 from sgi.config import load_config  # noqa: E402

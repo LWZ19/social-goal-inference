@@ -14,17 +14,23 @@ import zlib
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i14_v0')
+from pathlib import Path  # noqa: E402
+
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
+sys.path.insert(0, 'results/still-scenes/metrics-and-statistics/metric-v0')
 import research_harness as H  # noqa: E402,F401
 from sgi import solver  # noqa: E402
 from sgi.geometry import bearing, wrap_angle  # noqa: E402
 from sgi.polygons import point_in_polygon  # noqa: E402
 
-WT = '.-scenes'
-ROOT = WT + '/results/2026-10-17-beyond-vlm'
-OUT = ROOT + '/phase2/flow_pilot'
-SEEDS_DIR = ROOT + '/phase2/seeds/placeholder'
+WT = str(paths.REPO)
+OUT = str(paths.STILL / 'learned-models' / 'flow-model-pilot')
+SEEDS_DIR = str(paths.STILL / 'scene-seeds' / 'phase2' / 'placeholder')
+SEEDS_MANIFEST = str(paths.STILL / 'scene-seeds' / 'phase2' / 'manifest_placeholder.json')
+SOFT_DENSITY = str(paths.STILL / 'learned-models' / 'soft-density')  # old phase1d/i04
+REPAIRS = str(paths.STILL / 'replay-harness' / 'repairs')  # old phase1/i01_repairs
 
 N = 64
 RES = 0.10

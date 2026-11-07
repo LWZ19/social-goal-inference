@@ -1,5 +1,5 @@
 import sys, json, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 SIX = ('no_usable_constraint','constraint_unusable','constraints_cut','exclusion_broken','people_cut','far_from_target')
 for stage,model in [('s20','dsv41'),('s23','dsv41'),('s19','glm53'),('s19','qwen38_low')]:

@@ -16,7 +16,7 @@ sys.path.insert(0, str(HERE.parent / "fix"))
 import fixlib as X  # noqa: E402
 
 F, P, PS, C, H = X.F, X.P, X.PS, X.C, X.H
-sys.path.insert(0, str(F.RESEARCH / "phase1b/i03/stageA"))
+sys.path.insert(0, str(F.I03 / "stageA"))
 import fitdata as FD  # noqa: E402
 
 ch = json.loads((F.HERE / "chosen_fix2.json").read_text())

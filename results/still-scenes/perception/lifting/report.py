@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 
 D = Path(__file__).resolve().parent
-RD = D.parents[1]
+RD = D.parent                      # perception/
 GD = ('glm53', 'dsv41')
 MODELS3 = ('qwen38_low', 'glm53', 'dsv41')
 FIXES = ('oracle', 'V1', 'V2', 'V3', 'V4', 'front')
@@ -145,7 +145,7 @@ def primary_report(say):
     say(f"  targets per episode: {dict(collections.Counter(r['ntargets'] for r in rows))}")
     # comparison with the original lifting_records.tsv
     orig = {}
-    with open(RD / 'rerun/lifting/lifting_records.tsv') as f:
+    with open(RD / 'lifting-rerun/lifting_records.tsv') as f:
         for o in csv.DictReader(f, delimiter='\t'):
             if o['method'] == 'con' and o['arm'] in ('real', 'staffed', 'plain'):
                 orig[(o['model'], o['arm'], o['scene'], o['episode'], o['trial'])] = o
@@ -170,7 +170,7 @@ def primary_report(say):
             agree['oracle success same' if fs == bool(r['fx']['oracle']['succ_after']) else 'oracle success differs'] += 1
         if abs(float(o['d_body_px']) - r['d_body_px']) > 1e-9:
             agree['d_body differs'] += 1
-    say(f"  per-record agreement with rerun/lifting/lifting_records.tsv on the {len(allw)} wrong-target records: "
+    say(f"  per-record agreement with lifting-rerun/lifting_records.tsv on the {len(allw)} wrong-target records: "
         f"{dict(agree)}; {len(diffs)} unmatched {diffs[:5]}")
     say(f"  reproduction of rerun/lifting itself (repro_lifting/diff.txt): "
         + '; '.join((D / 'repro_lifting/diff.txt').read_text().splitlines()[k] for k in (0, 1, 2)))

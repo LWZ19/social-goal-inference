@@ -92,7 +92,7 @@ def summary(units, left, arrays, with_selfcheck):
 def main():
     for k in list(TRAIN) + list(VAL):
         assert (D / 'seeds' / f'seed{k}.json').exists(), k
-    seed_manifest = json.loads((Path(C.ROOT) / 'phase2' / 'seeds' / 'manifest_placeholder.json').read_text())
+    seed_manifest = json.loads((Path(C.SEEDS_MANIFEST)).read_text())
     assert not seed_manifest['seeds_missing'], seed_manifest['seeds_missing']
     tr, tr_units, tr_left = join(TRAIN, 'train')
     va, va_units, va_left = join(VAL, 'val')

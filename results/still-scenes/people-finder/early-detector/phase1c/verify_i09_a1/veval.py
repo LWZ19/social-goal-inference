@@ -18,10 +18,14 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-RB = Path('results/2026-10-17-beyond-vlm')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+I03 = paths.STILL / 'perception/depth-blob-detector'
+A0_PAIRS = paths.STILL / 'facing/a0_pairs.jsonl'
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(RB / 'phase1b/i03'))
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, str(I03))
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 import people_scorer as PS  # noqa: E402
 import vpipe as VP  # noqa: E402
@@ -76,7 +80,9 @@ def wil(k, n):
 def main():
     t0 = time.time()
     man = json.load(open(HERE / "manifest_verify.json"))
-    folder_rgb = {e["folder"]: e["rgb"] for e in man["images"] if e["part"] == "eval"}
+    # the stored manifest names each scene folder as it lay when it was written; key it by where it lies now
+    here = lambda f: str((paths.REPO / H.relocated(f)).resolve())  # noqa: E731
+    folder_rgb = {here(e["folder"]): e["rgb"] for e in man["images"] if e["part"] == "eval"}
     raw = {}
     for line in open(HERE / "raw" / "rtdetr_v2_r50vd.jsonl"):
         r = json.loads(line)
@@ -91,7 +97,7 @@ def main():
         sc = H.scene(sref.runs[0], sref.scene_id)
         obs = sc.observation
         cam_xy = obs.camera.T_world_camera[:2, 3]
-        r = raw[folder_rgb[str(sref.folder)]]
+        r = raw[folder_rgb[here(sref.folder)]]
         kps = list(r["kp"]) + [None] * (len(r["boxes"]) - len(r["kp"]))
         bases = [VP.box_base(obs, b, kp) for b, kp in zip(r["boxes"], kps) if b[4] >= SET["tau"]]
         ppl = VP.people(bases, cam_xy, **SET)
@@ -197,7 +203,7 @@ def main():
              ", ".join(f"{k} [{a:.3f}, {b:.3f}]" for k, (a, b) in S["bootstrap"].items()))
 
     # A0-matched facing
-    a0 = [json.loads(l) for l in open(RB / "phase1/a0_facing/a0_pairs.jsonl")]
+    a0 = [json.loads(l) for l in open(A0_PAIRS)]
     det_by_scene = {}
     for r in er:
         det_by_scene[r["scene_id"]] = {tid: r["det"][int(n) - 1] for n, tid in r["matches"].items()}
@@ -252,9 +258,9 @@ def main():
     L.append("  Gemini unmatched pairs: " + str(collections.Counter((p["scene"], p["pid"]) for p in g if det_by_scene[p["scene"]].get(p["pid"]) is None)))
 
     # like for like
-    vrows = [json.loads(l) for l in open(RB / "phase1b/i03/stageA/vlm_rows.jsonl")]
-    brows = {json.loads(l)["folder"]: json.loads(l) for l in open(RB / "phase1b/i03/stageA/rows.jsonl")}
-    drow = {r["folder"]: r for r in scenes}
+    vrows = [json.loads(l) for l in open(I03 / "stageA/vlm_rows.jsonl")]
+    brows = {json.loads(l)["folder"]: json.loads(l) for l in open(I03 / "stageA/rows.jsonl")}
+    drow = {here(r["folder"]): r for r in scenes}
     L.append("== Like for like (section 7) ==")
     S["lfl"] = {}
     for model in ["Qwen 3.8", "GLM-5.3", "DeepSeek V4.1", "Haiku 5.5", "Sonnet 5.5 low", "Gemini 3.8 low"]:
@@ -264,9 +270,9 @@ def main():
                 continue
             lis = [r for r in rows if r["has_list"]]
             V = PS.pool(lis)
-            D = PS.pool([drow[r["folder"]] for r in lis])
+            D = PS.pool([drow[here(r["folder"])] for r in lis])
             B = PS.pool([brows[r["folder"]] for r in lis])
-            Dall = PS.pool([drow[r["folder"]] for r in rows])
+            Dall = PS.pool([drow[here(r["folder"])] for r in rows])
             Vall = PS.pool(rows)
             df, vf = D["facing"], V["facing"]
             S["lfl"][f"{model}|{dom}"] = {"keys": len(rows), "listed": len(lis), "vlm": [V["matched"], V["n_visible"], V["false"] / V["scenes"], V["merged_pairs"], vf["within45_full"], vf["known"]],

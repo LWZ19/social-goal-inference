@@ -1,6 +1,6 @@
 """P2 with the recorded output_tokens as denominator; numerator = word/punct proxy tokens of the people lists."""
 import sys, re
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = __file__.replace('.py', '_out.txt')
 L = []

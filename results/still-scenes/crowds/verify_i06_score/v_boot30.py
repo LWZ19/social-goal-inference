@@ -1,9 +1,10 @@
 """Verifier: layout-clustered bootstrap over all 30 base layouts (FROZEN 9 reporting), descriptive."""
 import json, collections
+from pathlib import Path
 import numpy as np
 rows = {}
 for s in (0, 1, 2):
-    for l in open(f'results/2026-10-17-beyond-vlm/phase2/i06/verify_i06_score/out/arms_seed{s}.jsonl'):
+    for l in open(Path(__file__).resolve().parent / 'out' / f'arms_seed{s}.jsonl'):
         x = json.loads(l); rows[(s, x['scene_id'])] = x
 layouts = sorted({(r['seed'], r['row']) for r in rows.values() if r['kind'] == 'base'})
 assert len(layouts) == 30

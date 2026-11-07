@@ -2,21 +2,23 @@
 
 nearest_m is the floor distance from the robot's centre to the nearest person's centre (sim/sgi_habitat/experiment.py).
 Below 0.55 m is SCORING.md's clearance limit; below 0.3 m the bodies would overlap (a bump). Zero calls.
-    python3 bumps.py   (run from moving/)"""
-import collections, glob, json
+    .venv/bin/python results/moving-lines/bumps/bumps.py   (reads the run folders in results/data/moving/)"""
+import collections, glob, json, sys
 from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 
 ARMS = {"R1": "decide once, pointing", "C1": "decide once, ours", "CT": "updating v1", "CT2": "updating v2",
         "CT3F": "best version", "RTw": "follow marked spot", "Rq0": "re-ask each answer", "Cq": "re-ask every 10 s"}
 agg = collections.defaultdict(collections.Counter)
 seen = set()
-for f in sorted(glob.glob("runs*/*/*/seed*/*/episode.json")):
+for f in sorted(glob.glob("runs*/*/*/seed*/*/episode.json", root_dir=paths.MOVING_RUNS)):
     p = Path(f); arm, seed = p.parent.name, int(p.parent.parent.name[4:])
     key = (p.parts[1], p.parts[2], seed, arm)
     if seed < 10 or arm not in ARMS or key in seen:
         continue
     seen.add(key)
-    s = json.load(open(f))["samples"]
+    s = json.load(open(paths.MOVING_RUNS / f))["samples"]
     c = agg[arm]; c["runs"] += 1; c["bumped_runs"] += any((x.get("nearest_m") or 9) < 0.3 for x in s)
     for i, x in enumerate(s):
         d = x.get("nearest_m")

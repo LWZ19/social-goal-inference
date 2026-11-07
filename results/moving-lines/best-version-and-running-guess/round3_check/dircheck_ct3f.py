@@ -1,7 +1,8 @@
 """CT4P's failed direction check: does CT3F's own path rule pass it? Applies l_ct4p_score.direction_check (unchanged)
 to CT3F episodes that log solve_direction (runs_pilot3/dsv41_dircheck), and CT4P alongside, per layout too."""
 import statistics, sys
-sys.path.insert(0, "round3")
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "round3"))
 from l_ct4p_score import load, angle, direction_check, HIGH
 from i_followups import line_of, pos
 

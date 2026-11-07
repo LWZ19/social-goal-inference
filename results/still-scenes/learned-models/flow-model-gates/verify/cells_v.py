@@ -16,7 +16,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.config import DEFAULT_CONFIG, load_config  # noqa: E402
 from sgi.freespace import connected, robot_grid  # noqa: E402
@@ -24,10 +24,10 @@ from sgi.gt.derive import prepare  # noqa: E402
 from sgi.polygons import point_in_polygon  # noqa: E402
 from sgi.scene import load_scene  # noqa: E402
 
-V = Path('results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+V = Path('results/still-scenes/learned-models/flow-model-gates/verify')
 FROZEN = V.parent / 'FROZEN.md'
 SHA = '8b7d3ae294ad81a810c70c23706247674bbfed22cc0247445e91f6615426419c'
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 CACHE = V / 'vcache'
 EPS = 1e-9
 assert hashlib.sha256(FROZEN.read_bytes()).hexdigest() == SHA

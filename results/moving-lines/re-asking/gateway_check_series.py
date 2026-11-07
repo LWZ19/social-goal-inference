@@ -2,11 +2,15 @@
 calls, window 30, at every call from the 30th on. While a lane ran it was the model's only caller (amendment 2), so the
 model's calls in that time are the lane's. Usage: gateway_check_series.py MODEL_ID START END THRESHOLD"""
 import json, os, statistics, sys, time
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+CACHE = paths.REPO / ".cache"                # the model-call cache (not in this repository)
 mid, a, b, thr = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
 t = lambda s: time.mktime(time.strptime(s, "%Y-%m-%d %H:%M:%S"))
 lo, hi = t(a), t(b); calls = []
-for root in [d for d in os.listdir(".cache") if d.startswith("vlm")]:
-    for e in os.scandir(f".cache/{root}"):
+for root in [d for d in os.listdir(CACHE) if d.startswith("vlm")]:
+    for e in os.scandir(CACHE / root):
         m = e.stat().st_mtime
         if not lo <= m <= hi: continue
         try: d = json.load(open(e.path))

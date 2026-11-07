@@ -1,10 +1,10 @@
 """Verifier: the scorer with the true visible people as detections on the 289 fit scenes (R3 claim), and the
 section 4 synthetic sign checks on the verifier's own facing code."""
 import math, sys
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1c/i09/verify_i09_a1')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03/stageA')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03')
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/people-finder/early-detector/phase1c/verify_i09_a1')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector/stageA')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import fitdata as FD, people_scorer as PS, vpipe as VP
 ok = 0; n = 0
 for dom, sset, sid, loader in FD.fit_refs():

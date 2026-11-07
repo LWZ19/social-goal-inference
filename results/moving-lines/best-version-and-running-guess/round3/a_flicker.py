@@ -8,7 +8,7 @@ U(0,4) s plus 20% wait for the next service):
   it (the dynamic belief alone);
 - right last, as replay_lib.score counts it.
 
-    .venv/bin/python round3/a_flicker.py      (from ideas2_1b/)
+    .venv/bin/python round3/a_flicker.py      (from best-version-and-running-guess/)
 """
 import math
 import sys

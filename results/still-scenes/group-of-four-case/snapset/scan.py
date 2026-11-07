@@ -9,7 +9,7 @@ For a target that is not a person: the nearest person, their distance to the anc
 them the picture shows (cylinder samples in the image and not hidden), and whether the anchor pixel lies inside a
 person's projected box (when the snap could have a candidate on an object click).
 
-    PYTHONPATH= nice -n 10 .venv/bin/python results/2026-11-01-push/group4/snapset/scan.py \
+    PYTHONPATH= nice -n 10 .venv/bin/python results/still-scenes/group-of-four-case/snapset/scan.py \
         --seeds 400-449 --workers 4
 
 Writes layouts.csv (every layout) and candidates.csv (the layouts that fall in a SNAP_FROZEN.md set) beside this file.

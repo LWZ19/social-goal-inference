@@ -13,8 +13,8 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, 'docs/model_notes/tools')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i01_repairs')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
+sys.path.insert(0, 'results/still-scenes/replay-harness/repairs')
 import research_harness as H  # noqa: E402
 import repairs as R  # noqa: E402
 

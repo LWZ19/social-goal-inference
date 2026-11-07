@@ -1,8 +1,8 @@
-"""Scores the fresh sweep runs by ideas2_1b/CT4_FROZEN.md section 4 (sha256 2df880ff), with ideas2_1b/DEVIATION_1.md
+"""Scores the fresh sweep runs by ../best-version-and-running-guess/CT4_FROZEN.md section 4 (sha256 2df880ff), with ../best-version-and-running-guess/DEVIATION_1.md
 (32aab43f). Zero calls; read-only on the runs. The research checks this file against the note before it is
 run on fresh data.
 
-    python3 score_sweep.py runs_sweep/dsv41 [runs_sweep/sonnet55_low]
+    python3 score_sweep.py results/data/moving/runs_sweep/dsv41 [results/data/moving/runs_sweep/sonnet55_low]   (from the repo root)
 
 Definitions (every number below comes from one of these):
 - **Ticks**: the episode's logged re-solves. They all come after the first delivery, and each carries `truth`: the
@@ -48,7 +48,9 @@ from collections import defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
 from summarise_fresh import in_line, measures, sign_p  # noqa: E402
 
 ARMS = ("CT2", "CT3", "Gl", "CT3F", "CT4", "R1")

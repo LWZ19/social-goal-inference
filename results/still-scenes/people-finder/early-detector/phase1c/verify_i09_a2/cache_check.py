@@ -1,5 +1,5 @@
 import sys, json
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OLD = {"qwen38_low": "s19", "glm53": "s19", "dsv41": "s20"}
 NEW = {"qwen38_low": "s21", "glm53": "s23", "dsv41": "s23"}
@@ -21,4 +21,4 @@ for m in OLD:
     same = sum(lists["old"][k] == lists["new"][k] for k in shared)
     line = f"{m}: new keys with a list {len(lists['new'])}, shared with old {len(shared)}, identical {same}"
     print(line); out.append(line)
-open('results/2026-10-17-beyond-vlm/phase1c/i09/verify_i09_a2/cache_check.txt', 'w').write("\n".join(out) + "\n")
+open('results/still-scenes/people-finder/early-detector/phase1c/verify_i09_a2/cache_check.txt', 'w').write("\n".join(out) + "\n")

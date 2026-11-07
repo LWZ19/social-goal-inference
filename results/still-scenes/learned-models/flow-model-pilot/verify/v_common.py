@@ -15,17 +15,21 @@ import zlib
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+from pathlib import Path  # noqa: E402
+
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402,F401
 from sgi import solver  # noqa: E402
 from sgi.geometry import bearing, wrap_angle  # noqa: E402
 from sgi.polygons import point_in_polygon  # noqa: E402
 
-WT = '.-scenes'
-ROOT = WT + '/results/2026-10-17-beyond-vlm'
-PILOT = ROOT + '/phase2/flow_pilot'
+WT = str(paths.REPO)
+PILOT = str(paths.STILL / 'learned-models' / 'flow-model-pilot')
 VER = PILOT + '/verify'
-SEEDS = ROOT + '/phase2/seeds/placeholder'
+SEEDS = str(paths.STILL / 'scene-seeds' / 'phase2' / 'placeholder')
+SOFT_DENSITY = str(paths.STILL / 'learned-models' / 'soft-density')  # old phase1d/i04
 
 NC = 64
 CELL = 0.10

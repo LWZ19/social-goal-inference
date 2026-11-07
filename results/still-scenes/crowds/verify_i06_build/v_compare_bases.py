@@ -11,7 +11,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
 from sgi.scene import load_scene  # noqa: E402
@@ -82,7 +82,7 @@ def main():
         if sd.endswith("data/placeholder/eval"):
             want[(0, s.scene_id)] = s
         for n in (0, 1, 2):
-            if sd.endswith(f"keep/dev_new/seed{n}/scenes"):
+            if sd.endswith(f"dev_scenes/dev_new/seed{n}/scenes"):
                 want[(n, s.scene_id)] = s
     checked = 0
     for seed in (0, 1, 2):

@@ -1,5 +1,5 @@
 import sys, math, statistics as st
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/cascade/verify')
+sys.path.insert(0, 'results/still-scenes/combining-models/cascade/verify')
 import verify as V
 OUT=[]
 def p(*a):
@@ -17,4 +17,4 @@ for qn,Q in [('s21 qwen',V.load('s21','qwen38_low')),('s23 sonnet',V.load('s23',
     for off in (1,2):
         sc={k:d(k,off) for k in gs}
         p(f'{qn} dis1 partner t+{off}: AUROC fail {V.auroc([sc[k] for k in gs],lab):.3f} gain {V.auroc([sc[k] for k in gs],gain):.3f}; @0.5 {at(sc,0.5)}')
-open('results/2026-10-17-beyond-vlm/rerun/cascade/verify/robust_new_out.txt','w').write('\n'.join(OUT)+'\n')
+open('results/still-scenes/combining-models/cascade/verify/robust_new_out.txt','w').write('\n'.join(OUT)+'\n')

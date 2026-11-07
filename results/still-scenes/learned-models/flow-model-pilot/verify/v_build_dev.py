@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i01_repairs')
+sys.path.insert(0, 'results/still-scenes/replay-harness/repairs')
 import v_common as V  # noqa: E402
 import research_harness as H  # noqa: E402
 import repairs  # noqa: E402

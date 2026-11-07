@@ -3,7 +3,7 @@
 Compares each reproduced base scene (scenes/seed<N>/<id>, loaded with sgi.scene.load_scene, and the in-memory arrays
 of build/base_layouts/seed<N>.pkl) with its whitelisted development scene, loaded through the step-0 harness only:
 - seed 0, eval_06..13: data/placeholder/eval (an s10 run lists it);
-- seeds 0, 1, 2, eval_14..15: keep/dev_new/seed<N>/scenes (an s17 run of that seed lists it).
+- seeds 0, 1, 2, eval_14..15: data/dev_scenes/dev_new/seed<N>/scenes (an s17 run of that seed lists it).
 Exact equality of people (id, x, y, yaw, group, role), targets (every field but tour_frames, which the bases do not
 have: no tour is built), T_world_camera, robot pose, both episodes' acceptable polygons and representative points (and
 forbidden regions, bounds and obstacles as extras), and the rgb and depth arrays. Seeds 1 and 2 eval_06..13 have no
@@ -18,7 +18,7 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
 from sgi.scene import load_scene  # noqa: E402

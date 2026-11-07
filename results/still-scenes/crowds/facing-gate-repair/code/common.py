@@ -11,16 +11,19 @@ import sys
 import time
 from pathlib import Path
 
-WT = Path('.-scenes')
-RD = WT / 'results/2026-10-17-beyond-vlm'
-HERE = RD / 'phase2/i06_repair'
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+WT = paths.REPO
+RD = paths.STILL
+HERE = Path(__file__).resolve().parents[1]
 CODE = HERE / 'code'
 OUT = HERE / 'out'
 WORK = HERE / 'work'
 LOGS = HERE / 'logs'
-I06_SCORE = RD / 'phase2/i06/score'
-I01 = RD / 'phase1/i01_repairs'
-A2 = RD / 'phase1c/i09/a2'
+I06_SCORE = HERE.parent / 'score'
+I01 = RD / 'replay-harness/repairs'
+A2 = RD / 'people-finder/early-detector/phase1c/a2'
 
 FROZEN_SHA = '02432f62320c0ebb0924c0f0e5b4b2089d508eb4a85fd28cf56641c25e27560f'
 SOLVER_SHA = '10ece70f521eff2b1224267fa0b91bfac546d5740f85622073989a16c6c5d800'

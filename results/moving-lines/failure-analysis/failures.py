@@ -18,13 +18,17 @@ import math
 import os
 import re
 import sys
+from pathlib import Path
 
 import numpy as np
 import yaml
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
 HERE = os.path.dirname(os.path.abspath(__file__))
-RUNS = os.path.join(HERE, "..", "runs")
-SCEN = os.path.join(HERE, "..", "..", "..", "..", "..", "sim", "scenarios")
+RUNS = str(paths.MOVING_RUNS / "runs")
+SCEN = str(paths.REPO / "sim" / "scenarios")
 MODELS = ["dsv41", "x3", "sonnet55_low"]
 EVAL = ["cafe", "room_coffee_cart", "cafe_line2_moving", "cafe_line6_moving", "sweet_spot_line2_moving"]
 DEV = ["cafe_busy"]
@@ -477,7 +481,7 @@ def replay_first(e, standoff=None, oracle_come_after=False, no_face=False):
     from sgi.solver import solve
     from sgi.stages.goal import standard_goal
     from sgi.types import Constraint, DetectedPerson
-    th = load_config(os.path.join(HERE, "..", "..", "..", "..", "..", "configs", "default.yaml")).thresholds
+    th = load_config(str(paths.REPO / "configs" / "default.yaml")).thresholds
     if standoff is not None:
         th = th.model_copy(update={"standoff_m": standoff})
     obs, target, people, cons = _replay_inputs(os.path.join(e["_dir"], "001"))

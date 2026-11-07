@@ -3,12 +3,12 @@
 # Usage: run_guarded.sh LOG SCRIPT [ARGS...]
 set -u
 LOG="$(realpath -m "$1")"; shift
-V=results/2026-10-17-beyond-vlm/phase2/i06/verify_i06_build
+V=results/still-scenes/crowds/verify_i06_build
 while true; do
   avail=$(free -m | awk '/^Mem:/ {print $7}')
   if [ "$avail" -ge 3000 ]; then echo "$(date -Is) available ${avail} MiB: start $*" >> "$LOG"; break; fi
   echo "$(date -Is) available ${avail} MiB < 3000: waiting 5 min" >> "$LOG"; sleep 300
 done
-cd .-scenes || exit 1
-PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 nice -n 10 .venv/bin/python "$V/$@" >> "$LOG" 2>&1
+cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)" || exit 1
+PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 nice -n 10 ${PY:-python} "$V/$@" >> "$LOG" 2>&1
 echo "$(date -Is) exit $?" >> "$LOG"

@@ -2,12 +2,15 @@
 Reads records through the harness. No model, no network."""
 import json, sys
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 HERE = Path(__file__).resolve().parent
 def key(r): return (r["arm"], r["scene"], r["episode"], r["trial"])
 rows = {key(r): r for r in map(json.loads, (HERE / "v_rows_old_glm53.jsonl").open())}
-I01 = HERE.parents[2] / "phase1" / "i01_repairs"
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+I01 = paths.STILL / "replay-harness" / "repairs"
 lfk = {key(o) for o in map(json.loads, (I01 / "rows_old_glm53.jsonl").open()) if o["line_failure"]}
 c1 = {k for k in lfk if not rows[k]["Badd"]["ok"] and rows[k]["Badd"]["cls"] == 1}
 none_stated = empty = other = 0

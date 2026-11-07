@@ -1,9 +1,9 @@
 """Is the convlm people answer one per (scene, trial), shared by the two episodes? (fresh people calls vs distinct
 (scene, trial) among goal steps, and identical people lists within a (scene, trial))."""
 import json, sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-HERE = 'results/2026-10-17-beyond-vlm/phase1/i01_calibration'
+HERE = 'results/still-scenes/replay-harness/calibration'
 out = []
 for m in ['glm53', 'ornith15', 'qwen36_35', 'qwen38', 'qwen3vl']:
     recs = [r for r in H.records(H.runs(stage='s8', model=m, method='convlm')[0]) if r.solver_step]

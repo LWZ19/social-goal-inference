@@ -1,6 +1,6 @@
 """Are the C (s19/s20 con) and E (s16b/s20 fsc) wrong-target points the same points (shared, cached plan call)?"""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 lines = []
 for (sc_, mc), (se, me) in [(('s19', 'qwen38_low'), ('s16b', 'qwen38_low')), (('s19', 'glm53'), ('s16b', 'glm53')), (('s20', 'dsv41'), ('s20', 'dsv41'))]:
@@ -23,4 +23,4 @@ for (sc_, mc), (se, me) in [(('s19', 'qwen38_low'), ('s16b', 'qwen38_low')), (('
     lines.append(f"{mc}: {dict(c)}")
 txt = '\n'.join(lines)
 print(txt)
-open('results/2026-10-17-beyond-vlm/rerun/lifting/same_points_out.txt', 'w').write(txt + '\n')
+open('results/still-scenes/perception/lifting-rerun/same_points_out.txt', 'w').write(txt + '\n')

@@ -1,5 +1,5 @@
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 for st in ('s21','s22','s16b'):
     r = [x for x in H.runs(stage=st, model='qwen38_low', method='cot') if x.arm=='real'][0]

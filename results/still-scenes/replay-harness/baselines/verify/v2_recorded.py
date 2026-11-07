@@ -1,6 +1,6 @@
 """Recorded successes per model x situation for R (cot), E (fsc), C (con), realistic arms, new and old wording."""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 ARMS = ("real", "staffed", "plain")
 SITS = ("no_one", "waiting_line", "conversation_group")
@@ -24,4 +24,4 @@ for label, sel in (("NEW", [("s21", "qwen38_low", {"cot": "s21", "fsc": "s21", "
                     tot[rec.situation] += 1; cnt[rec.situation] += bool(rec.score["success"]); trials[rec.trial] += 1
             line.append(f"{meth}: " + " ".join(f"{s}={cnt[s]}/{tot[s]}" for s in SITS) + f" pooled={sum(cnt.values())}/{sum(tot.values())} trials={dict(trials)} other_sits={set(tot)-set(SITS)}")
         p(" | ".join(line))
-open('results/2026-10-17-beyond-vlm/rerun/i01_baselines/verify/v2_recorded.txt', "w").write("\n".join(out) + "\n")
+open('results/still-scenes/replay-harness/baselines/verify/v2_recorded.txt', "w").write("\n".join(out) + "\n")

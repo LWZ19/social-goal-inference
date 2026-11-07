@@ -20,10 +20,13 @@ import json  # noqa: E402
 import os  # noqa: E402
 import subprocess  # noqa: E402
 import time  # noqa: E402
+from pathlib import Path  # noqa: E402
 
-FIX = "results/2026-10-17-beyond-vlm/phase3/i09_fix"
-RESEARCH = "results/2026-10-17-beyond-vlm"
-INFER = RESEARCH + "/phase1c/i09/a1/sidecar/infer.py"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402  (standard library only)
+
+FIX = str(paths.STILL / "people-finder/early-detector/fix")
+INFER = str(paths.STILL / "people-finder/early-detector/phase1c/a1/sidecar/infer.py")
 INFER_SHA = "bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484"
 MANIFEST = FIX + "/manifest_fit.json"
 RAW = FIX + "/raw_fit"

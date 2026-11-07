@@ -1,7 +1,7 @@
 """Round 3 pilot: score PILOT_PREDICTIONS.md (sha256 cb29fc67) from the closed-loop logs. Written before stage 2
 existed. Zero calls; read-only on the runs.
 
-Per episode (sweep/score_sweep.episode_scores unchanged, plus POSTHOC_1 Q5's jitter measures):
+Per episode (test-layouts/score_sweep.episode_scores unchanged, plus POSTHOC_1 Q5's jitter measures):
 - goal jumps per minute: consecutive ok re-solves whose pose_world moved more than 0.3 m, per minute of re-solves;
 - roster changes per re-solve;
 - cut-in samples (summarise_fresh.measures);
@@ -10,7 +10,8 @@ Per episode (sweep/score_sweep.episode_scores unchanged, plus POSTHOC_1 Q5's jit
 Per prediction: layouts where the pair goes the stated way / the other way / tied (|d| < 0.01 for shares, d = 0
 for counts and rates), the pooled means, and held / not held ("held" = more layouts the stated way).
 
-    .venv/bin/python round3/h_pilot_score.py runs_pilot3/dsv41      (from ideas2_1b/)
+    .venv/bin/python round3/h_pilot_score.py runs_pilot3/dsv41
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/)
 """
 import json
 import math
@@ -19,9 +20,11 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-MOVING = HERE.parent.parent
-sys.path.insert(0, str(MOVING))
-sys.path.insert(0, str(MOVING / "sweep"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+MOVING = paths.MOVING_RUNS                # run folders are named relative to it, e.g. "runs_pilot3/dsv41"
+sys.path.insert(0, str(paths.DESIGN))
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
 from score_sweep import episode_scores  # noqa: E402
 from summarise_fresh import sign_p  # noqa: E402
 
@@ -39,7 +42,7 @@ def jitter(e):
 
 
 def load(root):
-    sel = json.loads((MOVING / "sweep" / "pilot_selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "pilot_selection.json").read_text())["layouts"]
     out = {}
     for lay in sel:
         for arm in ARMS:

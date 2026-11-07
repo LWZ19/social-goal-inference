@@ -1,5 +1,5 @@
-"""Confirmatory test layouts (ideas2_1b/round4/CONFIRM_CT4PJ.md; RANGES.md: candidates 2000-2449 per base, the
-controller only): select_pilot.py's logic unchanged, with its own folders and quotas. Zero calls; deterministic.
+"""Confirmatory test layouts (../best-version-and-running-guess/round4/CONFIRM_CT4PJ.md; RANGES.md: candidates 2000-2449 per base, the
+run only): select_pilot.py's logic unchanged, with its own folders and quotas. Zero calls; deterministic.
 
 Quotas: ours 48, chain 12, mixed 6, easy 6; half from each base.
 Within a stratum and base, candidates are sorted by their distance past the last member (`past_last_m`) and cut into
@@ -15,13 +15,16 @@ Writes sim/scenarios/confirm4/<name>.yaml (the candidate plus its flags) and con
 """
 import hashlib
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 
 import yaml
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[4]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+ROOT = paths.REPO
 OUT = ROOT / "sim" / "scenarios" / "confirm4"
 CAND = HERE / "confirm_candidates"
 QUOTA = {"ours": 48, "chain": 12, "mixed": 6, "easy": 6}

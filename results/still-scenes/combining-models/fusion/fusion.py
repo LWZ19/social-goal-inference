@@ -1,7 +1,7 @@
 """I02 re-computation: fusing trials and models (F1-F4 of the report, plus the new-wording rows).
 
 Reads runs only through research_harness (step-0 harness). No model calls, nothing tuned.
-Ports the logic of the judge scripts RD/scripts/bounds.py, mixedC.py and cross.py.
+Ports the logic of the judge scripts analysis-scripts/bounds.py, mixedC.py and cross.py.
 
 Definitions
   episode      = (arm, scene_id, episode_id) over the realistic arms real, staffed, plain (3 x 28 = 84);
@@ -26,7 +26,7 @@ import math
 import sys
 import time
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
 ARMS = ('real', 'staffed', 'plain')
@@ -259,8 +259,7 @@ def main():
     say('pooled 9 samples:', {k: c[k] for k in ['any', '>=3', '>=4', '>=5', 'all']})
 
     say(f'\nelapsed {time.time() - t0:.0f} s')
-    with open('results/2026-10-17-beyond-vlm/'
-              'rerun/fusion/fusion_out.txt', 'w') as f:
+    with open('results/still-scenes/combining-models/fusion/fusion_out.txt', 'w') as f:
         f.write('\n'.join(OUT) + '\n')
 
 

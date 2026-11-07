@@ -55,10 +55,12 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent                      # .../phase2/i09/live
 SRC = HERE / "src_202c165" / "src"
 PROMPTS = HERE / "src_202c165" / "prompts"
-RD = HERE.parents[2]                                        # .../results/2026-10-17-beyond-vlm
-WORKTREE = RD.parents[2]                                    # the cs6244_project-scenes worktree
-HARNESS_DIR = WORKTREE / "docs" / "model_notes" / "tools"
-EVAL_PEOPLE = RD / "phase1c" / "i09" / "a1" / "eval_people.json"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths                                                # noqa: E402
+RD = paths.STILL                                            # results/still-scenes
+WORKTREE = paths.REPO                                       # the repository root
+HARNESS_DIR = paths.HARNESS                                 # results/still-scenes/analysis-scripts/harness
+EVAL_PEOPLE = RD / "people-finder" / "early-detector" / "phase1c" / "a1" / "eval_people.json"
 EVAL_PEOPLE_SHA256 = "ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3"
 FROZEN_SETTING = {"detector": "rtdetr_v2_r50vd", "tau": 0.25, "band": "wide", "flat": False, "d_dup": 0.5,
                   "d_push": 0.2}

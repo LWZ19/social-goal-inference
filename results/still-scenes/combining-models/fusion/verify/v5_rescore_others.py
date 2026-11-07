@@ -1,6 +1,6 @@
 """Rescore subset: s19 glm53 con and s20 dsv41 con (F1-F4 basis), and s23 glm53/dsv41 con (N1-N4 basis). Recorded vs now."""
 import sys, collections, io, time
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -24,4 +24,4 @@ for a, b, name in []:
     A, B = store[a], store[b]
     pool = {k: A[k] + B[k] for k in A}
     p(f'{name} rescored GLM+DS 6: any={sum(any(v) for v in pool.values())} >=3={sum(sum(v)>=3 for v in pool.values())} >=4={sum(sum(v)>=4 for v in pool.values())} all={sum(all(v) for v in pool.values())}')
-open('results/2026-10-17-beyond-vlm/rerun/fusion/verify/v5_rescore_others_out.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/combining-models/fusion/verify/v5_rescore_others_out.txt', 'w').write(OUT.getvalue())

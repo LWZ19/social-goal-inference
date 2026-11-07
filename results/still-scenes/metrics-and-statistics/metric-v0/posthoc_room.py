@@ -17,7 +17,7 @@ import zlib
 
 import numpy as np
 
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i14_v0')
+sys.path.insert(0, 'results/still-scenes/metrics-and-statistics/metric-v0')
 import i14  # noqa: E402
 from i14 import H, exact_none, face_target, key, replica, solver, DetectedPerson  # noqa: E402
 

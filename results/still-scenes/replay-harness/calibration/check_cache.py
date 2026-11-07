@@ -1,8 +1,8 @@
 """Do s8_conorc and s8_convlm share plan/context answers (and so the target) per (scene, episode, trial)?"""
 import sys, collections, json
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i01_calibration/check_cache.txt'
+OUT = 'results/still-scenes/replay-harness/calibration/check_cache.txt'
 MODELS = ['glm53', 'ornith15', 'qwen36_35', 'qwen38', 'qwen3vl']
 lines = []
 def key(rec): return (rec.scene_id, rec.episode_id, rec.trial)

@@ -14,6 +14,8 @@ from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 sys.dont_write_bytecode = True
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 HERE = Path(__file__).resolve().parent
 LA = HERE.parent
 
@@ -47,7 +49,7 @@ def guard_tests():
     if work.exists():
         shutil.rmtree(work)
     work.mkdir()
-    RD = LA.parents[2]
+    RD = paths.STILL                    # results/still-scenes
     LIVE = LA.parent / "live"
     cases = []
     # FROZEN.md copy with one threshold changed, FROZEN.sha256 copy listing its new hash
@@ -59,7 +61,7 @@ def guard_tests():
     cases.append(("baseline_constant_changed", {"BASELINES": {"glm53": {"C": (65, 14), "D": (69, 19), "P": (69, 19)},
                                                               "dsv41": {"C": (65, 25), "D": (71, 28), "P": (70, 27)}}}))
     a2 = work / "a2"
-    shutil.copytree(RD / "phase1c" / "i09" / "a2", a2, ignore=shutil.ignore_patterns("base_*", "rows_new_*", "rows_ph_*", "*.log"))
+    shutil.copytree(RD / "people-finder" / "early-detector" / "phase1c" / "a2", a2, ignore=shutil.ignore_patterns("base_*", "rows_new_*", "rows_ph_*", "*.log"))
     rows = (a2 / "rows_old_glm53.jsonl").read_text().splitlines()
     r = json.loads(rows[0]); r["D"] = not r["D"]; rows[0] = json.dumps(r)
     (a2 / "rows_old_glm53.jsonl").write_text("\n".join(rows) + "\n")
@@ -67,7 +69,7 @@ def guard_tests():
     i01 = work / "i01"
     i01.mkdir()
     for m in ("glm53", "dsv41"):
-        shutil.copy(RD / "phase1" / "i01_repairs" / f"rows_old_{m}.jsonl", i01)
+        shutil.copy(RD / "replay-harness" / "repairs" / f"rows_old_{m}.jsonl", i01)
     rows = (i01 / "rows_old_dsv41.jsonl").read_text().splitlines()
     r = json.loads(rows[3]); r["P"] = not r["P"]; rows[3] = json.dumps(r)
     (i01 / "rows_old_dsv41.jsonl").write_text("\n".join(rows) + "\n")

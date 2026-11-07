@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 import numpy as np
-V = Path('results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+V = Path('results/still-scenes/learned-models/flow-model-gates/verify')
 C = V.parent / 'cache'
 mine = json.loads((V / 'vcache' / 'index.json').read_text())
 theirs = json.loads((C / 'index.json').read_text())

@@ -5,7 +5,7 @@
    position at each re-solve's send time (linear between the sim's 1-s samples, so approximate near 0.35 m), and
    the 1.0 s dwell. Compared with the logged `joined` per re-solve and by first join.
 
-    python3 round3_check/ct4pj_join_check.py          (from moving/, with the repo's .venv python)
+    python3 results/moving-lines/best-version-and-running-guess/round3_check/ct4pj_join_check.py   (from the repo root, with the repo's .venv python)
 """
 import collections
 import json
@@ -13,9 +13,9 @@ import math
 import sys
 from pathlib import Path
 
-MOVING = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(MOVING / "ideas2_1b" / "round4"))
-sys.path.insert(0, str(MOVING / "ideas2_1b" / "round3"))
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent / "round4"))
+sys.path.insert(0, str(HERE.parent / "round3"))
 from m_ct4pj_score import load  # noqa: E402
 from i_followups import line_of, pos  # noqa: E402
 

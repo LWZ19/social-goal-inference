@@ -16,7 +16,9 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parents[1] / "e1" / "e1d"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402  (results/_lib/paths.py)
+sys.path.insert(0, str(paths.MOVING / "own-camera" / "detector-on-sim-frames" / "e1d"))
 import tracker as T  # noqa: E402  (E1d's pinned detector client and A1 loader)
 
 from sgi.geometry import in_image, project  # noqa: E402

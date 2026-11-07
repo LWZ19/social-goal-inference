@@ -2,12 +2,12 @@
 the oracle snap-and-lift applied to every record (fixes and breaks). Reads only through research_harness."""
 import sys, math, collections
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.evaluate import match_target
 from sgi.geometry import _depth_at
 
-D = 'results/2026-10-17-beyond-vlm/rerun/lifting/verify/'
+D = 'results/still-scenes/perception/lifting-rerun/verify/'
 WIN = 16
 lines = []
 

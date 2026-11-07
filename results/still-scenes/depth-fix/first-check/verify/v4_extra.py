@@ -2,10 +2,10 @@
 reading, Sonnet dv against the region's nearest point."""
 import sys, json, math, collections, statistics as st, io
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.geometry import project
-V = 'results/2026-10-17-beyond-vlm/rerun/snap/verify/'
+V = 'results/still-scenes/depth-fix/first-check/verify/'
 rows = [json.loads(l) for l in open(V + 'v2_snap_records.jsonl')]
 OUT = io.StringIO()
 def p(*a):

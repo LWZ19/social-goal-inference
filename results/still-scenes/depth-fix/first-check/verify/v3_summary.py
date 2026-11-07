@@ -1,5 +1,5 @@
 import json, collections, statistics as st, io
-V = 'results/2026-10-17-beyond-vlm/rerun/snap/verify/'
+V = 'results/still-scenes/depth-fix/first-check/verify/'
 rows = [json.loads(l) for l in open(V + 'v2_snap_records.jsonl')]
 OUT = io.StringIO()
 def p(*a):

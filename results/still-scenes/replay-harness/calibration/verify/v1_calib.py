@@ -8,12 +8,12 @@ Resolve convlm goal steps through H.resolve; records with no goal step keep thei
 Writes rows to v1_rows.jsonl.
 """
 import sys, json, math, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.gt.derive import is_visible
 from sgi.geometry import project
 
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i01_calibration/verify/'
+OUT = 'results/still-scenes/replay-harness/calibration/verify/'
 MODELS = ['glm53', 'ornith15', 'qwen36_35', 'qwen38', 'qwen3vl']
 
 

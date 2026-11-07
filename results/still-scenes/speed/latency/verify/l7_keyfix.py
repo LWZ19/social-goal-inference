@@ -1,6 +1,6 @@
 """L7 recheck with the episode id in the key for plan/context (people keyed per scene and trial)."""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 REAL = ("real", "staffed", "plain")
 def key(ref, rec, c):

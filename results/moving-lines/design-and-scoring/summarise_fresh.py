@@ -1,7 +1,7 @@
 """Fresh seeds 10-19: the judged comparisons of CT2_FROZEN.md, CT2m_FROZEN.md, CTs_FROZEN.md and E1D_FROZEN.md,
 under the three scorings (SCORING.md as frozen; CT2_FROZEN's first-within-0.6 m; SCORING_STRICT.md).
 
-    python3 summarise_fresh.py runs/sonnet55_low [runs/dsv41 ...]
+    python3 summarise_fresh.py results/data/moving/runs/sonnet55_low [results/data/moving/runs/dsv41 ...]   (from the repo root)
 
 Only episodes with seed >= 10 are read; seeds 0-2 are development data for these arms.
 """

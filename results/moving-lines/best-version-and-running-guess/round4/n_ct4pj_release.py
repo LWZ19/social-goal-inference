@@ -1,7 +1,8 @@
 """Releases CT4PJ.md's J2-J5 after J1 failed on its premise (CT4PJ_CHECK.md). It uses m_ct4pj_score's own
 functions, unchanged, and the same computations as its main() after the J1 gate. Zero calls; read-only.
 
-    .venv/bin/python round4/n_ct4pj_release.py runs_pilot3/dsv41   (from ideas2_1b/)
+    .venv/bin/python round4/n_ct4pj_release.py runs_pilot3/dsv41
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/)
 """
 import statistics
 import sys

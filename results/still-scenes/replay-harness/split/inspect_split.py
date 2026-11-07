@@ -3,7 +3,7 @@ nobody-near (no_one) failures with the right target on C (Qwen, Gemini, GLM, Dee
 situation and method. Reads only through research_harness; output saved to inspect_out.txt."""
 import collections, sys, statistics as st
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 OUT = Path(__file__).resolve().parent / "inspect_out.txt"

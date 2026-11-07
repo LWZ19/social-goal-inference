@@ -1,7 +1,7 @@
 """M3 variants: which reading could give the report's 3.9%? Reads only through research_harness."""
 import sys, collections, math
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import research_harness as H
 from flags_misc import seg_poly

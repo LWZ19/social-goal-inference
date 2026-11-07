@@ -2,14 +2,14 @@
 moved onto the nearest selectable cell of sgi.solver.floor (C's clearance rule), heading face_target, rescored."""
 import sys, collections, json, math, time
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.solver import floor as c_floor
 from sgi.stages.goal import _poses
 from sgi.types import DetectedPerson
 from sgi.geometry import bearing, wrap_angle
 
-V = 'results/2026-10-17-beyond-vlm/rerun/snap/verify/'
+V = 'results/still-scenes/depth-fix/first-check/verify/'
 MODELS = [('qwen38_low', 's21'), ('glm53', 's23'), ('dsv41', 's23'), ('haiku55', 's23'), ('sonnet55_low', 's23'), ('gemini38_low', 's23')]
 ARMS = ['real', 'staffed', 'plain']
 FLOORS = {}

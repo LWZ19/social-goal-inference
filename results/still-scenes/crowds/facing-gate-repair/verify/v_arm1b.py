@@ -5,13 +5,16 @@ from __future__ import annotations
 
 import collections
 import json
+import sys
 import statistics
 from pathlib import Path
 
-RD = Path('results/2026-10-17-beyond-vlm')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
 HERE = Path(__file__).resolve().parent
-I06 = RD / 'phase2/i06/score'
-AG = RD / 'phase2/i06_repair'
+I06 = RD / 'crowds/score'
+AG = RD / 'crowds/facing-gate-repair'
 out = {}
 import sys
 for m in (sys.argv[1:] or ['qwen', 'glm', 'dsv']):

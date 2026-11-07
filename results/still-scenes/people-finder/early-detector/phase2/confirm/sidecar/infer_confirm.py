@@ -22,9 +22,9 @@ import os  # noqa: E402
 import subprocess  # noqa: E402
 import time  # noqa: E402
 
-CONFIRM = "results/2026-10-17-beyond-vlm/phase2/i09/confirm"
-RESEARCH = "results/2026-10-17-beyond-vlm"
-INFER = RESEARCH + "/phase1c/i09/a1/sidecar/infer.py"
+CONFIRM = "results/still-scenes/people-finder/early-detector/phase2/confirm"
+RESEARCH = "results/still-scenes"
+INFER = RESEARCH + "/people-finder/early-detector/phase1c/a1/sidecar/infer.py"
 INFER_SHA = "bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484"
 FROZEN_SHA = "f55341c03cd5e1d38c91b7e0142ef10f0870ccb2b43c5bf4edfac07d1996e751"
 MANIFEST = CONFIRM + "/manifest.json"

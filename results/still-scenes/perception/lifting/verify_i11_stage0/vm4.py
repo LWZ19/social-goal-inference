@@ -85,7 +85,7 @@ def run_set(setname):
         th = cfg.thresholds
         check_th(th)
         held = set(cfg.held_out_situations)
-        base = RD / 'phase1b/fresh_seeds'
+        base = RD / 'fresh_seeds'
         for seed in range(100, 110):
             folder = base / f'seed{seed}'
             listing = json.loads((folder / 'DONE.json').read_text())

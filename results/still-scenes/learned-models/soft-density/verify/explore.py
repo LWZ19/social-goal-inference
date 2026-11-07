@@ -1,5 +1,5 @@
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 CELLS = [('new_qwen','s21','qwen38_low'),('new_glm','s23','glm53'),('new_deepseek','s23','dsv41'),('new_haiku','s23','haiku55'),
          ('new_sonnet','s23','sonnet55_low'),('new_gemini','s23','gemini38_low'),

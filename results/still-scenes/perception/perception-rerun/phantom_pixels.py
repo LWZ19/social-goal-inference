@@ -7,7 +7,7 @@ of the line at the target, and whether that member was never found (package matc
 import math
 import sys
 
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/perception')
+sys.path.insert(0, 'results/still-scenes/perception/perception-rerun')
 import perception as P  # noqa: E402
 from sgi.geometry import project  # noqa: E402
 

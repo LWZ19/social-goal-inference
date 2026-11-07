@@ -1,7 +1,7 @@
 """Round 3, step G: offline predictions for the closed-loop pilot (24 layouts, candidates 1000-1199), written and
 hashed before any closed-loop arm other than CT2 is opened. Zero calls.
 
-Reads only: sweep/pilot_selection.json, sweep/pilot_dump/<name>/seed<N>.json (robot idle), and each layout's CT2
+Reads only: test-layouts/pilot_selection.json, test-layouts/pilot_dump/<name>/seed<N>.json (robot idle), and each layout's CT2
 first answer (001/answer.json) and CT2 episode (for the photo and delivery times and the robot's path). It does
 not open CT3F, CT4, W0 or CT5 outputs.
 
@@ -9,7 +9,8 @@ Offline arms: CT4 (V0), W0 (CT4 + window), CT5 (W4). Per arm, pooled over layout
 empty shares against the dump's truth; last switches per minute; roster changes per tick. Per layout: CT5 minus CT4
 switches per minute, as the sign the closed loop's goal jumps per minute should show.
 
-    .venv/bin/python round3/g_pilot_predict.py runs_pilot3/dsv41      (from ideas2_1b/)
+    .venv/bin/python round3/g_pilot_predict.py runs_pilot3/dsv41
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/)
 """
 import json
 import sys
@@ -20,16 +21,19 @@ from r3lib import CT4, CT5, classify, run  # first: it sets the import path
 from replay_lib import MOVING, Cell  # noqa: E402
 from sgi.types import Constraint, DetectedPerson  # noqa: E402
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
 WIN = dict(STATIC_WIN_S=5.0, WALKERS_STATIC=True, LR_EXIT=1.0)
 ARMS = {"CT4": (CT4, None, "threshold"), "W0": (CT5, WIN, "threshold"), "CT5": (CT5, WIN, "cost")}
 
 
 def pilot_cells(root, arm="CT2"):
-    sel = json.loads((MOVING / "sweep" / "pilot_selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "pilot_selection.json").read_text())["layouts"]
     out, missing = [], []
     for lay in sel:
         hits = sorted((MOVING / root).glob(f"**/{lay['name']}/seed{lay['seed']}/{arm}/episode.json"))
-        dump_f = MOVING / "sweep" / "pilot_dump" / lay["name"] / f"seed{lay['seed']}.json"
+        dump_f = paths.MOVING / "test-layouts" / "pilot_dump" / lay["name"] / f"seed{lay['seed']}.json"
         if not hits or not dump_f.exists():
             missing.append((lay["name"], f"no {arm} episode" if not hits else "no dump"))
             continue

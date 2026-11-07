@@ -6,7 +6,7 @@
 4. OW: every pseudo-resolve has roster = truth ahead and last = truth last.
 5. The target oracle changes the goal: CT4OT's first re-solve pose differs from CT4O's.
 
-Usage: python3 check_ceiling.py CEILING_ROOT CONFIRM_ROOT
+Usage: python3 check_ceiling.py CEILING_ROOT CONFIRM_ROOT   (run folders relative to the working directory, e.g. results/data/moving/...)
 """
 import collections
 import json

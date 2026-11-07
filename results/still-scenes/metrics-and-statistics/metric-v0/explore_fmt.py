@@ -1,6 +1,6 @@
 """Format check only (no metric is computed): situations, candidate counts, region tolerances, forbidden kinds."""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 ncand = collections.Counter(); sits = collections.Counter(); tol = collections.Counter(); forb = collections.Counter(); nreg = collections.Counter()
 heads = collections.Counter()

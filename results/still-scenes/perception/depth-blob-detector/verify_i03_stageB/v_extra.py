@@ -3,7 +3,10 @@ B-relocate-prune class shift. Reads my v_rows_* and I01 rows only. No model, no 
 import collections, json, sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
-I01 = HERE.parents[2] / "phase1" / "i01_repairs"
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+I01 = paths.STILL / "replay-harness" / "repairs"
 ARMS = ("Badd", "Bprune", "Breloc", "BrelocP")
 def key(r): return (r["arm"], r["scene"], r["episode"], r["trial"])
 def v(r, a): return r["C_rec"] if not r["solver_step"] else r[a]["ok"]

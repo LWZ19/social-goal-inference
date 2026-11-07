@@ -6,14 +6,14 @@ The research object's starting state (ids, named, direction, target, sets, prior
 whose construction from an answer was checked for CT4 already; the check is of `step` with the window, and `decide`.
 Every design cell (r3lib.design_cells) under each condition (clean, S2m, S3, S23m).
 
-    .venv/bin/python check_port_ct5.py
+    .venv/bin/python results/moving-lines/best-version-and-running-guess/round3_check/check_port_ct5.py   (from the repo root)
 """
 import sys
 from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent / "ideas2_1b" / "round3"))
+sys.path.insert(0, str(HERE.parent / "round3"))
 import r3lib as L  # noqa: E402
 from ct5 import CT5, UNSET as UNSET_R, decide as decide_r  # noqa: E402
 from sgi.resolve import Track  # noqa: E402

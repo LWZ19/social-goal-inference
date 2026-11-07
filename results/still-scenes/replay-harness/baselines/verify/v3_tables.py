@@ -1,6 +1,6 @@
 """Tables from v1 rows. Rows keep recorded verdict where SA/CA/SG could not be computed."""
 import json, collections, sys
-D = 'results/2026-10-17-beyond-vlm/rerun/i01_baselines/verify/'
+D = 'results/still-scenes/replay-harness/baselines/verify/'
 SITS = ("no_one", "waiting_line", "conversation_group")
 out = []
 def p(*a):

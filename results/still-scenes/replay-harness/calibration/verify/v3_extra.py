@@ -1,9 +1,9 @@
 """Extra checks: people answer shared across episodes; alternative ambiguity definitions (per detection, per true person)."""
 import sys, json, math, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.gt.derive import is_visible
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i01_calibration/verify/'
+OUT = 'results/still-scenes/replay-harness/calibration/verify/'
 lines = []
 P = lambda *a: lines.append(' '.join(str(x) for x in a))
 tot = collections.Counter()

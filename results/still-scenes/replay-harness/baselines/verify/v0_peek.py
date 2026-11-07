@@ -1,5 +1,5 @@
 import sys, json, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 r = H.runs(stage="s23", arm="real", model="haiku55", method="con")[0]
 recs = list(H.records(r))

@@ -11,7 +11,7 @@ call, no network. Writes exposure.txt next to this file and nothing else.
 
     (from the cs6244_project-scenes worktree root)
     PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 nice -n 10 .venv/bin/python -B \
-        results/2026-10-17-beyond-vlm/phase3/confidence/followup/exposure.py
+        results/still-scenes/confidence-signal/followup/exposure.py
 
 Subsets of the 441 primary records:
   (a) all;  (b) D_success == success (404);  (c) D_success != success (37).

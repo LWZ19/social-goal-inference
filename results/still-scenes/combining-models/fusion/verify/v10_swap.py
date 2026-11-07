@@ -2,7 +2,7 @@
 pair (S succeeding, F failing) of C goal steps with the right target, solve F again with S's people (F's constraints)
 and with S's constraints (F's people), via H.resolve. Counts are per pair and per episode (any pair fixes)."""
 import sys, collections, io, itertools, time
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -50,4 +50,4 @@ for st, m in [('s19', 'glm53'), ('s20', 'dsv41'), ('s23', 'glm53'), ('s23', 'dsv
         ep['joint swap fixes'] += fix_both
     p(f'{st} {m} ({time.time()-t0:.0f}s) episodes:', dict(ep))
     p(f'   pairs:', dict(c))
-open('results/2026-10-17-beyond-vlm/rerun/fusion/verify/v10_swap_out.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/combining-models/fusion/verify/v10_swap_out.txt', 'w').write(OUT.getvalue())

@@ -1,7 +1,7 @@
 """Phase 3 confidence, pass 1 (FROZEN.md section 9, step 2): every signal and checks R1-R7. No AUROC, no rate, no
 criterion is computed here.
 
-Zero calls. Runs and scenes only through docs/model_notes/tools/research_harness.py. Earlier code is imported
+Zero calls. Runs and scenes only through results/still-scenes/analysis-scripts/harness/research_harness.py. Earlier code is imported
 unchanged: phase1/i14_v0/i14.py (plan, key), phase1c/i09/a2/replay_d.py (verify_hashes, load_detector_people,
 match_xy, build, MATCH_M; loaded by path) and, through it, phase1/i01_repairs/repairs.py (scene_info).
 
@@ -29,9 +29,17 @@ from pathlib import Path
 for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
     os.environ.setdefault(_v, "2")
 
-OUT = Path(__file__).resolve().parents[1]                       # .../phase3/confidence
-RD = OUT.parents[1]                                             # .../2026-10-17-beyond-vlm
-assert RD.name == "2026-10-17-beyond-vlm", RD
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+OUT = Path(__file__).resolve().parents[1]                       # .../still-scenes/confidence-signal
+RD = paths.STILL                                                # .../results/still-scenes
+assert OUT == RD / "confidence-signal", OUT
+I14D = RD / "metrics-and-statistics" / "metric-v0"
+A2D = RD / "people-finder" / "early-detector" / "phase1c" / "a2"
+A1D = RD / "people-finder" / "early-detector" / "phase1c" / "a1"
+I04D = RD / "learned-models" / "soft-density"
+I01D = RD / "replay-harness" / "repairs"
 FROZEN_SHA = "2a3a890a3b23ff466e8b72c63e6dbef9143d7738f68badc34a4fad6a17ccb4b3"
 
 
@@ -54,8 +62,8 @@ def verify_frozen() -> dict:
     return out
 
 
-sys.path.insert(0, "docs/model_notes/tools")
-sys.path.insert(0, str(RD / "phase1" / "i14_v0"))
+sys.path.insert(0, "results/still-scenes/analysis-scripts/harness")
+sys.path.insert(0, str(I14D))
 import research_harness as H  # noqa: E402
 import i14  # noqa: E402  (unchanged: plan, key, REAL_ARMS)
 
@@ -67,7 +75,7 @@ def _load(name, path):
     return mod
 
 
-RDD = _load("i09_a2_replay_d", RD / "phase1c" / "i09" / "a2" / "replay_d.py")      # unchanged
+RDD = _load("i09_a2_replay_d", A2D / "replay_d.py")      # unchanged
 RP = RDD.R                                                                          # repairs.py, unchanged
 
 S23 = [("s23", m) for m in ("glm53", "dsv41", "haiku55", "sonnet55_low", "gemini38_low")]
@@ -136,7 +144,7 @@ def r6(x):
 # ------------------------------------------------------------------------------------------------ the side data
 def load_i04():
     out = {}
-    for p in sorted((RD / "phase1d" / "i04").glob("rows_*.jsonl")):
+    for p in sorted(I04D.glob("rows_*.jsonl")):
         for line in open(p):
             r = json.loads(line)
             assert r["key"] not in out
@@ -148,7 +156,7 @@ def load_i04():
 def load_i14():
     out = {}
     for name in ("rows_oldwatch.jsonl", "rows_new.jsonl"):
-        for line in open(RD / "phase1" / "i14_v0" / name):
+        for line in open(I14D / name):
             r = json.loads(line)
             if r["set"] == "new" and r["stage"] == "s21":
                 continue
@@ -160,7 +168,7 @@ def load_i14():
 
 def load_a2(cell):
     out = {}
-    for line in open(RD / "phase1c" / "i09" / "a2" / A2_FILE[cell]):
+    for line in open(A2D / A2_FILE[cell]):
         r = json.loads(line)
         out[(r["run"], r["scene"], r["episode"], r["trial"])] = r
     return out
@@ -445,20 +453,21 @@ def mode_checks():
 
     # R7
     a2_listing = {}
-    for line in (RD / "phase1c" / "i09" / "a2" / "A2.sha256").read_text().splitlines():
+    for line in (A2D / "A2.sha256").read_text().splitlines():
         h, f = line.split(None, 1)
         a2_listing[f.strip()] = h
     a2_files = ["replay_d.py"] + sorted(set(A2_FILE.values()))
-    a2_bad = [f for f in a2_files if a2_listing.get(f) != sha256(RD / "phase1c" / "i09" / "a2" / f)]
+    a2_bad = [f for f in a2_files if a2_listing.get(f) != sha256(A2D / f)]
     ok["R7"] = True                                                  # verify_frozen / verify_hashes assert above
     lines.append(f"R7 hashes: PASS; FROZEN.md {fz['FROZEN.md']}; replay_d.verify_hashes {hashes}")
     lines.append(f"   (provenance, not in R7) replay_d.py and the 8 A2 row files against A2.sha256: "
                  f"{'all match' if not a2_bad else 'MISMATCH ' + str(a2_bad)}")
-    inputs = {f"phase1d/i04/{p.name}": sha256(p) for p in sorted((RD / "phase1d" / "i04").glob("rows_*.jsonl"))}
-    inputs.update({f"phase1/i14_v0/{n}": sha256(RD / "phase1" / "i14_v0" / n)
+    _rel = lambda p: str(p.relative_to(paths.REPO))
+    inputs = {_rel(p): sha256(p) for p in sorted(I04D.glob("rows_*.jsonl"))}
+    inputs.update({_rel(I14D / n): sha256(I14D / n)
                    for n in ("rows_oldwatch.jsonl", "rows_new.jsonl", "i14.py")})
-    inputs["phase1/i01_repairs/repairs.py"] = sha256(RD / "phase1" / "i01_repairs" / "repairs.py")
-    inputs["phase1c/i09/a1/eval_people.json"] = sha256(RD / "phase1c" / "i09" / "a1" / "eval_people.json")
+    inputs[_rel(I01D / "repairs.py")] = sha256(I01D / "repairs.py")
+    inputs[_rel(A1D / "eval_people.json")] = sha256(A1D / "eval_people.json")
     lines.append("   input file hashes (provenance): " + "".join(f"\n     {h}  {k}" for k, h in inputs.items()))
     lines.append(f"   pass-1 row file hashes: " + "".join(f"\n     {sha256(OUT / f'rows_{c}.jsonl')}  rows_{c}.jsonl"
                                                        for c in CELLS))

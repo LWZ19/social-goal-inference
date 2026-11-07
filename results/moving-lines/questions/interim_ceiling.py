@@ -3,8 +3,10 @@ full answer arrived, first in line could come at the answer at best, so the savi
 Share-in-line ceiling = that saving / samples (91), counted only where CT2 reached the line. Per model."""
 import statistics, sys
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M)); import summarise_fresh as S
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN)); import summarise_fresh as S
 for root, label in (('sonnet55_low', 'Sonnet 10-19'), ('dsv41', 'DeepSeek 10-14'), ('x3', 'x-test-3 10-12')):
     sav, n, reached = [], 0, 0
     for e in S.load([M / 'runs' / root]):

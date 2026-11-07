@@ -3,7 +3,7 @@ SCORING_STRICT.md, with summarise_fresh.py's functions (in_line, measures, sign_
 
     python item3_ct0_cto_ctt.py > item3_out.txt
 
-Cells: the five seeds-0-2 scenarios the arms ran on, seeds 0, 1, 2, per model folder under moving/runs/.
+Cells: the five seeds-0-2 scenarios the arms ran on, seeds 0, 1, 2, per model folder under results/data/moving/runs/.
 summarise_fresh.load() keeps only seeds >= 10, so episodes are loaded here (same glob, same JSON), seeds 0-2.
 Ties: |d| < 0.01 (the audit's rule). Every episode has 91 samples, so shares move in steps of 1/91 = 0.011 and the
 0.01 rule gives the same W/L/T as summarise_fresh's exact ties (|d| < 1e-9); the script asserts this.
@@ -14,8 +14,11 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-M = Path("results/2026-11-01-push/moving")
-sys.path.insert(0, str(M))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+M = paths.MOVING_RUNS                    # run folders: M / "runs" / <model> / ...
+sys.path.insert(0, str(paths.DESIGN))
 from summarise_fresh import measures, sign_p  # noqa: E402  (frozen and strict scorings, unchanged)
 
 SCENES = ["cafe", "room_coffee_cart", "cafe_line2_moving", "cafe_line6_moving", "sweet_spot_line2_moving"]

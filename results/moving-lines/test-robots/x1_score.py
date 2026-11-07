@@ -1,7 +1,7 @@
 """Extra X1 (X1_FROZEN.md): CT3FT (CT3F with the true counter point) against CT3F on four models' cached first
 answers, both re-run together in runs_x1/<model>; pooled over models. Zero calls; read-only.
 
-    .venv/bin/python fill/x1_ceilings/x1_score.py [--test]
+    .venv/bin/python results/moving-lines/test-robots/x1_score.py [--test]
     (--test reads the earlier DeepSeek pair: CT3FT in runs_ceiling4/dsv41, CT3F in runs_confirm4/dsv41)
 
 Measure: strict share from the first service at band top 1.2 m (round7/c_gaps.py's episode(), as ROUND7_D.md).
@@ -11,8 +11,9 @@ import statistics
 import sys
 from pathlib import Path
 
-PUSH = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(PUSH / "moving" / "ideas2_1b" / "round7"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.MOVING / "best-version-and-running-guess" / "round7"))
 import json  # noqa: E402
 
 from c_gaps import load  # noqa: E402
@@ -37,7 +38,7 @@ def summary(d):
 
 def main():
     test = "--test" in sys.argv
-    sel = json.loads((PUSH / "moving" / "sweep" / "confirm_selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "confirm_selection.json").read_text())["layouts"]
     names = [l["name"] for l in sel]
     per_layout = {n: [] for n in names}
     print(f"# X1: CT3FT against CT3F, strict from the first service (band top 1.2 m){' TEST' if test else ''}\n")

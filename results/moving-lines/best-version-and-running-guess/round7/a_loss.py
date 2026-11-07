@@ -2,7 +2,8 @@
 
     .venv/bin/python round7/a_loss.py SELECTION_JSON SCENARIO_DIR RUN_ROOT \
         ARM [ARM ...] [--csv OUT.csv]
-    (from ideas2_1b/; SELECTION_JSON and RUN_ROOT relative to moving/, SCENARIO_DIR relative to the repo.)
+    (SELECTION_JSON and OUT.csv relative to results/moving-lines/, RUN_ROOT relative to results/data/moving/,
+    SCENARIO_DIR relative to the repo.)
 
 Window: the 1 Hz samples from the first service after delivery to the end, exactly as score_sweep.episode_scores'
 after_service_strict (the script checks it gets the same share).
@@ -34,10 +35,12 @@ import numpy as np
 import yaml
 
 HERE = Path(__file__).resolve().parent
-MOVING = HERE.parents[1]
-REPO = MOVING.parents[3]
-sys.path.insert(0, str(MOVING))
-sys.path.insert(0, str(MOVING / "sweep"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+MOVING = paths.MOVING_RUNS                # run folders are named relative to it, e.g. "runs_confirm4/dsv41"
+REPO = paths.REPO
+sys.path.insert(0, str(paths.DESIGN))
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
 from score_sweep import episode_scores  # noqa: E402
 from summarise_fresh import in_line  # noqa: E402
 
@@ -210,7 +213,7 @@ def main():
         csv = args[i + 1]
         args = args[:i] + args[i + 2:]
     sel_path, scen_dir, root, arms = args[0], args[1], args[2], args[3:]
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     print(f"# Round 7, DESCRIPTIVE: where strict time in line is lost ({sel_path}, {root})")
     rows = []
     for arm in arms:
@@ -229,7 +232,7 @@ def main():
                          sum(g["goal"] for g in gs) / len(gs) if gs else None))
         report(arm, eps)
     if csv:
-        with open(MOVING / csv, "w") as f:
+        with open(paths.MOVING / csv, "w") as f:
             f.write("layout,arm,strict,arrival_lost,keeping_lost,goal_resolves,goal_right\n")
             for r in rows:
                 f.write(",".join("" if v is None else (f"{v:.4f}" if isinstance(v, float) else str(v)) for v in r) + "\n")

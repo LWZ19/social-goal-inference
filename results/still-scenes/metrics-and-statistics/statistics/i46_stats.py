@@ -1,6 +1,6 @@
 """I46, the statistics half (phase 1). Offline only: research_harness reads, no model or network call, nothing tuned.
 
-Reuses rerun/stats/stats.py (load, pairs, analyse, signflip_int, power_exact, icc_oneway, t_quant, layout_of).
+Reuses ../stats-rerun/stats.py (load, pairs, analyse, signflip_int, power_exact, icc_oneway, t_quant, layout_of).
 
 Sets (realistic arms real, staffed, plain; 252 records per model and method; 14 layouts x 18 records each,
 18 = 3 arms x 2 episodes x 3 trials; layout = scene id without the arm prefix):
@@ -32,11 +32,10 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402,F401
 
-RD = Path('results/2026-10-17-beyond-vlm')
-sys.path.insert(0, str(RD / 'rerun' / 'stats'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'stats-rerun'))
 import stats as S  # noqa: E402
 
 OUT = Path(__file__).resolve().parent
@@ -369,7 +368,7 @@ def part3(tres):
 # ---------------------------------------------------------------- part 4: noise
 def part4():
     say('PART 4. Run-to-run noise: SD of one 3-trial batch of 252 records')
-    say("Controller's figures (REPORT section 8): one 3-trial batch has an SD of about 6-8 records (Qwen 7.9).")
+    say("The figures (REPORT section 8): one 3-trial batch has an SD of about 6-8 records (Qwen 7.9).")
     say('Qwen 9-draw pool (R = cot, E = fsc): batch 1 = s16b trials 0-2, batch 2 = s22 trials 3-5, batch 3 = s21 trials '
         '0-2; s22 trials 0-2 dropped (cache copies of s16b). Each batch: 3 trials x 84 items (arm, scene, episode) = 252.')
     say('Estimators of the SD of one batch total:')

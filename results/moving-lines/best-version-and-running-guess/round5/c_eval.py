@@ -3,7 +3,7 @@ chord direction. Pilot layouts (with the proxy goal) and design cells × 4 condi
 false-member ticks (P >= 0.5, present, not in the dump's queue) split as round4/f_belief/exmember.py; recall (queue
 members present with P >= 0.5); right / cut / far / empty; last switches per minute. Zero calls.
 
-    .venv/bin/python round5/c_eval.py [pilot|design|both]   (from ideas2_1b/)
+    .venv/bin/python round5/c_eval.py [pilot|design|both]
 """
 import math
 import sys

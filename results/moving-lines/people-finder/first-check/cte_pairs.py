@@ -1,8 +1,10 @@
 import json, sys, math
 from pathlib import Path
-sys.path.insert(0, 'results/2026-11-01-push/moving')
-import summarise_fresh as S
-R = Path('results/2026-11-01-push/moving/runs/sonnet55_low')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
+import summarise_fresh as S  # noqa: E402
+R = paths.MOVING_RUNS / 'runs/sonnet55_low'
 arms = ['CT', 'CT2', 'CTd', 'CTe']
 scen = sorted(p.name for p in R.iterdir() if p.is_dir())
 for sc in scen:

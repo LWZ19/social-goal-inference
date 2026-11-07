@@ -3,8 +3,10 @@
 import json, statistics, sys
 from collections import defaultdict
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M)); import summarise_fresh as S
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN)); import summarise_fresh as S
 for root, label in ((M / 'runs/sonnet55_low', 'Sonnet'), (M / 'runs/dsv41', 'DeepSeek')):
     for arm in ('CT2', 'CT2m'):
         per = defaultdict(list)

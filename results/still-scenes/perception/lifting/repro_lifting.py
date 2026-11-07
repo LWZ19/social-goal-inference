@@ -1,5 +1,5 @@
-"""Reproduce rerun/lifting (lifting.py and frontsnap.py, unchanged) with their outputs redirected into
-phase1b/i11/repro_lifting/ (DEVIATIONS.md D4), then diff against the original outputs."""
+"""Reproduce perception/lifting-rerun (lifting.py and frontsnap.py, unchanged) with their outputs redirected into
+perception/lifting/repro_lifting/ (DEVIATIONS.md D4), then diff against the original outputs."""
 import difflib
 import sys
 from pathlib import Path
@@ -9,7 +9,7 @@ import i11lib as I  # noqa: E402
 import frontsnap as FS  # noqa: E402
 
 OUT = I.OUTDIR / 'repro_lifting'
-ORIG = I.RD / 'rerun/lifting'
+ORIG = I.RD / 'lifting-rerun'
 
 
 def main():

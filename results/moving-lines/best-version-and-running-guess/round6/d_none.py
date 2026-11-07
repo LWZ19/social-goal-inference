@@ -2,12 +2,15 @@
 right last split by whether the sim's last is None (nobody ahead: the robot is first) or a person. Zero calls.
 
     .venv/bin/python round6/d_none.py SELECTION_JSON RUN_ROOT [RUN_ROOT ...]
+    (SELECTION_JSON relative to results/moving-lines/, RUN_ROOT relative to results/data/moving/.)
 """
 import json
 import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / "round3"))
 from b_pred import find, ok_resolves, stretches  # noqa: E402
@@ -15,7 +18,7 @@ from i_followups import MOVING  # noqa: E402
 
 
 def main():
-    sel = json.loads((MOVING / sys.argv[1]).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sys.argv[1]).read_text())["layouts"]
     print(f"# Right last while in line, split by the sim's last ({sys.argv[1]}; exploratory)")
     for root in sys.argv[2:]:
         print(f"\n## {root}\n")

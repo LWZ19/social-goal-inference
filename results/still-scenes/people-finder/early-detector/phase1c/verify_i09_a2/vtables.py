@@ -10,9 +10,11 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 I09 = HERE.parent
-RD = HERE.parents[2]
-I01 = RD / "phase1" / "i01_repairs"
-SB = RD / "phase1b" / "i03" / "stageB"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+I01 = paths.STILL / "replay-harness" / "repairs"
+SB = paths.STILL / "perception" / "depth-blob-detector" / "stageB"
 A2 = I09 / "a2"
 NAME = {"qwen38_low": "Qwen", "glm53": "GLM", "dsv41": "DeepSeek", "haiku55": "Haiku", "sonnet55_low": "Sonnet",
         "gemini38_low": "Gemini"}

@@ -10,7 +10,7 @@ import sys
 import time
 from pathlib import Path
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import research_harness as H  # noqa: E402
 from sgi.config import load_config  # noqa: E402
@@ -19,7 +19,7 @@ from sgi.scene import load_scene  # noqa: E402
 import v_core as C  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 GRID = {"z_lo": (0.10, 0.40), "z_hi": (1.90, 2.05, 2.20), "top_lo": (1.10, 1.30, 1.50), "split_r": (0.15, 0.25, 0.35),
         "foot_lo": (0.15, 0.30), "foot_hi": (0.70, 1.00)}
 KEYS = tuple(GRID)

@@ -1,6 +1,6 @@
 """Smoke test of repairs.py on a few records of s19 glm53 real (no output files)."""
 import sys, time, json
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i01_repairs')
+sys.path.insert(0, 'results/still-scenes/replay-harness/repairs')
 import repairs as R
 H = R.H
 ref = R.one_run('s19', 'real', 'glm53')

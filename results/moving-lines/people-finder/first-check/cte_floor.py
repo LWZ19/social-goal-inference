@@ -3,9 +3,11 @@ first answers; only the sim's timing differs) against CTe vs CTd; (2) how often 
 seeds 10-18) contain keep_out_of_shared_space, against CTe's detector-people answers."""
 import itertools, json, re, statistics, sys
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M))
-import summarise_fresh as S
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN))
+import summarise_fresh as S  # noqa: E402
 A, B = M / 'runs/sonnet55_low', M / 'runs/sonnet55_low_fresh_repeat'
 
 def get(root):

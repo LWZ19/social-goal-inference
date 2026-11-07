@@ -27,7 +27,7 @@ def guard(path: str) -> str:
         if m:
             k = int(m.group(1))
             parent = "/".join(parts[:i])
-            ok = (100 <= k <= 109 and parent.endswith("phase1b/fresh_seeds")) or \
+            ok = (100 <= k <= 109 and parent.endswith("still-scenes/perception/fresh_seeds")) or \
                  (k in (0, 1, 2) and parent.endswith("keep/dev_new"))
             assert ok, f"refused: seed folder {part} in {path}"
     return path

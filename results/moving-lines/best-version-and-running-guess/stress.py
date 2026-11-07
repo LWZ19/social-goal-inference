@@ -1,4 +1,4 @@
-"""Stress perturbations S1-S4 of the dumped tracks (research_session.md, idea 1; frozen with the arm). Each is a
+"""Stress perturbations S1-S4 of the dumped tracks (second ideas round, idea 1; frozen with the arm). Each is a
 function (cell, ticks) -> ticks, seeded per cell, applied before any resolver sees the tracks. Truth is untouched.
 
 - S1 noise: Gaussian per tick, sigma 0.10 m ("S1") or 0.20 m ("S1b").

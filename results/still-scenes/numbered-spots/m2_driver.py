@@ -26,7 +26,9 @@ import m1_coverage as M  # noqa: E402
 import m2lib as L  # noqa: E402
 
 X, H = M.X, M.H
-WT = Path('.-scenes')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+WT = paths.REPO                     # the repository root
 PROMPTS_A0 = WT / 'prompts'
 PROMPTS_A2 = HERE / 'prompts_marks'
 PLAN_SHA_A0 = '00f2fae826be7433b56de529c8e13d3eb4d8b25da83bb70c0e398ca527933c38'   # prompts/plan.md as in s21/s23

@@ -2,7 +2,10 @@ import sys, math, statistics
 from collections import defaultdict
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent.parent))
 from i_followups import load, first_service_t, line_of, pos, ARMS
-sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[3] / "sweep"))
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
 from score_sweep import episode_scores
 sel, eps = load("runs_pilot3/dsv41")
 def ang(u, v):

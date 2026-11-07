@@ -1,11 +1,15 @@
 """X3 post hoc (reported): where CTe's first-answer delay comes from, and quality measured only after each arm's own
-delivery (strict share from the first service after delivery), DeepSeek and Qwen. Zero calls. Run from moving/."""
+delivery (strict share from the first service after delivery), DeepSeek and Qwen. Zero calls. Run folders are read from results/data/moving/."""
 import json, glob, statistics, sys
-sys.path.insert(0, "sweep")
-from score_sweep import episode_scores
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
+from score_sweep import episode_scores  # noqa: E402
 for root in ("runs_x3/dsv41", "runs_x3/soclaas_qwen38_low"):
     by = {}
-    for f in glob.glob(f"{root}/**/episode.json", recursive=True):
+    for f in glob.glob(f"{paths.MOVING_RUNS / root}/**/episode.json", recursive=True):
         e = json.load(open(f)); p = f.split("/")
         by.setdefault((p[-4], p[-3]), {})[p[-2]] = e
     wall = {a: [] for a in ("CTd", "CTe")}; after = []

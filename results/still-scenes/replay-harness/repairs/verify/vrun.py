@@ -26,10 +26,10 @@ import math
 import sys
 from multiprocessing import Pool
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i01_repairs/verify'
+OUT = 'results/still-scenes/replay-harness/repairs/verify'
 ARMS = ('real', 'staffed', 'plain')
 CELLS = [('old', 's19', 'qwen38_low'), ('old', 's19', 'glm53'), ('old', 's20', 'dsv41'),
          ('new', 's21', 'qwen38_low'), ('new', 's23', 'glm53'), ('new', 's23', 'dsv41'),

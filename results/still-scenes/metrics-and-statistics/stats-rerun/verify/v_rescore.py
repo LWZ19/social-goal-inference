@@ -1,6 +1,6 @@
 """Rescore old-wording E and C records with the current scorer and redo the layout sign-flip test."""
 import sys, collections, itertools, time
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 import numpy as np
 OUT=[]
@@ -30,4 +30,4 @@ for m,(e,c) in OLD.items():
         d = [sum(C[k][idx]-E[k][idx] for k in C if C[k][0]==l) for l in lays]
         T=sum(d); S=SIGNS@np.array(d)
         p(f'   {which}: C={sum(v[idx] for v in C.values())} E={sum(v[idx] for v in E.values())} d={d} two-sided p={np.mean(np.abs(S)>=abs(T)):.6f}')
-open('results/2026-10-17-beyond-vlm/rerun/stats/verify/v_rescore.txt','w').write('\n'.join(OUT)+'\n')
+open('results/still-scenes/metrics-and-statistics/stats-rerun/verify/v_rescore.txt','w').write('\n'.join(OUT)+'\n')

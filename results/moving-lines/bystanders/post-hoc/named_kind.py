@@ -1,10 +1,12 @@
-"""Which bystander each constraint answer names (lone or pair), CT2 cells, both models (post hoc, zero calls). Run from moving/."""
+"""Which bystander each constraint answer names (lone or pair), CT2 cells, both models (post hoc, zero calls)."""
 import sys
 from collections import Counter
 from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from bystanders_score import BYS, load, named_bystanders, scenario_info
-eps = [e for e in load(["runs/dsv41", "runs/sonnet55_low"], set(BYS), set(range(10, 45))) if e["arm"] == "CT2"]
+eps = [e for e in load([paths.MOVING_RUNS / "runs/dsv41", paths.MOVING_RUNS / "runs/sonnet55_low"], set(BYS), set(range(10, 45))) if e["arm"] == "CT2"]
 c = Counter()
 for e in eps:
     m = Path(e["_path"]).parts[-4]

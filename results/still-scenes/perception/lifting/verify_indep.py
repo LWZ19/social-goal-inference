@@ -15,7 +15,7 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.evaluate import match_target  # noqa: E402
 from sgi.geometry import lift_all, pixel_to_point  # noqa: E402

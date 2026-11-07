@@ -3,7 +3,7 @@ give recall 1 and 0 false. Also: true people with true yaw give facing 1 (full a
 recall 0; a detection 0.6 m off a person is false. Worked examples only (and fresh seeds if present)."""
 import sys
 import time
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03/stageA')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector/stageA')
 import fitdata as FD  # noqa: E402
 import people_scorer as PS  # noqa: E402
 import blobs as B  # noqa: E402

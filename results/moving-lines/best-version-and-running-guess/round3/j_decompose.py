@@ -1,7 +1,8 @@
 """Post hoc PH-C (FOLLOWUPS.md): is the goal itself a strictly in-line place, and given that, is the robot in line?
 Zero calls; read-only on the runs.
 
-    .venv/bin/python round3/j_decompose.py runs_pilot3/dsv41   (from ideas2_1b/)
+    .venv/bin/python round3/j_decompose.py runs_pilot3/dsv41
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/)
 """
 import math
 import sys

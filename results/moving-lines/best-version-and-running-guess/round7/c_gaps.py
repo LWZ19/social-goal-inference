@@ -3,7 +3,8 @@ the ceiling runs, at band tops 1.2 m (frozen; the decisions) and 1.5 m (ROUND7_B
 Written and hashed before the ceiling totals. Zero calls; read-only.
 
     .venv/bin/python round7/c_gaps.py SELECTION_JSON CEILING_ROOT CONFIRM_ROOT
-    (from ideas2_1b/; paths relative to moving/. OW, CT4OT, CT4O and CT4PJT come from CEILING_ROOT; CT4PJ and CT3F
+    (SELECTION_JSON relative to results/moving-lines/, the roots relative to results/data/moving/. OW, CT4OT, CT4O and
+    CT4PJT come from CEILING_ROOT; CT4PJ and CT3F
     from CONFIRM_ROOT, which used the same cached answers.)
 
 Per episode, the strict share from the first service splits exactly into a front part (seconds with nobody ahead
@@ -26,6 +27,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(HERE))
 from a_loss import MOVING, window  # noqa: E402
 from b_band import TOPS, strict_at, t95  # noqa: E402
@@ -126,7 +129,7 @@ def readings(sc, names, top):
 
 def main():
     sel_path, croot, froot = sys.argv[1:4]
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     sc = {**load(sel, croot, CEILING), **load(sel, froot, CONFIRM)}
     names = [lay["name"] for lay in sel]
     print(f"# Round 7 part C, DESCRIPTIVE: the ceiling read by ROUND7.md ({sel_path}; {croot}; {froot})\n")

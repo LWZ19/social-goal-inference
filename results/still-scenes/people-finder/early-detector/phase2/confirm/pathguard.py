@@ -2,14 +2,20 @@
 Standard library only, so both the torch sidecar (which never imports sgi) and the project venv load it.
 
 check(path) -> path, or AssertionError. The path, as written and resolved, must lie under
-<research>/phase2/seeds/realistic/seed<k>/eval/ with 200 <= k <= 219, hold exactly one seed<k> component, and contain
-none of keep/heldout, s18, s20_held, eval_16..eval_19, group_photo, lift_wait, heldout, held_out (case ignored).
+<results>/still-scenes/scene-seeds/phase2/realistic/seed<k>/eval/ (absolute) with 200 <= k <= 219, hold exactly one
+seed<k> component, and contain none of keep/heldout, s18, s20_held, eval_16..eval_19, group_photo, lift_wait, heldout,
+held_out (case ignored).
 """
 import os
 import re
+import sys
+from pathlib import Path
 
-RESEARCH = "results/2026-10-17-beyond-vlm"
-SEEDS_ROOT = RESEARCH + "/phase2/seeds/realistic"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+RESEARCH = str(paths.STILL)                        # absolute results/still-scenes
+SEEDS_ROOT = RESEARCH + "/scene-seeds/phase2/realistic"
 FORBIDDEN_SUBSTR = ("keep/heldout", "s18", "s20_held", "eval_16", "eval_17", "eval_18", "eval_19", "group_photo",
                     "lift_wait", "heldout", "held_out")
 SEED_RE = re.compile(r"seed(\d+)")

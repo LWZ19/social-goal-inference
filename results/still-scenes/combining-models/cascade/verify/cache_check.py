@@ -1,8 +1,8 @@
 import sys, json, statistics as st
 from collections import Counter
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/cascade/verify')
+sys.path.insert(0, 'results/still-scenes/combining-models/cascade/verify')
 from verify import load, is_gs, ok
 OUT=[]
 def p(*a):
@@ -46,4 +46,4 @@ from collections import defaultdict
 tg=defaultdict(set)
 for k,r in G23.items(): tg[(k[0],k[1])].add(json.dumps(r.target,sort_keys=True))
 p('G23 episodes with >1 distinct target across trials:', sum(1 for v in tg.values() if len(v)>1), 'of', len(tg))
-with open('results/2026-10-17-beyond-vlm/rerun/cascade/verify/cache_check_out.txt','w') as f: f.write('\n'.join(OUT)+'\n')
+with open('results/still-scenes/combining-models/cascade/verify/cache_check_out.txt','w') as f: f.write('\n'.join(OUT)+'\n')

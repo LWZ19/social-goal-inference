@@ -24,8 +24,14 @@ HERE = Path(__file__).resolve().parent
 I03 = HERE.parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(I03))
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
+
+
+def here(stored) -> str:
+    """A scene folder as a stored file names it (the recorded absolute path without its local root), as it lies
+    here: through the harness's relocated() and from the repository root."""
+    return str((H.main_checkout() / H.relocated(stored)).resolve())
 import people_scorer as PS  # noqa: E402
 import blobs as B  # noqa: E402
 
@@ -334,8 +340,8 @@ def main():
     # lookup (keep/placeholder_first14). The blob rows it wrote are read back here, never scored again.
     if out_rows.exists():
         rows = [json.loads(line) for line in out_rows.read_text().splitlines()]
-        assert len(rows) == 68 and {r["folder"] for r in rows} == {str(sref.folder) for sref in distinct}
-        blob_by_folder = {r["folder"]: r for r in rows}
+        assert len(rows) == 68 and {here(r["folder"]) for r in rows} == {str(sref.folder) for sref in distinct}
+        blob_by_folder = {here(r["folder"]): r for r in rows}
         distinct_to_score = []
         print("blob rows read back from rows.jsonl (scored once, in the first pass)", flush=True)
     else:

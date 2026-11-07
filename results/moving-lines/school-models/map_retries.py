@@ -1,11 +1,14 @@
 """Item 9 amendment 2: list the arms whose first answer met an HTTP 429 (zero calls). Each 429 line in a service log
-moving/runs/<model>/serve_w<w>_<C|R>.log goes to the latest episode on worker <w> using that service (C: C1/CT/CT2,
+results/data/moving/runs/<model>/serve_w<w>_<C|R>.log goes to the latest episode on worker <w> using that service (C: C1/CT/CT2,
 R: R1) that started at or before it; a service answers one request at a time, so that episode's first request was
 the one in flight. Episode start = end - duration, from the run logs. Cross-check: cache entries of the model with
 transient_retries > 0. Usage: map_retries.py MODEL_DIR ENTRY_MODEL_ID LOG_GLOB"""
 import glob, json, os, re, sys, datetime as dt
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 mdir, model_id, log_glob = sys.argv[1:4]
-base = f"moving/runs/{mdir}"
+base = str(paths.MOVING_RUNS / "runs" / mdir)
 day = "2026-11-06"
 t = lambda s: dt.datetime.strptime(f"{day} {s}", "%Y-%m-%d %H:%M:%S")
 eps = []                                                    # (worker, kind, start, end, scenario, seed, arm, logfile)
@@ -37,4 +40,4 @@ for T, w, kind, e in sorted(hits):
         line = f"{mdir} {e[4]} {e[5]} {e[6]}"
         if line not in out: out.append(line)
 print(f"retried CT2/R1 arms: {len(out) - 1}")
-open(f"fill/i9_qwen_glm/retried_{mdir}.txt", "w").write("\n".join(out) + "\n")
+open(Path(__file__).resolve().parent / f"retried_{mdir}.txt", "w").write("\n".join(out) + "\n")

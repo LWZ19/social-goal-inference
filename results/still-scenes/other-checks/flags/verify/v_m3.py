@@ -1,7 +1,7 @@
 """Independent verification of M3 (I16): share of straight-line approaches, robot start to final pose, that meet a
 forbidden polygon of the episode's derived truth. Through research_harness only."""
 import sys, collections, math
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.polygons import point_in_polygon, distance_to_boundary
 from sgi.geometry import to_world_xy
@@ -121,4 +121,4 @@ analyse(runs_for([('s19', 'qwen38_low'), ('s19', 'glm53'), ('s20', 'dsv41')]), '
 p('\n== M3 variant: s23 C realistic, five models (glm53/dsv41 people answers are cache copies) ==')
 analyse(runs_for([('s23', m) for m in ('glm53', 'dsv41', 'haiku55', 'sonnet55_low', 'gemini38_low')]), 's23 C realistic')
 
-open('results/2026-10-17-beyond-vlm/rerun/flags_misc/verify/v_m3.txt', 'w').write('\n'.join(out) + '\n')
+open('results/still-scenes/other-checks/flags/verify/v_m3.txt', 'w').write('\n'.join(out) + '\n')

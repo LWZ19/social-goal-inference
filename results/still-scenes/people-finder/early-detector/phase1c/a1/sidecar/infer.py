@@ -46,7 +46,7 @@ def log(*a):
 
 def guard(path: str) -> str:
     """FROZEN.md section 2: refuse held-out or reserved paths. A seed<k> component must be seed100-109 directly under
-    phase1b/fresh_seeds, or seed0-2 directly under keep/dev_new (the whitelisted E-ph location)."""
+    still-scenes/perception/fresh_seeds, or seed0-2 directly under keep/dev_new (the whitelisted E-ph location)."""
     low = path.lower()
     for s in FORBIDDEN_SUBSTR:
         assert s not in low, f"refused: {s} in {path}"
@@ -56,7 +56,7 @@ def guard(path: str) -> str:
         if m:
             k = int(m.group(1))
             parent = "/".join(parts[:i])
-            ok = (100 <= k <= 109 and parent.endswith("phase1b/fresh_seeds")) or \
+            ok = (100 <= k <= 109 and parent.endswith("still-scenes/perception/fresh_seeds")) or \
                  (k in (0, 1, 2) and parent.endswith("keep/dev_new"))
             assert ok, f"refused: seed folder {part} in {path}"
     return path

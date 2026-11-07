@@ -1,7 +1,8 @@
 """Round 3 pilot follow-ups (FOLLOWUPS.md): X1, X2 (fixed in ROUND3.md section 11 before any output), and the
 post-hoc PH-A and PH-B. Zero calls; read-only on the runs.
 
-    .venv/bin/python round3/i_followups.py runs_pilot3/dsv41   (from ideas2_1b/)
+    .venv/bin/python round3/i_followups.py runs_pilot3/dsv41
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/)
 """
 import json
 import math
@@ -14,10 +15,12 @@ import numpy as np
 import yaml
 
 HERE = Path(__file__).resolve().parent
-MOVING = HERE.parent.parent
-REPO = Path(".")
-sys.path.insert(0, str(MOVING))
-sys.path.insert(0, str(MOVING / "sweep"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+MOVING = paths.MOVING_RUNS                # run folders are named relative to it, e.g. "runs_pilot3/dsv41"
+REPO = paths.REPO
+sys.path.insert(0, str(paths.DESIGN))
+sys.path.insert(0, str(paths.MOVING / "test-layouts"))
 from score_sweep import episode_scores  # noqa: E402
 from summarise_fresh import in_line, sign_p  # noqa: E402
 
@@ -51,7 +54,7 @@ class Line:
 
 
 def load(root):
-    sel = json.loads((MOVING / "sweep" / "pilot_selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "pilot_selection.json").read_text())["layouts"]
     eps = {}
     for lay in sel:
         for arm in ARMS:

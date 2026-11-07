@@ -33,7 +33,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
 OUT = Path(__file__).resolve().parent
@@ -215,7 +215,7 @@ def main():
             f"{r['ang_axis']:6.1f} {r['ang_robot']:6.1f} {r['dist']:5.2f} {r['Z']:5.2f} {r['dist_robot']:5.2f}")
     say("")
 
-    say("=== Controller's note: all five lines seen side-on at 4.4-6.2 m ===")
+    say("=== The note: all five lines seen side-on at 4.4-6.2 m ===")
     say("distinct line layouts:", sorted({r['scene'].split('_', 1)[1] for r in line_rows}),
         "; line instances:", len(line_rows))
     say("line member horizontal distance camera->person (m):", summary([r['dist'] for r in line]))

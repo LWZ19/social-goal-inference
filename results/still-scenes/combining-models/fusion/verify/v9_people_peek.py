@@ -1,6 +1,6 @@
 """Look at people lists of two GLM s19 mixed episodes with equal counts."""
 import sys, collections, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -22,4 +22,4 @@ for k, v in eps.items():
             p('    #%s xy=(%.2f,%.2f) px=%s %s' % (q.get('number'), q['xy'][0], q['xy'][1], q.get('pixel'), str(q.get('label'))[:60]))
     shown += 1
     if shown >= 3: break
-open('results/2026-10-17-beyond-vlm/rerun/fusion/verify/v9_people_peek_out.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/combining-models/fusion/verify/v9_people_peek_out.txt', 'w').write(OUT.getvalue())

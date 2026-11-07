@@ -20,11 +20,13 @@ import time  # noqa: E402
 from pathlib import Path  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-RESEARCH = Path("results/2026-10-17-beyond-vlm")
-WT = Path(".-scenes")
-CONFIRM = RESEARCH / "phase2/i09/confirm"
-SEEDS = RESEARCH / "phase2/seeds/realistic"
-sys.path.insert(0, str(WT / "docs/model_notes/tools"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RESEARCH = paths.STILL                             # results/still-scenes
+WT = paths.REPO                                    # the repository root
+CONFIRM = RESEARCH / "people-finder/early-detector/phase2/confirm"
+SEEDS = RESEARCH / "scene-seeds/phase2/realistic"
+sys.path.insert(0, str(WT / "results/still-scenes/analysis-scripts/harness"))
 import research_harness as H  # noqa: E402
 from sgi.config import load_config  # noqa: E402
 from sgi.scene import load_scene, read_scene_file  # noqa: E402
@@ -200,7 +202,7 @@ def main():
             if re.fullmatch(r"seed2[01]\d", d) and not top.startswith(str(SEEDS)):
                 stray.append(str(Path(top) / d))
     out(f"seed200-219 folders outside phase2/seeds/realistic in the worktree: {stray}")
-    ph = sorted(int(m.group(1)) for d in os.listdir(RESEARCH / "phase2/seeds/placeholder")
+    ph = sorted(int(m.group(1)) for d in os.listdir(RESEARCH / "scene-seeds/phase2/placeholder")
                 if (m := re.fullmatch(r"seed(\d+)", d)))
     out(f"phase2/seeds/placeholder seeds (another step): {ph[0]}-{ph[-1]} ({len(ph)}); any in 3-99: "
         f"{[k for k in ph if 3 <= k <= 99]}; any in 200-219: {[k for k in ph if 200 <= k <= 219]}")

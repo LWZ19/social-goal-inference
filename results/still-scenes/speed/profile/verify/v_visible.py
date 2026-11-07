@@ -2,7 +2,7 @@
 facing angle restricted to visible people. One arm per layout is enough for staff (real); all three for the rest."""
 import sys, math, collections, statistics
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 REAL = ("real", "staffed", "plain")
 out = []
@@ -59,4 +59,4 @@ for cat in ("line", "group", "staff", "other"):
                   f"in={r['pin']}/5 vis={r['pvis']}/5")
     if cat == "line":
         P("   line members not fully visible:", [(r['scene'], r['pid'], r['pin'], r['pvis']) for r in sel if r['pvis'] < 5][:20])
-open('results/2026-10-17-beyond-vlm/rerun/profile/verify/v_visible.txt', 'w').write("\n".join(out) + "\n")
+open('results/still-scenes/speed/profile/verify/v_visible.txt', 'w').write("\n".join(out) + "\n")

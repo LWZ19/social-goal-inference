@@ -23,7 +23,7 @@ import fixlib as X  # noqa: E402
 F, P, PS, C, H = X.F, X.P, X.PS, X.C, X.H
 OUT = F.HERE
 PROTOCOL_SHA = "59654e7bf67d90827ba2fa1e74f23fbe96ce64497d5a2633a5cea9c63c4fa600"
-sys.path.insert(0, str(F.RESEARCH / "phase1b/i03/stageA"))
+sys.path.insert(0, str(F.I03 / "stageA"))
 import fitdata as FD  # noqa: E402
 
 

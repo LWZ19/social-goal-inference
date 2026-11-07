@@ -1,5 +1,5 @@
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 for r in H.runs(stage='s8'):
     recs = list(H.records(r))

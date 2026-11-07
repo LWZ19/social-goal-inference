@@ -1,7 +1,7 @@
 """Q2: search for a pairing that gives 4 wins / 9 losses, qwen3.6 vs 'Qwen low' (and other Qwen 3.8 runs)."""
 import sys, collections, itertools
 from math import comb
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 def sign_p(w, l):
@@ -77,7 +77,7 @@ for am, a in A.items():
                 pairs = [(k, int(pa[k]), int(pb[k])) for k in sorted(set(pa) & set(pb))]
                 report(tag0 + " ep-maj vs single", pairs, asit)
 
-out = 'results/2026-10-17-beyond-vlm/rerun/i44/verify/v2_q2.txt'
+out = 'results/still-scenes/other-checks/i44/verify/v2_q2.txt'
 with open(out, 'w') as fh:
     fh.write('HITS (4/9 or 9/4):\n' + '\n'.join(hits) + '\n\nALL:\n' + '\n'.join(lines) + '\n')
 print('HITS:'); print('\n'.join(hits))

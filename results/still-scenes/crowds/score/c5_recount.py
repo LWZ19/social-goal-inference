@@ -16,7 +16,7 @@ import numpy as np
 import lib as L
 from sgi.config import DEFAULT_CONFIG, load_config
 
-spec = importlib.util.spec_from_file_location('gate1', L.RES / 'phase1d/c5_gates/gate1.py')
+spec = importlib.util.spec_from_file_location('gate1', L.RES / 'learned-models/flow-model-gates/gate1.py')
 G1 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(G1)
 

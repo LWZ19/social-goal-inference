@@ -3,10 +3,13 @@
 from; 4. are CT3's wins over CT2 in the cells where CT2 was captured?"""
 import sys
 from collections import Counter, defaultdict
-sys.path.insert(0, 'results/2026-11-01-push/moving')
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+sys.path.insert(0, str(Path(__file__).resolve().parents[1])); sys.path.insert(0, str(paths.DESIGN))
 from bystanders_score import load, cells, capture, false_drops, named_bystanders, measures
 SC = {"cafe_line2_bystanders", "sweet_spot_line2_bystanders"}
-by = cells(load(['runs/dsv41'], SC, set(range(15, 45))))
+by = cells(load([paths.MOVING_RUNS / 'runs/dsv41'], SC, set(range(15, 45))))
 print('1. first answers with source None:')
 for k, v in sorted(by.items()):
     a = (v['CT2'].get('answers') or [{}])

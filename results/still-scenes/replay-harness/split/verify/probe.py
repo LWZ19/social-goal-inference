@@ -1,5 +1,5 @@
 import sys, json
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 rs = H.runs(stage='s23')
 print(len(rs))

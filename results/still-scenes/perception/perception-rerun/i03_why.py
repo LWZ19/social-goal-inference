@@ -1,7 +1,7 @@
 """I03 'Why' figures: GLM people_found_share overall / lines / groups (C goal steps, realistic s19), and the
 single-person line (group_size 1): found share, members recall, C successes. Also s23 GLM for the new wording."""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 for stage, model in [('s19', 'glm53'), ('s23', 'glm53'), ('s20', 'dsv41'), ('s23', 'dsv41')]:
     recs = [r for arm in ('real', 'staffed', 'plain') for r in H.records(H.runs(stage=stage, arm=arm, model=model, method='con')[0])]

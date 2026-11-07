@@ -3,7 +3,7 @@ people channels on a 4x-downsampled copy, by cell; and by validation unit for co
 import json
 from pathlib import Path
 import numpy as np
-P = Path('results/2026-10-17-beyond-vlm/phase2/flow_pilot')
+P = Path('results/still-scenes/learned-models/flow-model-pilot')
 tr = np.load(P / 'data' / 'train.npz'); va = np.load(P / 'data' / 'val.npz'); dv = np.load(P / 'data' / 'dev.npz')
 meta = {m['key']: m for m in json.loads((P / 'data' / 'dev.json').read_text())['records']}
 f = lambda R: R[:, :2, ::4, ::4].reshape(len(R), -1).astype(np.float32)

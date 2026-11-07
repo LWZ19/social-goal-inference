@@ -1,7 +1,7 @@
 """V3 density hit@k with float-distance ranking instead of exact integer grid distance (verifier sensitivity)."""
 import sys
 import numpy as np
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/i04/verify')
+sys.path.insert(0, 'results/still-scenes/learned-models/soft-density/verify')
 from v_analysis import load, PRIMARY, NEW
 rows, *_ = load()
 for c in PRIMARY + ['POOLED'] + NEW:

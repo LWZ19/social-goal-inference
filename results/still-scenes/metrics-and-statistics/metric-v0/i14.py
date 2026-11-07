@@ -25,12 +25,12 @@ import zlib
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi import solver  # noqa: E402
 from sgi.types import DetectedPerson  # noqa: E402
 
-HERE = 'results/2026-10-17-beyond-vlm/phase1/i14_v0'
+HERE = 'results/still-scenes/metrics-and-statistics/metric-v0'
 SEED = 20261017
 DRAWS = 1000
 DISC_M = 3.0

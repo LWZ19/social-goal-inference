@@ -27,9 +27,11 @@ import people_scorer as PS  # noqa: E402
 import research_harness as H  # noqa: E402
 from sgi.geometry import in_image, project  # noqa: E402
 
-RESEARCH = Path('results/2026-10-17-beyond-vlm')
-I03A = RESEARCH / 'phase1b/i03/stageA'
-A0_PAIRS = RESEARCH / 'phase1/a0_facing/a0_pairs.jsonl'
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+I03A = paths.STILL / 'perception/depth-blob-detector/stageA'
+A0_PAIRS = paths.STILL / 'facing/a0_pairs.jsonl'
 VLM_LABELS = ("Qwen 3.8", "GLM-5.3", "DeepSeek V4.1", "Haiku 5.5", "Sonnet 5.5 low", "Gemini 3.8 low")
 A0_LABEL = {"Qwen 3.8 (s19)": "Qwen 3.8", "GLM-5.3 (s19)": "GLM-5.3", "DeepSeek V4.1 (s20)": "DeepSeek V4.1",
             "Haiku 5.5 (s23)": "Haiku 5.5", "Sonnet 5.5 low (s23)": "Sonnet 5.5 low",

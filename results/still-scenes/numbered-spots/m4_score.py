@@ -19,9 +19,10 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import m4_driver as D4  # noqa: E402
 import m2lib as L  # noqa: E402
+import paths  # noqa: E402  (results/_lib/paths.py, on sys.path through m2_driver)
 
 X = D4.X
-SCEN = Path('sim/scenarios')
+SCEN = paths.REPO / 'sim/scenarios'
 WITHIN_M = 1.0
 GO_MIN = 5                 # judged: M within-1 m count at least U's + 5 (of 45) to run CT episodes with marked answers
 

@@ -2,13 +2,16 @@
 Room's 10 cells are BYSTANDERS_FROZEN.md's optional arm (capture bar C2, share descriptive); cafe and sweet_spot's 20
 are the addendum. Functions are bystanders_score.py's, unchanged.
 
-    python3 bystanders_sonnet_score.py runs/sonnet55_low
+    python3 bystanders_sonnet_score.py results/data/moving/runs/sonnet55_low   (from the repo root)
 """
 import sys
 from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, str(paths.DESIGN))
 from bystanders_score import (BYS, CAPTURED_S, capture, cells, false_drops, load, measures, named_bystanders,  # noqa: E402
                               paired)
 from summarise_fresh import sign_p  # noqa: E402

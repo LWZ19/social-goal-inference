@@ -2,7 +2,7 @@
 Ports cascade_peek.py's definitions; adds tie-robustness and random-expectation checks."""
 import sys, math, random, statistics as st
 from collections import Counter
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 OUT = []
@@ -151,5 +151,5 @@ if __name__ == '__main__':
     analyse(G23, load('s21', 'qwen38_low'), 'NEW-1: s23 glm53 con -> s21 qwen38_low con')
     analyse(G23, load('s23', 'sonnet55_low'), 'NEW-2: s23 glm53 con -> s23 sonnet55_low con')
     analyse(G23, load('s23', 'gemini38_low'), 'NEW-3: s23 glm53 con -> s23 gemini38_low con')
-    with open('results/2026-10-17-beyond-vlm/rerun/cascade/verify/verify_out%s.txt' % ('_replay' if replay else ''), 'w') as f:
+    with open('results/still-scenes/combining-models/cascade/verify/verify_out%s.txt' % ('_replay' if replay else ''), 'w') as f:
         f.write('\n'.join(OUT) + '\n')

@@ -1,14 +1,14 @@
 """Item 9 (I9_FROZEN.md): the moving headline (C1, R1, CT, CT2) on Qwen 3.8 and GLM-5.3, seeds 10-14, beside every other
 model's same 25 cells. Zero calls; read-only.
 
-    .venv/bin/python fill/i9_qwen_glm/i9_score.py          (92 s, the bar)
-    .venv/bin/python fill/i9_qwen_glm/i9_score.py --long   (240 s, secondary)
+    .venv/bin/python results/moving-lines/school-models/i9_score.py          (92 s, the bar)
+    .venv/bin/python results/moving-lines/school-models/i9_score.py --long   (240 s, secondary)
 """
 import statistics
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 
 JUDGED = {"Qwen 3.8": "soclaas_qwen38_low", "GLM-5.3": "soclaas_glm53"}

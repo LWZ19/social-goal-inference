@@ -8,7 +8,8 @@
 
 Paths come only from manifest_verify.json, written by manifest.py in the project venv through research_harness.
 Each path is guarded (no keep/heldout, s18, s20_held, eval_16..19, group_photo, lift_wait; a seed<k> component must be
-seed100..109 under phase1b/fresh_seeds or seed0..2 directly under keep/dev_new, the harness-whitelisted E-ph scenes),
+seed100..109 under still-scenes/perception/fresh_seeds or seed0..2 directly under keep/dev_new, the harness-whitelisted
+E-ph scenes),
 and its sha256 is checked.
 """
 import hashlib
@@ -50,7 +51,7 @@ def check_path(p):
         m = re.fullmatch(r"seed(\d+)", part.lower())
         if m:
             k, parent = int(m.group(1)), "/".join(parts[:i])
-            assert (100 <= k <= 109 and parent.endswith("phase1b/fresh_seeds")) or \
+            assert (100 <= k <= 109 and parent.endswith("still-scenes/perception/fresh_seeds")) or \
                    (k <= 2 and parent.endswith("keep/dev_new")), p
     return p
 

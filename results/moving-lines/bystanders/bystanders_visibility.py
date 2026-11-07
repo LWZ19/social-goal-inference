@@ -1,6 +1,6 @@
 """How much of each person the robot sees from its start pose, from the scenario file alone (no sim).
 
-    python3 bystanders_visibility.py ../../../../sim/scenarios/cafe_line2_bystanders.yaml [...]
+    python3 bystanders_visibility.py sim/scenarios/cafe_line2_bystanders.yaml [...]   (from the repo root)
 
 People are discs of radius 0.22 m; a person is hidden where a nearer disc covers the same bearings. Queue members
 stand in the first slots in file order; wanderers are shown at their start (they move). Also prints, for each

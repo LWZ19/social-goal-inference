@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 ref = H.runs(stage='s23', arm='real', model='haiku55', method='con')[0]
 rec = next(r for r in H.records(ref) if r.situation == 'waiting_line' and r.solver_step)

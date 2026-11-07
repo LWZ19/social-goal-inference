@@ -17,9 +17,12 @@ import io  # noqa: E402
 import json  # noqa: E402
 import time  # noqa: E402
 from http.server import BaseHTTPRequestHandler, HTTPServer  # noqa: E402
+from pathlib import Path  # noqa: E402
 
-RESEARCH = "results/2026-10-17-beyond-vlm"
-INFER = RESEARCH + "/phase1c/i09/a1/sidecar/infer.py"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+INFER = str(paths.STILL / "people-finder/early-detector/phase1c/a1/sidecar/infer.py")
 INFER_SHA = "bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484"
 DETECTOR = "rtdetr_v2_r50vd"
 

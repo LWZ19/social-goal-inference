@@ -1,7 +1,7 @@
 """N1 on the new-wording sets (s21 Qwen, s23 others): E failures at groups with the right target, judge's definitions,
 from snap_records.jsonl (written by snap.py). Saves n1_s23.txt."""
 import json, collections
-HERE = 'results/2026-10-17-beyond-vlm/rerun/snap'
+HERE = 'results/still-scenes/depth-fix/first-check'
 rows = [json.loads(l) for l in open(f'{HERE}/snap_records.jsonl')]
 out = []
 def p(s): print(s); out.append(s)

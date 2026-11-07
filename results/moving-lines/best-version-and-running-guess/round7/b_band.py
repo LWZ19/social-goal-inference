@@ -3,7 +3,7 @@ and 1.5 m (the sim's JOIN_GAP_M top), from the logged samples. Zero calls; read-
 
     .venv/bin/python round7/b_band.py SELECTION_JSON RUN_ROOT ARM [ARM ...] \
         [--pairs A-B,C-D]
-    (from ideas2_1b/; paths relative to moving/.)
+    (SELECTION_JSON relative to results/moving-lines/, RUN_ROOT relative to results/data/moving/.)
 """
 import json
 import math
@@ -12,6 +12,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(HERE))
 from a_loss import MOVING, window  # noqa: E402
 from summarise_fresh import in_line, sign_p  # noqa: E402
@@ -67,7 +69,7 @@ def main():
         pairs = [tuple(p.split("-")) for p in args[i + 1].split(",")]
         args = args[:i] + args[i + 2:]
     sel_path, root, arms = args[0], args[1], args[2:]
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     sc = {}
     for lay in sel:
         for arm in arms:

@@ -18,7 +18,7 @@ import time
 
 import numpy as np
 
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/c5_gates')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-gates')
 from common import CACHE, FEATURE_SETS, FROZEN_SHA, HERE, M_GRID, PEOPLE_SITS, SEEDS  # noqa: E402
 
 WORK = HERE / 'work'

@@ -4,7 +4,7 @@ import collections
 import json
 import os
 
-D = 'results/2026-10-17-beyond-vlm/phase1/i01_repairs'
+D = 'results/still-scenes/replay-harness/repairs'
 ORDER = ['old_qwen38_low', 'old_glm53', 'old_dsv41', 'new_qwen38_low', 'new_glm53', 'new_dsv41', 'new_haiku55',
          'new_sonnet55_low', 'new_gemini38_low']
 ARMS = [('replayC', 'C_replay_ok'), ('R0', 'R0'), ('R1', 'R1'), ('R2', 'R2'), ('R3', 'R3'), ('R4', 'R4'),

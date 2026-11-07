@@ -20,7 +20,7 @@ import os  # noqa: E402
 import subprocess  # noqa: E402
 import time  # noqa: E402
 
-V = "results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_confirm"
+V = "results/still-scenes/people-finder/early-detector/phase2/verify_i09_confirm"
 DET_SNAP = ("~/.cache/huggingface/hub/models--PekingU--rtdetr_v2_r50vd/snapshots/"
             "282494075698cab9faa1096ae26856890030c817")
 POSE_SNAP = ("~/.cache/huggingface/hub/models--usyd-community--vitpose-base-simple/snapshots/"

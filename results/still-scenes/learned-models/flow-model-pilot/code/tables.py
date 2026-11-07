@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C  # noqa: E402
 
 OUT = Path(C.OUT)
-I04 = Path(C.ROOT) / 'phase1d' / 'i04'
+I04 = Path(C.SOFT_DENSITY)
 CELLS = ('old_qwen', 'old_glm', 'old_deepseek', 'watch_qwen', 'watch_glm', 'watch_deepseek')
 MODELS = (('qwen', 'Qwen 3.8 (qwen38_low)'), ('glm', 'GLM-5.3-Flash (glm53)'), ('deepseek', 'DeepSeek V4.1 Flash (dsv41)'))
 SITS = ('no_one', 'waiting_line', 'conversation_group', 'audience')

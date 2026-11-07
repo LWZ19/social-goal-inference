@@ -13,11 +13,15 @@ Wanderers / rejoiners are left out (their places vary); so is the robot.
 """
 import math
 import random
+import sys
 from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+ROOT = paths.REPO
 SCENES = ['cafe_line2_bystanders', 'room_coffee_cart_bystanders', 'sweet_spot_line2_bystanders']
 STANDOFF, HALF, CHAIN, FIDGET, N = 1.0, math.radians(35.0), 1.0, 0.35, 4000
 

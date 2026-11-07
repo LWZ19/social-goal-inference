@@ -1,8 +1,8 @@
 """List the goal steps where P disagrees with conorc, with perception counts and constraint kinds of both arms."""
 import json, sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-HERE = 'results/2026-10-17-beyond-vlm/phase1/i01_calibration'
+HERE = 'results/still-scenes/replay-harness/calibration'
 rows = [json.loads(l) for l in open(f'{HERE}/rows2.jsonl')]
 orc = {}
 for m in sorted({r['model'] for r in rows}):

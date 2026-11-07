@@ -1,19 +1,20 @@
 """Verifier (descriptive, post hoc): the E-ph and E-real misses: view class and the best raw box score over the
 person's projected chest point (z = 1.3 m)."""
-import json, math, sys
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03')
-sys.path.insert(0, 'docs/model_notes/tools')
+import json, math, os, sys
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H, people_scorer as PS
 from sgi.geometry import project, bearing, wrap_angle
-D = 'results/2026-10-17-beyond-vlm/phase1c/i09/verify_i09_a1/'
+D = 'results/still-scenes/people-finder/early-detector/phase1c/verify_i09_a1/'
 man = {e['folder']: e['rgb'] for e in json.load(open(D + 'manifest_verify.json'))['images'] if e['part'] == 'eval'}
 raw = {json.loads(l)['rgb']: json.loads(l) for l in open(D + 'raw/rtdetr_v2_r50vd.jsonl')}
 rows = [json.loads(l) for l in open(D + 'veval_scenes.jsonl')]
-by = {s.scene_id + '|' + str(s.folder): s for s in H.distinct_scenes()}
+here = lambda f: os.path.realpath(H.relocated(f))   # stored rows name scene folders as they lay; key by where they lie now
+by = {s.scene_id + '|' + here(s.folder): s for s in H.distinct_scenes()}
 for r in rows:
     if not r['misses']:
         continue
-    s = by[r['scene_id'] + '|' + r['folder']]
+    s = by[r['scene_id'] + '|' + here(r['folder'])]
     sc = H.scene(s.runs[0], s.scene_id)
     cam = sc.observation.camera
     vis = {p.id: p for p in sc.truth.people}

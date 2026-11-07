@@ -1,5 +1,5 @@
 import sys, io, json, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -13,4 +13,4 @@ for n in ['s8_convlm_qwen38','s10_qwen38_low_con','s19_ph_qwen38_low_con']:
             except Exception: ks['unparsed'] += 1
             ins.append((c.get('usage') or {}).get('input_tokens'))
     p(n, 'context answer keys', dict(ks), 'context input tokens set', sorted(set(ins))[:6])
-open('results/2026-10-17-beyond-vlm/rerun/thinking/verify/v4_ctx.txt','w').write(OUT.getvalue())
+open('results/still-scenes/thinking-levels/verify/v4_ctx.txt','w').write(OUT.getvalue())

@@ -1,6 +1,6 @@
 import pickle, collections, math, sys
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.schemas import FACINGS
 from sgi.stages.people import _TURN_DEG

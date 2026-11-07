@@ -2,7 +2,7 @@
 whole grid on all 549 primary records (no folds), and V3's concentration spread. Reads s_table.npz and rows_*.jsonl."""
 import json, math, sys
 import numpy as np
-HERE = 'results/2026-10-17-beyond-vlm/phase1d/i04'
+HERE = 'results/still-scenes/learned-models/soft-density'
 PRIMARY = ['old_qwen', 'old_glm', 'old_deepseek', 'watch_qwen', 'watch_glm', 'watch_deepseek']
 st = np.load(f'{HERE}/s_table.npz')
 rows = {}

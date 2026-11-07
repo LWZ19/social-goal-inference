@@ -1,6 +1,6 @@
 """M3 variants and N4 check: candidates of the goal set, GLM+DeepSeek only, raw scene forbidden lists, and R/E."""
 import sys, collections, math, re
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.polygons import point_in_polygon
 from sgi.geometry import to_world_xy

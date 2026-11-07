@@ -90,7 +90,7 @@ def hashes(folder: Path) -> dict[str, str]:
 
 
 def compare() -> int:
-    sys.path.insert(0, 'docs/model_notes/tools')
+    sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
     import research_harness as H
     lines, bad = [], 0
 

@@ -4,7 +4,7 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 
 MODELS = {"sonnet55_low": range(10, 20), "dsv41": range(10, 15), "claude_haiku55": range(10, 15), "gemini_fast": range(10, 15)}

@@ -14,14 +14,16 @@ from pathlib import Path
 
 import numpy as np
 
-WT = Path('.-scenes')
-RES = WT / 'results/2026-10-17-beyond-vlm'
-I06 = RES / 'phase2/i06'
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+WT = paths.REPO
+RES = paths.STILL
+I06 = Path(__file__).resolve().parents[1]
 OUT = I06 / 'verify_i06_score/out'
 FROZEN_SHA = 'a83c0ffe0cf5fafd9f007fee478d5899c9f858d2eb77629f01885cbeccef693e'
 assert hashlib.sha256((I06 / 'FROZEN.md').read_bytes()).hexdigest() == FROZEN_SHA, 'FROZEN.md changed'
 
-sys.path.insert(0, str(WT / 'docs/model_notes/tools'))
+sys.path.insert(0, str(WT / 'results/still-scenes/analysis-scripts/harness'))
 import research_harness as H  # noqa: E402
 
 from sgi.config import load_config  # noqa: E402

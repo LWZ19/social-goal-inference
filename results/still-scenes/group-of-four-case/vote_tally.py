@@ -2,7 +2,10 @@
 Each (model, variant, episode) has 3 recorded trials (independent plan draws). Majority-correct is the vote of the 3
 target outcomes; also the vote of the 3 click pixels (their median pixel, lifted with the pipeline's own lift)."""
 import sys, collections, statistics
-sys.path.insert(0, 'docs/model_notes/tools')
+from pathlib import Path
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+sys.path.insert(0, str(paths.HARNESS))   # research_harness.py and its run list
 import research_harness as H
 from sgi.geometry import lift
 from sgi.evaluate import match_target

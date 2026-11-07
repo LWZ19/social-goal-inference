@@ -8,11 +8,13 @@ import json
 import sys
 from pathlib import Path
 
-RD = Path('results/2026-10-17-beyond-vlm')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
 HERE = Path(__file__).resolve().parent
-AG = RD / 'phase2/i06_repair'
-I01 = RD / 'phase1/i01_repairs'
-A2 = RD / 'phase1c/i09/a2'
+AG = RD / 'crowds/facing-gate-repair'
+I01 = RD / 'replay-harness/repairs'
+A2 = RD / 'people-finder/early-detector/phase1c/a2'
 RULES = ("R0", "RF90", "RF60", "RN")
 CELLS = ['old_qwen38_low', 'old_glm53', 'old_dsv41', 'watch_qwen38_low', 'watch_glm53', 'watch_dsv41',
          'new_glm53', 'new_dsv41', 'new_haiku55', 'new_sonnet55_low', 'new_gemini38_low']

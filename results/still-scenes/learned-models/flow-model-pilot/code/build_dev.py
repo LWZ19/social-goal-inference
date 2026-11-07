@@ -33,7 +33,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i01_repairs')
+sys.path.insert(0, 'results/still-scenes/replay-harness/repairs')
 import common as C  # noqa: E402
 import research_harness as H  # noqa: E402
 import repairs  # noqa: E402
@@ -43,8 +43,8 @@ from sgi.run import _matched_people  # noqa: E402
 from sgi.stages.goal import standard_goal  # noqa: E402
 from sgi.types import Constraint, DetectedPerson, GroundedTarget  # noqa: E402
 
-I04 = Path(C.ROOT) / 'phase1d' / 'i04'
-I01 = Path(C.ROOT) / 'phase1' / 'i01_repairs'
+I04 = Path(C.SOFT_DENSITY)
+I01 = Path(C.REPAIRS)
 OLD = [('s19', 'qwen38_low', 'qwen'), ('s19', 'glm53', 'glm'), ('s20', 'dsv41', 'deepseek')]
 REAL_ARMS = ('real', 'staffed', 'plain')
 DEV_ARMS = ('dev_seed0', 'dev_seed1', 'dev_seed2')

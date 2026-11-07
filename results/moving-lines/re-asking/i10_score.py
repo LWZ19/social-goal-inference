@@ -1,15 +1,15 @@
 """Item 10 (I10_FROZEN.md): asking once and re-solving (CT2) against re-asking (Rq0: the marked point asked again as
 soon as an answer arrives; Cq: the constraint method asked again every 10 s) on fresh headline cells. Zero calls.
 
-    .venv/bin/python fill/i10_reask/i10_score.py           (the frozen reading)
-    .venv/bin/python fill/i10_reask/i10_score.py --test    (old data: seeds 0-2, CT)
+    .venv/bin/python results/moving-lines/re-asking/i10_score.py           (the frozen reading)
+    .venv/bin/python results/moving-lines/re-asking/i10_score.py --test    (old data: seeds 0-2, CT)
 """
 import math
 import statistics
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 
 MARGIN = -0.05

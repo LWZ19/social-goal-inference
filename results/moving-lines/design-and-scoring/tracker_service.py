@@ -3,7 +3,7 @@
     .venv/bin/python tracker_service.py [--port 8897] [--detector http://127.0.0.1:8899/detect]
 
 POST /track {"key": episode id, "rgb_png", "depth_npy", "camera", "robot", "t"} runs the E1d detector service on the
-frame, A1's deployed people on it (e1/e1d/tracker.py: people_from_raw), and that episode's Tracker.update; it answers
+frame, A1's deployed people on it (own-camera/detector-on-sim-frames/e1d/tracker.py: people_from_raw), and that episode's Tracker.update; it answers
 {"tracks": [{"id", "x", "y", "yaw", "stale"}], "detected": n, "ms": round trip}. One Tracker per key, kept until the
 service stops. Uses only what the robot has: the frame's rgb, depth and camera.
 """
@@ -18,7 +18,9 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-E1D = Path(__file__).resolve().parents[1] / "e1" / "e1d"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+E1D = paths.MOVING / "own-camera" / "detector-on-sim-frames" / "e1d"
 sys.path.insert(0, str(E1D))
 import tracker as T  # noqa: E402  (E1d's frozen tracker, pinned in E1D.sha256)
 

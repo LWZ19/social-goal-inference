@@ -2,7 +2,7 @@
 Zero calls; read-only.
 
     .venv/bin/python round6/a_jumps.py SELECTION_JSON RUN_ROOT [RUN_ROOT ...]
-    (from ideas2_1b/; paths relative to moving/.)
+    (SELECTION_JSON relative to results/moving-lines/, RUN_ROOT relative to results/data/moving/.)
 """
 import json
 import math
@@ -12,6 +12,8 @@ from bisect import bisect_right
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(HERE.parent / "round3"))
 from i_followups import MOVING, first_service_t  # noqa: E402
 from score_sweep import episode_scores  # noqa: E402
@@ -119,7 +121,7 @@ def report(root, sel):
 
 
 def main():
-    sel = json.loads((MOVING / sys.argv[1]).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sys.argv[1]).read_text())["layouts"]
     print(f"# Round 6, EXPLORATORY: goal jumps and leaving ({sys.argv[1]}; not claims)")
     for root in sys.argv[2:]:
         report(root, sel)

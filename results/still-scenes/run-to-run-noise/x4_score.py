@@ -3,15 +3,19 @@ method (R cot, E fsc, C con): the batch totals of successes (of 252) for s23 and
 their mean and SD, the paired differences C-R and C-E within each batch, and the record-level flip rate between batches.
 Reported, no bar. Zero calls; reads results.jsonl of the runs named below.
 
-    .venv/bin/python fill/x4_noise/x4_score.py
+    .venv/bin/python results/still-scenes/run-to-run-noise/x4_score.py
 """
 import json
 import statistics
 from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
+import sys
 
-RUNS = Path("runs")
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402  (results/_lib/paths.py)
+
+RUNS = paths.RUNS
 MODELS = {"GLM-5.3": ("glm53", "soclaas_glm53"), "DeepSeek V4.1": ("dsv41", "soclaas_dsv41")}
 VARIANTS, METHODS = ("plain", "staffed", "real"), ("cot", "fsc", "con")
 

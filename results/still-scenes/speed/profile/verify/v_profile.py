@@ -1,7 +1,7 @@
 """Independent verifier: facing angle to camera for line members, group members, staff, others on realistic sets."""
 import sys, math, collections, statistics
 import numpy as np
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 REAL = ("real", "staffed", "plain")
@@ -151,4 +151,4 @@ for cat in ["line", "group", "staff:staff", "other"]:
     P(f"{cat}: instances {len(sel)}, distinct (scene,pid) {len({(r['scene'], r['pid']) for r in sel})}, "
       f"distinct line groups {len({(r['scene'], r['group']) for r in sel}) if cat=='line' else '-'}")
 
-open('results/2026-10-17-beyond-vlm/rerun/profile/verify/v_profile.txt', 'w').write("\n".join(out) + "\n")
+open('results/still-scenes/speed/profile/verify/v_profile.txt', 'w').write("\n".join(out) + "\n")

@@ -1,7 +1,7 @@
 import pickle, math, collections
 from sgi.schemas import FACINGS
 from sgi.stages.people import _TURN_DEG
-P = pickle.load(open("results/2026-10-17-beyond-vlm/phase1/a0_facing/verify/v_pairs.pkl", "rb"))["pairs"]
+P = pickle.load(open("results/still-scenes/facing/verify/v_pairs.pkl", "rb"))["pairs"]
 def wrap(a): return math.pi - ((math.pi - a) % (2 * math.pi))
 def nb(rel): return min(FACINGS[:8], key=lambda f: abs(wrap(rel - math.radians(_TURN_DEG[f]))))
 for s in ["qwen_s19", "glm_s19", "dsv_s20", "haiku", "sonnet", "gemini"]:

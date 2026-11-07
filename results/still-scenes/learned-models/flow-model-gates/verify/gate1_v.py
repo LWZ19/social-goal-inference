@@ -14,15 +14,15 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.config import DEFAULT_CONFIG, load_config  # noqa: E402
 from sgi.scene import load_scene  # noqa: E402
 from sgi.synth import generate as G  # noqa: E402
 
-OUT = Path('results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+OUT = Path('results/still-scenes/learned-models/flow-model-gates/verify')
 FROZEN = OUT.parent / 'FROZEN.md'
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 SHA = '8b7d3ae294ad81a810c70c23706247674bbfed22cc0247445e91f6615426419c'
 assert hashlib.sha256(FROZEN.read_bytes()).hexdigest() == SHA
 

@@ -4,7 +4,7 @@ from runs_i4/<model> and R1 from runs/<model>, so the two arms ran under differe
 Zero calls; read-only."""
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from i4_score import POOLED, REPORTED  # noqa: E402

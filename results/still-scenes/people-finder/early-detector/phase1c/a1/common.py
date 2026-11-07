@@ -12,9 +12,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 I09 = HERE.parent
-sys.path.insert(0, 'docs/model_notes/tools')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1b/i03/stageA')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector')
+sys.path.insert(0, 'results/still-scenes/perception/depth-blob-detector/stageA')
 import people_scorer as PS  # noqa: E402
 from sgi.geometry import wrap_angle  # noqa: E402
 

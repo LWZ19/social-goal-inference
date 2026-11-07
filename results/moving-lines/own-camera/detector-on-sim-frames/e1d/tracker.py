@@ -28,7 +28,10 @@ MISSES_DROP = 3
 RANGE_M = 12.0
 OCCLUDE_M = 0.5
 MARK_Z = 1.1
-RD = Path('results/2026-10-17-beyond-vlm')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+A1 = paths.STILL / 'people-finder/early-detector/phase1c/a1'                  # A1's frozen people pipeline
 _P = None
 _S = None
 
@@ -36,11 +39,11 @@ _S = None
 def _a1():
     global _P, _S
     if _P is None:
-        spec = importlib.util.spec_from_file_location('a1pipeline', RD / 'phase1c/i09/a1/pipeline.py')
+        spec = importlib.util.spec_from_file_location('a1pipeline', A1 / 'pipeline.py')
         _P = importlib.util.module_from_spec(spec)
         sys.modules['a1pipeline'] = _P
         spec.loader.exec_module(_P)
-        doc = json.loads((RD / 'phase1c/i09/a1/chosen.json').read_text())
+        doc = json.loads((A1 / 'chosen.json').read_text())
         _S = doc.get('setting', doc)
     return _P, _S
 

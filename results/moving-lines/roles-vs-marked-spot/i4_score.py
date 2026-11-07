@@ -1,13 +1,13 @@
 """Item 4 (I4_FROZEN.md): RTw (tracking R1's marked point, no roles) against CT2 on the fresh headline cells. Zero
 calls; read-only.
 
-    .venv/bin/python fill/i4_rtw/i4_score.py           (the frozen reading)
-    .venv/bin/python fill/i4_rtw/i4_score.py --test    (old data: seeds 0-2, CT)
+    .venv/bin/python results/moving-lines/roles-vs-marked-spot/i4_score.py           (the frozen reading)
+    .venv/bin/python results/moving-lines/roles-vs-marked-spot/i4_score.py --test    (old data: seeds 0-2, CT)
 """
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 
 # Amendment 1 (I4_FROZEN.md): RTw and CT2 are run together in one invocation into runs_i4/<model> (same machine

@@ -10,7 +10,7 @@ Per condition (clean, S2m, S3, S23m) and seed split (fit 10-34, check 35-44): ri
 ticks with a queue; switches of the chosen last per minute; roster changes per tick; calibration error (ECE, 10 bins)
 and the share in the queue for marginals in 0.5-0.7.
 
-    .venv/bin/python round3/c_eval.py [sens]     (from ideas2_1b/)
+    .venv/bin/python round3/c_eval.py [sens]     (from best-version-and-running-guess/)
 """
 import json
 import sys

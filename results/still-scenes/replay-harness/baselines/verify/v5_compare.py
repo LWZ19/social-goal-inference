@@ -2,7 +2,7 @@
 DeepSeek on the same (arm, scene, episode, trial): are people / target / SA the same (s23 C people answers are cache
 copies of s19/s20)?"""
 import json, collections
-D = 'results/2026-10-17-beyond-vlm/rerun/i01_baselines/'
+D = 'results/still-scenes/replay-harness/baselines/'
 out = []
 def p(*a):
     s = " ".join(str(x) for x in a); print(s); out.append(s)

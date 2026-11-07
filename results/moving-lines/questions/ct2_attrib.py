@@ -6,8 +6,10 @@
     Gain (share strict, CT2 - CT) in cells where readmit fired against cells where it did not."""
 import collections, json, statistics, sys
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M)); sys.path.insert(0, str(M / 'analysis'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN)); sys.path.insert(0, str(paths.MOVING / 'failure-analysis'))
 import summarise_fresh as S
 import failures as F
 GROUP = {"latency": "latency", "approach": "approach", "fa_noturn": "first answer", "ct_ran_out": "line ran out",

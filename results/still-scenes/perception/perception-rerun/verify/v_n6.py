@@ -1,11 +1,11 @@
 """N6: phantoms (detections >1 m from every true person) at s23 GLM line goal steps: farthest listed from target?
 distance of the solved place; image origin (pixel to the projected axis of true people)."""
 import sys, math, statistics
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.gt.derive import is_visible
 from sgi.geometry import project
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/perception/verify')
+sys.path.insert(0, 'results/still-scenes/perception/perception-rerun/verify')
 from v_main import my_match
 OUT = __file__.replace('.py', '_out.txt')
 L = []

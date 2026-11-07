@@ -15,13 +15,16 @@ Writes sim/scenarios/sweep/<name>.yaml (the candidate plus its flags) and select
 """
 import hashlib
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 
 import yaml
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[4]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+ROOT = paths.REPO
 OUT = ROOT / "sim" / "scenarios" / "sweep"
 QUOTA = {"ours": 40, "chain": 12, "mixed": 8, "easy": 12}
 FLAGS = [(False, False), (True, True), (False, True), (True, False)]       # (lag, restless), in turn

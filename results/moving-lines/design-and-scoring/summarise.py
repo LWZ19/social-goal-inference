@@ -1,12 +1,15 @@
 """Summarise moving-people episodes: per arm, overall and by scenario, and CT paired against each other arm.
 
-    python3 summarise.py runs/dsv41 [runs/other ...]
+    python3 summarise.py results/data/moving/runs/dsv41 [results/data/moving/runs/other ...]   (from the repo root)
 """
 import json
 import statistics
 import sys
 from collections import defaultdict
 from pathlib import Path
+
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 
 ARMS = ["R1", "Rq", "Rq0", "RT", "RTw", "C1", "Cq", "CTv", "CT0", "CT", "CTo", "CTt"]
 DEV = {"cafe_busy"}                                   # development data (DEVIATIONS.md): reported apart
@@ -118,7 +121,7 @@ def matches(eps):
             print(f"- {label}: mean {statistics.mean(r):.2f} over {len(r)} episodes, min {min(r):.2f}")
 
 
-REPO = Path(".")
+REPO = paths.REPO
 
 
 def _slot0(scenario: str):

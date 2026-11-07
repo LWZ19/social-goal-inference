@@ -9,8 +9,8 @@ import collections
 import json
 import sys
 
-HERE = 'results/2026-10-17-beyond-vlm/phase1d/i04'
-I14 = 'results/2026-10-17-beyond-vlm/phase1/i14_v0'
+HERE = 'results/still-scenes/learned-models/soft-density'
+I14 = 'results/still-scenes/metrics-and-statistics/metric-v0'
 PRIMARY = ['old_qwen', 'old_glm', 'old_deepseek', 'watch_qwen', 'watch_glm', 'watch_deepseek']
 NEW = ['new_qwen', 'new_glm', 'new_deepseek', 'new_haiku', 'new_sonnet', 'new_gemini']
 # I14 v0 tables.txt T2/T3: n and solver hit@1..5 (package)

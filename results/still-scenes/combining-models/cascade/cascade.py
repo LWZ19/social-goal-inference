@@ -1,6 +1,6 @@
 """I39 model-escalation cascade, re-computed through research_harness only.
 
-Port of RD/scripts/cascade_peek.py (the judge's script), with its definitions kept:
+Port of analysis-scripts/cascade_peek.py (the judge's script), with its definitions kept:
   - records of the realistic sets (real, staffed, plain), method con, paired by (scene_id, episode_id, trial);
   - goal step of the cheap model = result.solver is not None (judge's goalstep());
   - ok = recorded score.success; escalation candidates = the cheap model's goal-step records only;
@@ -23,7 +23,7 @@ import statistics as st
 import sys
 from pathlib import Path
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
 OUT = Path(__file__).resolve().parent

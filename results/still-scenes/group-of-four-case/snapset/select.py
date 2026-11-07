@@ -8,7 +8,7 @@ written to selected.csv for render_subset.py. Rules (set before any picture or c
   - control_object: target kinds "object" first; then places, a visitor (not staff) within 1 m first, and among
     those, layouts whose anchor pixel falls inside a person's projected box first (the snap has a candidate there).
 A spare is rendered too; render_subset.py's assemble keeps the first WANT per set that render and keep their bin.
-    PYTHONPATH= .venv/bin/python results/2026-11-01-push/group4/snapset/select.py
+    PYTHONPATH= .venv/bin/python results/still-scenes/group-of-four-case/snapset/select.py
 """
 import csv
 from collections import defaultdict

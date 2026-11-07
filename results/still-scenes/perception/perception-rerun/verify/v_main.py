@@ -1,10 +1,10 @@
 """Independent verifier for the perception claims (P1, P2, P3, I03-why, N1-N6). Reads through research_harness only."""
 import sys, math, re, json, collections, statistics
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.gt.derive import is_visible
 
-OUT = 'results/2026-10-17-beyond-vlm/rerun/perception/verify/v_main_out.txt'
+OUT = 'results/still-scenes/perception/perception-rerun/verify/v_main_out.txt'
 lines_out = []
 def P(*a):
     s = ' '.join(str(x) for x in a)

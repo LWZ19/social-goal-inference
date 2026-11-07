@@ -1,8 +1,10 @@
 """Scorer for CT2_NORV_POSTHOC.md (sha256 165654e6), zero calls. Judges Q1-Q3 exactly as written."""
 import statistics, sys
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M)); sys.path.insert(0, str(M / 'analysis')); sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN)); sys.path.insert(0, str(paths.MOVING / 'failure-analysis')); sys.path.insert(0, str(Path(__file__).parent))
 import summarise_fresh as S, failures as F
 from ct2_attrib import grp, readmits
 from ct2_attrib2 import load

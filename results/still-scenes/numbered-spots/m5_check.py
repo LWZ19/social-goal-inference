@@ -1,4 +1,4 @@
-"""Zero-call check (controller's idea, before any freeze): among the fresh unmarked plan answers (M2's A0, trials
+"""Zero-call check (an idea, before any freeze): among the fresh unmarked plan answers (M2's A0, trials
 3-5, five models), how many wrong targets name a person while the episode's target is a place or object, and how
 many of those name someone waiting in a line (end of the line, queue, last, customer). m5_check.py"""
 import collections, json, re
@@ -9,7 +9,7 @@ LINE = re.compile(r'\b(end of the (line|queue)|back of the (line|queue)|last (pe
 STAFF = re.compile(r'\b(staff|barista|attendant|clerk|cashier|server|employee|worker)\b', re.I)
 tot = collections.Counter()
 for m in ('qwen38_low', 'glm53', 'dsv41', 'x3', 'gemini'):
-    run = Path(f'runs/m2_{m}')
+    run = Path(__file__).resolve().parent / 'runs' / f'm2_{m}'
     rows = {(r['scene'], r['episode'], r['trial']): r for r in map(json.loads, (run / 'm2_rows.jsonl').read_text().splitlines())}
     calls = {(c['scene_id'], c['episode'], c['trial']): c for c in map(json.loads, (run / 'calls.jsonl').read_text().splitlines()) if c['arm'] == 'A0'}
     c = collections.Counter()

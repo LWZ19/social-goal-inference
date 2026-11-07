@@ -2,18 +2,23 @@
 and the project venv both load it.
 
 check(path) -> path, or AssertionError. The path, as written and resolved, must lie under
-<research>/phase3/seeds/realistic_train/seed<k>/eval/<scene>/ with 110 <= k <= 119, hold exactly one seed<k>
-component, and contain none of keep/heldout, s18, s20_held, eval_16..eval_19, group_photo, lift_wait, heldout,
-held_out (case ignored). The spent test seeds (phase2/seeds/realistic, seeds 200-219) and the sealed seeds 3-99 can
-never pass: their folders are not under SEEDS_ROOT and their numbers are outside 110-119.
+<repo>/results/still-scenes/scene-seeds/phase3/realistic_train/seed<k>/eval/<scene>/ with 110 <= k <= 119, hold
+exactly one seed<k> component, and contain none of keep/heldout, s18, s20_held, eval_16..eval_19, group_photo,
+lift_wait, heldout, held_out, phase2/seeds, scene-seeds/phase2 (case ignored). The spent test seeds
+(scene-seeds/phase2/realistic, seeds 200-219) and the sealed seeds 3-99 can never pass: their folders are not under
+SEEDS_ROOT and their numbers are outside 110-119.
 """
 import os
 import re
+import sys
+from pathlib import Path
 
-RESEARCH = "results/2026-10-17-beyond-vlm"
-SEEDS_ROOT = RESEARCH + "/phase3/seeds/realistic_train"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402  (standard library only)
+
+SEEDS_ROOT = str(paths.STILL / "scene-seeds" / "phase3" / "realistic_train")
 FORBIDDEN_SUBSTR = ("keep/heldout", "s18", "s20_held", "eval_16", "eval_17", "eval_18", "eval_19", "group_photo",
-                    "lift_wait", "heldout", "held_out", "phase2/seeds")
+                    "lift_wait", "heldout", "held_out", "phase2/seeds", "scene-seeds/phase2")
 SEED_RE = re.compile(r"seed(\d+)")
 SEED_MIN, SEED_MAX = 110, 119
 FIT_TRAIN = tuple(range(110, 116))          # design data

@@ -1,5 +1,5 @@
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 for st, mods, meths in (('s16b',('qwen38_low','glm53'),('fsc','cot')),('s19',('qwen38_low','glm53'),('con',)),('s20',('dsv41',),('cot','fsc','con')),('s21',('qwen38_low',),('cot','fsc','con')),('s23',('glm53',),('cot','fsc','con'))):
     for m in mods:

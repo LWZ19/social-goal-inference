@@ -2,7 +2,7 @@
 # C5 flow pilot step 3: the main model, then the three LOSO models, one GPU process at a time (FROZEN.md section 4).
 # Each process checks nvidia-smi (>= 3000 MiB free) before it starts and polls every 5 min otherwise.
 set -u
-B=results/2026-10-17-beyond-vlm/phase2/flow_pilot
+B=results/still-scenes/learned-models/flow-model-pilot
 PY=python
 cd $B/code
 export HF_HUB_OFFLINE=1

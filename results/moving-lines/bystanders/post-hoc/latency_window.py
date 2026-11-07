@@ -1,11 +1,11 @@
-"""Was the line served while the model was thinking? (post hoc, zero calls; for ideas2/research_session.md)
+"""Was the line served while the model was thinking? (post hoc, zero calls; for the second ideas round)
 
 For every bystander-scene cell: the first answer's latency window [asked_t, delivered_t], the services (an id leaves the
 sim's queue_ids) inside it and in the 20 s before delivery, and how CT3's leftover capture (time the solver's last is a
 bystander) splits around the first service after delivery. If most leftover capture sits in cells whose latency window
 already held a service, then checking the answer against what happened while the model thought would remove it.
 
-    python3 latency_window.py runs/dsv41 runs/sonnet55_low
+    python3 latency_window.py results/data/moving/runs/dsv41 results/data/moving/runs/sonnet55_low   (from the repo root)
 """
 import sys
 from collections import defaultdict

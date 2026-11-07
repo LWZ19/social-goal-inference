@@ -23,7 +23,9 @@ SRC = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else LA / "synthetic" / "
 TAG = sys.argv[2] if len(sys.argv) > 2 else ""
 DEF = HERE / f"defects{TAG}"
 OUT = HERE / f"defects{TAG}_out"
-PY = ".venv/bin/python"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+PY = str(paths.REPO / ".venv" / "bin" / "python")
 ENV = {**os.environ, "PYTHONPATH": "", "OMP_NUM_THREADS": "2", "OPENBLAS_NUM_THREADS": "2", "MKL_NUM_THREADS": "2",
        "PYTHONDONTWRITEBYTECODE": "1"}
 STALE = "e6e73181d47cfeb1d22ec9fcc91bcdbb6ec625e32dc002be4a877e75d2cf9470"      # the first build

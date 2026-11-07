@@ -24,7 +24,7 @@ import time
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi import solver  # noqa: E402
 from sgi.geometry import to_world_xy, wrap_angle  # noqa: E402

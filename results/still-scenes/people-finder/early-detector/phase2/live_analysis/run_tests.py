@@ -16,7 +16,9 @@ I09 = HERE.parent
 LIVE = I09 / "live"
 SYN = HERE / "synthetic"
 OUT = HERE / "test_out"
-PY = Path(".venv/bin/python")
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+PY = paths.REPO / ".venv" / "bin" / "python"
 
 ENV = {**os.environ, "PYTHONPATH": "", "OMP_NUM_THREADS": "2", "OPENBLAS_NUM_THREADS": "2", "MKL_NUM_THREADS": "2",
        "PYTHONDONTWRITEBYTECODE": "1"}

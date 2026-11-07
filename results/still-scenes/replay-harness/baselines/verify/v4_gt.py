@@ -1,6 +1,6 @@
 """What the scene truth says about people at the group episodes (eval_10/11/12), one run (s23 real sonnet con)."""
 import sys, re
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 out = []
 def p(*a):
@@ -17,4 +17,4 @@ for arm in ("real", "staffed", "plain"):
         d = gt.model_dump() if hasattr(gt, "model_dump") else vars(gt)
         short = {k: (v if not isinstance(v, (list, dict)) or len(str(v)) < 300 else str(v)[:300] + "...") for k, v in d.items()}
         p(arm, rec.scene_id, rec.episode_id, short)
-open('results/2026-10-17-beyond-vlm/rerun/i01_baselines/verify/v4_gt.txt', "w").write("\n".join(out) + "\n")
+open('results/still-scenes/replay-harness/baselines/verify/v4_gt.txt', "w").write("\n".join(out) + "\n")

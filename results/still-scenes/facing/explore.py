@@ -1,6 +1,6 @@
 """A0 exploration: which C runs exist on the realistic arms, what their people calls hold."""
 import collections, json, sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 REAL = ('real', 'staffed', 'plain')

@@ -3,8 +3,10 @@ full answer relative to the place finally taken."""
 import json, math, statistics, sys
 from collections import defaultdict
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M)); import summarise_fresh as S
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN)); import summarise_fresh as S
 def fs(e): return next((x['t'] for x in e['samples'] if S.in_line(x, 'strict')), None)
 def at(s, t):
     b = s[0]

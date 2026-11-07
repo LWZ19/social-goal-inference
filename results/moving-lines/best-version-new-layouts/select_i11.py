@@ -1,5 +1,5 @@
-"""Item 11 layouts (fill/i11_ct3f/I11_FROZEN.md; RANGES.md: candidates 3000-3449 per base, the
-controller only): select_pilot.py's logic unchanged, with its own folders and quotas. Zero calls; deterministic.
+"""Item 11 layouts (results/moving-lines/best-version-new-layouts/I11_FROZEN.md; RANGES.md: candidates 3000-3449 per base, the
+run only): select_pilot.py's logic unchanged, with its own folders and quotas. Zero calls; deterministic.
 
 Quotas: ours 48, chain 12, mixed 6, easy 6; half from each base.
 Within a stratum and base, candidates are sorted by their distance past the last member (`past_last_m`) and cut into
@@ -9,19 +9,23 @@ Stress flags, crossed 2 x 2 and balanced within each stratum and base, assigned 
   lag      : the queue's members wait U(0, 4) s before stepping up, and 20% of them wait for two free places;
   restless : the lone non-member makes one excursion towards the counter's face point, at U(10, 60) s, of
              U(0.75, 1.15) m (about 0.6-1.0 m realised), holds U(3, 6) s and goes back.
-Writes sim/scenarios/i11/<name>.yaml (the candidate plus its flags) and i11_selection.json next to this file.
+Writes sim/scenarios/i11/<name>.yaml (the candidate plus its flags) and i11_selection.json in results/moving-lines/test-layouts/.
 
     python3 select_i11.py
 """
 import hashlib
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 
 import yaml
 
-HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[4]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+HERE = paths.MOVING / "test-layouts"            # the layout candidates and selections
+ROOT = paths.REPO
 OUT = ROOT / "sim" / "scenarios" / "i11"
 CAND = HERE / "i11_candidates"
 QUOTA = {"ours": 48, "chain": 12, "mixed": 6, "easy": 6}

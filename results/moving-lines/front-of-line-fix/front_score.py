@@ -1,9 +1,9 @@
 """Front-of-line fix (exploratory, 7 Nov): CT2f (CT2 + no step back once in line + vacate_rejoined) against CT2 on the
 same 25 cells per model (EVAL5, seeds 10-14), CT2 from runs_i10 (current code), CT2f from runs_front. Zero calls.
-    python3 front_score.py   (run from moving/; uses fill/mcompare.py and summarise_fresh.in_line)"""
+    .venv/bin/python results/moving-lines/front-of-line-fix/front_score.py   (uses results/_lib/mcompare.py and summarise_fresh.in_line)"""
 import statistics, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C
 from summarise_fresh import in_line
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Arm 1 R0 pass (copy check active): two workers at most, (seed 0 then seed 2) and (seed 1); then the reproduction check.
-cd results/2026-10-17-beyond-vlm/phase2/i06_repair/code
-PY=.venv/bin/python
+cd "$(dirname "$0")"
+PY=${PY:-python}
 export PYTHONPATH= OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 L=../logs
 free -m | head -2 > $L/crowd_r0_free.log

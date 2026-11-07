@@ -3,7 +3,7 @@ import collections
 import json
 import statistics as st
 
-HERE = 'results/2026-10-17-beyond-vlm/rerun/snap'
+HERE = 'results/still-scenes/depth-fix/first-check'
 MODELS = ['qwen38_low', 'glm53', 'dsv41', 'haiku55', 'sonnet55_low', 'gemini38_low']
 SHORT = {'qwen38_low': 'Qwen', 'glm53': 'GLM', 'dsv41': 'DeepSeek', 'haiku55': 'Haiku', 'sonnet55_low': 'Sonnet',
          'gemini38_low': 'Gemini'}

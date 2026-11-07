@@ -7,12 +7,12 @@ import math
 import statistics
 import sys
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1/i01_repairs/verify')
+sys.path.insert(0, 'results/still-scenes/replay-harness/repairs/verify')
 from vrun import reference_constraints  # noqa: E402
 
-V = 'results/2026-10-17-beyond-vlm/phase1/i01_repairs/verify'
+V = 'results/still-scenes/replay-harness/repairs/verify'
 ARMS = ('real', 'staffed', 'plain')
 
 

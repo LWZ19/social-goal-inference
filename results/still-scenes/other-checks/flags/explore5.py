@@ -1,5 +1,5 @@
 import sys, json, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 for run in H.runs(stage='s20', model='dsv41', method='con'):
     c=collections.Counter()

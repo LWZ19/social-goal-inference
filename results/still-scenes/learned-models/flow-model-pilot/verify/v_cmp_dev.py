@@ -6,7 +6,7 @@ from pathlib import Path
 
 import numpy as np
 
-P = Path('results/2026-10-17-beyond-vlm/phase2/flow_pilot')
+P = Path('results/still-scenes/learned-models/flow-model-pilot')
 th = np.load(P / 'data' / 'dev.npz')
 tj = {m['key']: m for m in json.loads((P / 'data' / 'dev.json').read_text())['records']}
 tk = {str(k): i for i, k in enumerate(th['keys'])}

@@ -7,7 +7,7 @@ Item 1, development still-scene headline, runs from the research whitelist (rese
   new wording: Qwen 3.8 low s21; GLM-5.3, DeepSeek V4.1, Haiku 5.5, Sonnet 5.5 low, Gemini 3.8 low s23.
   old wording: Qwen and GLM R and E from s16b, C from s19; DeepSeek R, E and C from s20 (never s20_held).
 Item 2, the seven older models of E3 (descriptive): runs s24_{variant}_{entry}_{method}, the folders run_static.sh
-  names; never e3_models/held_configs/ or any held run.
+  names; never hidden-situations-and-more-models/held_configs/ or any held run.
 
 Unit: the layout (scene id without its variant prefix; 14 layouts). Records are paired across methods by
 (variant, scene, episode, trial). net(A-B) of a layout = sum over its paired records of success(A) - success(B).
@@ -25,12 +25,18 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path('.')
-RUNS = ROOT / 'runs'
-WHITELIST = Path('docs/model_notes/tools/research_runs.txt')
-OLD_STATS = Path('results/2026-10-17-beyond-vlm/rerun/'
-                 'stats/stats_output.txt')
-E3 = ROOT / 'results/2026-11-01-push/e3_models'
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py: where things are in this repository)
+
+ROOT = paths.REPO
+RUNS = paths.RUNS
+WHITELIST = paths.HARNESS / 'research_runs.txt'
+# The runs' config.yaml files name the development scene sets by the folder that held them when the runs were made;
+# in this repository those sets lie in data/dev_scenes/ (as the harness's relocated()).
+RECORDED_SETS = '.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/'
+DEV_SCENES = 'data/dev_scenes/'
+OLD_STATS = paths.STILL / 'metrics-and-statistics/stats-rerun/stats_output.txt'
+E3 = paths.STILL / 'hidden-situations-and-more-models'
 E3_TOTALS = E3 / 'results_all_out.txt'
 E3_SCENES = E3 / 'scenes_dirs.yaml'
 OUT = Path(__file__).resolve().parent / 'layout_tests_out.txt'
@@ -73,6 +79,11 @@ def say(s=''):
     LINES.append(s)
 
 
+def relocated(recorded):
+    text = str(recorded)
+    return DEV_SCENES + text[len(RECORDED_SETS):] if text.startswith(RECORDED_SETS) else text
+
+
 def guard(text):
     if FORBIDDEN.search(str(text)):
         sys.exit(f'refused: held out or excluded: {text}')
@@ -91,7 +102,7 @@ def read_whitelist():
         name = folder[16:]                       # drop 'YYYYMMDD-HHMMSS_'
         assert re.fullmatch(r'\d{8}-\d{6}_', folder[:16]), line
         assert name not in names, ('two whitelist lines for one name', name)
-        names[name] = (folder, (ROOT / scenes).resolve())
+        names[name] = (folder, (ROOT / relocated(scenes)).resolve())
     return names
 
 
@@ -106,7 +117,7 @@ def e3_run(name, scenes_by_variant, variant):
     """The one folder runs/<timestamp>_<name> (run_static.sh's --name), never a held run."""
     hits = [p for p in RUNS.iterdir() if p.is_dir() and p.name[16:] == name and not FORBIDDEN.search(p.name)]
     assert len(hits) == 1, (name, [p.name for p in hits])
-    return hits[0], Path(scenes_by_variant[variant]).resolve()
+    return hits[0], (ROOT / relocated(scenes_by_variant[variant])).resolve()
 
 
 # ---------------------------------------------------------------------------------------------------- records
@@ -114,7 +125,7 @@ def load_run(folder, scenes, variant, name, tally):
     """Records of one run as {(variant, scene, episode, trial): (success, situation)}; held-out records skipped."""
     cfg = yaml.safe_load((folder / 'config.yaml').read_text(encoding='utf-8'))
     assert cfg['name'] == name, (folder, cfg['name'])
-    assert Path(guard(cfg['scenes_dir'])).resolve() == scenes, (folder, cfg['scenes_dir'], scenes)
+    assert (ROOT / relocated(guard(cfg['scenes_dir']))).resolve() == scenes, (folder, cfg['scenes_dir'], scenes)
     held = set(HELD_DEFAULT)
 
     def recorded_held(node):                     # every held_out_situations list the run's config records
@@ -352,7 +363,7 @@ def main():
         ok = got == want
         bad += [] if ok else [f'{wording} {display} totals {got} != report {want}']
         say(f"  {wording:3s} {display:16s} got {got} report {want}  {'OK' if ok else 'MISMATCH'}")
-    say('Totals R/E/C against e3_models/results_all_out.txt:')
+    say('Totals R/E/C against results/still-scenes/hidden-situations-and-more-models/results_all_out.txt:')
     e3_want = parse_e3_totals()
     for display, _entry in E3_MODELS:
         got, want = e3[display][0], e3_want[display]
@@ -364,7 +375,7 @@ def main():
         ok = got == want
         bad += [] if ok else [f'{e3_name} totals {got} != results_all_out {want}']
         say(f"  {e3_name:22s} (s23 {display}) got {got} results_all_out {want}  {'OK' if ok else 'MISMATCH'}")
-    say('Earlier layout-level p-values (rerun/stats/stats_output.txt, two-sided, printed to 5 significant digits):')
+    say('Earlier layout-level p-values (results/still-scenes/metrics-and-statistics/stats-rerun/stats_output.txt, two-sided, printed to 5 significant digits):')
     blocks = parse_old_stats()
     want_blocks = [('qwen', old, 'Qwen 3.8 low', 'E'), ('glm', old, 'GLM-5.3', 'E'), ('ds', old, 'DeepSeek V4.1', 'E')]
     want_blocks += [(f'{s} C vs {x}', new, d, x) for d, s, _st in NEW_WORDING for x in ('E', 'R')]

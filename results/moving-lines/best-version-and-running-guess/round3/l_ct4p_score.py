@@ -1,7 +1,8 @@
 """Scores CT4P.md's predictions Q1-Q4 and its direction check. Written before any CT4-P run. Zero calls; read-only.
 
     .venv/bin/python round3/l_ct4p_score.py runs_pilot3/dsv41 [ARM]
-    (from ideas2_1b/; ARM defaults to CT4P. Any other ARM is a dry run of the code, not a result.)
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/; ARM defaults to CT4P.
+    Any other ARM is a dry run of the code, not a result.)
 """
 import json
 import math
@@ -15,13 +16,16 @@ from i_followups import MOVING, first_service_t, line_of, pos, sign_p  # noqa: E
 from j_decompose import goal_check  # noqa: E402
 from score_sweep import episode_scores  # noqa: E402  (path set by i_followups)
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
 HIGH = ["cafe_1002", "cafe_1000", "cafe_1001", "cafe_1160", "cafe_1031", "sweet_1112", "sweet_1130", "cafe_1081",
         "sweet_1011", "cafe_1183", "cafe_1090", "sweet_1129"]
 INFORMATIVE = ["cafe_1002", "cafe_1000", "cafe_1160", "cafe_1031", "sweet_1130"]
 
 
 def load(root, arms):
-    sel = json.loads((MOVING / "sweep" / "pilot_selection.json").read_text())["layouts"]
+    sel = json.loads((paths.MOVING / "test-layouts" / "pilot_selection.json").read_text())["layouts"]
     eps = {}
     for lay in sel:
         for arm in arms:

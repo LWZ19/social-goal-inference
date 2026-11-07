@@ -9,7 +9,8 @@ ct5.CT5 with W4's options. Compared with the log per re-solve:
 - W0: the roster, the largest marginal difference, and the last (the threshold roster through _turn).
 Bar: agreement >= 0.95 on the choice (CT5) and on the last (both). The first 10 disagreements per arm are listed.
 
-    .venv/bin/python round3/check_port_ct5.py runs_pilot3/dsv41      (from ideas2_1b/)
+    .venv/bin/python round3/check_port_ct5.py runs_pilot3/dsv41
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/)
 """
 import sys
 from collections import defaultdict

@@ -1,6 +1,6 @@
 """Independent N1/N2 recompute (verifier). s16b qwen/glm and s20 dsv41, cot and fsc, realistic arms."""
 import sys, collections, statistics as st, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -68,4 +68,4 @@ for model, stage in SETS:
         gg = s.get('min_body_gap_m')
         c[(r.situation, 'near' if dd <= 0.3 else 'far', 'unreach' if not s.get('reachable') else 'reach', 'gap<0.3' if (gg is not None and gg < 0.3) else 'gap>=0.3')] += 1
     for k, v in sorted(c.items()): p(model, k, v)
-open('results/2026-10-17-beyond-vlm/rerun/snap/verify/v1_n1n2.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/depth-fix/first-check/verify/v1_n1n2.txt', 'w').write(OUT.getvalue())

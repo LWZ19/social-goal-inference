@@ -16,9 +16,10 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import m2_driver as D  # noqa: E402
 import m2lib as L  # noqa: E402
+import paths  # noqa: E402  (results/_lib/paths.py, on sys.path through m2_driver)
 
 M, X = D.M, D.X
-FRAMES = Path('results/2026-11-01-push/moving/runs/dsv41')
+FRAMES = paths.MOVING_RUNS / 'runs/dsv41'
 SCENARIOS = ('cafe', 'cafe_line2_moving', 'cafe_line6_moving', 'room_coffee_cart', 'sweet_spot_line2_moving')
 SEEDS = (0, 1, 2)
 

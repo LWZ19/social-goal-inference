@@ -1,5 +1,5 @@
 import sys, collections, time
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 import numpy as np
 from sgi import solver

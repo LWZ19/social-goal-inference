@@ -29,12 +29,20 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-RD = HERE.parents[2]                                   # .../2026-10-17-beyond-vlm
-I01 = RD / "phase1" / "i01_repairs"
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+I01 = paths.STILL / "replay-harness" / "repairs"
 sys.path.insert(0, str(I01))
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
-import repairs as R  # noqa: E402  (phase1/i01_repairs/repairs.py, unchanged)
+
+
+def here(stored) -> str:
+    """A scene folder as a stored file names it (the recorded absolute path without its local root), as it lies
+    here: through the harness's relocated() and from the repository root."""
+    return str((H.main_checkout() / H.relocated(stored)).resolve())
+import repairs as R  # noqa: E402  (replay-harness/repairs/repairs.py, unchanged)
 
 NEAR_M = 0.5
 RELOC_PX = 40.0
@@ -61,7 +69,7 @@ def load_cache():
     blobs_of = {}
     for folder, v in cache["scenes"].items():
         for scenes_dir, scene_id in v["listed"]:
-            blobs_of[(scenes_dir, scene_id)] = v["blobs"]
+            blobs_of[(here(scenes_dir), scene_id)] = v["blobs"]
     return cache["meta"], blobs_of
 
 

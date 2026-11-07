@@ -32,13 +32,16 @@ import sys
 import time
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent                 # .../phase1c/i09/a2
-I09 = HERE.parent
-RD = HERE.parents[2]                                   # .../2026-10-17-beyond-vlm
-I01 = RD / "phase1" / "i01_repairs"
-STAGEB = RD / "phase1b" / "i03" / "stageB"
+HERE = Path(__file__).resolve().parent                 # .../early-detector/phase1c/a2
+I09 = HERE.parent                                      # .../early-detector/phase1c
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+I03 = paths.STILL / "perception" / "depth-blob-detector"
+I01 = paths.STILL / "replay-harness" / "repairs"
+STAGEB = I03 / "stageB"
 sys.path.insert(0, str(I01))
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 import repairs as R  # noqa: E402  (unchanged)
 
@@ -51,7 +54,7 @@ def _load(name, path):
 
 
 SB = _load("i03_stageB_replay", STAGEB / "replay.py")           # unchanged
-PS = _load("i03_people_scorer", RD / "phase1b" / "i03" / "people_scorer.py")   # unchanged
+PS = _load("i03_people_scorer", I03 / "people_scorer.py")   # unchanged
 
 MATCH_M = 0.5
 CLOSE_M = 0.25

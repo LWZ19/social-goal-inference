@@ -10,9 +10,11 @@ import sys
 import time
 from pathlib import Path
 
-RD = Path('results/2026-10-17-beyond-vlm')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(RD / 'phase2/i06/score'))
+sys.path.insert(0, str(RD / 'crowds/score'))
 sys.path.insert(0, str(HERE))
 import lib as L  # noqa: E402  (I06's, unchanged)
 from sgi.evaluate import score  # noqa: E402
@@ -25,7 +27,7 @@ SOLVER_SHA = '10ece70f521eff2b1224267fa0b91bfac546d5740f85622073989a16c6c5d800'
 
 
 def main(seed):
-    assert hashlib.sha256((RD / 'phase2/i06_repair/FROZEN.md').read_bytes()).hexdigest() == FROZEN_SHA
+    assert hashlib.sha256((RD / 'crowds/facing-gate-repair/FROZEN.md').read_bytes()).hexdigest() == FROZEN_SHA
     assert hashlib.sha256(Path(V.S.__file__).read_bytes()).hexdigest() == SOLVER_SHA
     cfg = L.load_config()
     th = cfg.thresholds

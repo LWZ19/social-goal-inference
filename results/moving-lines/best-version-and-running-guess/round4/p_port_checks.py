@@ -2,8 +2,9 @@
 and "behind" fields, the tracks and the cached first answers; no outcome measure.
 
     .venv/bin/python round4/p_port_checks.py RUN_ROOT SELECTION_JSON DUMP_DIR
-    (from ideas2_1b/; all three paths relative to moving/, e.g. runs_confirm4/dsv41 sweep/confirm_selection.json
-    sweep/confirm_dump)
+    (from best-version-and-running-guess/; RUN_ROOT relative to results/data/moving/, e.g. runs_confirm4/dsv41;
+    SELECTION_JSON and DUMP_DIR relative to results/moving-lines/, e.g. test-layouts/confirm_selection.json
+    test-layouts/confirm_dump)
 
 - CT4P (as e_ct4p_port.py): for every re-solve with direction_source "path", rebuild the remembered path's back
   tangent at the farthest roster member along it and compare with solve_direction (match within 1e-3). Every
@@ -26,14 +27,17 @@ from b_pl import Path_  # noqa: E402
 from replay_lib import MOVING, Cell, robot_at  # noqa: E402
 from sgi.types import Constraint, DetectedPerson  # noqa: E402
 
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
 
 def cells(root, sel_path, dump_dir, arm):
     """As g_pilot_predict.pilot_cells, with the selection, dumps and run folder as arguments."""
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     out, missing = [], Counter()
     for lay in sel:
         hits = sorted((MOVING / root).glob(f"**/{lay['name']}/seed{lay['seed']}/{arm}/episode.json"))
-        dump_f = MOVING / dump_dir / lay["name"] / f"seed{lay['seed']}.json"
+        dump_f = paths.MOVING / dump_dir / lay["name"] / f"seed{lay['seed']}.json"
         if not hits or not dump_f.exists():
             missing["no episode" if not hits else "no dump"] += 1
             continue

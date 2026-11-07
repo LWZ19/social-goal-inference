@@ -14,7 +14,7 @@ import time
 
 import numpy as np
 
-HERE = 'results/2026-10-17-beyond-vlm/phase1d/i04'
+HERE = 'results/still-scenes/learned-models/soft-density'
 sys.path.insert(0, HERE)
 from i04_fit import GAMMAS, KAPPAS, SIGMAS, TS, cells_of, energy_mm, load_meta, load_npz, psucc  # noqa: E402
 

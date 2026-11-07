@@ -5,7 +5,7 @@ conditions clean and S2m. The counts don't depend on the belief (follow checks a
 residuals by geometry), so one pass with CT5's defaults suffices. Output: fitted values beside the hand-set ones,
 written to fitted.json.
 
-    .venv/bin/python round3/b_calibrate.py      (from ideas2_1b/)
+    .venv/bin/python round3/b_calibrate.py      (from best-version-and-running-guess/)
 """
 import json
 import sys

@@ -1,8 +1,10 @@
 """Compare the verifier's raw sidecar outputs with the compute agent's raw_fit / raw_eval files (read as data)."""
 import json, sys
+from pathlib import Path
 import numpy as np
-V = 'verify_i09_a1/raw/'
-A = 'a1/'
+HERE = Path(__file__).resolve().parent
+V = str(HERE / 'raw') + '/'
+A = str(HERE.parent / 'a1') + '/'
 def load(p, key='rgb'):
     return {json.loads(l)[key]: json.loads(l) for l in open(p)}
 out = []

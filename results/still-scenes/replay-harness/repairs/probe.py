@@ -1,7 +1,7 @@
 """Probe: look at one solver-step record of s19 glm53 con real (structure only)."""
 import json
 import sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 ref = H.runs(stage='s19', arm='real', model='glm53', method='con')[0]

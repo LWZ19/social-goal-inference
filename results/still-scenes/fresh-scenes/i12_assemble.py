@@ -1,4 +1,4 @@
-"""Item 12 (fill/i12_still/I12_FROZEN.md) scene assembly, after the renders: e2_assemble.py with the 14 development
+"""Item 12 (results/still-scenes/fresh-scenes/I12_FROZEN.md) scene assembly, after the renders: e2_assemble.py with the 14 development
 rows, seeds 510-519 and one folder per seed. No GPU, zero calls.
 
     PYTHONPATH= .venv/bin/python e2_assemble.py --renders <E2>/renders \

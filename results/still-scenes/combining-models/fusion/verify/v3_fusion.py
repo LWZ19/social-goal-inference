@@ -1,6 +1,6 @@
 """Independent verifier for fusion claims F1-F4 and N1-N7. Reads only through research_harness."""
 import sys, collections, itertools, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 OUT = io.StringIO()
@@ -157,4 +157,4 @@ for new, old in [('glm53', g19), ('dsv41', d20)]:
                 both += 1; same += rec.people == o.people
     p(f'{new}: people lists both present={both} identical={same}; people calls cached {cachedp}/{callsp}; constraints calls cached {cachedc}/{callsc}')
 
-open('results/2026-10-17-beyond-vlm/rerun/fusion/verify/v3_fusion_out.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/combining-models/fusion/verify/v3_fusion_out.txt', 'w').write(OUT.getvalue())

@@ -3,7 +3,7 @@
 For each seed k: rng = default_rng(k) over every row of _SPLITS, then more = default_rng([k, _MORE_STREAM]) over
 _MORE_SPLITS with indices from len(dict(_SPLITS)[split]); a row is written with the package's own _write_scene only
 when its situation is in cfg.dev_situations, and a row of any other situation (group_photo, lift_wait) is skipped
-before any random draw, so no held-out scene is ever rendered. Output: phase1b/fresh_seeds/seed<k>/{eval,examples}/.
+before any random draw, so no held-out scene is ever rendered. Output: perception/fresh_seeds/seed<k>/{eval,examples}/.
 
 A seed is complete when seed<k>/DONE.json exists; a complete seed is skipped, an incomplete one is removed and
 written again from its first row (one random stream per seed). Seeds 3-99 are refused. No model, no network.
@@ -20,16 +20,18 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.config import DEFAULT_CONFIG, load_config  # noqa: E402
 from sgi.scene import read_scene_file  # noqa: E402
 from sgi.synth.generate import _MORE_SPLITS, _MORE_STREAM, _REASONS, _SPLITS, _write_scene  # noqa: E402
 
-PHASE = Path('results/2026-10-17-beyond-vlm/phase1b')
+PHASE = paths.STILL / 'perception'
 OUT = PHASE / 'fresh_seeds'
 SEEDS = tuple(range(100, 110))
-WT = Path('.-scenes')
+WT = paths.REPO
 
 
 def rows_of(cfg):

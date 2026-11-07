@@ -16,12 +16,13 @@ import sys
 import time
 from pathlib import Path
 
-WT = Path('.-scenes')
-RD = WT / 'results/2026-10-17-beyond-vlm'
-sys.path.insert(0, str(WT / 'docs/model_notes/tools'))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+sys.path.insert(0, str(paths.REPO / 'docs/model_notes/tools'))
 import research_harness as H  # noqa: E402
 
-EVAL_PEOPLE = RD / 'phase1c/i09/a1/eval_people.json'
+EVAL_PEOPLE = paths.STILL / 'people-finder/early-detector/phase1c/a1/eval_people.json'
 EVAL_PEOPLE_SHA256 = 'ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3'
 TRIAL_OFFSET = 30
 MODEL_RUNS = {'soclaas_qwen38_low': ('s21', 'qwen38_low'), 'soclaas_glm53': ('s23', 'glm53'),

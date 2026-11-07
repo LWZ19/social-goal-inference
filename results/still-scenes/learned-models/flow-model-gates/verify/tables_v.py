@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-V = Path('results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+V = Path('results/still-scenes/learned-models/flow-model-gates/verify')
 SHA = '8b7d3ae294ad81a810c70c23706247674bbfed22cc0247445e91f6615426419c'
 assert hashlib.sha256((V.parent / 'FROZEN.md').read_bytes()).hexdigest() == SHA
 METH = ('ratio', 'plain', 'ratio1d', 'band', 'bandu', 'uniform')

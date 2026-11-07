@@ -23,16 +23,16 @@ import zlib
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi import solver as S  # noqa: E402
 from sgi.geometry import make_poses, wrap_angle  # noqa: E402
 from sgi.stages.goal import standard_goal  # noqa: E402
 from sgi.types import GoalResult  # noqa: E402
 
-OUT = "/tmp" if "--test" in sys.argv else "results/2026-10-17-beyond-vlm/phase1d/i04/verify"
+OUT = "/tmp" if "--test" in sys.argv else "results/still-scenes/learned-models/soft-density/verify"
 spec = importlib.util.spec_from_file_location(
-    'i14v0', 'results/2026-10-17-beyond-vlm/phase1/i14_v0/i14.py')
+    'i14v0', 'results/still-scenes/metrics-and-statistics/metric-v0/i14.py')
 I14 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(I14)
 

@@ -2,7 +2,7 @@
 measure) at full precision, for every bearing the amendment names or its rule could admit, plus the generator's true
 default for cg4 (72.5 deg). Then the amendment's rule: the median share is in the bin (15-40: [0.15, 0.40);
 40-55: [0.40, 0.55]) and the chest is covered in at most 10 of 20 layouts.
-    PYTHONPATH= .venv/bin/python results/2026-11-01-push/group4/snapset/bearing_exact.py"""
+    PYTHONPATH= .venv/bin/python results/still-scenes/group-of-four-case/snapset/bearing_exact.py"""
 import importlib.util
 from pathlib import Path
 

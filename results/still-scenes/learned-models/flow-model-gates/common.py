@@ -7,8 +7,8 @@ from pathlib import Path
 
 import numpy as np
 
-HERE = Path('results/2026-10-17-beyond-vlm/phase1d/c5_gates')
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+HERE = Path('results/still-scenes/learned-models/flow-model-gates')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 CACHE = HERE / 'cache'
 FROZEN_SHA = '8b7d3ae294ad81a810c70c23706247674bbfed22cc0247445e91f6615426419c'
 SEEDS = tuple(range(100, 110))

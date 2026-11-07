@@ -5,7 +5,8 @@ so that C1, CT and Cq share their first answer through the cache (the arms are p
                                    [--arms C1 CT Cq R1 Rq] [--max-rpm 25]
 
 Each worker starts its own two services (constraints and direct_marking) and stops them by PID at the end. An
-episode whose episode.json exists is skipped, so a run can be resumed.
+episode whose episode.json exists is skipped, so a run can be resumed. A relative --out names a run folder under
+results/data/moving/ (paths.MOVING_RUNS), where every run folder lives; --jobs is read relative to the working directory.
 """
 import argparse
 import os
@@ -17,7 +18,10 @@ import time
 import urllib.request
 from pathlib import Path
 
-REPO = Path(".")
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+REPO = paths.REPO
 SIM_PY = Path.home() / "miniforge3/envs/sgi-habitat/bin/python"
 VENV_PY = REPO / ".venv/bin/python"
 
@@ -124,6 +128,8 @@ def main() -> int:
     ap.add_argument("--port-base", type=int, default=8800, help="services on this port and up, two a worker")
     ap.add_argument("--jobs", type=Path, help="a file of 'scenario seed' lines, in place of --scenarios x --seeds")
     args = ap.parse_args()
+    if not args.out.is_absolute():                 # run folders live in results/data/moving/
+        args.out = paths.MOVING_RUNS / args.out
     args.out = args.out.resolve()                  # the sim runs from the repository root
     args.out.mkdir(parents=True, exist_ok=True)
     jobs = [(s, seed) for seed in args.seeds for s in args.scenarios]

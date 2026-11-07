@@ -5,7 +5,7 @@ truth), walking or still, and did the static snapshot's factor for them change m
 odds did (log-odds change from static vs from dynamics)? Also a sanity check that CT5 set to behave as CT4 gives
 the same rosters as the frozen CT4.
 
-    .venv/bin/python round3/d_flips.py      (from ideas2_1b/)
+    .venv/bin/python round3/d_flips.py      (from best-version-and-running-guess/)
 """
 import math
 from collections import Counter

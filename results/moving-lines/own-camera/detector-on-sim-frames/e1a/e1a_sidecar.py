@@ -20,10 +20,13 @@ import json  # noqa: E402
 import os  # noqa: E402
 import subprocess  # noqa: E402
 import time  # noqa: E402
+from pathlib import Path  # noqa: E402
 
-FIX = "results/2026-11-01-push/e1/e1a"
-RESEARCH = "results/2026-10-17-beyond-vlm"
-INFER = RESEARCH + "/phase1c/i09/a1/sidecar/infer.py"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+FIX = str(Path(__file__).resolve().parent)
+INFER = str(paths.STILL / "people-finder/early-detector/phase1c/a1/sidecar/infer.py")
 INFER_SHA = "bee1322fd692bf0e85e820871413d486fda04d5770f72b5d3d75e18266709484"
 MANIFEST = FIX + "/manifest_sim.json"
 RAW = FIX + "/raw_sim"
@@ -76,7 +79,7 @@ def main():
     assert len(allowed) == len(man["images"]) == 13
     assert os.path.exists(RAW + "/" + DETECTOR + ".jsonl") is False, "raw_sim pass exists already"
 
-    SIM = ".superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/sim_bench/frozen/"
+    SIM = str(paths.REPO / ".superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/sim_bench/frozen") + "/"   # not in this repository
     class pg:
         @staticmethod
         def check(p):

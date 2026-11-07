@@ -29,11 +29,14 @@ import zlib
 
 import numpy as np
 
-WT = '.-scenes'
-HERE = f'{WT}/results/2026-10-17-beyond-vlm/phase1d/i04'
-sys.path.insert(0, f'{WT}/docs/model_notes/tools')
+from pathlib import Path  # noqa: E402
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+WT = str(paths.REPO)
+HERE = f'{WT}/results/still-scenes/learned-models/soft-density'
+sys.path.insert(0, f'{WT}/results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
-sys.path.insert(0, f'{WT}/results/2026-10-17-beyond-vlm/phase1/i14_v0')
+sys.path.insert(0, f'{WT}/results/still-scenes/metrics-and-statistics/metric-v0')
 import i14  # noqa: E402  (replica, pip, wrap: I14 v0's frozen scorer replica)
 from sgi import solver  # noqa: E402
 from sgi.evaluate import _heading_within  # noqa: E402

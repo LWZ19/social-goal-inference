@@ -1,5 +1,5 @@
 import json, collections, random, statistics
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i01_calibration/verify/'
+OUT = 'results/still-scenes/replay-harness/calibration/verify/'
 rows = [json.loads(l) for l in open(OUT + 'v1_rows.jsonl')]
 MODELS = ['glm53', 'ornith15', 'qwen36_35', 'qwen38', 'qwen3vl']
 lines = []

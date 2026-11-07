@@ -1,15 +1,16 @@
 #!/bin/bash
 # The overnight queue (replaces queue_all.sh and queue_rtw.sh, which waited on their own launching shell).
 # Starts at once: nothing else of the moving experiment is running.
-cd results/2026-11-01-push/moving
-P=.venv/bin/python
+cd results/moving-lines/design-and-scoring
+P=../../../.venv/bin/python
+R=../../data/moving                     # the run folders (run_moving.py writes a relative --out there)
 EVAL="cafe room_coffee_cart cafe_line2_moving cafe_line6_moving sweet_spot_line2_moving"
 BREAK="cafe_line2_fast cafe_line6_stepout cafe_line_bent_moving"
 
 echo "$(date +%H:%M:%S) set aside the DeepSeek re-ask episodes made with the bug (DEVIATIONS 4)"
-for d in runs/dsv41/*/seed*/Rq runs/dsv41/*/seed*/Cq runs/dsv41/*/seed*/Rq0; do
+for d in $R/runs/dsv41/*/seed*/Rq $R/runs/dsv41/*/seed*/Cq $R/runs/dsv41/*/seed*/Rq0; do
   [ -d "$d" ] || continue
-  dest="runs/dsv41_invalid_requery/${d#runs/dsv41/}"
+  dest="$R/runs/dsv41_invalid_requery/${d#$R/runs/dsv41/}"
   mkdir -p "$(dirname "$dest")"
   mv "$d" "$dest"
 done

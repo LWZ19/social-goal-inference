@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 r = H.runs(stage='s20', arm='real', model='dsv41', method='con')[0]
 seen=set()

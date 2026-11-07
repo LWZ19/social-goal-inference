@@ -1,5 +1,5 @@
 import sys, math, statistics as st
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/cascade/verify')
+sys.path.insert(0, 'results/still-scenes/combining-models/cascade/verify')
 import verify as V
 OUT=[]
 def p(*a):
@@ -25,4 +25,4 @@ p('dis (3 samples): '+'; '.join(f'@{f}: {at(dis,f)}' for f in [0,0.3,0.4,0.5,0.6
 # ties at cutoff for dis
 order=sorted(gs,key=lambda k:-dis[k]); cut=dis[order[m-1]]
 p('dis value at cutoff', round(cut,4), 'records with that value', sum(1 for k in gs if dis[k]==cut), 'inside top-70', sum(1 for k in order[:m] if dis[k]==cut))
-open('results/2026-10-17-beyond-vlm/rerun/cascade/verify/robust_out.txt','w').write('\n'.join(OUT)+'\n')
+open('results/still-scenes/combining-models/cascade/verify/robust_out.txt','w').write('\n'.join(OUT)+'\n')

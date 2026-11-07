@@ -12,7 +12,7 @@ the rest of both splits is accepted again under that configuration, from the fir
 rows before it are P0's, drawn alike). Configuration P0 is the generator's default and
 must reproduce layouts.csv (checked by check_v2.py), as must a patched one against a plain accepted_layouts run.
 
-    PYTHONPATH= nice -n 10 .venv/bin/python results/2026-11-01-push/group4/snapset/scan_v2.py \
+    PYTHONPATH= nice -n 10 .venv/bin/python results/still-scenes/group-of-four-case/snapset/scan_v2.py \
         --seeds 400-449 --workers 6
 Writes layouts_v2.csv (person-target layouts of every configuration; P0 with every layout) beside this file.
 """

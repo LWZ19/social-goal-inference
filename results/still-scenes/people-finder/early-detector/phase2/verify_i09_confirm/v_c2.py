@@ -10,8 +10,8 @@ import math  # noqa: E402
 from pathlib import Path  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-A1 = Path("results/2026-10-17-beyond-vlm/phase1c/i09/a1")
-sys.path.insert(0, "docs/model_notes/tools")
+A1 = Path("results/still-scenes/people-finder/early-detector/phase1c/a1")
+sys.path.insert(0, "results/still-scenes/analysis-scripts/harness")
 sys.path.insert(0, str(HERE))
 import research_harness as H  # noqa: E402
 import v_pipe as VP  # noqa: E402

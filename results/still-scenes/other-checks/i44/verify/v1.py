@@ -1,7 +1,7 @@
 """Q1 (tok/s, tokens) and Q3 (C success counts) for s8 qwen36_35 vs qwen38. Harness only."""
 import sys, collections, statistics as st
 from math import comb
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 def sign_p(w, l):

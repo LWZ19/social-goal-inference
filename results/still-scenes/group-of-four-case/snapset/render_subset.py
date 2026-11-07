@@ -2,8 +2,8 @@
 folder that `sgi.run --scenes` takes. WRITTEN, NOT RUN. Uses the GPU: announce it before starting.
 
 Run from the scenes worktree, which has Blender (.tools/) and the prepared assets (assets/realistic/_cache):
-    cd .-scenes
-    G=results/2026-11-01-push/group4/snapset
+    cd .
+    G=results/still-scenes/group-of-four-case/snapset
     PYTHONPATH= .venv/bin/python $G/render_subset.py render   --selected $G/selected.csv --out $G/real
     PYTHONPATH= .venv/bin/python $G/render_subset.py assemble --selected $G/selected.csv --out $G/real \
         --scenes $G/run_scenes

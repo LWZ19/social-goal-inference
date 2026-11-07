@@ -2,7 +2,7 @@
 Three readings: (a) every call, (b) dedup key (stage, scene, episode, trial, raw_text, latency) as the first agent states,
 (c) truly distinct calls: key (stage, raw_text, latency_s, output_tokens), (d) fresh calls only."""
 import sys, collections, statistics as st
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 groups = {
     'qwen36 off (s8 convlm+conorc)': [H.runs(stage='s8', model='qwen36_35', method=m)[0] for m in ('convlm', 'conorc')],

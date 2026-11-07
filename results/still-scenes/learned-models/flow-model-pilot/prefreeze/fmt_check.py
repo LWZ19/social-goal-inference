@@ -19,7 +19,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.config import load_config  # noqa: E402
 from sgi.geometry import to_world_xy  # noqa: E402
@@ -30,7 +30,7 @@ from sgi import solver  # noqa: E402
 from sgi.stages.goal import standard_goal  # noqa: E402
 from sgi.types import DetectedPerson, GroundedTarget  # noqa: E402
 
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 SCENES = [('eval', 'eval_00_no_one_place'), ('eval', 'eval_04_no_one_object'), ('eval', 'eval_05_no_one_person'),
           ('eval', 'eval_08_waiting_line_4'), ('eval', 'eval_12_conversation_group_4'), ('eval', 'eval_15_audience_5'),
           ('eval', 'eval_21_no_one_screen')]

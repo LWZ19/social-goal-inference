@@ -10,7 +10,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.config import load_config  # noqa: E402
 from sgi.freespace import connected, robot_grid  # noqa: E402
@@ -18,7 +18,7 @@ from sgi.gt.derive import prepare  # noqa: E402
 from sgi.polygons import point_in_polygon  # noqa: E402
 from sgi.scene import load_scene  # noqa: E402
 
-FRESH = Path('results/2026-10-17-beyond-vlm/phase1b/fresh_seeds')
+FRESH = Path('results/still-scenes/perception/fresh_seeds')
 PICK = ['eval/eval_00_no_one_place', 'eval/eval_04_no_one_object', 'eval/eval_05_no_one_person',
         'eval/eval_08_waiting_line_4', 'eval/eval_12_conversation_group_4', 'eval/eval_15_audience_5']
 

@@ -1,7 +1,7 @@
 """Independent verifier for the latency cluster (I21 replay, L1-L8, N1-N3). Reads runs only through research_harness.
 Writes nothing but its stdout (tee'd to verify_out.txt by the caller)."""
 import sys, collections, statistics as st
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 REAL = ("real", "staffed", "plain")

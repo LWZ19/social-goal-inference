@@ -28,11 +28,13 @@ from pathlib import Path  # noqa: E402
 import numpy as np  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-RESEARCH = Path("results/2026-10-17-beyond-vlm")
-WT = Path(".-scenes")
-CONFIRM = RESEARCH / "phase2/i09/confirm"
-A1 = RESEARCH / "phase1c/i09/a1"
-sys.path.insert(0, str(WT / "docs/model_notes/tools"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RESEARCH = paths.STILL                             # results/still-scenes
+WT = paths.REPO                                    # the repository root
+CONFIRM = RESEARCH / "people-finder/early-detector/phase2/confirm"
+A1 = RESEARCH / "people-finder/early-detector/phase1c/a1"
+sys.path.insert(0, str(WT / "results/still-scenes/analysis-scripts/harness"))
 sys.path.insert(0, str(HERE))
 import research_harness as H  # noqa: E402
 import v_pipe as VP  # noqa: E402

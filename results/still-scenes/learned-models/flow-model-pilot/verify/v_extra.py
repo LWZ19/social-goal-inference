@@ -3,15 +3,15 @@ table (post hoc in the compute agent's write-up) from my proto rows."""
 import collections, json
 from pathlib import Path
 import numpy as np
-R = Path('results/2026-10-17-beyond-vlm')
-P = R / 'phase2/flow_pilot'
+P = Path('results/still-scenes/learned-models/flow-model-pilot')
+REPAIRS = Path('results/still-scenes/replay-harness/repairs')
 out = {}
 meta = {}
 for p in sorted((P / 'verify/data').glob('vdev_*.json')):
     for m in json.loads(p.read_text()):
         meta[m['key']] = m
 i01 = {}
-for f in sorted((R / 'phase1/i01_repairs').glob('rows_old_*.jsonl')):
+for f in sorted(REPAIRS.glob('rows_old_*.jsonl')):
     for line in f.read_text().splitlines():
         r = json.loads(line)
         i01[f"{r['run']}/{r['scene']}/{r['episode']}/{r['trial']}"] = r

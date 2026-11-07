@@ -1,5 +1,5 @@
 import sys, io, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -16,4 +16,4 @@ for a, b in [('s10_qwen38_none_con','s10_qwen38_low_con'), ('s10_qwen38_low_con'
     for s in ('plan','context','people','constraints'):
         diffs = collections.Counter(I[b][k] - I[a][k] for k in I[a] if k[3]==s and k in I[b] and I[a][k] is not None and I[b][k] is not None)
         p(a, '->', b, s, 'input token diff (b-a):', dict(diffs.most_common(4)))
-open('results/2026-10-17-beyond-vlm/rerun/thinking/verify/v5_inp.txt','w').write(OUT.getvalue())
+open('results/still-scenes/thinking-levels/verify/v5_inp.txt','w').write(OUT.getvalue())

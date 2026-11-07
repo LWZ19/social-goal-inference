@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import math
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -23,8 +24,10 @@ from sgi.resolve import Resolver, Track
 from sgi.types import Constraint, DetectedPerson
 
 HERE = Path(__file__).resolve().parent
-MOVING = HERE.parent
-REPO = HERE.parents[4]
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+MOVING = paths.MOVING_RUNS                # run folders are named relative to it, e.g. "runs/dsv41"
+REPO = paths.REPO
 TH = Thresholds()
 V2 = dict(readmit=True, line_span_m=0.5, vacate_after_s=5.0, path_memory=True)           # experiment_oracle._V2
 CT3 = dict(V2, co_motion_s=5.0, co_motion_follow=True)

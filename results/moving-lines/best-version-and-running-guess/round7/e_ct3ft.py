@@ -1,7 +1,8 @@
 """Round 7 part D (ROUND7_D.md), DESCRIPTIVE: CT3FT read by its fixed rule. Zero calls; read-only.
 
     .venv/bin/python round7/e_ct3ft.py SELECTION_JSON CEILING_ROOT CONFIRM_ROOT
-    (from ideas2_1b/; paths relative to moving/. CT3FT, CT4OT, CT4PJT and OW from CEILING_ROOT; CT3F from CONFIRM_ROOT.)
+    (SELECTION_JSON relative to results/moving-lines/, the roots relative to results/data/moving/. CT3FT, CT4OT, CT4PJT
+    and OW from CEILING_ROOT; CT3F from CONFIRM_ROOT.)
 """
 import json
 import statistics
@@ -9,6 +10,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 sys.path.insert(0, str(HERE))
 from a_loss import MOVING  # noqa: E402
 from b_band import TOPS  # noqa: E402
@@ -27,7 +30,7 @@ def outcome(g1, g2):
 
 def main():
     sel_path, croot, froot = sys.argv[1:4]
-    sel = json.loads((MOVING / sel_path).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sel_path).read_text())["layouts"]
     names = [lay["name"] for lay in sel]
     sc = {**load(sel, croot, CEILING), **load(sel, froot, CONFIRM)}
     print(f"# Round 7 part D, DESCRIPTIVE: CT3FT by ROUND7_D.md ({sel_path}; {croot}; {froot})")

@@ -3,8 +3,10 @@ Per paired cell (same cached answers): the interim goal, where it left the robot
 to the place it ended up taking, travel, cut-ins before/after the full answer, and whether the first re-solve differs."""
 import json, math, statistics, sys
 from pathlib import Path
-M = Path('results/2026-11-01-push/moving')
-sys.path.insert(0, str(M))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths
+M = paths.MOVING_RUNS
+sys.path.insert(0, str(paths.DESIGN))
 import summarise_fresh as S
 
 def at(samples, t):

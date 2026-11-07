@@ -2,7 +2,7 @@
 import json, glob, collections, sys
 import numpy as np
 
-V = 'results/2026-10-17-beyond-vlm/phase1/i14_v0/verify'
+V = 'results/still-scenes/metrics-and-statistics/metric-v0/verify'
 rows = []
 for g in ('old', 'watch', 'new_a', 'new_b'):
     try:

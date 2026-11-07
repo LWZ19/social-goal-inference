@@ -24,9 +24,11 @@ import yaml
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent
 LA = HERE.parent
-RD = LA.parents[2]
-WT = RD.parents[2]
-sys.path.insert(0, str(WT / "docs" / "model_notes" / "tools"))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL                          # results/still-scenes
+WT = paths.REPO                           # the repository root
+sys.path.insert(0, str(paths.HARNESS))
 import research_harness as H  # noqa: E402
 
 PY = str(WT / ".venv" / "bin" / "python")
@@ -52,8 +54,8 @@ def baselines():
                     k = (arm, rec.scene_id, rec.episode_id)
                     t0[k] = rec
                     C[k] = bool(rec.score.get("success"))
-        a2 = {(r["arm"], r["scene"], r["episode"]): bool(r["D"]) for r in rows(RD / "phase1c/i09/a2" / f"rows_old_{model}.jsonl") if r["trial"] == 0}
-        p = {(r["arm"], r["scene"], r["episode"]): bool(r["P"]) for r in rows(RD / "phase1/i01_repairs" / f"rows_old_{model}.jsonl") if r["trial"] == 0}
+        a2 = {(r["arm"], r["scene"], r["episode"]): bool(r["D"]) for r in rows(RD / "people-finder/early-detector/phase1c/a2" / f"rows_old_{model}.jsonl") if r["trial"] == 0}
+        p = {(r["arm"], r["scene"], r["episode"]): bool(r["P"]) for r in rows(RD / "replay-harness/repairs" / f"rows_old_{model}.jsonl") if r["trial"] == 0}
         out[model] = {"t0": t0, "C": C, "D": a2, "P": p}
     return out
 

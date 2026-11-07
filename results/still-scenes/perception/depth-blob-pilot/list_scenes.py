@@ -1,6 +1,6 @@
 """List the distinct development scenes the harness gives, with the listings and runs that lead to each."""
 import sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 for s in H.distinct_scenes():

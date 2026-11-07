@@ -1,9 +1,9 @@
 """P1 alternatives: all s19 GLM arms (incl. ph, dev seeds), per-record means, loose 'found' (any detection within 0.5 m)."""
 import sys, math, statistics
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.gt.derive import is_visible
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/rerun/perception/verify')
+sys.path.insert(0, 'results/still-scenes/perception/perception-rerun/verify')
 from v_main import my_match
 OUT = __file__.replace('.py', '_out.txt')
 L = []

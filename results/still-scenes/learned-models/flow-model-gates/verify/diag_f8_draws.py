@@ -1,7 +1,7 @@
 """Post hoc: in the waiting_line fold, how many sampled training points have f8 >= 3, per subsample draw."""
 import json, sys, zlib
 import numpy as np
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/c5_gates/verify')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-gates/verify')
 import kde_v as K
 fresh = K.load('fresh')
 train = [s for s in fresh if s.situation != 'waiting_line']

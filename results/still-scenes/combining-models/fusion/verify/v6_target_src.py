@@ -1,6 +1,6 @@
 """Where do the s23 con plan/context cache hits come from? Compare target point with s19/s20 con and s23 cot/fsc same model."""
 import sys, collections, json, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = io.StringIO()
 def p(*a):
@@ -28,4 +28,4 @@ for model, oldst in [('glm53', 's19'), ('dsv41', 's20')]:
                 c[name + ' same point'] += (r.target or {}).get('point') == (q.target or {}).get('point')
                 c[name + ' same plan-out-tokens'] += (r.timings.get('plan') or {}).get('output_tokens') == (q.timings.get('plan') or {}).get('output_tokens')
     p(model, dict(sorted(c.items())))
-open('results/2026-10-17-beyond-vlm/rerun/fusion/verify/v6_target_src_out.txt', 'w').write(OUT.getvalue())
+open('results/still-scenes/combining-models/fusion/verify/v6_target_src_out.txt', 'w').write(OUT.getvalue())

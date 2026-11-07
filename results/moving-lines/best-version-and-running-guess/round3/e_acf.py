@@ -3,7 +3,7 @@ search). Fit seeds 10-34, clean + S2m. For each person and episode, the residual
 b_calibrate.py), every 0.5 s from the photo; the pooled autocorrelation of the hand-set log ratio by lag; the
 1/e time.
 
-    .venv/bin/python round3/e_acf.py      (from ideas2_1b/)
+    .venv/bin/python round3/e_acf.py      (from best-version-and-running-guess/)
 """
 import math
 from collections import defaultdict

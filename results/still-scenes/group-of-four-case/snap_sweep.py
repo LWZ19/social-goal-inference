@@ -11,12 +11,14 @@ Detectors: 'det' = I09 A1's frozen detector people (eval_people.json, E-real sce
 Run with the scenes WT venv:  .venv/bin/python snap_sweep.py"""
 import sys, json, math, collections, hashlib
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+sys.path.insert(0, str(paths.HARNESS))   # research_harness.py and its run list
 import numpy as np
 import research_harness as H
 from sgi.evaluate import match_target
 
-EP = Path('results/2026-10-17-beyond-vlm/phase1c/i09/a1/eval_people.json')
+EP = paths.STILL / 'people-finder/early-detector/phase1c/a1/eval_people.json'
 assert hashlib.sha256(EP.read_bytes()).hexdigest().startswith('ffa59545')
 DET = {str(Path(k).resolve()): v for k, v in json.loads(EP.read_text())['scenes'].items() if v['domain'] == 'E-real'}
 wl = H.whitelist()

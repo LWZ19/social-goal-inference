@@ -1,7 +1,7 @@
 """Reference people_matter (sgi.gt.derive.reference_people_matter: people matter when the truth standard goal
 fails) at the group episodes, per arm and layout, s23 sonnet con scenes (every C run loads the same scenes)."""
 import sys
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 from sgi.gt.derive import reference_people_matter
 out = []
@@ -18,4 +18,4 @@ for stage, model in (("s23", "sonnet55_low"), ("s21", "qwen38_low"), ("s20", "ds
             et = H.scene(run, rec.scene_id).truths[rec.episode_id]
             p(stage, model, arm, rec.situation, rec.scene_id, rec.episode_id, "standard_goal_ok", dict(et.standard_goal_ok),
               "reference_people_matter", reference_people_matter(et, None), "measure", rec.measures.get("reference_people_matter"))
-open('results/2026-10-17-beyond-vlm/rerun/i01_baselines/verify/v4b_refpm.txt', "w").write("\n".join(out) + "\n")
+open('results/still-scenes/replay-harness/baselines/verify/v4b_refpm.txt', "w").write("\n".join(out) + "\n")

@@ -17,13 +17,15 @@ from pathlib import Path  # noqa: E402
 
 import numpy as np  # noqa: E402
 
-RESEARCH = Path("results/2026-10-17-beyond-vlm")
-WORKTREE = Path(".-scenes")
-A1 = RESEARCH / "phase1c/i09/a1"
-I03 = RESEARCH / "phase1b/i03"
-FIXDIR = RESEARCH / "phase3/i09_fix"
-SEEDS = RESEARCH / "phase3/seeds/realistic_train"
-HARNESS_DIR = WORKTREE / "docs/model_notes/tools"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+WORKTREE = paths.REPO
+A1 = paths.STILL / "people-finder/early-detector/phase1c/a1"
+I03 = paths.STILL / "perception/depth-blob-detector"
+FIXDIR = paths.STILL / "people-finder/early-detector/fix"
+SEEDS = paths.STILL / "scene-seeds/phase3/realistic_train"
+HARNESS_DIR = WORKTREE / "results/still-scenes/analysis-scripts/harness"
 ROWS = ("real_eval_00_no_one_place", "real_eval_01_no_one_place", "real_eval_02_no_one_place",
         "real_eval_03_no_one_deep_place", "real_eval_04_no_one_object", "real_eval_05_no_one_person",
         "real_eval_06_waiting_line_1", "real_eval_07_waiting_line_2", "real_eval_08_waiting_line_4",
@@ -72,8 +74,8 @@ for _m in ("fitlib", "fixlib", "score_fit", "select_candidates", "confirm_chosen
 
 
 # ------------------------------------------------------------------------------------------------ fit scenes
-_FORBID = re.compile(r"phase2/seeds|held_?out|keep/heldout|(^|[_/])s18|s20_held|eval_1[6-9]|group_photo|lift_wait",
-                     re.I)
+_FORBID = re.compile(r"phase2/seeds|scene-seeds/phase2|held_?out|keep/heldout|(^|[_/])s18|s20_held|eval_1[6-9]|"
+                     r"group_photo|lift_wait", re.I)
 
 
 def fit_folder(seed: int, row: str) -> Path:

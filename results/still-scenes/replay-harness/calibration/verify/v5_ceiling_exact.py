@@ -1,5 +1,5 @@
 import json, collections
-D='results/2026-10-17-beyond-vlm/phase1/i01_calibration/verify/'
+D='results/still-scenes/replay-harness/calibration/verify/'
 rows=[json.loads(l) for l in open(D+'v1_rows.jsonl')]
 by=collections.defaultdict(list)
 for r in rows:

@@ -5,7 +5,7 @@ import json
 import os
 import sys
 
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i01_repairs/verify'
+OUT = 'results/still-scenes/replay-harness/repairs/verify'
 ARMS = ['replayC', 'R0', 'R1', 'R2', 'R3', 'R4', 'R4s', 'P', 'Ps', 'R5', 'R6', 'R3_1m', 'R4_1m', 'P_1m']
 SIT = [('no_one', 'nobody'), ('waiting_line', 'lines'), ('conversation_group', 'groups')]
 ORDER = ['old_qwen38_low', 'old_glm53', 'old_dsv41', 'new_qwen38_low', 'new_glm53', 'new_dsv41', 'new_haiku55',

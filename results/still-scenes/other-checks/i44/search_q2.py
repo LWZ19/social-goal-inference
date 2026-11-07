@@ -1,7 +1,7 @@
 """Search for the pairing that gives 4 wins and 9 losses (qwen3.6:35b against a Qwen 3.8 run). Exploratory."""
 import sys, collections, itertools
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 OUT = Path(__file__).resolve().parent / 'search_q2.txt'
 L = []

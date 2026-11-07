@@ -16,8 +16,11 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-M = Path("results/2026-11-01-push/moving")
-sys.path.insert(0, str(M))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+
+M = paths.MOVING_RUNS                    # run folders: M / "runs" / <model> / ...
+sys.path.insert(0, str(paths.DESIGN))
 from summarise_fresh import measures, sign_p  # noqa: E402
 
 EXPO_M = 1.0
@@ -148,7 +151,7 @@ def main():
                 continue
             res[(title, model, a, b)] = compare(by, a, b, show)
 
-    print("\n## Check against SUMMARY.md section 7 (and ideas2/SHORTLIST.md section 0)\n")
+    print("\n## Check against SUMMARY.md section 7 (and results/overview/ideas-round-2/SHORTLIST.md section 0)\n")
     checks = [("(a) Fresh headline cells", "sonnet55_low", "CT2", "R1", 50, 481, 162, 25, 4),
               ("(a) Fresh headline cells", "dsv41", "CT2", "R1", 25, 226, 504, 9, 10),
               ("(b') Bystanders, DeepSeek pilot + confirmation (SUMMARY section 7's cell set)", "dsv41", "CT3", "CT2",

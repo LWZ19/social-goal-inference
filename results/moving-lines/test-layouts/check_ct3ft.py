@@ -4,7 +4,7 @@
 2. history_t present; CT3F's co-motion fields logged on every ok re-solve.
 3. The target oracle changes the goal: CT3FT's first re-solve pose against CT3F's (runs_confirm4).
 
-Usage: python3 check_ct3ft.py CEILING_ROOT CONFIRM_ROOT
+Usage: python3 check_ct3ft.py CEILING_ROOT CONFIRM_ROOT   (run folders relative to the working directory, e.g. results/data/moving/...)
 """
 import collections, json, math, pathlib, sys
 

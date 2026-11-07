@@ -21,7 +21,7 @@ import math
 import re
 import sys
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 from sgi.gt.derive import is_visible  # noqa: E402
 from sgi.run import _matched_people  # noqa: E402

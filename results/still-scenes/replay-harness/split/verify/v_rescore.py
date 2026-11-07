@@ -1,8 +1,8 @@
 """n12 check: recorded score fields vs the current package scorer (H.rescore), on a stated subset."""
 import sys, time, io
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
-OUT = 'results/2026-10-17-beyond-vlm/rerun/i01_split/verify/v_rescore_out.txt'
+OUT = 'results/still-scenes/replay-harness/split/verify/v_rescore_out.txt'
 buf = io.StringIO()
 def p(*a):
     s = ' '.join(str(x) for x in a); print(s, flush=True); buf.write(s + '\n')

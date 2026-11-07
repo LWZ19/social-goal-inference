@@ -21,15 +21,20 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 CONF = HERE.parent
-RD = CONF.parents[1]
-assert RD.name == "2026-10-17-beyond-vlm", RD
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in HERE.parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
+assert CONF == RD / "confidence-signal", CONF
+A2D = RD / "people-finder" / "early-detector" / "phase1c" / "a2"
+I14D = RD / "metrics-and-statistics" / "metric-v0"
 
 # FROZEN.md hash first
 _exp = (CONF / "FROZEN.sha256").read_text().split()[0]
 _got = hashlib.sha256((CONF / "FROZEN.md").read_bytes()).hexdigest()
 assert _exp == _got == "2a3a890a3b23ff466e8b72c63e6dbef9143d7738f68badc34a4fad6a17ccb4b3", (_exp, _got)
 
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H  # noqa: E402
 
 
@@ -41,9 +46,9 @@ def _load(name, path):
     return mod
 
 
-RDD = _load("replay_d_v", RD / "phase1c" / "i09" / "a2" / "replay_d.py")
-I14 = _load("i14_v", RD / "phase1" / "i14_v0" / "i14.py")
-REP = sys.modules["repairs"]                       # loaded by replay_d (sys.path insert of phase1/i01_repairs)
+RDD = _load("replay_d_v", A2D / "replay_d.py")
+I14 = _load("i14_v", I14D / "i14.py")
+REP = sys.modules["repairs"]                       # loaded by replay_d (sys.path insert of replay-harness/repairs)
 
 from sgi.solver import target_person  # noqa: E402
 from sgi.types import DetectedPerson, GroundedTarget  # noqa: E402
@@ -107,7 +112,7 @@ def main():
     a2 = {}
     for wording in ("old", "new"):
         for m in SHORT:
-            p = RD / "phase1c" / "i09" / "a2" / f"rows_{wording}_{m}.jsonl"
+            p = A2D / f"rows_{wording}_{m}.jsonl"
             if not p.exists():
                 continue
             for line in p.open():

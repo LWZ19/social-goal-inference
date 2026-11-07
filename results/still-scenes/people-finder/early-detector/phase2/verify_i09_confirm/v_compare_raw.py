@@ -3,8 +3,8 @@ import hashlib
 import json
 import statistics
 
-V = "results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_confirm"
-C = "results/2026-10-17-beyond-vlm/phase2/i09/confirm"
+V = "results/still-scenes/people-finder/early-detector/phase2/verify_i09_confirm"
+C = "results/still-scenes/people-finder/early-detector/phase2/confirm"
 
 
 def main():

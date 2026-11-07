@@ -17,8 +17,8 @@ import zlib
 
 import numpy as np
 
-sys.path.insert(0, 'docs/model_notes/tools')
-sys.path.insert(0, 'results/2026-10-17-beyond-vlm/phase1d/c5_gates')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
+sys.path.insert(0, 'results/still-scenes/learned-models/flow-model-gates')
 import research_harness as H  # noqa: E402
 from common import (CACHE, EPS, FRESH, FROZEN_SHA, HERE, SEEDS, SUB_SEED, coarse_floor, features,  # noqa: E402
                     in_union)

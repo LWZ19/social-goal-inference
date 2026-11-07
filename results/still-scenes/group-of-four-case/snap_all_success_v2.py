@@ -4,10 +4,13 @@ the target world point: re-solve with the recorded people and constraints, recor
 compare full success. Records without a solver step (source 'standard') are counted apart."""
 import sys, math, collections
 from pathlib import Path
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / '_lib' / 'paths.py').exists()) / '_lib'))
+import paths  # noqa: E402  (results/_lib/paths.py)
+sys.path.insert(0, str(paths.HARNESS))   # research_harness.py and its run list
 import research_harness as H
-src = open('results/2026-11-01-push/group4/snap_sweep.py').read().split('tally = collections')[0]
-ns = {}
+SWEEP = Path(__file__).resolve().parent / 'snap_sweep.py'
+src = open(SWEEP).read().split('tally = collections')[0]
+ns = {'__file__': str(SWEEP)}                        # snap_sweep.py finds results/_lib from its own path
 exec(compile(src, 'snap_sweep.py', 'exec'), ns)
 DET, snap, wl = ns['DET'], ns['snap'], ns['wl']
 tot = collections.defaultdict(collections.Counter)

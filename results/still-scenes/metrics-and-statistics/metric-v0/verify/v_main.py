@@ -8,7 +8,7 @@ room), deterministic AF, Monte Carlo F5 (200 draws), lift shares. Writes verify/
 usage: v_main.py <group>   group in {old, watch, new_a, new_b, smoke}
 """
 import sys, json, math, time, zlib
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 import numpy as np
 from math import comb
@@ -17,7 +17,7 @@ from sgi.types import DetectedPerson
 from sgi.geometry import bearing, wrap_angle
 from sgi.polygons import point_in_polygon
 
-OUT = 'results/2026-10-17-beyond-vlm/phase1/i14_v0/verify'
+OUT = 'results/still-scenes/metrics-and-statistics/metric-v0/verify'
 REAL = ('real', 'staffed', 'plain')
 SEEDS = ('dev_seed0', 'dev_seed1', 'dev_seed2')
 

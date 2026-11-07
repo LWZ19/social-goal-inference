@@ -1,6 +1,6 @@
 """A0 exploration 2: raw people answers, facing labels, which records carry a people call."""
 import collections, json, sys, hashlib
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 REAL = ('real', 'staffed', 'plain')

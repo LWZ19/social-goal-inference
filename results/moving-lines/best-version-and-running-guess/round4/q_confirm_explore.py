@@ -2,8 +2,8 @@
 Questions written before any per-layout confirm data was seen. Zero calls; read-only.
 
     .venv/bin/python round4/q_confirm_explore.py SELECTION_JSON RUN_ROOT [RUN_ROOT ...]
-    (from ideas2_1b/; paths relative to moving/, e.g. sweep/confirm_selection.json runs_confirm4/dsv41
-    runs_confirm4/sonnet55_low.) Per-layout rows go to round4/q_confirm_layouts.csv.
+    (from best-version-and-running-guess/; SELECTION_JSON relative to results/moving-lines/, RUN_ROOT relative to
+    results/data/moving/, e.g. test-layouts/confirm_selection.json runs_confirm4/dsv41 runs_confirm4/sonnet55_low.) Per-layout rows go to round4/q_confirm_layouts.csv.
 
 E1  Where the CT3F - CT4PJ gap sits: layouts where CT4PJ's own join test fired at least once, against never.
 E2  Holding the place, per arm, from the first service on: the sim's "left" events (the robot leaves the line's
@@ -27,6 +27,9 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "round3"))
 from i_followups import MOVING, first_service_t  # noqa: E402
 from score_sweep import episode_scores  # noqa: E402
+
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
 
 ARMS = ("CT3F", "CT4", "CT4P", "CT4PJ")
 TIE = 0.01
@@ -173,7 +176,7 @@ def across(roots, by_root):
 
 
 def main():
-    sel = json.loads((MOVING / sys.argv[1]).read_text())["layouts"]
+    sel = json.loads((paths.MOVING / sys.argv[1]).read_text())["layouts"]
     roots = sys.argv[2:]
     print(f"# EXPLORATORY follow-ups to the confirmatory test ({sys.argv[1]}; not claims)")
     by_root = {}

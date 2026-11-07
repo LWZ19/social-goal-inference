@@ -16,9 +16,12 @@ import sys
 import time
 from pathlib import Path
 
-RD = Path('results/2026-10-17-beyond-vlm')
-sys.path.insert(0, 'docs/model_notes/tools')
-sys.path.insert(0, str(RD / 'phase1' / 'i14_v0'))
+import sys  # noqa: E402
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402
+RD = paths.STILL
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
+sys.path.insert(0, str(RD / 'metrics-and-statistics' / 'metric-v0'))
 import research_harness as H  # noqa: E402
 import i14  # noqa: E402  (unchanged; plan() and key() only)
 
@@ -42,22 +45,22 @@ def main():
     t0 = time.monotonic()
     i14_keys = set()
     for name in ('rows_oldwatch.jsonl', 'rows_new.jsonl'):
-        for line in open(RD / 'phase1' / 'i14_v0' / name):
+        for line in open(RD / 'metrics-and-statistics' / 'metric-v0' / name):
             r = json.loads(line)
             if r['set'] == 'new' and r['stage'] == 's21':
                 continue
             i14_keys.add(f"{r['run']}/{r['scene']}/{r['ep']}/{r['trial']}")
-    ep = json.load(open(RD / 'phase1c' / 'i09' / 'a1' / 'eval_people.json'))
+    ep = json.load(open(RD / 'people-finder' / 'early-detector' / 'phase1c' / 'a1' / 'eval_people.json'))
     det_listed = {(sd, sid) for v in ep['scenes'].values() for sd, sid in v['listed']}
     a2 = {}
     for w, models in (('old', ('qwen38_low', 'glm53', 'dsv41')), ('new', ('glm53', 'dsv41', 'haiku55', 'sonnet55_low', 'gemini38_low'))):
         for m in models:
-            for line in open(RD / 'phase1c' / 'i09' / 'a2' / f'rows_{w}_{m}.jsonl'):
+            for line in open(RD / 'people-finder' / 'early-detector' / 'phase1c' / 'a2' / f'rows_{w}_{m}.jsonl'):
                 r = json.loads(line)
                 ok_d = 'D_d' in r and r['D_d'].get('moved_from_C_m') is not None and 'tnum' in r['D_d'] and 'tnum_C' in r
                 a2[(r['run'], r['scene'], r['episode'], r['trial'])] = (r['solver_step'], ok_d)
     i04 = {}
-    for p in sorted((RD / 'phase1d' / 'i04').glob('rows_*.jsonl')):
+    for p in sorted((RD / 'learned-models' / 'soft-density').glob('rows_*.jsonl')):
         for line in open(p):
             r = json.loads(line)
             i04[r['key']] = (r['cell'], r['layout'], r['flags'])

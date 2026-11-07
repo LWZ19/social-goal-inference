@@ -1,5 +1,5 @@
 import json, collections
-D='results/2026-10-17-beyond-vlm/phase1/i01_calibration/'
+D='results/still-scenes/replay-harness/calibration/'
 mine = {(r['model'], r['scene'], r['episode'], r['trial']): r for r in map(json.loads, open(D+'verify/v1_rows.jsonl'))}
 theirs = {(r['model'], r['scene'], r['episode'], r['trial']): r for r in map(json.loads, open(D+'rows2.jsonl'))}
 assert set(mine) == set(theirs)

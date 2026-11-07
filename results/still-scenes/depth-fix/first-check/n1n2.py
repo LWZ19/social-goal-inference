@@ -4,10 +4,10 @@ Reads only through research_harness. Recorded scores (as the judge read them) an
 (score_pose of the recorded pose, the freespace cached per scene) are both shown.
 """
 import sys, collections, statistics as st
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
-OUT = 'results/2026-10-17-beyond-vlm/rerun/snap/n1n2.txt'
+OUT = 'results/still-scenes/depth-fix/first-check/n1n2.txt'
 lines = []
 def p(*a):
     s = ' '.join(str(x) for x in a); print(s); lines.append(s)

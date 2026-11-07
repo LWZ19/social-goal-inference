@@ -15,7 +15,10 @@ from pathlib import Path
 import sgi.gt.regions as regions
 from sgi import rescore
 
-E4 = Path("results/2026-11-01-push/e4/scenes")
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths  # noqa: E402  (results/_lib/paths.py)
+
+E4 = paths.STILL / "new-situations/design/scenes"
 out, run_dirs = Path(sys.argv[1]), [Path(p) for p in sys.argv[2:]]
 regions._GROUP_RULES["machine_use"] = lambda target, members: regions.region_machine_use(
     target, members, near=regions._MACHINE_NEAR_SENSITIVITY_M)

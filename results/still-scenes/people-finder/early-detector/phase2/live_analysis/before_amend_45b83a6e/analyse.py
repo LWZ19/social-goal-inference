@@ -3,7 +3,7 @@
     analyse.py [--runs DIR] [--out DIR] [--allow-incomplete] [--count-vlm-errors-as-failures] [--accept-mock]
 
 No model is called, no network is used and no .env file is read. The recorded runs are read only through the step-0
-harness (docs/model_notes/tools/research_harness.py); the live run folders, check files, ledger and count-only
+harness (results/still-scenes/analysis-scripts/harness/research_harness.py); the live run folders, check files, ledger and count-only
 reports are read as files from --runs; the saved baseline rows of A2 (phase1c/i09/a2/rows_old_*.jsonl) and I01
 (phase1/i01_repairs/rows_old_*.jsonl) are read as files. Nothing is rescored: every success is the package's own
 `score.success` as written in a record or a row (FROZEN.md section 5.1). It writes only tables.txt and summary.json
@@ -48,16 +48,18 @@ sys.dont_write_bytecode = True                      # nothing is written next to
 HERE = Path(__file__).resolve().parent              # .../phase2/i09/live_analysis
 I09 = HERE.parent                                   # .../phase2/i09
 LIVE = I09 / "live"
-RD = HERE.parents[2]                                # .../results/2026-10-17-beyond-vlm
-WORKTREE = RD.parents[2]                            # the cs6244_project-scenes worktree
-HARNESS_DIR = WORKTREE / "docs" / "model_notes" / "tools"
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
+import paths                                        # noqa: E402
+RD = paths.STILL                                    # results/still-scenes
+WORKTREE = paths.REPO                               # the repository root
+HARNESS_DIR = paths.HARNESS                         # results/still-scenes/analysis-scripts/harness
 
 FROZEN_MD = LIVE / "FROZEN.md"
 FROZEN_SHA_FILE = LIVE / "FROZEN.sha256"
 BUILD_SHA_FILE = LIVE / "BUILD.sha256"
 DRIVER = LIVE / "driver.py"
-A2_DIR = RD / "phase1c" / "i09" / "a2"
-I01_DIR = RD / "phase1" / "i01_repairs"
+A2_DIR = RD / "people-finder" / "early-detector" / "phase1c" / "a2"
+I01_DIR = RD / "replay-harness" / "repairs"
 DEFAULT_RUNS = LIVE / "runs"
 DEFAULT_OUT = HERE / "result"
 ANALYSE_SHA_FILE = HERE / "ANALYSE.sha256"

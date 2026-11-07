@@ -4,7 +4,7 @@ import statistics
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 
 MODELS = {"Sonnet 5.5": ("sonnet55_low", range(10, 20)), "DeepSeek V4.1": ("dsv41", range(10, 15)),

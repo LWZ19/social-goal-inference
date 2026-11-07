@@ -26,7 +26,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-BASE = 'results/2026-10-17-beyond-vlm/phase2/flow_pilot'
+BASE = os.path.realpath('results/still-scenes/learned-models/flow-model-pilot')  # absolute: safe() compares realpaths
 VER = BASE + '/verify'
 MODELS = ('main', 'loso_waiting_line', 'loso_conversation_group', 'loso_audience')
 

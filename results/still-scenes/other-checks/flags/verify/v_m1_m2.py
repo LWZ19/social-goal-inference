@@ -1,6 +1,6 @@
 """Independent verification of M1 (I48 flags) and M2 (I47 standard-goal fallback), through research_harness only."""
 import sys, collections
-sys.path.insert(0, 'docs/model_notes/tools')
+sys.path.insert(0, 'results/still-scenes/analysis-scripts/harness')
 import research_harness as H
 
 REAL = ('real', 'staffed', 'plain')
@@ -94,4 +94,4 @@ for model, (stage,) in models.items():
         flagcount(recs, SIX, f'six flags {model}')
         flagcount([r for r in recs if r.solver_step], SIX, f'six flags {model} solver steps')
 
-open('results/2026-10-17-beyond-vlm/rerun/flags_misc/verify/v_m1_m2.txt', 'w').write('\n'.join(out) + '\n')
+open('results/still-scenes/other-checks/flags/verify/v_m1_m2.txt', 'w').write('\n'.join(out) + '\n')
