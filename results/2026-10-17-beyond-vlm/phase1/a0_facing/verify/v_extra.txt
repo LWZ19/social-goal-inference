@@ -1,0 +1,12 @@
+qwen_s19 err>135: 36 | true right & label towards_right in profile line: 2 | any true right label towards_right: 6
+glm_s19 err>135: 16 | true right & label towards_right in profile line: 7 | any true right label towards_right: 16
+dsv_s20 err>135: 11 | true right & label towards_right in profile line: 19 | any true right label towards_right: 41
+haiku err>135: 13 | true right & label towards_right in profile line: 18 | any true right label towards_right: 23
+sonnet err>135: 15 | true right & label towards_right in profile line: 12 | any true right label towards_right: 26
+gemini err>135: 1 | true right & label towards_right in profile line: 3 | any true right label towards_right: 21
+s8_glm53 profile w45 0.477 44
+s8_ornith15 profile w45 0.531 49
+s8_qwen36_35 profile w45 0.731 52
+s8_qwen38 profile w45 0.754 57
+s8_qwen3vl profile w45 0.615 26
+qwen36_35 label-only 59 89 [40.6, 40.666, 40.776, 45.448, 49.632]

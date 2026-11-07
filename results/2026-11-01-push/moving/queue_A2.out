@@ -1,0 +1,296 @@
+01:23:41 sonnet seeds 10-12
+01:23:41 model claude_sonnet55_low: 15 groups x 6 arms, 3 workers
+01:23:41 w0 serve C pid 314507 port 8840
+01:23:41 w2 serve C pid 314510 port 8844
+01:23:41 w0 serve R pid 314511 port 8841
+01:23:41 w1 serve C pid 314509 port 8842
+01:23:41 w2 serve R pid 314512 port 8845
+01:23:41 w1 serve R pid 314513 port 8843
+01:25:16 w0 cafe_line2_moving seed10 C1: exit 0 in 95 s | [exp] cafe_line2_moving C1 seed 10: in line at end False, share 0.07, first 27.97, cut-in samples 4, calls 4, resolves 0
+01:25:17 w1 room_coffee_cart_slots seed10 C1: exit 0 in 95 s | [exp] room_coffee_cart_slots C1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+01:25:17 w2 cafe_slots seed10 C1: exit 0 in 95 s | [exp] cafe_slots C1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+01:26:51 w0 cafe_line2_moving seed10 R1: exit 0 in 95 s | [exp] cafe_line2_moving R1 seed 10: in line at end False, share 0.16, first 12.97, cut-in samples 20, calls 3, resolves 0
+01:26:51 w1 room_coffee_cart_slots seed10 R1: exit 0 in 95 s | [exp] room_coffee_cart_slots R1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:26:51 w2 cafe_slots seed10 R1: exit 0 in 95 s | [exp] cafe_slots R1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:28:30 w0 cafe_line2_moving seed10 CT: exit 0 in 98 s | [exp] cafe_line2_moving CT seed 10: in line at end False, share 0.07, first 29.97, cut-in samples 30, calls 4, resolves 148
+01:28:30 w1 room_coffee_cart_slots seed10 CT: exit 0 in 99 s | [exp] room_coffee_cart_slots CT seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 147
+01:28:30 w2 cafe_slots seed10 CT: exit 0 in 99 s | [exp] cafe_slots CT seed 10: in line at end False, share 0.40, first 26.97, cut-in samples 20, calls 4, resolves 144
+01:30:08 w0 cafe_line2_moving seed10 CT2: exit 0 in 99 s | [exp] cafe_line2_moving CT2 seed 10: in line at end False, share 0.15, first 42.97, cut-in samples 25, calls 4, resolves 148
+01:30:09 w2 cafe_slots seed10 CT2: exit 0 in 99 s | [exp] cafe_slots CT2 seed 10: in line at end False, share 0.44, first 23.97, cut-in samples 19, calls 4, resolves 144
+01:30:09 w1 room_coffee_cart_slots seed10 CT2: exit 0 in 99 s | [exp] room_coffee_cart_slots CT2 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 148
+01:31:46 w0 cafe_line2_moving seed10 CT2m: exit 0 in 97 s | [exp] cafe_line2_moving CT2m seed 10: in line at end True, share 0.38, first 22.97, cut-in samples 0, calls 4, resolves 148
+01:31:46 w2 cafe_slots seed10 CT2m: exit 0 in 98 s | [exp] cafe_slots CT2m seed 10: in line at end False, share 0.45, first 21.97, cut-in samples 19, calls 4, resolves 144
+01:31:47 w1 room_coffee_cart_slots seed10 CT2m: exit 0 in 98 s | [exp] room_coffee_cart_slots CT2m seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 148
+01:33:22 w0 cafe_line2_moving seed10 Rm: exit 0 in 96 s | [exp] cafe_line2_moving Rm seed 10: in line at end False, share 0.16, first 12.97, cut-in samples 21, calls 3, resolves 0
+01:33:23 w2 cafe_slots seed10 Rm: exit 0 in 96 s | [exp] cafe_slots Rm seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:33:23 w1 room_coffee_cart_slots seed10 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 10: in line at end False, share 0.11, first 13.97, cut-in samples 0, calls 3, resolves 0
+01:34:59 w0 cafe_line6_moving seed10 C1: exit 0 in 98 s | [exp] cafe_line6_moving C1 seed 10: in line at end False, share 0.03, first 46.97, cut-in samples 0, calls 4, resolves 0
+01:35:00 w1 cafe_slots seed11 C1: exit 0 in 96 s | [exp] cafe_slots C1 seed 11: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+01:35:05 w2 sweet_spot_line2_moving seed10 C1: exit 0 in 102 s | [exp] sweet_spot_line2_moving C1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+01:36:36 w1 cafe_slots seed11 R1: exit 0 in 97 s | [exp] cafe_slots R1 seed 11: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:36:37 w0 cafe_line6_moving seed10 R1: exit 0 in 98 s | [exp] cafe_line6_moving R1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:36:48 w2 sweet_spot_line2_moving seed10 R1: exit 0 in 102 s | [exp] sweet_spot_line2_moving R1 seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:38:14 w1 cafe_slots seed11 CT: exit 0 in 97 s | [exp] cafe_slots CT seed 11: in line at end False, share 0.14, first 30.97, cut-in samples 15, calls 4, resolves 146
+01:38:16 w0 cafe_line6_moving seed10 CT: exit 0 in 98 s | [exp] cafe_line6_moving CT seed 10: in line at end True, share 0.34, first 22.97, cut-in samples 0, calls 4, resolves 145
+01:38:33 w2 sweet_spot_line2_moving seed10 CT: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 146
+01:39:52 w1 cafe_slots seed11 CT2: exit 0 in 98 s | [exp] cafe_slots CT2 seed 11: in line at end True, share 0.49, first 24.97, cut-in samples 0, calls 4, resolves 146
+01:39:54 w0 cafe_line6_moving seed10 CT2: exit 0 in 99 s | [exp] cafe_line6_moving CT2 seed 10: in line at end True, share 0.69, first 21.97, cut-in samples 0, calls 4, resolves 145
+01:40:20 w2 sweet_spot_line2_moving seed10 CT2: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2 seed 10: in line at end False, share 0.00, first None, cut-in samples 9, calls 4, resolves 146
+01:41:29 w1 cafe_slots seed11 CT2m: exit 0 in 98 s | [exp] cafe_slots CT2m seed 11: in line at end False, share 0.27, first 18.97, cut-in samples 4, calls 4, resolves 146
+01:41:32 w0 cafe_line6_moving seed10 CT2m: exit 0 in 98 s | [exp] cafe_line6_moving CT2m seed 10: in line at end True, share 0.69, first 22.97, cut-in samples 0, calls 4, resolves 145
+01:42:06 w2 sweet_spot_line2_moving seed10 CT2m: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2m seed 10: in line at end False, share 0.00, first None, cut-in samples 5, calls 4, resolves 146
+01:43:06 w1 cafe_slots seed11 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 11: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:43:10 w0 cafe_line6_moving seed10 Rm: exit 0 in 97 s | [exp] cafe_line6_moving Rm seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:43:48 w2 sweet_spot_line2_moving seed10 Rm: exit 0 in 102 s | [exp] sweet_spot_line2_moving Rm seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:44:43 w1 room_coffee_cart_slots seed11 C1: exit 0 in 97 s | [exp] room_coffee_cart_slots C1 seed 11: in line at end False, share 0.03, first 19.97, cut-in samples 0, calls 4, resolves 0
+01:44:46 w0 cafe_line2_moving seed11 C1: exit 0 in 97 s | [exp] cafe_line2_moving C1 seed 11: in line at end False, share 0.03, first 32.97, cut-in samples 7, calls 4, resolves 0
+01:45:25 w2 cafe_line6_moving seed11 C1: exit 0 in 97 s | [exp] cafe_line6_moving C1 seed 11: in line at end False, share 0.04, first 28.97, cut-in samples 0, calls 4, resolves 0
+01:46:20 w1 room_coffee_cart_slots seed11 R1: exit 0 in 97 s | [exp] room_coffee_cart_slots R1 seed 11: in line at end False, share 0.35, first 13.97, cut-in samples 0, calls 3, resolves 0
+01:46:23 w0 cafe_line2_moving seed11 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 11: in line at end False, share 0.15, first 12.97, cut-in samples 0, calls 3, resolves 0
+01:47:03 w2 cafe_line6_moving seed11 R1: exit 0 in 98 s | [exp] cafe_line6_moving R1 seed 11: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:47:58 w1 room_coffee_cart_slots seed11 CT: exit 0 in 98 s | [exp] room_coffee_cart_slots CT seed 11: in line at end False, share 0.63, first 19.97, cut-in samples 0, calls 4, resolves 146
+01:48:01 w0 cafe_line2_moving seed11 CT: exit 0 in 98 s | [exp] cafe_line2_moving CT seed 11: in line at end False, share 0.03, first 39.97, cut-in samples 36, calls 4, resolves 148
+01:48:41 w2 cafe_line6_moving seed11 CT: exit 0 in 98 s | [exp] cafe_line6_moving CT seed 11: in line at end True, share 0.13, first 22.97, cut-in samples 0, calls 4, resolves 144
+01:49:35 w1 room_coffee_cart_slots seed11 CT2: exit 0 in 98 s | [exp] room_coffee_cart_slots CT2 seed 11: in line at end True, share 0.41, first 19.97, cut-in samples 8, calls 4, resolves 147
+01:49:38 w0 cafe_line2_moving seed11 CT2: exit 0 in 97 s | [exp] cafe_line2_moving CT2 seed 11: in line at end True, share 0.66, first 22.97, cut-in samples 0, calls 4, resolves 148
+01:50:20 w2 cafe_line6_moving seed11 CT2: exit 0 in 99 s | [exp] cafe_line6_moving CT2 seed 11: in line at end False, share 0.05, first 22.97, cut-in samples 0, calls 4, resolves 144
+01:51:13 w1 room_coffee_cart_slots seed11 CT2m: exit 0 in 97 s | [exp] room_coffee_cart_slots CT2m seed 11: in line at end True, share 0.42, first 19.97, cut-in samples 8, calls 4, resolves 147
+01:51:15 w0 cafe_line2_moving seed11 CT2m: exit 0 in 97 s | [exp] cafe_line2_moving CT2m seed 11: in line at end False, share 0.15, first 42.97, cut-in samples 13, calls 4, resolves 148
+01:51:58 w2 cafe_line6_moving seed11 CT2m: exit 0 in 99 s | [exp] cafe_line6_moving CT2m seed 11: in line at end True, share 0.64, first 23.97, cut-in samples 0, calls 4, resolves 144
+01:52:50 w1 room_coffee_cart_slots seed11 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 11: in line at end False, share 0.36, first 13.97, cut-in samples 0, calls 3, resolves 0
+01:52:51 w0 cafe_line2_moving seed11 Rm: exit 0 in 96 s | [exp] cafe_line2_moving Rm seed 11: in line at end False, share 0.18, first 11.97, cut-in samples 0, calls 3, resolves 0
+01:53:36 w2 cafe_line6_moving seed11 Rm: exit 0 in 97 s | [exp] cafe_line6_moving Rm seed 11: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:54:28 w0 cafe_slots seed12 C1: exit 0 in 97 s | [exp] cafe_slots C1 seed 12: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+01:54:33 w1 sweet_spot_line2_moving seed11 C1: exit 0 in 104 s | [exp] sweet_spot_line2_moving C1 seed 11: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+01:55:12 w2 room_coffee_cart_slots seed12 C1: exit 0 in 97 s | [exp] room_coffee_cart_slots C1 seed 12: in line at end False, share 0.05, first 18.97, cut-in samples 0, calls 4, resolves 0
+01:56:05 w0 cafe_slots seed12 R1: exit 0 in 97 s | [exp] cafe_slots R1 seed 12: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+01:56:17 w1 sweet_spot_line2_moving seed11 R1: exit 0 in 104 s | [exp] sweet_spot_line2_moving R1 seed 11: in line at end True, share 0.67, first 13.97, cut-in samples 0, calls 3, resolves 0
+01:56:51 w2 room_coffee_cart_slots seed12 R1: exit 0 in 98 s | [exp] room_coffee_cart_slots R1 seed 12: in line at end False, share 0.40, first 13.97, cut-in samples 0, calls 3, resolves 0
+01:57:45 w0 cafe_slots seed12 CT: exit 0 in 100 s | [exp] cafe_slots CT seed 12: in line at end False, share 0.43, first 22.97, cut-in samples 0, calls 4, resolves 145
+01:58:10 w1 sweet_spot_line2_moving seed11 CT: exit 0 in 113 s | [exp] sweet_spot_line2_moving CT seed 11: in line at end True, share 0.75, first 19.97, cut-in samples 0, calls 4, resolves 148
+01:58:29 w2 room_coffee_cart_slots seed12 CT: exit 0 in 99 s | [exp] room_coffee_cart_slots CT seed 12: in line at end False, share 0.54, first 18.97, cut-in samples 1, calls 4, resolves 148
+01:59:23 w0 cafe_slots seed12 CT2: exit 0 in 98 s | [exp] cafe_slots CT2 seed 12: in line at end False, share 0.36, first 22.97, cut-in samples 18, calls 4, resolves 145
+01:59:56 w1 sweet_spot_line2_moving seed11 CT2: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2 seed 11: in line at end True, share 0.73, first 18.97, cut-in samples 0, calls 4, resolves 148
+02:00:07 w2 room_coffee_cart_slots seed12 CT2: exit 0 in 98 s | [exp] room_coffee_cart_slots CT2 seed 12: in line at end True, share 0.48, first 18.97, cut-in samples 7, calls 4, resolves 148
+02:01:00 w0 cafe_slots seed12 CT2m: exit 0 in 98 s | [exp] cafe_slots CT2m seed 12: in line at end False, share 0.37, first 21.97, cut-in samples 18, calls 4, resolves 145
+02:01:42 w1 sweet_spot_line2_moving seed11 CT2m: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2m seed 11: in line at end True, share 0.66, first 23.97, cut-in samples 0, calls 4, resolves 149
+02:01:44 w2 room_coffee_cart_slots seed12 CT2m: exit 0 in 97 s | [exp] room_coffee_cart_slots CT2m seed 12: in line at end False, share 0.62, first 18.97, cut-in samples 2, calls 4, resolves 148
+02:02:37 w0 cafe_slots seed12 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 12: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:03:21 w2 room_coffee_cart_slots seed12 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 12: in line at end False, share 0.40, first 13.97, cut-in samples 0, calls 3, resolves 0
+02:03:24 w1 sweet_spot_line2_moving seed11 Rm: exit 0 in 103 s | [exp] sweet_spot_line2_moving Rm seed 11: in line at end True, share 0.79, first 18.97, cut-in samples 3, calls 3, resolves 0
+02:04:14 w0 cafe_line2_moving seed12 C1: exit 0 in 97 s | [exp] cafe_line2_moving C1 seed 12: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+02:04:59 w2 cafe_line6_moving seed12 C1: exit 0 in 98 s | [exp] cafe_line6_moving C1 seed 12: in line at end False, share 0.03, first 47.97, cut-in samples 0, calls 4, resolves 0
+02:05:08 w1 sweet_spot_line2_moving seed12 C1: exit 0 in 103 s | [exp] sweet_spot_line2_moving C1 seed 12: in line at end False, share 0.05, first 28.97, cut-in samples 2, calls 4, resolves 0
+02:05:50 w0 cafe_line2_moving seed12 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 12: in line at end False, share 0.05, first 12.97, cut-in samples 0, calls 3, resolves 0
+02:06:37 w2 cafe_line6_moving seed12 R1: exit 0 in 98 s | [exp] cafe_line6_moving R1 seed 12: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:06:51 w1 sweet_spot_line2_moving seed12 R1: exit 0 in 103 s | [exp] sweet_spot_line2_moving R1 seed 12: in line at end True, share 0.54, first 14.97, cut-in samples 9, calls 3, resolves 0
+02:07:28 w0 cafe_line2_moving seed12 CT: exit 0 in 98 s | [exp] cafe_line2_moving CT seed 12: in line at end True, share 0.74, first 19.97, cut-in samples 0, calls 4, resolves 145
+02:08:15 w2 cafe_line6_moving seed12 CT: exit 0 in 98 s | [exp] cafe_line6_moving CT seed 12: in line at end False, share 0.34, first 26.97, cut-in samples 0, calls 4, resolves 135
+02:08:37 w1 sweet_spot_line2_moving seed12 CT: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT seed 12: in line at end False, share 0.18, first 18.97, cut-in samples 33, calls 4, resolves 147
+02:09:06 w0 cafe_line2_moving seed12 CT2: exit 0 in 97 s | [exp] cafe_line2_moving CT2 seed 12: in line at end False, share 0.26, first 19.97, cut-in samples 24, calls 4, resolves 146
+02:09:53 w2 cafe_line6_moving seed12 CT2: exit 0 in 98 s | [exp] cafe_line6_moving CT2 seed 12: in line at end True, share 0.58, first 26.97, cut-in samples 0, calls 4, resolves 135
+02:10:23 w1 sweet_spot_line2_moving seed12 CT2: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2 seed 12: in line at end False, share 0.18, first 18.97, cut-in samples 33, calls 4, resolves 147
+02:10:42 w0 cafe_line2_moving seed12 CT2m: exit 0 in 97 s | [exp] cafe_line2_moving CT2m seed 12: in line at end False, share 0.18, first 18.97, cut-in samples 33, calls 4, resolves 145
+02:11:31 w2 cafe_line6_moving seed12 CT2m: exit 0 in 98 s | [exp] cafe_line6_moving CT2m seed 12: in line at end True, share 0.57, first 27.97, cut-in samples 0, calls 4, resolves 135
+02:12:07 w1 sweet_spot_line2_moving seed12 CT2m: exit 0 in 105 s | [exp] sweet_spot_line2_moving CT2m seed 12: in line at end False, share 0.14, first 21.97, cut-in samples 37, calls 4, resolves 147
+02:12:19 w0 cafe_line2_moving seed12 Rm: exit 0 in 96 s | [exp] cafe_line2_moving Rm seed 12: in line at end False, share 0.05, first 12.97, cut-in samples 0, calls 3, resolves 0
+02:12:19 w0 serve C pid 314507 stopped
+02:12:19 w0 serve R pid 314511 stopped
+02:13:08 w2 cafe_line6_moving seed12 Rm: exit 0 in 97 s | [exp] cafe_line6_moving Rm seed 12: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:13:08 w2 serve C pid 314510 stopped
+02:13:08 w2 serve R pid 314512 stopped
+02:13:50 w1 sweet_spot_line2_moving seed12 Rm: exit 0 in 103 s | [exp] sweet_spot_line2_moving Rm seed 12: in line at end False, share 0.00, first None, cut-in samples 43, calls 3, resolves 0
+02:13:50 w1 serve C pid 314509 stopped
+02:13:50 w1 serve R pid 314513 stopped
+02:13:50 done
+02:13:50 sonnet seeds 13-19
+02:13:50 model claude_sonnet55_low: 35 groups x 5 arms, 3 workers
+02:13:50 w0 serve C pid 356244 port 8840
+02:13:50 w2 serve C pid 356246 port 8844
+02:13:50 w1 serve C pid 356248 port 8842
+02:13:50 w0 serve R pid 356247 port 8841
+02:13:50 w2 serve R pid 356249 port 8845
+02:13:50 w1 serve R pid 356250 port 8843
+02:15:30 w0 cafe_line2_moving seed13 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 13: in line at end True, share 0.09, first 13.97, cut-in samples 21, calls 3, resolves 0
+02:15:30 w1 room_coffee_cart_slots seed13 R1: exit 0 in 97 s | [exp] room_coffee_cart_slots R1 seed 13: in line at end False, share 0.42, first 14.97, cut-in samples 0, calls 3, resolves 0
+02:15:30 w2 cafe_slots seed13 R1: exit 0 in 97 s | [exp] cafe_slots R1 seed 13: in line at end False, share 0.18, first 28.97, cut-in samples 0, calls 3, resolves 0
+02:17:09 w0 cafe_line2_moving seed13 CT: exit 0 in 100 s | [exp] cafe_line2_moving CT seed 13: in line at end True, share 0.78, first 19.97, cut-in samples 0, calls 4, resolves 147
+02:17:10 w2 cafe_slots seed13 CT: exit 0 in 99 s | [exp] cafe_slots CT seed 13: in line at end True, share 0.55, first 25.97, cut-in samples 0, calls 4, resolves 146
+02:17:10 w1 room_coffee_cart_slots seed13 CT: exit 0 in 100 s | [exp] room_coffee_cart_slots CT seed 13: in line at end False, share 0.57, first 26.97, cut-in samples 0, calls 4, resolves 146
+02:18:47 w0 cafe_line2_moving seed13 CT2: exit 0 in 98 s | [exp] cafe_line2_moving CT2 seed 13: in line at end False, share 0.29, first 19.97, cut-in samples 28, calls 4, resolves 147
+02:18:48 w2 cafe_slots seed13 CT2: exit 0 in 98 s | [exp] cafe_slots CT2 seed 13: in line at end False, share 0.32, first 22.97, cut-in samples 18, calls 4, resolves 146
+02:18:48 w1 room_coffee_cart_slots seed13 CT2: exit 0 in 98 s | [exp] room_coffee_cart_slots CT2 seed 13: in line at end False, share 0.51, first 26.97, cut-in samples 2, calls 4, resolves 146
+02:20:25 w0 cafe_line2_moving seed13 CT2m: exit 0 in 98 s | [exp] cafe_line2_moving CT2m seed 13: in line at end False, share 0.22, first 22.97, cut-in samples 28, calls 4, resolves 147
+02:20:26 w2 cafe_slots seed13 CT2m: exit 0 in 98 s | [exp] cafe_slots CT2m seed 13: in line at end False, share 0.24, first 22.97, cut-in samples 16, calls 4, resolves 146
+02:20:26 w1 room_coffee_cart_slots seed13 CT2m: exit 0 in 98 s | [exp] room_coffee_cart_slots CT2m seed 13: in line at end False, share 0.43, first 26.97, cut-in samples 2, calls 4, resolves 146
+02:22:02 w0 cafe_line2_moving seed13 Rm: exit 0 in 97 s | [exp] cafe_line2_moving Rm seed 13: in line at end True, share 0.69, first 12.97, cut-in samples 0, calls 3, resolves 0
+02:22:03 w2 cafe_slots seed13 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 13: in line at end False, share 0.19, first 17.97, cut-in samples 0, calls 3, resolves 0
+02:22:03 w1 room_coffee_cart_slots seed13 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 13: in line at end False, share 0.41, first 15.97, cut-in samples 0, calls 3, resolves 0
+02:23:40 w0 cafe_line6_moving seed13 R1: exit 0 in 98 s | [exp] cafe_line6_moving R1 seed 13: in line at end False, share 0.12, first 66.97, cut-in samples 16, calls 3, resolves 0
+02:23:41 w1 cafe_slots seed14 R1: exit 0 in 98 s | [exp] cafe_slots R1 seed 14: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:23:46 w2 sweet_spot_line2_moving seed13 R1: exit 0 in 104 s | [exp] sweet_spot_line2_moving R1 seed 13: in line at end True, share 0.52, first 13.97, cut-in samples 10, calls 3, resolves 0
+02:25:20 w1 cafe_slots seed14 CT: exit 0 in 99 s | [exp] cafe_slots CT seed 14: in line at end False, share 0.24, first 23.97, cut-in samples 17, calls 4, resolves 144
+02:25:21 w0 cafe_line6_moving seed13 CT: exit 0 in 101 s | [exp] cafe_line6_moving CT seed 13: in line at end False, share 0.45, first 22.97, cut-in samples 0, calls 4, resolves 144
+02:25:35 w2 sweet_spot_line2_moving seed13 CT: exit 0 in 108 s | [exp] sweet_spot_line2_moving CT seed 13: in line at end False, share 0.16, first 18.97, cut-in samples 31, calls 4, resolves 147
+02:27:00 w1 cafe_slots seed14 CT2: exit 0 in 100 s | [exp] cafe_slots CT2 seed 14: in line at end False, share 0.30, first 23.97, cut-in samples 9, calls 4, resolves 144
+02:27:02 w0 cafe_line6_moving seed13 CT2: exit 0 in 101 s | [exp] cafe_line6_moving CT2 seed 13: in line at end True, share 0.64, first 22.97, cut-in samples 0, calls 4, resolves 144
+02:27:23 w2 sweet_spot_line2_moving seed13 CT2: exit 0 in 108 s | [exp] sweet_spot_line2_moving CT2 seed 13: in line at end False, share 0.18, first 18.97, cut-in samples 33, calls 4, resolves 147
+02:28:39 w1 cafe_slots seed14 CT2m: exit 0 in 98 s | [exp] cafe_slots CT2m seed 14: in line at end False, share 0.30, first 23.97, cut-in samples 5, calls 4, resolves 144
+02:28:41 w0 cafe_line6_moving seed13 CT2m: exit 0 in 99 s | [exp] cafe_line6_moving CT2m seed 13: in line at end False, share 0.63, first 22.97, cut-in samples 0, calls 4, resolves 144
+02:29:09 w2 sweet_spot_line2_moving seed13 CT2m: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2m seed 13: in line at end False, share 0.14, first 21.97, cut-in samples 32, calls 4, resolves 148
+02:30:16 w1 cafe_slots seed14 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 14: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:30:19 w0 cafe_line6_moving seed13 Rm: exit 0 in 98 s | [exp] cafe_line6_moving Rm seed 13: in line at end False, share 0.12, first 66.97, cut-in samples 16, calls 3, resolves 0
+02:30:51 w2 sweet_spot_line2_moving seed13 Rm: exit 0 in 103 s | [exp] sweet_spot_line2_moving Rm seed 13: in line at end False, share 0.00, first None, cut-in samples 40, calls 3, resolves 0
+02:31:53 w1 room_coffee_cart_slots seed14 R1: exit 0 in 97 s | [exp] room_coffee_cart_slots R1 seed 14: in line at end False, share 0.23, first 13.97, cut-in samples 0, calls 3, resolves 0
+02:31:56 w0 cafe_line2_moving seed14 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 14: in line at end False, share 0.13, first 11.97, cut-in samples 0, calls 3, resolves 0
+02:32:31 w2 cafe_line6_moving seed14 R1: exit 0 in 99 s | [exp] cafe_line6_moving R1 seed 14: in line at end False, share 0.13, first 69.97, cut-in samples 13, calls 3, resolves 0
+02:33:34 w1 room_coffee_cart_slots seed14 CT: exit 0 in 101 s | [exp] room_coffee_cart_slots CT seed 14: in line at end False, share 0.48, first 26.97, cut-in samples 0, calls 4, resolves 144
+02:33:37 w0 cafe_line2_moving seed14 CT: exit 0 in 101 s | [exp] cafe_line2_moving CT seed 14: in line at end True, share 0.75, first 18.97, cut-in samples 0, calls 4, resolves 148
+02:34:13 w2 cafe_line6_moving seed14 CT: exit 0 in 102 s | [exp] cafe_line6_moving CT seed 14: in line at end True, share 0.42, first 21.97, cut-in samples 0, calls 4, resolves 146
+02:35:16 w1 room_coffee_cart_slots seed14 CT2: exit 0 in 103 s | [exp] room_coffee_cart_slots CT2 seed 14: in line at end False, share 0.51, first 26.97, cut-in samples 3, calls 4, resolves 144
+02:35:19 w0 cafe_line2_moving seed14 CT2: exit 0 in 102 s | [exp] cafe_line2_moving CT2 seed 14: in line at end False, share 0.16, first 19.97, cut-in samples 28, calls 4, resolves 148
+02:35:56 w2 cafe_line6_moving seed14 CT2: exit 0 in 103 s | [exp] cafe_line6_moving CT2 seed 14: in line at end True, share 0.67, first 21.97, cut-in samples 0, calls 4, resolves 145
+02:36:57 w1 room_coffee_cart_slots seed14 CT2m: exit 0 in 101 s | [exp] room_coffee_cart_slots CT2m seed 14: in line at end False, share 0.49, first 26.97, cut-in samples 2, calls 4, resolves 144
+02:37:00 w0 cafe_line2_moving seed14 CT2m: exit 0 in 101 s | [exp] cafe_line2_moving CT2m seed 14: in line at end False, share 0.18, first 19.97, cut-in samples 29, calls 4, resolves 148
+02:37:35 w2 cafe_line6_moving seed14 CT2m: exit 0 in 99 s | [exp] cafe_line6_moving CT2m seed 14: in line at end True, share 0.66, first 22.97, cut-in samples 0, calls 4, resolves 146
+02:38:34 w1 room_coffee_cart_slots seed14 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 14: in line at end False, share 0.23, first 13.97, cut-in samples 0, calls 3, resolves 0
+02:38:37 w0 cafe_line2_moving seed14 Rm: exit 0 in 96 s | [exp] cafe_line2_moving Rm seed 14: in line at end False, share 0.13, first 11.97, cut-in samples 0, calls 3, resolves 0
+02:39:12 w2 cafe_line6_moving seed14 Rm: exit 0 in 97 s | [exp] cafe_line6_moving Rm seed 14: in line at end False, share 0.00, first None, cut-in samples 13, calls 3, resolves 0
+02:40:14 w0 cafe_slots seed15 R1: exit 0 in 97 s | [exp] cafe_slots R1 seed 15: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:40:18 w1 sweet_spot_line2_moving seed14 R1: exit 0 in 103 s | [exp] sweet_spot_line2_moving R1 seed 14: in line at end False, share 0.02, first 16.97, cut-in samples 25, calls 3, resolves 0
+02:40:50 w2 room_coffee_cart_slots seed15 R1: exit 0 in 98 s | [exp] room_coffee_cart_slots R1 seed 15: in line at end False, share 0.27, first 13.97, cut-in samples 0, calls 3, resolves 0
+02:41:54 w0 cafe_slots seed15 CT: exit 0 in 100 s | [exp] cafe_slots CT seed 15: in line at end False, share 0.05, first 22.97, cut-in samples 12, calls 4, resolves 146
+02:42:08 w1 sweet_spot_line2_moving seed14 CT: exit 0 in 110 s | [exp] sweet_spot_line2_moving CT seed 14: in line at end False, share 0.15, first 20.97, cut-in samples 24, calls 4, resolves 147
+02:42:31 w2 room_coffee_cart_slots seed15 CT: exit 0 in 101 s | [exp] room_coffee_cart_slots CT seed 15: in line at end False, share 0.40, first 42.97, cut-in samples 0, calls 4, resolves 146
+02:43:35 w0 cafe_slots seed15 CT2: exit 0 in 100 s | [exp] cafe_slots CT2 seed 15: in line at end False, share 0.04, first 22.97, cut-in samples 15, calls 4, resolves 146
+02:43:58 w1 sweet_spot_line2_moving seed14 CT2: exit 0 in 110 s | [exp] sweet_spot_line2_moving CT2 seed 14: in line at end False, share 0.18, first 18.97, cut-in samples 31, calls 4, resolves 147
+02:44:12 w2 room_coffee_cart_slots seed15 CT2: exit 0 in 101 s | [exp] room_coffee_cart_slots CT2 seed 15: in line at end False, share 0.57, first 26.97, cut-in samples 4, calls 4, resolves 146
+02:45:15 w0 cafe_slots seed15 CT2m: exit 0 in 100 s | [exp] cafe_slots CT2m seed 15: in line at end False, share 0.10, first 30.97, cut-in samples 14, calls 4, resolves 145
+02:45:51 w1 sweet_spot_line2_moving seed14 CT2m: exit 0 in 113 s | [exp] sweet_spot_line2_moving CT2m seed 14: in line at end False, share 0.14, first 21.97, cut-in samples 24, calls 4, resolves 148
+02:45:51 w2 room_coffee_cart_slots seed15 CT2m: exit 0 in 99 s | [exp] room_coffee_cart_slots CT2m seed 15: in line at end False, share 0.55, first 26.97, cut-in samples 3, calls 4, resolves 146
+02:46:53 w0 cafe_slots seed15 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 15: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:47:28 w2 room_coffee_cart_slots seed15 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 15: in line at end False, share 0.32, first 13.97, cut-in samples 0, calls 3, resolves 0
+02:47:33 w1 sweet_spot_line2_moving seed14 Rm: exit 0 in 103 s | [exp] sweet_spot_line2_moving Rm seed 14: in line at end False, share 0.03, first 18.97, cut-in samples 25, calls 3, resolves 0
+02:48:29 w0 cafe_line2_moving seed15 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 15: in line at end False, share 0.20, first 16.97, cut-in samples 0, calls 3, resolves 0
+02:49:06 w2 cafe_line6_moving seed15 R1: exit 0 in 98 s | [exp] cafe_line6_moving R1 seed 15: in line at end False, share 0.09, first 66.97, cut-in samples 25, calls 3, resolves 0
+02:49:17 w1 sweet_spot_line2_moving seed15 R1: exit 0 in 103 s | [exp] sweet_spot_line2_moving R1 seed 15: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:50:09 w0 cafe_line2_moving seed15 CT: exit 0 in 99 s | [exp] cafe_line2_moving CT seed 15: in line at end True, share 0.71, first 19.97, cut-in samples 0, calls 4, resolves 147
+02:50:48 w2 cafe_line6_moving seed15 CT: exit 0 in 102 s | [exp] cafe_line6_moving CT seed 15: in line at end False, share 0.42, first 21.97, cut-in samples 0, calls 4, resolves 145
+02:51:06 w1 sweet_spot_line2_moving seed15 CT: exit 0 in 109 s | [exp] sweet_spot_line2_moving CT seed 15: in line at end False, share 0.16, first 18.97, cut-in samples 35, calls 4, resolves 148
+02:51:49 w0 cafe_line2_moving seed15 CT2: exit 0 in 101 s | [exp] cafe_line2_moving CT2 seed 15: in line at end True, share 0.69, first 18.97, cut-in samples 0, calls 4, resolves 147
+02:52:31 w2 cafe_line6_moving seed15 CT2: exit 0 in 103 s | [exp] cafe_line6_moving CT2 seed 15: in line at end True, share 0.67, first 22.97, cut-in samples 0, calls 4, resolves 145
+02:52:56 w1 sweet_spot_line2_moving seed15 CT2: exit 0 in 110 s | [exp] sweet_spot_line2_moving CT2 seed 15: in line at end False, share 0.18, first 18.97, cut-in samples 38, calls 4, resolves 147
+02:53:29 w0 cafe_line2_moving seed15 CT2m: exit 0 in 100 s | [exp] cafe_line2_moving CT2m seed 15: in line at end False, share 0.16, first 20.97, cut-in samples 33, calls 4, resolves 146
+02:54:11 w2 cafe_line6_moving seed15 CT2m: exit 0 in 100 s | [exp] cafe_line6_moving CT2m seed 15: in line at end True, share 0.67, first 22.97, cut-in samples 0, calls 4, resolves 145
+02:54:42 w1 sweet_spot_line2_moving seed15 CT2m: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2m seed 15: in line at end False, share 0.14, first 21.97, cut-in samples 37, calls 4, resolves 148
+02:55:06 w0 cafe_line2_moving seed15 Rm: exit 0 in 97 s | [exp] cafe_line2_moving Rm seed 15: in line at end False, share 0.20, first 16.97, cut-in samples 0, calls 3, resolves 0
+02:55:49 w2 cafe_line6_moving seed15 Rm: exit 0 in 98 s | [exp] cafe_line6_moving Rm seed 15: in line at end False, share 0.09, first 66.97, cut-in samples 25, calls 3, resolves 0
+02:56:25 w1 sweet_spot_line2_moving seed15 Rm: exit 0 in 102 s | [exp] sweet_spot_line2_moving Rm seed 15: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:56:43 w0 cafe_slots seed16 R1: exit 0 in 96 s | [exp] cafe_slots R1 seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:57:25 w2 room_coffee_cart_slots seed16 R1: exit 0 in 97 s | [exp] room_coffee_cart_slots R1 seed 16: in line at end False, share 0.13, first 13.97, cut-in samples 0, calls 3, resolves 0
+02:58:01 w1 cafe_line2_moving seed16 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+02:58:20 w0 cafe_slots seed16 CT: exit 0 in 98 s | [exp] cafe_slots CT seed 16: in line at end False, share 0.18, first 31.97, cut-in samples 0, calls 4, resolves 147
+02:59:04 w2 room_coffee_cart_slots seed16 CT: exit 0 in 99 s | [exp] room_coffee_cart_slots CT seed 16: in line at end False, share 0.60, first 23.97, cut-in samples 0, calls 4, resolves 144
+02:59:40 w1 cafe_line2_moving seed16 CT: exit 0 in 98 s | [exp] cafe_line2_moving CT seed 16: in line at end False, share 0.02, first 38.97, cut-in samples 40, calls 4, resolves 147
+02:59:59 w0 cafe_slots seed16 CT2: exit 0 in 99 s | [exp] cafe_slots CT2 seed 16: in line at end False, share 0.33, first 24.97, cut-in samples 18, calls 4, resolves 147
+03:00:43 w2 room_coffee_cart_slots seed16 CT2: exit 0 in 99 s | [exp] room_coffee_cart_slots CT2 seed 16: in line at end False, share 0.63, first 23.97, cut-in samples 0, calls 4, resolves 144
+03:01:18 w1 cafe_line2_moving seed16 CT2: exit 0 in 98 s | [exp] cafe_line2_moving CT2 seed 16: in line at end True, share 0.63, first 23.97, cut-in samples 0, calls 4, resolves 147
+03:01:38 w0 cafe_slots seed16 CT2m: exit 0 in 99 s | [exp] cafe_slots CT2m seed 16: in line at end False, share 0.40, first 17.97, cut-in samples 17, calls 4, resolves 147
+03:02:22 w2 room_coffee_cart_slots seed16 CT2m: exit 0 in 99 s | [exp] room_coffee_cart_slots CT2m seed 16: in line at end False, share 0.64, first 23.97, cut-in samples 0, calls 4, resolves 144
+03:02:55 w1 cafe_line2_moving seed16 CT2m: exit 0 in 97 s | [exp] cafe_line2_moving CT2m seed 16: in line at end True, share 0.36, first 43.97, cut-in samples 7, calls 4, resolves 147
+03:03:15 w0 cafe_slots seed16 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:04:00 w2 room_coffee_cart_slots seed16 Rm: exit 0 in 98 s | [exp] room_coffee_cart_slots Rm seed 16: in line at end False, share 0.13, first 13.97, cut-in samples 0, calls 3, resolves 0
+03:04:32 w1 cafe_line2_moving seed16 Rm: exit 0 in 97 s | [exp] cafe_line2_moving Rm seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:04:55 w0 cafe_line6_moving seed16 R1: exit 0 in 100 s | [exp] cafe_line6_moving R1 seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:05:44 w2 sweet_spot_line2_moving seed16 R1: exit 0 in 105 s | [exp] sweet_spot_line2_moving R1 seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:06:10 w1 cafe_slots seed17 R1: exit 0 in 98 s | [exp] cafe_slots R1 seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:06:35 w0 cafe_line6_moving seed16 CT: exit 0 in 100 s | [exp] cafe_line6_moving CT seed 16: in line at end True, share 0.46, first 37.97, cut-in samples 0, calls 4, resolves 142
+03:07:39 w2 sweet_spot_line2_moving seed16 CT: exit 0 in 115 s | [exp] sweet_spot_line2_moving CT seed 16: in line at end True, share 0.74, first 20.97, cut-in samples 0, calls 4, resolves 144
+03:07:51 w1 cafe_slots seed17 CT: exit 0 in 102 s | [exp] cafe_slots CT seed 17: in line at end False, share 0.38, first 26.97, cut-in samples 2, calls 4, resolves 148
+03:08:18 w0 cafe_line6_moving seed16 CT2: exit 0 in 103 s | [exp] cafe_line6_moving CT2 seed 16: in line at end True, share 0.65, first 23.97, cut-in samples 0, calls 4, resolves 141
+03:09:33 w1 cafe_slots seed17 CT2: exit 0 in 102 s | [exp] cafe_slots CT2 seed 17: in line at end False, share 0.46, first 21.97, cut-in samples 10, calls 4, resolves 147
+03:09:35 w2 sweet_spot_line2_moving seed16 CT2: exit 0 in 116 s | [exp] sweet_spot_line2_moving CT2 seed 16: in line at end True, share 0.69, first 19.97, cut-in samples 0, calls 4, resolves 144
+03:10:01 w0 cafe_line6_moving seed16 CT2m: exit 0 in 103 s | [exp] cafe_line6_moving CT2m seed 16: in line at end True, share 0.64, first 24.97, cut-in samples 0, calls 4, resolves 141
+03:11:15 w1 cafe_slots seed17 CT2m: exit 0 in 102 s | [exp] cafe_slots CT2m seed 17: in line at end False, share 0.48, first 17.97, cut-in samples 11, calls 4, resolves 147
+03:11:25 w2 sweet_spot_line2_moving seed16 CT2m: exit 0 in 110 s | [exp] sweet_spot_line2_moving CT2m seed 16: in line at end True, share 0.57, first 28.97, cut-in samples 0, calls 4, resolves 144
+03:11:42 w0 cafe_line6_moving seed16 Rm: exit 0 in 100 s | [exp] cafe_line6_moving Rm seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:12:54 w1 cafe_slots seed17 Rm: exit 0 in 98 s | [exp] cafe_slots Rm seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:13:09 w2 sweet_spot_line2_moving seed16 Rm: exit 0 in 104 s | [exp] sweet_spot_line2_moving Rm seed 16: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:13:20 w0 room_coffee_cart_slots seed17 R1: exit 0 in 98 s | [exp] room_coffee_cart_slots R1 seed 17: in line at end False, share 0.30, first 13.97, cut-in samples 10, calls 3, resolves 0
+03:14:31 w1 cafe_line2_moving seed17 R1: exit 0 in 98 s | [exp] cafe_line2_moving R1 seed 17: in line at end False, share 0.44, first 15.97, cut-in samples 0, calls 3, resolves 0
+03:14:48 w2 cafe_line6_moving seed17 R1: exit 0 in 99 s | [exp] cafe_line6_moving R1 seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:14:59 w0 room_coffee_cart_slots seed17 CT: exit 0 in 99 s | [exp] room_coffee_cart_slots CT seed 17: in line at end False, share 0.42, first 20.97, cut-in samples 2, calls 4, resolves 145
+03:16:12 w1 cafe_line2_moving seed17 CT: exit 0 in 100 s | [exp] cafe_line2_moving CT seed 17: in line at end False, share 0.05, first 29.97, cut-in samples 24, calls 4, resolves 146
+03:16:29 w2 cafe_line6_moving seed17 CT: exit 0 in 101 s | [exp] cafe_line6_moving CT seed 17: in line at end False, share 0.30, first 21.97, cut-in samples 0, calls 4, resolves 145
+03:16:39 w0 room_coffee_cart_slots seed17 CT2: exit 0 in 100 s | [exp] room_coffee_cart_slots CT2 seed 17: in line at end False, share 0.55, first 19.97, cut-in samples 3, calls 4, resolves 146
+03:17:52 w1 cafe_line2_moving seed17 CT2: exit 0 in 101 s | [exp] cafe_line2_moving CT2 seed 17: in line at end False, share 0.16, first 44.97, cut-in samples 19, calls 4, resolves 146
+03:18:11 w2 cafe_line6_moving seed17 CT2: exit 0 in 102 s | [exp] cafe_line6_moving CT2 seed 17: in line at end True, share 0.65, first 21.97, cut-in samples 0, calls 4, resolves 145
+03:18:20 w0 room_coffee_cart_slots seed17 CT2m: exit 0 in 101 s | [exp] room_coffee_cart_slots CT2m seed 17: in line at end False, share 0.55, first 20.97, cut-in samples 2, calls 4, resolves 146
+03:19:33 w1 cafe_line2_moving seed17 CT2m: exit 0 in 101 s | [exp] cafe_line2_moving CT2m seed 17: in line at end False, share 0.12, first 42.97, cut-in samples 26, calls 4, resolves 146
+03:19:52 w2 cafe_line6_moving seed17 CT2m: exit 0 in 101 s | [exp] cafe_line6_moving CT2m seed 17: in line at end True, share 0.65, first 22.97, cut-in samples 0, calls 4, resolves 146
+03:19:59 w0 room_coffee_cart_slots seed17 Rm: exit 0 in 99 s | [exp] room_coffee_cart_slots Rm seed 17: in line at end False, share 0.30, first 14.97, cut-in samples 11, calls 3, resolves 0
+03:21:11 w1 cafe_line2_moving seed17 Rm: exit 0 in 98 s | [exp] cafe_line2_moving Rm seed 17: in line at end False, share 0.44, first 15.97, cut-in samples 0, calls 3, resolves 0
+03:21:30 w2 cafe_line6_moving seed17 Rm: exit 0 in 98 s | [exp] cafe_line6_moving Rm seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:21:44 w0 sweet_spot_line2_moving seed17 R1: exit 0 in 105 s | [exp] sweet_spot_line2_moving R1 seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:22:49 w1 cafe_slots seed18 R1: exit 0 in 98 s | [exp] cafe_slots R1 seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:23:09 w2 room_coffee_cart_slots seed18 R1: exit 0 in 99 s | [exp] room_coffee_cart_slots R1 seed 18: in line at end False, share 0.22, first 14.97, cut-in samples 0, calls 3, resolves 0
+03:23:30 w0 sweet_spot_line2_moving seed17 CT: exit 0 in 107 s | [exp] sweet_spot_line2_moving CT seed 17: in line at end True, share 0.77, first 18.97, cut-in samples 0, calls 4, resolves 147
+03:24:30 w1 cafe_slots seed18 CT: exit 0 in 100 s | [exp] cafe_slots CT seed 18: in line at end False, share 0.15, first 26.97, cut-in samples 0, calls 4, resolves 146
+03:24:50 w2 room_coffee_cart_slots seed18 CT: exit 0 in 101 s | [exp] room_coffee_cart_slots CT seed 18: in line at end False, share 0.46, first 23.97, cut-in samples 0, calls 4, resolves 141
+03:25:19 w0 sweet_spot_line2_moving seed17 CT2: exit 0 in 109 s | [exp] sweet_spot_line2_moving CT2 seed 17: in line at end True, share 0.70, first 19.97, cut-in samples 0, calls 4, resolves 146
+03:26:12 w1 cafe_slots seed18 CT2: exit 0 in 102 s | [exp] cafe_slots CT2 seed 18: in line at end True, share 0.45, first 24.97, cut-in samples 0, calls 4, resolves 145
+03:26:31 w2 room_coffee_cart_slots seed18 CT2: exit 0 in 101 s | [exp] room_coffee_cart_slots CT2 seed 18: in line at end False, share 0.58, first 23.97, cut-in samples 0, calls 4, resolves 139
+03:27:09 w0 sweet_spot_line2_moving seed17 CT2m: exit 0 in 110 s | [exp] sweet_spot_line2_moving CT2m seed 17: in line at end True, share 0.58, first 29.97, cut-in samples 0, calls 4, resolves 145
+03:27:54 w1 cafe_slots seed18 CT2m: exit 0 in 102 s | [exp] cafe_slots CT2m seed 18: in line at end False, share 0.57, first 17.97, cut-in samples 0, calls 4, resolves 145
+03:28:12 w2 room_coffee_cart_slots seed18 CT2m: exit 0 in 100 s | [exp] room_coffee_cart_slots CT2m seed 18: in line at end False, share 0.60, first 22.97, cut-in samples 0, calls 4, resolves 141
+03:28:55 w0 sweet_spot_line2_moving seed17 Rm: exit 0 in 106 s | [exp] sweet_spot_line2_moving Rm seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:29:34 w1 cafe_slots seed18 Rm: exit 0 in 100 s | [exp] cafe_slots Rm seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:29:51 w2 room_coffee_cart_slots seed18 Rm: exit 0 in 99 s | [exp] room_coffee_cart_slots Rm seed 18: in line at end False, share 0.32, first 14.97, cut-in samples 0, calls 3, resolves 0
+03:30:33 w0 cafe_line2_moving seed18 R1: exit 0 in 98 s | [exp] cafe_line2_moving R1 seed 18: in line at end True, share 0.34, first 15.97, cut-in samples 0, calls 3, resolves 0
+03:31:13 w1 cafe_line6_moving seed18 R1: exit 0 in 99 s | [exp] cafe_line6_moving R1 seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:31:37 w2 sweet_spot_line2_moving seed18 R1: exit 0 in 106 s | [exp] sweet_spot_line2_moving R1 seed 18: in line at end False, share 0.02, first 16.97, cut-in samples 0, calls 3, resolves 0
+03:32:11 w0 cafe_line2_moving seed18 CT: exit 0 in 98 s | [exp] cafe_line2_moving CT seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 0, resolves 0
+03:32:53 w1 cafe_line6_moving seed18 CT: exit 0 in 100 s | [exp] cafe_line6_moving CT seed 18: in line at end True, share 0.42, first 21.97, cut-in samples 0, calls 4, resolves 146
+03:33:26 w2 sweet_spot_line2_moving seed18 CT: exit 0 in 109 s | [exp] sweet_spot_line2_moving CT seed 18: in line at end False, share 0.15, first 18.97, cut-in samples 1, calls 4, resolves 147
+03:33:49 w0 cafe_line2_moving seed18 CT2: exit 0 in 98 s | [exp] cafe_line2_moving CT2 seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 0, resolves 0
+03:34:33 w1 cafe_line6_moving seed18 CT2: exit 0 in 100 s | [exp] cafe_line6_moving CT2 seed 18: in line at end True, share 0.56, first 21.97, cut-in samples 0, calls 4, resolves 146
+03:35:13 w2 sweet_spot_line2_moving seed18 CT2: exit 0 in 107 s | [exp] sweet_spot_line2_moving CT2 seed 18: in line at end False, share 0.18, first 18.97, cut-in samples 35, calls 4, resolves 147
+03:35:27 w0 cafe_line2_moving seed18 CT2m: exit 0 in 98 s | [exp] cafe_line2_moving CT2m seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 0, resolves 0
+03:36:12 w1 cafe_line6_moving seed18 CT2m: exit 0 in 99 s | [exp] cafe_line6_moving CT2m seed 18: in line at end True, share 0.53, first 22.97, cut-in samples 0, calls 4, resolves 146
+03:37:01 w2 sweet_spot_line2_moving seed18 CT2m: exit 0 in 108 s | [exp] sweet_spot_line2_moving CT2m seed 18: in line at end False, share 0.13, first 22.97, cut-in samples 34, calls 4, resolves 147
+03:37:05 w0 cafe_line2_moving seed18 Rm: exit 0 in 97 s | [exp] cafe_line2_moving Rm seed 18: in line at end True, share 0.34, first 15.97, cut-in samples 0, calls 3, resolves 0
+03:37:50 w1 cafe_line6_moving seed18 Rm: exit 0 in 98 s | [exp] cafe_line6_moving Rm seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:38:41 w0 cafe_slots seed19 R1: exit 0 in 96 s | [exp] cafe_slots R1 seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:38:43 w2 sweet_spot_line2_moving seed18 Rm: exit 0 in 102 s | [exp] sweet_spot_line2_moving Rm seed 18: in line at end False, share 0.03, first 19.97, cut-in samples 0, calls 3, resolves 0
+03:39:27 w1 room_coffee_cart_slots seed19 R1: exit 0 in 97 s | [exp] room_coffee_cart_slots R1 seed 19: in line at end False, share 0.32, first 12.97, cut-in samples 0, calls 3, resolves 0
+03:40:19 w0 cafe_slots seed19 CT: exit 0 in 98 s | [exp] cafe_slots CT seed 19: in line at end False, share 0.38, first 26.97, cut-in samples 0, calls 4, resolves 145
+03:40:20 w2 cafe_line2_moving seed19 R1: exit 0 in 97 s | [exp] cafe_line2_moving R1 seed 19: in line at end True, share 0.63, first 12.97, cut-in samples 13, calls 3, resolves 0
+03:41:06 w1 room_coffee_cart_slots seed19 CT: exit 0 in 99 s | [exp] room_coffee_cart_slots CT seed 19: in line at end False, share 0.25, first 18.97, cut-in samples 0, calls 4, resolves 148
+03:41:59 w0 cafe_slots seed19 CT2: exit 0 in 100 s | [exp] cafe_slots CT2 seed 19: in line at end False, share 0.36, first 24.97, cut-in samples 12, calls 4, resolves 145
+03:41:59 w2 cafe_line2_moving seed19 CT: exit 0 in 99 s | [exp] cafe_line2_moving CT seed 19: in line at end False, share 0.07, first 29.97, cut-in samples 25, calls 4, resolves 147
+03:42:46 w1 room_coffee_cart_slots seed19 CT2: exit 0 in 100 s | [exp] room_coffee_cart_slots CT2 seed 19: in line at end False, share 0.48, first 18.97, cut-in samples 0, calls 4, resolves 148
+03:43:36 w0 cafe_slots seed19 CT2m: exit 0 in 98 s | [exp] cafe_slots CT2m seed 19: in line at end False, share 0.32, first 17.97, cut-in samples 16, calls 4, resolves 144
+03:43:37 w2 cafe_line2_moving seed19 CT2: exit 0 in 98 s | [exp] cafe_line2_moving CT2 seed 19: in line at end False, share 0.02, first 51.97, cut-in samples 32, calls 4, resolves 147
+03:44:24 w1 room_coffee_cart_slots seed19 CT2m: exit 0 in 98 s | [exp] room_coffee_cart_slots CT2m seed 19: in line at end False, share 0.52, first 18.97, cut-in samples 0, calls 4, resolves 148
+03:45:14 w0 cafe_slots seed19 Rm: exit 0 in 97 s | [exp] cafe_slots Rm seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:45:14 w2 cafe_line2_moving seed19 CT2m: exit 0 in 97 s | [exp] cafe_line2_moving CT2m seed 19: in line at end True, share 0.40, first 26.97, cut-in samples 0, calls 4, resolves 147
+03:46:01 w1 room_coffee_cart_slots seed19 Rm: exit 0 in 97 s | [exp] room_coffee_cart_slots Rm seed 19: in line at end False, share 0.41, first 12.97, cut-in samples 0, calls 3, resolves 0
+03:46:51 w2 cafe_line2_moving seed19 Rm: exit 0 in 97 s | [exp] cafe_line2_moving Rm seed 19: in line at end True, share 0.64, first 11.97, cut-in samples 13, calls 3, resolves 0
+03:46:51 w2 serve C pid 356246 stopped
+03:46:51 w2 serve R pid 356249 stopped
+03:46:52 w0 cafe_line6_moving seed19 R1: exit 0 in 98 s | [exp] cafe_line6_moving R1 seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:47:45 w1 sweet_spot_line2_moving seed19 R1: exit 0 in 104 s | [exp] sweet_spot_line2_moving R1 seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+03:48:31 w0 cafe_line6_moving seed19 CT: exit 0 in 99 s | [exp] cafe_line6_moving CT seed 19: in line at end False, share 0.48, first 21.97, cut-in samples 0, calls 4, resolves 145
+03:49:31 w1 sweet_spot_line2_moving seed19 CT: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+03:50:10 w0 cafe_line6_moving seed19 CT2: exit 0 in 99 s | [exp] cafe_line6_moving CT2 seed 19: in line at end True, share 0.70, first 21.97, cut-in samples 0, calls 4, resolves 145
+03:51:16 w1 sweet_spot_line2_moving seed19 CT2: exit 0 in 105 s | [exp] sweet_spot_line2_moving CT2 seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+03:51:49 w0 cafe_line6_moving seed19 CT2m: exit 0 in 99 s | [exp] cafe_line6_moving CT2m seed 19: in line at end True, share 0.69, first 22.97, cut-in samples 0, calls 4, resolves 145
+03:53:02 w1 sweet_spot_line2_moving seed19 CT2m: exit 0 in 106 s | [exp] sweet_spot_line2_moving CT2m seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+03:53:27 w0 cafe_line6_moving seed19 Rm: exit 0 in 97 s | [exp] cafe_line6_moving Rm seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 0
+03:53:27 w0 serve C pid 356244 stopped
+03:53:27 w0 serve R pid 356247 stopped
+03:54:45 w1 sweet_spot_line2_moving seed19 Rm: exit 0 in 103 s | [exp] sweet_spot_line2_moving Rm seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+03:54:45 w1 serve C pid 356248 stopped
+03:54:45 w1 serve R pid 356250 stopped
+03:54:45 done
+03:54:45 pool A2 done

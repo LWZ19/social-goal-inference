@@ -1,0 +1,23 @@
+03:05:12 sonnet CTe
+03:05:12 model claude_sonnet55_low: 15 groups x 1 arms, 1 workers
+03:05:12 w0 serve C pid 402717 port 8890
+03:05:12 w0 serve R pid 402718 port 8891
+03:06:56 w0 cafe_slots seed10 CTe: exit 0 in 101 s | [exp] cafe_slots CTe seed 10: in line at end False, share 0.49, first 18.97, cut-in samples 13, calls 3, resolves 151
+03:08:38 w0 room_coffee_cart_slots seed10 CTe: exit 0 in 103 s | [exp] room_coffee_cart_slots CTe seed 10: in line at end False, share 0.34, first 16.97, cut-in samples 1, calls 3, resolves 151
+03:10:19 w0 cafe_line2_moving seed10 CTe: exit 0 in 101 s | [exp] cafe_line2_moving CTe seed 10: in line at end True, share 0.49, first 36.97, cut-in samples 6, calls 3, resolves 151
+03:12:02 w0 cafe_line6_moving seed10 CTe: exit 0 in 103 s | [exp] cafe_line6_moving CTe seed 10: in line at end True, share 0.45, first 23.97, cut-in samples 0, calls 3, resolves 150
+03:13:49 w0 sweet_spot_line2_moving seed10 CTe: exit 0 in 107 s | [exp] sweet_spot_line2_moving CTe seed 10: in line at end False, share 0.00, first None, cut-in samples 0, calls 3, resolves 151
+03:15:30 w0 cafe_slots seed11 CTe: exit 0 in 101 s | [exp] cafe_slots CTe seed 11: in line at end True, share 0.52, first 24.97, cut-in samples 0, calls 3, resolves 151
+03:17:11 w0 room_coffee_cart_slots seed11 CTe: exit 0 in 102 s | [exp] room_coffee_cart_slots CTe seed 11: in line at end False, share 0.66, first 17.97, cut-in samples 0, calls 3, resolves 149
+03:18:53 w0 cafe_line2_moving seed11 CTe: exit 0 in 101 s | [exp] cafe_line2_moving CTe seed 11: in line at end False, share 0.18, first 23.97, cut-in samples 28, calls 3, resolves 152
+03:20:33 w0 cafe_line6_moving seed11 CTe: exit 0 in 101 s | [exp] cafe_line6_moving CTe seed 11: in line at end True, share 0.62, first 22.97, cut-in samples 0, calls 3, resolves 151
+03:22:20 w0 sweet_spot_line2_moving seed11 CTe: exit 0 in 107 s | [exp] sweet_spot_line2_moving CTe seed 11: in line at end True, share 0.78, first 16.97, cut-in samples 0, calls 3, resolves 152
+03:24:00 w0 cafe_slots seed12 CTe: exit 0 in 100 s | [exp] cafe_slots CTe seed 12: in line at end False, share 0.34, first 19.97, cut-in samples 0, calls 3, resolves 150
+03:25:42 w0 room_coffee_cart_slots seed12 CTe: exit 0 in 102 s | [exp] room_coffee_cart_slots CTe seed 12: in line at end False, share 0.62, first 16.97, cut-in samples 1, calls 3, resolves 152
+03:27:23 w0 cafe_line2_moving seed12 CTe: exit 0 in 101 s | [exp] cafe_line2_moving CTe seed 12: in line at end True, share 0.73, first 19.97, cut-in samples 0, calls 3, resolves 149
+03:29:04 w0 cafe_line6_moving seed12 CTe: exit 0 in 102 s | [exp] cafe_line6_moving CTe seed 12: in line at end True, share 0.63, first 22.97, cut-in samples 0, calls 3, resolves 150
+03:30:51 w0 sweet_spot_line2_moving seed12 CTe: exit 0 in 107 s | [exp] sweet_spot_line2_moving CTe seed 12: in line at end False, share 0.21, first 16.97, cut-in samples 37, calls 3, resolves 151
+03:30:51 w0 serve C pid 402717 stopped
+03:30:51 w0 serve R pid 402718 stopped
+03:30:51 done
+03:30:51 CTe queue done; services stopped

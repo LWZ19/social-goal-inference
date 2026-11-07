@@ -1,0 +1,18 @@
+23:30:08 model soclaas_dsv41: 6 groups x 2 arms, 1 workers
+23:30:08 w0 serve C pid 194090 port 8820
+23:30:08 w0 serve R pid 194091 port 8821
+23:31:43 w0 room_coffee_cart seed0 C1: exit 0 in 95 s | [exp] room_coffee_cart C1 seed 0: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 0
+23:33:18 w0 room_coffee_cart seed0 CT: exit 0 in 95 s | [exp] room_coffee_cart CT seed 0: in line at end False, share 0.11, first 13.97, cut-in samples 0, calls 4, resolves 158
+23:34:52 w0 cafe_line2_moving seed0 C1: exit 0 in 94 s | [exp] cafe_line2_moving C1 seed 0: in line at end False, share 0.03, first 31.97, cut-in samples 7, calls 4, resolves 0
+23:36:27 w0 cafe_line2_moving seed0 CT: exit 0 in 94 s | [exp] cafe_line2_moving CT seed 0: in line at end True, share 0.66, first 26.97, cut-in samples 0, calls 4, resolves 153
+23:38:01 w0 room_coffee_cart seed1 C1: exit 0 in 94 s | [exp] room_coffee_cart C1 seed 1: in line at end False, share 0.01, first 23.97, cut-in samples 0, calls 4, resolves 0
+23:39:36 w0 room_coffee_cart seed1 CT: exit 0 in 95 s | [exp] room_coffee_cart CT seed 1: in line at end True, share 0.32, first 57.97, cut-in samples 0, calls 4, resolves 137
+23:41:11 w0 cafe_line2_moving seed1 C1: exit 0 in 95 s | [exp] cafe_line2_moving C1 seed 1: in line at end False, share 0.01, first 37.97, cut-in samples 7, calls 4, resolves 0
+23:42:46 w0 cafe_line2_moving seed1 CT: exit 0 in 95 s | [exp] cafe_line2_moving CT seed 1: in line at end False, share 0.10, first 25.97, cut-in samples 34, calls 4, resolves 132
+23:44:20 w0 room_coffee_cart seed2 C1: exit 0 in 94 s | [exp] room_coffee_cart C1 seed 2: in line at end False, share 0.02, first 22.97, cut-in samples 0, calls 4, resolves 0
+23:45:55 w0 room_coffee_cart seed2 CT: exit 0 in 94 s | [exp] room_coffee_cart CT seed 2: in line at end False, share 0.38, first 23.97, cut-in samples 0, calls 4, resolves 141
+23:47:29 w0 cafe_line2_moving seed2 C1: exit 0 in 94 s | [exp] cafe_line2_moving C1 seed 2: in line at end False, share 0.16, first 29.97, cut-in samples 13, calls 4, resolves 0
+23:49:04 w0 cafe_line2_moving seed2 CT: exit 0 in 95 s | [exp] cafe_line2_moving CT seed 2: in line at end False, share 0.02, first 37.97, cut-in samples 28, calls 4, resolves 128
+23:49:04 w0 serve C pid 194090 stopped
+23:49:04 w0 serve R pid 194091 stopped
+23:49:04 done

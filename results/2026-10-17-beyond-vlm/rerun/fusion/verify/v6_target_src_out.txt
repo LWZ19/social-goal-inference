@@ -1,0 +1,4 @@
+target keys ['pixel', 'point', 'world']
+target {"point": {"x": 420, "y": 560}, "pixel": [268.8, 268.8], "world": [-0.46043698306798597, 3.0077195972538906, 0.5040191276472232]}
+glm53 {'old_con n': 252, 'old_con same plan-out-tokens': 2, 'old_con same point': 3, 's23_cot n': 252, 's23_cot same plan-out-tokens': 252, 's23_cot same point': 252, 's23_fsc n': 252, 's23_fsc same plan-out-tokens': 252, 's23_fsc same point': 252}
+dsv41 {'old_con n': 252, 'old_con same plan-out-tokens': 3, 'old_con same point': 7, 's23_cot n': 252, 's23_cot same plan-out-tokens': 252, 's23_cot same point': 252, 's23_fsc n': 252, 's23_fsc same plan-out-tokens': 252, 's23_fsc same point': 252}

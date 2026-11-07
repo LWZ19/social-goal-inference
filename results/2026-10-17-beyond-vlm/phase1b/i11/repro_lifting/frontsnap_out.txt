@@ -1,0 +1,8 @@
+front-surface snap (zero-call), C records with a point, realistic sets; R=15 px, JUMP=0.5 m, AGREE=0.3 m
+  qwen38_low  {'right->right': 227, 'right->right (moved)': 5, 'right->wrong (moved)': 13, 'wrong->right (moved)': 1, 'wrong->wrong': 6}
+  glm53       {'right->right': 205, 'right->right (moved)': 4, 'right->wrong (moved)': 15, 'wrong->right (moved)': 4, 'wrong->wrong': 13, 'wrong->wrong (moved)': 7}
+  dsv41       {'right->right': 211, 'right->right (moved)': 10, 'right->wrong (moved)': 9, 'wrong->right (moved)': 3, 'wrong->wrong': 14, 'wrong->wrong (moved)': 5}
+  person  {'right->right': 165, 'right->wrong (moved)': 36, 'wrong->right (moved)': 3, 'wrong->wrong': 9, 'wrong->wrong (moved)': 3}
+  parcel  {'right->right': 39, 'wrong->wrong': 10, 'wrong->wrong (moved)': 5}
+  place   {'right->right': 439, 'right->right (moved)': 19, 'right->wrong (moved)': 1, 'wrong->right (moved)': 5, 'wrong->wrong': 14, 'wrong->wrong (moved)': 4}
+  total fixes 8, breaks 37, correct records moved but still right 19

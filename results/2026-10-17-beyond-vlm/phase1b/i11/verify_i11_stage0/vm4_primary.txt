@@ -1,0 +1,7 @@
+M4 primary: 42 scenes, 42 targets, 11 s
+  G1 person  n= 12 medIoU 0.981 IoU>=.5 12 IoU>=.7 12 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 0.993
+  G1 parcel  n=  3 medIoU 0.314 IoU>=.5 0 IoU>=.7 0 merged 3 merged_other 0 (union 0) split 0 structure 0 medPur 0.314
+  G1 place   n= 27 medIoU 0.871 IoU>=.5 27 IoU>=.7 18 merged 0 merged_other 14 (union 14) split 0 structure 0 medPur 1.000
+  G2 person  n= 12 medIoU 0.993 IoU>=.5 12 IoU>=.7 12 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 0.993
+  G2 parcel  n=  3 medIoU 0.314 IoU>=.5 0 IoU>=.7 0 merged 3 merged_other 0 (union 0) split 0 structure 0 medPur 0.314
+  G2 place   n= 27 medIoU 0.871 IoU>=.5 27 IoU>=.7 18 merged 0 merged_other 14 (union 14) split 0 structure 0 medPur 1.000

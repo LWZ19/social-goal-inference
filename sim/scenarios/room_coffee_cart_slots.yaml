@@ -1,0 +1,63 @@
+# room_coffee_cart_slots (research, 2026-11-02, CT2_FROZEN.md): room_coffee_cart with the queue's slots extended to 8, so
+# that people coming back are not placed onto a robot queued at the back (a sim artefact of the 4-5 slot
+# original). Used by every arm on fresh seeds 10-19.
+stage: data/habitat/stages/room.glb
+objects:
+- model: data/habitat/objects/coffee_brewer/CoffeeCart_01_1k.gltf
+  x: 5.0
+  y: -1.0
+- model: data/habitat/objects/plant_tall/potted_plant_01_1k.gltf
+  x: 0.5
+  y: -0.5
+  height_m: 1.4
+- model: data/habitat/objects/plant_tall/potted_plant_01_1k.gltf
+  x: 9.5
+  y: -0.5
+  height_m: 1.4
+- model: data/habitat/objects/cooler_water/model.glb
+  x: 9.6
+  y: -4.0
+  height_m: 1.38
+  yaw_deg: -90
+robot:
+  x: 8.0
+  y: -4.0
+  face:
+  - 5.0
+  - -3.5
+queues:
+  coffee_cart:
+    service_s: 25
+    slots:
+    - x: 5.0
+      y: -2.5
+      face:
+      - 5.0
+      - -1.0
+    - x: 5.0
+      y: -3.2
+    - x: 5.0
+      y: -3.9
+    - x: 5.0
+      y: -4.6
+    - x: 5.0
+      y: -5.3
+    - x: 5.0
+      y: -6.0
+    - x: 5.0
+      y: -6.7
+    - x: 5.0
+      y: -7.4
+humans:
+- avatar: male_1
+  queue: coffee_cart
+- avatar: female_0
+  queue: coffee_cart
+- avatar: female_2
+  queue: coffee_cart
+- avatar: male_0
+  start:
+  - 2.0
+  - -6.0
+requests:
+- Get me a coffee

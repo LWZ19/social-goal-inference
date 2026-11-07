@@ -1,0 +1,390 @@
+A0: VLM facing accuracy (I09 step A0, inside I01). Realistic arms real/staffed/plain, method con.
+Unit: one people answer per (arm, scene, trial); people = union of the key's records' people lists;
+matched to visible true people one-to-one within 0.5 m (sgi.run._matched_people).
+
+=== 0. Integrity checks per row ===
+Qwen 3.8 (s19)           {'answers': 72, 'raw entries': 312, 'raw entries not lifted': 2, 're-placed yaw agrees': 310, 'listed people (union)': 310, 'raw entries dropped by merge': 0}
+GLM-5.3 (s19)            {'answers': 76, 'raw entries': 299, 'raw entries not lifted': 1, 're-placed yaw agrees': 298, 'listed people (union)': 298, 'raw entries dropped by merge': 0}
+DeepSeek V4.1 (s20)      {'answers': 86, 'raw entries': 331, 'raw entries not lifted': 7, 're-placed yaw agrees': 324, 'listed people (union)': 324, 'raw entries dropped by merge': 0}
+Haiku 5.5 (s23)          {'answers': 74, 'raw entries': 314, 'raw entries not lifted': 0, 're-placed yaw agrees': 314, 'listed people (union)': 314, 'raw entries dropped by merge': 0}
+Sonnet 5.5 low (s23)     {'answers': 72, 'raw entries': 307, 'raw entries not lifted': 0, 're-placed yaw agrees': 307, 'listed people (union)': 307, 'raw entries dropped by merge': 0}
+Gemini 3.8 low (s23)     {'answers': 72, 'raw entries': 312, 'raw entries not lifted': 0, 're-placed yaw agrees': 312, 'listed people (union)': 312, 'raw entries dropped by merge': 0}
+Qwen 3.8 (s21)           {'answers': 72, 'raw entries': 312, 'raw entries not lifted': 2, 're-placed yaw agrees': 310, 'listed people (union)': 310, 'raw entries dropped by merge': 0}
+GLM-5.3 (s23)            {'answers': 72, 'raw entries': 294, 'raw entries not lifted': 1, 're-placed yaw agrees': 293, 'listed people (union)': 293, 'raw entries dropped by merge': 0}
+DeepSeek V4.1 (s23)      {'answers': 79, 'raw entries': 322, 'raw entries not lifted': 7, 're-placed yaw agrees': 315, 'listed people (union)': 315, 'raw entries dropped by merge': 0}
+
+Copy check (people answers of the check rows against the primary they copy, by (arm, scene, trial)):
+  Qwen 3.8 (s21)         vs Qwen 3.8 (s19)        : keys 72 vs 72; shared 72; byte-identical raw 72; only in check row 0; only in primary 0
+  GLM-5.3 (s23)          vs GLM-5.3 (s19)         : keys 72 vs 76; shared 72; byte-identical raw 72; only in check row 0; only in primary 4
+  DeepSeek V4.1 (s23)    vs DeepSeek V4.1 (s20)   : keys 79 vs 86; shared 77; byte-identical raw 77; only in check row 2; only in primary 9
+
+=== 1. Detection context (answers, people) ===
+row                      answers visible listed matched unmatched recall median gap m
+Qwen 3.8 (s19)                72     312    310     298        12  0.955        0.105
+GLM-5.3 (s19)                 76     317    298     267        31  0.842        0.110
+DeepSeek V4.1 (s20)           86     331    324     295        29  0.891        0.116
+Haiku 5.5 (s23)               74     314    314     308         6  0.981        0.086
+Sonnet 5.5 low (s23)          72     312    307     300         7  0.962        0.101
+Gemini 3.8 low (s23)          72     312    312     310         2  0.994        0.101
+
+=== 2. Facing accuracy per model, all matched people (primary rows) ===
+n = matched pairs (answer x true person); nk = with a known yaw; ppl = distinct true people (layout, id);
+unk = share with no yaw (unclear and no usable faced point); w45k = share err <= 45 of nk; w45a = of n
+(unknown = miss); med = median err (deg, nk); f/b = share err < 90 of nk; faced = share whose yaw came from
+the faced point; L* = the 8-bin label alone (Lw45 of known labels, Lmed, Lunc = share 'unclear').
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                      298  298   35 0.000 0.765 0.765   24.6 0.862 0.658 | 0.809   14.9 0.000
+GLM-5.3 (s19)                       267  267   40 0.000 0.547 0.547   38.5 0.813 0.910 | 0.779   16.2 0.000
+DeepSeek V4.1 (s20)                 295  294   41 0.003 0.616 0.614   29.7 0.871 0.851 | 0.728   23.5 0.003
+Haiku 5.5 (s23)                     308  292   36 0.052 0.616 0.584   29.4 0.918 0.646 | 0.747   20.7 0.052
+Sonnet 5.5 low (s23)                300  299   36 0.003 0.809 0.807   28.0 0.943 0.677 | 0.866   15.8 0.003
+Gemini 3.8 low (s23)                310  310   36 0.000 0.906 0.906   23.0 0.984 0.871 | 0.906   10.6 0.000
+check rows (copies, not new samples):
+Qwen 3.8 (s21)                      298  298   35 0.000 0.765 0.765   24.6 0.862 0.658 | 0.809   14.9 0.000
+GLM-5.3 (s23)                       262  262   36 0.000 0.546 0.546   39.7 0.817 0.912 | 0.775   16.4 0.000
+DeepSeek V4.1 (s23)                 286  285   40 0.003 0.611 0.608   30.3 0.874 0.853 | 0.726   23.5 0.003
+
+Cluster-bootstrap 95% CIs over layouts (2000 draws, seed 0):
+  Qwen 3.8 (s19)           w45k 0.765 (0.6724738675958188, 0.8602941176470589)  w45a 0.765 (0.6724738675958188, 0.8602941176470589)  med 24.6 (18.375406191078483, 29.148176607759428)  layouts 8
+  GLM-5.3 (s19)            w45k 0.547 (0.401673640167364, 0.7261410788381742)  w45a 0.547 (0.401673640167364, 0.7261410788381742)  med 38.5 (29.94938584179492, 56.07531734574004)  layouts 11
+  DeepSeek V4.1 (s20)      w45k 0.616 (0.5107296137339056, 0.749271137026239)  w45a 0.614 (0.5090252707581228, 0.7438423645320197)  med 29.7 (27.89287726221238, 42.884139208892655)  layouts 12
+  Haiku 5.5 (s23)          w45k 0.616 (0.46688741721854304, 0.7799043062200957)  w45a 0.584 (0.4406779661016949, 0.7563739376770539)  med 29.4 (25.587643238444205, 48.22230744122898)  layouts 9
+  Sonnet 5.5 low (s23)     w45k 0.809 (0.5813953488372093, 0.9692832764505119)  w45a 0.807 (0.5813953488372093, 0.9659863945578231)  med 28.0 (22.527327669526215, 34.64886499176124)  layouts 8
+  Gemini 3.8 low (s23)     w45k 0.906 (0.8096885813148789, 0.9826086956521739)  w45a 0.906 (0.8096885813148789, 0.9826086956521739)  med 23.0 (17.961450273627737, 29.136677354059024)  layouts 8
+
+=== 2b. Common support: only true people (arm, scene, person) that all six primary models matched in at
+least one trial (removes the survivor effect of different recall; trials are not paired across models) ===
+common true-person instances: 98
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                      290  290   34 0.000 0.766 0.766   24.7 0.866 0.666 | 0.810   14.5 0.000
+GLM-5.3 (s19)                       247  247   34 0.000 0.575 0.575   34.8 0.818 0.911 | 0.773   15.3 0.000
+DeepSeek V4.1 (s20)                 269  269   34 0.000 0.621 0.621   29.6 0.874 0.851 | 0.717   23.5 0.000
+Haiku 5.5 (s23)                     294  279   34 0.051 0.638 0.605   28.8 0.921 0.643 | 0.742   20.3 0.051
+Sonnet 5.5 low (s23)                290  289   34 0.003 0.834 0.831   27.6 0.941 0.676 | 0.869   15.8 0.003
+Gemini 3.8 low (s23)                294  294   34 0.000 0.929 0.929   22.7 0.983 0.874 | 0.901    9.9 0.000
+
+=== 3. Per situation (the scene's situation) ===
+--- situation conversation_group
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                      134  134   15 0.000 0.813 0.813   23.2 0.896 0.552 | 0.866   14.1 0.000
+GLM-5.3 (s19)                       128  128   16 0.000 0.594 0.594   33.7 0.789 0.891 | 0.703   22.4 0.000
+DeepSeek V4.1 (s20)                 122  122   16 0.000 0.705 0.705   28.7 0.893 0.803 | 0.697   25.0 0.000
+Haiku 5.5 (s23)                     144  129   16 0.104 0.705 0.632   28.4 0.953 0.576 | 0.775   20.7 0.104
+Sonnet 5.5 low (s23)                137  136   16 0.007 0.684 0.679   31.8 0.941 0.584 | 0.794   24.6 0.007
+Gemini 3.8 low (s23)                143  143   16 0.000 0.818 0.818   27.3 0.965 0.720 | 0.811   18.1 0.000
+--- situation no_one
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                        0
+GLM-5.3 (s19)                         5    5    4 0.000 0.600 0.600   20.9 0.600 0.800 | 1.000   11.7 0.000
+DeepSeek V4.1 (s20)                  18   17    5 0.056 0.706 0.667   28.8 0.824 0.833 | 0.824   25.1 0.056
+Haiku 5.5 (s23)                       2    2    1 0.000 1.000 1.000   18.8 1.000 0.500 | 1.000   25.3 0.000
+Sonnet 5.5 low (s23)                  0
+Gemini 3.8 low (s23)                  0
+--- situation waiting_line
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                      164  164   20 0.000 0.726 0.726   25.0 0.835 0.744 | 0.762   14.9 0.000
+GLM-5.3 (s19)                       134  134   20 0.000 0.500 0.500   44.4 0.843 0.933 | 0.843   12.8 0.000
+DeepSeek V4.1 (s20)                 155  155   20 0.000 0.535 0.535   35.1 0.858 0.890 | 0.742   21.5 0.000
+Haiku 5.5 (s23)                     162  161   19 0.006 0.540 0.537   41.8 0.888 0.710 | 0.720   17.4 0.006
+Sonnet 5.5 low (s23)                163  163   20 0.000 0.914 0.914   25.6 0.945 0.755 | 0.926    9.5 0.000
+Gemini 3.8 low (s23)                167  167   20 0.000 0.982 0.982   21.6 1.000 1.000 | 0.988    9.5 0.000
+
+=== 4. Per role of the true person ===
+--- role line
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                      142  142   16 0.000 0.683 0.683   28.6 0.810 0.725 | 0.725   10.6 0.000
+GLM-5.3 (s19)                       113  113   16 0.000 0.460 0.460   55.1 0.823 0.929 | 0.832    9.8 0.000
+DeepSeek V4.1 (s20)                 134  134   16 0.000 0.515 0.515   39.2 0.851 0.896 | 0.709   15.7 0.000
+Haiku 5.5 (s23)                     144  143   16 0.007 0.510 0.507   44.1 0.888 0.674 | 0.685   15.5 0.007
+Sonnet 5.5 low (s23)                144  144   16 0.000 0.903 0.903   27.1 0.938 0.764 | 0.917    7.7 0.000
+Gemini 3.8 low (s23)                144  144   16 0.000 0.979 0.979   23.0 1.000 1.000 | 0.986    7.8 0.000
+--- role group
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                       72   72    8 0.000 0.944 0.944   22.9 0.944 0.764 | 1.000    7.5 0.000
+GLM-5.3 (s19)                        72   72    9 0.000 0.708 0.708   32.2 0.903 0.986 | 0.792   14.0 0.000
+DeepSeek V4.1 (s20)                  72   72    9 0.000 0.847 0.847   27.0 0.958 0.958 | 0.806   24.4 0.000
+Haiku 5.5 (s23)                      81   81    9 0.000 0.802 0.802   28.4 1.000 0.988 | 0.938   13.6 0.000
+Sonnet 5.5 low (s23)                 77   77    9 0.000 0.779 0.779   27.9 0.987 0.974 | 0.974   15.7 0.000
+Gemini 3.8 low (s23)                 80   80    9 0.000 0.875 0.875   28.6 1.000 1.000 | 0.825   15.4 0.000
+--- role staff
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                       22   22    4 0.000 1.000 1.000    2.2 1.000 0.864 | 1.000   22.7 0.000
+GLM-5.3 (s19)                        24   24    6 0.000 0.667 0.667   37.4 0.875 0.958 | 0.917   22.7 0.000
+DeepSeek V4.1 (s20)                  35   35    8 0.000 0.686 0.686   24.4 0.886 0.857 | 0.886   23.5 0.000
+Haiku 5.5 (s23)                      20   20    4 0.000 0.800 0.800   25.2 0.900 0.950 | 1.000   22.9 0.000
+Sonnet 5.5 low (s23)                 19   19    4 0.000 1.000 1.000    2.0 1.000 0.684 | 1.000   22.9 0.000
+Gemini 3.8 low (s23)                 23   23    4 0.000 1.000 1.000    2.5 1.000 1.000 | 1.000   21.9 0.000
+--- role other
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                       62   62    7 0.000 0.661 0.661   23.2 0.839 0.306 | 0.710   23.2 0.000
+GLM-5.3 (s19)                        58   58    9 0.000 0.466 0.466   70.8 0.655 0.759 | 0.603   26.1 0.000
+DeepSeek V4.1 (s20)                  54   53    8 0.019 0.509 0.500   40.5 0.792 0.593 | 0.566   39.1 0.019
+Haiku 5.5 (s23)                      63   48    7 0.238 0.542 0.413   41.9 0.875 0.048 | 0.500   45.1 0.238
+Sonnet 5.5 low (s23)                 60   59    7 0.017 0.559 0.550   41.9 0.881 0.083 | 0.559   41.9 0.017
+Gemini 3.8 low (s23)                 63   63    7 0.000 0.746 0.746   23.3 0.921 0.365 | 0.794   20.7 0.000
+
+=== 5. Per angle to the camera (true person; frontal <45, oblique 45-75, profile 75-105, back >105) ===
+--- frontal
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                       27   27    3 0.000 0.963 0.963    8.1 1.000 0.630 | 0.852    7.5 0.000
+GLM-5.3 (s19)                        28   28    5 0.000 0.643 0.643   31.9 0.643 0.964 | 0.500   39.4 0.000
+DeepSeek V4.1 (s20)                  37   37    6 0.000 0.892 0.892   26.8 0.919 0.946 | 0.838   18.8 0.000
+Haiku 5.5 (s23)                      29   26    4 0.103 1.000 0.897   25.9 1.000 0.690 | 0.962   25.3 0.103
+Sonnet 5.5 low (s23)                 26   25    3 0.038 0.920 0.885   18.3 0.920 0.577 | 0.920    7.7 0.038
+Gemini 3.8 low (s23)                 27   27    3 0.000 0.926 0.926    9.0 0.926 0.926 | 0.815    7.7 0.000
+--- oblique
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                       57   57    8 0.000 0.789 0.789   15.9 0.912 0.702 | 0.789   22.7 0.000
+GLM-5.3 (s19)                        62   62   10 0.000 0.548 0.548   38.0 0.823 0.952 | 0.919   21.4 0.000
+DeepSeek V4.1 (s20)                  58   58   10 0.000 0.586 0.586   32.2 0.879 0.810 | 0.828   23.4 0.000
+Haiku 5.5 (s23)                      63   58    8 0.079 0.655 0.603   28.4 0.897 0.810 | 0.879   22.6 0.079
+Sonnet 5.5 low (s23)                 61   61    9 0.000 0.754 0.754   23.0 0.984 0.705 | 0.869   22.5 0.000
+Gemini 3.8 low (s23)                 67   67    9 0.000 0.851 0.851   17.3 0.970 0.881 | 0.985   20.6 0.000
+--- profile
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                      169  169   19 0.000 0.716 0.716   28.2 0.822 0.722 | 0.799    6.4 0.000
+GLM-5.3 (s19)                       134  134   19 0.000 0.463 0.463   57.1 0.799 0.896 | 0.791    9.3 0.000
+DeepSeek V4.1 (s20)                 156  156   19 0.000 0.532 0.532   38.7 0.846 0.865 | 0.692   22.4 0.000
+Haiku 5.5 (s23)                     171  166   19 0.029 0.488 0.474   45.8 0.898 0.591 | 0.657   14.7 0.029
+Sonnet 5.5 low (s23)                170  170   19 0.000 0.835 0.835   30.0 0.947 0.682 | 0.888    9.2 0.000
+Gemini 3.8 low (s23)                171  171   19 0.000 0.906 0.906   23.1 0.994 0.877 | 0.906    5.6 0.000
+--- back
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+Qwen 3.8 (s19)                       45   45    5 0.000 0.800 0.800   23.2 0.867 0.378 | 0.844   23.2 0.000
+GLM-5.3 (s19)                        43   43    6 0.000 0.744 0.744   29.5 0.953 0.860 | 0.721   23.2 0.000
+DeepSeek V4.1 (s20)                  44   43    6 0.023 0.721 0.705   23.6 0.907 0.773 | 0.628   24.4 0.023
+Haiku 5.5 (s23)                      45   42    5 0.067 0.833 0.778   23.3 0.976 0.600 | 0.786   23.2 0.067
+Sonnet 5.5 low (s23)                 43   43    5 0.000 0.721 0.721   27.0 0.884 0.674 | 0.744   20.8 0.000
+Gemini 3.8 low (s23)                 45   45    5 0.000 0.978 0.978   23.5 1.000 0.800 | 0.844   21.7 0.000
+
+--- per situation x angle class (w45k / med / n)
+  conversation_group   Qwen 3.8 (s19)           frontal 0.96/8/27  oblique 0.73/31/26  profile 0.73/32/45  back 0.86/23/36
+  conversation_group   GLM-5.3 (s19)            frontal 0.62/32/26  oblique 0.52/35/31  profile 0.46/66/37  back 0.79/29/34
+  conversation_group   DeepSeek V4.1 (s20)      frontal 0.88/27/26  oblique 0.64/32/25  profile 0.51/40/39  back 0.84/23/32
+  conversation_group   Haiku 5.5 (s23)          frontal 1.00/27/27  oblique 0.58/34/36  profile 0.51/42/45  back 0.85/24/36
+  conversation_group   Sonnet 5.5 low (s23)     frontal 0.92/18/26  oblique 0.55/32/33  profile 0.68/42/44  back 0.65/25/34
+  conversation_group   Gemini 3.8 low (s23)     frontal 0.93/9/27  oblique 0.71/31/35  profile 0.71/31/45  back 0.97/23/36
+  no_one               Qwen 3.8 (s19)           frontal -/-/0  oblique -/-/0  profile -/-/0  back -/-/0
+  no_one               GLM-5.3 (s19)            frontal 1.00/11/2  oblique 0.00/116/2  profile -/-/0  back 1.00/9/1
+  no_one               DeepSeek V4.1 (s20)      frontal 0.91/29/11  oblique 0.00/94/3  profile -/-/0  back 0.67/17/4
+  no_one               Haiku 5.5 (s23)          frontal 1.00/19/2  oblique -/-/0  profile -/-/0  back -/-/0
+  no_one               Sonnet 5.5 low (s23)     frontal -/-/0  oblique -/-/0  profile -/-/0  back -/-/0
+  no_one               Gemini 3.8 low (s23)     frontal -/-/0  oblique -/-/0  profile -/-/0  back -/-/0
+  waiting_line         Qwen 3.8 (s19)           frontal -/-/0  oblique 0.84/3/31  profile 0.71/27/124  back 0.56/36/9
+  waiting_line         GLM-5.3 (s19)            frontal -/-/0  oblique 0.62/38/29  profile 0.46/56/97  back 0.50/47/8
+  waiting_line         DeepSeek V4.1 (s20)      frontal -/-/0  oblique 0.60/22/30  profile 0.54/35/117  back 0.25/51/8
+  waiting_line         Haiku 5.5 (s23)          frontal -/-/0  oblique 0.74/25/27  profile 0.48/46/126  back 0.78/10/9
+  waiting_line         Sonnet 5.5 low (s23)     frontal -/-/0  oblique 1.00/10/28  profile 0.89/27/126  back 1.00/36/9
+  waiting_line         Gemini 3.8 low (s23)     frontal -/-/0  oblique 1.00/3/32  profile 0.98/23/126  back 1.00/24/9
+
+--- non-profile (frontal + oblique + back) and profile, with bootstrap CIs on w45k
+  Qwen 3.8 (s19)           non-profile n 129 w45k 0.829 (0.6992481203007519, 0.9775280898876404) med 22.9 | profile n 169 w45k 0.716 (0.5895196506550219, 0.8192090395480226) med 28.2 front/back 0.822
+  GLM-5.3 (s19)            non-profile n 133 w45k 0.632 (0.38095238095238093, 0.8779342723004695) med 33.7 | profile n 134 w45k 0.463 (0.33858267716535434, 0.5810055865921788) med 57.1 front/back 0.799
+  DeepSeek V4.1 (s20)      non-profile n 139 w45k 0.710 (0.5192307692307693, 0.8712871287128713) med 27.0 | profile n 156 w45k 0.532 (0.4230769230769231, 0.63) med 38.7 front/back 0.846
+  Haiku 5.5 (s23)          non-profile n 137 w45k 0.786 (0.5819672131147541, 0.9803921568627451) med 26.7 | profile n 171 w45k 0.488 (0.3791208791208791, 0.6013071895424836) med 45.8 front/back 0.898
+  Sonnet 5.5 low (s23)     non-profile n 130 w45k 0.775 (0.46534653465346537, 1.0) med 24.9 | profile n 170 w45k 0.835 (0.6223776223776224, 0.961352657004831) med 30.0 front/back 0.947
+  Gemini 3.8 low (s23)     non-profile n 139 w45k 0.906 (0.8103448275862069, 1.0) med 22.4 | profile n 171 w45k 0.906 (0.7857142857142857, 0.9803921568627451) med 23.1 front/back 0.994
+
+=== 6. Confusion by 45-deg bin: true bin (rows) x reported 8-bin label (cols), pooled over arms and trials ===
+--- Qwen 3.8 (s19) (label; 'unk' = listed person not tied to a raw entry)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unc  unk   n  diag
+    towards_camera      9    0    0    0    0    0    0    0    0    0    9  1.00
+    towards_right       2   10    6    0    0    0    0    0    0    0   18  0.56
+    right               7    6  107    3    3    0   13    0    0    0  139  0.77
+    away_right          0    0    0    0    9    0    0    0    0    0    9  0.00
+    away_from_camera    0    0    1    0   13    2    2    0    0    0   18  0.72
+    away_left           0    0    0    0    9    0    0    0    0    0    9  0.00
+    left                2    1   22    0    0    0   42    9    0    0   76  0.55
+    towards_left        0    0    0    0    0    0   12    8    0    0   20  0.40
+--- GLM-5.3 (s19) (label; 'unk' = listed person not tied to a raw entry)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unc  unk   n  diag
+    towards_camera      3    0    0    0    0    0    1    5    0    0    9  0.33
+    towards_right       0   11    3    0    0    0    0    6    0    0   20  0.55
+    right               0   16   71    2    1    5   10    8    0    0  113  0.63
+    away_right          0    0    0    2    5    1    0    0    0    0    8  0.25
+    away_from_camera    0    0    1    3   10    2    1    2    0    0   19  0.53
+    away_left           0    0    0    3    5    0    0    0    0    0    8  0.00
+    left                1    0    2    0    2    0   52   13    0    0   70  0.74
+    towards_left        1    0    0    0    0    0    8   11    0    0   20  0.55
+--- DeepSeek V4.1 (s20) (label; 'unk' = listed person not tied to a raw entry)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unc  unk   n  diag
+    towards_camera      4    4    0    0    0    0    1    3    0    0   12  0.33
+    towards_right       4   15    2    0    0    1    0    1    0    0   23  0.65
+    right               1   41   63    6    6    0    4    6    0    0  127  0.50
+    away_right          0    0    0    0    4    0    1    2    0    0    7  0.00
+    away_from_camera    0    1    0    2   12    1    0    4    1    0   21  0.57
+    away_left           0    0    0    0    7    0    0    1    0    0    8  0.00
+    left                1    3   20    1    1    1   34   10    0    0   71  0.48
+    towards_left        5    0    0    0    0    0   11   10    0    0   26  0.38
+--- Haiku 5.5 (s23) (label; 'unk' = listed person not tied to a raw entry)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unc  unk   n  diag
+    towards_camera      2    6    1    0    0    0    0    0    0    0    9  0.22
+    towards_right       7   10    0    0    0    0    0    0    3    0   20  0.50
+    right              15   23   74    4    5    0    9    1    4    0  135  0.55
+    away_right          1    0    0    0    5    0    0    0    3    0    9  0.00
+    away_from_camera    0    1    1    1   13    1    0    1    0    0   18  0.72
+    away_left           0    1    0    0    7    1    0    0    0    0    9  0.11
+    left               11    0   11    0    4    1   42   12    6    0   87  0.48
+    towards_left        0    0    0    0    0    0   11   10    0    0   21  0.48
+--- Sonnet 5.5 low (s23) (label; 'unk' = listed person not tied to a raw entry)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unc  unk   n  diag
+    towards_camera      4    4    0    0    0    0    0    0    0    0    8  0.50
+    towards_right       0   15    0    0    1    1    0    0    1    0   18  0.83
+    right               3   26   82    8    7    0    4    5    0    0  135  0.61
+    away_right          0    0    0    0    1    3    0    4    0    0    8  0.00
+    away_from_camera    0    0    0    2   13    3    0    0    0    0   18  0.72
+    away_left           0    0    0    2    5    1    0    0    0    0    8  0.12
+    left                6    1    0    0    0    1   56   20    0    0   84  0.67
+    towards_left        0    0    0    0    0    0    6   15    0    0   21  0.71
+--- Gemini 3.8 low (s23) (label; 'unk' = listed person not tied to a raw entry)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unc  unk   n  diag
+    towards_camera      9    0    0    0    0    0    0    0    0    0    9  1.00
+    towards_right       0   13    3    0    0    0    2    0    0    0   18  0.72
+    right               0   21  116    2    0    0    0    1    0    0  140  0.83
+    away_right          0    0    0    1    8    0    0    0    0    0    9  0.11
+    away_from_camera    0    0    0    7   10    1    0    0    0    0   18  0.56
+    away_left           0    0    0    0    6    3    0    0    0    0    9  0.33
+    left                0    1    0    0    0    0   73   12    0    0   86  0.85
+    towards_left        0    0    0    0    0    0   10   11    0    0   21  0.52
+
+=== 7. Confusion: true bin x the pipeline yaw's bin (relative to the true person's camera bearing) ===
+--- Qwen 3.8 (s19) (pipeline yaw; 'unk' = no yaw)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unk   n  diag
+    towards_camera      8    0    0    0    0    0    0    1    0    9  0.89
+    towards_right      17    0    1    0    0    0    0    0    0   18  0.00
+    right              12   38   61   11    4    0    7    6    0  139  0.44
+    away_right          0    0    0    0    9    0    0    0    0    9  0.00
+    away_from_camera    0    0    1    1   13    3    0    0    0   18  0.72
+    away_left           0    0    4    0    3    2    0    0    0    9  0.22
+    left                5    6   16    0    1    0   23   25    0   76  0.30
+    towards_left        9    0    0    0    0    0    8    3    0   20  0.15
+--- GLM-5.3 (s19) (pipeline yaw; 'unk' = no yaw)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unk   n  diag
+    towards_camera      2    0    0    0    4    2    0    1    0    9  0.22
+    towards_right      12    2    0    0    6    0    0    0    0   20  0.10
+    right               4   21   16   17   45    2    6    2    0  113  0.14
+    away_right          1    0    0    0    7    0    0    0    0    8  0.00
+    away_from_camera    0    0    0    6    7    6    0    0    0   19  0.37
+    away_left           0    0    0    5    2    1    0    0    0    8  0.12
+    left                7    0    0    0   18    7   28   10    0   70  0.40
+    towards_left       11    0    0    0    0    1    4    4    0   20  0.20
+--- DeepSeek V4.1 (s20) (pipeline yaw; 'unk' = no yaw)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unk   n  diag
+    towards_camera     11    0    0    0    0    0    1    0    0   12  0.92
+    towards_right      15    3    1    0    2    0    0    2    0   23  0.13
+    right               4   24   41   23   30    2    1    2    0  127  0.32
+    away_right          0    0    0    0    6    0    0    1    0    7  0.00
+    away_from_camera    1    0    0    2    8    8    0    1    1   21  0.38
+    away_left           0    0    1    1    2    4    0    0    0    8  0.50
+    left                7    3    5    3   10    5   20   18    0   71  0.28
+    towards_left       13    0    0    0    1    5    4    3    0   26  0.12
+--- Haiku 5.5 (s23) (pipeline yaw; 'unk' = no yaw)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unk   n  diag
+    towards_camera      8    1    0    0    0    0    0    0    0    9  0.89
+    towards_right      17    0    0    0    0    0    0    0    3   20  0.00
+    right              14   35   35   23   22    0    1    1    4  135  0.26
+    away_right          1    0    0    0    5    0    0    0    3    9  0.00
+    away_from_camera    0    0    0    8    7    3    0    0    0   18  0.39
+    away_left           0    0    0    4    3    2    0    0    0    9  0.22
+    left               20    0   10    0    9    3   25   14    6   87  0.29
+    towards_left        8    0    0    0    2    2    3    6    0   21  0.29
+--- Sonnet 5.5 low (s23) (pipeline yaw; 'unk' = no yaw)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unk   n  diag
+    towards_camera      8    0    0    0    0    0    0    0    0    8  1.00
+    towards_right       9    6    0    0    1    1    0    0    1   18  0.33
+    right               5   60   50    4    7    0    1    8    0  135  0.37
+    away_right          0    0    0    0    1    3    0    4    0    8  0.00
+    away_from_camera    0    0    0    0    9    9    0    0    0   18  0.50
+    away_left           0    0    1    4    0    3    0    0    0    8  0.38
+    left               13    1    0    0    0    1   22   47    0   84  0.26
+    towards_left        9    0    0    0    0    0    4    8    0   21  0.38
+--- Gemini 3.8 low (s23) (pipeline yaw; 'unk' = no yaw)
+    true \ reported    tc   tr    r   ar  afc   al    l   tl  unk   n  diag
+    towards_camera      9    0    0    0    0    0    0    0    0    9  1.00
+    towards_right      16    0    0    0    0    0    2    0    0   18  0.00
+    right               1   76   49   11    2    0    0    1    0  140  0.35
+    away_right          0    0    0    1    8    0    0    0    0    9  0.11
+    away_from_camera    0    0    0    6    9    3    0    0    0   18  0.50
+    away_left           0    0    0    0    1    8    0    0    0    9  0.89
+    left                8    1    0    0    3    3   39   32    0   86  0.45
+    towards_left        9    0    0    0    0    0    3    9    0   21  0.43
+
+=== 8. Per arm (w45k / med / n) ===
+  Qwen 3.8 (s19)           real 0.725/25.8/102  staffed 0.810/20.4/105  plain 0.758/26.3/91
+  GLM-5.3 (s19)            real 0.604/34.8/96  staffed 0.538/41.4/91  plain 0.487/48.9/80
+  DeepSeek V4.1 (s20)      real 0.560/36.3/100  staffed 0.654/28.8/108  plain 0.632/28.1/87
+  Haiku 5.5 (s23)          real 0.634/28.8/106  staffed 0.624/29.1/106  plain 0.589/33.6/96
+  Sonnet 5.5 low (s23)     real 0.860/27.3/100  staffed 0.808/27.6/105  plain 0.758/29.4/95
+  Gemini 3.8 low (s23)     real 0.887/23.2/106  staffed 0.898/21.1/108  plain 0.938/23.4/96
+
+=== 9. Error histogram (pipeline yaw, deg; 15-deg bins; known only) ===
+  Qwen 3.8 (s19)            97  88  43   7  15   7   1   2   2   7  15  14   (>135: 36)
+  GLM-5.3 (s19)             44  60  42  22  18  31  23   8   3   2   5   9   (>135: 16)
+  DeepSeek V4.1 (s20)       79  70  32  30  24  21  12  11   4   1   4   6   (>135: 11)
+  Haiku 5.5 (s23)           73  74  33  24  24  40   7   4   0   1   2  10   (>135: 13)
+  Sonnet 5.5 low (s23)      66 101  75  18  12  10   0   1   1   0  14   1   (>135: 15)
+  Gemini 3.8 low (s23)      95 129  57  17   4   3   1   3   0   1   0   0   (>135: 1)
+
+=== 9b. The two channels on the same pairs: faced-point yaw (what the pipeline used) vs the label alone ===
+Pairs whose pipeline yaw came from the faced point and whose label is not unclear. w45 of each; paired:
+'label only' = label within 45 and faced not; 'faced only' = the reverse. to_cam = median signed turn toward
+the camera (deg; + = the reported yaw points more toward the camera than the truth).
+row                         n w45 faced w45 label label only faced only med faced med label to_cam faced to_cam label
+Qwen 3.8 (s19)            196     0.796     0.862         20          7      28.1      13.7         21.2         -1.6
+GLM-5.3 (s19)             243     0.539     0.794         80         18      40.8      15.3         -0.7         -0.5
+DeepSeek V4.1 (s20)       251     0.618     0.749         58         25      29.9      23.0          4.4          1.6
+Haiku 5.5 (s23)           199     0.693     0.884         55         17      28.1      15.0         11.9         -0.8
+Sonnet 5.5 low (s23)      203     0.852     0.936         19          2      26.7       9.3         24.8         -0.8
+Gemini 3.8 low (s23)      270     0.926     0.926         19         19      22.7       9.9         19.5         -0.9
+by angle class (faced-source pairs; w45 faced / w45 label / n):
+  Qwen 3.8 (s19)           frontal 1.00/0.82/17  oblique 1.00/1.00/40  profile 0.71/0.83/122  back 0.71/0.82/17
+  GLM-5.3 (s19)            frontal 0.63/0.48/27  oblique 0.56/0.95/59  profile 0.46/0.82/120  back 0.70/0.68/37
+  DeepSeek V4.1 (s20)      frontal 0.91/0.86/35  oblique 0.64/0.94/47  profile 0.52/0.70/135  back 0.68/0.56/34
+  Haiku 5.5 (s23)          frontal 1.00/0.95/20  oblique 0.73/0.98/51  profile 0.58/0.86/101  back 0.81/0.74/27
+  Sonnet 5.5 low (s23)     frontal 1.00/1.00/15  oblique 0.84/1.00/43  profile 0.84/0.92/116  back 0.83/0.86/29
+  Gemini 3.8 low (s23)     frontal 1.00/0.88/25  oblique 0.85/1.00/59  profile 0.93/0.93/150  back 0.97/0.81/36
+label channel over ALL matched pairs (as if the faced point were not used; unclear = unknown), with CIs:
+  Qwen 3.8 (s19)           Lw45 known 0.809 (0.710691823899371, 0.9138576779026217)  all 0.809; non-profile Lw45 0.822 Lmed 22.7; profile front/back 0.822
+  GLM-5.3 (s19)            Lw45 known 0.779 (0.7046843177189409, 0.8774509803921569)  all 0.779; non-profile Lw45 0.767 Lmed 22.1; profile front/back 0.836
+  DeepSeek V4.1 (s20)      Lw45 known 0.728 (0.6030150753768844, 0.8589743589743589)  all 0.725; non-profile Lw45 0.768 Lmed 23.5; profile front/back 0.801
+  Haiku 5.5 (s23)          Lw45 known 0.747 (0.6390977443609023, 0.8333333333333334)  all 0.708; non-profile Lw45 0.865 Lmed 22.9; profile front/back 0.855
+  Sonnet 5.5 low (s23)     Lw45 known 0.866 (0.7261538461538461, 0.9800664451827242)  all 0.863; non-profile Lw45 0.837 Lmed 20.8; profile front/back 0.947
+  Gemini 3.8 low (s23)     Lw45 known 0.906 (0.8172413793103448, 0.9936305732484076)  all 0.906; non-profile Lw45 0.906 Lmed 20.5; profile front/back 0.994
+
+=== 10. Context: placeholder panel s8 convlm (VLM people; arm ph), same unit and matching ===
+row                                   n   nk  ppl   unk  w45k  w45a    med   f/b faced |  Lw45   Lmed  Lunc
+s8 glm53                             77   77   32 0.000 0.571 0.571   31.2 0.883 0.909 | 0.805   14.8 0.000   answers 24 recall 0.802 checks {'answers': 24, 'raw entries': 97, 'raw entries not lifted': 4, 're-placed yaw agrees': 93, 'listed people (union)': 93, 'raw entries dropped by merge': 0}
+      frontal  n    7 w45k 0.714 med 28.8
+      oblique  n   13 w45k 0.462 med 56.7
+      profile  n   44 w45k 0.477 med 63.2
+      back     n   13 w45k 0.923 med 20.3
+s8 ornith15                          85   85   32 0.000 0.624 0.624   28.9 0.941 0.929 | 0.753   15.1 0.000   answers 22 recall 0.966 checks {'answers': 22, 'raw entries': 88, 'raw entries not lifted': 1, 'listed people (union)': 87, 'raw entries dropped by merge': 0, 're-placed yaw agrees': 87}
+      frontal  n    9 w45k 0.889 med 27.8
+      oblique  n   12 w45k 0.667 med 31.8
+      profile  n   49 w45k 0.531 med 31.9
+      back     n   15 w45k 0.733 med 24.5
+s8 qwen36_35                         89   89   32 0.000 0.753 0.753   28.2 0.933 0.820 | 0.659   16.1 0.000   answers 23 recall 0.967 checks {'answers': 23, 'raw entries': 93, 'raw entries not lifted': 1, 'listed person tied to 2 raw entries': 1, 'listed people (union)': 91, 'raw entries dropped by merge': 1, 're-placed yaw agrees': 90}
+      frontal  n    9 w45k 1.000 med 27.3
+      oblique  n   13 w45k 0.615 med 32.3
+      profile  n   52 w45k 0.731 med 24.9
+      back     n   15 w45k 0.800 med 23.8
+s8 qwen38                            96   96   32 0.000 0.781 0.781   21.4 0.958 0.562 | 0.844   15.0 0.000   answers 24 recall 1.000 checks {'answers': 24, 'raw entries': 96, 'raw entries not lifted': 0, 're-placed yaw agrees': 96, 'listed people (union)': 96, 'raw entries dropped by merge': 0}
+      frontal  n    9 w45k 0.889 med 10.0
+      oblique  n   15 w45k 0.867 med 25.2
+      profile  n   57 w45k 0.754 med 18.0
+      back     n   15 w45k 0.733 med 23.4
+s8 qwen3vl                           56   56   22 0.000 0.750 0.750   27.0 0.804 0.911 | 0.661   20.3 0.000   answers 23 recall 0.609 checks {'answers': 23, 'raw entries': 92, 'raw entries not lifted': 12, 're-placed yaw agrees': 80, 'listed people (union)': 80, 'raw entries dropped by merge': 0}
+      frontal  n    8 w45k 1.000 med 27.8
+      oblique  n   10 w45k 0.800 med 30.3
+      profile  n   26 w45k 0.615 med 28.4
+      back     n   12 w45k 0.833 med 22.3
+
+=== 11. I09 comparison targets ===
+best VLM by w45k: Gemini 3.8 low (s23) 0.906; I09 bar 'more than 10 points below the best VLM' = w45 below 0.806; absolute bar 0.70; the binding bar = 0.806
+best VLM by w45a (unknown = miss): Gemini 3.8 low (s23) 0.906
+  Qwen 3.8 (s19)           w45k 0.765; non-profile med 22.9 w45k 0.829; profile front/back 0.822
+  GLM-5.3 (s19)            w45k 0.547; non-profile med 33.7 w45k 0.632; profile front/back 0.799
+  DeepSeek V4.1 (s20)      w45k 0.616; non-profile med 27.0 w45k 0.710; profile front/back 0.846
+  Haiku 5.5 (s23)          w45k 0.616; non-profile med 26.7 w45k 0.786; profile front/back 0.898
+  Sonnet 5.5 low (s23)     w45k 0.809; non-profile med 24.9 w45k 0.775; profile front/back 0.947
+  Gemini 3.8 low (s23)     w45k 0.906; non-profile med 22.4 w45k 0.906; profile front/back 0.994

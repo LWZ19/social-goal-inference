@@ -1,0 +1,1 @@
+17:38 queued (fill/queue/j8_x1a.sh): stage A only, port base 8920 in place of 8860 (Qwen's 240 s run holds 8860); stage B not queued.

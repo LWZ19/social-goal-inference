@@ -1,0 +1,3 @@
+true visible people as detections: 289/289 scenes with recall 1 (or none visible), 0 false, all facing within 45
+L +y / R -y gives F1 -0.0
+camera at origin looking +y, person (0,3), nose image-right: F4 0.0 F5 0.0

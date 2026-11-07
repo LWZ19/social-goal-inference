@@ -1,0 +1,24 @@
+C5 gate 2 cells: checks (FROZEN.md section 2, Cells).
+
+fresh: eligible 520, episodes 520, scenes 260
+  point-in-polygon replica vs sgi.polygons.point_in_polygon: 287304 cell tests (every region cell of every episode with polygons, plus 300 random floor cells per scene), 0 disagreements
+dev: eligible 136, episodes 136, scenes 68, scenes_placeholder 26, scenes_realistic 42
+  point-in-polygon replica vs sgi.polygons.point_in_polygon: 75138 cell tests (every region cell of every episode with polygons, plus 300 random floor cells per scene), 0 disagreements
+fresh scenes whose eligible episodes have more than one distinct region set: 0 []
+dev scenes whose first listed run recorded a different grid, robot or person radius: 0
+dev episodes whose acceptable regions under the first run's recorded config equal those under default.yaml (descriptive): {'same': 136}
+fresh floor cells per scene: min 4514 median 7882 max 18867; region cells per eligible episode: min 81 median 178 max 701
+dev floor cells per scene: min 4708 median 8504 max 19850; region cells per eligible episode: min 84 median 178 max 690
+episodes by (kind, domain, situation, eligible):
+  ('dev', 'placeholder', 'audience', True): 12
+  ('dev', 'placeholder', 'conversation_group', True): 6
+  ('dev', 'placeholder', 'no_one', True): 24
+  ('dev', 'placeholder', 'waiting_line', True): 10
+  ('dev', 'realistic', 'conversation_group', True): 18
+  ('dev', 'realistic', 'no_one', True): 36
+  ('dev', 'realistic', 'waiting_line', True): 30
+  ('fresh', 'fresh', 'audience', True): 60
+  ('fresh', 'fresh', 'conversation_group', True): 100
+  ('fresh', 'fresh', 'no_one', True): 220
+  ('fresh', 'fresh', 'waiting_line', True): 140
+time 103 s

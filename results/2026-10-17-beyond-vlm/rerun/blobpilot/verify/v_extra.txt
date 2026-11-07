@@ -1,0 +1,68 @@
+=== roles and in-image counts per set ===
+plain    people=34 roles={None: 34} in_img=34 visible=34 out_of_image=0 roles_out={} ids_out={}
+real     people=56 roles={'staff': 22, None: 34} in_img=42 visible=42 out_of_image=14 roles_out={'staff': 14} ids_out={'s1': 8, 's0': 6}
+staffed  people=56 roles={'staff': 22, None: 34} in_img=42 visible=42 out_of_image=14 roles_out={'staff': 14} ids_out={'s1': 8, 's0': 6}
+ph       people=34 roles={None: 34} in_img=34 visible=34 out_of_image=0 roles_out={} ids_out={}
+seed0    people=8 roles={None: 8} in_img=8 visible=8 out_of_image=0 roles_out={} ids_out={}
+seed1    people=8 roles={None: 8} in_img=8 visible=8 out_of_image=0 roles_out={} ids_out={}
+seed2    people=8 roles={None: 8} in_img=8 visible=8 out_of_image=0 roles_out={} ids_out={}
+=== misses at ws_0.25 pca R=0.6 ===
+  real_eval_02_no_one_place          s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.15 top=2.001 foot=1.089 kept=False; d=0.41 top=2.1 foot=1.48 kept=False
+  real_eval_07_waiting_line_2        s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.27 top=2.095 foot=0.948 kept=False; d=0.49 top=1.14 foot=0.613 kept=False
+  real_eval_08_waiting_line_4        s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.17 top=2.025 foot=1.601 kept=False; d=0.46 top=2.099 foot=0.369 kept=False
+  staffed_eval_02_no_one_place       s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.15 top=2.001 foot=1.089 kept=False; d=0.41 top=2.1 foot=1.48 kept=False
+  staffed_eval_07_waiting_line_2     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.20 top=2.077 foot=1.499 kept=False; d=0.45 top=2.098 foot=0.587 kept=False
+  staffed_eval_08_waiting_line_4     s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.17 top=2.025 foot=1.601 kept=False; d=0.40 top=1.1 foot=0.208 kept=False
+  staffed_eval_09_waiting_line_6     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.21 top=2.012 foot=1.416 kept=False; d=0.46 top=2.099 foot=0.46 kept=False
+  staffed_eval_13_waiting_line_3     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.18 top=2.048 foot=1.543 kept=False; d=0.41 top=2.098 foot=0.839 kept=False
+  total misses=8, lower body hidden=4, not hidden=4
+=== misses at ws_0.35 pca R=0.6 ===
+  real_eval_02_no_one_place          s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.15 top=2.001 foot=1.089 kept=False; d=0.41 top=2.1 foot=1.48 kept=False
+  real_eval_07_waiting_line_2        s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.34 top=2.1 foot=1.148 kept=False; d=1.01 top=1.31 foot=0.601 kept=True
+  real_eval_08_waiting_line_4        s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.17 top=2.025 foot=1.601 kept=False; d=0.51 top=2.099 foot=0.702 kept=False
+  staffed_eval_02_no_one_place       s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.15 top=2.001 foot=1.089 kept=False; d=0.41 top=2.1 foot=1.48 kept=False
+  staffed_eval_07_waiting_line_2     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.20 top=2.077 foot=1.499 kept=False; d=0.45 top=2.098 foot=0.587 kept=False
+  staffed_eval_08_waiting_line_4     s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.17 top=2.025 foot=1.601 kept=False; d=0.40 top=1.1 foot=0.208 kept=False
+  staffed_eval_09_waiting_line_6     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.21 top=2.012 foot=1.416 kept=False; d=0.47 top=2.099 foot=0.798 kept=False
+  staffed_eval_13_waiting_line_3     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.18 top=2.048 foot=1.543 kept=False; d=0.41 top=2.098 foot=0.839 kept=False
+  total misses=8, lower body hidden=4, not hidden=4
+=== misses at vor_0.35 bbox R=0.6 ===
+  real_eval_02_no_one_place          s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.09 top=2.001 foot=0.725 kept=False; d=0.48 top=2.1 foot=1.063 kept=False
+  real_eval_07_waiting_line_2        s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.35 top=2.1 foot=1.251 kept=False; d=1.07 top=1.31 foot=0.473 kept=True
+  real_eval_08_waiting_line_4        s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.26 top=2.099 foot=0.864 kept=False; d=0.53 top=2.025 foot=0.854 kept=False
+  staffed_eval_02_no_one_place       s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.09 top=2.001 foot=0.725 kept=False; d=0.47 top=2.1 foot=1.065 kept=False
+  staffed_eval_07_waiting_line_2     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.22 top=2.098 foot=0.899 kept=False; d=0.38 top=2.1 foot=0.563 kept=False
+  staffed_eval_08_waiting_line_4     s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.37 top=2.1 foot=0.923 kept=False; d=0.40 top=1.1 foot=0.208 kept=False
+  staffed_eval_09_waiting_line_6     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.21 top=2.012 foot=1.416 kept=False; d=0.45 top=2.099 foot=0.593 kept=False
+  staffed_eval_13_waiting_line_3     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.16 top=2.097 foot=0.601 kept=False; d=0.18 top=2.097 foot=0.753 kept=False
+  total misses=8, lower body hidden=4, not hidden=4
+=== misses at ws_0.25 pca R=0.4 ===
+  real_eval_02_no_one_place          s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.15 top=2.001 foot=1.089 kept=False; d=0.41 top=2.1 foot=1.48 kept=False
+  real_eval_07_waiting_line_2        s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.27 top=2.095 foot=0.948 kept=False; d=0.49 top=1.14 foot=0.613 kept=False
+  real_eval_08_waiting_line_4        s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.17 top=2.025 foot=1.601 kept=False; d=0.46 top=2.099 foot=0.369 kept=False
+  real_eval_13_waiting_line_3        s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.13 top=2.097 foot=0.856 kept=False; d=0.47 top=1.245 foot=0.624 kept=True
+  staffed_eval_02_no_one_place       s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.15 top=2.001 foot=1.089 kept=False; d=0.41 top=2.1 foot=1.48 kept=False
+  staffed_eval_07_waiting_line_2     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.20 top=2.077 foot=1.499 kept=False; d=0.45 top=2.098 foot=0.587 kept=False
+  staffed_eval_08_waiting_line_4     s0 role=staff lower_hidden=8/8 seen=0/8 | nearest: d=0.17 top=2.025 foot=1.601 kept=False; d=0.40 top=1.1 foot=0.208 kept=False
+  staffed_eval_09_waiting_line_6     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.21 top=2.012 foot=1.416 kept=False; d=0.46 top=2.099 foot=0.46 kept=False
+  staffed_eval_13_waiting_line_3     s0 role=staff lower_hidden=0/8 seen=8/8 | nearest: d=0.18 top=2.048 foot=1.543 kept=False; d=0.41 top=2.098 foot=0.839 kept=False
+  total misses=9, lower body hidden=4, not hidden=5
+=== facing by axis input (ws_0.35 pca R=0.4 and ws_0.25 pca R=0.4), per set and situation ===
+  ws_0.25 ax_pts   plain=0.824(28/34)  real=0.842(32/38)  staffed=0.838(31/37)  ph=0.824(28/34)  ph+seed0=0.857(36/42)
+     realistic: group=45/48  line=34/49  other=12/12
+     ph+3seeds: audience=23/24  group=16/16  line=10/16  other=2/2
+  ws_0.25 ax_cells plain=0.735(25/34)  real=0.763(29/38)  staffed=0.757(28/37)  ph=0.912(31/34)  ph+seed0=0.929(39/42)
+     realistic: group=42/48  line=28/49  other=12/12
+     ph+3seeds: audience=24/24  group=16/16  line=13/16  other=2/2
+  ws_0.25 ax_band  plain=0.676(23/34)  real=0.703(26/37)  staffed=0.694(25/36)  ph=0.971(33/34)  ph+seed0=0.976(41/42)
+     realistic: group=33/48  line=31/49  other=10/10
+     ph+3seeds: audience=24/24  group=15/16  line=16/16  other=2/2
+  ws_0.35 ax_pts   plain=0.824(28/34)  real=0.838(31/37)  staffed=0.833(30/36)  ph=0.824(28/34)  ph+seed0=0.857(36/42)
+     realistic: group=45/48  line=34/49  other=10/10
+     ph+3seeds: audience=23/24  group=16/16  line=10/16  other=2/2
+  ws_0.35 ax_cells plain=0.735(25/34)  real=0.757(28/37)  staffed=0.750(27/36)  ph=0.912(31/34)  ph+seed0=0.929(39/42)
+     realistic: group=42/48  line=28/49  other=10/10
+     ph+3seeds: audience=24/24  group=16/16  line=13/16  other=2/2
+  ws_0.35 ax_band  plain=0.676(23/34)  real=0.694(25/36)  staffed=0.686(24/35)  ph=0.971(33/34)  ph+seed0=0.976(41/42)
+     realistic: group=33/48  line=31/49  other=8/8
+     ph+3seeds: audience=24/24  group=15/16  line=16/16  other=2/2

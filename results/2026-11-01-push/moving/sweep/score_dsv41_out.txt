@@ -1,0 +1,131 @@
+# score_sweep.py run once on the complete DeepSeek sweep, 2026-11-03 03:35:27 +0800
+# command (from moving/): python3 sweep/score_sweep.py runs_sweep/dsv41
+# 7cea0c9ea1f4c9e46ceb7754c4353ea8592fb096b4a6d698415594f91e97387b  sweep/score_sweep.py
+# ee0d3b9fb55a96729a5fc4e07f2c0aa456d3bc15aa5ea5bc672f0ffb65ede102  summarise_fresh.py
+# 9d7d34dab647172b0352f907a01132ed21032f30a18ab7ea5853ae253f9418cc  sweep/selection.json
+# mechanical checks before scoring: runs_sweep/dsv41/check_mech_out.txt (faults: none)
+
+# dsv41: 432 episodes over 72 layouts
+
+**C1 (lag-flagged, n = 36), CT4 vs CT3F, right last: 14/14/1 (wins/losses/ties), untied win rate 0.50, sign p 1.000, mean d +0.040, missing 7 -> FAIL**
+
+- sensitivity (reported, not the claim): C1 with vacated ticks left out of the denominator: 14/14/1 (wins/losses/ties), untied win rate 0.50, sign p 1.000, mean d +0.031, missing 7
+- excursion only (n = 18; predicted tie): 8/7/0 (wins/losses/ties), untied win rate 0.53, sign p 1.000, mean d +0.031, missing 3
+- clean (n = 18; predicted tie): 6/11/0 (wins/losses/ties), untied win rate 0.35, sign p 0.332, mean d -0.040, missing 1
+- ours, lag-flagged (n = 20; predicted CT4 ahead): 4/10/1 (wins/losses/ties), untied win rate 0.29, sign p 0.180, mean d +0.012, missing 5
+- all layouts (n = 72): 28/32/1 (wins/losses/ties), untied win rate 0.47, sign p 0.699, mean d +0.016, missing 11
+
+## Against CT3 (right last, all layouts)
+
+- CT4 vs CT3: 41/18/2 (wins/losses/ties), untied win rate 0.69, sign p 0.004, mean d +0.197, missing 11
+- CT3F vs CT3: 33/11/17 (wins/losses/ties), untied win rate 0.75, sign p 0.001, mean d +0.181, missing 11
+- Gl vs CT3: 5/34/22 (wins/losses/ties), untied win rate 0.13, sign p 0.000, mean d -0.164, missing 11, ASYMMETRIC missing: ['sweet_328', 'sweet_085', 'sweet_002', 'sweet_003', 'sweet_004', 'sweet_015']
+- CT2 vs CT3: 5/32/24 (wins/losses/ties), untied win rate 0.14, sign p 0.000, mean d -0.165, missing 11
+
+## By flag cell: means over layouts
+
+| Cell | Arm | n | Right last | Capture (s) | Recall | Empty | Vacated ticks | Cut-ins | Strict share |
+|---|---|---|---|---|---|---|---|---|---|
+| clean | CT3 | 18 | 0.168 | 17.417 | 0.367 | 0.358 | 0 | 4.389 | 0.056 |
+| clean | CT3F | 18 | 0.485 | 2.806 | 0.644 | 0.252 | 6 | 3.500 | 0.167 |
+| clean | CT4 | 18 | 0.445 | 4.806 | 0.837 | 0.049 | 0 | 2.278 | 0.057 |
+| clean | Gl | 18 | 0.070 | 48.083 | 0.279 | 0.046 | 0 | 0.222 | 0.015 |
+| clean | CT2 | 18 | 0.097 | 24.917 | 0.344 | 0.248 | 0 | 1.889 | 0.015 |
+| clean | R1 | 18 | - | - | - | - | - | 8.278 | 0.053 |
+| lag only | CT3 | 18 | 0.254 | 14.250 | 0.354 | 0.281 | 19 | 7.667 | 0.064 |
+| lag only | CT3F | 18 | 0.447 | 5.056 | 0.593 | 0.135 | 21 | 5.333 | 0.099 |
+| lag only | CT4 | 18 | 0.415 | 6.028 | 0.804 | 0.033 | 0 | 3.944 | 0.062 |
+| lag only | Gl | 18 | 0.088 | 37.528 | 0.414 | 0.063 | 14 | 4.833 | 0.016 |
+| lag only | CT2 | 18 | 0.011 | 38.306 | 0.245 | 0.199 | 0 | 4.667 | 0.004 |
+| lag only | R1 | 18 | - | - | - | - | - | 4.500 | 0.021 |
+| excursion only | CT3 | 18 | 0.292 | 7.722 | 0.455 | 0.267 | 26 | 11.000 | 0.082 |
+| excursion only | CT3F | 18 | 0.325 | 8.694 | 0.510 | 0.147 | 4 | 6.556 | 0.095 |
+| excursion only | CT4 | 18 | 0.356 | 6.056 | 0.799 | 0.035 | 0 | 8.333 | 0.051 |
+| excursion only | Gl | 18 | 0.140 | 31.750 | 0.377 | 0.100 | 35 | 3.444 | 0.077 |
+| excursion only | CT2 | 18 | 0.089 | 18.306 | 0.402 | 0.230 | 26 | 7.722 | 0.026 |
+| excursion only | R1 | 18 | - | - | - | - | - | 11.667 | 0.040 |
+| both | CT3 | 18 | 0.249 | 12.111 | 0.421 | 0.298 | 0 | 9.722 | 0.034 |
+| both | CT3F | 18 | 0.412 | 5.028 | 0.595 | 0.218 | 51 | 9.389 | 0.068 |
+| both | CT4 | 18 | 0.530 | 6.472 | 0.866 | 0.022 | 0 | 1.556 | 0.073 |
+| both | Gl | 18 | 0.056 | 36.056 | 0.329 | 0.088 | 0 | 0.500 | 0.020 |
+| both | CT2 | 18 | 0.096 | 29.944 | 0.328 | 0.253 | 0 | 6.667 | 0.010 |
+| both | R1 | 18 | - | - | - | - | - | 11.278 | 0.016 |
+
+## Stated predictions: held or not
+
+- excursion only: a tie (untied win rate in 0.35-0.65): 0.53 -> held
+- clean: a tie (untied win rate in 0.35-0.65): 0.35 -> held
+- ours, lag-flagged: CT4 ahead (w > l): 4/10 -> NOT held
+- CT3F lower capture in every flag cell: NOT held (clean: CT4 4.806, CT3F 2.806; lag only: CT4 6.028, CT3F 5.056; excursion only: CT4 6.056, CT3F 8.694; both: CT4 6.472, CT3F 5.028)
+- CT4 higher recall in every flag cell: held (clean: CT4 0.837, CT3F 0.644; lag only: CT4 0.804, CT3F 0.593; excursion only: CT4 0.799, CT3F 0.510; both: CT4 0.866, CT3F 0.595)
+- CT4 lower empty in every flag cell: held (clean: CT4 0.049, CT3F 0.252; lag only: CT4 0.033, CT3F 0.135; excursion only: CT4 0.035, CT3F 0.147; both: CT4 0.022, CT3F 0.218)
+
+## "ours" layouts: time to a right roster after delivery, and share in line after the first service
+
+- CT3 (n = 40): right roster after a median 10.7 s (18 layouts; never in 22); share in line after the first service: frozen 0.128, strict 0.118
+- CT3F (n = 40): right roster after a median 4.0 s (29 layouts; never in 11); share in line after the first service: frozen 0.271, strict 0.226
+- CT4 (n = 40): right roster after a median 3.5 s (33 layouts; never in 7); share in line after the first service: frozen 0.169, strict 0.148
+- Gl (n = 40): right roster after a median 0.0 s (19 layouts; never in 21); share in line after the first service: frozen 0.056, strict 0.052
+- CT2 (n = 40): right roster after a median 0.5 s (11 layouts; never in 29); share in line after the first service: frozen 0.047, strict 0.039
+
+## Layouts and arms without a right-last value
+
+- sweet_328 CT2: no re-solves
+- sweet_328 CT3: no re-solves
+- sweet_328 CT3F: no re-solves
+- sweet_328 CT4: no re-solves
+- sweet_198 CT2: no re-solves
+- sweet_198 CT3: no re-solves
+- sweet_198 Gl: no re-solves
+- sweet_198 CT3F: no re-solves
+- sweet_198 CT4: no re-solves
+- sweet_085 CT2: no re-solves
+- sweet_085 CT3: no re-solves
+- sweet_085 CT3F: no re-solves
+- sweet_085 CT4: no re-solves
+- sweet_191 CT2: no re-solves
+- sweet_191 CT3: no re-solves
+- sweet_191 Gl: no re-solves
+- sweet_191 CT3F: no re-solves
+- sweet_191 CT4: no re-solves
+- sweet_369 CT2: no re-solves
+- sweet_369 CT3: no re-solves
+- sweet_369 Gl: no re-solves
+- sweet_369 CT3F: no re-solves
+- sweet_369 CT4: no re-solves
+- sweet_205 CT2: no re-solves
+- sweet_205 CT3: no re-solves
+- sweet_205 Gl: no re-solves
+- sweet_205 CT3F: no re-solves
+- sweet_205 CT4: no re-solves
+- sweet_002 CT2: no re-solves
+- sweet_002 CT3: no re-solves
+- sweet_002 CT3F: no re-solves
+- sweet_002 CT4: no re-solves
+- sweet_003 CT2: no re-solves
+- sweet_003 CT3: no re-solves
+- sweet_003 CT3F: no re-solves
+- sweet_003 CT4: no re-solves
+- sweet_161 CT2: no re-solves
+- sweet_161 CT3: no re-solves
+- sweet_161 Gl: no re-solves
+- sweet_161 CT3F: no re-solves
+- sweet_161 CT4: no re-solves
+- sweet_004 CT2: no re-solves
+- sweet_004 CT3: no re-solves
+- sweet_004 CT3F: no re-solves
+- sweet_004 CT4: no re-solves
+- sweet_015 CT2: no re-solves
+- sweet_015 CT3: no re-solves
+- sweet_015 CT3F: no re-solves
+- sweet_015 CT4: no re-solves
+
+## Mechanical checks (RUN_NOTE: these, not scores, may stop the next run)
+
+- CT2: 72 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 26; first answer not CT2's (uncached or another pose) 0
+- CT3: 72 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 45; first answer not CT2's (uncached or another pose) 0
+- Gl: 72 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 49; first answer not CT2's (uncached or another pose) 0
+- CT3F: 72 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 82; first answer not CT2's (uncached or another pose) 0
+- CT4: 72 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 0; first answer not CT2's (uncached or another pose) 0
+- R1: 72 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 0; first answer not CT2's (uncached or another pose) 0
+# exit 0

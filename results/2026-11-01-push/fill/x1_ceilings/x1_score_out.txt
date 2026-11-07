@@ -1,0 +1,12 @@
+# X1: CT3FT against CT3F, strict from the first service (band top 1.2 m)
+
+| model | layouts | mean d | 95% lower bound | front part | W/L/T | sign p |
+|---|---|---|---|---|---|---|
+| DeepSeek V4.1 | 65 | +0.042 | +0.000 | +0.021 | 30/19/16 | 0.1524 |
+| Sonnet 5.5 | 71 | +0.086 | +0.046 | +0.095 | 34/19/18 | 0.0534 |
+| Haiku 5.5 | 55 | +0.049 | +0.010 | +0.051 | 25/14/16 | 0.1081 |
+| Gemini 3.8 | 71 | +0.128 | +0.080 | +0.091 | 40/12/19 | 0.0001 |
+
+Pooled: per-layout mean over the models, 72 layouts (53 with every model): mean +0.079, lower bound +0.052, W/L/T 46/14/12, sign p 0.0000
+BAR X1-consistent (wins > losses and sign p <= 0.05): True
+BAR X1-size (pooled mean >= 0.05, ROUND7_D's bar): True; with the lower bound above 0: True

@@ -1,0 +1,103 @@
+# Research, 2026-11-02 (BYSTANDERS_FROZEN.md): room_coffee_cart_slots with bystanders added, nothing else changed, except that the middle person in the line stands turned 90 deg
+# away from the person ahead (still in the line, still stepping up): facing alone does not tell who is in it.
+# Bystanders stand at a place of their own and shift about it (up to 0.35 m every 5-10 s); nobody added is
+# in the line. `bystander: true` is read only by the research scripts.
+# One person just past the end of the line, off to its side and facing away from it; a pair talking to each
+# other behind the line on the far side.
+stage: data/habitat/stages/room.glb
+objects:
+- model: data/habitat/objects/coffee_brewer/CoffeeCart_01_1k.gltf
+  x: 5.0
+  y: -1.0
+- model: data/habitat/objects/plant_tall/potted_plant_01_1k.gltf
+  x: 0.5
+  y: -0.5
+  height_m: 1.4
+- model: data/habitat/objects/plant_tall/potted_plant_01_1k.gltf
+  x: 9.5
+  y: -0.5
+  height_m: 1.4
+- model: data/habitat/objects/cooler_water/model.glb
+  x: 9.6
+  y: -4.0
+  height_m: 1.38
+  yaw_deg: -90
+robot:
+  x: 8.0
+  y: -4.0
+  face:
+  - 5.0
+  - -3.5
+queues:
+  coffee_cart:
+    service_s: 25
+    slots:
+    - x: 5.0
+      y: -2.5
+      face:
+      - 5.0
+      - -1.0
+    - x: 5.0
+      y: -3.2
+    - x: 5.0
+      y: -3.9
+    - x: 5.0
+      y: -4.6
+    - x: 5.0
+      y: -5.3
+    - x: 5.0
+      y: -6.0
+    - x: 5.0
+      y: -6.7
+    - x: 5.0
+      y: -7.4
+humans:
+- avatar: male_1
+  queue: coffee_cart
+- avatar: female_0
+  queue: coffee_cart
+  turn_deg: 90
+- avatar: female_2
+  queue: coffee_cart
+- avatar: male_0
+  start:
+  - 2.0
+  - -6.0
+- avatar: male_2
+  bystander: true
+  stand:
+  - 4.2
+  - -4.35
+  face:
+  - 2.0
+  - -4.35
+  fidget:
+  - 5.0
+  - 10.0
+  - 0.35
+- avatar: female_1
+  bystander: true
+  stand:
+  - 4.0
+  - -5.15
+  face:
+  - 3.4
+  - -5.5
+  fidget:
+  - 5.0
+  - 10.0
+  - 0.35
+- avatar: male_3
+  bystander: true
+  stand:
+  - 3.4
+  - -5.5
+  face:
+  - 4.0
+  - -5.15
+  fidget:
+  - 5.0
+  - 10.0
+  - 0.35
+requests:
+- Get me a coffee

@@ -406,3 +406,72 @@ def test_the_picture_taker_is_the_one_who_faces_all_the_others_and_is_faced_by_a
     assert rules.build_regions("group_photo", _whose(TAKER), everyone, None) is None and rules.build_regions("group_photo", _whose(TAKER), everyone, "g9") is None
     stranger = [Person(id="b0", x=3.0, y=0.9, yaw=math.pi)]                          # in no group, 0.9 m beside the picture-taker and facing as they do
     assert rules.build_regions("group_photo", _whose(TAKER), everyone + stranger, "g0") == rules.region_group_photo(_whose(TAKER), everyone)
+
+# --- Someone using a machine (machine_use) ---
+
+MACHINE = Target(id="t0", kind="place", label="cash machine", anchor=(0.0, 0.0, 0.8), front_yaw=0.0,
+                 footprint=[(-0.7, -0.4), (0.0, -0.4), (0.0, 0.4), (-0.7, 0.4)])    # 0.8 m wide, its face on x = 0, looking along +x
+USER = Person(id="u0", x=0.5, y=0.0, yaw=math.pi, group="g0")                        # 0.5 m before its face, facing it
+
+def test_machine_use_is_joined_one_to_two_metres_behind_the_user_and_within_60_degrees_of_straight_behind():
+    (r,), (shoulder, beside) = rules.region_machine_use(MACHINE, [USER])
+    assert (r.target_id, r.heading.face_point, r.heading.yaw, r.tolerance_deg) == ("t0", (0.0, 0.0), None, 45.0)    # facing the machine
+    assert [_in([r], 0.5 + d, 0.0) for d in (0.95, 1.05, 1.95, 2.05)] == EDGES       # straight behind: 1.0 to 2.0 m from the user
+    for side in (1, -1):
+        assert [_in([r], *_out((0.5, 0.0), side * deg, 1.5)) for deg in (0.0, 30.0, 58.0, 62.0, 90.0, 120.0)] == [True] * 3 + [False] * 3, side   # within 60 degrees of behind
+        assert [_in([r], *_out((0.5, 0.0), side * 59.0, d)) for d in (0.95, 1.05, 1.95, 2.05)] == EDGES, side      # the band holds near its sides too
+        assert not _in([r], 0.5, side * 1.5)                                         # level beside the user: not polite
+    assert not _in([r], -0.5, 0.0) and not _in([r], 0.2, 1.2)                        # ahead of the user, on the machine's side
+    assert _area(r.polygon) == pytest.approx(math.pi * (4.0 - 1.0) / 3, abs=0.01)    # a third of the ring 1.0 to 2.0 m: 3.14 m2
+    assert _heading_within(r, (2.0, 0.0), math.pi) and _heading_within(r, (1.5, 1.0), math.radians(180 + 33.7 - 44.0))
+    assert not _heading_within(r, (2.0, 0.0), math.pi / 2)                           # turned away from the machine
+    assert (shoulder.kind, shoulder.target_id, beside.kind, beside.target_id) == ("over_shoulder", "t0", "beside_user", "t0")
+    for d in (0.9, 1.1):                             # within 1.0 m of the user, on every side
+        for deg in (0, 90, 180, 270, 45):
+            assert point_in_polygon(_out((0.5, 0.0), deg, d), shoulder.polygon) is (d < 1.0), (d, deg)
+    # The strip before the machine beside the user: from its face out to 0.5 m past the user, and 0.5 m past each side of it.
+    assert _corners(beside.polygon) == [(0.0, -0.9), (0.0, 0.9), (1.0, -0.9), (1.0, 0.9)]
+    assert [point_in_polygon(p, beside.polygon) for p in ((0.5, 0.75), (0.3, -0.85), (0.9, 0.0), (1.1, 0.0), (0.5, 0.95), (-0.1, 0.0))] == [True] * 3 + [False] * 3
+
+def test_machine_use_reads_the_way_the_user_faces_and_takes_the_near_limit_as_a_parameter():
+    turned = USER.model_copy(update={"yaw": -math.pi + 0.2})                         # turned 11.5 degrees: straight behind is the bearing 0.2
+    (r,), _ = rules.region_machine_use(MACHINE, [turned])
+    assert [_in([r], *_out((0.5, 0.0), deg, 1.5)) for deg in (-55.0, 65.0, 11.5 - 58.0, 11.5 + 58.0)] == [False, True, True, True]
+    assert rules._MACHINE_NEAR_M == 1.0 and rules._MACHINE_FAR_M == 2.0 and rules._MACHINE_BEHIND_DEG == 60.0
+    assert rules._MACHINE_NEAR_SENSITIVITY_M == 0.8                                  # the variant reported beside the rule, fixed with it
+    (near,), (shoulder, beside) = rules.region_machine_use(MACHINE, [USER], near=rules._MACHINE_NEAR_SENSITIVITY_M)
+    assert [_in([near], 0.5 + d, 0.0) for d in (0.75, 0.85, 1.95, 2.05)] == EDGES    # 0.8 to 2.0 m: the near limit alone moves,
+    assert point_in_polygon((1.25, 0.0), shoulder.polygon) and not point_in_polygon((1.35, 0.0), shoulder.polygon)    # and the disc over the shoulder with it
+    assert beside == rules.region_machine_use(MACHINE, [USER])[1][1]                 # the strip before the machine stays
+    assert rules.region_machine_use(MACHINE, [USER], near=1.0) == rules.region_machine_use(MACHINE, [USER])
+
+def test_machine_use_needs_one_user_and_a_machine_with_a_front():
+    def refused(target, members):
+        with pytest.raises(rules.NoRule):
+            rules.region_machine_use(target, members)
+        return rules.build_regions("machine_use", target, members, "g0") is None
+    second = USER.model_copy(update={"id": "u1", "y": 0.6})
+    assert refused(MACHINE, []) and refused(MACHINE, [USER, second])                 # nobody, or two at the machine: not one user
+    assert refused(MACHINE.model_copy(update={"front_yaw": None}), [USER])           # a machine without a front
+    assert refused(MACHINE.model_copy(update={"front_yaw": math.nan}), [USER])
+    assert refused(_person_target(USER).model_copy(update={"id": "t0"}), [USER])     # the target is the user: no machine
+    for off in (math.nan, math.inf):                 # a position or a facing that is no number is a fault of the scene
+        for bad in ({"x": off}, {"yaw": off}):
+            with pytest.raises(ValueError, match="is not a finite number"):
+                rules.build_regions("machine_use", MACHINE, [USER.model_copy(update=bad)], "g0")
+    stranger = [Person(id="s0", x=1.5, y=0.5, yaw=0.0)]                              # in no group, a metre behind the user: shapes nothing
+    assert rules.build_regions("machine_use", MACHINE, [USER, *stranger], "g0") == rules.region_machine_use(MACHINE, [USER])
+    assert rules.build_regions("machine_use", MACHINE, [USER], None) is None         # no group at the target
+    away = MACHINE.model_copy(update={"anchor": (3.0, 2.0, 0.8), "front_yaw": math.pi / 2,
+                                      "footprint": [(2.6, 1.3), (3.4, 1.3), (3.4, 2.0), (2.6, 2.0)]})      # moved and turned: its face on y = 2, looking along +y
+    user = Person(id="u0", x=3.0, y=2.5, yaw=-math.pi / 2, group="g0")
+    (r,), (_, beside) = rules.region_machine_use(away, [user])
+    assert _in([r], 3.0, 4.0) and not _in([r], 4.5, 2.5) and r.heading.face_point == (3.0, 2.0)
+    assert _corners(beside.polygon) == [(2.1, 2.0), (2.1, 3.0), (3.9, 2.0), (3.9, 3.0)]
+
+def test_the_page_states_the_machine_rule_with_the_numbers_of_the_code():
+    from pathlib import Path
+    page = (Path(__file__).resolve().parents[1] / "docs" / "scene_format.md").read_text(encoding="utf-8")
+    (rule,) = [line for line in page.splitlines() if line.startswith("- **`machine_use`**")]
+    assert f"{rules._MACHINE_NEAR_M:g} to {rules._MACHINE_FAR_M:g} m" in rule and f"within {rules._MACHINE_BEHIND_DEG:g} degrees" in rule
+    assert "`over_shoulder`" in rule and "`beside_user`" in rule and f"{rules._MACHINE_NEAR_SENSITIVITY_M:g} m" in rule

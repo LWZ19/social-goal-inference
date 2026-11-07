@@ -1,0 +1,13 @@
+I14 v0 POST-HOC sensitivity (NOT pre-registered): R5 and AR over the whole room (all F cells), success at 45 deg,
+face-target heading for the drawn cells; exact hypergeometric expectations. Primary cells only.
+replica vs package on sampled F cells: 80316 checked, 0 disagree.
+
+cell                    n  top1  any5  gain | R5 room AR room AR recov | sigma_room Lift_room(succ)
+old qwen38_low        143   134   134    +0 |    42.7   134.8      nan |     0.0702           13.36
+old glm53             141    96    99    +3 |    40.1   102.8     226% |     0.0669           10.17
+old dsv41             157   109   123   +14 |    42.8   117.0      57% |     0.0636           10.91
+watch qwen38_low       36    32    35    +3 |    20.8    34.3      77% |     0.1608            5.53
+watch glm53            36    23    29    +6 |    19.3    28.6      94% |     0.1486            4.30
+watch dsv41            36    23    33   +10 |    20.7    29.9      69% |     0.1601            3.99
+
+recov = (AR room any-of-5 - top-1) / (solver any-of-5 - top-1). Compare tables.txt T4 (disc).

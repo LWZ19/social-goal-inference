@@ -1,0 +1,5 @@
+d1 0
+removed 6
+d2 0
+d3_lock_exit 9
+done

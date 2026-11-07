@@ -1,0 +1,27 @@
+I06 byte-identity proof: base scenes written by generate._write_scene in a process with only the package loaded (package) and in a process with the builder loaded that builds variants between base rows (builder).
+seed 0 eval_00_no_one_place: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_01_no_one_place: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_02_no_one_place: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_03_no_one_deep_place: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_04_no_one_object: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_05_no_one_person: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_06_waiting_line_1: 11 files; package vs builder sha256 ALL EQUAL
+seed 0 eval_07_waiting_line_2: 11 files; package vs builder sha256 ALL EQUAL (one of the two scenes named for the proof)
+seed 1 eval_14_audience_3: 11 files; package vs builder sha256 ALL EQUAL
+seed 1 eval_15_audience_5: 11 files; package vs builder sha256 ALL EQUAL (one of the two scenes named for the proof)
+variants built in the builder run between seed 0's rows (kept ones on disk): ['i06_s0_A6_eval_06_waiting_line_1', 'i06_s0_D2_eval_06_waiting_line_1']
+variants built in the builder run between seed 1's rows (kept ones on disk): none kept
+
+Against the whitelisted copies (H.fingerprint, the sha256 of a folder's file paths and bytes):
+  seed 0 eval_06_waiting_line_1: package 705ebe4a81885166..., whitelisted (eval/eval_06_waiting_line_1) 705ebe4a81885166...: IDENTICAL
+  seed 0 eval_07_waiting_line_2: package 152b1bc8e41f4579..., whitelisted (eval/eval_07_waiting_line_2) 152b1bc8e41f4579...: IDENTICAL
+  seed 1 eval_14_audience_3: package b5ac59455e2776b1..., whitelisted (scenes/eval_14_audience_3) b5ac59455e2776b1...: IDENTICAL
+  seed 1 eval_15_audience_5: package 894cd1e61bbd3cd4..., whitelisted (scenes/eval_15_audience_5) 894cd1e61bbd3cd4...: IDENTICAL
+
+Level-0 base scenes in scenes/ (written without a tour) against the package-written scene:
+  seed 0 eval_06_waiting_line_1: rgb.png and depth.npy bytes equal; scene.json equal apart from the tour entries and tour_frames: True
+  seed 0 eval_07_waiting_line_2: rgb.png and depth.npy bytes equal; scene.json equal apart from the tour entries and tour_frames: True
+  seed 1 eval_14_audience_3: rgb.png and depth.npy bytes equal; scene.json equal apart from the tour entries and tour_frames: True
+  seed 1 eval_15_audience_5: rgb.png and depth.npy bytes equal; scene.json equal apart from the tour entries and tour_frames: True
+
+RESULT: PASS

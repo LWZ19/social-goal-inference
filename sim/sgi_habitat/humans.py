@@ -13,7 +13,7 @@ import random
 from dataclasses import dataclass, field
 from pathlib import Path
 from types import SimpleNamespace
-from typing import List, Optional, Sequence
+from typing import List, Optional, Sequence, Tuple
 
 import habitat_sim
 import magnum as mn
@@ -43,6 +43,8 @@ class Queue:
     service_s: Optional[float] = 20.0              # None: nobody is ever served
     members: List["Human"] = field(default_factory=list)      # in line order: the first is served next
     since_served: float = 0.0
+    service_range: Optional[Tuple[float, float]] = None    # set: each service takes a time drawn from this range
+    step_lag: Optional[Tuple[float, float]] = None   # set: a member waits this long (drawn) before stepping up
 
     def slot_of(self, human: "Human") -> Optional[Slot]:
         return self.slots[min(self.members.index(human), len(self.slots) - 1)] if human in self.members else None
@@ -55,7 +57,8 @@ class Queue:
         if self.service_s is None:                 # nobody is ever served: the line stands still
             return
         front = self.members[0] if self.members else None
-        if front is None or not front.settled:
+        lagging = self.step_lag is not None and getattr(front, "_idx", 0) not in (None, 0)    # not at the front yet
+        if front is None or not front.settled or lagging:
             self.since_served = 0.0
             return
         self.since_served += dt
@@ -63,6 +66,8 @@ class Queue:
             self.since_served = 0.0
             self.members.pop(0)
             front.leave_queue(rng.uniform(8.0, 15.0))
+            if self.service_range is not None:
+                self.service_s = rng.uniform(*self.service_range)
 
 
 class Human:
@@ -85,6 +90,15 @@ class Human:
         self.yielded_s = 0.0
         self.settled = False                       # at the end of its path and facing what it should
         self.wander_area: Optional[tuple] = None   # (x0, x1, y0, y1): where wander goals are taken; None: anywhere
+        self.fidget: Optional[tuple] = None        # (min_s, max_s, radius_m): standing at home, shift about now and then
+        self.fidget_s = 0.0                        # until the next shift
+        self.anchor: Optional[Slot] = None         # the home the shifts are taken around
+        self.turn_rad = 0.0                        # added to every heading turned to: faces a little away from the point
+        self.lazy = False                          # with the queue's step_lag: steps up only once two places are free
+        self._idx: Optional[int] = None            # with step_lag: the place in line it stands at (it may lag)
+        self._hold: Optional[float] = None         # with step_lag: until it steps up
+        self.excursion: Optional[dict] = None      # standing: one walk part way to a point and back (see run.py)
+        self.clock = 0.0                           # time since the start, kept only for an excursion
 
     # --- where it is ------------------------------------------------------------------------------------------
     def place(self, x: float, y: float, yaw: float) -> None:
@@ -133,7 +147,16 @@ class Human:
             self.wander_after_s -= dt
             if self.wander_after_s <= 0:
                 self.queue.join(self)
-        slot = self.home if self.queue is None else self.queue.slot_of(self)
+        self._excursion_step(dt, others)
+        if (self.queue is None and self.fidget is not None and self.anchor is not None and self.settled and not self.path
+                and (self.excursion is None or self.excursion["phase"] != "out")):
+            self.fidget_s -= dt
+            if self.fidget_s <= 0:
+                lo, hi, radius = self.fidget
+                angle, r = rng.uniform(-math.pi, math.pi), rng.uniform(0.0, radius)
+                self.home = Slot(self.anchor.x + r * math.cos(angle), self.anchor.y + r * math.sin(angle), self.anchor.face)
+                self.fidget_s, self.settled = rng.uniform(lo, hi), False
+        slot = self.home if self.queue is None else self._queue_slot(dt, rng)
         if slot is not None:
             here = self.world_xy
             if math.hypot(here[0] - slot.x, here[1] - slot.y) > ARRIVED_M + 0.1 and not self.path:
@@ -147,6 +170,57 @@ class Human:
             if self.wait_s <= 0:
                 self._new_wander_goal(rng, island)
         self._walk(dt, others)
+
+    def _queue_slot(self, dt: float, rng: random.Random) -> Optional[Slot]:
+        """The slot to stand at. With the queue's `step_lag`, a member who could step up waits a drawn time first
+        (a lazy one also waits until two places are free, unless it is first), and never steps past the place of
+        the person ahead, so a lag holds up everyone behind."""
+        slot = self.queue.slot_of(self)
+        lag = self.queue.step_lag
+        if lag is None or slot is None:
+            return slot
+        members = self.queue.members
+        idx = members.index(self)
+        if idx > 0:                                # not past the person ahead, who may be lagging
+            ahead = getattr(members[idx - 1], "_idx", None)
+            idx = max(idx, ahead + 1) if ahead is not None else idx
+        if self._idx is None or idx >= self._idx:  # joined, or no place freed ahead
+            self._idx, self._hold = idx, None
+            return self.queue.slots[min(idx, len(self.queue.slots) - 1)]
+        here = self.queue.slots[min(self._idx, len(self.queue.slots) - 1)]
+        if self.lazy and self._idx - idx < 2 and idx > 0:
+            return here
+        if self._hold is None:
+            self._hold = rng.uniform(*lag)
+        self._hold -= dt
+        if self._hold > 0:
+            return here
+        self._idx, self._hold = idx, None
+        return self.queue.slots[min(idx, len(self.queue.slots) - 1)]
+
+    def _excursion_step(self, dt: float, others: Sequence[np.ndarray]) -> None:
+        """A standing person's one excursion: at `at` s, walk up to `dist` m towards `toward` (stopping 0.5 m short
+        of anyone), stand there `hold` s facing it, and go back to their place."""
+        ex = self.excursion
+        if ex is None or self.anchor is None:
+            return
+        self.clock += dt
+        if ex["phase"] == "before" and self.clock >= ex["at"]:
+            ax, ay = self.anchor.x, self.anchor.y
+            tx, ty = ex["toward"]
+            length = math.hypot(tx - ax, ty - ay) or 1.0
+            near = [to_world(o, self.floor_y)[:2] for o in others]
+            for step in np.arange(min(ex["dist"], length - 0.5), 0.0, -0.05):
+                x, y = ax + step * (tx - ax) / length, ay + step * (ty - ay) / length
+                if all(math.hypot(x - ox, y - oy) >= 0.5 for ox, oy in near):
+                    self.home = Slot(x, y, (tx, ty))
+                    break
+            self.settled, ex["phase"], ex["back_at"] = False, "out", None
+        elif ex["phase"] == "out" and self.settled and not self.path:
+            if ex["back_at"] is None:
+                ex["back_at"] = self.clock + ex["hold"]
+            elif self.clock >= ex["back_at"]:
+                self.home, self.settled, ex["phase"] = self.anchor, False, "done"
 
     def _goal_moved(self, slot: Slot) -> bool:
         x, y, _ = to_world(self.path[-1], self.floor_y)
@@ -192,7 +266,7 @@ class Human:
                 self._keep_on_navmesh()
         elif self.face is not None:
             x, y, _ = to_world(me, self.floor_y)
-            wanted = math.atan2(self.face[1] - y, self.face[0] - x)
+            wanted = math.atan2(self.face[1] - y, self.face[0] - x) + self.turn_rad
             error = (wanted - self.yaw + math.pi) % (2 * math.pi) - math.pi
             if abs(error) > FACING_RAD:
                 ctrl.calculate_turn_pose(mn.Vector3(*heading_hab(wanted)))

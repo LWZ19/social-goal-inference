@@ -1,0 +1,15 @@
+# Right last while in line, split by the sim's last (sweep/confirm_selection.json; exploratory)
+
+## runs_confirm4/dsv41
+
+| arm | sim's last is a person: n, right | sim's last is none: n, right | arm says none when a person is ahead |
+|---|---|---|---|
+| CT3F | 2306, 0.732 | 1197, 0.517 | 0.011 |
+| CT4PJ | 2040, 0.712 | 904, 0.217 | 0.017 |
+
+## runs_confirm4/sonnet55_low
+
+| arm | sim's last is a person: n, right | sim's last is none: n, right | arm says none when a person is ahead |
+|---|---|---|---|
+| CT3F | 3337, 0.720 | 1030, 0.658 | 0.000 |
+| CT4PJ | 2422, 0.643 | 708, 0.251 | 0.000 |

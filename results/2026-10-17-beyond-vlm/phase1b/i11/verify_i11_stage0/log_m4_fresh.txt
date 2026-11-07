@@ -1,0 +1,7 @@
+M4 fresh: 260 scenes, 260 targets, 30 s
+  G1 person  n= 70 medIoU 1.000 IoU>=.5 70 IoU>=.7 70 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 1.000
+  G1 parcel  n= 10 medIoU 0.311 IoU>=.5 0 IoU>=.7 0 merged 10 merged_other 0 (union 0) split 0 structure 0 medPur 0.311
+  G1 place   n=180 medIoU 0.902 IoU>=.5 174 IoU>=.7 103 merged 0 merged_other 0 (union 0) split 6 structure 0 medPur 1.000
+  G2 person  n= 70 medIoU 1.000 IoU>=.5 70 IoU>=.7 70 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 1.000
+  G2 parcel  n= 10 medIoU 0.314 IoU>=.5 0 IoU>=.7 0 merged 10 merged_other 0 (union 0) split 0 structure 0 medPur 0.314
+  G2 place   n=180 medIoU 0.991 IoU>=.5 176 IoU>=.7 157 merged 0 merged_other 0 (union 0) split 4 structure 0 medPur 1.000

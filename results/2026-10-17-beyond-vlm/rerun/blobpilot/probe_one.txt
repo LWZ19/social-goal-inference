@@ -1,0 +1,17 @@
+real_eval_12_conversation_group_4 load 2.3s (480, 640) float32 cam z 1.50 tour 8
+    p0 4.49 -4.46 -1.52 g0 None
+    p1 3.77 -5.39 0.05 g0 None
+    p2 4.82 -6.1 1.89 g0 None
+    p3 5.48 -5.06 -2.92 g0 None
+    p4 -2.45 -8.61 1.89 g1 None
+    p5 -2.84 -7.5 -1.12 g1 None
+    p6 0.2 -0.89 2.22 None None
+    s0 9.73 -9.2 1.74 None staff
+   targets [('t0', 'person', 'p0')]
+staffed_eval_06_waiting_line_1 load 0.5s (480, 640) float32 cam z 1.50 tour 8
+    p0 0.75 0.09 -1.15 g0 None
+    s0 7.79 1.99 -2.64 None staff
+   targets [('t0', 'place', None)]
+eval_06_waiting_line_1 load 0.4s (480, 640) float32 cam z 1.50 tour 8
+    p0 0.75 0.09 -1.15 g0 None
+   targets [('t0', 'place', None)]

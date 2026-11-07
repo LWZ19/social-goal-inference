@@ -1,0 +1,2 @@
+S0 fit: 29 worked-example scenes
+{'episodes': 58, 'right': 58, 's object': 58, 'T1': 0, 'T2': 6, 'V1 moves': 0, 'V2 moves': 58, 'V2 breaks': 0}

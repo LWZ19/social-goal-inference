@@ -1,0 +1,15 @@
+E1a: A1 detector people on the 13 Habitat sim-benchmark first frames, against truth.json
+  apt_0_kitchen        visible  4  A1 people  4  matched  4
+  cafe_busy            visible  4  A1 people  4  matched  4
+  cafe_line0           visible  2  A1 people  2  matched  2
+  cafe_line2           visible  4  A1 people  4  matched  4
+  cafe_line6           visible  6  A1 people  6  matched  6
+  cafe_line_side       visible  4  A1 people  4  matched  4
+  concert_crowded      visible 25  A1 people 26  matched 25
+  concert_sparse       visible  4  A1 people  4  matched  4
+  room_coffee_cart     visible  4  A1 people  4  matched  4
+  sweet_spot_cafe      visible  5  A1 people  5  matched  5
+  sweet_spot_line0     visible  2  A1 people  3  matched  2
+  sweet_spot_line2     visible  4  A1 people  4  matched  4
+  sweet_spot_line6     visible  7  A1 people  7  matched  7
+A1: recall 75/75 = 1.000; false people 1 (0.08 per image); median xy error 0.077 m; queue members facing within 45 deg 34/34

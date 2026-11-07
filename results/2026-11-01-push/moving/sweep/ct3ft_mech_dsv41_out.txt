@@ -1,0 +1,13 @@
+groups 72, arms ['CT3FT']
+
+first-answer status by arm:
+  CT3FT no_target: 5
+  CT3FT ok: 67
+
+re-solve status by arm:
+  CT3FT ok: 9537
+
+re-solves per episode (min / median / max):
+  CT3FT 0 / 146 / 156
+
+faults: none

@@ -1,0 +1,8 @@
+00:14:07 model soclaas_dsv41: 1 groups x 2 arms, 1 workers
+00:14:07 w0 serve C pid 75602 port 8960
+00:14:07 w0 serve R pid 75603 port 8961
+00:15:44 w0 pilot3/cafe_1090 seed28277 CT3FT: exit 0 in 95 s | [exp] cafe_1090 CT3FT seed 28277: in line at end False, share 0.46, first 24.97, cut-in samples 5, calls 4, resolves 153
+00:17:20 w0 pilot3/cafe_1090 seed28277 CT3F: exit 0 in 96 s | [exp] cafe_1090 CT3F seed 28277: in line at end False, share 0.00, first None, cut-in samples 74, calls 4, resolves 153
+00:17:20 w0 serve C pid 75602 stopped
+00:17:20 w0 serve R pid 75603 stopped
+00:17:20 done

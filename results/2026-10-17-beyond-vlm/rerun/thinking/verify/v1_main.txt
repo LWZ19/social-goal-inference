@@ -1,0 +1,124 @@
+== reasoning_effort seen in calls, trials, n records
+s8_convlm_qwen38 n 84 succ 65 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'none'): 84, ('context', 'none'): 84, ('people', 'none'): 42, ('constraints', 'none'): 42}
+s8_none_qwen38 n 84 succ 43 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'none'): 84, ('context', 'none'): 84}
+s8_conorc_qwen38 n 84 succ 67 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'none'): 84, ('context', 'none'): 84, ('constraints', 'none'): 42}
+s10_qwen38_none_con n 28 succ 21 trials {0: 28} effort {('plan', 'none'): 28, ('context', 'none'): 28, ('people', 'none'): 13, ('constraints', 'none'): 13}
+s10_qwen38_low_con n 28 succ 27 trials {0: 28} effort {('plan', 'low'): 28, ('context', 'low'): 28, ('people', 'low'): 15, ('constraints', 'low'): 15}
+s10_qwen38_medium_con n 28 succ 26 trials {0: 28} effort {('plan', 'medium'): 28, ('context', 'medium'): 28, ('people', 'medium'): 15, ('constraints', 'medium'): 15}
+s19_ph_qwen38_low_con n 84 succ 79 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 48, ('constraints', 'low'): 48}
+s19_real_qwen38_low_con n 84 succ 81 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 48, ('constraints', 'low'): 48}
+s19_staffed_qwen38_low_con n 84 succ 76 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 47, ('constraints', 'low'): 47}
+s19_plain_qwen38_low_con n 84 succ 77 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 48, ('constraints', 'low'): 48}
+s21_real_qwen38_low_con n 84 succ 79 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 48, ('constraints', 'low'): 48}
+s21_staffed_qwen38_low_con n 84 succ 76 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 48, ('constraints', 'low'): 48}
+s21_plain_qwen38_low_con n 84 succ 73 trials {0: 28, 1: 28, 2: 28} effort {('plan', 'low'): 84, ('context', 'low'): 84, ('people', 'low'): 48, ('constraints', 'low'): 48}
+
+== reasoning_tokens field across listed runs: by (stage, model) non-null count, >0 count, sum rt / sum out
+('s10', 'qwen3.8:27b') calls 676 nonnull 0 pos 0 rt/out 0.000
+('s10', 'x-test-1') calls 452 nonnull 452 pos 123 rt/out 0.094
+('s16b', 'qwen3.8:27b') calls 1726 nonnull 0 pos 0 rt/out 0.000
+('s16b', 'x-test-1') calls 1714 nonnull 1714 pos 0 rt/out 0.000
+('s17', 'qwen3.8:27b') calls 360 nonnull 0 pos 0 rt/out 0.000
+('s17', 'x-test-1') calls 360 nonnull 360 pos 0 rt/out 0.000
+('s19', 'qwen3.8:27b') calls 1270 nonnull 0 pos 0 rt/out 0.000
+('s19', 'x-test-1') calls 1262 nonnull 1262 pos 0 rt/out 0.000
+('s20', 'x-test-2') calls 3396 nonnull 3396 pos 0 rt/out 0.000
+('s21', 'qwen3.8:27b') calls 2088 nonnull 0 pos 0 rt/out 0.000
+('s22', 'qwen3.8:27b') calls 2588 nonnull 0 pos 0 rt/out 0.000
+('s23', 'claude-haiku-5-5') calls 2096 nonnull 2096 pos 0 rt/out 0.000
+('s23', 'claude-sonnet-5-5') calls 2084 nonnull 2084 pos 0 rt/out 0.000
+('s23', 'gemini-3.8-flash') calls 2052 nonnull 2052 pos 925 rt/out 0.620
+('s23', 'x-test-1') calls 2076 nonnull 2076 pos 0 rt/out 0.000
+('s23', 'x-test-2') calls 2116 nonnull 2116 pos 0 rt/out 0.000
+('s8', 'ornith1.5:35b') calls 630 nonnull 0 pos 0 rt/out 0.000
+('s8', 'qwen3-vl:32b') calls 630 nonnull 0 pos 0 rt/out 0.000
+('s8', 'qwen3.6:35b') calls 636 nonnull 292 pos 0 rt/out 0.000
+('s8', 'qwen3.8:27b') calls 630 nonnull 0 pos 0 rt/out 0.000
+('s8', 'x-test-1') calls 633 nonnull 633 pos 0 rt/out 0.000
+qwen3.8 calls total 9338 nonnull reasoning_tokens 0
+raw_text with <think in qwen runs examined: 0
+
+== T1 chars/token calibration at effort none (all calls, unique by (stage, raw_text, out))
+s8_convlm {'plan': '3.52 c/t n=84', 'context': '3.68 c/t n=57', 'people': '2.56 c/t n=24', 'constraints': '3.71 c/t n=42'}
+s10_none {'plan': '3.55 c/t n=28', 'context': '3.73 c/t n=21', 'people': '2.53 c/t n=8', 'constraints': '3.69 c/t n=13'}
+s8+s10none {'plan': '3.52 c/t n=84', 'context': '3.68 c/t n=57', 'people': '2.56 c/t n=24', 'constraints': '3.71 c/t n=42'}
+
+== T1 hidden share = 1 - sum(len/cpt)/sum(out), unique calls, calibration s8_convlm (and s10_none)
+s10_low plan n=28 share 55.6% (s10cal 55.9%) IQR 50-60% p10-p90 45-63% | context n=27 share 82.2% (s10cal 82.5%) IQR 78-91% p10-p90 71-93% | people n=8 share 74.7% (s10cal 74.3%) IQR 67-78% p10-p90 61-80% | constraints n=15 share 82.7% (s10cal 82.6%) IQR 78-83% p10-p90 76-87%
+s10_medium plan n=28 share 53.9% (s10cal 54.3%) IQR 45-59% p10-p90 38-64% | context n=28 share 83.6% (s10cal 83.8%) IQR 76-91% p10-p90 73-95% | people n=8 share 69.8% (s10cal 69.4%) IQR 61-74% p10-p90 54-78% | constraints n=15 share 78.8% (s10cal 78.7%) IQR 70-81% p10-p90 69-83%
+s19_ph plan n=84 share 56.9% (s10cal 57.2%) IQR 51-61% p10-p90 47-63% | context n=79 share 83.3% (s10cal 83.5%) IQR 78-91% p10-p90 74-94% | people n=24 share 73.9% (s10cal 73.5%) IQR 67-78% p10-p90 62-80% | constraints n=48 share 83.2% (s10cal 83.1%) IQR 78-86% p10-p90 75-88%
+s19_realistic plan n=252 share 57.6% (s10cal 58.0%) IQR 51-61% p10-p90 47-66% | context n=242 share 85.1% (s10cal 85.3%) IQR 79-93% p10-p90 75-96% | people n=72 share 73.1% (s10cal 72.7%) IQR 68-78% p10-p90 66-81% | constraints n=143 share 83.8% (s10cal 83.6%) IQR 79-86% p10-p90 75-89%
+s21_realistic plan n=252 share 58.0% (s10cal 58.3%) IQR 52-61% p10-p90 48-66% | context n=241 share 84.1% (s10cal 84.4%) IQR 79-92% p10-p90 75-95% | people n=72 share 73.1% (s10cal 72.7%) IQR 68-78% p10-p90 66-81% | constraints n=144 share 83.2% (s10cal 83.1%) IQR 79-86% p10-p90 74-89%
+
+== T1 alt: chars/4 estimator
+s10_low people 83.8% constraints 83.9%
+s10_medium people 80.6% constraints 80.4%
+s19_ph people 83.3% constraints 84.4%
+s19_realistic people 82.8% constraints 84.9%
+s21_realistic people 82.8% constraints 84.5%
+
+== s10 matched none vs low/medium output tokens per stage (NEW-gate-tokens; T1 cross-check)
+s10_qwen38_low_con plan pairs 28 none 5188 other 11505 ratio 45.1% implied hidden 54.9%
+s10_qwen38_low_con context pairs 28 none 1154 other 9749 ratio 11.8% implied hidden 88.2%
+s10_qwen38_low_con people pairs 12 none 2801 other 12387 ratio 22.6% implied hidden 77.4%
+s10_qwen38_low_con constraints pairs 12 none 4544 other 24909 ratio 18.2% implied hidden 81.8%
+s10_qwen38_medium_con plan pairs 28 none 5188 other 11519 ratio 45.0% implied hidden 55.0%
+s10_qwen38_medium_con context pairs 28 none 1154 other 9443 ratio 12.2% implied hidden 87.8%
+s10_qwen38_medium_con people pairs 12 none 2990 other 10963 ratio 27.3% implied hidden 72.7%
+s10_qwen38_medium_con constraints pairs 12 none 4650 other 18053 ratio 25.8% implied hidden 74.2%
+people calls per record s10 none: Counter({0: 15, 1: 13})
+
+== T2 s10 none vs low right-target goal steps
+T2 matched 11 s10_qwen38_none_con 11 s10_qwen38_low_con 11 | unmatched s10_qwen38_none_con 12/12 s10_qwen38_low_con 15/15 | keys in both 28
+T2-med matched 11 s10_qwen38_none_con 11 s10_qwen38_medium_con 11 | unmatched s10_qwen38_none_con 12/12 s10_qwen38_medium_con 15/15 | keys in both 28
+records success none 21/28 low 27/28
+records lost (low ok, none fail) / gained:
+   ('eval_02_no_one_place', 'e1', 0) no_one none FAIL low ok | none: src standard tc True ctx_missed False plan_exact True dist 0.9861646303792134 solver_step False | low: src standard tc True
+   ('eval_03_no_one_deep_place', 'e1', 0) no_one none FAIL low ok | none: src standard tc False ctx_missed False plan_exact False dist None solver_step False | low: src standard tc True
+   ('eval_08_waiting_line_4', 'e0', 0) waiting_line none FAIL low ok | none: src standard tc True ctx_missed True plan_exact True dist 2.3548997385848387 solver_step False | low: src constraints tc True
+   ('eval_12_conversation_group_4', 'e1', 0) conversation_group none FAIL low ok | none: src standard tc False ctx_missed True plan_exact False dist None solver_step False | low: src constraints tc True
+   ('eval_13_waiting_line_3', 'e0', 0) waiting_line none FAIL low ok | none: src standard tc True ctx_missed True plan_exact True dist 1.913884100798938 solver_step False | low: src constraints tc True
+   ('eval_13_waiting_line_3', 'e1', 0) waiting_line none FAIL low ok | none: src constraints tc False ctx_missed False plan_exact False dist None solver_step True | low: src constraints tc True
+
+== T3 pooled right-target goal steps: candidate pools
+s10_qwen38_none_con vs s10_qwen38_low_con matched 11 s10_qwen38_none_con 11 s10_qwen38_low_con 11 | unmatched s10_qwen38_none_con 12/12 s10_qwen38_low_con 15/15 | keys in both 28
+s8_convlm_qwen38 vs s19_ph_qwen38_low_con matched 41 s8_convlm_qwen38 38 s19_ph_qwen38_low_con 40 | unmatched s8_convlm_qwen38 38/41 s19_ph_qwen38_low_con 47/48 | keys in both 84
+   trial 0 matched 12 none 12 low 11
+   trial 1 matched 13 none 12 low 13
+   trial 2 matched 16 none 14 low 16
+   fail ('eval_06_waiting_line_1', 'e0', 1) waiting_line none False low True
+   fail ('eval_07_waiting_line_2', 'e1', 2) waiting_line none False low True
+   fail ('eval_10_conversation_group_2', 'e0', 0) conversation_group none True low False
+   fail ('eval_10_conversation_group_2', 'e0', 2) conversation_group none False low True
+s8_convlm_qwen38 vs s10_qwen38_low_con matched 11 s8_convlm_qwen38 11 s10_qwen38_low_con 11 | unmatched s8_convlm_qwen38 38/41 s10_qwen38_low_con 15/15 | keys in both 28
+s10_qwen38_none_con vs s19_ph_qwen38_low_con matched 12 s10_qwen38_none_con 12 s19_ph_qwen38_low_con 11 | unmatched s10_qwen38_none_con 12/12 s19_ph_qwen38_low_con 47/48 | keys in both 28
+s10_qwen38_none_con vs s10_qwen38_medium_con matched 11 s10_qwen38_none_con 11 s10_qwen38_medium_con 11 | unmatched s10_qwen38_none_con 12/12 s10_qwen38_medium_con 15/15 | keys in both 28
+POOL s10 matched + s8/s19ph matched: 52 none 49 low 51
+POOL dedup (s10 matched + s8/s19ph trials 1,2): 40 none 37 low 40
+
+== T3 re-solved with current solver
+re-solved pool none 49 low 51 not reproduced places 0
+
+== s10_qwen38_none_con vs s8_convlm_qwen38 trial 0: identical call texts?
+s10 none records 28 identical to s8 convlm trial 0 (calls+success) 28 ; s10 trial values {0}
+cached flags s10 none: Counter({True: 82})
+cached flags s10 low: Counter({True: 74, False: 12})
+cached flags s19 ph: Counter({True: 264})
+cached flags s8 convlm: Counter({True: 186, False: 66})
+s10 low records whose people+constraints texts equal s19_ph trial 0: 0
+
+== T4 Qwen C success and latency per record
+s8_convlm_qwen38 succ 65/84 measures.latency_s median 8.4 mean 8.9 | sum call latency_s median 8.3 mean 8.7 | sum latency_total_s median 8.3 mean 8.7
+s10_qwen38_none_con succ 21/28 measures.latency_s median 8.8 mean 9.6 | sum call latency_s median 8.3 mean 9.2 | sum latency_total_s median 8.3 mean 9.2
+s10_qwen38_low_con succ 27/28 measures.latency_s median 31.7 mean 41.6 | sum call latency_s median 30.8 mean 34.0 | sum latency_total_s median 30.8 mean 41.0
+s10_qwen38_medium_con succ 26/28 measures.latency_s median 32.0 mean 35.8 | sum call latency_s median 31.2 mean 28.9 | sum latency_total_s median 31.2 mean 35.4
+s19_ph_qwen38_low_con succ 79/84 measures.latency_s median 34.1 mean 37.4 | sum call latency_s median 33.9 mean 34.8 | sum latency_total_s median 33.9 mean 37.3
+any listed qwen low con run on ph: ['20261010-121526_s10_qwen38_none_con', '20261010-121108_s10_qwen38_low_con', '20261010-114753_s10_qwen38_medium_con', '20261011-160610_s19_ph_qwen38_low_con']
+s12 runs listed: []
+
+== I22-why s19 realistic qwen low con per-call means
+records 252 succ 234
+plan calls 252 mean lat 6.4 med 5.8 mean tok 443 | unique 252 mean lat 6.4 tok 443
+context calls 252 mean lat 6.0 med 5.7 mean tok 417 | unique 242 mean lat 6.1 tok 422
+people calls 143 mean lat 16.0 med 17.0 mean tok 1199 | unique 72 mean lat 16.0 tok 1195
+constraints calls 143 mean lat 31.7 med 29.4 mean tok 2352 | unique 143 mean lat 31.7 tok 2352

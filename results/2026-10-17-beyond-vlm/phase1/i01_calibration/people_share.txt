@@ -1,0 +1,5 @@
+glm53: goal steps 43, distinct (scene, trial) 24, fresh people calls 24; (scene, trial) with both episodes as goal steps 19, identical people lists 19
+ornith15: goal steps 42, distinct (scene, trial) 22, fresh people calls 22; (scene, trial) with both episodes as goal steps 20, identical people lists 20
+qwen36_35: goal steps 44, distinct (scene, trial) 23, fresh people calls 23; (scene, trial) with both episodes as goal steps 21, identical people lists 21
+qwen38: goal steps 42, distinct (scene, trial) 24, fresh people calls 24; (scene, trial) with both episodes as goal steps 18, identical people lists 18
+qwen3vl: goal steps 42, distinct (scene, trial) 23, fresh people calls 23; (scene, trial) with both episodes as goal steps 19, identical people lists 19

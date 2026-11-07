@@ -1,0 +1,62 @@
+
+Sonnet, readmit cells (25): samples per class
+  class                   CT       CT2  CT2-nora  CT2-norv
+  in line                662       952      1011       942
+  line ran out           385       217       184       365
+  latency                352       351       350       349
+  approach               270       230       230       232
+  replace rule           249         6        13         6
+  other re-solve         101       178       190        92
+  heading_goal            59        23        18        26
+  moving_valid            49        74        59        51
+  front_move              34        60        66        51
+
+Sonnet, all cells (49): samples per class
+  class                   CT       CT2  CT2-nora  CT2-norv
+  in line               1575      1836      1923      1821
+  line ran out           706       491       420       824
+  latency                676       673       672       671
+  approach               449       407       410       409
+  replace rule           358         8        14         6
+  first answer           220       223       217       220
+  other re-solve         118       343       372        97
+  front_move              74       131       130        97
+  moving_valid            66        79        66        53
+
+Sonnet: mean share strict by scenario  CT / CT2 / CT2-nora / CT2-norv
+  cafe_line2_moving        0.068 / 0.126 / 0.087 / 0.065
+  cafe_line6_moving        0.376 / 0.587 / 0.641 / 0.642
+  cafe_slots               0.202 / 0.268 / 0.260 / 0.281
+  room_coffee_cart_slots   0.379 / 0.425 / 0.436 / 0.440
+  sweet_spot_line2_moving  0.100 / 0.137 / 0.138 / 0.104
+
+DeepSeek, readmit cells (15): samples per class
+  class                   CT       CT2  CT2-nora  CT2-norv
+  in line                413       615       548       565
+  latency                312       312       312       312
+  line ran out           220        89       137       194
+  approach               130       130       130       126
+  replace rule           119         2        10         7
+  other re-solve          39        72        90        41
+  moving_valid            34        44        24        30
+  heading_turn            24        31        38        25
+  clearance               21         1         1         1
+
+DeepSeek, all cells (25): samples per class
+  class                   CT       CT2  CT2-nora  CT2-norv
+  in line                532       707       640       688
+  latency                491       491       491       491
+  line ran out           382       209       260       354
+  first answer           314       312       332       322
+  approach               209       232       225       201
+  replace rule           119         2        10         7
+  other re-solve          44        95       113        42
+  heading_turn            35        52        63        35
+  moving_valid            34        50        26        30
+
+DeepSeek: mean share strict by scenario  CT / CT2 / CT2-nora / CT2-norv
+  cafe_line2_moving        0.000 / 0.055 / 0.009 / 0.009
+  cafe_line6_moving        0.316 / 0.549 / 0.569 / 0.554
+  cafe_slots               0.224 / 0.356 / 0.308 / 0.332
+  room_coffee_cart_slots   0.338 / 0.358 / 0.345 / 0.393
+  sweet_spot_line2_moving  0.099 / 0.048 / 0.048 / 0.116

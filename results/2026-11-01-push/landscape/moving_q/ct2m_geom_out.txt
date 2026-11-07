@@ -1,0 +1,6 @@
+per scenario, medians: straight distance to the place at the answer (CT2 | CT2m), path driven answer->first in line, time answer->first in line, turn needed at the answer (deg), cut-in samples answer->first in line (sums)
+cafe_line2_moving        n  9 dist 2.9 | 2.2  path 3.6 | 2.7  time 10.7 | 10.8  turn 4 | 46  cut 26 | 20  path/dist 1.23 | 1.23
+cafe_line6_moving        n 10 dist 4.0 | 3.9  path 3.9 | 3.9  time 8.5 | 9.4  turn 37 | 88  cut 0 | 0  path/dist 0.97 | 1.01
+cafe_slots               n  9 dist 5.0 | 1.8  path 5.1 | 2.0  time 9.8 | 8.9  turn 9 | 67  cut 0 | 0  path/dist 1.05 | 1.10
+room_coffee_cart_slots   n  9 dist 3.1 | 2.8  path 3.6 | 3.0  time 8.3 | 7.4  turn 26 | 79  cut 0 | 0  path/dist 1.15 | 1.08
+sweet_spot_line2_moving  n  8 dist 3.2 | 2.4  path 3.3 | 4.0  time 6.7 | 10.0  turn 7 | 56  cut 0 | 0  path/dist 1.05 | 1.67

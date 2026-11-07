@@ -1,0 +1,94 @@
+kept scenes 229 (bases 30, variants 199); planned variants 270
+both episodes same under every arm: 229/229 = 100.0%
+equivalence arm3(no constraint) vs arm2: max 0.00e+00 m; None pairs 0; within 1e-9: 458/458
+model calls: 0
+L1 invariance (variant polygons == base polygons): 199/199
+arm 1 L1: variants 199/199 = 100.0%, bases 30/30 = 100.0%
+
+fam lvl kept | arm3 L1  L2 | drop3 L1 [CI] L2 | arm2 L1 L2 | arm1 L1 L2
+A 0  15 | 15/15 15/15 | - | 0 0 | 15 15
+A 1  12 | 0/12 0/12 | 100.0 [100.0, 100.0] 100.0 | 0 0 | 12 12
+A 2  12 | 0/12 0/12 | 100.0 [100.0, 100.0] 100.0 | 0 0 | 12 0
+A 3  15 | 0/15 0/15 | 100.0 [100.0, 100.0] 100.0 | 0 0 | 15 0
+A 4  15 | 0/15 0/15 | 100.0 [100.0, 100.0] 100.0 | 0 0 | 15 0
+A 5  15 | 0/15 0/15 | 100.0 [100.0, 100.0] 100.0 | 0 0 | 15 0
+A 6  15 | 0/15 0/15 | 100.0 [100.0, 100.0] 100.0 | 0 0 | 15 0
+B 0  30 | 30/30 30/30 | - | 9 9 | 30 30
+B 1  21 | 13/21 13/21 | 38.1 [19.0, 57.1] 38.1 | 7 7 | 21 13
+C 0  30 | 30/30 30/30 | - | 9 9 | 30 30
+C 1  20 | 17/20 17/20 | 15.0 [0.0, 30.0] 15.0 | 7 7 | 20 20
+D 0  30 | 30/30 30/30 | - | 9 9 | 30 30
+D 2  29 | 25/29 25/29 | 13.8 [3.4, 27.6] 13.8 | 9 9 | 29 25
+D 5   8 | 8/8 8/8 | 0.0 [0.0, 0.0] 0.0 | 8 8 | 8 7
+E 0  30 | 30/30 30/30 | - | 9 9 | 30 30
+E 1  21 | 21/21 18/21 | 0.0 [0.0, 0.0] 14.3 | 6 3 | 21 21
+E 2  16 | 12/16 12/16 | 25.0 [6.2, 50.0] 25.0 | 1 1 | 16 16
+
+by situation, arm 3 L1 success (n): 
+  A1: waiti 0/12; conve 0/0; audie 0/0
+  A2: waiti 0/12; conve 0/0; audie 0/0
+  A3: waiti 0/15; conve 0/0; audie 0/0
+  A4: waiti 0/15; conve 0/0; audie 0/0
+  A5: waiti 0/15; conve 0/0; audie 0/0
+  A6: waiti 0/15; conve 0/0; audie 0/0
+  B1: waiti 4/12; conve 7/7; audie 2/2
+  C1: waiti 9/12; conve 7/7; audie 1/1
+  D2: waiti 11/15; conve 9/9; audie 5/5
+  D5: waiti 0/0; conve 8/8; audie 0/0
+  E1: waiti 15/15; conve 6/6; audie 0/0
+  E2: waiti 11/15; conve 1/1; audie 0/0
+arm 2 L1 bases: 9/30 = 30.0%
+
+(b) detectors on arm 3 (fires / relevant):
+  (i) 99/153 = 64.7%  A 84/84, B 8/12, C 3/12, D 4/15, E 0/30
+  (ii) 0/199 = 0.0%  A 0/84, B 0/21, C 0/20, D 0/37, E 0/37
+  (iii) 0/38 = 0.0%  A 0/0, B 0/7, C 0/7, D 0/17, E 0/7
+  (iv) 0/8 = 0.0%  A 0/0, B 0/2, C 0/1, D 0/5, E 0/0
+  (v) 0/199 = 0.0%  A 0/84, B 0/21, C 0/20, D 0/37, E 0/37
+  (b) failures >= 10%: ['i'] -> NOT MET
+  (iii) max off-facing in relevant variants 99.4 deg (n 38)
+  (ii) smallest F in a variant 33; variants with F == 0: 0
+  (iv) relevant 8; rule applied (not_ahead_of non-empty) in 8
+  arm 2 fires over all variants: {'ii': 0, 'iii': 4, 'v': 0}
+
+arm-3 L1 failures and named causes:
+  A1: failures 12, named 12, causes {'i': 12}
+  A2: failures 12, named 12, causes {'i': 12}
+  A3: failures 15, named 15, causes {'i': 15}
+  A4: failures 15, named 15, causes {'i': 15}
+  A5: failures 15, named 15, causes {'i': 15}
+  A6: failures 15, named 15, causes {'i': 15}
+  B1: failures 8, named 8, causes {'i': 8}
+  C1: failures 3, named 3, causes {'i': 3}
+  D2: failures 4, named 4, causes {'i': 4}
+  E2: failures 4, named 0, causes {}
+     unnamed i06_s0_E2_eval_08_waiting_line_4: in_region False heading_ok False standable 207/706 (base 662) F 274
+     unnamed i06_s1_E2_eval_07_waiting_line_2: in_region False heading_ok False standable 203/712 (base 659) F 279
+     unnamed i06_s1_E2_eval_09_waiting_line_6: in_region False heading_ok False standable 50/720 (base 659) F 278
+     unnamed i06_s2_E2_eval_08_waiting_line_4: in_region False heading_ok False standable 95/709 (base 648) F 276
+
+(a):
+  [all] drops A 100.0 (n 84), B 38.1 (n 21), C 15.0 (n 20), D 10.8 (n 37), E 10.8 (n 37); >=15: ['A', 'B', 'C']; monotone {"A": {"per": [100.0, 100.0, 100.0, 100.0, 100.0, 100.0], "nondecr": true, "top": 100.0, "named": [15, 15], "met": true}, "D": {"per": [13.793103448275861, 0.0], "nondecr": false, "top": 0.0, "named": [0, 0], "met": false}} -> MET
+  [without A5-A6] drops A 100.0 (n 54), B 38.1 (n 21), C 15.0 (n 20), D 10.8 (n 37), E 10.8 (n 37); >=15: ['A', 'B', 'C']; monotone {"A": {"per": [100.0, 100.0, 100.0, 100.0], "nondecr": true, "top": 100.0, "named": [15, 15], "met": true}, "D": {"per": [13.793103448275861, 0.0], "nondecr": false, "top": 0.0, "named": [0, 0], "met": false}} -> MET
+  [without A] drops B 38.1 (n 21), C 15.0 (n 20), D 10.8 (n 37), E 10.8 (n 37); >=15: ['B', 'C']; monotone {"D": {"per": [13.793103448275861, 0.0], "nondecr": false, "top": 0.0, "named": [0, 0], "met": false}} -> MET
+  (b) [without A5-A6] (i) 69/123 = 56.1%, (ii) 0/169 = 0.0%, (iii) 0/38 = 0.0%, (iv) 0/8 = 0.0%
+  (b) [without A] (i) 15/69 = 21.7%, (ii) 0/115 = 0.0%, (iii) 0/38 = 0.0%, (iv) 0/8 = 0.0%
+  family A: drop CI [100.0, 100.0]; L2 drop 100.0
+  family B: drop CI [19.0, 57.1]; L2 drop 38.1
+  family C: drop CI [0.0, 30.0]; L2 drop 15.0
+  family D: drop CI [2.5, 22.9]; L2 drop 10.8
+  family E: drop CI [2.6, 20.5]; L2 drop 18.9
+
+(c):
+  arm3: disagreement variants 3/199 = 1.5%, bases 0/30 = 0.0%
+     i06_s0_E1_eval_11_conversation_group_3: [['p5', 0.226]]
+     i06_s1_E1_eval_11_conversation_group_3: [['p5', 0.253]]
+     i06_s2_E1_eval_11_conversation_group_3: [['p5', 0.27]]
+  arm2: disagreement variants 3/199 = 1.5%, bases 0/30 = 0.0%
+  arm1: disagreement variants 85/199 = 42.7%, bases 0/30 = 0.0%
+  L2-empty: variants 0/199 = 0.0%, bases 0/30 = 0.0%; no L1 cells: 0
+  people do not matter (arm 3 standard goal) in 24 scenes, layouts [(0, 11), (1, 11), (2, 11), (2, 12)]
+
+(d): pass 199/270 = 73.7%; first attempt 199/270 = 73.7%; rejected reasons {'no_spot': 65, 'scene_check:check_8,check_8,check_8,check_8,check_8,check_8': 6}; full oracle L1 variants 199/199 = 100.0%, bases 30/30 = 100.0%
+K1 first half: lowest arm-3 success over (family, level) 0.0% -> fails
+K3: rejected 71/270 = 26.3%

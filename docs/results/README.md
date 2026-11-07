@@ -110,7 +110,7 @@ What the picture records look like, for Qwen 3.8 with the constraint method. The
 
 ## Where it stands: two models, and what thinking buys
 
-10 October 2026. The school-model panel is now two models, chosen by the project owner from the tables further down: Qwen 3.8 (27b), which runs **with thinking**, and GLM-5.3-Flash, which runs without. The 14 placeholder scenes, three trials, 84 episodes a cell.
+10 October 2026. The school-model panel is now two models, chosen from the tables further down: Qwen 3.8 (27b), which runs **with thinking**, and GLM-5.3-Flash, which runs without. The 14 placeholder scenes, three trials, 84 episodes a cell.
 
 | Method | Qwen 3.8, no thinking | Qwen 3.8, low thinking | Qwen 3.8, medium thinking | GLM-5.3-Flash, no thinking |
 |---|---|---|---|---|

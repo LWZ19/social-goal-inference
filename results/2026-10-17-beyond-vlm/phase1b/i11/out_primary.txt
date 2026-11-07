@@ -1,0 +1,233 @@
+==============================================================================================================
+I11 STAGE 0 (phase 1b): PRIMARY RUNS (old wording, realistic arms, con)
+==============================================================================================================
+runs: 20261011-160334_s19_real_qwen38_low_con, 20261011-160344_s19_staffed_qwen38_low_con, 20261011-160527_s19_plain_qwen38_low_con, 20261011-160500_s19_real_glm53_con, 20261011-160352_s19_staffed_glm53_con, 20261011-160452_s19_plain_glm53_con, 20261013-191337_s20_real_dsv41_con, 20261013-191345_s20_staffed_dsv41_con, 20261013-191402_s20_plain_dsv41_con
+records: 756 (allowed); per-run tallies: s19_real_qwen38_low_con {'allowed': 84}; s19_staffed_qwen38_low_con {'allowed': 84}; s19_plain_qwen38_low_con {'allowed': 84}; s19_real_glm53_con {'allowed': 84}; s19_staffed_glm53_con {'allowed': 84}; s19_plain_glm53_con {'allowed': 84}; s20_real_dsv41_con {'allowed': 84}; s20_staffed_dsv41_con {'allowed': 84}; s20_plain_dsv41_con {'allowed': 84}
+
+A. Data and reproduction checks
+                                qwen38_low       glm53       dsv41    all
+  records                              252         252         252    756
+  with a point                         252         248         252    752
+  wrong target                           7          28          22     57
+  wrong target with a point              7          24          22     53
+  right target with a point            245         224         230    699
+  expected (FROZEN.md section 1) vs got: records (252, 252, 252) -> (252, 252, 252) OK; point (252, 248, 252) -> (252, 248, 252) OK; wrong (7, 28, 22) -> (7, 28, 22) OK; wpt (7, 24, 22) -> (7, 24, 22) OK; rpt (245, 224, 230) -> (245, 224, 230) OK
+  GLM + DeepSeek wrong with a point 46 (expect 46); right with a point 454 (expect 454); all three wrong 53 (53), right 699 (699)
+  lift reproduction: max |H.target_at(pixel) - recorded world| over 752 records = 0.0e+00 m (asserted <= 1e-9)
+  recorded target_correct vs match_target now: disagreements 0 of 752 (asserted 0)
+  section 9: vectorised match mask vs match_target on sampled pixels of the 53 wrong-target records: 0 mismatches of 31800
+  targets per episode: {1: 756}
+  per-record agreement with rerun/lifting/lifting_records.tsv on the 57 wrong-target records: {'matched': 57, 'class same': 53, 'surface same': 53, 'oracle fix same': 53, 'oracle success same': 26, 'no point both': 4}; 0 unmatched []
+  reproduction of rerun/lifting itself (repro_lifting/diff.txt): lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL; frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL; lifting_records.tsv: 130 lines original, 130 reproduced, IDENTICAL
+  front-surface snap (reference row), replayed per record with frontsnap.front_snap, in frontsnap.py's format:
+    qwen38_low  {'right->right': 227, 'right->right (moved)': 5, 'right->wrong (moved)': 13, 'wrong->right (moved)': 1, 'wrong->wrong': 6}
+    glm53       {'right->right': 205, 'right->right (moved)': 4, 'right->wrong (moved)': 15, 'wrong->right (moved)': 4, 'wrong->wrong': 13, 'wrong->wrong (moved)': 7}
+    dsv41       {'right->right': 211, 'right->right (moved)': 10, 'right->wrong (moved)': 9, 'wrong->right (moved)': 3, 'wrong->wrong': 14, 'wrong->wrong (moved)': 5}
+    person  {'right->right': 165, 'right->wrong (moved)': 36, 'wrong->right (moved)': 3, 'wrong->wrong': 9, 'wrong->wrong (moved)': 3}
+    parcel  {'right->right': 39, 'wrong->wrong': 10, 'wrong->wrong (moved)': 5}
+    place   {'right->right': 439, 'right->right (moved)': 19, 'right->wrong (moved)': 1, 'wrong->right (moved)': 5, 'wrong->wrong': 14, 'wrong->wrong (moved)': 4}
+    total fixes 8, breaks 37, correct records moved but still right 19  -> reference check (8 fixes, 37 breaks of 752): REPRODUCED
+    front-snap target rebuilt with H.target_at(world=...): max world error 0.0e+00 m
+
+B. Error classes of the wrong targets with a point (lifting.py rules and precedence; FROZEN.md section 2)
+  model         n choice error occluder cap background l   floor slip near-depth m  lift classes
+  qwen38_low    7            1            5            1            0            0    6 [layouts 3, model x layout 3]
+  glm53        24           18            1            5            0            0    6 [layouts 8, model x layout 8]
+  dsv41        22            8            8            6            0            0   14 [layouts 8, model x layout 8]
+  GLM+DS       46           26            9           11            0            0   20 [layouts 11, model x layout 16]
+  all          53           27           14           12            0            0   26 [layouts 11, model x layout 19]
+  by kind (all three models):
+    person  n=15 {'background leak': 6, 'occluder capture': 9}
+    parcel  n=15 {'choice error': 9, 'occluder capture': 5, 'background leak': 1}
+    place   n=23 {'background leak': 5, 'choice error': 18}
+  by kind (GLM + DeepSeek):
+    person  n=10 {'background leak': 6, 'occluder capture': 4}
+    parcel  n=15 {'choice error': 9, 'occluder capture': 5, 'background leak': 1}
+    place   n=21 {'background leak': 4, 'choice error': 17}
+  descriptive cross-tab, class x lifting.surface() of the recorded lift (all 53):
+    choice error     n=27 {'obstacle': 6, 'floor': 11, 'person': 7, 'wall base (floor)': 1, 'wall': 2}
+    occluder capture n=14 {'obstacle': 5, 'person': 9}
+    background leak  n=12 {'wall': 6, 'floor': 5, 'wall base (floor)': 1}
+  lift classes among the 46: 20/46 (43.5%) [layouts 6, model x layout 8]; over 50 (4 GLM no-point records as non-lift): 20/50 (40.0%)
+  choice errors among the 46 (Stage 1 gate, >= 30%): 26/46 (56.5%); near-depth misses 0
+
+C. Fixes (FROZEN.md sections 3-6). fixes = wrong -> right; breaks = right -> wrong (match_target).
+   46 = GLM+DeepSeek wrong with a point; 454 = their right with a point; 53 / 699 = all three models.
+  fix     mv R/W (GD)  fix/46  brk/454  fix/53  brk/699 succ|fix46  net GD (+/-)  net all (+/-)  gain  share share3 shareNet
+  oracle   453/20          20        0      26        0   16/20      +16 (17/1)   +21 (23/2)    20   1.00   1.00     1.00
+  V1         5/15           9        0       9        0    7/9        +8 (8/0)    +8 (8/0)     9   0.45   0.35     0.50
+  V2       450/35           9        1       9        2    7/9        +6 (8/2)    +4 (8/4)     8   0.40   0.27     0.38
+  V3         9/18          10        0      14        0    7/10       +8 (8/0)   +11 (12/1)    10   0.50   0.54     0.50
+  V4         5/15           9        0       9        0    7/9        +8 (8/0)    +8 (8/0)     9   0.45   0.35     0.50
+  front     38/19           7       24       8       37    6/7       -16 (7/23)   -26 (9/35)   -17  -0.85  -1.12    -1.00
+  replays not computed: {'oracle': 0, 'V1': 0, 'V2': 0, 'V3': 0, 'V4': 0, 'front': 0} (0 = every moved record was replayed)
+  share = (fix/46 - brk/454) / oracle's; share3 = (fix/53 - brk/699) / oracle's; shareNet = net GD successes / oracle's (secondary)
+    oracle: losses 2 (right->right moved 2, breaks 0); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+    V2: losses 4 (right->right moved 2, breaks 2); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+    V3: losses 1 (right->right moved 1, breaks 0); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+    front: losses 35 (right->right moved 0, breaks 35); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+
+  per model (fix/wrong-with-point, break/right-with-point, moves on right/wrong):
+    oracle qwen38_low 6/7 brk 0/245 mv 245/6 | glm53 6/24 brk 0/224 mv 224/6 | dsv41 14/22 brk 0/230 mv 229/14
+    V1     qwen38_low 0/7 brk 0/245 mv 0/0 | glm53 5/24 brk 0/224 mv 0/9 | dsv41 4/22 brk 0/230 mv 5/6
+    V2     qwen38_low 0/7 brk 1/245 mv 245/7 | glm53 5/24 brk 0/224 mv 224/18 | dsv41 4/22 brk 1/230 mv 226/17
+    V3     qwen38_low 4/7 brk 0/245 mv 2/4 | glm53 5/24 brk 0/224 mv 0/10 | dsv41 5/22 brk 0/230 mv 9/8
+    V4     qwen38_low 0/7 brk 0/245 mv 0/0 | glm53 5/24 brk 0/224 mv 0/9 | dsv41 4/22 brk 0/230 mv 5/6
+    front  qwen38_low 1/7 brk 13/245 mv 18/1 | glm53 4/24 brk 15/224 mv 19/11 | dsv41 3/22 brk 9/230 mv 19/8
+
+  M1 fixes by error class (GLM+DS 46 | all 53):
+    fix        choice error   occluder captu   background lea       floor slip   near-depth mis
+    n           26 |    27       9 |    14      11 |    12       0 |     0       0 |     0
+    oracle       0 |     0       9 |    14      11 |    12       0 |     0       0 |     0
+    V1           0 |     0       0 |     0       9 |     9       0 |     0       0 |     0
+    V2           0 |     0       0 |     0       9 |     9       0 |     0       0 |     0
+    V3           0 |     0       1 |     5       9 |     9       0 |     0       0 |     0
+    V4           0 |     0       0 |     0       9 |     9       0 |     0       0 |     0
+    front        0 |     0       0 |     0       7 |     8       0 |     0       0 |     0
+  M1 fixes by kind (GLM+DS 46 | all 53):
+    n       person  10|15   parcel  15|15    place  21|23 
+    oracle          10|15            6|6             4|5  
+    V1               5|5             0|0             4|4  
+    V2               5|5             0|0             4|4  
+    V3               6|10            0|0             4|4  
+    V4               5|5             0|0             4|4  
+    front            3|3             0|0             4|5  
+  M2 breaks by kind (GLM+DS 454 | all 699):
+    n       person 134|201  parcel  21|39    place 299|459
+    oracle           0|0             0|0             0|0  
+    V1               0|0             0|0             0|0  
+    V2               1|2             0|0             0|0  
+    V3               0|0             0|0             0|0  
+    V4               0|0             0|0             0|0  
+    front           23|36            0|0             1|1  
+  clustering of the key counts:
+    oracle fixes/46 [layouts 6, model x layout 8]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    V1     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    V2     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 1, model x layout 1]; breaks/699 [layouts 1, model x layout 2]
+    V3     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    V4     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    front  fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 2, model x layout 3]; breaks/699 [layouts 2, model x layout 4]
+  V1-V4 moves on right-target records by what s (the lift surface) was (all 699):
+    V1: moved 5 {'floor': 5}; surface classes over all 699 {'object': 689, 'floor': 9, 'fragment': 1}
+    V2: moved 695 {'object': 689, 'floor': 5, 'fragment': 1}; surface classes over all 699 {'object': 689, 'floor': 9, 'fragment': 1}
+    V3: moved 11 {'floor': 5, 'object': 6}; surface classes over all 699 {'object': 689, 'floor': 9, 'fragment': 1}
+    V4: moved 5 {'floor': 5}; surface classes over all 699 {'object': 690, 'floor': 9}
+  V1 on the 53 wrong targets, by class: lift surface s and outcome
+    choice error     n=27 s {'object': 11, 'floor': 12, 'structure': 4}; V1 moved 5, fixed 0; V3 moved 7, fixed 0
+    occluder capture n=14 s {'object': 14}; V1 moved 0, fixed 0; V3 moved 5, fixed 5
+    background leak  n=12 s {'structure': 4, 'floor': 6, 'object': 2}; V1 moved 10, fixed 9; V3 moved 10, fixed 9
+  replay paths used (moved records, all fixes): {'standard': 639, 'solver': 971}
+
+E. I33 Stage B trigger (FROZEN.md section 8). T1: lift on floor or structure, or the 5x5 window holds >= 2
+   labels (floor, structure, object components; fragments ignored). T2: T1 or another object within 15 px.
+  person wrong targets: n=15 ({'dsv41': 8, 'glm53': 2, 'qwen38_low': 5}) [layouts 3, model x layout 5]
+    T1 catches 11/15; T2 catches 15/15
+    T1 by class: {'occluder capture': '5/9', 'background leak': '6/6'}
+  D1 (decisive) right-target person records: n=201; T1 false triggers 12/201 (6.0%); T2 103/201 (51.2%)  [layouts 3, model x layout 5]
+  D2 all right-target records with a point: n=699; T1 45/699 (6.4%); T2 188/699 (26.9%)
+    right person  n=201 T1 12/201 (6.0%)  T2 103/201 (51.2%)
+    right parcel  n= 39 T1 0/39 (0.0%)  T2 0/39 (0.0%)
+    right place   n=459 T1 33/459 (7.2%)  T2 85/459 (18.5%)
+  I33 Stage B: success needs T1 >= 12/15 and <= 10% of D1 (20.1); kill if < 10/15 -> NEITHER (T1 11/15, D1 12/201 (6.0%))
+  T1 / T2 on all 53 wrong targets, by class:
+    choice error     n=27 T1 20  T2 24
+    occluder capture n=14 T1  8  T2 12
+    background leak  n=12 T1 12  T2 12
+  T1 flags 85/752 (11.3%) of all records with a point (the share of goal steps that would carry the verification call); of the flagged, wrong targets 40/85 (47.1%)
+  T2 flags 236/752 (31.4%); of the flagged, wrong targets 48/236 (20.3%)
+  (post hoc, not judged) T1 under G2 components: person wrong 11/15, D1 12/201 (6.0%)
+
+F. M4 component recovery (FROZEN.md section 6)
+  primary scenes (realistic): distinct (scene folder, scene, true target) n = 42
+    join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+    G1   person    12     0   0.98  12/12    12/12        0     0     0      0  0.99   0.99
+    G1   parcel     3     0   0.31   0/3      0/3         3     0     0      0  1.00   0.31
+    G1   place     27     0   0.87  27/27    18/27        0    14     0      0  0.87   1.00
+    G1   ALL       42     0   0.93  39/42    30/42        3    14     0      0  0.96   1.00
+    G2   person    12     0   0.99  12/12    12/12        0     0     0      0  1.00   0.99
+    G2   parcel     3     0   0.31   0/3      0/3         3     0     0      0  1.00   0.31
+    G2   place     27     0   0.87  27/27    18/27        0    14     0      0  0.87   1.00
+    G2   ALL       42     0   0.96  39/42    30/42        3    14     0      0  0.98   1.00
+  true targets of the 53 wrong-target records, by error class (G1 | G2):
+    G1 choice error     n=27 med IoU 0.65, IoU>=.5 18, merged 9, merged w/ body 9, split 0, structure 0
+    G2 choice error     n=27 med IoU 0.65, IoU>=.5 18, merged 9, merged w/ body 9, split 0, structure 0
+    G1 occluder capture n=14 med IoU 1.00, IoU>=.5 9, merged 5, merged w/ body 0, split 0, structure 0
+    G2 occluder capture n=14 med IoU 1.00, IoU>=.5 9, merged 5, merged w/ body 0, split 0, structure 0
+    G1 background leak  n=12 med IoU 1.00, IoU>=.5 11, merged 1, merged w/ body 1, split 0, structure 0
+    G2 background leak  n=12 med IoU 1.00, IoU>=.5 11, merged 1, merged w/ body 1, split 0, structure 0
+  fresh seeds 100-109: 260 fresh scenes from 10 seeds; 
+  fresh seeds: n = 260
+    join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+    G1   person    70     0   1.00  70/70    70/70        0     0     0      0  1.00   1.00
+    G1   parcel    10     0   0.31   0/10     0/10       10     0     0      0  1.00   0.31
+    G1   place    180     0   0.90 174/180  103/180       0     0     6      0  0.90   1.00
+    G1   ALL      260     0   0.96 244/260  173/260      10     0     6      0  0.97   1.00
+    G2   person    70     0   1.00  70/70    70/70        0     0     0      0  1.00   1.00
+    G2   parcel    10     0   0.31   0/10     0/10       10     0     0      0  1.00   0.31
+    G2   place    180     0   0.99 176/180  157/180       0     0     4      0  0.99   1.00
+    G2   ALL      260     0   1.00 246/260  227/260      10     0     4      0  1.00   1.00
+
+Predictions written in FROZEN.md section 12 (before scoring) against the outcomes:
+  V1 'at most about 11 of 46, share at most about 0.55; S4 likely fails': V1 9/46, share 0.45; S4 not met
+  V3 'may add up to about 5 occluder captures': V3 fixes occluder captures 1 of the 46 and 5 of the 53; V3 breaks 0/454, 0/699
+  T1 'about 11 of 15 (all 6 background leaks and 5 straddling occluder captures)': T1 11/15 (background leaks 6/6, occluder captures 5/9)
+
+G. The 53 wrong targets, one row each (R = right after the fix)
+  model      arm     scene                                ep  t kind   class               dB s         T1 T2 orc V1 V2 V3 V4 frt  orcS
+  dsv41      plain   plain_eval_04_no_one_object          e1  0 parcel occluder capture   8.1 object    T  T    R   .   m   .   .   .  T
+  dsv41      plain   plain_eval_04_no_one_object          e1  1 parcel choice error      63.9 floor     T  T    .   .   .   .   .   .  -
+  dsv41      plain   plain_eval_04_no_one_object          e1  2 parcel occluder capture   8.1 object    T  T    R   .   m   .   .   .  T
+  dsv41      real    real_eval_04_no_one_object           e1  1 parcel occluder capture   9.6 object    T  T    R   .   m   .   .   .  T
+  dsv41      real    real_eval_04_no_one_object           e1  2 parcel occluder capture   4.0 object    .  .    R   .   m   .   .   .  T
+  dsv41      staffed staffed_eval_04_no_one_object        e1  0 parcel background leak   13.3 floor     T  T    R   m   m   m   m   m  T
+  dsv41      staffed staffed_eval_04_no_one_object        e1  1 parcel choice error      22.5 floor     T  T    .   m   m   m   m   m  -
+  glm53      plain   plain_eval_04_no_one_object          e1  0 parcel choice error      31.9 object    .  T    .   .   m   .   .   .  -
+  glm53      plain   plain_eval_04_no_one_object          e1  1 parcel choice error      34.3 object    T  T    .   .   m   m   .   .  -
+  glm53      plain   plain_eval_04_no_one_object          e1  2 parcel choice error      15.3 object    T  T    .   .   m   .   .   .  -
+  glm53      real    real_eval_04_no_one_object           e1  0 parcel occluder capture   3.3 object    .  .    R   .   m   .   .   .  T
+  glm53      real    real_eval_04_no_one_object           e1  1 parcel choice error      16.1 object    T  T    .   .   m   .   .   .  -
+  glm53      staffed staffed_eval_04_no_one_object        e1  0 parcel choice error      25.9 floor     T  T    .   m   m   m   m   m  -
+  glm53      staffed staffed_eval_04_no_one_object        e1  1 parcel choice error      28.4 floor     T  T    .   .   .   .   .   m  -
+  glm53      staffed staffed_eval_04_no_one_object        e1  2 parcel choice error      50.3 floor     T  T    .   m   m   m   m   m  -
+  dsv41      plain   plain_eval_10_conversation_group_2   e0  2 person background leak    7.7 floor     T  T    R   R   R   R   R   m  F
+  dsv41      plain   plain_eval_11_conversation_group_3   e0  1 person background leak    1.4 object    T  T    R   .   m   .   .   R  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e0  1 person occluder capture   9.7 object    .  T    R   .   m   .   .   .  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e0  2 person background leak   11.2 floor     T  T    R   R   R   R   R   m  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e1  1 person occluder capture  13.9 object    .  T    R   .   m   .   .   .  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e1  2 person occluder capture  13.3 object    .  T    R   .   m   .   .   .  F
+  dsv41      real    real_eval_12_conversation_group_4    e0  1 person occluder capture   1.3 object    T  T    R   .   m   R   .   .  F
+  dsv41      real    real_eval_12_conversation_group_4    e1  2 person background leak    1.0 floor     T  T    R   R   R   R   R   R  T
+  glm53      plain   plain_eval_12_conversation_group_4   e0  2 person background leak    4.5 floor     T  T    R   R   R   R   R   m  T
+  glm53      real    real_eval_12_conversation_group_4    e1  2 person background leak    1.6 structure T  T    R   R   R   R   R   R  T
+  qwen38_low plain   plain_eval_12_conversation_group_4   e1  0 person occluder capture   6.9 object    .  T    R   .   m   .   .   .  T
+  qwen38_low plain   plain_eval_12_conversation_group_4   e1  1 person occluder capture   1.5 object    T  T    R   .   m   R   .   .  T
+  qwen38_low real    real_eval_12_conversation_group_4    e1  1 person occluder capture   2.7 object    T  T    R   .   m   R   .   .  T
+  qwen38_low staffed staffed_eval_12_conversation_group_4 e0  2 person occluder capture   1.8 object    T  T    R   .   m   R   .   .  T
+  qwen38_low staffed staffed_eval_12_conversation_group_4 e1  0 person occluder capture   2.2 object    T  T    R   .   m   R   .   .  T
+  dsv41      plain   plain_eval_13_waiting_line_3         e0  1 place  background leak    1.5 floor     T  T    R   R   R   R   R   R  T
+  dsv41      real    real_eval_01_no_one_place            e1  1 place  choice error      97.3 floor     T  T    .   .   .   .   .   m  -
+  dsv41      real    real_eval_06_waiting_line_1          e1  2 place  choice error      73.3 object    T  T    .   .   m   m   .   .  -
+  dsv41      staffed staffed_eval_06_waiting_line_1       e1  1 place  choice error      76.5 object    .  T    .   .   m   .   .   .  -
+  dsv41      staffed staffed_eval_09_waiting_line_6       e0  0 place  choice error     122.4 floor     T  T    .   .   .   .   .   .  -
+  dsv41      staffed staffed_eval_09_waiting_line_6       e1  1 place  choice error      79.0 floor     T  T    .   .   .   .   .   .  -
+  dsv41      staffed staffed_eval_13_waiting_line_3       e0  1 place  choice error      27.6 floor     T  T    .   .   .   .   .   .  -
+  glm53      plain   plain_eval_06_waiting_line_1         e1  0 place  background leak    8.6 structure T  T    R   R   R   R   R   R  F
+  glm53      plain   plain_eval_06_waiting_line_1         e1  1 place  choice error      85.2 object    .  .    .   .   m   .   .   .  -
+  glm53      plain   plain_eval_08_waiting_line_4         e1  0 place  choice error     237.8 object    .  T    .   .   m   .   .   .  -
+  glm53      plain   plain_eval_09_waiting_line_6         e1  0 place  choice error     140.5 floor     T  T    .   .   .   .   .   m  -
+  glm53      real    real_eval_00_no_one_place            e1  1 place  choice error      44.9 structure T  T    .   .   .   .   .   .  -
+  glm53      real    real_eval_06_waiting_line_1          e0  1 place  background leak    7.7 structure T  T    R   R   R   R   R   R  T
+  glm53      real    real_eval_06_waiting_line_1          e0  2 place  choice error      15.5 structure T  T    .   .   .   .   .   .  -
+  glm53      real    real_eval_06_waiting_line_1          e1  1 place  background leak    4.4 structure T  T    R   R   R   R   R   R  T
+  glm53      real    real_eval_06_waiting_line_1          e1  2 place  choice error      77.5 object    .  .    .   .   m   .   .   .  -
+  glm53      real    real_eval_07_waiting_line_2          e0  0 place  choice error     129.9 floor     T  T    .   m   m   m   m   m  -
+  glm53      real    real_eval_07_waiting_line_2          e1  0 place  choice error     122.6 structure T  T    .   .   .   .   .   .  -
+  glm53      real    real_eval_13_waiting_line_3          e0  0 place  choice error     111.9 floor     T  T    .   m   m   m   m   m  -
+  glm53      real    real_eval_13_waiting_line_3          e1  0 place  choice error     144.6 object    .  T    .   .   m   .   .   .  -
+  glm53      staffed staffed_eval_13_waiting_line_3       e0  2 place  choice error     279.0 structure T  T    .   .   .   .   .   .  -
+  qwen38_low staffed staffed_eval_06_waiting_line_1       e1  0 place  choice error      83.9 object    .  .    .   .   m   .   .   .  -
+  qwen38_low staffed staffed_eval_09_waiting_line_6       e1  1 place  background leak    2.5 object    T  T    R   .   m   .   .   R  T
+  (R right after; m moved but still wrong; . not moved)
+
+  right-target records broken by V1 (all 699):
+  right-target records broken by the oracle (all 699):

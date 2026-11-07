@@ -1,0 +1,2 @@
+Gemini 3.8 C1 0.01 (n 15) | R1 0.09 (n 25) | CT 0.15 (n 25) | CT2 0.21 (n 25)
+   CT2 vs R1: better 18 worse 6 same 1

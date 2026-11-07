@@ -1,0 +1,20 @@
+scenes {'F-real': 21, 'F-ph': 268} visible {'F-real': 39, 'F-ph': 585} people {'F-real': 55, 'F-ph': 585}
+ORIGINAL: feasible 8 chosen by feasible
+   orig z_lo=0.40 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 4/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.10 z_hi=1.90 top_lo=1.10 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 33/39 false 1/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 26/268 exempt 16 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.10 z_hi=1.90 top_lo=1.30 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 17/268 exempt 6 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.10 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.15 foot_hi=0.70 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 585/585 false 10/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.10 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.15 foot_hi=1.00 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 585/585 false 17/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.10 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 5/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.10 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=1.00 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 12/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.40 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 4/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+   feasible: orig z_lo=0.40 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=1.00 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 11/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+FIX: feasible 0 chosen by 4a
+   fix z_lo=0.40 z_hi=1.90 top_lo=1.10 split_r=0.25 foot_lo=0.30 foot_hi=0.70 | F-real: 39/39 false 45/21 exempt 14 mp 0/9 merges 0 staff_behind 0 ; F-ph: 579/585 false 708/268 exempt 145 mp 0/143 merges 0 staff_behind 0
+  fix: lowest max fb 1.7201492537313432 at fix z_lo=0.40 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 35/39 false 27/21 exempt 0 mp 0/9 merges 0 staff_behind 4 ; F-ph: 579/585 false 461/268 exempt 29 mp 0/143 merges 0 staff_behind 0
+  fix: settings with recall 1 in both: 34 max fb range 6.142857142857143 10.142857142857142
+ADOPTION on union (orig first): feasible orig z_lo=0.40 z_hi=1.90 top_lo=1.50 split_r=0.35 foot_lo=0.30 foot_hi=0.70 | F-real: 33/39 false 0/21 exempt 0 mp 0/9 merges 0 staff_behind 6 ; F-ph: 579/585 false 4/268 exempt 0 mp 0/143 merges 0 staff_behind 0
+fit bars F-real: recall 0.8462 fb 0.0000 mp 0.0000 success False kill True
+fit bars F-ph: recall 0.9897 fb 0.0149 mp 0.0000 success True kill False
+fit_selection.json: 0 setting-domain rows differ of 432
+fit_selection_fix.json: 0 setting-domain rows differ of 432

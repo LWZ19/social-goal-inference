@@ -1,0 +1,53 @@
+== M1: s20 dsv41 con ==
+realistic (real, staffed, plain):
+  20261013-191337_s20_real_dsv41_con: {'allowed': 84}
+  20261013-191345_s20_staffed_dsv41_con: {'allowed': 84}
+  20261013-191402_s20_plain_dsv41_con: {'allowed': 84}
+  six constraint flags: n=252 succ=182 fail=70 | flagged records succ=19 fail=10 | firings succ=19 fail=11 | per flag (name, success): {('constraint_unusable', False): 8, ('constraint_unusable', True): 19, ('exclusion_broken', False): 3}
+  six + 4 other warn flags (not frontal): n=252 succ=182 fail=70 | flagged records succ=19 fail=10 | firings succ=19 fail=11 | per flag (name, success): {('constraint_unusable', False): 8, ('constraint_unusable', True): 19, ('exclusion_broken', False): 3}
+  six, solver steps only: n=157 succ=109 fail=48 | flagged records succ=19 fail=10 | firings succ=19 fail=11 | per flag (name, success): {('constraint_unusable', False): 8, ('constraint_unusable', True): 19, ('exclusion_broken', False): 3}
+all seven s20 dsv41 con runs:
+  20261013-190939_s20_ph_dsv41_con: {'allowed': 84}
+  20261013-190610_s20_dev_seed0_dsv41_con: {'allowed': 24}
+  20261013-190617_s20_dev_seed1_dsv41_con: {'allowed': 24}
+  20261013-191026_s20_dev_seed2_dsv41_con: {'allowed': 24}
+  six constraint flags, 7 runs: n=408 succ=298 fail=110 | flagged records succ=25 fail=13 | firings succ=25 fail=14 | per flag (name, success): {('constraint_unusable', False): 9, ('constraint_unusable', True): 25, ('exclusion_broken', False): 5}
+  six + 4 other, 7 runs: n=408 succ=298 fail=110 | flagged records succ=25 fail=13 | firings succ=25 fail=14 | per flag (name, success): {('constraint_unusable', False): 9, ('constraint_unusable', True): 25, ('exclusion_broken', False): 5}
+  six, ph: n=84 succ=58 fail=26 | flagged records succ=3 fail=3 | firings succ=3 fail=3 | per flag (name, success): {('constraint_unusable', False): 1, ('constraint_unusable', True): 3, ('exclusion_broken', False): 2}
+  six, dev_seed0: n=24 succ=17 fail=7 | flagged records succ=1 fail=0 | firings succ=1 fail=0 | per flag (name, success): {('constraint_unusable', True): 1}
+  six, dev_seed1: n=24 succ=21 fail=3 | flagged records succ=1 fail=0 | firings succ=1 fail=0 | per flag (name, success): {('constraint_unusable', True): 1}
+  six, dev_seed2: n=24 succ=20 fail=4 | flagged records succ=1 fail=0 | firings succ=1 fail=0 | per flag (name, success): {('constraint_unusable', True): 1}
+
+== M2: standard-goal misses under C, realistic ==
+qwen38_low:
+  20261011-160334_s19_real_qwen38_low_con: {'allowed': 84}
+  20261011-160344_s19_staffed_qwen38_low_con: {'allowed': 84}
+  20261011-160527_s19_plain_qwen38_low_con: {'allowed': 84}
+  n=252 standard-source=109 std fail & target_correct=8 of which outside region=8 (situations {'no_one': 8})
+  no_one std misses outside region: 8, fallback (frontal False) among them: 3; among all std misses outside region: 3; among all std fail&tc: 3
+  other properties of the no_one misses: reachable=8 blocked=0 heading_ok=0
+  all standard-source fails: 9; target incorrect: 1
+  N2: no_one std target_correct (frontal, success): {(False, False): 3, (False, True): 22, (True, False): 5, (True, True): 78}
+  N1 flags:
+  six flags qwen38_low: n=252 succ=234 fail=18 | flagged records succ=6 fail=0 | firings succ=6 fail=0 | per flag (name, success): {('constraint_unusable', True): 6}
+  six flags qwen38_low solver steps: n=143 succ=134 fail=9 | flagged records succ=6 fail=0 | firings succ=6 fail=0 | per flag (name, success): {('constraint_unusable', True): 6}
+glm53:
+  20261011-160500_s19_real_glm53_con: {'allowed': 84}
+  20261011-160352_s19_staffed_glm53_con: {'allowed': 84}
+  20261011-160452_s19_plain_glm53_con: {'allowed': 84}
+  n=252 standard-source=107 std fail & target_correct=7 of which outside region=7 (situations {'no_one': 5, 'waiting_line': 2})
+  no_one std misses outside region: 5, fallback (frontal False) among them: 4; among all std misses outside region: 5; among all std fail&tc: 5
+  other properties of the no_one misses: reachable=5 blocked=0 heading_ok=0
+  all standard-source fails: 17; target incorrect: 10
+  N2: no_one std target_correct (frontal, success): {(False, False): 4, (False, True): 9, (True, False): 1, (True, True): 81}
+  N1 flags:
+  six flags glm53: n=252 succ=186 fail=66 | flagged records succ=10 fail=20 | firings succ=11 fail=25 | per flag (name, success): {('constraint_unusable', False): 19, ('constraint_unusable', True): 10, ('exclusion_broken', False): 1, ('far_from_target', False): 1, ('no_usable_constraint', False): 4, ('no_usable_constraint', True): 1}
+  six flags glm53 solver steps: n=141 succ=96 fail=45 | flagged records succ=10 fail=20 | firings succ=11 fail=25 | per flag (name, success): {('constraint_unusable', False): 19, ('constraint_unusable', True): 10, ('exclusion_broken', False): 1, ('far_from_target', False): 1, ('no_usable_constraint', False): 4, ('no_usable_constraint', True): 1}
+dsv41:
+  n=252 standard-source=95 std fail & target_correct=14 of which outside region=14 (situations {'no_one': 14})
+  no_one std misses outside region: 14, fallback (frontal False) among them: 6; among all std misses outside region: 6; among all std fail&tc: 6
+  other properties of the no_one misses: reachable=14 blocked=0 heading_ok=0
+  all standard-source fails: 22; target incorrect: 8
+  N2: no_one std target_correct (frontal, success): {(False, False): 6, (False, True): 12, (True, False): 8, (True, True): 61}
+  N3: eval_02 scenes ['plain_eval_02_no_one_place', 'real_eval_02_no_one_place', 'staffed_eval_02_no_one_place']: n=18 succ=3; std misses there 12 of 14; scenes of the others: Counter({'staffed_eval_03_no_one_deep_place': 1, 'plain_eval_03_no_one_deep_place': 1})
+  N3: eval_02 non-standard fails: 3 sources Counter({'constraints': 3}) in_region Counter({False: 3})

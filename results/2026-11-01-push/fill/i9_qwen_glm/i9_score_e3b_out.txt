@@ -1,0 +1,21 @@
+# Item 9: the moving headline, seeds 10-14, 92 s episodes
+
+| model | R1 / CT / CT2 strict | R1 / CT / CT2 primary | first answer median s, C / R | C episodes with no answer in time (or an error) | CT2 vs R1 strict W/L/T, p | CT vs R1 strict W/L/T, p | CT2 vs R1 primary W/L/T, p |
+|---|---|---|---|---|---|---|---|
+| Qwen 3.8 | 0.03 / 0.01 / 0.01 | 0.06 / 0.01 / 0.01 | 80.8 / 56.7 | 20 of 25 (errors 0; timed out, excluded: 0) | 2/5/18, 0.4531 | 1/5/19, 0.2188 | 2/9/14, 0.0654 |
+| GLM-5.3 | 0.00 / 0.00 / 0.00 | 0.00 / 0.00 / 0.00 | nan / 74.3 | 25 of 25 (errors 0; timed out, excluded: 0) | 0/1/24, 1.0000 | 0/1/24, 1.0000 | 0/1/24, 1.0000 |
+| Sonnet 5.5 | 0.06 / 0.24 / 0.29 | 0.17 / 0.37 / 0.37 | 13.2 / 9.1 | 0 of 25 (errors 0; timed out, excluded: 0) | 21/2/2, 0.0001 | 20/2/3, 0.0001 | 20/3/2, 0.0005 |
+| DeepSeek V4.1 | 0.04 / 0.20 / 0.27 | 0.16 / 0.23 / 0.31 | 19.3 / 12.4 | 0 of 25 (errors 0; timed out, excluded: 0) | 19/3/3, 0.0009 | 11/3/11, 0.0574 | 15/7/3, 0.1338 |
+| Haiku 5.5 | 0.01 / 0.16 / 0.30 | 0.12 / 0.38 / 0.42 | 10.4 / 7.1 | 0 of 25 (errors 0; timed out, excluded: 0) | 19/2/4, 0.0002 | 17/2/6, 0.0007 | 21/2/2, 0.0001 |
+| Gemini 3.8 | 0.09 / 0.15 / 0.21 | 0.27 / 0.29 / 0.32 | 18.6 / 13.8 | 0 of 25 (errors 0; timed out, excluded: 0) | 18/6/1, 0.0227 | 17/7/1, 0.0639 | 15/10/0, 0.4244 |
+| Sonnet 4.6 | 0.03 / 0.19 / 0.25 | 0.30 / 0.23 / 0.31 | 17.7 / 10.6 | 2 of 25 (errors 0; timed out, excluded: 0) | 14/3/8, 0.0127 | 15/3/7, 0.0075 | 13/8/4, 0.3833 |
+| Sonnet 5 | 0.02 / 0.18 / 0.26 | 0.13 / 0.34 / 0.32 | 14.4 / 9.4 | 4 of 25 (errors 0; timed out, excluded: 0) | 17/3/5, 0.0026 | 15/3/7, 0.0075 | 17/4/4, 0.0072 |
+| Haiku 4.5 | 0.01 / 0.02 / 0.03 | 0.04 / 0.02 / 0.03 | 14.9 / 10.6 | 10 of 25 (errors 0; timed out, excluded: 0) | 5/2/18, 0.4531 | 4/1/20, 0.3750 | 8/2/15, 0.1094 |
+| Gemini 3 Flash | 0.12 / 0.18 / 0.20 | 0.33 / 0.37 / 0.28 | 9.5 / 6.3 | 0 of 25 (errors 0; timed out, excluded: 0) | 13/11/1, 0.8388 | 14/11/0, 0.6900 | 11/13/1, 0.8388 |
+| Gemini 3.1 Flash Lite | 0.08 / 0.28 / 0.39 | 0.23 / 0.40 / 0.49 | 9.9 / 6.6 | 0 of 25 (errors 0; timed out, excluded: 0) | 22/2/1, 0.0000 | 21/3/1, 0.0003 | 19/5/1, 0.0066 |
+| Gemini 3.5 Flash Lite | 0.09 / 0.22 / 0.41 | 0.28 / 0.37 / 0.50 | 8.2 / 5.6 | 0 of 25 (errors 0; timed out, excluded: 0) | 20/2/3, 0.0001 | 16/5/4, 0.0266 | 18/5/2, 0.0106 |
+| Gemini 3.6 Flash | 0.12 / 0.27 / 0.33 | 0.36 / 0.45 / 0.40 | 13.2 / 9.4 | 0 of 25 (errors 0; timed out, excluded: 0) | 18/5/2, 0.0106 | 18/5/2, 0.0106 | 16/9/0, 0.2295 |
+
+- Qwen 3.8: BAR H9 (CT2 vs R1, strict, wins > losses and p <= 0.05): False; primary scoring (reported): False; LATENCY-BOUND: most C answers arrive after the episode ends
+- GLM-5.3: sensitivity (amendment 2), without the 2 cells with a retried first answer: CT2 vs R1 strict 0/1/22, p 1.0000, bar False; no first answer in time 23 of 23
+- GLM-5.3: BAR H9 (CT2 vs R1, strict, wins > losses and p <= 0.05): False; primary scoring (reported): False; LATENCY-BOUND: most C answers arrive after the episode ends

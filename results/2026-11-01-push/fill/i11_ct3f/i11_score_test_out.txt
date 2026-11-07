@@ -1,0 +1,61 @@
+# Item 11: CT3F against CT2 (sweep/confirm_selection.json)
+
+## runs_confirm4/dsv41
+
+- CT3F: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT3F: 72 episodes (66 with a service after delivery); strict from the first service 0.208; whole-episode strict 0.154; cut-in samples 321; vlm_error episodes 0
+- CT2: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT2: 72 episodes (66 with a service after delivery); strict from the first service 0.051; whole-episode strict 0.042; cut-in samples 274; vlm_error episodes 0
+
+| comparison | measure | n | W/L/T | sign p | mean d | 95% lower bound |
+|---|---|---|---|---|---|---|
+| CT3F - CT2 | strict from the first service | 66 | 44/8/14 | 0.0000 | +0.157 | +0.103 |
+| CT3F - CT2 | whole-episode strict | 72 | 45/8/19 | 0.0000 | +0.113 | +0.073 |
+
+BAR H11 (CT3F - CT2, strict from the first service: wins > losses and sign p <= 0.05): True  (n 66)
+Reported: the same on whole-episode strict share: True
+
+## runs_confirm4/sonnet55_low
+
+- CT3F: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT3F: 72 episodes (71 with a service after delivery); strict from the first service 0.246; whole-episode strict 0.191; cut-in samples 651; vlm_error episodes 0
+- CT2: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT2: 72 episodes (71 with a service after delivery); strict from the first service 0.026; whole-episode strict 0.031; cut-in samples 374; vlm_error episodes 0
+
+| comparison | measure | n | W/L/T | sign p | mean d | 95% lower bound |
+|---|---|---|---|---|---|---|
+| CT3F - CT2 | strict from the first service | 71 | 56/5/10 | 0.0000 | +0.219 | +0.173 |
+| CT3F - CT2 | whole-episode strict | 72 | 58/4/10 | 0.0000 | +0.161 | +0.126 |
+
+BAR H11 (CT3F - CT2, strict from the first service: wins > losses and sign p <= 0.05): True  (n 71)
+Reported: the same on whole-episode strict share: True
+
+## runs_confirm4/claude_haiku55
+
+- CT3F: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT3F: 72 episodes (55 with a service after delivery); strict from the first service 0.232; whole-episode strict 0.151; cut-in samples 350; vlm_error episodes 0
+- CT2: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT2: 72 episodes (55 with a service after delivery); strict from the first service 0.078; whole-episode strict 0.056; cut-in samples 339; vlm_error episodes 0
+
+| comparison | measure | n | W/L/T | sign p | mean d | 95% lower bound |
+|---|---|---|---|---|---|---|
+| CT3F - CT2 | strict from the first service | 55 | 39/5/11 | 0.0000 | +0.154 | +0.105 |
+| CT3F - CT2 | whole-episode strict | 72 | 39/7/26 | 0.0000 | +0.094 | +0.063 |
+
+BAR H11 (CT3F - CT2, strict from the first service: wins > losses and sign p <= 0.05): True  (n 55)
+Reported: the same on whole-episode strict share: True
+
+## runs_confirm4/gemini_fast
+
+- CT3F: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT3F: 72 episodes (71 with a service after delivery); strict from the first service 0.231; whole-episode strict 0.170; cut-in samples 548; vlm_error episodes 0
+- CT2: no first answer within the episode in 0 of 72 (the answer came after the episode ended); first answer in vlm_error 0
+- CT2: 72 episodes (71 with a service after delivery); strict from the first service 0.051; whole-episode strict 0.039; cut-in samples 455; vlm_error episodes 0
+
+| comparison | measure | n | W/L/T | sign p | mean d | 95% lower bound |
+|---|---|---|---|---|---|---|
+| CT3F - CT2 | strict from the first service | 71 | 43/5/23 | 0.0000 | +0.179 | +0.135 |
+| CT3F - CT2 | whole-episode strict | 72 | 49/8/15 | 0.0000 | +0.131 | +0.101 |
+
+BAR H11 (CT3F - CT2, strict from the first service: wins > losses and sign p <= 0.05): True  (n 71)
+Reported: the same on whole-episode strict share: True

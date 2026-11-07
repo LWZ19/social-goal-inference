@@ -1,0 +1,15 @@
+table comparisons: 2725; differences beyond 1e-12: 13
+   ('T3/s23/P1/new_gemini/dropped', None, 2000)
+   ('T3/s23/P1b/new_gemini/dropped', None, 2000)
+   ('T3/s23/S2/new_gemini/dropped', None, 2000)
+   ('T3/s23/S3/new_gemini/dropped', None, 2000)
+   ('T3/s23/S4/new_gemini/dropped', None, 2000)
+   ('T3/s23/S4_place/new_gemini/dropped', None, 2000)
+   ('T3/s23/S5a/new_gemini/dropped', None, 2000)
+   ('T3/s23/S5b/new_gemini/dropped', None, 2000)
+   ('T3/s23/flag_exclusion_broken/new_gemini/dropped', None, 2000)
+   ('T3/s23/flag_far_from_target/new_gemini/dropped', None, 2000)
+   ('T3/s23/flag_constraint_unusable/new_gemini/dropped', None, 2000)
+   ('T3/s23/S6/new_gemini/dropped', None, 2000)
+   ('T3/s23/S6z/new_gemini/dropped', None, 2000)
+row comparisons: 1265 records; differences: 0

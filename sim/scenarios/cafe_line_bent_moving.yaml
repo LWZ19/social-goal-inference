@@ -1,0 +1,64 @@
+# cafe_line_bent_moving (research break-it case d, 2026-11-01): six waiting in a line that runs south from
+# the counter for three places, then bends about 55 deg to the south-west; served every 15 s. Walkers kept in the
+# south-east corner, away from the line. The robot starts as in cafe_line6, which sees the whole line.
+stage: data/habitat/stages/cafe.glb
+wander_area:
+- 6.5
+- 9.5
+- -7.5
+- -5.5
+robot:
+  x: 8.0
+  y: -2.6
+  face:
+  - 5.0
+  - -2.95
+queues:
+  counter_line:
+    service_s: 15
+    slots:
+    - x: 5.0
+      y: -1.45
+      face:
+      - 5.0
+      - -0.5
+    - x: 5.0
+      y: -2.15
+    - x: 5.0
+      y: -2.85
+    - x: 5.0
+      y: -3.55
+    - x: 4.4
+      y: -4.0
+    - x: 3.8
+      y: -4.4
+    - x: 3.2
+      y: -4.8
+    - x: 2.6
+      y: -5.2
+    - x: 2.0
+      y: -5.6
+humans:
+- avatar: male_1
+  queue: counter_line
+- avatar: female_0
+  queue: counter_line
+- avatar: male_3
+  queue: counter_line
+- avatar: female_2
+  queue: counter_line
+- avatar: female_1
+  queue: counter_line
+- avatar: male_0
+  queue: counter_line
+- avatar: female_3
+  start:
+  - 2.0
+  - -6.0
+- avatar: male_2
+  start:
+  - 1.5
+  - -3.0
+requests:
+- Get me a coffee
+- Take me to the counter

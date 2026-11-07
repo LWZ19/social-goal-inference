@@ -1,0 +1,22 @@
+== s19 glm53 con, line solver steps, by arm
+  real       n  29: nf/missed 16/20  loose 16/20  failures 10/12 loose 10/12
+  staffed    n  27: nf/missed 24/31  loose 23/31  failures 21/24 loose 20/24
+  plain      n  27: nf/missed 16/23  loose 14/23  failures 11/13 loose 10/13
+  ph         n  30: nf/missed 22/25  loose 22/25  failures 18/21 loose 18/21
+  dev_seed0  n   0: nf/missed 0/0  loose 0/0  failures 0/0 loose 0/0
+  dev_seed1  n   0: nf/missed 0/0  loose 0/0  failures 0/0 loose 0/0
+  dev_seed2  n   0: nf/missed 0/0  loose 0/0  failures 0/0 loose 0/0
+  ALL arms: 78/99 = 0.788; loose 75/99 = 0.758; failures 60/70 = 0.857, loose 58/70 = 0.829; per-record mean of share 0.762 (n 63)
+  realistic: 56/74 = 0.757; per-record mean 0.726 (n 48); loose 53/74 = 0.716
+  placeholder+dev: 22/25 = 0.880
+== s20 dsv41 con, line solver steps, by arm
+  real       n  30: nf/missed 10/18  loose 10/18  failures 10/14 loose 10/14
+  staffed    n  29: nf/missed 8/10  loose 6/10  failures 8/10 loose 6/10
+  plain      n  30: nf/missed 2/5  loose 2/5  failures 2/4 loose 2/4
+  ph         n  26: nf/missed 15/15  loose 13/15  failures 14/14 loose 12/14
+  dev_seed0  n   0: nf/missed 0/0  loose 0/0  failures 0/0 loose 0/0
+  dev_seed1  n   0: nf/missed 0/0  loose 0/0  failures 0/0 loose 0/0
+  dev_seed2  n   0: nf/missed 0/0  loose 0/0  failures 0/0 loose 0/0
+  ALL arms: 35/48 = 0.729; loose 31/48 = 0.646; failures 34/42 = 0.810, loose 30/42 = 0.714; per-record mean of share 0.643 (n 28)
+  realistic: 20/33 = 0.606; per-record mean 0.474 (n 19); loose 18/33 = 0.545
+  placeholder+dev: 15/15 = 1.000

@@ -1,0 +1,9 @@
+cafe_line2        male_0    passes the gate at least once in 17% of episodes; open about 1.5% of the time
+cafe_line2        female_1  passes the gate at least once in 17% of episodes; open about 1.5% of the time
+cafe_line2        female_3  passes the gate at least once in 17% of episodes; open about 1.5% of the time
+room_cart         male_2    passes the gate at least once in 17% of episodes; open about 1.5% of the time
+room_cart         female_1  passes the gate at least once in 17% of episodes; open about 1.5% of the time
+room_cart         male_3    passes the gate at least once in 17% of episodes; open about 1.5% of the time
+sweet_spot_line2  male_0    passes the gate at least once in 17% of episodes; open about 1.5% of the time
+sweet_spot_line2  female_1  passes the gate at least once in 17% of episodes; open about 1.5% of the time
+sweet_spot_line2  female_3  passes the gate at least once in 17% of episodes; open about 1.5% of the time

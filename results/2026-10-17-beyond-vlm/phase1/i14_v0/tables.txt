@@ -1,0 +1,257 @@
+I14 v0 tables. Definitions: METRIC_NOTE.md (frozen before computing). Counts are records; baseline values are
+expected counts (sum over records of the mean over 1,000 draws). Goal-step records only (they carry runners-up).
+Tolerance 45 deg (the scorer's) unless a table says otherwise. Solver verdicts at 45 are the package's.
+
+== Checks ==
+records 1409; recorded places on the solver's selectable cells: 1409 of 1409 records (all 5 places)
+replica vs package: 364686 sampled disc cells + 63405 places and jittered places; disagreements: 0
+recorded success vs package top-1 now: 1409 of 1409 agree
+records with fewer than 5 places: 0; with fewer than 5 disc cells (no draws): 6
+
+== T1. Records per cell ==
+set    model      goal  std rightT top in disc disc cells  F cells  region cells outside disc (share)
+old    Qwen        143  109    137    89 ( 62%)       5535    14313        24465 of 147006 (16.6%)
+old    GLM         141  111    127    87 ( 62%)       5414    14374        20766 of 144291 (14.4%)
+old    DeepSeek    157   95    143    95 ( 61%)       5483    14075        23148 of 144763 (16.0%)
+watch  Qwen         36    0     36     1 (  3%)       3212     8384        43638 of  47996 (90.9%)
+watch  GLM          36    0     34     7 ( 19%)       3246     8374        40314 of  44598 (90.4%)
+watch  DeepSeek     36    0     36     0 (  0%)       3167     8371        42904 of  47696 (90.0%)
+new    Qwen        144  108    133    90 ( 62%)       5494    14276        22359 of 140182 (15.9%)
+new    GLM         141  111    119    81 ( 57%)       5235    14227        22271 of 135184 (16.5%)
+new    DeepSeek    151  101    136    92 ( 61%)       5401    14174        23933 of 138079 (17.3%)
+new    Haiku       146  106    145    93 ( 64%)       5625    14204        23618 of 158308 (14.9%)
+new    Sonnet      143  109    136    89 ( 62%)       5578    14311        24562 of 143095 (17.2%)
+new    Gemini      135  117    109    89 ( 66%)       6029    14508        13138 of 135439 ( 9.7%)
+goal = goal-step records; std = standard-path records left out; rightT = right target; top in disc = solver top
+place within 3 m of the recorded target point; disc / F cells = mean selectable cells in the disc / in all F.
+
+Top place outside the 3 m disc, by situation (all cells pooled):
+  waiting_line         outside  470 of  790
+  conversation_group   outside   23 of  484
+  no_one               outside    3 of   27
+  audience             outside  100 of  108
+
+== T2. Reproduction of the brief (section 3.4): top / any-of-5 of n, package scorer ==
+cell                                brief              now  match
+old Qwen                 134 / 134 of 143 134 / 134 of 143    yes
+old GLM                    96 / 99 of 141   96 / 99 of 141    yes
+old DeepSeek             109 / 123 of 157 109 / 123 of 157    yes
+watch Qwen                  32 / 35 of 36    32 / 35 of 36    yes
+watch GLM                   23 / 29 of 36    23 / 29 of 36    yes
+watch DeepSeek              23 / 33 of 36    23 / 33 of 36    yes
+"134/96/109" = top-1 successes (Qwen s19, GLM s19, DeepSeek s20) on realistic goal steps (n 143/141/157);
+"32/23/23" = top-1 successes on the watching goal steps (n 36 each); "123 vs 109 of 157" and "33 vs 23 of 36" =
+DeepSeek any-of-5 vs top-1 (realistic, watching).
+
+== T3. hit@k, k = 1..5 (old wording, realistic (s19/s20)), 45 deg: solver vs baselines (expected counts) ==
+model        n | solver hit@1..5              | R5 @1..5                           | F5 @1..5                           | AR @1..5                           | AF @1..5                       | P(succ)@5 solver / R5 / F5
+Qwen       143 |  134  134  134  134  134     |   19.3   34.4   46.2   55.3   62.9 |   19.3   19.5   28.6   31.0   47.0 |  134.0  134.5  134.9  135.2  135.4 |  134.0  134.0  134.0  136.0  136.0 | 84.6 / 19.3 / 10.2  (of 143; nb 143)
+GLM        141 |   96   96   98   98   99     |   19.5   34.0   45.4   54.2   61.3 |   19.6   19.8   25.6   27.3   44.3 |   96.0   98.3  100.4  102.3  104.0 |   96.0   96.0   96.0  106.0  107.0 | 59.6 / 19.3 / 9.7  (of 141; nb 139)
+DeepSeek   157 |  109  120  121  123  123     |   19.3   34.1   45.8   55.2   63.1 |   19.1   19.3   25.2   26.8   41.9 |  109.0  113.4  117.1  120.0  122.4 |  109.0  109.0  109.0  111.0  113.0 | 68.4 / 19.1 / 9.1  (of 157; nb 156)
+
+== T3. hit@k, k = 1..5 (watching, dev seeds (s19/s20 dev_seed*, audience)), 45 deg: solver vs baselines (expected counts) ==
+model        n | solver hit@1..5              | R5 @1..5                           | F5 @1..5                           | AR @1..5                           | AF @1..5                       | P(succ)@5 solver / R5 / F5
+Qwen        36 |   32   34   35   35   35     |    1.5    3.0    4.3    5.5    6.6 |    1.5    2.6    3.7    6.1    9.6 |   32.0   32.3   32.7   33.0   33.3 |   32.0   32.0   32.0   32.0   33.0 | 23.0 / 1.6 / 2.1  (of 36; nb 36)
+GLM         36 |   23   25   27   29   29     |    1.6    3.0    4.3    5.5    6.5 |    1.6    2.6    4.0    5.6    7.7 |   23.0   23.7   24.3   24.9   25.4 |   23.0   24.0   26.0   28.0   28.0 | 17.6 / 1.6 / 1.8  (of 36; nb 36)
+DeepSeek    36 |   23   29   30   33   33     |    1.8    3.4    4.8    6.1    7.2 |    1.8    3.1    4.6    6.6    9.3 |   23.0   24.0   24.9   25.6   26.3 |   23.0   23.0   24.0   24.0   24.0 | 17.2 / 1.8 / 2.1  (of 36; nb 36)
+
+== T3. hit@k, k = 1..5 (new wording, realistic (s21/s23)), 45 deg: solver vs baselines (expected counts) ==
+model        n | solver hit@1..5              | R5 @1..5                           | F5 @1..5                           | AR @1..5                           | AF @1..5                       | P(succ)@5 solver / R5 / F5
+Qwen       144 |  131  131  131  131  131     |   18.5   33.1   44.6   53.8   61.3 |   18.7   18.9   27.9   30.2   46.4 |  131.0  131.2  131.3  131.5  131.6 |  131.0  131.0  131.0  133.0  133.0 | 80.4 / 18.5 / 10.0  (of 144; nb 144)
+GLM        141 |   86   87   88   89   89     |   17.9   31.6   42.2   50.1   56.5 |   18.0   18.2   25.2   27.4   43.0 |   86.0   88.2   90.1   91.7   93.3 |   86.0   86.0   86.0   98.0   98.0 | 54.2 / 17.9 / 9.4  (of 141; nb 139)
+DeepSeek   151 |  106  112  116  116  118     |   17.9   32.0   43.4   52.4   59.7 |   17.8   18.1   24.9   26.6   41.8 |  106.0  109.9  113.0  115.5  117.4 |  106.0  106.0  106.0  108.0  108.0 | 61.2 / 18.0 / 9.0  (of 151; nb 150)
+Haiku      146 |  134  136  136  137  141     |   21.2   37.6   50.3   60.5   68.6 |   21.3   21.5   30.3   32.5   50.6 |  134.0  135.2  136.4  137.4  138.3 |  134.0  134.0  134.0  134.0  134.0 | 90.2 / 21.3 / 11.0  (of 146; nb 146)
+Sonnet     143 |  134  134  134  134  134     |   18.7   33.1   44.7   54.0   61.5 |   18.5   18.8   29.5   31.4   47.9 |  134.0  134.3  134.5  134.7  134.9 |  134.0  134.0  134.0  134.0  134.0 | 85.8 / 18.6 / 10.3  (of 143; nb 143)
+Gemini     135 |  109  109  109  109  109     |   19.0   33.1   43.9   52.3   58.9 |   18.7   18.9   24.2   25.5   41.1 |  109.0  109.0  109.0  109.0  109.0 |  109.0  109.0  109.0  109.0  109.0 | 72.8 / 18.8 / 9.1  (of 135; nb 135)
+
+R5 = random-5, F5 = farthest-point-5 (both in the 3 m disc, facing the recorded target); AR = top place + 4
+random; AF = top place + 4 farthest (deterministic). P(succ)@5 = sum over records of the mean success of the 5
+places (uniform mass). nb = records with draws (>= 5 disc cells).
+
+== T4. Runner-up gain and how much the anchored baselines recover (45 deg) ==
+cell                    n   top  any5  gain |    AR@5 AR gain   recov |   AF@5 AF gain   recov |    R5@5   F5@5 | exact R5 / AR
+old Qwen              143   134   134    +0 |   135.4    +1.4    nan% |  136.0    +2.0    nan% |    62.9   47.0 | 62.9 / 135.4
+old GLM               141    96    99    +3 |   104.0    +8.0    267% |  107.0   +11.0    367% |    61.3   44.3 | 61.5 / 104.0
+old DeepSeek          157   109   123   +14 |   122.4   +13.4     96% |  113.0    +4.0     29% |    63.1   41.9 | 63.1 / 122.4
+watch Qwen             36    32    35    +3 |    33.3    +1.3     42% |   33.0    +1.0     33% |     6.6    9.6 | 6.6 / 33.2
+watch GLM              36    23    29    +6 |    25.4    +2.4     40% |   28.0    +5.0     83% |     6.5    7.7 | 6.5 / 25.4
+watch DeepSeek         36    23    33   +10 |    26.3    +3.3     33% |   24.0    +1.0     10% |     7.2    9.3 | 7.3 / 26.3
+new Qwen              144   131   131    +0 |   131.6    +0.6    nan% |  133.0    +2.0    nan% |    61.3   46.4 | 61.4 / 131.6
+new GLM               141    86    89    +3 |    93.3    +7.3    242% |   98.0   +12.0    400% |    56.5   43.0 | 56.4 / 93.2
+new DeepSeek          151   106   118   +12 |   117.4   +11.4     95% |  108.0    +2.0     17% |    59.7   41.8 | 59.6 / 117.4
+new Haiku             146   134   141    +7 |   138.3    +4.3     61% |  134.0    +0.0      0% |    68.6   50.6 | 69.0 / 138.3
+new Sonnet            143   134   134    +0 |   134.9    +0.9    nan% |  134.0    +0.0    nan% |    61.5   47.9 | 61.5 / 134.9
+new Gemini            135   109   109    +0 |   109.0    +0.0    nan% |  109.0    +0.0    nan% |    58.9   41.1 | 59.1 / 109.0
+gain = any-of-5 minus top-1 (solver); AR/AF gain = expected AR/AF any-of-5 minus top-1; recov = AR or AF gain as a
+share of the solver's gain (over records with draws; nan where the solver gains nothing). exact = hypergeometric
+expectation of R5@5 and AR@5 (a check on the draws).
+
+== T5. Lift: top-1 over the region's share of selectable cells (ratio of sums) ==
+cell                    n  top1   rate | rho_disc rho_room | Lift_disc Lift_room chance ratio | sigma_disc Lift_sigma
+old Qwen              143   134  0.937 |   0.1358   0.0707 |      6.90     13.26         1.92 |     0.1348       6.95
+old GLM               141    96  0.681 |   0.1385   0.0673 |      4.92     10.12         2.06 |     0.1379       4.94
+old DeepSeek          157   109  0.694 |   0.1233   0.0646 |      5.63     10.74         1.91 |     0.1215       5.71
+watch Qwen             36    32  0.889 |   0.0446   0.1627 |     19.91      5.46         0.27 |     0.0434      20.48
+watch GLM              36    23  0.639 |   0.0455   0.1505 |     14.04      4.25         0.30 |     0.0443      14.42
+watch DeepSeek         36    23  0.639 |   0.0510   0.1620 |     12.53      3.94         0.31 |     0.0497      12.85
+new Qwen              144   131  0.910 |   0.1299   0.0679 |      7.00     13.40         1.91 |     0.1289       7.06
+new GLM               141    86  0.610 |   0.1275   0.0636 |      4.78      9.59         2.00 |     0.1271       4.80
+new DeepSeek          151   106  0.702 |   0.1198   0.0641 |      5.86     10.96         1.87 |     0.1189       5.91
+new Haiku             146   134  0.918 |   0.1474   0.0740 |      6.23     12.40         1.99 |     0.1466       6.26
+new Sonnet            143   134  0.937 |   0.1314   0.0694 |      7.13     13.50         1.89 |     0.1305       7.18
+new Gemini            135   109  0.807 |   0.1404   0.0639 |      5.75     12.63         2.20 |     0.1399       5.77
+rho_disc / rho_room = mean share of the disc's / all F cells inside the matched target's acceptable region (0 for a
+wrong target); Lift_disc = sum top-1 / sum rho_disc; Lift_room = sum top-1 / sum rho_room; chance ratio = sum
+rho_disc / sum rho_room. sigma_disc = share of disc cells whose face-target pose succeeds (45 deg).
+
+Lift by situation (all cells of a set pooled):
+  old    waiting_line         n  261 top1  196  rho_disc 0.0660 (right target 0.0708)  rho_room 0.0566 (right target 0.0608)  Lift_disc 11.38  Lift_room 13.26  ratio 1.16
+  old    conversation_group   n  162 top1  133  rho_disc 0.2462 (right target 0.2713)  rho_room 0.0877 (right target 0.0966)  Lift_disc 3.33  Lift_room 9.36  ratio 2.81
+  old    no_one               n   18 top1   10  rho_disc 0.0671 (right target 0.0710)  rho_room 0.0420 (right target 0.0445)  Lift_disc 8.28  Lift_room 13.23  ratio 1.60
+  watch  audience             n  108 top1   78  rho_disc 0.0470 (right target 0.0479)  rho_room 0.1584 (right target 0.1614)  Lift_disc 15.35  Lift_room 4.56  ratio 0.30
+  new    waiting_line         n  529 top1  414  rho_disc 0.0651 (right target 0.0721)  rho_room 0.0552 (right target 0.0610)  Lift_disc 12.02  Lift_room 14.19  ratio 1.18
+  new    conversation_group   n  322 top1  280  rho_disc 0.2451 (right target 0.2712)  rho_room 0.0876 (right target 0.0970)  Lift_disc 3.55  Lift_room 9.92  ratio 2.80
+  new    no_one               n    9 top1    6  rho_disc 0.0737 (right target 0.0737)  rho_room 0.0444 (right target 0.0444)  Lift_disc 9.04  Lift_room 15.03  ratio 1.66
+
+== T6. Mass in each forbidden kind: share of the 5 places inside it, the top place, and R5 (disc share) ==
+cell                 kind              n  set mass    top      R5
+old Qwen             ahead_in_line    89    0.0000  0.000  0.0030
+old Qwen             group_space      54    0.0000  0.000  0.0114
+old GLM              ahead_in_line    83    0.0048  0.012  0.0040
+old GLM              group_space      54    0.0185  0.000  0.0082
+old DeepSeek         ahead_in_line    89    0.0000  0.000  0.0029
+old DeepSeek         group_space      54    0.0000  0.000  0.0068
+watch Qwen           audience_view    36    0.0167  0.028  0.2384
+watch GLM            audience_view    36    0.0111  0.028  0.2401
+watch DeepSeek       audience_view    36    0.0000  0.000  0.2428
+new Qwen             ahead_in_line    90    0.0000  0.000  0.0027
+new Qwen             group_space      54    0.0000  0.000  0.0116
+new GLM              ahead_in_line    88    0.0023  0.000  0.0041
+new GLM              group_space      53    0.0151  0.000  0.0082
+new DeepSeek         ahead_in_line    90    0.0000  0.000  0.0029
+new DeepSeek         group_space      54    0.0000  0.000  0.0072
+new Haiku            ahead_in_line    90    0.0000  0.000  0.0039
+new Haiku            group_space      54    0.0000  0.000  0.0042
+new Sonnet           ahead_in_line    89    0.0000  0.000  0.0033
+new Sonnet           group_space      54    0.0000  0.000  0.0116
+new Gemini           ahead_in_line    82    0.0000  0.000  0.0033
+new Gemini           group_space      53    0.0000  0.000  0.0112
+set mass = mean over the records whose episode has that kind of the share of the 5 places inside it; top = share
+of top places inside it; R5 = expected share for random-5 in the disc (= the disc share of cells inside it).
+
+== T7. Stability under 5 cm jitter (8 directions, heading kept; package verdicts at 45 deg) ==
+cell                    n  top1 top1 jit mean top flips top kept all 8 | hit@5 hit@5 jit mean hit@5 worst dir any place flips
+old Qwen              143   134         133.6         1            133 |   134          134.0             134              14
+old GLM               141    96          95.2         2             94 |    99           98.6              98              25
+old DeepSeek          157   109         109.9         6            107 |   123          122.2             121              28
+watch Qwen             36    32          32.0         0             32 |    35           35.0              35               2
+watch GLM              36    23          22.8         3             21 |    29           29.0              28              10
+watch DeepSeek         36    23          22.8         1             22 |    33           32.6              32               3
+new Qwen              144   131         130.2         2            129 |   131          131.0             131               7
+new GLM               141    86          86.1         2             85 |    89           89.9              89              18
+new DeepSeek          151   106         105.6         7            102 |   118          118.2             118              25
+new Haiku             146   134         134.0         0            134 |   141          140.8             140               4
+new Sonnet            143   134         134.0         0            134 |   134          134.0             134              16
+new Gemini            135   109         109.0         0            109 |   109          109.0             109               7
+top1 jit mean = sum over records of the mean top-1 success over the 8 moved copies; top flips = records where any
+direction changes the top-1 verdict; top kept all 8 = top-1 successes that stay successes in all 8; hit@5 jit mean
+/ worst dir = any-of-5 with all places moved by the same vector, mean / sum of per-record minimum over directions;
+any place flips = records where some place's verdict changes in some direction.
+
+== T8. Heading-tolerance curve: 30 / 45 / 60 deg ==
+cell                    n |    top1 30/45/60 |   hit@5 30/45/60 |         P@5 30/45/60 |        R5@5 30/45/60 |        AR@5 30/45/60 | AR recov 30/45/60
+old Qwen              143 |      134/134/134 |      134/134/134 |       67.4/84.6/90.6 |       59.5/62.9/63.2 |    135.3/135.4/135.4 | nan%/nan%/nan%
+old GLM               141 |         96/96/96 |         98/99/99 |       53.8/59.6/61.0 |       58.7/61.3/61.5 |    102.9/104.0/104.1 | 346%/267%/271%
+old DeepSeek          157 |      101/109/111 |      120/123/124 |       58.4/68.4/71.2 |       59.4/63.1/63.8 |    115.8/122.4/123.4 | 78%/96%/95%
+watch Qwen             36 |         32/32/35 |         35/35/35 |       23.0/23.0/23.6 |          6.6/6.6/6.6 |       33.3/33.3/35.3 | 42%/42%/nan%
+watch GLM              36 |         23/23/24 |         29/29/29 |       17.6/17.6/17.8 |          6.5/6.5/6.5 |       25.4/25.4/26.0 | 40%/40%/39%
+watch DeepSeek         36 |         23/23/30 |         33/33/33 |       16.6/17.2/18.6 |          7.2/7.2/7.2 |       26.3/26.3/31.5 | 33%/33%/50%
+new Qwen              144 |      130/131/131 |      131/131/131 |       64.0/80.4/85.8 |       58.1/61.3/61.6 |    130.9/131.6/131.6 | 87%/nan%/nan%
+new GLM               141 |         85/86/86 |         89/89/89 |       49.0/54.2/55.8 |       54.3/56.5/56.6 |       92.3/93.3/93.3 | 182%/242%/243%
+new DeepSeek          151 |      103/106/107 |      115/118/119 |       53.2/61.2/66.4 |       56.6/59.7/60.0 |    115.4/117.4/117.7 | 103%/95%/89%
+new Haiku             146 |      132/134/134 |      137/141/141 |       69.8/90.2/94.8 |       65.3/68.6/68.9 |    136.2/138.3/138.4 | 83%/61%/63%
+new Sonnet            143 |      134/134/134 |      134/134/134 |       66.6/85.8/89.6 |       57.8/61.5/61.8 |    134.7/134.9/134.9 | nan%/nan%/nan%
+new Gemini            135 |      109/109/109 |      109/109/109 |       59.4/72.8/75.2 |       56.8/58.9/59.1 |    109.0/109.0/109.0 | nan%/nan%/nan%
+Solver at 45 here is the replica's verdict on the recorded headings, equal to the package's (T2 checks).
+
+== T9. By situation (cells of a set pooled): solver vs R5, and in-region alone (heading aside) ==
+set    situation               n rightT |  top1  any5 |    R5@5   F5@5    AR@5   AF@5 | in-region: solver any5    R5@5 R5@5 / rightT
+old    waiting_line          261    243 |   196   205 |    67.4   53.1   207.6  210.0 |         205    68.6         28.2%
+old    conversation_group    162    147 |   133   140 |   114.8   78.3   142.5  136.0 |         140   114.9         78.2%
+old    no_one                 18     17 |    10    11 |     5.1    1.8    11.7   10.0 |          12     5.2         30.8%
+watch  audience              108    106 |    78    97 |    20.4   26.6    85.0   85.0 |          97    20.8         19.6%
+new    waiting_line          529    478 |   414   429 |   135.7  114.4   430.3  430.0 |         429   137.3         28.7%
+new    conversation_group    322    291 |   280   287 |   228.0  155.4   287.4  280.0 |         288   228.1         78.4%
+new    no_one                  9      9 |     6     6 |     2.8    0.9     6.7    6.0 |           6     2.8         31.4%
+in-region: any of the 5 places inside the acceptable region (target matched), heading and reachability aside.
+
+Per model at groups, R5 in-region any-of-5 as a share of right-target group records (the skeptic's 85-95% guess):
+  old    Qwen      n  54 right  49  R5 in-region   38.2 ( 78.0%)  R5 success   38.2 ( 78.0%)  solver any5  48
+  old    GLM       n  52 right  52  R5 in-region   40.9 ( 78.6%)  R5 success   40.8 ( 78.5%)  solver any5  51
+  old    DeepSeek  n  53 right  46  R5 in-region   35.8 ( 77.8%)  R5 success   35.8 ( 77.7%)  solver any5  41
+  new    Qwen      n  54 right  46  R5 in-region   35.7 ( 77.6%)  R5 success   35.7 ( 77.5%)  solver any5  46
+  new    GLM       n  51 right  48  R5 in-region   38.2 ( 79.6%)  R5 success   38.2 ( 79.5%)  solver any5  48
+  new    DeepSeek  n  53 right  44  R5 in-region   34.2 ( 77.7%)  R5 success   34.1 ( 77.6%)  solver any5  40
+  new    Haiku     n  54 right  53  R5 in-region   41.8 ( 78.8%)  R5 success   41.8 ( 78.8%)  solver any5  53
+  new    Sonnet    n  54 right  47  R5 in-region   36.6 ( 77.9%)  R5 success   36.6 ( 77.8%)  solver any5  47
+  new    Gemini    n  53 right  53  R5 in-region   41.7 ( 78.7%)  R5 success   41.7 ( 78.7%)  solver any5  53
+
+== T10. Pre-registered criteria (METRIC_NOTE.md) ==
+S1 exact reproduction (6 cells, top and any-of-5 and n): MET
+   old DeepSeek: gain +14; AR recovers 96%; AF recovers 29%; solver any5 123 vs AF@5 113.0
+   watch DeepSeek: gain +10; AR recovers 33%; AF recovers 10%; solver any5 33 vs AF@5 24.0
+S2 AR recovers <= 50% on both DeepSeek cells: NOT MET
+S3 solver any-of-5 > AF any-of-5 on both DeepSeek cells: MET
+S4 Lift_disc >= 3 in 6 of 6 primary cells; chance ratio >= 2 in 1 of 6: NOT MET
+   new    Qwen      Lift_disc 7.00  Lift_room 13.40  chance ratio 1.91
+   new    GLM       Lift_disc 4.78  Lift_room 9.59  chance ratio 2.00
+   new    DeepSeek  Lift_disc 5.86  Lift_room 10.96  chance ratio 1.87
+   new    Haiku     Lift_disc 6.23  Lift_room 12.40  chance ratio 1.99
+   new    Sonnet    Lift_disc 7.13  Lift_room 13.50  chance ratio 1.89
+   new    Gemini    Lift_disc 5.75  Lift_room 12.63  chance ratio 2.20
+   old    Qwen      Lift_disc 6.90  Lift_room 13.26  chance ratio 1.92
+   old    GLM       Lift_disc 4.92  Lift_room 10.12  chance ratio 2.06
+   old    DeepSeek  Lift_disc 5.63  Lift_room 10.74  chance ratio 1.91
+   watch  Qwen      Lift_disc 19.91  Lift_room 5.46  chance ratio 0.27
+   watch  GLM       Lift_disc 14.04  Lift_room 4.25  chance ratio 0.30
+   watch  DeepSeek  Lift_disc 12.53  Lift_room 3.94  chance ratio 0.31
+K1 an anchored baseline recovers >= 80% on both DeepSeek cells: AR no, AF no -> does not fire
+   old GLM: R5@5 61.3 vs solver any5 99 (n 141, draws on 139)
+   old DeepSeek: R5@5 63.1 vs solver any5 123 (n 157, draws on 156)
+K2 R5 >= solver any-of-5 for GLM or DeepSeek (old-wording realistic): does not fire
+   beside it (not the pre-registered cells):
+   new GLM: R5@5 56.5 vs solver any5 89; AR recovers 242%, AF 400% of gain +3
+   new DeepSeek: R5@5 59.7 vs solver any5 118; AR recovers 95%, AF 17% of gain +12
+   watch GLM: R5@5 6.5 vs solver any5 29; AR recovers 40%, AF 83% of gain +6
+   watch DeepSeek: R5@5 7.2 vs solver any5 33; AR recovers 33%, AF 10% of gain +10
+
+== T11. Descriptive only (not pre-registered): layout-clustered bootstrap of the recovery shares, 45 deg ==
+Resample the cell's layouts (scene id without its arm; a watching scene is its own layout) with replacement (B 2000, seed 14); recovery = sum(AR or AF any5 - top1) / sum(solver
+any5 - top1) over the resampled records; resamples with no solver gain are dropped (count shown).
+  old    DeepSeek  layouts  12 records  156 gain +14: AR recovery  96.0% [ 64.7, 145.8]  AF  28.6% [  0.0, 100.0]  dropped 2
+  watch  DeepSeek  layouts   6 records   36 gain +10: AR recovery  33.0% [  3.8,  59.0]  AF  10.0% [  0.0,  42.9]  dropped 0
+  old    GLM       layouts  11 records  139 gain +3: AR recovery 267.4% [ 93.0, 733.3]  AF 366.7% [  0.0, 2100.0]  dropped 214
+  watch  GLM       layouts   6 records   36 gain +6: AR recovery  39.8% [  7.8, 157.3]  AF  83.3% [ 14.3, 300.0]  dropped 1
+  new    DeepSeek  layouts  11 records  150 gain +12: AR recovery  95.0% [ 59.8, 160.3]  AF  16.7% [  0.0, 100.0]  dropped 17
+  new    GLM       layouts   8 records  139 gain +3: AR recovery 242.1% [ 98.8, 734.2]  AF 400.0% [  0.0, 2400.0]  dropped 44
+  watch  Qwen      layouts   6 records   36 gain +3: AR recovery  42.1% [ 30.4,  97.3]  AF  33.3% [  0.0, 200.0]  dropped 152
+
+== T12. Post-hoc sensitivity, NOT pre-registered: the 3 m disc against the whole room (all F cells), in-region proxy ==
+Why: the frozen disc leaves out much of the region where it lies far from the target point (T1: 90% at watching, 16%
+at realistic; the top place lies outside the disc in 100 of 108 watching and 470 of 790 line records). No new
+parameter: the whole room is the frozen lift denominator. Measured in-region (target matched, heading and
+reachability aside), because per-cell success was computed in the disc only; T5 shows sigma_disc ~ rho_disc.
+Whole-room values are exact hypergeometric expectations from the region and floor cell counts.
+cell                    n | solver in-region:  top any5  gain | R5 disc R5 room | AR disc  recov | AR room  recov
+old Qwen              143 |                    134  134    +0 |    63.2    43.0 |   135.4   nan% |   134.8   nan%
+old GLM               139 |                     96   99    +3 |    61.6    40.2 |   104.2   273% |   102.9   230%
+old DeepSeek          156 |                    113  124   +11 |    63.9    43.4 |   124.7   107% |   120.1    65%
+watch Qwen             36 |                     35   35    +0 |     6.8    21.0 |    35.3   nan% |    35.6   nan%
+watch GLM              36 |                     25   29    +4 |     6.7    19.5 |    27.0    50% |    29.7   118%
+watch DeepSeek         36 |                     30   33    +3 |     7.4    20.9 |    31.5    51% |    33.1   104%
+new Qwen              144 |                    131  131    +0 |    61.7    41.6 |   131.6   nan% |   131.4   nan%
+new GLM               139 |                     87   89    +2 |    56.7    38.0 |    93.8   342% |    93.9   345%
+new DeepSeek          150 |                    110  119    +9 |    60.1    41.4 |   119.6   106% |   116.4    71%
+new Haiku             146 |                    134  141    +7 |    68.9    45.9 |   138.4    63% |   136.9    41%
+new Sonnet            143 |                    134  134    +0 |    61.8    42.3 |   134.9   nan% |   134.5   nan%
+new Gemini            135 |                    109  109    +0 |    59.1    36.3 |   109.0   nan% |   109.0   nan%

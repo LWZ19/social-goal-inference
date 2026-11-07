@@ -1,0 +1,10 @@
+84
+keys result ['calls', 'candidates', 'constraints', 'context_check', 'flags', 'goal_mark', 'goal_pixel', 'location', 'people', 'pose_robot', 'pose_world', 'solver', 'source', 'status', 'target', 'timings_s']
+score {'success': False, 'target_correct': True, 'matched_target_id': 't0', 'reachable': True, 'in_region': False, 'heading_ok': False, 'distance_to_region_m': 0.9338460731416923, 'min_body_gap_m': 1.3410289326844056, 'personal_space_intrusion': False, 'forbidden': {}}
+people list [{"number": 1, "xy": [3.3395159974277395, 1.2278049879234911], "yaw": 2.5262546941485544, "pixel": [211.84, 161.28], "label": "Caf\u00e9 worker in white shirt and white head covering behind the counter"}]
+constraints list [{"constraint": {"because": "Person 1, the barista, works behind the counter facing the front, so stopping on the counter's front side at the service point would put the robot face-to-face across their working area and intrude on their side.", "kind": "keep_out_of_shared_space", "people": [1], "range_m": null, "target": true}, "status": "unusable", "reason": "fewer than two people are listed", "broken_m": 0.0}]
+trial 0 real_eval_02_no_one_place e0 no_one
+timings {"plan": {"calls": 1, "cached": 1, "latency_s": 2.012067613999534, "latency_total_s": 2.012147626999649, "transient_retries": 0, "validation_retries": 0, "input_tokens": 836, "output_tokens": 148, "reasoning_tokens": 0, "fresh_latency_s": 0, "fresh_latency_total_s": 0, "fresh_input_tokens": 0, "fresh_output_tokens": 0, "fresh_reasoning_tokens": 0}, "context": {"calls": 1, "cached": 1, "latency_s": 0.9199537099993904, "latency_total_s": 0.9199794289997953, "transient_retries": 0, "validation_retries": 0, "input_tokens": 729, "output_tokens": 54, "reasoning_tokens": 0, "fresh_latency_s": 0, "fre
+Counter({'constraints': 50, 'standard': 34})
+Counter({'list': 50, 'NoneType': 34})
+Counter({'list': 50, 'NoneType': 34})

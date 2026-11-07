@@ -17,7 +17,8 @@ from tests.helpers import floor_observation
 
 DENY = ["coffee", "drink", "stall", "kiosk", "queue", "queueing", "queuing", "audience", "photo", "photograph",
         "elevator", "receptionist", "cashier", "shop", "restaurant", "cafe", "barista", "waiter", "counter", "desk",
-        "reception", "lecture", "selfie", "conversation", "printer", "in line", "lift door"]
+        "reception", "lecture", "selfie", "conversation", "printer", "in line", "lift door", "cash machine", "ticket machine",
+        "atm", "pillar", "planter"]
 PATTERN = re.compile(r"\b(?:" + "|".join(w.replace(" ", r"\s+") for w in DENY) + r")(?:e?s)?\b", re.IGNORECASE)
 SIZE = (640, 480)
 

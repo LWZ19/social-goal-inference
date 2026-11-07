@@ -1,13 +1,15 @@
 """Placeholder scene generator (spec section 12): stands in for Isaac Sim until real scenes arrive.
 
     python -m sgi.synth.generate --out data/placeholder [--config PATH] [--seed N]
+    python -m sgi.synth.generate --out DIR --rows NAME [--config PATH] [--seed N]
 
 Writes <out>/eval and <out>/examples in scene format v0.1, with exact depth and ground truth, the same for
-the same seed. A layout that fails the scene check, or whose nobody-at-target standard goal cannot be
-reached, is rejected and drawn again. The reference regions of sgi.gt are written into every scene kept, and
-every scene kept has a tour (spec 3.7): eight frames from a walk round the targets, inside the room and clear
-of everything in it. A target's `tour_frames` are the frames it is visible in: those that show its anchor,
-lettering on it, or half of it or more.
+the same seed. With --rows it writes instead only the rows of the set NAME of _ON_REQUEST, straight into <out>
+(see generate_rows): rows that the two splits never hold. A layout that fails the scene check, or whose
+nobody-at-target standard goal cannot be reached, is rejected and drawn again. The reference regions of sgi.gt
+are written into every scene kept, and every scene kept has a tour (spec 3.7): eight frames from a walk round
+the targets, inside the room and clear of everything in it. A target's `tour_frames` are the frames it is
+visible in: those that show its anchor, lettering on it, or half of it or more.
 
 accepted_layouts gives the layouts kept for a seed without writing the set, for a generator that renders
 the same layouts by other means (realistic-scenes spec 5.6). It and generate() take one accept step.
@@ -34,8 +36,8 @@ from sgi.scene import (Factors, Intrinsics, ObservationModel, Person, RobotPoseM
                        Target, TourFrameModel, load_scene, save_scene)
 from sgi.stages.goal import standard_goal
 from sgi.synth.recipes import (_READABLE_COS, CAMERA_LENS, CAMERA_MOUNT, Layout, _add_extras, recipe_audience,
-                               recipe_conversation_group, recipe_group_photo, recipe_lift_wait, recipe_no_one,
-                               recipe_waiting_line, transform_layout)
+                               recipe_conversation_group, recipe_group_photo, recipe_lift_wait, recipe_machine_use,
+                               recipe_no_one, recipe_waiting_line, recipe_waiting_line_bent, transform_layout)
 from sgi.synth.render import _FACES, Box, Cylinder, Figure, Solid, render
 
 log = logging.getLogger(__name__)
@@ -68,8 +70,16 @@ _EVAL_MORE = (("audience", 3, None, 0, False), ("audience", 5, None, 0, False),
 _EXAMPLES_MORE = (("audience", 4, None, 0, False),)
 _MORE_SPLITS = (("eval", _EVAL_MORE), ("examples", _EXAMPLES_MORE))
 _MORE_STREAM = 1                   # with the seed, what the second pass's random generator is made from
+# Sets of rows written only on request, by generate_rows, and never into the two splits: `bend_and_machine` holds a
+# waiting line that turns round a pillar, of four people and of six, and someone using a cash machine and a ticket
+# machine with nobody else there (situation machine_use, held out). Each set is drawn with a random generator of its
+# own, so writing it changes no scene of either pass, and none of its rows has a bystander or a second group.
+_ON_REQUEST = {"bend_and_machine": (("waiting_line_bent", 4, None, 0, False), ("waiting_line_bent", 6, None, 0, False),
+                                    ("machine_use", 1, "cash", 0, False), ("machine_use", 1, "ticket", 0, False))}
+_ON_REQUEST_STREAM = 2             # with the seed, what the random generator of a set on request is made from
 _PEOPLE_RECIPES = {"waiting_line": recipe_waiting_line, "conversation_group": recipe_conversation_group,
-                   "audience": recipe_audience, "lift_wait": recipe_lift_wait}
+                   "audience": recipe_audience, "lift_wait": recipe_lift_wait,
+                   "waiting_line_bent": recipe_waiting_line_bent}
 _VIEW_ANGLE_SPREAD_DEG = 3.0       # a no_one scene is seen from up to this far inside the angle its row asks for
 _SHIFT_M = 5.0                     # the random transform moves a layout up to this far along each axis
 _MAX_ATTEMPTS = 20
@@ -390,6 +400,8 @@ def _layout(rng, row: tuple) -> Layout:
         layout = recipe_no_one(rng, inside if amount == 0 else amount - inside, kind)
     elif recipe == "group_photo":                  # of `amount` people posing; the kind says who the target is
         layout = recipe_group_photo(rng, amount, kind)
+    elif recipe == "machine_use":                  # one person, at the kind of machine
+        layout = recipe_machine_use(rng, kind)
     else:
         layout = _PEOPLE_RECIPES[recipe](rng, amount)
     layout = _add_extras(layout, rng, bystanders, second_group)
@@ -492,6 +504,27 @@ def generate(out_dir: Path, cfg: Config, seed: int = 0) -> dict[str, int]:
     return counts
 
 
+def generate_rows(out_dir: Path, cfg: Config, rows: Sequence[tuple], seed: int = 0) -> dict[str, int]:
+    """Write the scenes of `rows` straight into out_dir, row k as <out_dir's name>_<k>_<layout name>, each the
+    first of its layouts that is not rejected, with its regions and its tour, as generate() writes a scene. They are
+    drawn with a random generator of their own, made from the seed and _ON_REQUEST_STREAM, so they are the same for
+    the same seed and rows and no pass of generate() draws them.
+
+    A scene folder already in out_dir under the same name prefix, one with a scene.json, is removed first; nothing
+    else in out_dir is touched. Returns the number of rejected layouts by reason, as generate() does."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for stale in out_dir.glob(f"{out_dir.name}_*"):
+        if (stale / "scene.json").is_file():
+            shutil.rmtree(stale)
+    rng = np.random.default_rng([seed, _ON_REQUEST_STREAM])
+    counts = dict.fromkeys(_REASONS, 0)
+    for index, row in enumerate(rows):
+        _write_scene(out_dir, index, row, rng, cfg, counts)
+    log.info("rejected layouts: %s", _summary(counts))
+    return counts
+
+
 def accepted_layouts(work_dir: Path, cfg: Config, seed: int = 0) -> Iterator[tuple[str, int, Layout, SceneFile]]:
     """Every accepted layout of both splits in generation order, as (split, index, layout, scene): the layouts
     generate() keeps for the seed, drawn with one random generator as it draws them. The scene has the
@@ -527,7 +560,14 @@ def main(argv=None) -> int:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--rows", choices=sorted(_ON_REQUEST),
+                        help="write only this set of rows, straight into --out, in place of the two splits")
     args = parser.parse_args(argv)
+    if args.rows is not None:
+        rows = _ON_REQUEST[args.rows]
+        counts = generate_rows(args.out, load_config(args.config), rows, args.seed)
+        print(f"wrote {len(rows)} scenes to {args.out}; rejected layouts: {_summary(counts)}")
+        return 0
     counts = generate(args.out, load_config(args.config), args.seed)
     n = sum(len(rows) for _, rows in (*_SPLITS, *_MORE_SPLITS))
     print(f"wrote {n} scenes to {args.out}; rejected layouts: {_summary(counts)}")

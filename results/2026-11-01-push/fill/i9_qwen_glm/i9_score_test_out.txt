@@ -1,0 +1,19 @@
+# Item 9: the moving headline, seeds 10-14, 92 s episodes
+
+| model | R1 / CT / CT2 strict | R1 / CT / CT2 primary | first answer median s, C / R | C episodes with no answer in time (or an error) | CT2 vs R1 strict W/L/T, p | CT vs R1 strict W/L/T, p | CT2 vs R1 primary W/L/T, p |
+|---|---|---|---|---|---|---|---|
+| Qwen 3.8 | not run | | | | | | |
+| GLM-5.3 | not run | | | | | | |
+| Sonnet 5.5 | 0.06 / 0.24 / 0.29 | 0.17 / 0.37 / 0.37 | 13.2 / 9.1 | 0 of 25 (errors 0) | 21/2/2, 0.0001 | 20/2/3, 0.0001 | 20/3/2, 0.0005 |
+| DeepSeek V4.1 | 0.04 / 0.20 / 0.27 | 0.16 / 0.23 / 0.31 | 19.3 / 12.4 | 0 of 25 (errors 0) | 19/3/3, 0.0009 | 11/3/11, 0.0574 | 15/7/3, 0.1338 |
+| Haiku 5.5 | 0.01 / 0.16 / 0.30 | 0.12 / 0.38 / 0.42 | 10.4 / 7.1 | 0 of 25 (errors 0) | 19/2/4, 0.0002 | 17/2/6, 0.0007 | 21/2/2, 0.0001 |
+| Gemini 3.8 | 0.09 / 0.15 / 0.21 | 0.27 / 0.29 / 0.32 | 18.6 / 13.8 | 0 of 25 (errors 0) | 18/6/1, 0.0227 | 17/7/1, 0.0639 | 15/10/0, 0.4244 |
+| Sonnet 4.6 | 0.00 / 0.26 / 0.42 | 0.23 / 0.29 / 0.47 | 19.0 / 11.0 | 0 of 2 (errors 0) | 2/0/0, 0.5000 | 2/0/0, 0.5000 | 2/0/0, 0.5000 |
+| Sonnet 5 | not run | | | | | | |
+| Haiku 4.5 | not run | | | | | | |
+| Gemini 3 Flash | not run | | | | | | |
+| Gemini 3.1 Flash Lite | not run | | | | | | |
+| Gemini 3.5 Flash Lite | not run | | | | | | |
+| Gemini 3.6 Flash | 0.16 / 0.53 / 0.51 | 0.32 / 0.61 / 0.57 | 12.5 / 8.3 | 0 of 2 (errors 0) | 2/0/0, 0.5000 | 2/0/0, 0.5000 | 2/0/0, 0.5000 |
+
+(no judged model has run yet)

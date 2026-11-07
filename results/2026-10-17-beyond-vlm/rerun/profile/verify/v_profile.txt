@@ -1,0 +1,141 @@
+realistic scenes loaded: 42; per arm: {'plain': 10, 'real': 14, 'staffed': 14}
+people per category: {'other': 27, 'line': 48, 'group': 27, 'staff:staff': 44}
+
+== line ==
+angle, robot viewpoint: n=48 min=74.51 q25=83.25 median=89.02 q75=95.12 max=106.97 mean=89.19
+angle, camera viewpoint: n=48 min=74.10 q25=83.06 median=88.73 q75=95.15 max=107.33 mean=89.11
+angle vs optical axis: n=48 min=82.05 q25=87.39 median=92.64 q75=95.26 max=98.21 mean=91.35
+dist xy, robot: n=48 min=4.39 q25=5.02 median=5.72 q75=5.95 max=6.23 mean=5.46
+dist xy, camera: n=48 min=4.19 q25=4.82 median=5.52 q75=5.75 max=6.04 mean=5.26
+depth Z (ground point): n=48 min=4.20 q25=4.83 median=5.49 q75=5.70 max=5.77 mean=5.21
+  a_rob: in [75,107]: 45/48; in rounded band [74.5,107.5): 48; <45: 0; >135: 0; in [45,135]: 48; <90: 27; >90: 21
+  a_rob 15-deg bins: {'[60,75)': 3, '[75,90)': 24, '[90,105)': 18, '[105,120)': 3}
+  a_rob 5-deg bins: {'[70,75)': 3, '[75,80)': 6, '[80,85)': 6, '[85,90)': 12, '[90,95)': 9, '[95,100)': 6, '[100,105)': 3, '[105,110)': 3}
+  a_cam: in [75,107]: 42/48; in rounded band [74.5,107.5): 45; <45: 0; >135: 0; in [45,135]: 48; <90: 27; >90: 21
+  a_cam 15-deg bins: {'[60,75)': 3, '[75,90)': 24, '[90,105)': 18, '[105,120)': 3}
+  a_cam 5-deg bins: {'[70,75)': 3, '[75,80)': 6, '[80,85)': 6, '[85,90)': 12, '[90,95)': 9, '[95,100)': 6, '[100,105)': 3, '[105,110)': 3}
+  max |angle-90| (cam): 17.33 median: 7.79
+  arms: {'plain': 16, 'real': 16, 'staffed': 16}
+
+== group ==
+angle, robot viewpoint: n=27 min=7.74 q25=49.44 median=74.69 q75=104.95 max=172.74 mean=85.10
+angle, camera viewpoint: n=27 min=7.64 q25=49.14 median=74.36 q75=104.41 max=172.75 mean=84.82
+angle vs optical axis: n=27 min=10.47 q25=56.50 median=82.21 q75=115.98 max=172.55 mean=91.29
+dist xy, robot: n=27 min=3.66 q25=4.25 median=4.74 q75=4.81 max=5.31 mean=4.53
+dist xy, camera: n=27 min=3.46 q25=4.05 median=4.54 q75=4.61 max=5.11 mean=4.33
+depth Z (ground point): n=27 min=3.49 q25=4.00 median=4.51 q75=4.59 max=5.11 mean=4.32
+  a_rob: in [75,107]: 6/27; in rounded band [74.5,107.5): 9; <45: 3; >135: 6; in [45,135]: 18; <90: 18; >90: 9
+  a_rob 15-deg bins: {'[0,15)': 3, '[45,60)': 6, '[60,75)': 6, '[75,90)': 3, '[90,105)': 3, '[150,165)': 3, '[165,180)': 3}
+  a_rob 5-deg bins: {'[5,10)': 3, '[45,50)': 6, '[70,75)': 6, '[85,90)': 3, '[100,105)': 3, '[155,160)': 3, '[170,175)': 3}
+  a_cam: in [75,107]: 6/27; in rounded band [74.5,107.5): 6; <45: 6; >135: 6; in [45,135]: 15; <90: 18; >90: 9
+  a_cam 15-deg bins: {'[0,15)': 3, '[30,45)': 3, '[45,60)': 3, '[60,75)': 6, '[75,90)': 3, '[90,105)': 3, '[150,165)': 3, '[165,180)': 3}
+  a_cam 5-deg bins: {'[5,10)': 3, '[40,45)': 3, '[45,50)': 3, '[65,70)': 3, '[70,75)': 3, '[85,90)': 3, '[100,105)': 3, '[155,160)': 3, '[170,175)': 3}
+  max |angle-90| (cam): 82.75 median: 40.86
+  arms: {'plain': 9, 'real': 9, 'staffed': 9}
+
+== staff:staff ==
+angle, robot viewpoint: n=44 min=1.27 q25=22.80 median=30.59 q75=57.41 max=69.62 mean=35.36
+angle, camera viewpoint: n=44 min=0.47 q25=21.00 median=28.53 q75=55.14 max=68.94 mean=34.11
+angle vs optical axis: n=44 min=2.92 q25=90.00 median=90.00 q75=148.06 max=180.00 mean=101.16
+dist xy, robot: n=44 min=2.79 q25=3.43 median=4.49 q75=5.12 max=6.57 mean=4.47
+dist xy, camera: n=44 min=2.98 q25=3.50 median=4.46 q75=5.01 max=6.48 mean=4.41
+depth Z (ground point): n=44 min=-2.75 q25=-0.62 median=1.86 q75=4.74 max=5.52 mean=1.75
+  a_rob: in [75,107]: 0/44; in rounded band [74.5,107.5): 0; <45: 28; >135: 0; in [45,135]: 16; <90: 44; >90: 0
+  a_rob 15-deg bins: {'[0,15)': 8, '[15,30)': 14, '[30,45)': 6, '[45,60)': 8, '[60,75)': 8}
+  a_rob 5-deg bins: {'[0,5)': 8, '[15,20)': 2, '[20,25)': 4, '[25,30)': 8, '[30,35)': 4, '[40,45)': 2, '[50,55)': 4, '[55,60)': 4, '[65,70)': 8}
+  a_cam: in [75,107]: 0/44; in rounded band [74.5,107.5): 0; <45: 28; >135: 0; in [45,135]: 16; <90: 44; >90: 0
+  a_cam 15-deg bins: {'[0,15)': 10, '[15,30)': 12, '[30,45)': 6, '[45,60)': 8, '[60,75)': 8}
+  a_cam 5-deg bins: {'[0,5)': 8, '[10,15)': 2, '[20,25)': 4, '[25,30)': 8, '[30,35)': 4, '[35,40)': 2, '[45,50)': 2, '[50,55)': 2, '[55,60)': 4, '[65,70)': 8}
+  max |angle-90| (cam): 89.53 median: 61.47
+  arms: {'real': 22, 'staffed': 22}
+
+== other ==
+angle, robot viewpoint: n=27 min=0.53 q25=72.33 median=87.27 q75=156.27 max=167.30 mean=94.45
+angle, camera viewpoint: n=27 min=0.36 q25=72.59 median=86.90 q75=156.70 max=167.63 mean=94.41
+angle vs optical axis: n=27 min=4.39 q25=56.80 median=105.74 q75=134.66 max=149.14 mean=95.51
+dist xy, robot: n=27 min=4.84 q25=10.14 median=11.09 q75=11.84 max=12.36 mean=10.35
+dist xy, camera: n=27 min=4.64 q25=9.96 median=10.90 q75=11.65 max=12.17 mean=10.16
+depth Z (ground point): n=27 min=4.64 q25=9.18 median=10.27 q75=10.76 max=11.34 mean=9.55
+  a_rob: in [75,107]: 9/27; in rounded band [74.5,107.5): 9; <45: 6; >135: 9; in [45,135]: 12; <90: 15; >90: 12
+  a_rob 15-deg bins: {'[0,15)': 3, '[15,30)': 3, '[60,75)': 3, '[75,90)': 6, '[90,105)': 3, '[150,165)': 6, '[165,180)': 3}
+  a_rob 5-deg bins: {'[0,5)': 3, '[25,30)': 3, '[70,75)': 3, '[80,85)': 3, '[85,90)': 3, '[95,100)': 3, '[155,160)': 6, '[165,170)': 3}
+  a_cam: in [75,107]: 9/27; in rounded band [74.5,107.5): 9; <45: 6; >135: 9; in [45,135]: 12; <90: 15; >90: 12
+  a_cam 15-deg bins: {'[0,15)': 3, '[15,30)': 3, '[60,75)': 3, '[75,90)': 6, '[90,105)': 3, '[150,165)': 6, '[165,180)': 3}
+  a_cam 5-deg bins: {'[0,5)': 3, '[25,30)': 3, '[70,75)': 3, '[80,85)': 3, '[85,90)': 3, '[90,95)': 3, '[155,160)': 6, '[165,170)': 3}
+  max |angle-90| (cam): 89.64 median: 63.05
+  arms: {'plain': 9, 'real': 9, 'staffed': 9}
+
+== line members, per row ==
+plain    plain_eval_06_waiting_line_1 g0       p0         rob=  93.74 cam=  93.69 axis= 94.83 d_rob=4.394 d_cam=4.194 Z=4.22 u=331 v=209 in=True
+plain    plain_eval_07_waiting_line_2 g0       p0         rob=  99.68 cam=  99.83 axis= 96.57 d_rob=4.385 d_cam=4.186 Z=4.20 u=351 v=209 in=True
+plain    plain_eval_07_waiting_line_2 g0       p1         rob=  89.38 cam=  89.15 axis= 94.39 d_rob=4.407 d_cam=4.208 Z=4.21 u=269 v=209 in=True
+plain    plain_eval_08_waiting_line_4 g0       p0         rob=  99.25 cam=  99.53 axis= 91.60 d_rob=5.750 d_cam=5.552 Z=5.50 u=243 v=193 in=True
+plain    plain_eval_08_waiting_line_4 g0       p1         rob= 100.46 cam= 100.54 axis= 98.21 d_rob=5.693 d_cam=5.493 Z=5.49 u=297 v=194 in=True
+plain    plain_eval_08_waiting_line_4 g0       p2         rob=  90.38 cam=  90.24 axis= 94.35 d_rob=5.702 d_cam=5.503 Z=5.49 u=360 v=194 in=True
+plain    plain_eval_08_waiting_line_4 g0       p3         rob=  88.65 cam=  88.31 axis= 98.19 d_rob=5.738 d_cam=5.541 Z=5.46 u=417 v=194 in=True
+plain    plain_eval_09_waiting_line_6 g0       p0         rob= 106.97 cam= 107.33 axis= 96.57 d_rob=5.992 d_cam=5.795 Z=5.69 u=425 v=192 in=True
+plain    plain_eval_09_waiting_line_6 g0       p1         rob=  91.80 cam=  91.95 axis= 87.60 d_rob=5.990 d_cam=5.791 Z=5.77 u=362 v=191 in=True
+plain    plain_eval_09_waiting_line_6 g0       p2         rob=  80.57 cam=  80.52 axis= 82.05 d_rob=5.912 d_cam=5.712 Z=5.71 u=305 v=192 in=True
+plain    plain_eval_09_waiting_line_6 g0       p3         rob=  84.14 cam=  83.90 axis= 91.14 d_rob=5.939 d_cam=5.741 Z=5.70 u=250 v=192 in=True
+plain    plain_eval_09_waiting_line_6 g0       p4         rob=  74.51 cam=  74.10 axis= 86.75 d_rob=6.055 d_cam=5.860 Z=5.72 u=196 v=191 in=True
+plain    plain_eval_09_waiting_line_6 g0       p5         rob=  75.68 cam=  75.10 axis= 93.67 d_rob=6.229 d_cam=6.040 Z=5.72 u=134 v=191 in=True
+plain    plain_eval_13_waiting_line_3 g0       p0         rob=  88.05 cam=  88.29 axis= 82.31 d_rob=5.020 d_cam=4.821 Z=4.81 u=378 v=201 in=True
+plain    plain_eval_13_waiting_line_3 g0       p1         rob=  88.22 cam=  88.15 axis= 89.75 d_rob=5.021 d_cam=4.821 Z=4.83 u=305 v=200 in=True
+plain    plain_eval_13_waiting_line_3 g0       p2         rob=  75.49 cam=  75.16 axis= 83.67 d_rob=5.119 d_cam=4.921 Z=4.88 u=237 v=200 in=True
+real     real_eval_06_waiting_line_1 g0       p0         rob=  93.74 cam=  93.69 axis= 94.83 d_rob=4.394 d_cam=4.194 Z=4.22 u=331 v=209 in=True
+real     real_eval_07_waiting_line_2 g0       p0         rob=  99.68 cam=  99.83 axis= 96.57 d_rob=4.385 d_cam=4.186 Z=4.20 u=351 v=209 in=True
+real     real_eval_07_waiting_line_2 g0       p1         rob=  89.38 cam=  89.15 axis= 94.39 d_rob=4.407 d_cam=4.208 Z=4.21 u=269 v=209 in=True
+real     real_eval_08_waiting_line_4 g0       p0         rob=  99.25 cam=  99.53 axis= 91.60 d_rob=5.750 d_cam=5.552 Z=5.50 u=243 v=193 in=True
+real     real_eval_08_waiting_line_4 g0       p1         rob= 100.46 cam= 100.54 axis= 98.21 d_rob=5.693 d_cam=5.493 Z=5.49 u=297 v=194 in=True
+real     real_eval_08_waiting_line_4 g0       p2         rob=  90.38 cam=  90.24 axis= 94.35 d_rob=5.702 d_cam=5.503 Z=5.49 u=360 v=194 in=True
+real     real_eval_08_waiting_line_4 g0       p3         rob=  88.65 cam=  88.31 axis= 98.19 d_rob=5.738 d_cam=5.541 Z=5.46 u=417 v=194 in=True
+real     real_eval_09_waiting_line_6 g0       p0         rob= 106.97 cam= 107.33 axis= 96.57 d_rob=5.992 d_cam=5.795 Z=5.69 u=425 v=192 in=True
+real     real_eval_09_waiting_line_6 g0       p1         rob=  91.80 cam=  91.95 axis= 87.60 d_rob=5.990 d_cam=5.791 Z=5.77 u=362 v=191 in=True
+real     real_eval_09_waiting_line_6 g0       p2         rob=  80.57 cam=  80.52 axis= 82.05 d_rob=5.912 d_cam=5.712 Z=5.71 u=305 v=192 in=True
+real     real_eval_09_waiting_line_6 g0       p3         rob=  84.14 cam=  83.90 axis= 91.14 d_rob=5.939 d_cam=5.741 Z=5.70 u=250 v=192 in=True
+real     real_eval_09_waiting_line_6 g0       p4         rob=  74.51 cam=  74.10 axis= 86.75 d_rob=6.055 d_cam=5.860 Z=5.72 u=196 v=191 in=True
+real     real_eval_09_waiting_line_6 g0       p5         rob=  75.68 cam=  75.10 axis= 93.67 d_rob=6.229 d_cam=6.040 Z=5.72 u=134 v=191 in=True
+real     real_eval_13_waiting_line_3 g0       p0         rob=  88.05 cam=  88.29 axis= 82.31 d_rob=5.020 d_cam=4.821 Z=4.81 u=378 v=201 in=True
+real     real_eval_13_waiting_line_3 g0       p1         rob=  88.22 cam=  88.15 axis= 89.75 d_rob=5.021 d_cam=4.821 Z=4.83 u=305 v=200 in=True
+real     real_eval_13_waiting_line_3 g0       p2         rob=  75.49 cam=  75.16 axis= 83.67 d_rob=5.119 d_cam=4.921 Z=4.88 u=237 v=200 in=True
+staffed  staffed_eval_06_waiting_line_1 g0       p0         rob=  93.74 cam=  93.69 axis= 94.83 d_rob=4.394 d_cam=4.194 Z=4.22 u=331 v=209 in=True
+staffed  staffed_eval_07_waiting_line_2 g0       p0         rob=  99.68 cam=  99.83 axis= 96.57 d_rob=4.385 d_cam=4.186 Z=4.20 u=351 v=209 in=True
+staffed  staffed_eval_07_waiting_line_2 g0       p1         rob=  89.38 cam=  89.15 axis= 94.39 d_rob=4.407 d_cam=4.208 Z=4.21 u=269 v=209 in=True
+staffed  staffed_eval_08_waiting_line_4 g0       p0         rob=  99.25 cam=  99.53 axis= 91.60 d_rob=5.750 d_cam=5.552 Z=5.50 u=243 v=193 in=True
+staffed  staffed_eval_08_waiting_line_4 g0       p1         rob= 100.46 cam= 100.54 axis= 98.21 d_rob=5.693 d_cam=5.493 Z=5.49 u=297 v=194 in=True
+staffed  staffed_eval_08_waiting_line_4 g0       p2         rob=  90.38 cam=  90.24 axis= 94.35 d_rob=5.702 d_cam=5.503 Z=5.49 u=360 v=194 in=True
+staffed  staffed_eval_08_waiting_line_4 g0       p3         rob=  88.65 cam=  88.31 axis= 98.19 d_rob=5.738 d_cam=5.541 Z=5.46 u=417 v=194 in=True
+staffed  staffed_eval_09_waiting_line_6 g0       p0         rob= 106.97 cam= 107.33 axis= 96.57 d_rob=5.992 d_cam=5.795 Z=5.69 u=425 v=192 in=True
+staffed  staffed_eval_09_waiting_line_6 g0       p1         rob=  91.80 cam=  91.95 axis= 87.60 d_rob=5.990 d_cam=5.791 Z=5.77 u=362 v=191 in=True
+staffed  staffed_eval_09_waiting_line_6 g0       p2         rob=  80.57 cam=  80.52 axis= 82.05 d_rob=5.912 d_cam=5.712 Z=5.71 u=305 v=192 in=True
+staffed  staffed_eval_09_waiting_line_6 g0       p3         rob=  84.14 cam=  83.90 axis= 91.14 d_rob=5.939 d_cam=5.741 Z=5.70 u=250 v=192 in=True
+staffed  staffed_eval_09_waiting_line_6 g0       p4         rob=  74.51 cam=  74.10 axis= 86.75 d_rob=6.055 d_cam=5.860 Z=5.72 u=196 v=191 in=True
+staffed  staffed_eval_09_waiting_line_6 g0       p5         rob=  75.68 cam=  75.10 axis= 93.67 d_rob=6.229 d_cam=6.040 Z=5.72 u=134 v=191 in=True
+staffed  staffed_eval_13_waiting_line_3 g0       p0         rob=  88.05 cam=  88.29 axis= 82.31 d_rob=5.020 d_cam=4.821 Z=4.81 u=378 v=201 in=True
+staffed  staffed_eval_13_waiting_line_3 g0       p1         rob=  88.22 cam=  88.15 axis= 89.75 d_rob=5.021 d_cam=4.821 Z=4.83 u=305 v=200 in=True
+staffed  staffed_eval_13_waiting_line_3 g0       p2         rob=  75.49 cam=  75.16 axis= 83.67 d_rob=5.119 d_cam=4.921 Z=4.88 u=237 v=200 in=True
+
+== lines: side-on angle (PCA axis vs camera ray to centroid; 90 = side-on) ==
+plain    plain_eval_06_waiting_line_1 g0       n=1 side=86.31
+plain    plain_eval_07_waiting_line_2 g0       n=2 side=87.95
+plain    plain_eval_08_waiting_line_4 g0       n=4 side=89.75
+plain    plain_eval_09_waiting_line_6 g0       n=6 side=85.78
+plain    plain_eval_13_waiting_line_3 g0       n=3 side=85.26
+real     real_eval_06_waiting_line_1 g0       n=1 side=86.31
+real     real_eval_07_waiting_line_2 g0       n=2 side=87.95
+real     real_eval_08_waiting_line_4 g0       n=4 side=89.75
+real     real_eval_09_waiting_line_6 g0       n=6 side=85.78
+real     real_eval_13_waiting_line_3 g0       n=3 side=85.26
+staffed  staffed_eval_06_waiting_line_1 g0       n=1 side=86.31
+staffed  staffed_eval_07_waiting_line_2 g0       n=2 side=87.95
+staffed  staffed_eval_08_waiting_line_4 g0       n=4 side=89.75
+staffed  staffed_eval_09_waiting_line_6 g0       n=6 side=85.78
+staffed  staffed_eval_13_waiting_line_3 g0       n=3 side=85.26
+side-on angle: n=15 min=85.26 q25=85.78 median=86.31 q75=87.95 max=89.75 mean=87.01
+
+== identity across arms ==
+scene ids: 38; arms per scene id: {1: 38}; compared person pairs 0, differing 0
+line: instances 48, distinct (scene,pid) 48, distinct line groups 15
+group: instances 27, distinct (scene,pid) 27, distinct line groups -
+staff:staff: instances 44, distinct (scene,pid) 44, distinct line groups -
+other: instances 27, distinct (scene,pid) 27, distinct line groups -

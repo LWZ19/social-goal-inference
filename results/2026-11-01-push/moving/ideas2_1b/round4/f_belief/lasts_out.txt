@@ -1,0 +1,4 @@
+CT3F: non-waiting last on 702 of 3093 ticks (0.227); bystander, named 0.082, bystander, not named 0.059, ex-member 0.057, walker, not named 0.023, walker, named 0.006
+CT4: non-waiting last on 1193 of 3474 ticks (0.343); bystander, named 0.133, ex-member 0.106, walker, not named 0.082, walker, named 0.014, bystander, not named 0.009
+W0: non-waiting last on 1294 of 3477 ticks (0.372); ex-member 0.151, bystander, named 0.120, walker, not named 0.076, bystander, not named 0.015, walker, named 0.010
+CT5: non-waiting last on 1693 of 3478 ticks (0.487); bystander, named 0.158, ex-member 0.156, walker, not named 0.111, walker, named 0.037, bystander, not named 0.025

@@ -1,0 +1,17 @@
+# X4: run-to-run noise on the development still scenes (reported, no bar)
+
+## GLM-5.3
+
+| batch | R | E | C | C-R | C-E | records per method |
+|---|---|---|---|---|---|---|
+| s23 | 132 | 123 | 170 | +38 | +47 | 252 |
+| noise1 | not run | | | | | |
+| noise2 | not run | | | | | |
+
+## DeepSeek V4.1
+
+| batch | R | E | C | C-R | C-E | records per method |
+|---|---|---|---|---|---|---|
+| s23 | 120 | 126 | 185 | +65 | +59 | 252 |
+| noise1 | not run | | | | | |
+| noise2 | not run | | | | | |

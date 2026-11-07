@@ -1,0 +1,134 @@
+16:25:48 model soclaas_dsv41: 30 groups x 4 arms, 3 workers
+16:25:48 w1 serve C pid 88016 port 8862
+16:25:48 w1 serve R pid 88018 port 8863
+16:25:48 w0 serve C pid 88015 port 8860
+16:25:48 w0 serve R pid 88024 port 8861
+16:25:48 w2 serve C pid 88019 port 8864
+16:25:48 w2 serve R pid 88028 port 8865
+16:27:29 w1 cafe_line2_bystanders seed15 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 15: in line at end False, share 0.00, first None, cut-in samples 6, calls 4, resolves 136
+16:27:30 w2 cafe_line2_bystanders seed16 CT2: exit 0 in 101 s | [exp] cafe_line2_bystanders CT2 seed 16: in line at end False, share 0.01, first 31.97, cut-in samples 6, calls 4, resolves 136
+16:27:39 w0 sweet_spot_line2_bystanders seed15 CT2: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT2 seed 15: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 147
+16:29:09 w1 cafe_line2_bystanders seed15 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 15: in line at end False, share 0.00, first None, cut-in samples 12, calls 4, resolves 136
+16:29:10 w2 cafe_line2_bystanders seed16 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 16: in line at end False, share 0.12, first 23.97, cut-in samples 32, calls 4, resolves 137
+16:29:23 w0 sweet_spot_line2_bystanders seed15 CT3: exit 0 in 105 s | [exp] sweet_spot_line2_bystanders CT3 seed 15: in line at end False, share 0.18, first 18.97, cut-in samples 28, calls 4, resolves 148
+16:30:49 w1 cafe_line2_bystanders seed15 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 15: in line at end False, share 0.03, first 31.97, cut-in samples 3, calls 4, resolves 136
+16:30:50 w2 cafe_line2_bystanders seed16 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 16: in line at end False, share 0.00, first None, cut-in samples 3, calls 4, resolves 137
+16:31:11 w0 sweet_spot_line2_bystanders seed15 Gl: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders Gl seed 15: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 148
+16:32:29 w1 cafe_line2_bystanders seed15 CT3b: exit 0 in 99 s | [exp] cafe_line2_bystanders CT3b seed 15: in line at end False, share 0.00, first None, cut-in samples 10, calls 4, resolves 137
+16:32:29 w2 cafe_line2_bystanders seed16 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 16: in line at end False, share 0.13, first 23.97, cut-in samples 32, calls 4, resolves 137
+16:33:00 w0 sweet_spot_line2_bystanders seed15 CT3b: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT3b seed 15: in line at end False, share 0.19, first 18.97, cut-in samples 28, calls 4, resolves 148
+16:34:09 w2 cafe_line2_bystanders seed17 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 17: in line at end False, share 0.04, first 33.97, cut-in samples 0, calls 4, resolves 127
+16:34:14 w1 sweet_spot_line2_bystanders seed16 CT2: exit 0 in 105 s | [exp] sweet_spot_line2_bystanders CT2 seed 16: in line at end False, share 0.04, first 76.97, cut-in samples 0, calls 4, resolves 130
+16:34:48 w0 sweet_spot_line2_bystanders seed17 CT2: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders CT2 seed 17: in line at end False, share 0.01, first 80.97, cut-in samples 0, calls 4, resolves 78
+16:35:48 w2 cafe_line2_bystanders seed17 CT3: exit 0 in 99 s | [exp] cafe_line2_bystanders CT3 seed 17: in line at end False, share 0.04, first 30.97, cut-in samples 0, calls 4, resolves 127
+16:36:00 w1 sweet_spot_line2_bystanders seed16 CT3: exit 0 in 105 s | [exp] sweet_spot_line2_bystanders CT3 seed 16: in line at end False, share 0.00, first None, cut-in samples 2, calls 4, resolves 130
+16:36:34 w0 sweet_spot_line2_bystanders seed17 CT3: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders CT3 seed 17: in line at end False, share 0.01, first 80.97, cut-in samples 0, calls 4, resolves 78
+16:37:27 w2 cafe_line2_bystanders seed17 Gl: exit 0 in 99 s | [exp] cafe_line2_bystanders Gl seed 17: in line at end False, share 0.01, first 46.97, cut-in samples 0, calls 4, resolves 127
+16:37:48 w1 sweet_spot_line2_bystanders seed16 Gl: exit 0 in 108 s | [exp] sweet_spot_line2_bystanders Gl seed 16: in line at end False, share 0.00, first None, cut-in samples 36, calls 4, resolves 130
+16:38:24 w0 sweet_spot_line2_bystanders seed17 Gl: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders Gl seed 17: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 78
+16:39:06 w2 cafe_line2_bystanders seed17 CT3b: exit 0 in 99 s | [exp] cafe_line2_bystanders CT3b seed 17: in line at end False, share 0.04, first 33.97, cut-in samples 0, calls 4, resolves 127
+16:39:33 w1 sweet_spot_line2_bystanders seed16 CT3b: exit 0 in 105 s | [exp] sweet_spot_line2_bystanders CT3b seed 16: in line at end False, share 0.01, first 42.97, cut-in samples 0, calls 4, resolves 130
+16:40:11 w0 sweet_spot_line2_bystanders seed17 CT3b: exit 0 in 108 s | [exp] sweet_spot_line2_bystanders CT3b seed 17: in line at end False, share 0.03, first 80.97, cut-in samples 0, calls 4, resolves 78
+16:40:46 w2 cafe_line2_bystanders seed18 CT2: exit 0 in 99 s | [exp] cafe_line2_bystanders CT2 seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 144
+16:41:20 w1 sweet_spot_line2_bystanders seed18 CT2: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders CT2 seed 18: in line at end True, share 0.05, first 21.97, cut-in samples 0, calls 4, resolves 141
+16:41:51 w0 cafe_line2_bystanders seed19 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 19: in line at end False, share 0.26, first 23.97, cut-in samples 22, calls 4, resolves 138
+16:42:26 w2 cafe_line2_bystanders seed18 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 18: in line at end False, share 0.07, first 21.97, cut-in samples 30, calls 4, resolves 144
+16:43:11 w1 sweet_spot_line2_bystanders seed18 CT3: exit 0 in 111 s | [exp] sweet_spot_line2_bystanders CT3 seed 18: in line at end False, share 0.34, first 21.97, cut-in samples 5, calls 4, resolves 142
+16:43:31 w0 cafe_line2_bystanders seed19 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 19: in line at end False, share 0.38, first 20.97, cut-in samples 14, calls 4, resolves 138
+16:44:06 w2 cafe_line2_bystanders seed18 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 18: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 144
+16:44:59 w1 sweet_spot_line2_bystanders seed18 Gl: exit 0 in 108 s | [exp] sweet_spot_line2_bystanders Gl seed 18: in line at end False, share 0.01, first 32.97, cut-in samples 0, calls 4, resolves 142
+16:45:11 w0 cafe_line2_bystanders seed19 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 138
+16:45:46 w2 cafe_line2_bystanders seed18 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 18: in line at end False, share 0.07, first 22.97, cut-in samples 30, calls 4, resolves 144
+16:46:48 w1 sweet_spot_line2_bystanders seed18 CT3b: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT3b seed 18: in line at end False, share 0.35, first 21.97, cut-in samples 4, calls 4, resolves 142
+16:46:51 w0 cafe_line2_bystanders seed19 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 19: in line at end False, share 0.30, first 20.97, cut-in samples 23, calls 4, resolves 138
+16:47:33 w2 sweet_spot_line2_bystanders seed19 CT2: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders CT2 seed 19: in line at end False, share 0.02, first 41.97, cut-in samples 0, calls 4, resolves 144
+16:48:27 w1 cafe_line2_bystanders seed20 CT2: exit 0 in 99 s | [exp] cafe_line2_bystanders CT2 seed 20: in line at end False, share 0.07, first 45.97, cut-in samples 1, calls 4, resolves 151
+16:48:37 w0 sweet_spot_line2_bystanders seed20 CT2: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT2 seed 20: in line at end False, share 0.01, first 48.97, cut-in samples 4, calls 5, resolves 141
+16:49:24 w2 sweet_spot_line2_bystanders seed19 CT3: exit 0 in 111 s | [exp] sweet_spot_line2_bystanders CT3 seed 19: in line at end True, share 0.10, first 70.97, cut-in samples 0, calls 4, resolves 144
+16:50:07 w1 cafe_line2_bystanders seed20 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 20: in line at end False, share 0.15, first 39.97, cut-in samples 32, calls 4, resolves 151
+16:50:27 w0 sweet_spot_line2_bystanders seed20 CT3: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT3 seed 20: in line at end False, share 0.01, first 55.97, cut-in samples 1, calls 5, resolves 141
+16:51:13 w2 sweet_spot_line2_bystanders seed19 Gl: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders Gl seed 19: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 144
+16:51:48 w1 cafe_line2_bystanders seed20 Gl: exit 0 in 101 s | [exp] cafe_line2_bystanders Gl seed 20: in line at end False, share 0.03, first 46.97, cut-in samples 0, calls 4, resolves 151
+16:52:14 w0 sweet_spot_line2_bystanders seed20 Gl: exit 0 in 108 s | [exp] sweet_spot_line2_bystanders Gl seed 20: in line at end False, share 0.02, first 21.97, cut-in samples 4, calls 5, resolves 142
+16:53:01 w2 sweet_spot_line2_bystanders seed19 CT3b: exit 0 in 108 s | [exp] sweet_spot_line2_bystanders CT3b seed 19: in line at end False, share 0.02, first 34.97, cut-in samples 0, calls 4, resolves 145
+16:53:27 w1 cafe_line2_bystanders seed20 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 20: in line at end False, share 0.15, first 39.97, cut-in samples 30, calls 4, resolves 151
+16:54:02 w0 sweet_spot_line2_bystanders seed20 CT3b: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders CT3b seed 20: in line at end False, share 0.00, first None, cut-in samples 1, calls 5, resolves 141
+16:54:41 w2 cafe_line2_bystanders seed21 CT2: exit 0 in 99 s | [exp] cafe_line2_bystanders CT2 seed 21: in line at end False, share 0.19, first 17.97, cut-in samples 24, calls 4, resolves 150
+16:55:16 w1 sweet_spot_line2_bystanders seed21 CT2: exit 0 in 108 s | [exp] sweet_spot_line2_bystanders CT2 seed 21: in line at end True, share 0.05, first 85.97, cut-in samples 1, calls 4, resolves 140
+16:55:42 w0 cafe_line2_bystanders seed22 CT2: exit 0 in 101 s | [exp] cafe_line2_bystanders CT2 seed 22: in line at end False, share 0.00, first None, cut-in samples 14, calls 4, resolves 142
+16:56:20 w2 cafe_line2_bystanders seed21 CT3: exit 0 in 99 s | [exp] cafe_line2_bystanders CT3 seed 21: in line at end False, share 0.04, first 19.97, cut-in samples 18, calls 4, resolves 150
+16:57:06 w1 sweet_spot_line2_bystanders seed21 CT3: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT3 seed 21: in line at end False, share 0.11, first 72.97, cut-in samples 0, calls 4, resolves 139
+16:57:22 w0 cafe_line2_bystanders seed22 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 22: in line at end False, share 0.00, first None, cut-in samples 14, calls 4, resolves 142
+16:58:00 w2 cafe_line2_bystanders seed21 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 21: in line at end False, share 0.04, first 56.97, cut-in samples 0, calls 4, resolves 150
+16:58:56 w1 sweet_spot_line2_bystanders seed21 Gl: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders Gl seed 21: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 140
+16:59:02 w0 cafe_line2_bystanders seed22 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 22: in line at end False, share 0.01, first 32.97, cut-in samples 0, calls 4, resolves 142
+16:59:40 w2 cafe_line2_bystanders seed21 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 21: in line at end False, share 0.04, first 19.97, cut-in samples 10, calls 4, resolves 149
+17:00:42 w0 cafe_line2_bystanders seed22 CT3b: exit 0 in 101 s | [exp] cafe_line2_bystanders CT3b seed 22: in line at end False, share 0.00, first None, cut-in samples 14, calls 4, resolves 142
+17:00:44 w1 sweet_spot_line2_bystanders seed21 CT3b: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT3b seed 21: in line at end False, share 0.07, first 50.97, cut-in samples 0, calls 4, resolves 140
+17:01:29 w2 sweet_spot_line2_bystanders seed22 CT2: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT2 seed 22: in line at end False, share 0.01, first 42.97, cut-in samples 0, calls 5, resolves 121
+17:02:22 w0 cafe_line2_bystanders seed23 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 23: in line at end False, share 0.24, first 20.97, cut-in samples 0, calls 4, resolves 141
+17:02:29 w1 sweet_spot_line2_bystanders seed23 CT2: exit 0 in 104 s | [exp] sweet_spot_line2_bystanders CT2 seed 23: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:03:15 w2 sweet_spot_line2_bystanders seed22 CT3: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT3 seed 22: in line at end False, share 0.03, first 41.97, cut-in samples 0, calls 5, resolves 121
+17:04:02 w0 cafe_line2_bystanders seed23 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 23: in line at end True, share 0.74, first 20.97, cut-in samples 0, calls 4, resolves 141
+17:04:15 w1 sweet_spot_line2_bystanders seed23 CT3: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT3 seed 23: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:05:03 w2 sweet_spot_line2_bystanders seed22 Gl: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders Gl seed 22: in line at end False, share 0.03, first 32.97, cut-in samples 3, calls 5, resolves 121
+17:05:43 w0 cafe_line2_bystanders seed23 Gl: exit 0 in 101 s | [exp] cafe_line2_bystanders Gl seed 23: in line at end False, share 0.02, first 78.97, cut-in samples 0, calls 4, resolves 141
+17:06:01 w1 sweet_spot_line2_bystanders seed23 Gl: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders Gl seed 23: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:06:54 w2 sweet_spot_line2_bystanders seed22 CT3b: exit 0 in 111 s | [exp] sweet_spot_line2_bystanders CT3b seed 22: in line at end False, share 0.01, first 42.97, cut-in samples 11, calls 5, resolves 121
+17:07:24 w0 cafe_line2_bystanders seed23 CT3b: exit 0 in 101 s | [exp] cafe_line2_bystanders CT3b seed 23: in line at end True, share 0.71, first 21.97, cut-in samples 0, calls 4, resolves 141
+17:07:50 w1 sweet_spot_line2_bystanders seed23 CT3b: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT3b seed 23: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:08:35 w2 cafe_line2_bystanders seed24 CT2: exit 0 in 101 s | [exp] cafe_line2_bystanders CT2 seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 91
+17:09:14 w0 sweet_spot_line2_bystanders seed24 CT2: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT2 seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 123
+17:09:31 w1 cafe_line2_bystanders seed25 CT2: exit 0 in 101 s | [exp] cafe_line2_bystanders CT2 seed 25: in line at end False, share 0.09, first 37.97, cut-in samples 1, calls 4, resolves 131
+17:10:18 w2 cafe_line2_bystanders seed24 CT3: exit 0 in 103 s | [exp] cafe_line2_bystanders CT3 seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 90
+17:11:06 w0 sweet_spot_line2_bystanders seed24 CT3: exit 0 in 112 s | [exp] sweet_spot_line2_bystanders CT3 seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 123
+17:11:13 w1 cafe_line2_bystanders seed25 CT3: exit 0 in 102 s | [exp] cafe_line2_bystanders CT3 seed 25: in line at end False, share 0.07, first 37.97, cut-in samples 6, calls 4, resolves 131
+17:12:00 w2 cafe_line2_bystanders seed24 Gl: exit 0 in 103 s | [exp] cafe_line2_bystanders Gl seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 91
+17:12:55 w1 cafe_line2_bystanders seed25 Gl: exit 0 in 103 s | [exp] cafe_line2_bystanders Gl seed 25: in line at end False, share 0.01, first 59.97, cut-in samples 0, calls 4, resolves 131
+17:13:00 w0 sweet_spot_line2_bystanders seed24 Gl: exit 0 in 115 s | [exp] sweet_spot_line2_bystanders Gl seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 124
+17:13:43 w2 cafe_line2_bystanders seed24 CT3b: exit 0 in 103 s | [exp] cafe_line2_bystanders CT3b seed 24: in line at end False, share 0.01, first 85.97, cut-in samples 0, calls 4, resolves 91
+17:14:54 w1 cafe_line2_bystanders seed25 CT3b: exit 0 in 119 s | [exp] cafe_line2_bystanders CT3b seed 25: in line at end True, share 0.57, first 37.97, cut-in samples 0, calls 4, resolves 116
+17:15:06 w0 sweet_spot_line2_bystanders seed24 CT3b: exit 0 in 125 s | [exp] sweet_spot_line2_bystanders CT3b seed 24: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 97
+17:15:54 w2 sweet_spot_line2_bystanders seed25 CT2: exit 0 in 131 s | [exp] sweet_spot_line2_bystanders CT2 seed 25: in line at end False, share 0.11, first 50.97, cut-in samples 0, calls 4, resolves 85
+17:16:39 w1 cafe_line2_bystanders seed26 CT2: exit 0 in 105 s | [exp] cafe_line2_bystanders CT2 seed 26: in line at end False, share 0.16, first 36.97, cut-in samples 25, calls 4, resolves 110
+17:16:55 w0 sweet_spot_line2_bystanders seed26 CT2: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT2 seed 26: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:17:47 w2 sweet_spot_line2_bystanders seed25 CT3: exit 0 in 112 s | [exp] sweet_spot_line2_bystanders CT3 seed 25: in line at end False, share 0.30, first 49.97, cut-in samples 4, calls 4, resolves 89
+17:18:19 w1 cafe_line2_bystanders seed26 CT3: exit 0 in 101 s | [exp] cafe_line2_bystanders CT3 seed 26: in line at end False, share 0.01, first 36.97, cut-in samples 0, calls 4, resolves 111
+17:18:45 w0 sweet_spot_line2_bystanders seed26 CT3: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT3 seed 26: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:19:36 w2 sweet_spot_line2_bystanders seed25 Gl: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders Gl seed 25: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 89
+17:19:59 w1 cafe_line2_bystanders seed26 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 26: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 111
+17:20:34 w0 sweet_spot_line2_bystanders seed26 Gl: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders Gl seed 26: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:21:26 w2 sweet_spot_line2_bystanders seed25 CT3b: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT3b seed 25: in line at end False, share 0.30, first 47.97, cut-in samples 4, calls 4, resolves 89
+17:21:38 w1 cafe_line2_bystanders seed26 CT3b: exit 0 in 99 s | [exp] cafe_line2_bystanders CT3b seed 26: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 111
+17:22:19 w0 sweet_spot_line2_bystanders seed26 CT3b: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT3b seed 26: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:23:05 w2 cafe_line2_bystanders seed27 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:23:24 w1 sweet_spot_line2_bystanders seed27 CT2: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT2 seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 75
+17:24:00 w0 cafe_line2_bystanders seed28 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 28: in line at end False, share 0.00, first None, cut-in samples 21, calls 4, resolves 72
+17:24:46 w2 cafe_line2_bystanders seed27 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:25:13 w1 sweet_spot_line2_bystanders seed27 CT3: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT3 seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 76
+17:25:39 w0 cafe_line2_bystanders seed28 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 28: in line at end False, share 0.00, first None, cut-in samples 8, calls 4, resolves 72
+17:26:25 w2 cafe_line2_bystanders seed27 Gl: exit 0 in 100 s | [exp] cafe_line2_bystanders Gl seed 27: in line at end False, share 0.03, first 26.97, cut-in samples 0, calls 2, resolves 136
+17:27:00 w1 sweet_spot_line2_bystanders seed27 Gl: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders Gl seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 76
+17:27:18 w0 cafe_line2_bystanders seed28 Gl: exit 0 in 99 s | [exp] cafe_line2_bystanders Gl seed 28: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 72
+17:28:05 w2 cafe_line2_bystanders seed27 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:28:52 w1 sweet_spot_line2_bystanders seed27 CT3b: exit 0 in 112 s | [exp] sweet_spot_line2_bystanders CT3b seed 27: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 75
+17:28:57 w0 cafe_line2_bystanders seed28 CT3b: exit 0 in 99 s | [exp] cafe_line2_bystanders CT3b seed 28: in line at end False, share 0.00, first None, cut-in samples 15, calls 4, resolves 73
+17:29:54 w2 sweet_spot_line2_bystanders seed28 CT2: exit 0 in 109 s | [exp] sweet_spot_line2_bystanders CT2 seed 28: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 56
+17:30:33 w1 cafe_line2_bystanders seed29 CT2: exit 0 in 100 s | [exp] cafe_line2_bystanders CT2 seed 29: in line at end False, share 0.00, first None, cut-in samples 25, calls 4, resolves 81
+17:30:43 w0 sweet_spot_line2_bystanders seed29 CT2: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT2 seed 29: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:31:44 w2 sweet_spot_line2_bystanders seed28 CT3: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders CT3 seed 28: in line at end False, share 0.01, first 83.97, cut-in samples 0, calls 4, resolves 56
+17:32:13 w1 cafe_line2_bystanders seed29 CT3: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3 seed 29: in line at end False, share 0.01, first 82.97, cut-in samples 10, calls 4, resolves 81
+17:32:30 w0 sweet_spot_line2_bystanders seed29 CT3: exit 0 in 107 s | [exp] sweet_spot_line2_bystanders CT3 seed 29: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:33:35 w2 sweet_spot_line2_bystanders seed28 Gl: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders Gl seed 28: in line at end False, share 0.01, first 67.97, cut-in samples 0, calls 4, resolves 56
+17:33:52 w1 cafe_line2_bystanders seed29 Gl: exit 0 in 99 s | [exp] cafe_line2_bystanders Gl seed 29: in line at end False, share 0.00, first None, cut-in samples 1, calls 4, resolves 81
+17:34:20 w0 sweet_spot_line2_bystanders seed29 Gl: exit 0 in 110 s | [exp] sweet_spot_line2_bystanders Gl seed 29: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 123
+17:35:27 w2 sweet_spot_line2_bystanders seed28 CT3b: exit 0 in 113 s | [exp] sweet_spot_line2_bystanders CT3b seed 28: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 55
+17:35:28 w2 serve C pid 88019 stopped
+17:35:28 w2 serve R pid 88028 stopped
+17:35:32 w1 cafe_line2_bystanders seed29 CT3b: exit 0 in 100 s | [exp] cafe_line2_bystanders CT3b seed 29: in line at end False, share 0.02, first 59.97, cut-in samples 16, calls 4, resolves 81
+17:35:32 w1 serve C pid 88016 stopped
+17:35:32 w1 serve R pid 88018 stopped
+17:36:06 w0 sweet_spot_line2_bystanders seed29 CT3b: exit 0 in 106 s | [exp] sweet_spot_line2_bystanders CT3b seed 29: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+17:36:06 w0 serve C pid 88015 stopped
+17:36:06 w0 serve R pid 88024 stopped
+17:36:06 done

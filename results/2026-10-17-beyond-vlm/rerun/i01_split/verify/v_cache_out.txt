@@ -1,0 +1,17 @@
+s22 cot trials (0, 1, 2): {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('goal', 'calls'): 143, ('goal', 'cached'): 143}
+s22 cot trials (3, 4, 5): {('plan', 'calls'): 252, ('plan', 'cached'): 0, ('context', 'calls'): 252, ('context', 'cached'): 0, ('goal', 'calls'): 143, ('goal', 'cached'): 0}
+s22 fsc trials (0, 1, 2): {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('goal', 'calls'): 143, ('goal', 'cached'): 143}
+s22 fsc trials (3, 4, 5): {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('goal', 'calls'): 143, ('goal', 'cached'): 0}
+s22 t3-5 cot vs fsc same target world: 252 252
+s22 t3-5 cot target == s16b same key (trial-3): 17 252
+s23 glm53 con cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('people', 'calls'): 141, ('people', 'cached'): 141, ('constraints', 'calls'): 141, ('constraints', 'cached'): 0}
+   s23 glm53 C people identical to s19 same key: 134/141
+s23 dsv41 con cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('people', 'calls'): 151, ('people', 'cached'): 149, ('constraints', 'calls'): 151, ('constraints', 'cached'): 2}
+   s23 dsv41 C people identical to s20 same key: 144/151
+s21 qwen con cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('people', 'calls'): 144, ('people', 'cached'): 144, ('constraints', 'calls'): 144, ('constraints', 'cached'): 0}
+s23 haiku55 con cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('people', 'calls'): 146, ('people', 'cached'): 75, ('constraints', 'calls'): 146, ('constraints', 'cached'): 6}
+s23 sonnet55_low con cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('people', 'calls'): 143, ('people', 'cached'): 74, ('constraints', 'calls'): 143, ('constraints', 'cached'): 6}
+s23 gemini38_low con cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252, ('people', 'calls'): 135, ('people', 'cached'): 66, ('constraints', 'calls'): 135, ('constraints', 'cached'): 6}
+GLM old notok cot [('plain', 'plain_eval_07_waiting_line_2', 'e1', 0), ('plain', 'plain_eval_08_waiting_line_4', 'e1', 2), ('staffed', 'staffed_eval_07_waiting_line_2', 'e1', 2), ('staffed', 'staffed_eval_13_waiting_line_3', 'e1', 2)]
+GLM old notok fsc [('plain', 'plain_eval_07_waiting_line_2', 'e1', 0), ('plain', 'plain_eval_08_waiting_line_4', 'e1', 2), ('staffed', 'staffed_eval_07_waiting_line_2', 'e1', 2), ('staffed', 'staffed_eval_13_waiting_line_3', 'e1', 2)]
+GLM old notok con [('plain', 'plain_eval_07_waiting_line_2', 'e1', 0), ('plain', 'plain_eval_08_waiting_line_4', 'e1', 2), ('staffed', 'staffed_eval_07_waiting_line_2', 'e1', 2), ('staffed', 'staffed_eval_13_waiting_line_3', 'e1', 2)]

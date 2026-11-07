@@ -1,0 +1,17 @@
+clean  v1 (interim)           dsv-bys R0.35 C200 E0.03 | dsv-ori R0.46 C0 E0.02 | son-bys R0.41 C197 E0.02 | son-ori R0.51 C0 E0.02
+clean  +walkers in static     dsv-bys R0.40 C210 E0.04 | dsv-ori R0.56 C0 E0.02 | son-bys R0.44 C234 E0.02 | son-ori R0.60 C0 E0.02
+clean  +standing place 10 s   dsv-bys R0.30 C194 E0.04 | dsv-ori R0.37 C0 E0.01 | son-bys R0.35 C209 E0.02 | son-ori R0.43 C0 E0.02
+clean  +step back             dsv-bys R0.33 C236 E0.05 | dsv-ori R0.46 C0 E0.02 | son-bys R0.41 C232 E0.02 | son-ori R0.51 C0 E0.02
+S3     v1 (interim)           dsv-bys R0.28 C772 E0.03 | dsv-ori R0.46 C0 E0.02 | son-bys R0.30 C636 E0.01 | son-ori R0.51 C0 E0.02
+S3     +walkers in static     dsv-bys R0.30 C908 E0.03 | dsv-ori R0.56 C0 E0.02 | son-bys R0.30 C724 E0.01 | son-ori R0.60 C0 E0.02
+S3     +standing place 10 s   dsv-bys R0.24 C758 E0.03 | dsv-ori R0.37 C0 E0.01 | son-bys R0.26 C634 E0.02 | son-ori R0.43 C0 E0.02
+S3     +step back             dsv-bys R0.28 C732 E0.04 | dsv-ori R0.46 C0 E0.02 | son-bys R0.33 C592 E0.02 | son-ori R0.51 C0 E0.02
+S4     v1 (interim)           dsv-bys R0.19 C90 E0.02 | dsv-ori R0.32 C0 E0.03 | son-bys R0.20 C264 E0.03 | son-ori R0.35 C0 E0.03
+S4     +walkers in static     dsv-bys R0.21 C108 E0.02 | dsv-ori R0.33 C0 E0.03 | son-bys R0.21 C300 E0.03 | son-ori R0.36 C0 E0.03
+S4     +standing place 10 s   dsv-bys R0.18 C86 E0.02 | dsv-ori R0.29 C0 E0.03 | son-bys R0.19 C272 E0.03 | son-ori R0.34 C0 E0.03
+S4     +step back             dsv-bys R0.18 C116 E0.03 | dsv-ori R0.30 C0 E0.04 | son-bys R0.20 C272 E0.03 | son-ori R0.35 C0 E0.03
+S4     +stale not last        dsv-bys R0.21 C178 E0.23 | dsv-ori R0.30 C0 E0.26 | son-bys R0.24 C168 E0.24 | son-ori R0.36 C0 E0.24
+S1234  v1 (interim)           dsv-bys R0.21 C234 E0.03 | dsv-ori R0.28 C0 E0.04 | son-bys R0.26 C246 E0.03 | son-ori R0.35 C0 E0.03
+S1234  +walkers in static     dsv-bys R0.22 C274 E0.04 | dsv-ori R0.30 C0 E0.04 | son-bys R0.26 C276 E0.03 | son-ori R0.35 C0 E0.03
+S1234  +standing place 10 s   dsv-bys R0.21 C221 E0.03 | dsv-ori R0.28 C0 E0.04 | son-bys R0.25 C241 E0.03 | son-ori R0.35 C0 E0.03
+S1234  +step back             dsv-bys R0.21 C217 E0.03 | dsv-ori R0.27 C0 E0.05 | son-bys R0.25 C248 E0.03 | son-ori R0.35 C0 E0.03

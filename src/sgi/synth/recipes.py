@@ -15,7 +15,8 @@ passes the scene check. The camera is mounted 1.5 m up and pitched 10 degrees do
 1.5 + 0.24 d metres above the floor d metres ahead: no target is higher than 2.25 m, and the robot keeps far
 enough from what it looks at for that to fit. The lift is the one exception: its shaft reaches the ceiling and
 the image cuts it off. What the image has to hold of it is the doorway and the number lit over it, up to
-2.4 m, and the robot stands 4 m or more from the doors.
+2.4 m, and the robot stands 4 m or more from the doors. A pillar that a waiting line bends round reaches the
+ceiling too, and it is no target.
 
 The furnishings are laid out for the picture the robot takes (see _furnish). None of them is partly hidden
 behind what the scene is about, a place, a table or the person asked for: a window between the posts of a
@@ -130,6 +131,29 @@ _PHOTO_VIEW_DEG = {"taker": 20.0, "posing": 27.0}
 _PHOTO_BEHIND_M = {"taker": (2.6, 3.0), "posing": (2.0, 2.4)}     # how far behind the row, or the picture-taker, it stands
 _PHOTO_FLOOR_M = 1.0                               # how far beside and behind the picture-taker the view reaches where
 #                                                    that fits: the region lies on the floor there
+# A waiting line that bends. It turns by 90 degrees after its first two people, of four, or its first three, of six,
+# in two turns of 45 degrees: the first after the bend stands one spacing on from the last before it, diagonally,
+# and the rest stand one behind another along the second leg. So everyone stands further from the place than the
+# one before them, which the reference rule, ordering a line by distance from the anchor, needs; turned square at
+# one person, the next would stand less than a jitter further off. A pillar stands inside the corner, the line round
+# it. The robot looks at the bend from outside it, along its outer bisector, so that it sees both legs at 45 degrees:
+# from the side of one leg it would see the other end on, one person behind another.
+_BEND_AFTER = {4: 2, 6: 3}                         # people in line: how many stand before the bend
+_BEND_STEP_M = _LINE_SPACING_M / math.sqrt(2.0)    # along the first leg and across it, to the first after the bend
+_BEND_PILLAR_M = 0.25                              # the pillar's middle: this far back along the first leg from the last
+#                                                    before the bend, and this far further across than the first after it
+_PILLAR_AXIS_M = 0.32                              # from the frame of _pillar, the point on its wall, to its axis
+_BEND_VIEW_M = (4.3, 4.7)                          # from the bend to the robot
+_BEND_FLOOR_M = 1.2                                # how far beside the last person the view reaches, and
+#                                                    _LINE_REGION_M behind them
+# Someone using a machine, and nobody else there: the user stands 0.5 m before its face and faces it. The robot looks
+# from behind the user and to one side, this many degrees off straight behind them: the anchor on the machine's face
+# is seen past the user, and the floor behind them, where the region lies, is in the picture.
+_MACHINE_USER_M = 0.5
+_MACHINE_ANCHOR_Z_M = 0.8                          # on the machine's face, below the shelf or the ledge
+_MACHINE_BEARING_DEG = 50.0
+_MACHINE_VIEW_M = (4.0, 4.4)                       # from the user to the robot
+_MACHINE_FLOOR_M = 2.0                             # how far behind the user the view reaches, and beside them
 # A free spot, for someone who is no part of the situation: in the robot's view, outside every reference
 # region and too far from the target to be a relevant person of a no_one scene.
 _SPOT_RANGE_M = (3.0, 12.0)                        # from the robot
@@ -185,7 +209,11 @@ _SCREEN_REQUESTS = ("go to the big screen", "note down the results for me", None
 _LIFT_LABEL = "lift"
 _LIFT_FLOOR_LIT = "3"                              # the floor the lit number over the doors shows: where the scene is
 _LIFT_REQUESTS = ("go to the lift", "take this up to the fifth floor", None)          # another floor than that one
-# The two held-out situations have no entry: their episodes carry no rationale, and none is ever a worked example.
+_MACHINES = {   # which machine: its target label, the lettering on its head, and its requests
+    "cash": ("cash machine", "CASH", ("go to the cash machine", "I need some cash", None)),
+    "ticket": ("ticket machine", "TICKETS", ("go to the ticket machine", "buy me a train ticket", None)),
+}
+# The held-out situations have no entry: their episodes carry no rationale, and none is ever a worked example.
 _RATIONALE = {   # situation: (people, expectations, placement)
     "no_one": (
         "Nobody is waiting at the target or standing close to it.",
@@ -217,7 +245,9 @@ class Item:
     """What a run of a layout's primitives is, and where it stands."""
     kind: str                                      # "stall" | "ticket_counter" | "desk" | "kiosk" | "back_room" |
     #                                                "parcel_table" | a name in _FURNISHINGS | "shop" | "screen" |
-    #                                                "lift" | "tripod_camera"
+    #                                                "lift" | "tripod_camera" | "cash_machine" | "ticket_machine";
+    #                                                a "pillar" among `boxes` stands free, a bent line round it, its
+    #                                                frame where a wall behind it would be
     x: float                                       # its own frame in the world: for a place, the ground point under the
     y: float                                       # anchor with +x out of its front; for a furnishing, its point on the
     yaw: float                                     # wall with +x into the room. The yaw is wrapped
@@ -502,6 +532,7 @@ _PLACES = (   # target label, text on its sign, the sign's colour, what builds i
     ("coffee stall", "COFFEE", (126, 58, 40), _stall, "go to the coffee stall", "get me a coffee"),
 )
 _PLACE_KINDS = {_kiosk: "kiosk", _desk: "desk", _ticket_counter: "ticket_counter", _stall: "stall"}    # of its item
+_COUNTERS = tuple(place for place in _PLACES if place[3] is not _kiosk)      # the places with a counter or a desk
 
 
 def _taped(box: Box, tape: Color) -> _Parts:
@@ -620,6 +651,71 @@ def _tripod_camera() -> _Parts:
             Box(0.13, 0.0, 0.0, 0.1, 0.13, 0.13, z0=1.34, color=(22, 22, 24), panel=(96, 128, 168),
                 panel_rect=(0.14, 0.14, 0.86, 0.86)),                                            # the lens and its glass
             Box(-0.01, 0.0, 0.0, 0.07, 0.1, 0.05, z0=1.49, color=black)]
+
+
+_CASH_MACHINE_M = (0.7, 0.8)                       # deep and wide
+_TICKET_MACHINE_M = (0.6, 0.9)
+
+
+def _cash_machine(text: str) -> _Parts:
+    """A cash machine standing on its own, its face on x = 0: a steel cabinet with a door in its front, a shelf on
+    it with the keypad, behind the shelf a screen set back between two side panels under a hood, the card slot and
+    the slot the notes come out of, and on top a lit head with `text` on it."""
+    deep, wide = _CASH_MACHINE_M
+    steel, shade, dark = (178, 182, 188), (128, 132, 140), (40, 42, 48)
+    back = 0.18                                    # how far the screen stands back from the face of the cabinet
+    return [Box(-deep / 2, 0.0, 0.0, deep, wide, 0.95, color=steel, band=(70, 72, 78), band_range=(0.0, 0.07),
+                panel=(158, 162, 168), panel_rect=(0.1, 0.16, 0.9, 0.88)),                   # the cabinet and its door
+            Box(-back / 2, 0.0, 0.0, back, wide, 0.06, z0=0.95, color=dark, top=(96, 100, 108)),      # the shelf
+            Box(-0.08, -0.15, 0.0, 0.12, 0.17, 0.025, z0=1.01, color=(30, 32, 36), top=(176, 180, 186)),   # the keypad
+            Box(-(back + deep) / 2, 0.0, 0.0, deep - back, wide, 0.64, z0=0.95, color=steel, panel=(24, 30, 44),
+                panel_rect=(0.18, 0.28, 0.82, 0.8)),                                             # behind it the screen,
+            Box(-back + 0.012, 0.0, 0.0, 0.024, 0.36, 0.22, z0=1.24, color=(24, 30, 44), panel=_SCREEN,
+                panel_rect=(0.05, 0.06, 0.95, 0.94)),                                            # lit in its frame
+            *(Box(-back / 2, side * (wide / 2 - 0.02), 0.0, back, 0.04, 0.54, z0=1.01, color=shade) for side in (1, -1)),
+            Box(-back / 2, 0.0, 0.0, back, wide, 0.04, z0=1.55, color=shade),                     # the hood
+            Box(-back + 0.01, 0.0, 0.0, 0.02, 0.3, 0.04, z0=1.07, color=(14, 14, 16)),            # the notes come out here
+            Box(-back + 0.01, 0.28, 0.0, 0.02, 0.09, 0.05, z0=1.16, color=(14, 14, 16), panel=(80, 200, 120),
+                panel_rect=(0.1, 0.7, 0.9, 0.95)),                                               # the card slot, lit green
+            Box(-deep / 2, 0.0, 0.0, deep, wide, 0.3, z0=1.59, color=(28, 78, 150), label=text, label_color=_CREAM,
+                label_height=0.6)]                                                               # the head
+
+
+def _ticket_machine(text: str) -> _Parts:
+    """A ticket machine standing on its own, its face on x = 0: a red cabinet with the tray the tickets drop into
+    low in its front and a ledge on it, above the ledge, set back, a touch screen with a card reader and a coin slot
+    beside it, and on top a head with `text` on it."""
+    deep, wide = _TICKET_MACHINE_M
+    red, dark = (186, 46, 40), (36, 38, 44)
+    back = 0.06
+    return [Box(-deep / 2, 0.0, 0.0, deep, wide, 1.0, color=red, band=(60, 30, 28), band_range=(0.0, 0.06),
+                panel=(28, 28, 32), panel_rect=(0.3, 0.2, 0.7, 0.34)),                           # the cabinet and its tray
+            Box(-0.05, 0.0, 0.0, 0.1, wide, 0.04, z0=1.0, color=dark),                           # the ledge
+            Box(-(back + deep) / 2, 0.0, 0.0, deep - back, wide, 0.62, z0=1.0, color=red),         # the upper front
+            Box(-back + 0.02, -0.09, 0.0, 0.04, 0.5, 0.4, z0=1.12, color=dark, panel=_SCREEN,
+                panel_rect=(0.06, 0.08, 0.94, 0.92)),                                            # the touch screen
+            Box(-back + 0.02, 0.31, 0.0, 0.04, 0.13, 0.17, z0=1.14, color=(60, 62, 70), panel=(24, 24, 28),
+                panel_rect=(0.2, 0.55, 0.8, 0.75)),                                              # the card reader
+            Box(-back + 0.02, 0.31, 0.0, 0.04, 0.13, 0.07, z0=1.37, color=_STEEL, panel=(30, 30, 34),
+                panel_rect=(0.42, 0.2, 0.58, 0.8)),                                              # the coin slot
+            Box(-deep / 2, 0.0, 0.0, deep, wide, 0.25, z0=1.62, color=(34, 40, 60), label=text, label_color=_CREAM,
+                label_height=0.6)]                                                               # the head
+
+
+_MACHINE_BUILDERS = {"cash": (_cash_machine, _CASH_MACHINE_M), "ticket": (_ticket_machine, _TICKET_MACHINE_M)}
+
+
+def _machine_place(machine: str) -> tuple[_Parts, list[Item], Target, _Requests]:
+    """The machine, its face on x = 0: its parts, the one item they are, the target on its face below the shelf or
+    the ledge, and its requests."""
+    label, text, requests = _MACHINES[machine]
+    build, (deep, wide) = _MACHINE_BUILDERS[machine]
+    parts = build(text)
+    footprint = oriented_rectangle((0.0, 0.0), 0.0, -deep, 0.0, wide)
+    target = Target(id=_TARGET_ID, kind="place", label=label, anchor=(0.0, 0.0, _MACHINE_ANCHOR_Z_M),
+                    footprint=footprint, front_yaw=0.0)
+    item = Item(f"{machine}_machine", 0.0, 0.0, 0.0, footprint, {"label": label, "text": text}, "boxes", 0, len(parts))
+    return parts, [item], target, requests
 
 
 # --- Furnishings. Each stands with its back on x = 0, the wall, and reaches into the room along +x. ---
@@ -930,15 +1026,15 @@ def _place_ground(near: float, far: float) -> Polygon:
     return oriented_rectangle((0.0, 0.0), 0.0, -far, -near, _PLACE_WIDTH_M)
 
 
-def _place(rng, depth: float) -> tuple[_Parts, list[Item], Target, _Requests]:
-    """One of the places, its front on x = 0 and the rest of it behind: its parts, the items they are, the
-    target on the front of its counter, desk or cabinet, and its requests.
+def _place(rng, depth: float, places: Sequence[tuple] = _PLACES) -> tuple[_Parts, list[Item], Target, _Requests]:
+    """One of the places, drawn from `places`, its front on x = 0 and the rest of it behind: its parts, the items
+    they are, the target on the front of its counter, desk or cabinet, and its requests.
 
     The part people are served at is one item and the room behind it, if it has one, another, both in the
     place's frame. Each has the ground it stands on itself: the first the 0.8 m behind the front, which is
     all of the target's footprint when there is no room, and the room the rest of that footprint. The two
     rectangles meet on one line, and between them they are the one obstacle under the place."""
-    label, text, color, build, grounded, high_level = _PLACES[int(rng.integers(len(_PLACES)))]
+    label, text, color, build, grounded, high_level = places[int(rng.integers(len(places)))]
     parts = build(text, color)
     front = len(parts)
     if depth > _PLACE_FRONT_M:
@@ -1202,6 +1298,62 @@ def recipe_group_photo(rng, n_posing: int, target: str = "posing") -> Layout:
     item = Item("tripod_camera", stand[0], stand[1], wrap_angle(aim), ground, {}, "boxes", 0, len(parts))
     return _finish(rng, f"group_photo_{n_posing}_{target}", _placed(parts, *stand), [ground], figures, people, robot,
                    [_person_target(people[asked])], _episodes("group_photo", _PERSON_REQUESTS, _GROUP_ID), [item])
+
+
+def recipe_waiting_line_bent(rng, n_people: int) -> Layout:
+    """A line of 4 or 6 people leading out from a place with a counter or a desk that turns by 90 degrees round a
+    pillar after its first two or three (see _BEND_AFTER), to either side, spaced as a straight line is.
+
+    Everyone faces the one before them, and the first faces the place. The robot stands 4.3 to 4.7 m from the bend
+    along its outer bisector, from where it sees each leg at 45 degrees, and turns so that the picture holds the
+    place, everyone and as much as then fits of the floor behind the last person, where the region lies."""
+    if n_people not in _BEND_AFTER:
+        raise ValueError(f"a bent waiting line has {' or '.join(map(str, _BEND_AFTER))} people, not {n_people}")
+    boxes, items, target, requests = _place(rng, _PLACE_FRONT_M, _COUNTERS)
+    side, before = _sign(rng), _BEND_AFTER[n_people]
+    corner = _LINE_FIRST_M + _LINE_SPACING_M * (before - 1)           # the last before the bend stands here
+    spots = [(_LINE_FIRST_M + _LINE_SPACING_M * i, 0.0) for i in range(before)]
+    spots += [(corner + _BEND_STEP_M, side * (_BEND_STEP_M + _LINE_SPACING_M * j)) for j in range(n_people - before)]
+    yaws = [math.pi] + [math.atan2(y0 - y1, x0 - x1) for (x0, y0), (x1, y1) in zip(spots, spots[1:])]
+    shirts = _shirts(rng, n_people)
+    people, figures = zip(*(_person(rng, i, x, y, yaw, shirts[i], _GROUP_ID)
+                            for i, ((x, y), yaw) in enumerate(zip(spots, yaws))))
+    axis = (corner - _BEND_PILLAR_M, side * (_BEND_STEP_M + _BEND_PILLAR_M))  # inside the corner, the line round it
+    pillar = _placed(_pillar(), axis[0] - _PILLAR_AXIS_M, axis[1], 0.0)
+    x0, y0, x1, y1 = _extent(pillar)
+    ground = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    items.append(Item("pillar", axis[0] - _PILLAR_AXIS_M, axis[1], 0.0, ground, {}, "boxes", len(boxes),
+                      len(boxes) + len(pillar)))
+    boxes += pillar
+    bend = ((corner + spots[before][0]) / 2, spots[before][1] / 2)     # between the last before it and the first after
+    out, distance = -side * math.pi / 4, rng.uniform(*_BEND_VIEW_M)
+    last = spots[-1]
+    floor = [(last[0], last[1] + side * _LINE_REGION_M), (last[0] - _BEND_FLOOR_M, last[1]),
+             (last[0] + _BEND_FLOOR_M, last[1])]
+    robot = _seeing(bend[0] + distance * math.cos(out), bend[1] + distance * math.sin(out),
+                    [*target.footprint, *spots], floor)
+    return _finish(rng, f"waiting_line_bent_{n_people}", boxes, [target.footprint, ground], figures, people, robot,
+                   [target], _episodes("waiting_line", requests, _GROUP_ID), items)
+
+
+def recipe_machine_use(rng, machine: str) -> Layout:
+    """Someone using a machine, "cash" or "ticket", with nobody else there: they stand 0.5 m before its face and
+    face it. The robot looks from behind them and to one side, 50 degrees off straight behind them and 4.0 to 4.4 m
+    from them, and turns so that the picture holds the machine, the user and as much as then fits of the floor up
+    to 2 m behind and beside the user."""
+    if machine not in _MACHINES:
+        raise ValueError(f"a machine is {' or '.join(map(repr, _MACHINES))}, not {machine!r}")
+    parts, items, target, requests = _machine_place(machine)
+    (shirt,) = _shirts(rng, 1)
+    user, figure = _person(rng, 0, _MACHINE_USER_M, 0.0, math.pi, shirt, _GROUP_ID)
+    side, distance = _sign(rng), rng.uniform(*_MACHINE_VIEW_M)
+    bearing = side * math.radians(_MACHINE_BEARING_DEG)
+    floor = [(_MACHINE_USER_M + _MACHINE_FLOOR_M, 0.0), (_MACHINE_USER_M, _MACHINE_FLOOR_M),
+             (_MACHINE_USER_M, -_MACHINE_FLOOR_M)]
+    robot = _seeing(_MACHINE_USER_M + distance * math.cos(bearing), distance * math.sin(bearing),
+                    [*target.footprint, (_MACHINE_USER_M, 0.0)], floor)
+    return _finish(rng, f"machine_use_{machine}", parts, [target.footprint], [figure], [user], robot, [target],
+                   _episodes("machine_use", requests, _GROUP_ID), items)
 
 
 class _NoFreeSpot(RuntimeError):

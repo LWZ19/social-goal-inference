@@ -1,0 +1,8 @@
+# Bystanders confirmation: 60 cells (planned 60)
+CT2 first-answer sources: {'constraints': 45, None: 15}
+capture pooled s: CT2 2065.4, CT3 258.6, CT3b 0.0, Gl 0.0; cells captured >= 1 s: CT2 36, CT3 6, CT3b 0, Gl 0
+C1 CT3 vs CT2 strict share: 25/4/31, mean +0.028, sign p 0.000 (bar p <= 0.05, wins > losses): PASS
+C2 capture: CT3 258.6 s vs CT2 2065.4 s (bar <= 1/3), CT3 captured in 6 of 60 cells (bar <= 20%): PASS
+'CT3 beats CT2 on bystander scenes': CLAIMED (needs C1 and C2)
+R (constraint-answer cells, 45): Gl capture > CT3 in 0 of 6 (bar >= 80%); CT3 vs Gl strict share 0/0/0, mean +nan, sign p 1.000 (bar <= 0.05): FAIL
+Reported: cells with a false drop CT3 1, CT3b 0

@@ -1,0 +1,15 @@
+n primary 549; V0 (point mass) mean log -1.6601, mean S 0.7596
+V1 in-sample best: gamma 3 T 0.2812 kappa 16.0  mean log -1.5092  mean S 0.6825
+   gamma  1: best mean log -2.2343 at T 0.8891 kappa 16.0; smallest T, kappa inf: mean S 0.4020
+   gamma  3: best mean log -1.5092 at T 0.2812 kappa 16.0; smallest T, kappa inf: mean S 0.7520
+   gamma 10: best mean log -1.5231 at T 0.1186 kappa 32.0; smallest T, kappa inf: mean S 0.7613
+   gamma 30: best mean log -1.5349 at T 0.2108 kappa 32.0; smallest T, kappa inf: mean S 0.7559
+V2 in-sample best: gamma 3 T 0.2812 kappa 16.0  mean log -1.5100  mean S 0.6820
+   gamma  1: best mean log -2.3640 at T 0.3749 kappa 8.0; smallest T, kappa inf: mean S 0.4638
+   gamma  3: best mean log -1.5100 at T 0.2812 kappa 16.0; smallest T, kappa inf: mean S 0.7531
+   gamma 10: best mean log -1.5231 at T 0.1186 kappa 32.0; smallest T, kappa inf: mean S 0.7613
+   gamma 30: best mean log -1.5349 at T 0.2108 kappa 32.0; smallest T, kappa inf: mean S 0.7559
+V3 in-sample best: sigma 0.0593 kappa 32.0  mean log -1.4464  mean S 0.7516
+V3 mean log by sigma (best kappa): 0.050:-1.447, 0.083:-1.453, 0.139:-1.483, 0.232:-1.563, 0.387:-1.706, 0.646:-1.871, 1.078:-2.077, 1.798:-2.355, 3.000:-2.653
+held-out c_V3: min 0.999996, share == 1.0 exactly 0.002, share > 0.999 1.000
+held-out c_V1: quartiles [0.0, 0.574, 0.992, 1.0, 1.0]

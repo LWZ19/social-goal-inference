@@ -1,0 +1,198 @@
+I09 profile re-check: realistic eval scenes (real, staffed, plain) via research_harness
+scenes: 42 (with people: 38) ; people instances: 146
+camera offset from robot pose (m), camera yaw minus robot yaw (deg): [(0.2, 0.0)]
+role counts (instances over 42 scenes): {'other': 27, 'line': 48, 'group': 27, 'staff': 44}
+role counts per arm: {'real': {'staff': 22, 'other': 9, 'line': 16, 'group': 9}, 'staffed': {'staff': 22, 'other': 9, 'line': 16, 'group': 9}, 'plain': {'other': 9, 'line': 16, 'group': 9}}
+camera height(s) m: [np.float64(1.5)]
+
+=== V1. Line members: angle between facing and direction to the camera (deg; 90 = profile) ===
+all instances : n=48 min=74.1 q25=83.1 median=88.7 q75=95.2 max=107.3 mean=89.1
+  real        : n=16 min=74.1 q25=83.1 median=88.7 q75=95.2 max=107.3 mean=89.1
+  staffed     : n=16 min=74.1 q25=83.1 median=88.7 q75=95.2 max=107.3 mean=89.1
+  plain       : n=16 min=74.1 q25=83.1 median=88.7 q75=95.2 max=107.3 mean=89.1
+unique (layout, person, pose, camera) across sets: n=16 min=74.1 q25=83.1 median=88.7 q75=95.2 max=107.3 mean=89.1
+within [75,107] deg: 42 of 48 ; within [74.5,107.5): 45
+histogram (15-deg bins): [0,15):0  [15,30):0  [30,45):0  [45,60):0  [60,75):3  [75,90):24  [90,105):18  [105,120):3  [120,135):0  [135,150):0  [150,165):0  [165,180):0
+histogram (5-deg bins, 60-120): [60,65):0  [65,70):0  [70,75):3  [75,80):6  [80,85):6  [85,90):12  [90,95):9  [95,100):6  [100,105):3  [105,110):3  [110,115):0  [115,120):0
+|angle - 90| : n=48 min=0.2 q25=1.8 median=7.8 q75=11.6 max=17.3 mean=7.5
+facing toward camera side (<90): 27 ; away (>90): 21
+alternative (vs optical axis instead of ray): n=48 min=82.0 q25=87.4 median=92.6 q75=95.3 max=98.2 mean=91.4
+alternative (ray to robot pose xy instead of camera xy): n=48 min=74.5 q25=83.3 median=89.0 q75=95.1 max=107.0 mean=89.2
+   precise extremes: camera ray min=74.096 max=107.328; robot-pose ray min=74.511 max=106.971; robot-pose dist min=4.385 max=6.229; camera dist min=4.186 max=6.040
+   robot-pose variant within [75,107]: 45 of 48
+all line members in view (u inside image, Z>0): True
+
+per line member (arm scene pid group ang ang_axis ang_robot dist_xy Z@1m dist_robot):
+  plain    plain_eval_06_waiting_line_1           p0         g0           93.7   94.8   93.7  4.19  4.22  4.39
+  real     real_eval_06_waiting_line_1            p0         g0           93.7   94.8   93.7  4.19  4.22  4.39
+  staffed  staffed_eval_06_waiting_line_1         p0         g0           93.7   94.8   93.7  4.19  4.22  4.39
+  plain    plain_eval_07_waiting_line_2           p0         g0           99.8   96.6   99.7  4.19  4.20  4.39
+  plain    plain_eval_07_waiting_line_2           p1         g0           89.1   94.4   89.4  4.21  4.21  4.41
+  real     real_eval_07_waiting_line_2            p0         g0           99.8   96.6   99.7  4.19  4.20  4.39
+  real     real_eval_07_waiting_line_2            p1         g0           89.1   94.4   89.4  4.21  4.21  4.41
+  staffed  staffed_eval_07_waiting_line_2         p0         g0           99.8   96.6   99.7  4.19  4.20  4.39
+  staffed  staffed_eval_07_waiting_line_2         p1         g0           89.1   94.4   89.4  4.21  4.21  4.41
+  plain    plain_eval_08_waiting_line_4           p0         g0           99.5   91.6   99.3  5.55  5.50  5.75
+  plain    plain_eval_08_waiting_line_4           p1         g0          100.5   98.2  100.5  5.49  5.49  5.69
+  plain    plain_eval_08_waiting_line_4           p2         g0           90.2   94.4   90.4  5.50  5.49  5.70
+  plain    plain_eval_08_waiting_line_4           p3         g0           88.3   98.2   88.6  5.54  5.46  5.74
+  real     real_eval_08_waiting_line_4            p0         g0           99.5   91.6   99.3  5.55  5.50  5.75
+  real     real_eval_08_waiting_line_4            p1         g0          100.5   98.2  100.5  5.49  5.49  5.69
+  real     real_eval_08_waiting_line_4            p2         g0           90.2   94.4   90.4  5.50  5.49  5.70
+  real     real_eval_08_waiting_line_4            p3         g0           88.3   98.2   88.6  5.54  5.46  5.74
+  staffed  staffed_eval_08_waiting_line_4         p0         g0           99.5   91.6   99.3  5.55  5.50  5.75
+  staffed  staffed_eval_08_waiting_line_4         p1         g0          100.5   98.2  100.5  5.49  5.49  5.69
+  staffed  staffed_eval_08_waiting_line_4         p2         g0           90.2   94.4   90.4  5.50  5.49  5.70
+  staffed  staffed_eval_08_waiting_line_4         p3         g0           88.3   98.2   88.6  5.54  5.46  5.74
+  plain    plain_eval_09_waiting_line_6           p0         g0          107.3   96.6  107.0  5.79  5.69  5.99
+  plain    plain_eval_09_waiting_line_6           p1         g0           91.9   87.6   91.8  5.79  5.77  5.99
+  plain    plain_eval_09_waiting_line_6           p2         g0           80.5   82.0   80.6  5.71  5.71  5.91
+  plain    plain_eval_09_waiting_line_6           p3         g0           83.9   91.1   84.1  5.74  5.70  5.94
+  plain    plain_eval_09_waiting_line_6           p4         g0           74.1   86.8   74.5  5.86  5.72  6.06
+  plain    plain_eval_09_waiting_line_6           p5         g0           75.1   93.7   75.7  6.04  5.72  6.23
+  real     real_eval_09_waiting_line_6            p0         g0          107.3   96.6  107.0  5.79  5.69  5.99
+  real     real_eval_09_waiting_line_6            p1         g0           91.9   87.6   91.8  5.79  5.77  5.99
+  real     real_eval_09_waiting_line_6            p2         g0           80.5   82.0   80.6  5.71  5.71  5.91
+  real     real_eval_09_waiting_line_6            p3         g0           83.9   91.1   84.1  5.74  5.70  5.94
+  real     real_eval_09_waiting_line_6            p4         g0           74.1   86.8   74.5  5.86  5.72  6.06
+  real     real_eval_09_waiting_line_6            p5         g0           75.1   93.7   75.7  6.04  5.72  6.23
+  staffed  staffed_eval_09_waiting_line_6         p0         g0          107.3   96.6  107.0  5.79  5.69  5.99
+  staffed  staffed_eval_09_waiting_line_6         p1         g0           91.9   87.6   91.8  5.79  5.77  5.99
+  staffed  staffed_eval_09_waiting_line_6         p2         g0           80.5   82.0   80.6  5.71  5.71  5.91
+  staffed  staffed_eval_09_waiting_line_6         p3         g0           83.9   91.1   84.1  5.74  5.70  5.94
+  staffed  staffed_eval_09_waiting_line_6         p4         g0           74.1   86.8   74.5  5.86  5.72  6.06
+  staffed  staffed_eval_09_waiting_line_6         p5         g0           75.1   93.7   75.7  6.04  5.72  6.23
+  plain    plain_eval_13_waiting_line_3           p0         g0           88.3   82.3   88.1  4.82  4.81  5.02
+  plain    plain_eval_13_waiting_line_3           p1         g0           88.2   89.8   88.2  4.82  4.83  5.02
+  plain    plain_eval_13_waiting_line_3           p2         g0           75.2   83.7   75.5  4.92  4.88  5.12
+  real     real_eval_13_waiting_line_3            p0         g0           88.3   82.3   88.1  4.82  4.81  5.02
+  real     real_eval_13_waiting_line_3            p1         g0           88.2   89.8   88.2  4.82  4.83  5.02
+  real     real_eval_13_waiting_line_3            p2         g0           75.2   83.7   75.5  4.92  4.88  5.12
+  staffed  staffed_eval_13_waiting_line_3         p0         g0           88.3   82.3   88.1  4.82  4.81  5.02
+  staffed  staffed_eval_13_waiting_line_3         p1         g0           88.2   89.8   88.2  4.82  4.83  5.02
+  staffed  staffed_eval_13_waiting_line_3         p2         g0           75.2   83.7   75.5  4.92  4.88  5.12
+
+=== NEW. Same angle for group members, staff, others (context) ===
+group : n=27 min=7.6 q25=49.1 median=74.4 q75=104.4 max=172.8 mean=84.8
+        hist 15-deg: [0,15):3  [15,30):0  [30,45):3  [45,60):3  [60,75):6  [75,90):3  [90,105):3  [105,120):0  [120,135):0  [135,150):0  [150,165):3  [165,180):3
+        within [75,107]: 6 of 27 ; within 45 of profile [45,135]: 15 ; frontal <45: 6 ; back >135: 6
+        dist_xy: n=27 min=3.5 q25=4.1 median=4.5 q75=4.6 max=5.1 mean=4.3
+        robot-pose variant angle: n=27 min=7.7 q25=49.4 median=74.7 q75=105.0 max=172.7 mean=85.1
+        real    : n=9 min=7.6 q25=49.1 median=74.4 q75=104.4 max=172.8 mean=84.8
+        staffed : n=9 min=7.6 q25=49.1 median=74.4 q75=104.4 max=172.8 mean=84.8
+        plain   : n=9 min=7.6 q25=49.1 median=74.4 q75=104.4 max=172.8 mean=84.8
+staff : n=44 min=0.5 q25=21.0 median=28.5 q75=55.1 max=68.9 mean=34.1
+        hist 15-deg: [0,15):10  [15,30):12  [30,45):6  [45,60):8  [60,75):8  [75,90):0  [90,105):0  [105,120):0  [120,135):0  [135,150):0  [150,165):0  [165,180):0
+        within [75,107]: 0 of 44 ; within 45 of profile [45,135]: 16 ; frontal <45: 28 ; back >135: 0
+        dist_xy: n=44 min=3.0 q25=3.5 median=4.5 q75=5.0 max=6.5 mean=4.4
+        robot-pose variant angle: n=44 min=1.3 q25=22.8 median=30.6 q75=57.4 max=69.6 mean=35.4
+        real    : n=22 min=0.5 q25=21.0 median=28.5 q75=54.5 max=68.9 mean=34.1
+        staffed : n=22 min=0.5 q25=21.0 median=28.5 q75=54.5 max=68.9 mean=34.1
+other : n=27 min=0.4 q25=72.6 median=86.9 q75=156.7 max=167.6 mean=94.4
+        hist 15-deg: [0,15):3  [15,30):3  [30,45):0  [45,60):0  [60,75):3  [75,90):6  [90,105):3  [105,120):0  [120,135):0  [135,150):0  [150,165):6  [165,180):3
+        within [75,107]: 9 of 27 ; within 45 of profile [45,135]: 12 ; frontal <45: 6 ; back >135: 9
+        dist_xy: n=27 min=4.6 q25=10.0 median=10.9 q75=11.6 max=12.2 mean=10.2
+        robot-pose variant angle: n=27 min=0.5 q25=72.3 median=87.3 q75=156.3 max=167.3 mean=94.4
+        real    : n=9 min=0.4 q25=72.6 median=86.9 q75=156.7 max=167.6 mean=94.4
+        staffed : n=9 min=0.4 q25=72.6 median=86.9 q75=156.7 max=167.6 mean=94.4
+        plain   : n=9 min=0.4 q25=72.6 median=86.9 q75=156.7 max=167.6 mean=94.4
+
+per group member / staff / other (arm scene pid role group ang dist_xy):
+  plain    plain_eval_10_conversation_group_2     p0         group  g0           85.4  4.50
+  plain    plain_eval_10_conversation_group_2     p1         group  g0           74.4  4.54
+  real     real_eval_10_conversation_group_2      p0         group  g0           85.4  4.50
+  real     real_eval_10_conversation_group_2      p1         group  g0           74.4  4.54
+  staffed  staffed_eval_10_conversation_group_2   p0         group  g0           85.4  4.50
+  staffed  staffed_eval_10_conversation_group_2   p1         group  g0           74.4  4.54
+  plain    plain_eval_11_conversation_group_3     p0         group  g0           49.1  4.61
+  plain    plain_eval_11_conversation_group_3     p1         group  g0           44.8  4.63
+  plain    plain_eval_11_conversation_group_3     p2         group  g0          172.8  3.48
+  real     real_eval_11_conversation_group_3      p0         group  g0           49.1  4.61
+  real     real_eval_11_conversation_group_3      p1         group  g0           44.8  4.63
+  real     real_eval_11_conversation_group_3      p2         group  g0          172.8  3.48
+  staffed  staffed_eval_11_conversation_group_3   p0         group  g0           49.1  4.61
+  staffed  staffed_eval_11_conversation_group_3   p1         group  g0           44.8  4.63
+  staffed  staffed_eval_11_conversation_group_3   p2         group  g0          172.8  3.48
+  plain    plain_eval_12_conversation_group_4     p0         group  g0           69.8  4.58
+  plain    plain_eval_12_conversation_group_4     p1         group  g0            7.6  5.11
+  plain    plain_eval_12_conversation_group_4     p2         group  g0          104.4  4.05
+  plain    plain_eval_12_conversation_group_4     p3         group  g0          155.0  3.46
+  real     real_eval_12_conversation_group_4      p0         group  g0           69.8  4.58
+  real     real_eval_12_conversation_group_4      p1         group  g0            7.6  5.11
+  real     real_eval_12_conversation_group_4      p2         group  g0          104.4  4.05
+  real     real_eval_12_conversation_group_4      p3         group  g0          155.0  3.46
+  staffed  staffed_eval_12_conversation_group_4   p0         group  g0           69.8  4.58
+  staffed  staffed_eval_12_conversation_group_4   p1         group  g0            7.6  5.11
+  staffed  staffed_eval_12_conversation_group_4   p2         group  g0          104.4  4.05
+  staffed  staffed_eval_12_conversation_group_4   p3         group  g0          155.0  3.46
+  plain    plain_eval_01_no_one_place             p0         other  None        167.6 10.90
+  real     real_eval_01_no_one_place              p0         other  None        167.6 10.90
+  staffed  staffed_eval_01_no_one_place           p0         other  None        167.6 10.90
+  plain    plain_eval_05_no_one_person            p0         other  None          0.4  4.64
+  real     real_eval_05_no_one_person             p0         other  None          0.4  4.64
+  staffed  staffed_eval_05_no_one_person          p0         other  None          0.4  4.64
+  plain    plain_eval_10_conversation_group_2     p2         other  None         84.5  9.07
+  plain    plain_eval_10_conversation_group_2     p3         other  None         86.9 10.06
+  real     real_eval_10_conversation_group_2      p2         other  None         84.5  9.07
+  real     real_eval_10_conversation_group_2      p3         other  None         86.9 10.06
+  staffed  staffed_eval_10_conversation_group_2   p2         other  None         84.5  9.07
+  staffed  staffed_eval_10_conversation_group_2   p3         other  None         86.9 10.06
+  plain    plain_eval_11_conversation_group_3     p3         other  g1          159.4 11.19
+  plain    plain_eval_11_conversation_group_3     p4         other  g1           27.0 12.17
+  real     real_eval_11_conversation_group_3      p3         other  g1          159.4 11.19
+  real     real_eval_11_conversation_group_3      p4         other  g1           27.0 12.17
+  staffed  staffed_eval_11_conversation_group_3   p3         other  g1          159.4 11.19
+  staffed  staffed_eval_11_conversation_group_3   p4         other  g1           27.0 12.17
+  plain    plain_eval_12_conversation_group_4     p4         other  g1           94.7 11.65
+  plain    plain_eval_12_conversation_group_4     p5         other  g1           72.6 11.82
+  plain    plain_eval_12_conversation_group_4     p6         other  None        156.7  9.96
+  real     real_eval_12_conversation_group_4      p4         other  g1           94.7 11.65
+  real     real_eval_12_conversation_group_4      p5         other  g1           72.6 11.82
+  real     real_eval_12_conversation_group_4      p6         other  None        156.7  9.96
+  staffed  staffed_eval_12_conversation_group_4   p4         other  g1           94.7 11.65
+  staffed  staffed_eval_12_conversation_group_4   p5         other  g1           72.6 11.82
+  staffed  staffed_eval_12_conversation_group_4   p6         other  None        156.7  9.96
+  real     real_eval_00_no_one_place              s0         staff  staff         2.0  4.92
+  real     real_eval_00_no_one_place              s1         staff  staff        21.2  3.09
+  staffed  staffed_eval_00_no_one_place           s0         staff  staff         2.0  4.92
+  staffed  staffed_eval_00_no_one_place           s1         staff  staff        21.2  3.09
+  real     real_eval_01_no_one_place              s0         staff  staff        25.1  5.52
+  real     real_eval_01_no_one_place              s1         staff  staff        57.8  5.20
+  staffed  staffed_eval_01_no_one_place           s0         staff  staff        25.1  5.52
+  staffed  staffed_eval_01_no_one_place           s1         staff  staff        57.8  5.20
+  real     real_eval_02_no_one_place              s0         staff  staff        52.8  4.79
+  real     real_eval_02_no_one_place              s1         staff  staff        55.1  5.01
+  staffed  staffed_eval_02_no_one_place           s0         staff  staff        52.8  4.79
+  staffed  staffed_eval_02_no_one_place           s1         staff  staff        55.1  5.01
+  real     real_eval_03_no_one_deep_place         s0         staff  staff        25.2  4.84
+  real     real_eval_03_no_one_deep_place         s1         staff  staff        48.5  4.31
+  staffed  staffed_eval_03_no_one_deep_place      s0         staff  staff        25.2  4.84
+  staffed  staffed_eval_03_no_one_deep_place      s1         staff  staff        48.5  4.31
+  real     real_eval_04_no_one_object             s0         staff  staff        14.3  2.98
+  staffed  staffed_eval_04_no_one_object          s0         staff  staff        14.3  2.98
+  real     real_eval_05_no_one_person             s0         staff  staff        26.1  2.98
+  staffed  staffed_eval_05_no_one_person          s0         staff  staff        26.1  2.98
+  real     real_eval_06_waiting_line_1            s0         staff  staff        30.1  3.33
+  staffed  staffed_eval_06_waiting_line_1         s0         staff  staff        30.1  3.33
+  real     real_eval_07_waiting_line_2            s0         staff  staff        67.8  4.18
+  real     real_eval_07_waiting_line_2            s1         staff  staff         1.5  3.07
+  staffed  staffed_eval_07_waiting_line_2         s0         staff  staff        67.8  4.18
+  staffed  staffed_eval_07_waiting_line_2         s1         staff  staff         1.5  3.07
+  real     real_eval_08_waiting_line_4            s0         staff  staff        68.9  5.87
+  real     real_eval_08_waiting_line_4            s1         staff  staff        30.4  4.21
+  staffed  staffed_eval_08_waiting_line_4         s0         staff  staff        68.9  5.87
+  staffed  staffed_eval_08_waiting_line_4         s1         staff  staff        30.4  4.21
+  real     real_eval_09_waiting_line_6            s0         staff  staff        65.5  5.95
+  real     real_eval_09_waiting_line_6            s1         staff  staff         0.5  4.61
+  staffed  staffed_eval_09_waiting_line_6         s0         staff  staff        65.5  5.95
+  staffed  staffed_eval_09_waiting_line_6         s1         staff  staff         0.5  4.61
+  real     real_eval_10_conversation_group_2      s0         staff  staff        27.0  6.48
+  staffed  staffed_eval_10_conversation_group_2   s0         staff  staff        27.0  6.48
+  real     real_eval_11_conversation_group_3      s0         staff  staff        38.0  3.63
+  staffed  staffed_eval_11_conversation_group_3   s0         staff  staff        38.0  3.63
+  real     real_eval_12_conversation_group_4      s0         staff  staff         4.4  3.50
+  staffed  staffed_eval_12_conversation_group_4   s0         staff  staff         4.4  3.50
+  real     real_eval_13_waiting_line_3            s0         staff  staff        67.4  4.89
+  real     real_eval_13_waiting_line_3            s1         staff  staff        21.0  3.66
+  staffed  staffed_eval_13_waiting_line_3         s0         staff  staff        67.4  4.89
+  staffed  staffed_eval_13_waiting_line_3         s1         staff  staff        21.0  3.66

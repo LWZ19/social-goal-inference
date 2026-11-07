@@ -1,0 +1,39 @@
+frozen setting {'detector': 'rtdetr_v2_r50vd', 'tau': 0.25, 'band': 'wide', 'flat': False, 'd_dup': 0.5, 'd_push': 0.2} variant F5
+raw_fit sha256 bff284afbe93ec1441fab86a4b5ea9f1b1d76944849d44421aa1ca64941517c3
+my eligible ['C03', 'C04', 'C05', 'C06', 'C07', 'C08', 'C09', 'C10']; my chosen C07; params {'C00': 0, 'C01': 1, 'C02': 1, 'C03': 2, 'C04': 3, 'C05': 3, 'C06': 4, 'C07': 4, 'C08': 5, 'C09': 4, 'C10': 5}
+
+VERIFIER RE-SCORE (own code; objects under test: A1 pipeline.py, I03 people_scorer.py)
+== fit-train
+  C00 recall 226/238 = 0.950 (line 92/96, staff 26/34, group 54/54, other 54/54); false 17/84 = 0.202; exempt 5; merged 2/66; xy median 0.059; non-profile w45 125/128 = 0.977; profile f/b 98/98; images with false 16; secondary 13/9/4; M3 9 lost per-staff 0 per-box 0; fired 0 (A1-matched 0); classes {'exempt B': 4, 'exempt C': 1, 'false A': 9, 'false B': 4, 'false D': 4}
+  C01 recall 234/238 = 0.983 (line 92/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 5; merged 2/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 98/98; images with false 8; secondary 4/9/4; M3 9 lost per-staff 0 per-box 0; fired 8 (A1-matched 0); classes {'exempt B': 4, 'exempt C': 1, 'false B': 4, 'false D': 4}
+  C02 recall 234/238 = 0.983 (line 92/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 5; merged 2/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 98/98; images with false 8; secondary 4/9/4; M3 9 lost per-staff 0 per-box 0; fired 8 (A1-matched 0); classes {'exempt B': 4, 'exempt C': 1, 'false B': 4, 'false D': 4}
+  C03 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 6; merged 0/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 8; secondary 4/10/4; M3 9 lost per-staff 0 per-box 0; fired 8 (A1-matched 0); classes {'exempt B': 5, 'exempt C': 1, 'false B': 4, 'false D': 4}
+  C04 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 5; merged 0/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 8; secondary 4/9/4; M3 9 lost per-staff 0 per-box 0; fired 8 (A1-matched 0); classes {'exempt B': 4, 'exempt C': 1, 'false B': 4, 'false D': 4}
+  C05 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 5/84 = 0.060; exempt 4; merged 0/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 5; secondary 1/8/4; M3 9 lost per-staff 1 per-box 1; fired 8 (A1-matched 0); classes {'exempt B': 3, 'exempt C': 1, 'false B': 4, 'false D': 1}
+  C06 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 5/84 = 0.060; exempt 4; merged 0/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 5; secondary 1/8/4; M3 9 lost per-staff 1 per-box 1; fired 8 (A1-matched 0); classes {'exempt B': 3, 'exempt C': 1, 'false B': 4, 'false D': 1}
+  C07 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 4/84 = 0.048; exempt 4; merged 0/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 4; secondary 0/8/4; M3 9 lost per-staff 1 per-box 1; fired 8 (A1-matched 0); classes {'exempt B': 3, 'exempt C': 1, 'false B': 4}
+  C08 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 4/84 = 0.048; exempt 4; merged 0/66; xy median 0.060; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 4; secondary 0/8/4; M3 9 lost per-staff 1 per-box 1; fired 8 (A1-matched 0); classes {'exempt B': 3, 'exempt C': 1, 'false B': 4}
+  C09 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 4/84 = 0.048; exempt 4; merged 0/66; xy median 0.059; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 4; secondary 0/8/4; M3 9 lost per-staff 1 per-box 1; fired 8 (A1-matched 0); classes {'exempt B': 3, 'exempt C': 1, 'false B': 4}
+  C10 recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 4/84 = 0.048; exempt 4; merged 0/66; xy median 0.059; non-profile w45 132/136 = 0.971; profile f/b 102/102; images with false 4; secondary 0/8/4; M3 9 lost per-staff 1 per-box 1; fired 8 (A1-matched 0); classes {'exempt B': 3, 'exempt C': 1, 'false B': 4}
+== fit-validate
+  C00 recall 157/164 = 0.957 (line 62/64, staff 23/28, group 36/36, other 36/36); false 12/56 = 0.214; exempt 2; merged 0/44; xy median 0.060; non-profile w45 89/90 = 0.989; profile f/b 67/67; images with false 11; secondary 11/3/1; M3 3 lost per-staff 0 per-box 0; fired 0 (A1-matched 0); classes {'exempt B': 2, 'false A': 5, 'false B': 1, 'false C': 1, 'false D': 5}
+  C07 recall 164/164 = 1.000 (line 64/64, staff 28/28, group 36/36, other 36/36); false 2/56 = 0.036; exempt 1; merged 0/44; xy median 0.061; non-profile w45 93/95 = 0.979; profile f/b 69/69; images with false 2; secondary 1/2/1; M3 3 lost per-staff 1 per-box 1; fired 5 (A1-matched 0); classes {'exempt B': 1, 'false B': 1, 'false C': 1}
+== dev
+  C00 recall 116/118 = 0.983 (line 48/48, staff 14/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 59/59 = 1.000; profile f/b 57/57; images with false 3; secondary 3/0/0; M3 0 lost per-staff 0 per-box 0; fired 0 (A1-matched 0); classes {'false A': 3}
+  C07 recall 118/118 = 1.000 (line 48/48, staff 16/16, group 27/27, other 27/27); false 0/42 = 0.000; exempt 0; merged 0/33; xy median 0.053; non-profile w45 61/61 = 1.000; profile f/b 57/57; images with false 0; secondary 0/0/0; M3 0 lost per-staff 0 per-box 0; fired 3 (A1-matched 0); classes {}
+== F-real
+  C00 recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15 = 1.000; profile f/b 21/21; images with false 3; secondary 2/3/1; M3 2 lost per-staff 0 per-box 0; fired 0 (A1-matched 0); classes {'exempt A': 1, 'exempt B': 1, 'false A': 2, 'false B': 1}
+  C07 recall 39/39 = 1.000 (line 15/15, staff 6/6, group 15/15, other 3/3); false 1/21 = 0.048; exempt 1; merged 0/9; xy median 0.060; non-profile w45 17/18 = 0.944; profile f/b 21/21; images with false 1; secondary 0/2/1; M3 2 lost per-staff 0 per-box 0; fired 3 (A1-matched 0); classes {'exempt B': 1, 'false B': 1}
+== F-ph
+  C00 recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263 = 0.985; profile f/b 249/250; images with false 0; secondary 0/0/0; M3 0 lost per-staff 0 per-box 0; fired 0 (A1-matched 0); classes {}
+  C07 recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263 = 0.985; profile f/b 249/250; images with false 0; secondary 0/0/0; M3 0 lost per-staff 0 per-box 0; fired 0 (A1-matched 0); classes {}
+
+Selection on my numbers: eligible ['C03', 'C04', 'C05', 'C06', 'C07', 'C08', 'C09', 'C10']; chosen C07 (tied at 4/84: ['C07', 'C08', 'C09', 'C10']; params [4, 5, 4, 5])
+Fit-validate intervals (mine):
+  C00: recall 157/164 [0.9145, 0.9792]; line 62/64 [0.8930, 0.9914]; staff 23/28 [0.6441, 0.9212]; np_w45 89/90 [0.9397, 0.9980]; images_with_false 11/56 [0.1134, 0.3184]; fpi 12/56 [0.1107, 0.3743]
+  C07: recall 164/164 [0.9771, 1.0000]; line 64/64 [0.9434, 1.0000]; staff 28/28 [0.8794, 1.0000]; np_w45 93/95 [0.9265, 0.9942]; images_with_false 2/56 [0.0098, 0.1212]; fpi 2/56 [0.0043, 0.1290]
+Checks on my numbers: fit-validate holds True; dev holds True; outcome confirmed
+
+Per-image rows compared: 1036 (select_rows 924, confirm_rows 112)
+DIFFERENCES (label | mine | fix step): 0
+run time 26.5 s

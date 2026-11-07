@@ -1,0 +1,9 @@
+Sonnet 10-19     cells 49, CT2 reached 45: answer->first in line median 8.7 s; share ceiling mean +0.105 (perfect guess, every cell)
+DeepSeek 10-14   cells 25, CT2 reached 21: answer->first in line median 10.5 s; share ceiling mean +0.124 (perfect guess, every cell)
+x-test-3 10-12   cells 15, CT2 reached 10: answer->first in line median 8.6 s; share ceiling mean +0.067 (perfect guess, every cell)
+
+Speculative ceiling (a guess right at the plan stage): the robot could be in line from (plan time + travel) instead of
+(answer + travel), so the saving is at most the full answer time minus the plan stage time (CT2m logs both).
+Sonnet 10-19     cells 49: answer minus plan stage median 9.5 s -> share ceiling about +0.10
+DeepSeek 10-14   cells 25: answer minus plan stage median 14.4 s -> share ceiling about +0.16
+x-test-3 10-12   cells 15: answer minus plan stage median 35.5 s -> share ceiling about +0.39

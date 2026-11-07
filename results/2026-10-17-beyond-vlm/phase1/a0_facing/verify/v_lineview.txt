@@ -1,0 +1,2 @@
+qwen_s19 line by view {'profile': 124, 'oblique': 9, 'back': 9} | profile by role {'line': 124, 'other': 27, 'group': 18}
+gemini line by view {'profile': 126, 'oblique': 9, 'back': 9} | profile by role {'line': 126, 'other': 27, 'group': 18}

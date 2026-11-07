@@ -1,0 +1,4 @@
+s8 scenes_dir data/placeholder/eval 14
+s19_ph_qwen38_low_con .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/placeholder_first14 n scenes 14 same folder (non-None): True 14 episodes equal: True
+s10_qwen38_low_con data/placeholder/eval n scenes 14 same folder (non-None): True 14 episodes equal: True
+s16b_ph_qwen38_low_fsc data/placeholder/eval n scenes 14 same folder (non-None): True 14 episodes equal: True

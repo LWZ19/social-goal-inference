@@ -1,0 +1,49 @@
+# stress: S4
+
+## dsv41, bystander scenes (60 cells); seconds over all cells from delivery (0.5 s ticks)
+| Rung | right last | empty while a line stands | bystander as last (capture) | cells captured | bystander in roster | member recall | false drops | named bystanders dropped, median s after delivery |
+|---|---|---|---|---|---|---|---|---|
+| CT2 | 0.16 | 0.37 | 924 s | 33 | 1742 s | 0.32 | 0 | 0 of 16, - |
+| CT3 | 0.16 | 0.50 | 268 s | 10 | 505 s | 0.27 | 3 | 9 of 16, 31.0 |
+| +group | 0.16 | 0.51 | 216 s | 10 | 396 s | 0.26 | 5 | 11 of 16, 30.0 |
+| +photo | 0.12 | 0.61 | 164 s | 7 | 363 s | 0.21 | 2 | 12 of 16, 25.4 |
+| +anchor | 0.25 | 0.22 | 367 s | 15 | 656 s | 0.42 | 4 | 9 of 16, 31.0 |
+| +group+photo | 0.11 | 0.67 | 21 s | 4 | 154 s | 0.19 | 5 | 16 of 16, 0.5 |
+| CT3-fix | 0.24 | 0.20 | 126 s | 10 | 340 s | 0.41 | 7 | 16 of 16, 0.5 |
+| CT3-fix gated | 0.29 | 0.25 | 108 s | 9 | 280 s | 0.50 | 9 | 16 of 16, 0.5 |
+
+## dsv41, original scenes (13 cells); seconds over all cells from delivery (0.5 s ticks)
+| Rung | right last | empty while a line stands | bystander as last (capture) | cells captured | bystander in roster | member recall | false drops | named bystanders dropped, median s after delivery |
+|---|---|---|---|---|---|---|---|---|
+| CT2 | 0.24 | 0.55 | 0 s | 0 | 0 s | 0.53 | 0 | 0 of 0, - |
+| CT3 | 0.24 | 0.55 | 0 s | 0 | 0 s | 0.50 | 1 | 0 of 0, - |
+| +group | 0.24 | 0.55 | 0 s | 0 | 0 s | 0.50 | 1 | 0 of 0, - |
+| +photo | 0.23 | 0.57 | 0 s | 0 | 0 s | 0.50 | 0 | 0 of 0, - |
+| +anchor | 0.30 | 0.24 | 0 s | 0 | 0 s | 0.60 | 1 | 0 of 0, - |
+| +group+photo | 0.23 | 0.57 | 0 s | 0 | 0 s | 0.50 | 0 | 0 of 0, - |
+| CT3-fix | 0.33 | 0.24 | 0 s | 0 | 0 s | 0.61 | 0 | 0 of 0, - |
+| CT3-fix gated | 0.33 | 0.36 | 0 s | 0 | 0 s | 0.62 | 0 | 0 of 0, - |
+
+## sonnet55_low, bystander scenes (28 cells); seconds over all cells from delivery (0.5 s ticks)
+| Rung | right last | empty while a line stands | bystander as last (capture) | cells captured | bystander in roster | member recall | false drops | named bystanders dropped, median s after delivery |
+|---|---|---|---|---|---|---|---|---|
+| CT2 | 0.11 | 0.19 | 826 s | 18 | 1230 s | 0.46 | 0 | 0 of 15, - |
+| CT3 | 0.21 | 0.31 | 342 s | 13 | 601 s | 0.45 | 3 | 11 of 15, 30.5 |
+| +group | 0.23 | 0.31 | 285 s | 13 | 543 s | 0.47 | 3 | 12 of 15, 19.0 |
+| +photo | 0.21 | 0.32 | 263 s | 13 | 528 s | 0.45 | 4 | 11 of 15, 30.7 |
+| +anchor | 0.23 | 0.19 | 404 s | 14 | 663 s | 0.52 | 3 | 11 of 15, 30.5 |
+| +group+photo | 0.21 | 0.46 | 100 s | 6 | 126 s | 0.43 | 3 | 15 of 15, 5.2 |
+| CT3-fix | 0.25 | 0.19 | 106 s | 7 | 132 s | 0.53 | 3 | 15 of 15, 5.2 |
+| CT3-fix gated | 0.29 | 0.26 | 100 s | 6 | 126 s | 0.57 | 5 | 15 of 15, 5.2 |
+
+## sonnet55_low, original scenes (28 cells); seconds over all cells from delivery (0.5 s ticks)
+| Rung | right last | empty while a line stands | bystander as last (capture) | cells captured | bystander in roster | member recall | false drops | named bystanders dropped, median s after delivery |
+|---|---|---|---|---|---|---|---|---|
+| CT2 | 0.32 | 0.35 | 0 s | 0 | 0 s | 0.59 | 0 | 0 of 0, - |
+| CT3 | 0.31 | 0.35 | 0 s | 0 | 0 s | 0.57 | 2 | 0 of 0, - |
+| +group | 0.31 | 0.35 | 0 s | 0 | 0 s | 0.57 | 2 | 0 of 0, - |
+| +photo | 0.30 | 0.35 | 0 s | 0 | 0 s | 0.57 | 1 | 0 of 0, - |
+| +anchor | 0.31 | 0.32 | 0 s | 0 | 0 s | 0.60 | 2 | 0 of 0, - |
+| +group+photo | 0.30 | 0.35 | 0 s | 0 | 0 s | 0.57 | 1 | 0 of 0, - |
+| CT3-fix | 0.31 | 0.32 | 0 s | 0 | 0 s | 0.60 | 1 | 0 of 0, - |
+| CT3-fix gated | 0.32 | 0.38 | 0 s | 0 | 0 s | 0.62 | 1 | 0 of 0, - |

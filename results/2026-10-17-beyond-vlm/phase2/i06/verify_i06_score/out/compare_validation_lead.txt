@@ -1,0 +1,6 @@
+qwen: records 408, steps 227; rescore differs 0; R5 differs 0; sim per-step diff mean -0.04 pts, |diff| max 0.10; mine 93.66 theirs 93.69
+   R5 vs I01 rows_old: 252/252
+glm: records 408, steps 225; rescore differs 0; R5 differs 0; sim per-step diff mean +0.02 pts, |diff| max 0.25; mine 78.66 theirs 78.65
+   R5 vs I01 rows_old: 252/252
+dsv: records 408, steps 237; rescore differs 0; R5 differs 0; sim per-step diff mean +0.23 pts, |diff| max 0.30; mine 79.41 theirs 79.28
+   R5 vs I01 rows_old: 252/252

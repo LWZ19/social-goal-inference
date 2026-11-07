@@ -1,0 +1,51 @@
+# cafe_slots (research, 2026-11-02, CT2_FROZEN.md): cafe with the queue's slots extended to 8, so
+# that people coming back are not placed onto a robot queued at the back (a sim artefact of the 4-5 slot
+# original). Used by every arm on fresh seeds 10-19.
+stage: data/habitat/stages/cafe.glb
+robot:
+  x: 8.6
+  y: -7.0
+  face:
+  - 5.0
+  - -2.0
+queues:
+  coffee_counter:
+    service_s: 20
+    slots:
+    - x: 5.0
+      y: -1.45
+      face:
+      - 5.0
+      - -0.5
+    - x: 5.0
+      y: -2.15
+    - x: 5.0
+      y: -2.85
+    - x: 5.0
+      y: -3.55
+    - x: 5.0
+      y: -4.25
+    - x: 5.0
+      y: -4.95
+    - x: 5.0
+      y: -5.65
+    - x: 5.0
+      y: -6.35
+humans:
+- avatar: male_1
+  queue: coffee_counter
+- avatar: female_0
+  queue: coffee_counter
+- avatar: female_2
+  queue: coffee_counter
+- avatar: male_3
+  start:
+  - 3.5
+  - -6.0
+- avatar: female_3
+  start:
+  - 6.5
+  - -5.0
+requests:
+- Get me a coffee
+- Get me a coffee from the counter

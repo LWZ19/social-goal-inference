@@ -1,0 +1,6 @@
+| Arm | joins | leaves | leaves per join | samples joined (after 1st service) | strict in line when joined | when not joined | median time joined before leaving (s) |
+|---|---|---|---|---|---|---|---|
+| CT3F | 23 | 14 | 0.61 | 0.514 | 0.351 | 0.021 | 30.5 |
+| CT4 | 21 | 15 | 0.71 | 0.220 | 0.257 | 0.020 | 14.0 |
+| W0 | 17 | 13 | 0.76 | 0.205 | 0.318 | 0.012 | 16.0 |
+| CT5 | 14 | 12 | 0.86 | 0.144 | 0.218 | 0.008 | 8.5 |

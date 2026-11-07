@@ -1,0 +1,6 @@
+qwen_s19 line: true right & yaw bin tr 34 | label tr 4 | via fp 33
+glm_s19 line: true right & yaw bin tr 17 | label tr 10 | via fp 17
+dsv_s20 line: true right & yaw bin tr 19 | label tr 20 | via fp 19
+haiku line: true right & yaw bin tr 31 | label tr 22 | via fp 27
+sonnet line: true right & yaw bin tr 47 | label tr 16 | via fp 31
+gemini line: true right & yaw bin tr 59 | label tr 6 | via fp 59

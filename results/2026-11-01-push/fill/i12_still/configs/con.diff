@@ -1,0 +1,8 @@
+211c211
+<     timeout_s: 180.0
+---
+>     timeout_s: 600.0
+519c519
+<   trials: 3
+---
+>   trials: 2

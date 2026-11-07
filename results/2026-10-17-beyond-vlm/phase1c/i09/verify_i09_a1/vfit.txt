@@ -1,0 +1,39 @@
+feasible (fb <= 0.10 in both domains): 0 of 192
+selection: fallback 4b; candidates at the top value: 12; detector-only median latency (s): {'rtdetr_v2_r50vd': 0.03480238700285554, 'dfine_large': 0.02962644000945147}
+  cand ('rtdetr_v2_r50vd', 0.25, 'wide', False, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  cand ('rtdetr_v2_r50vd', 0.25, 'wide', True, 0.3, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  cand ('rtdetr_v2_r50vd', 0.25, 'wide', True, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  cand ('rtdetr_v2_r50vd', 0.25, 'narrow', False, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  cand ('rtdetr_v2_r50vd', 0.25, 'narrow', True, 0.3, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  cand ('rtdetr_v2_r50vd', 0.25, 'narrow', True, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+CHOSEN ('rtdetr_v2_r50vd', 0.25, 'wide', False, 0.5, 0.2): F-real recall 36/39 = 0.9231, false 3/21 = 0.1429, med xy 0.0595, line [15, 15]; F-ph recall 513/585 = 0.8769, false 0/268 = 0.0000, med xy 0.0550, line [208, 215]
+top 8 with max fb <= 0.30 (by min recall, then tie-break):
+  ('rtdetr_v2_r50vd', 0.25, 'wide', False, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  ('rtdetr_v2_r50vd', 0.25, 'wide', True, 0.3, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  ('rtdetr_v2_r50vd', 0.25, 'wide', True, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  ('rtdetr_v2_r50vd', 0.25, 'narrow', False, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  ('rtdetr_v2_r50vd', 0.25, 'narrow', True, 0.3, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  ('rtdetr_v2_r50vd', 0.25, 'narrow', True, 0.5, 0.2) min_recall 0.8769 max_fb 0.1429 max_med 0.0595
+  ('rtdetr_v2_r50vd', 0.25, 'wide', True, 0.3, 0.1) min_recall 0.8769 max_fb 0.2381 max_med 0.0527
+  ('rtdetr_v2_r50vd', 0.25, 'narrow', True, 0.3, 0.1) min_recall 0.8769 max_fb 0.2381 max_med 0.0527
+matched fit people (chosen setting): F-real 36, F-ph 513
+  F1-F4 (frozen): F1 F-real 27/36, F-ph 250/513; min 0.4873; pooled 0.5046
+  F1-F4 (frozen): F2 F-real 21/36, F-ph 263/513; min 0.5127; pooled 0.5173
+  F1-F4 (frozen): F3 F-real 18/36, F-ph 125/513; min 0.2437; pooled 0.2605
+  F1-F4 (frozen): F4 F-real 33/36, F-ph 377/513; min 0.7349; pooled 0.7468
+FACING CHOICE F1-F4 (frozen): F4
+  F1-F5 (with the fix): F1 F-real 27/36, F-ph 250/513; min 0.4873; pooled 0.5046
+  F1-F5 (with the fix): F2 F-real 21/36, F-ph 263/513; min 0.5127; pooled 0.5173
+  F1-F5 (with the fix): F3 F-real 18/36, F-ph 125/513; min 0.2437; pooled 0.2605
+  F1-F5 (with the fix): F4 F-real 33/36, F-ph 377/513; min 0.7349; pooled 0.7468
+  F1-F5 (with the fix): F5 F-real 36/36, F-ph 505/513; min 0.9844; pooled 0.9854
+FACING CHOICE F1-F5 (with the fix): F5
+unit check F-real: F1 error < 90 in 5/5
+unit check F-ph: F1 error < 90 in 123/123
+bars F4 F-real: non-profile median 27.4 deg, within45 12/15; profile front/back 21/21; back within45 0/3
+bars F4 F-ph: non-profile median 130.8 deg, within45 131/263; profile front/back 246/250; back within45 8/140
+bars F5 F-real: non-profile median 17.9 deg, within45 15/15; profile front/back 21/21; back within45 3/3
+bars F5 F-ph: non-profile median 14.5 deg, within45 259/263; profile front/back 249/250; back within45 136/140
+face-rule flips F-real: 3 by view {'back': 3}; back people 3
+face-rule flips F-ph: 214 by view {'profile': 74, 'back': 140}; back people 140
+26 s

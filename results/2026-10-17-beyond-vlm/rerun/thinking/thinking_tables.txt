@@ -1,0 +1,169 @@
+==============================================================================================================
+S0. Which usage field holds reasoning tokens? (every listed run, per stage of the list and model)
+==============================================================================================================
+stage  model           calls  field nonnull    pos  rt/out
+s10    glm53             220    220     220      0    0.00
+s10    glm53_low         232    232     232    123    0.20
+s10    qwen38            220    220       0      0    0.00
+s10    qwen38_low        228    228       0      0    0.00
+s10    qwen38_medium     228    228       0      0    0.00
+s16b   glm53            1714   1714    1714      0    0.00
+s16b   qwen38_low       1726   1726       0      0    0.00
+s17    glm53             360    360     360      0    0.00
+s17    qwen38_low        360    360       0      0    0.00
+s19    glm53            1262   1262    1262      0    0.00
+s19    qwen38_low       1270   1270       0      0    0.00
+s20    dsv41            3396   3396    3396      0    0.00
+s21    qwen38_low       2088   2088       0      0    0.00
+s22    qwen38_low       2588   2588       0      0    0.00
+s23    dsv41            2116   2116    2116      0    0.00
+s23    gemini38_low     2052   2052    2052    925    0.62
+s23    glm53            2076   2076    2076      0    0.00
+s23    haiku55          2096   2096    2096      0    0.00
+s23    sonnet55_low     2084   2084    2084      0    0.00
+s8     glm53             633    633     633      0    0.00
+s8     ornith15          630    630       0      0    0.00
+s8     qwen36_35         636    636     292      0    0.00
+s8     qwen38            630    630       0      0    0.00
+s8     qwen3vl           630    630       0      0    0.00
+calls whose raw_text holds a '<think>' tag: 0
+Reading: usage.reasoning_tokens exists on every call but is null on every Qwen call (all Qwen runs); the gateway
+returns Qwen thinking as message.reasoning_content and folds its tokens into usage.output_tokens (ledger, 9 Oct).
+So the hidden share must be estimated as 1 - visible/output, with visible tokens estimated from raw_text.
+
+==============================================================================================================
+T1. Hidden-thinking share of Qwen output tokens, by stage
+==============================================================================================================
+Calibration (effort none, assumed no hidden reasoning): chars per output token, unique calls of ['s8_convlm_qwen38']
+  plan         n= 84 mean out    178 mean chars    628 chars/token 3.52
+  context      n= 57 mean out     46 mean chars    171 chars/token 3.68
+  people       n= 24 mean out    250 mean chars    641 chars/token 2.56
+  constraints  n= 42 mean out    396 mean chars   1468 chars/token 3.71
+
+s10_qwen38_low_con (placeholder, 1 trial, a3c3fd0)
+  stage           n mean out  chars | E1 calib   p25   med   p75 | E2 c/4
+  plan           28      411    643 |    55.6%   51%   56%   61% |  60.9%
+  context        27      355    232 |    82.2%   78%   84%   91% |  83.7%
+  people          8     1118    726 |    74.7%   72%   76%   80% |  83.8%
+  constraints    15     2133   1370 |    82.7%   78%   82%   83% |  83.9%
+
+s10_qwen38_medium_con (placeholder, 1 trial)
+  stage           n mean out  chars | E1 calib   p25   med   p75 | E2 c/4
+  plan           28      411    668 |    53.9%   45%   52%   62% |  59.4%
+  context        28      337    203 |    83.6%   78%   85%   91% |  84.9%
+  people          8      871    674 |    69.8%   71%   72%   78% |  80.6%
+  constraints    15     1765   1387 |    78.8%   70%   78%   81% |  80.4%
+
+s19_ph_qwen38_low_con (placeholder, 3 trials)
+  stage           n mean out  chars | E1 calib   p25   med   p75 | E2 c/4
+  plan           84      415    631 |    56.9%   51%   56%   61% |  62.0%
+  context        79      324    199 |    83.3%   78%   84%   91% |  84.6%
+  people         24     1104    738 |    73.9%   67%   75%   79% |  83.3%
+  constraints    48     2077   1295 |    83.2%   78%   82%   86% |  84.4%
+
+s19_{real,staffed,plain}_qwen38_low_con (realistic, brief 3.6)
+  stage           n mean out  chars | E1 calib   p25   med   p75 | E2 c/4
+  plan          252      443    662 |    57.6%   51%   56%   61% |  62.7%
+  context       242      422    232 |    85.1%   79%   84%   93% |  86.3%
+  people         72     1195    823 |    73.1%   69%   73%   78% |  82.8%
+  constraints   143     2352   1418 |    83.8%   79%   83%   86% |  84.9%
+
+s21_{real,staffed,plain}_qwen38_low_con (realistic, current wording)
+  stage           n mean out  chars | E1 calib   p25   med   p75 | E2 c/4
+  plan          252      453    670 |    58.0%   52%   56%   61% |  63.0%
+  context       241      400    233 |    84.1%   79%   83%   92% |  85.4%
+  people         72     1195    823 |    73.1%   69%   73%   78% |  82.8%
+  constraints   144     2338   1454 |    83.2%   79%   82%   86% |  84.5%
+
+E3 (s10 only): matched calls none vs low on the same scene/episode (people: per scene; constraints: per episode)
+    hidden share = 1 - sum(out at none)/sum(out at low), assuming the visible answer is as long at both levels
+  none vs low_con       plan         pairs 28 out none    185 low    411 -> none/low 45.1%, hidden 54.9%; chars none/low  1.02
+  none vs low_con       context      pairs 28 out none     41 low    348 -> none/low 11.8%, hidden 88.2%; chars none/low  0.66
+  none vs low_con       people       pairs 12 out none    233 low   1032 -> none/low 22.6%, hidden 77.4%; chars none/low  0.84
+  none vs low_con       constraints  pairs 12 out none    379 low   2076 -> none/low 18.2%, hidden 81.8%; chars none/low  1.00
+  none vs medium_con    plan         pairs 28 out none    185 low    411 -> none/low 45.0%, hidden 55.0%; chars none/low  0.98
+  none vs medium_con    context      pairs 28 out none     41 low    337 -> none/low 12.2%, hidden 87.8%; chars none/low  0.73
+  none vs medium_con    people       pairs 12 out none    249 low    914 -> none/low 27.3%, hidden 72.7%; chars none/low  0.91
+  none vs medium_con    constraints  pairs 12 out none    388 low   1504 -> none/low 25.8%, hidden 74.2%; chars none/low  1.04
+
+==============================================================================================================
+T2. s10, one trial of 28: right-target goal steps, none vs low (and medium)
+==============================================================================================================
+none vs s10_qwen38_low_con:
+  unmatched: none 12 of 12, low_con 15 of 15
+  matched (right-target goal step in both runs): none 11 of 11, low_con 11 of 11
+  records overall: none 21 of 28, low_con 27 of 28
+none vs s10_qwen38_medium_con:
+  unmatched: none 12 of 12, medium_con 15 of 15
+  matched (right-target goal step in both runs): none 11 of 11, medium_con 11 of 11
+  records overall: none 21 of 28, medium_con 26 of 28
+
+Failure class of every record (first that applies), none and low:
+  none  {'ok': 21, 'right target, standard path (no people needed; stop missed)': 2, 'target wrong (plan/locate)': 3, 'right target, standard path (context missed people)': 2}
+  low   {'ok': 27, 'right target, standard path (no people needed; stop missed)': 1}
+Paired (none class -> low class), records whose outcome differs:
+   3  none: target wrong (plan/locate)               low: ok
+   2  none: right target, standard path (context missed people) low: ok
+   1  none: right target, standard path (no people needed; stop missed) low: ok
+  lost at none 6, gained at none 0; net 6
+  lost at none, detail (scene, episode, situation, none class, context_missed, plan_exact):
+    eval_02_no_one_place             e1 no_one               right target, standard path (no people needed; stop missed) ctx_missed=False plan_exact=True
+      score: in_region=False dist=0.9861646303792134 heading_ok=False reachable=True gap=None status=ok low source=standard
+    eval_03_no_one_deep_place        e1 no_one               target wrong (plan/locate)                 ctx_missed=False plan_exact=False
+      score: in_region=False dist=None heading_ok=False reachable=True gap=None status=ok low source=standard
+    eval_08_waiting_line_4           e0 waiting_line         right target, standard path (context missed people) ctx_missed=True plan_exact=True
+      score: in_region=False dist=2.3548997385848387 heading_ok=False reachable=True gap=1.33943555531217 status=ok low source=constraints
+    eval_12_conversation_group_4     e1 conversation_group   target wrong (plan/locate)                 ctx_missed=True plan_exact=False
+      score: in_region=False dist=None heading_ok=False reachable=True gap=0.5754735575875052 status=ok low source=constraints
+    eval_13_waiting_line_3           e0 waiting_line         right target, standard path (context missed people) ctx_missed=True plan_exact=True
+      score: in_region=False dist=1.913884100798938 heading_ok=False reachable=True gap=1.1885870010497892 status=ok low source=constraints
+    eval_13_waiting_line_3           e1 waiting_line         target wrong (plan/locate)                 ctx_missed=False plan_exact=False
+      score: in_region=False dist=None heading_ok=False reachable=True gap=0.5248861518795784 status=ok low source=constraints
+  the one low failure: [(('eval_02_no_one_place', 'e0', 0), 'no_one', 'right target, standard path (no people needed; stop missed)')]
+
+==============================================================================================================
+T3. Pooled right-target goal steps, none vs low (gate: none within 2 of low)
+==============================================================================================================
+as recorded:
+  s10_qwen38_none_con    vs s10_qwen38_low_con       matched 11 (by trial {0: 11}): none 11, low 11
+  s8_convlm_qwen38       vs s19_ph_qwen38_low_con    matched 41 (by trial {0: 12, 1: 13, 2: 16}): none 38, low 40
+  POOLED: none 49 of 52, low 51 of 52  (difference 2)
+re-solved by the current solver:
+  s10_qwen38_none_con    vs s10_qwen38_low_con       matched 11 (by trial {0: 11}): none 11, low 11
+  s8_convlm_qwen38       vs s19_ph_qwen38_low_con    matched 41 (by trial {0: 12, 1: 13, 2: 16}): none 38, low 40
+  POOLED: none 49 of 52, low 51 of 52  (difference 2)
+
+Variants (as recorded):
+  s8 vs s19_ph alone: none 38 of 41, low 40 of 41
+  s8 vs s19_ph trials 1-2 only (drops the s8 trial 0 that duplicates s10 none): none 26 of 29, low 29 of 29
+  de-duplicated pool, s10 matched + s8/s19_ph trials 1-2: none 37 of 40, low 40 of 40
+  identity: s10_qwen38_none_con records whose call texts equal s8_convlm_qwen38 trial 0: 28 of 28
+  fails among matched (as recorded):
+    s10_qwen38_none_con: []
+    s10_qwen38_low_con: []
+    s8_convlm_qwen38: [(('eval_06_waiting_line_1', 'e0', 1), 'waiting_line'), (('eval_07_waiting_line_2', 'e1', 2), 'waiting_line'), (('eval_10_conversation_group_2', 'e0', 2), 'conversation_group')]
+    s19_ph_qwen38_low_con: [(('eval_10_conversation_group_2', 'e0', 0), 'conversation_group')]
+  unmatched pool (each run its own right-target goal steps): none 50 of 53, low 62 of 63
+
+==============================================================================================================
+T4. Qwen C success and seconds per episode, none vs low, placeholder (brief 3.1: 65 vs 74 of 84, 8.4 vs 26.2 s)
+==============================================================================================================
+Runs of stage s12 (the 3-trial low/medium runs of the ledger) on the list: []
+run                          n succ         trials | rec lat mean median | prov mean | fresh prov cached calls
+s8_convlm_qwen38            84   65 {0: 28, 1: 28, 2: 28} |          8.9    8.4 |       8.7 |        4.1   186/252   
+s10_qwen38_none_con         28   21        {0: 28} |          9.6    8.8 |       9.2 |        0.0    82/82    
+s10_qwen38_low_con          28   27        {0: 28} |         41.6   31.7 |      34.0 |        9.0    74/86    
+s10_qwen38_medium_con       28   26        {0: 28} |         35.8   32.0 |      28.9 |       15.5    63/86    
+s19_ph_qwen38_low_con       84   79 {0: 28, 1: 28, 2: 28} |         37.4   34.1 |      34.8 |        0.0   264/264   
+s10_qwen38_none_fsc         28   14        {0: 28} |          6.4    5.7 |       6.2 |        0.0    69/69    
+s10_qwen38_low_fsc          28   24        {0: 28} |         25.5   20.9 |      18.9 |        8.4    56/71    
+
+==============================================================================================================
+NEW. Per call by stage, Qwen C on the realistic sets (s19 real/staffed/plain qwen38_low_con; brief 3.6), all calls
+     (s19 calls are cache hits: latencies are those of the calls that first produced them)
+==============================================================================================================
+  records 252, success 234
+  plan         calls  252 latency mean   6.4 (median   5.8) mean output tokens    443
+  context      calls  252 latency mean   6.0 (median   5.7) mean output tokens    417
+  people       calls  143 latency mean  16.0 (median  17.0) mean output tokens   1199
+  constraints  calls  143 latency mean  31.7 (median  29.4) mean output tokens   2352

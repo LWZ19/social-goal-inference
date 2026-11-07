@@ -1,0 +1,22 @@
+
+  R: runs 20261010-201358_s16b_real_qwen38_low_cot, 20261010-201359_s16b_staffed_qwen38_low_cot, 20261010-201401_s16b_plain_qwen38_low_cot, 20261017-114056_s22_real_qwen38_low_cot, 20261017-114058_s22_staffed_qwen38_low_cot, 20261017-114059_s22_plain_qwen38_low_cot, 20261017-012658_s21_real_qwen38_low_cot, 20261017-012700_s21_staffed_qwen38_low_cot, 20261017-012701_s21_plain_qwen38_low_cot
+  E: runs 20261010-202647_s16b_real_qwen38_low_fsc, 20261010-202635_s16b_staffed_qwen38_low_fsc, 20261010-202550_s16b_plain_qwen38_low_fsc, 20261017-121440_s22_real_qwen38_low_fsc, 20261017-121408_s22_staffed_qwen38_low_fsc, 20261017-121157_s22_plain_qwen38_low_fsc, 20261017-020507_s21_real_qwen38_low_fsc, 20261017-020339_s21_staffed_qwen38_low_fsc, 20261017-020401_s21_plain_qwen38_low_fsc
+
+Paired E-R (same stage and trial share the target draw; no_one records are identical in R and E):
+  E-R per batch: [39, 16, 17] (mean +24.0); SD of batch differences (df 2) 13.00; item-level paired SD 7.00; independent-batch reference sqrt(2) x pooled (a) = 11.21, sqrt(2) x pooled (c) = 8.46
+  Item-level variance of the mean over 9 draws per item ignores between-batch shifts (wording, gateway day); (a) includes them but has only 2-4 df.
+
+Supplementary: within-batch noise at the new wording (one batch of 3 trials per model and method).
+  (b') SD of the 3 trial totals x sqrt(3), df 2 per method, pooled over R, E, C (df 6);
+  (c') item binomial over the 3 trials: sqrt(3 * sum_i s_i^2) per method, pooled (root mean variance) over R, E, C;
+  paired item-level SD of C-E, C-R, E-R within the batch (same trial = same target draw).
+  These see only within-batch (trial-to-trial) variation, not batch-to-batch shifts, so they can be low.
+  model                (b) R/E/C  pooled            (c) R/E/C  pooled pair C-E    C-R    E-R
+  Qwen               7.0/3.6/4.6    5.26          6.2/6.2/4.2    5.63     5.39   5.20   6.93
+  GLM                6.2/6.2/1.0    5.13          6.0/5.8/6.3    6.06     6.08   6.16   6.24
+  DeepSeek           7.5/6.0/6.6    6.73          6.1/6.1/6.3    6.16     6.78   7.35   6.93
+  Haiku              3.6/7.2/1.7    4.76          4.1/4.5/2.8    3.87     5.10   4.90   5.83
+  Sonnet             7.0/6.1/2.6    5.57          4.1/4.9/2.8    4.04     4.69   3.87   6.08
+  Gemini             6.6/2.0/2.0    4.12          5.3/5.2/2.2    4.47     4.69   5.00   7.07
+  Item-binomial (c') for R and E across the six models: 4.1 to 6.2 records.
+  Caveat: C people answers of Qwen (s21), GLM and DeepSeek (s23) are cache copies of s19/s20, so their C rows are a re-draw of everything except the people answers.

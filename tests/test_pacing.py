@@ -148,4 +148,15 @@ def test_the_soclaas_entries_of_the_default_config_share_one_pacer_and_no_other_
     for name in cfg.models:
         client(name, cfg)
     assert {key: pacer.max_per_minute for key, pacer in registry.items()} == {
-        ("openai_compatible", "https://soclaas-api.comp.nus.edu.sg/v1"): 80}
+        ("openai_compatible", "https://soclaas-api.comp.nus.edu.sg/v1"): 80,
+        ("anthropic", None): 25}                                       # the three older Claude models share one
+
+def test_cache_only_answers_a_miss_with_an_error_and_never_calls(tmp_path, monkeypatch):
+    time = Time()
+    backend = MockBackend(lambda parts, json_schema: GOOD)
+    client = VLMClient(ENTRY, backend, Cache(tmp_path), sleep=time.sleep, clock=time.clock)
+    client.generate(PARTS, Answer)                        # stored
+    monkeypatch.setenv("SGI_CACHE_ONLY", "1")             # replaying a paid model: a miss must not become a call
+    hit, miss = client.generate(PARTS, Answer), client.generate(PARTS, Answer, trial=1)
+    assert hit.cached and hit.status == "ok"
+    assert (miss.status, len(backend.calls)) == ("vlm_error", 1) and "SGI_CACHE_ONLY" in miss.error

@@ -1,0 +1,25 @@
+scene_name,cell,use,note,cyl,pixel,b_pixel,bearings,weak
+s412c2b15_real_eval_10_conversation_group_2,occluded/40-55/cg2,True,replaces s400c2b15_real_examples_04_conversation_group_2 (pixel out of bin),0.467,0.357,,"{""2"": 15.0, ""3"": 60.0, ""4"": 72.5}",False
+s401c2b15_real_eval_10_conversation_group_2,occluded/40-55/cg2,True,"pixel out of bin; no spare left, kept and labelled",0.4,0.096,,"{""2"": 15.0, ""3"": 60.0, ""4"": 72.5}",False
+s403c3b50_real_eval_11_conversation_group_3,occluded/40-55/cg3,True,"pixel out of bin; no spare left, kept and labelled",0.511,0.2,,"{""2"": 90.0, ""3"": 50.0, ""4"": 72.5}",False
+s406c3b50_real_examples_05_conversation_group_3,occluded/40-55/cg3,True,"pixel out of bin; no spare left, kept and labelled",0.515,0.279,,"{""2"": 90.0, ""3"": 50.0, ""4"": 72.5}",False
+s415c4b10_real_eval_12_conversation_group_4,occluded/40-55/cg4,True,replaces s402c4b10_real_eval_12_conversation_group_4 (pixel out of bin),0.533,0.398,,"{""2"": 90.0, ""3"": 60.0, ""4"": 10.0}",False
+s404c4b10_real_eval_12_conversation_group_4,occluded/40-55/cg4,True,"pixel out of bin; no spare left, kept and labelled",0.467,0.166,,"{""2"": 90.0, ""3"": 60.0, ""4"": 10.0}",False
+s405c2b20_real_eval_10_conversation_group_2,occluded/15-40/cg2,True,,0.304,0.116,,"{""2"": 20.0, ""3"": 60.0, ""4"": 72.5}",False
+s407c2b20_real_examples_04_conversation_group_2,occluded/15-40/cg2,True,"pixel out of bin; no spare left, kept and labelled",0.2,0.003,,"{""2"": 20.0, ""3"": 60.0, ""4"": 72.5}",False
+s408c3b15_real_eval_11_conversation_group_3,occluded/15-40/cg3,True,"pixel out of bin; no spare left, kept and labelled",0.333,0.061,,"{""2"": 90.0, ""3"": 15.0, ""4"": 72.5}",False
+s409c3b15_real_examples_05_conversation_group_3,occluded/15-40/cg3,True,"pixel out of bin; no spare left, kept and labelled",0.215,0.038,,"{""2"": 90.0, ""3"": 15.0, ""4"": 72.5}",False
+s410c4b75_real_eval_12_conversation_group_4,occluded/15-40/cg4,True,,0.244,0.12,,"{""2"": 90.0, ""3"": 60.0, ""4"": 75.0}",False
+s411c4b70_real_eval_12_conversation_group_4,occluded/15-40/cg4,True,"pixel out of bin; no spare left, kept and labelled",0.341,0.057,,"{""2"": 90.0, ""3"": 60.0, ""4"": 70.0}",False
+s401p0_real_examples_04_conversation_group_2,A//cg2,True,,0.0,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s400p0_real_eval_10_conversation_group_2,A//cg2,True,,0.0,0.001,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s401p0_real_examples_05_conversation_group_3,A//cg3,True,,0.0,0.001,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s400p0_real_eval_11_conversation_group_3,A//cg3,True,,0.0,0.015,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s401p0_real_eval_05_no_one_person,A//no_one_person,True,,0.0,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s401p0_real_examples_06_no_one_person,A//no_one_person,True,,0.0,0.001,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s404p0_real_eval_07_waiting_line_2,B//,True,replaces s412c4b75_real_eval_12_conversation_group_4 (pixel out of bin),,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s404p0_real_eval_09_waiting_line_6,B//,True,replaces s436p0_real_eval_10_conversation_group_2 (pixel out of bin),,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",False
+s401p0_real_eval_08_waiting_line_4,B//,True,,,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",True
+s401p0_real_examples_03_waiting_line_3,B//,True,,,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",True
+s403p0_real_eval_07_waiting_line_2,B//,True,,,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",True
+s403p0_real_examples_03_waiting_line_3,B//,True,,,0.0,,"{""2"": 90.0, ""3"": 60.0, ""4"": 72.5}",True

@@ -1,0 +1,5 @@
+cafe_line2_moving        n  9  interim->target 2.5 m, place->target 1.9 m, start->target 3.5 m; interim nearer the target than the place: 0/9
+cafe_line6_moving        n 10  interim->target 2.5 m, place->target 4.6 m, start->target 3.5 m; interim nearer the target than the place: 10/10
+cafe_slots               n  9  interim->target 2.5 m, place->target 2.5 m, start->target 6.6 m; interim nearer the target than the place: 0/9
+room_coffee_cart_slots   n  9  interim->target 2.5 m, place->target 3.4 m, start->target 3.6 m; interim nearer the target than the place: 9/9
+sweet_spot_line2_moving  n  8  interim->target 2.5 m, place->target 2.2 m, start->target 4.5 m; interim nearer the target than the place: 0/8

@@ -1,0 +1,71 @@
+== GLM s19 con: solver steps 141; share agree 141/141; recall agree 83/83
+  P1 lines (all 83 line steps): never-found/missed = 56/74 = 0.757
+  P1 line failures (29): 42/49 = 0.857
+  P1 all failed line steps (41): 51/64 = 0.797
+  P1 groups (any constraint naming): 18/27 = 0.667 over 54 steps with members
+  P1 lines+groups pooled: lines come_after + groups any = 74/101
+  P3 line failures 29: recall<1 29 (=0 12, None 0); found<1 25 (=0 7); unmatched>0 23; no come_after 8; unreachable 4; outside region 29
+  P3-alt all non-success line steps: 41; with target correct 29
+  I03 found mean 0.826 (n 141); lines 0.774 (n 83); single-person line 0.529 (n 17); members_recall mean 0.661 (n 83)
+  I03 single-person line C success 3 of 18
+  N5 GLM s19: distinct line people answers 45: far(>1m from every true person) 20 of 161; per record 34 of 296
+== DeepSeek s20 con: solver steps 157; share agree 157/157; recall agree 89/89
+  P1 lines (all 89 line steps): never-found/missed = 20/33 = 0.606
+  P1 line failures (15): 20/28 = 0.714
+  P1 all failed line steps (21): 20/28 = 0.714
+  P1 groups (any constraint naming): 18/23 = 0.783 over 54 steps with members
+  P1 lines+groups pooled: lines come_after + groups any = 38/56
+  P3 line failures 15: recall<1 15 (=0 0, None 0); found<1 10 (=0 0); unmatched>0 6; no come_after 0; unreachable 2; outside region 13
+  P3-alt all non-success line steps: 21; with target correct 16
+  I03 found mean 0.913 (n 157); lines 0.939 (n 89); single-person line 1.000 (n 17); members_recall mean 0.892 (n 89)
+  N5 DeepSeek s20: distinct line people answers 45: far(>1m from every true person) 8 of 166; per record 16 of 331
+== GLM s23 con: solver steps 141; share agree 141/141; recall agree 88/88
+  P1 lines (all 88 line steps): never-found/missed = 61/84 = 0.726
+  P1 line failures (32): 47/61 = 0.770
+  P1 all failed line steps (49): 58/78 = 0.744
+  P1 groups (any constraint naming): 18/21 = 0.857 over 53 steps with members
+  P1 lines+groups pooled: lines come_after + groups any = 79/105
+  P3 line failures 32: recall<1 32 (=0 10, None 0); found<1 28 (=0 5); unmatched>0 26; no come_after 5; unreachable 4; outside region 31
+  P3-alt all non-success line steps: 49; with target correct 32
+  I03 found mean 0.816 (n 141); lines 0.772 (n 88); single-person line 0.556 (n 18); members_recall mean 0.635 (n 88)
+  N5 GLM s23: distinct line people answers 45: far(>1m from every true person) 20 of 161; per record 39 of 310
+  N6 GLM s23: far detections 39; wall gap (exit - det, m) median -0.249 min -0.252 max 0.113; within 0.3 m of wall 39; listed under come_after 36; records with phantom 27, failing 26
+== DeepSeek s23 con: solver steps 151; share agree 151/151; recall agree 90/90
+  P1 lines (all 90 line steps): never-found/missed = 20/39 = 0.513
+  P1 line failures (17): 19/30 = 0.633
+  P1 all failed line steps (22): 20/34 = 0.588
+  P1 groups (any constraint naming): 18/26 = 0.692 over 54 steps with members
+  P1 lines+groups pooled: lines come_after + groups any = 38/65
+  P3 line failures 17: recall<1 16 (=0 2, None 0); found<1 9 (=0 0); unmatched>0 6; no come_after 1; unreachable 3; outside region 14
+  P3-alt all non-success line steps: 22; with target correct 17
+  I03 found mean 0.910 (n 151); lines 0.940 (n 90); single-person line 1.000 (n 18); members_recall mean 0.858 (n 90)
+  N5 DeepSeek s23: distinct line people answers 45: far(>1m from every true person) 8 of 166; per record 16 of 332
+  N6 DeepSeek s23: far detections 16; wall gap (exit - det, m) median -0.249 min -0.296 max 0.107; within 0.3 m of wall 16; listed under come_after 15; records with phantom 6, failing 6
+== Qwen s19 con: solver steps 143; share agree 143/143; recall agree 89/89
+  P1 lines (all 89 line steps): never-found/missed = 4/7 = 0.571
+  P1 line failures (2): 2/3 = 0.667
+  P1 all failed line steps (3): 2/3 = 0.667
+  P1 groups (any constraint naming): 18/18 = 1.000 over 54 steps with members
+  P1 lines+groups pooled: lines come_after + groups any = 22/25
+  P3 line failures 2: recall<1 2 (=0 0, None 0); found<1 2 (=0 0); unmatched>0 2; no come_after 0; unreachable 0; outside region 2
+  P3-alt all non-success line steps: 3; with target correct 2
+  I03 found mean 0.968 (n 143); lines 0.980 (n 89); single-person line 1.000 (n 17); members_recall mean 0.978 (n 89)
+  N5 Qwen s19: distinct line people answers 43: far(>1m from every true person) 2 of 165; per record 4 of 333
+  P2 GLM s19 realistic: distinct constraints answers 141; chars 266618; list contents 1920 (0.72%); with key 8867 (3.33%); reasoning tokens total 0
+     token proxy (word/punct): contents 2.02%  with key 7.01%
+  P2 DeepSeek s20 realistic: distinct constraints answers 157; chars 328510; list contents 2999 (0.91%); with key 12176 (3.71%); reasoning tokens total 0
+     token proxy (word/punct): contents 2.28%  with key 7.99%
+  P2 GLM s19 dev seeds: distinct constraints answers 36; chars 64270; list contents 732 (1.14%); with key 2430 (3.78%); reasoning tokens total 0
+     token proxy (word/punct): contents 3.20%  with key 8.28%
+  P2 DeepSeek s20 dev seeds: distinct constraints answers 36; chars 73058; list contents 1304 (1.78%); with key 3392 (4.64%); reasoning tokens total 0
+     token proxy (word/punct): contents 4.05%  with key 9.78%
+  P2 GLM s19 ph: distinct constraints answers 48; chars 81182; list contents 660 (0.81%); with key 2839 (3.50%); reasoning tokens total 0
+     token proxy (word/punct): contents 2.31%  with key 7.37%
+  P2 DeepSeek s20 ph: distinct constraints answers 44; chars 91452; list contents 813 (0.89%); with key 3421 (3.74%); reasoning tokens total 0
+     token proxy (word/punct): contents 2.23%  with key 7.91%
+  P2 GLM s23 realistic: distinct constraints answers 141; chars 264890; list contents 2146 (0.81%); with key 9095 (3.43%); reasoning tokens total 0
+     token proxy (word/punct): contents 2.18%  with key 7.19%
+  P2 DeepSeek s23 realistic: distinct constraints answers 151; chars 317540; list contents 2709 (0.85%); with key 11606 (3.65%); reasoning tokens total 0
+     token proxy (word/punct): contents 2.12%  with key 7.82%
+  s23 glm53: people identical to s19 in 134/134; constraints calls fresh 141/141
+  s23 dsv41: people identical to s20 in 144/144; constraints calls fresh 149/151

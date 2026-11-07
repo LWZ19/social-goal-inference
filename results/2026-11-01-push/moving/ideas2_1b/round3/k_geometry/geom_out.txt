@@ -1,0 +1,4 @@
+CT3F: vacated ticks 32/2683; right+clean not vacated n 1052 goal ok 0.64; vacated n 32 goal ok 0.00; by direction tilt: 10-25 n 220 ok 0.93, <10 n 389 ok 0.58, >=25 n 249 ok 0.64
+CT4: vacated ticks 0/3064; right+clean not vacated n 784 goal ok 0.40; vacated n 0 goal ok 0.00; by direction tilt: 10-25 n 135 ok 0.47, <10 n 350 ok 0.59, >=25 n 299 ok 0.16
+W0: vacated ticks 0/3066; right+clean not vacated n 654 goal ok 0.43; vacated n 0 goal ok 0.00; by direction tilt: 10-25 n 118 ok 0.36, <10 n 293 ok 0.63, >=25 n 243 ok 0.21
+CT5: vacated ticks 0/3068; right+clean not vacated n 507 goal ok 0.24; vacated n 0 goal ok 0.00; by direction tilt: 10-25 n 67 ok 0.13, <10 n 209 ok 0.52, >=25 n 231 ok 0.01

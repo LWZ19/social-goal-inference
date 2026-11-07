@@ -1,0 +1,100 @@
+# Research, 2026-11-02 (BYSTANDERS_FROZEN.md): sweet_spot_line2_moving with bystanders added, nothing else changed.
+# Bystanders stand at a place of their own and shift about it (up to 0.35 m every 5-10 s); nobody added is
+# in the line. `bystander: true` is read only by the research scripts.
+# One person just past the end of the line, off to its side and facing away from it; a pair talking to each
+# other further back on the same side.
+stage: data/habitat/stages/sweet_spot_cafe.glb
+map_area:
+- 7.0
+- 21.5
+- -0.8
+- 9.8
+wander_area:
+- 16.8
+- 20.5
+- 0.5
+- 4.3
+robot:
+  x: 13.0
+  y: 1.4
+  face:
+  - 15.72
+  - 2.67
+queues:
+  counter_line:
+    service_s: 15
+    slots:
+    - x: 15.8
+      y: 4.35
+      face:
+      - 15.8
+      - 5.2
+    - x: 15.8
+      y: 3.65
+    - x: 15.8
+      y: 2.95
+    - x: 15.8
+      y: 2.25
+    - x: 15.8
+      y: 1.55
+    - x: 15.8
+      y: 0.85
+humans:
+- avatar: male_2
+  stand:
+  - 15.1
+  - 6.4
+  face:
+  - 15.1
+  - 3.0
+- avatar: male_1
+  queue: counter_line
+- avatar: female_0
+  queue: counter_line
+- avatar: male_3
+  start:
+  - 19.5
+  - 1.2
+- avatar: female_2
+  start:
+  - 18.0
+  - 4.0
+- avatar: male_0
+  bystander: true
+  stand:
+  - 16.55
+  - 3.1
+  face:
+  - 18.0
+  - 2.0
+  fidget:
+  - 5.0
+  - 10.0
+  - 0.35
+- avatar: female_1
+  bystander: true
+  stand:
+  - 16.9
+  - 2.2
+  face:
+  - 17.5
+  - 2.6
+  fidget:
+  - 5.0
+  - 10.0
+  - 0.35
+- avatar: female_3
+  bystander: true
+  stand:
+  - 17.5
+  - 2.6
+  face:
+  - 16.9
+  - 2.2
+  fidget:
+  - 5.0
+  - 10.0
+  - 0.35
+requests:
+- Get me a coffee
+- Take me to the counter

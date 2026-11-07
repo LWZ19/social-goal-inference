@@ -1,0 +1,69 @@
+seed 403 done at 91 s
+seed 402 done at 92 s
+seed 400 done at 93 s
+seed 401 done at 95 s
+seed 405 done at 183 s
+seed 407 done at 186 s
+seed 404 done at 187 s
+seed 406 done at 187 s
+seed 408 done at 269 s
+seed 409 done at 271 s
+seed 410 done at 273 s
+seed 411 done at 275 s
+seed 412 done at 376 s
+seed 413 done at 378 s
+seed 414 done at 378 s
+seed 415 done at 388 s
+seed 416 done at 517 s
+seed 418 done at 525 s
+seed 417 done at 527 s
+seed 419 done at 535 s
+seed 420 done at 638 s
+seed 421 done at 642 s
+seed 422 done at 643 s
+seed 423 done at 649 s
+seed 424 done at 736 s
+seed 425 done at 738 s
+seed 426 done at 742 s
+seed 427 done at 751 s
+seed 428 done at 834 s
+seed 429 done at 835 s
+seed 430 done at 843 s
+seed 431 done at 846 s
+seed 432 done at 932 s
+seed 433 done at 933 s
+seed 434 done at 940 s
+seed 435 done at 942 s
+seed 437 done at 1029 s
+seed 436 done at 1030 s
+seed 438 done at 1033 s
+seed 439 done at 1039 s
+seed 440 done at 1143 s
+seed 441 done at 1144 s
+seed 442 done at 1147 s
+seed 443 done at 1151 s
+seed 445 done at 1224 s
+seed 444 done at 1225 s
+seed 446 done at 1229 s
+seed 447 done at 1232 s
+seed 449 done at 1282 s
+seed 448 done at 1282 s
+50 seeds, 1050 layouts, 1282 s
+   100  ('control_person', 'unhidden', 'conversation_group', 'conversation_group_2')
+    86  ('control_person', 'unhidden', 'conversation_group', 'conversation_group_3')
+     8  ('control_person', 'unhidden', 'conversation_group', 'conversation_group_4')
+   100  ('control_person', 'unhidden', 'no_one', 'no_one_person')
+    35  ('control_place', '', 'no_one', 'no_one_deep_place')
+   173  ('control_place', '', 'no_one', 'no_one_place')
+    50  ('control_place', '', 'waiting_line', 'waiting_line_1')
+   100  ('control_place', '', 'waiting_line', 'waiting_line_2')
+   100  ('control_place', '', 'waiting_line', 'waiting_line_3')
+    50  ('control_place', '', 'waiting_line', 'waiting_line_4')
+    50  ('control_place', '', 'waiting_line', 'waiting_line_6')
+    28  ('occluded', '15-40', 'conversation_group', 'conversation_group_4')
+person-target hidden share (real truth) by row:
+  conversation_group_2             n=100 min=0.00 median=0.00 max=0.00 >=0.15: 0  >=0.40: 0
+  conversation_group_3             n=100 min=0.00 median=0.00 max=0.13 >=0.15: 0  >=0.40: 0
+  conversation_group_4             n= 50 min=0.00 median=0.17 max=0.36 >=0.15: 28  >=0.40: 0
+  no_one_person                    n=100 min=0.00 median=0.00 max=0.00 >=0.15: 0  >=0.40: 0
+person targets whose hidden share differs twin vs real (staff): 0

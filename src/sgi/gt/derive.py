@@ -25,7 +25,7 @@ from sgi.types import GroundedTarget, Point
 
 _VISIBILITY_HEIGHTS_M = (0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7)   # spec 4: samples on a person's vertical axis
 _GROUP_RULE_SITUATIONS = ("waiting_line", "conversation_group", "audience", "group_photo",
-                          "lift_wait")                                  # their rules need group_at_target
+                          "lift_wait", "machine_use")                   # their rules need group_at_target
 _RULE_SITUATIONS = ("no_one", *_GROUP_RULE_SITUATIONS)                  # the situations sgi.gt.regions has a rule for
 _TIE_DECIMALS = 9     # distances to a region's boundary are compared to a nanometre: equal ones differ by float noise
 

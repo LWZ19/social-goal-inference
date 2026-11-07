@@ -1,0 +1,91 @@
+# Ideas round 2 candidate layout sweet_1048 (make_sweep.py, zero calls): 3 in line; a non-member 0.895 m off the axis, 0.76 m past the last member, facing side; a talking pair; service every 12-20 s.
+# `bystander: true` is read only by the research scripts.
+stage: data/habitat/stages/sweet_spot_cafe.glb
+map_area:
+- 7.0
+- 21.5
+- -0.8
+- 9.8
+wander_area:
+- 16.8
+- 20.5
+- 0.5
+- 4.3
+robot:
+  x: 13.0
+  y: 1.4
+  face:
+  - 15.72
+  - 2.67
+requests:
+- Get me a coffee
+- Take me to the counter
+queues:
+  counter_line:
+    service_s:
+    - 12.0
+    - 20.0
+    slots:
+    - x: 15.8
+      y: 4.35
+      face:
+      - 15.8
+      - 5.2
+    - x: 15.8
+      y: 3.65
+    - x: 15.8
+      y: 2.95
+    - x: 15.8
+      y: 2.25
+    - x: 14.9
+      y: 1.55
+    - x: 14.9
+      y: 0.85
+humans:
+- stand:
+  - 15.1
+  - 6.4
+  face:
+  - 15.1
+  - 3.0
+  avatar: female_2
+- avatar: male_3
+  queue: counter_line
+- avatar: female_0
+  queue: counter_line
+- avatar: female_1
+  queue: counter_line
+- avatar: female_3
+  start:
+  - 19.5
+  - 1.2
+- avatar: male_0
+  bystander: true
+  stand:
+  - 16.695
+  - 2.19
+  face:
+  - 17.695
+  - 2.19
+  fidget: &id001
+  - 5.0
+  - 10.0
+  - 0.35
+- avatar: male_1
+  bystander: true
+  stand:
+  - 16.733
+  - 0.894
+  face:
+  - 17.382
+  - 0.517
+  fidget: *id001
+- avatar: male_2
+  bystander: true
+  stand:
+  - 17.382
+  - 0.517
+  face:
+  - 16.733
+  - 0.894
+  fidget: *id001

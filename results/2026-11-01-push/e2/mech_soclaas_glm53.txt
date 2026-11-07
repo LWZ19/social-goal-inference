@@ -1,0 +1,10 @@
+meta: model soclaas_glm53, git d50a7b3, diff e3b0c442, people 7d3693c5, dry False
+units 160, distinct 160, duplicates 0
+vlm_error: 38 | plan status: {'ok': 160}
+people-matter units: 154
+arm status: {('A0', 'ok'): 136, ('A0', 'vlm_error'): 18, ('A0b', 'ok'): 130, ('A0b', 'vlm_error'): 24, ('D', 'ok'): 144, ('D', 'vlm_error'): 10}
+calls listed per arm (incl. shared plan and context): {('A0', 4): 154, ('A0b', 4): 154, ('D', 3): 154}
+calls by arm and stage: {('A0', 'constraints'): 154, ('A0', 'context'): 154, ('A0', 'people'): 154, ('A0', 'plan'): 154, ('A0b', 'constraints'): 154, ('A0b', 'context'): 154, ('A0b', 'people'): 154, ('A0b', 'plan'): 154, ('D', 'constraints'): 154, ('D', 'context'): 154, ('D', 'plan'): 154}
+call status: {'ok': 1642, 'vlm_error': 52} | retries: {'transient': 182, 'validation': 0} | cached: {True: 170, False: 1524}
+orders: {('A0', 'D', 'A0b'): 53, ('D', 'A0b', 'A0'): 50, ('A0b', 'A0', 'D'): 51}
+n_calls per unit: {7: 154, 2: 6}

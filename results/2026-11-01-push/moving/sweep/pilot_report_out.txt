@@ -1,0 +1,7 @@
+400 candidates
+  cafe: strata {'mixed': 89, 'chain': 37, 'easy': 60, 'ours': 14}; chain 25, absorb 104, static 14; standoff valid 167; pair taken by chain 21, by absorb 36
+  sweet: strata {'chain': 43, 'mixed': 74, 'easy': 59, 'ours': 24}; chain 10, absorb 109, static 24; standoff valid 159; pair taken by chain 41, by absorb 16
+  ours  n= 38: offset 0.01-0.29 m, past 1.23-1.59 m, members {2: 9, 3: 22, 4: 7}, facing {'counter': 15, 'away': 12, 'side': 11}, standoff valid 2
+  chain n= 80: offset 0.07-0.88 m, past 0.40-2.15 m, members {4: 18, 3: 37, 2: 25}, facing {'away': 27, 'counter': 22, 'side': 31}, standoff valid 72
+  mixed n=163: offset 0.00-0.89 m, past 0.68-2.15 m, members {3: 70, 2: 52, 4: 41}, facing {'side': 56, 'counter': 58, 'away': 49}, standoff valid 133
+  easy  n=119: offset 0.01-0.90 m, past 0.47-2.20 m, members {3: 50, 2: 56, 4: 13}, facing {'away': 46, 'counter': 37, 'side': 36}, standoff valid 119

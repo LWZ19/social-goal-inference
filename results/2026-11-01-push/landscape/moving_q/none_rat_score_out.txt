@@ -1,0 +1,8 @@
+
+## Sonnet: 49 cells
+  CT2-none present 49: vs CT mean -0.009 mean|d| 0.061 W/L/T 14/24/11 -> N1 PASS
+  CT2-rat present 49: replace rule 441 (CT 358) -> R1 PASS; CT2-rat - CT +0.007 (CT2 - CT +0.084) -> R2 FAIL; CT2-rat - CT2 mean -0.077 W/L/T 12/30/7
+
+## DeepSeek: 25 cells
+  CT2-none present 25: vs CT mean -0.011 mean|d| 0.063 W/L/T 7/6/12 -> N1 PASS
+  CT2-rat present 25: replace rule 167 (CT 119) -> R1 PASS; CT2-rat - CT +0.015 (CT2 - CT +0.078) -> R2 FAIL; CT2-rat - CT2 mean -0.063 W/L/T 4/13/8

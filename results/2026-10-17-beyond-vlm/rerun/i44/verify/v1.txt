@@ -1,0 +1,20 @@
+== Q1: per-call output tokens / latency_s, s8 runs
+s8_none_qwen36_35            all-calls tok/s med   97.5 (n=168)  fresh med    nan (n=0)  calls(stage,cached)={('plan', True): 84, ('context', True): 84}
+s8_none_qwen38               all-calls tok/s med   59.0 (n=168)  fresh med    nan (n=0)  calls(stage,cached)={('plan', True): 84, ('context', True): 84}
+s8_convlm_qwen36_35          all-calls tok/s med  112.1 (n=256)  fresh med  123.4 (n=67)  calls(stage,cached)={('plan', True): 84, ('context', True): 84, ('people', False): 23, ('constraints', False): 44, ('people', True): 21}
+s8_convlm_qwen38             all-calls tok/s med   63.3 (n=252)  fresh med   68.6 (n=66)  calls(stage,cached)={('plan', True): 84, ('context', True): 84, ('people', False): 24, ('constraints', False): 42, ('people', True): 18}
+s8_conorc_qwen36_35          all-calls tok/s med  108.4 (n=212)  fresh med  122.8 (n=44)  calls(stage,cached)={('plan', True): 84, ('context', True): 84, ('constraints', False): 44}
+s8_conorc_qwen38             all-calls tok/s med   62.1 (n=210)  fresh med   68.1 (n=42)  calls(stage,cached)={('plan', True): 84, ('context', True): 84, ('constraints', False): 42}
+pooled all  : qwen36 107.7 (n=636) vs qwen38 61.8 (n=630) ratio x1.74
+pooled fresh: qwen36 123.3 (n=111) vs qwen38 68.6 (n=108) ratio x1.80
+pooled median fresh_tok: qwen36 424.00 vs qwen38 352.00 ratio x1.20
+pooled median all_tok: qwen36 161.00 vs qwen38 143.00 ratio x1.13
+pooled median fresh_lat: qwen36 3.10 vs qwen38 5.19 ratio x0.60
+fresh people: tok/s 125.7 vs 66.0 (x1.90); out tok 245 vs 200; n 23/24
+fresh constraints: tok/s 123.1 vs 68.8 (x1.79); out tok 464 vs 367; n 88/84
+
+== Q3: s8 C runs, recorded success and rescored, qwen36_35 vs qwen38
+convlm  n=84 recorded 69 vs 65; rescored 69 vs 65; wins 13 losses 9 p=0.523
+conorc  n=84 recorded 71 vs 67; rescored 71 vs 67; wins 10 losses 6 p=0.454
+none    n=84 recorded 45 vs 43; rescored 45 vs 43; wins 5 losses 3 p=0.727
+convlm+conorc n=168 140 vs 132; wins 23 losses 15 p=0.256

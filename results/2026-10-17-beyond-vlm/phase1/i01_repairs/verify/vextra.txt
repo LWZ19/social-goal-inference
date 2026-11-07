@@ -1,0 +1,19 @@
+old qwen38_low: facing matched with yaw 595, within 45 deg 455, median 24.4, yaw None 0
+   P5 total 237 (C 234), ALL total 243; line failures 2: P5 flips 2, ALL flips 2; breaks P5 0, ALL 0
+   steps where R4 != R4s or P != Ps: 0
+old glm53: facing matched with yaw 510, within 45 deg 283, median 37.3, yaw None 0
+   line failures P leaves: {'no come_after': 8, 'recorded people: missed 0 spurious 0': 4, 'come_after numbers all unmatched': 3, 'recorded people: missed 4 spurious 4': 1, 'recorded people: missed 1 spurious 1': 7, 'recorded people: missed 7 spurious 0': 2, 'come_after with no numbers': 1, 'come_after keeps a matched number': 2}
+   P5 total 216 (C 186), ALL total 231; line failures 29: P5 flips 29, ALL flips 29; breaks P5 0, ALL 0
+   steps where R4 != R4s or P != Ps: 0
+old dsv41: facing matched with yaw 570, within 45 deg 350, median 29.9, yaw None 1
+   line failures P leaves: {'come_after keeps a matched number': 7, 'recorded people: missed 0 spurious 0': 5, 'recorded people: missed 1 spurious 0': 2}
+   P5 total 213 (C 182), ALL total 230; line failures 15: P5 flips 15, ALL flips 15; breaks P5 0, ALL 0
+   steps where R4 != R4s or P != Ps: 0
+new haiku55: facing matched with yaw 582, within 45 deg 358, median 29.6, yaw None 32
+   line failures P leaves: {'no come_after': 9, 'recorded people: missed 0 spurious 0': 10, 'come_after keeps a matched number': 1}
+   steps where R4 != R4s or P != Ps: 0
+new sonnet55_low: facing matched with yaw 597, within 45 deg 483, median 28.0, yaw None 2
+   line failures P leaves: {'no come_after': 2, 'recorded people: missed 0 spurious 0': 2}
+   steps where R4 != R4s or P != Ps: 0
+new gemini38_low: facing matched with yaw 608, within 45 deg 551, median 23.2, yaw None 0
+   steps where R4 != R4s or P != Ps: 0

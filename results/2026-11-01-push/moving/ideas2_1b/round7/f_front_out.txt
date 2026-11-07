@@ -1,0 +1,2 @@
+CT3FT: 1411 re-solves with nobody ahead; knows nobody is ahead 0.632; goal to slot 0 median 0.71 m, quartiles 0.53 / 1.86; within 0.6 m 0.347
+CT3F: 1308 re-solves with nobody ahead; knows nobody is ahead 0.502; goal to slot 0 median 1.45 m, quartiles 0.79 / 2.80; within 0.6 m 0.213

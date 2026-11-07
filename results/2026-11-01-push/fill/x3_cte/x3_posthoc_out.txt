@@ -1,0 +1,4 @@
+runs_x3/dsv41 | first-answer wall time median s: CTd 0.24 (a cache replay of CT2's stored answer) CTe 35.4 (live)
+  strict from the first service after delivery, CTe - CTd: n 20, W/L/T 5/10/5, mean -0.144
+runs_x3/soclaas_qwen38_low | first-answer wall time median s: CTd 0.24 (a cache replay of CT2's stored answer) CTe 52.6 (live)
+  strict from the first service after delivery, CTe - CTd: n 0, W/L/T 0/0/0, mean +nan

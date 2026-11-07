@@ -1,0 +1,3 @@
+not named: 17 cells | capture s CT2 357.5 (7 cells), CT3 0.0 (0), Gl 863.1 (15) | mean share CT2 0.104, CT3 0.115
+named: 13 cells | capture s CT2 580.9 (13 cells), CT3 322.3 (13), Gl 802.8 (13) | mean share CT2 0.000, CT3 0.110
+CT3 captured seconds by whether the capturing bystander was named: {'named': 322.3}

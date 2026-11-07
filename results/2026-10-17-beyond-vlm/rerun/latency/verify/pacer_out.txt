@@ -1,0 +1,3 @@
+s19 qwen38_low goal-step n=143: pacer+retry (total-latency) mean 0.00 median 0.000; outside calls mean 0.46 median 0.45
+s19 glm53 goal-step n=141: pacer+retry (total-latency) mean 1.29 median 0.000; outside calls mean 0.45 median 0.44
+s21 qwen38_low goal-step n=144: pacer+retry (total-latency) mean 0.00 median 0.000; outside calls mean 0.77 median 0.77

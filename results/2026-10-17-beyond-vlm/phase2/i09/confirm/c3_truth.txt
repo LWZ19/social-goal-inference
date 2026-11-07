@@ -1,0 +1,6 @@
+I09 confirmation C3 (FROZEN.md section 8), 2026-10-18T04:41:56+0800
+manifest.json sha256 cf2937ab1ccb769ce89fe1b38c8827696c39cc204ef092ef0556f3cd1ac608f4 (MANIFEST.sha256 verified)
+thresholds: configs/default.yaml via PS.default_thresholds(); PS.check_thresholds passed
+182 of 182 test scenes give recall 1 (or nobody visible), 0 false, 0 exempt, 0 merges, and every matched person within 45 deg; visible people 520; by role class {'staff': 78, 'other': 117, 'line': 208, 'group': 117}
+failures: []
+C3 PASS; 35 s

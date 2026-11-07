@@ -1,0 +1,6 @@
+s23 gemini38_low: cumulative records 756, mismatches 0, 89s
+s21 qwen38_low: cumulative records 1512, mismatches 0, 176s
+s23 sonnet55_low: cumulative records 2268, mismatches 0, 263s
+s23 haiku55: cumulative records 3024, mismatches 0, 356s
+s23 glm53: cumulative records 3780, mismatches 0, 445s
+s23 dsv41: cumulative records 4536, mismatches 0, 533s

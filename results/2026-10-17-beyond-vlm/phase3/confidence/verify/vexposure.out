@@ -1,0 +1,30 @@
+{
+ "old_qwen": {
+  "flip_auc": 0.6111,
+  "P1_auc": 0.6447,
+  "n_flip": 2,
+  "flip_P1_min": 2.906888,
+  "P1_rank_of_flip_failures_pct": null
+ },
+ "old_glm": {
+  "flip_auc": 0.6778,
+  "P1_auc": 0.7377,
+  "n_flip": 16,
+  "flip_P1_min": 2.851754,
+  "P1_rank_of_flip_failures_pct": null
+ },
+ "old_deepseek": {
+  "flip_auc": 0.6829,
+  "P1_auc": 0.6878,
+  "n_flip": 19,
+  "flip_P1_min": 0.538516,
+  "P1_rank_of_flip_failures_pct": null
+ },
+ "pooled": {
+  "flip_auc": 0.675,
+  "P1_auc": 0.7077,
+  "n_flip": 37,
+  "flip_P1_min": 0.538516,
+  "P1_rank_of_flip_failures_pct": null
+ }
+}
