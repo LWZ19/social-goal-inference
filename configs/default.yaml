@@ -50,7 +50,8 @@ models:
   soclaas_ornith15_low:  {<<: *soclaas, model: "ornith1.5:35b", reasoning_effort: low,
                           price_input_per_mtok: 0.2, price_output_per_mtok: 1.7}
   soclaas_glm53:         {<<: *soclaas, model: x-test-1, reasoning_effort: "none",
-                          price_input_per_mtok: 0.37, price_output_per_mtok: 1.25}
+                          price_input_per_mtok: 0.37, price_output_per_mtok: 1.25,
+                          timeout_s: 600}   # 7 Nov 2026: GLM's gateway answers took a median 132 s; 180 s dropped its slower answers
   soclaas_glm53_low:     {<<: *soclaas, model: x-test-1, reasoning_effort: low,
                           price_input_per_mtok: 0.37, price_output_per_mtok: 1.25}
   soclaas_glm53_high:    {<<: *soclaas, model: x-test-1, reasoning_effort: high,

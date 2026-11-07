@@ -58,6 +58,10 @@ E.ARMS.update({"CTo": dict(asks_again=False, resolves=True), "CTt": dict(asks_ag
                "CT3p": dict(asks_again=False, resolves=True, photo_time=True),
                # moving/ideas2_1b/CT4_FROZEN.md: the best bolt-on (CT3F) against one estimate of who waits (CT4)
                "CT3F": dict(asks_again=False, resolves=True, photo_time=True),
+               # front-of-line fix (exploratory, 7 Nov): no step back once in line, and the vacated place taken when
+               # the last served person rejoins behind the robot; on CT2 (the video's arm) and on CT3F (the best)
+               "CT2f": dict(asks_again=False, resolves=True),
+               "CT3Ff": dict(asks_again=False, resolves=True, photo_time=True),
                "CT4": dict(asks_again=False, resolves=True, photo_time=True),
                # moving/ideas2_1b/round3/ROUND3.md: CT4 with the 5 s window (W0), and with the cost decision (CT5)
                "W0": dict(asks_again=False, resolves=True, photo_time=True),
@@ -75,7 +79,8 @@ E.ARMS.update({"CTo": dict(asks_again=False, resolves=True), "CTt": dict(asks_ag
 # BYSTANDERS_FROZEN.md: CT2's options, and roles from geometry (Gl) or from the model checked by motion (CT3; CT3-j
 # without the follow check); later arms add their own (see ARMS above)
 _ROSTER = ("Gl", "CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT4", "W0", "CT5", "CT4P", "CT4PJ", "CT4O", "CT4OT", "CT4PJT",
-           "CT3FT")
+           "CT3FT", "CT3Ff")
+_FRONT_FIX = ("CT2f", "CT3Ff")
 _CO_MOTION_S = 5.0
 _TRACKED = ("CTd", "CTe")
 _TRACK_EVERY_S = 0.5
@@ -102,13 +107,15 @@ class _Inject:
                 arm = self._episode.arm
                 payload["variant"] = {**_V2, "vacate_after_s": None if arm in ("CT2-vac", "CT2-norv") else 5.0,
                                       "readmit": arm not in ("CT2-nora", "CT2-norv")}
-                if arm in ("CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT3FT"):
+                if arm in ("CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT3FT", "CT3Ff"):
                     payload["variant"] = {**payload["variant"], "co_motion_s": _CO_MOTION_S,
                                           "co_motion_follow": arm != "CT3-j"}
                 if arm == "CT3b":                           # post hoc: stale follow checks cancelled on re-admission
                     payload["variant"]["co_motion_rejoin"] = True
-                if arm in ("CT3F", "CT3FT"):                # CT4_FROZEN.md: the group test and the gated anchor
+                if arm in ("CT3F", "CT3FT", "CT3Ff"):       # CT4_FROZEN.md: the group test and the gated anchor
                     payload["variant"] = {**payload["variant"], "group_follow": True, "anchor_rederive": True}
+                if arm in _FRONT_FIX:                       # the vacated place, also when the last served rejoined behind
+                    payload["variant"] = {**payload["variant"], "vacate_rejoined": True}
                 if arm == "CT4":                            # the roles from sgi.roles; CT2's ratchet stays (sim side)
                     payload["variant"] = {"role_belief": True}
                 if arm in ("CT4P", "CT4PJ"):                # round3/CT4P.md, round4/CT4PJ.md
@@ -307,7 +314,14 @@ class OracleEpisode(X.ControlEpisode):
         """CTs also replaces a goal that someone now stands on (within the person and robot radii); CT2 and CT2-vac
         also take any new goal more than 0.08 m up the line (the forward ratchet)."""
         goal, pose = self.robot.goal, answer.get("pose_world")
-        if (self.arm in ("CT2", "CT2-vac", "CT2m", "CT2-nora", "CT2-norv") + _TRACKED + _ROSTER and goal is not None
+        if (self.arm in _FRONT_FIX and goal is not None and pose is not None and answer.get("status") == "ok"
+                and answer.get("joined") and answer.get("solve_direction") is not None):
+            d = answer["solve_direction"]                   # points from the line's front to its back
+            back = (pose[0] - goal.x) * d[0] + (pose[1] - goal.y) * d[1]
+            stood_on = any(math.hypot(h.world_xy[0] - goal.x, h.world_xy[1] - goal.y) < _CLEAR_M for h in self.humans)
+            if back > _RATCHET_M and not stood_on:          # in line: never step back while the place is free
+                return
+        if (self.arm in ("CT2", "CT2-vac", "CT2m", "CT2-nora", "CT2-norv", "CT2f") + _TRACKED + _ROSTER and goal is not None
                 and pose is not None
                 and answer.get("status") == "ok"):
             d = answer.get("solve_direction")

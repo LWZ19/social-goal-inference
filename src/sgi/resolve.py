@@ -132,7 +132,8 @@ class Resolver:
                  target_xy: Sequence[float], at_answer: Sequence[Track], *, gate_m: float = 0.75,
                  leave_m: float = 0.75, join_radius_m: float = 0.35, join_dwell_s: float = 1.0,
                  line_span_m: float = 1.0, off_line_m: float = 1.0, absorb_after: int = 2, gone_m: float = 1.5,
-                 readmit: bool = False, vacate_after_s: float | None = None, path_memory: bool = False,
+                 readmit: bool = False, vacate_after_s: float | None = None, vacate_rejoined: bool = False,
+                 path_memory: bool = False,
                  co_motion_s: float | None = None, co_motion_follow: bool = True, co_motion_rejoin: bool = False,
                  advance_m: float = 0.4,
                  follow_m: float = 0.25,
@@ -141,7 +142,8 @@ class Resolver:
         """The options after `gone_m` are those of re-solving v2 (research arm CT2, `moving/CT2_FROZEN.md`), off by
         default: `readmit` lets a person who left wait again once the solver takes them as joining behind the last;
         `vacate_after_s` gives `vacated_pose`, the last still pose of the last of the waiting people to leave, once
-        the robot has joined, nobody it came after still waits and that person has been away so long; `path_memory`
+        the robot has joined, nobody it came after still waits and that person has been away so long (`vacate_rejoined`
+        also takes it when that person is back in the line but behind the robot, as one served who rejoined); `path_memory`
         remembers the line as the polyline through the waiting people's positions at the answer, not a straight
         axis, and points the solver along its back (`solve_direction`).
 
@@ -161,7 +163,7 @@ class Resolver:
         member within 1.5 spacings), never taking someone found not following, and nobody unnamed who has not
         moved as a joiner would."""
         self._target = (float(target_xy[0]), float(target_xy[1]))
-        self._readmit, self._vacate_after_s = readmit, vacate_after_s
+        self._readmit, self._vacate_after_s, self._vacate_rejoined = readmit, vacate_after_s, vacate_rejoined
         self._leave_m, self._join_radius_m, self._join_dwell_s = leave_m, join_radius_m, join_dwell_s
         cost = [[_apart(person.xy, track.xy) for track in at_answer] for person in people]
         pairs = match_one_to_one(cost, gate_m)
@@ -418,7 +420,7 @@ class Resolver:
             active = [tr for tr in tracks if self._number_of.get(tr.id) in self._waiting - self.dropped - self.gone]
             if active:
                 self.solve_direction = self._on_path(max(active, key=lambda tr: self._along(tr.xy)).xy)[2]
-        self.vacated_pose = self._vacated(tracks, t)
+        self.vacated_pose = self._vacated(tracks, t, robot_xy)
         if self.joined:
             people = [p for p in people if not self.behind(p.xy, robot_xy)]
         left = self.dropped | self.gone
@@ -488,7 +490,8 @@ class Resolver:
         _, xy, gap = history[-1]
         return any(_apart(xy, h[1]) >= self._moved_m - _EPS or h[2] - gap >= _STEP_UP_M - _EPS for h in history)
 
-    def _vacated(self, tracks: Sequence[Track], t: float) -> tuple[float, float, float] | None:
+    def _vacated(self, tracks: Sequence[Track], t: float,
+                 robot_xy: Sequence[float] | None = None) -> tuple[float, float, float] | None:
         if self._vacate_after_s is None or not self.joined or not self._left_at:
             return None
         if self._waiting - self.dropped - self.gone:
@@ -502,6 +505,7 @@ class Resolver:
                 back = self._off_line(now) <= self._leave_m + _EPS
             else:
                 back = _apart(now, self._target) - self._closest.get(last, 0.0) <= self._leave_m + _EPS
-            if back:
+            rejoined = self._vacate_rejoined and robot_xy is not None and self.behind(now, robot_xy)
+            if back and not rejoined:                  # vacate_rejoined: back in the line behind the robot is gone
                 return None
         return self._still.get(last)
