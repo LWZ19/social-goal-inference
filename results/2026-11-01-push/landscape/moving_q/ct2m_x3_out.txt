@@ -1,0 +1,20 @@
+cafe_line2_moving
+    {'seed': 10, 'T': 44.5, 't_int': 12.87, 'fb': 58.0, 'fm': 62.0, 'd0': 3.0, 'dT': 2.2, 'shb': 0.3, 'shm': 0.27}
+    {'seed': 11, 'T': 36.1, 't_int': 12.4, 'fb': 44.0, 'fm': 44.0, 'd0': 2.9, 'dT': 2.3, 'shb': 0.1, 'shm': 0.1}
+    {'seed': 12, 'T': 47.7, 't_int': 12.67, 'fb': 56.0, 'fm': 52.0, 'd0': 2.7, 'dT': 1.7, 'shb': 0.01, 'shm': 0.02}
+cafe_line6_moving
+    {'seed': 10, 'T': 52.1, 't_int': 11.53, 'fb': 61.0, 'fm': 61.0, 'd0': 4.0, 'dT': 3.9, 'shb': 0.27, 'shm': 0.27}
+    {'seed': 11, 'T': 48.5, 't_int': 12.1, 'fb': None, 'fm': None, 'd0': None, 'dT': None, 'shb': 0.0, 'shm': 0.0}
+    {'seed': 12, 'T': 87.8, 't_int': 15.37, 'fb': None, 'fm': None, 'd0': None, 'dT': None, 'shb': 0.0, 'shm': 0.0}
+cafe_slots
+    {'seed': 10, 'T': 50.4, 't_int': 16.63, 'fb': None, 'fm': 56.0, 'd0': None, 'dT': None, 'shb': 0.0, 'shm': 0.01}
+    {'seed': 11, 'T': 49.6, 't_int': 11.13, 'fb': None, 'fm': None, 'd0': None, 'dT': None, 'shb': 0.0, 'shm': 0.0}
+    {'seed': 12, 'T': 54.2, 't_int': 16.3, 'fb': 65.0, 'fm': None, 'd0': 5.0, 'dT': 2.2, 'shb': 0.01, 'shm': 0.0}
+room_coffee_cart_slots
+    {'seed': 10, 'T': 51.9, 't_int': 14.97, 'fb': 58.0, 'fm': 58.0, 'd0': 2.9, 'dT': 2.4, 'shb': 0.31, 'shm': 0.31}
+    {'seed': 11, 'T': 41.8, 't_int': 17.3, 'fb': 54.0, 'fm': 53.0, 'd0': 3.2, 'dT': 2.9, 'shb': 0.38, 'shm': 0.31}
+    {'seed': 12, 'T': 47.5, 't_int': 11.97, 'fb': 57.0, 'fm': 57.0, 'd0': 3.0, 'dT': 2.4, 'shb': 0.29, 'shm': 0.31}
+sweet_spot_line2_moving
+    {'seed': 10, 'T': 37.0, 't_int': 11.7, 'fb': 44.0, 'fm': None, 'd0': 3.4, 'dT': 2.5, 'shb': 0.08, 'shm': 0.0}
+    {'seed': 11, 'T': 47.2, 't_int': 13.8, 'fb': 55.0, 'fm': None, 'd0': 3.3, 'dT': 2.4, 'shb': 0.01, 'shm': 0.0}
+    {'seed': 12, 'T': 55.8, 't_int': 10.9, 'fb': None, 'fm': None, 'd0': None, 'dT': None, 'shb': 0.0, 'shm': 0.0}

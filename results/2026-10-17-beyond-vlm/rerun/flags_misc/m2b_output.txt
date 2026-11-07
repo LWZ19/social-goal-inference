@@ -1,0 +1,3 @@
+====================================================================================================
+I47 side figure: DeepSeek C on the oblique eval_02 layout (realistic arms), by class
+  n=18 solver: outside region 3; standard: nobody near 12; success 3

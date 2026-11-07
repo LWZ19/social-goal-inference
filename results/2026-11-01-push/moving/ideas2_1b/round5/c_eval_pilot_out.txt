@@ -1,0 +1,11 @@
+# Round 5, check 2 (EXPLORATORY: QB v2's bound was chosen after check 1)
+
+## Pilot layouts, robot idle (24)
+
+| Variant | recall | false: ex-member | false: walker | false: named bystander | false: other bystander | right | cut | far | empty | switches / min | proxy goal in line |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| CT4 | 0.856 | 1300 | 762 | 1462 | 73 | 0.400 | 0.263 | 0.323 | 0.014 | 14.2 | 0.241 |
+| W0 | 0.825 | 1494 | 528 | 1383 | 75 | 0.342 | 0.304 | 0.340 | 0.014 | 9.0 | 0.232 |
+| QB v2 (away only) | 0.716 | 828 | 245 | 1420 | 80 | 0.319 | 0.383 | 0.261 | 0.038 | 7.5 | 0.269 |
+| QB v3 (v2 + tail joins) | 0.840 | 1026 | 794 | 1518 | 445 | 0.319 | 0.289 | 0.383 | 0.009 | 10.5 | 0.229 |
+| QB v4 (v3, tail joins need arrival) | 0.774 | 940 | 576 | 1328 | 94 | 0.384 | 0.300 | 0.288 | 0.027 | 9.4 | 0.283 |

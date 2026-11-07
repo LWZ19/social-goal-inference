@@ -1,0 +1,39 @@
+qwen: draws 3360; R0 mismatches vs I06 0 []; mean L1 R0 0.380 RF90 0.518; L2 R0 0.374 RF90 0.510; flips 463 breaks 0; det_i rate R0 0.539 RF90 0.322; differences vs agent rows 0 []
+   A1    n 12 L1 0.233 -> 0.896 | L2 0.233 -> 0.896 | flips 159 breaks 0
+   A2    n 12 L1 0.033 -> 0.854 | L2 0.004 -> 0.808 | flips 197 breaks 0
+   A3    n 15 L1 0.027 -> 0.083 | L2 0.000 -> 0.053 | flips 17 breaks 0
+   A4    n 15 L1 0.007 -> 0.010 | L2 0.000 -> 0.003 | flips 1 breaks 0
+   A5    n 15 L1 0.003 -> 0.003 | L2 0.000 -> 0.000 | flips 0 breaks 0
+   A6    n 15 L1 0.000 -> 0.000 | L2 0.000 -> 0.000 | flips 0 breaks 0
+   B1    n 12 L1 0.342 -> 0.463 | L2 0.329 -> 0.446 | flips 29 breaks 0
+   C1    n 12 L1 0.771 -> 0.879 | L2 0.771 -> 0.879 | flips 26 breaks 0
+   D2    n 15 L1 0.623 -> 0.733 | L2 0.620 -> 0.727 | flips 33 breaks 0
+   E1    n 15 L1 0.937 -> 0.937 | L2 0.937 -> 0.937 | flips 0 breaks 0
+   E2    n 15 L1 0.620 -> 0.623 | L2 0.620 -> 0.623 | flips 1 breaks 0
+   base  n 15 L1 0.940 -> 0.940 | L2 0.940 -> 0.940 | flips 0 breaks 0
+glm: draws 3360; R0 mismatches vs I06 0 []; mean L1 R0 0.355 RF90 0.451; L2 R0 0.322 RF90 0.415; flips 320 breaks 0; det_i rate R0 0.390 RF90 0.221; differences vs agent rows 0 []
+   A1    n 12 L1 0.362 -> 0.754 | L2 0.338 -> 0.725 | flips 94 breaks 0
+   A2    n 12 L1 0.133 -> 0.613 | L2 0.021 -> 0.496 | flips 115 breaks 0
+   A3    n 15 L1 0.117 -> 0.193 | L2 0.010 -> 0.083 | flips 23 breaks 0
+   A4    n 15 L1 0.047 -> 0.077 | L2 0.000 -> 0.027 | flips 9 breaks 0
+   A5    n 15 L1 0.017 -> 0.027 | L2 0.000 -> 0.003 | flips 3 breaks 0
+   A6    n 15 L1 0.037 -> 0.037 | L2 0.003 -> 0.003 | flips 0 breaks 0
+   B1    n 12 L1 0.346 -> 0.467 | L2 0.287 -> 0.408 | flips 29 breaks 0
+   C1    n 12 L1 0.667 -> 0.758 | L2 0.654 -> 0.746 | flips 22 breaks 0
+   D2    n 15 L1 0.550 -> 0.627 | L2 0.543 -> 0.620 | flips 23 breaks 0
+   E1    n 15 L1 0.733 -> 0.737 | L2 0.733 -> 0.737 | flips 1 breaks 0
+   E2    n 15 L1 0.490 -> 0.493 | L2 0.490 -> 0.493 | flips 1 breaks 0
+   base  n 15 L1 0.783 -> 0.783 | L2 0.783 -> 0.783 | flips 0 breaks 0
+dsv: draws 3360; R0 mismatches vs I06 0 []; mean L1 R0 0.349 RF90 0.448; L2 R0 0.318 RF90 0.415; flips 334 breaks 0; det_i rate R0 0.410 RF90 0.244; differences vs agent rows 0 []
+   A1    n 12 L1 0.371 -> 0.804 | L2 0.338 -> 0.771 | flips 104 breaks 0
+   A2    n 12 L1 0.163 -> 0.717 | L2 0.029 -> 0.567 | flips 133 breaks 0
+   A3    n 15 L1 0.080 -> 0.143 | L2 0.013 -> 0.070 | flips 19 breaks 0
+   A4    n 15 L1 0.023 -> 0.023 | L2 0.000 -> 0.000 | flips 0 breaks 0
+   A5    n 15 L1 0.020 -> 0.023 | L2 0.000 -> 0.003 | flips 1 breaks 0
+   A6    n 15 L1 0.023 -> 0.023 | L2 0.000 -> 0.000 | flips 0 breaks 0
+   B1    n 12 L1 0.254 -> 0.367 | L2 0.208 -> 0.321 | flips 27 breaks 0
+   C1    n 12 L1 0.675 -> 0.775 | L2 0.667 -> 0.762 | flips 24 breaks 0
+   D2    n 15 L1 0.553 -> 0.630 | L2 0.520 -> 0.593 | flips 23 breaks 0
+   E1    n 15 L1 0.777 -> 0.777 | L2 0.777 -> 0.777 | flips 0 breaks 0
+   E2    n 15 L1 0.490 -> 0.500 | L2 0.490 -> 0.500 | flips 3 breaks 0
+   base  n 15 L1 0.770 -> 0.770 | L2 0.770 -> 0.770 | flips 0 breaks 0

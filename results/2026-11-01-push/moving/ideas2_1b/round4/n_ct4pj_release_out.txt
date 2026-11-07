@@ -1,0 +1,9 @@
+# CT4PJ.md J2-J5, released after J1's premise failure (CT4PJ_CHECK.md): runs_pilot3/dsv41
+
+- episodes: CT3F 24, CT4P 24, CT4PJ 24
+- J2, median time joined before leaving: CT4PJ 19.0 s (n 15) vs CT4P 11.2 s (n 20) -> held
+- J3, joined share after the first service: CT4PJ above CT4P on 12, below 5, tied 7; sign p 0.143 -> held
+- J4, strict in line from the first service: CT4PJ above CT4P on 14, below 4, tied 6; sign p 0.031 -> held
+- J5, CT3F ahead of CT4PJ: CT3F better 8, worse 11, tied 5; sign p 0.648 -> NOT held
+
+Means over layouts (strict from the first service): CT3F 0.188, CT4P 0.060, CT4PJ 0.182

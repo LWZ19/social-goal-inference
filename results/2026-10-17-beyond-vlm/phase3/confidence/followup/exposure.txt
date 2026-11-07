@@ -1,0 +1,108 @@
+Phase 3 confidence, POST HOC exposure follow-up (README section 8, question 6). Changes no verdict.
+Generated 2026-10-18 18:13:04 +0800 by followup/exposure.py; frozen measure code imported unchanged from code/tables.py (sha256 331d32af5e6bcb33...).
+Hashes re-verified: FROZEN.md 2a3a890a3b23..., DEVIATIONS.md afe309386928..., DEVIATIONS_2.md b728f2d591c2...
+Rows: rows_old_qwen.jsonl 4b3d29281514..., rows_old_glm.jsonl 800db83d3cda..., rows_old_deepseek.jsonl 3e156c8a1462...
+Failure is the positive class; AUROC by midranks (ties half, +inf ties and ranks top). Intervals: the frozen primary layout-cluster bootstrap (2,000 paired draws, seed 20261018, first matrix), 95% percentile; dN = draws dropped (no failure or no success in the resample).
+The subsets are chosen by D's verdict against C's recorded verdict, which uses the outcome: diagnostics only.
+Reproduction asserts passed: every (a) AUROC, interval and stratified value of P1, S2, S3, S4, S6z and S5a equals summary.json T2 to 1e-12; P1 on (b) equals the verifier's 0.543 / 0.594 / 0.532 / 0.557; flips 2 / 16 / 19 with 1 break (DeepSeek); T5 acc@80% of P1, S2 and S6z on (a) reproduced; the refit loop with no restriction equals pass 2's S6z exactly.
+
+Counts (n, failures):
+  (a) all 441                old_qwen 143 (9), old_glm 141 (45), old_deepseek 157 (48), pooled 441 (102)
+  (b) D verdict = C (404)    old_qwen 141 (7), old_glm 125 (29), old_deepseek 138 (30), pooled 404 (66)
+  (c) D verdict != C (37)    old_qwen 2 (2), old_glm 16 (16), old_deepseek 19 (18), pooled 37 (36)
+  (c) holds 36 fixes (C failed, D succeeded) and 1 break (C succeeded, D failed; old DeepSeek): its AUROC is undefined for Qwen and GLM (no success) and rests on a single success for DeepSeek and pooled.
+  Wrong-target failures among the 37 flips: 0. So all 34 wrong-target failures of the 441 are in (b), and (b)'s 66 failures are 34 wrong-target and 32 right-target.
+
+Table A. AUROC for failure, (a) all 441 primary records
+  signal                                              old_qwen                     old_glm                old_deepseek                      pooled   strat.
+  P1 re-solve shift (judged)           0.645 [0.392,1.000] d75      0.738 [0.508,0.951] d0      0.688 [0.593,0.782] d0      0.708 [0.564,0.828] d0    0.703
+  S2 people 1-F1                       0.869 [0.419,1.000] d75      0.801 [0.666,0.906] d0      0.650 [0.554,0.741] d0      0.741 [0.644,0.807] d0    0.735
+  S3 named unsupported                 0.602 [0.475,1.000] d75      0.789 [0.695,0.860] d0      0.601 [0.517,0.713] d0      0.691 [0.602,0.773] d0    0.677
+  S4 trial disagreement (2 runs)       0.840 [0.756,0.976] d75      0.715 [0.534,0.853] d0      0.669 [0.588,0.740] d0      0.774 [0.707,0.841] d0    0.707
+  S6z frozen (fit on 441)              0.825 [0.446,1.000] d75      0.780 [0.602,0.948] d0      0.689 [0.570,0.780] d0      0.752 [0.632,0.844] d0    0.741
+  S6z refit (fit on 404)               0.827 [0.431,1.000] d75      0.776 [0.593,0.947] d0      0.688 [0.564,0.780] d0      0.747 [0.629,0.835] d0    0.739
+  S5a any flag (ref.)                  0.478 [0.457,0.492] d75      0.670 [0.552,0.772] d0      0.517 [0.451,0.604] d0      0.595 [0.526,0.678] d0    0.574
+  model identity (ref.)                                  0.500                       0.500                       0.500                       0.658    0.500
+
+Table B. AUROC for failure, (b) the 404 records where D's verdict equals C's
+  signal                                              old_qwen                     old_glm                old_deepseek                      pooled   strat.
+  P1 re-solve shift (judged)          0.543 [0.301,0.695] d247      0.594 [0.426,0.887] d0      0.532 [0.426,0.619] d0      0.557 [0.455,0.673] d0    0.558
+  S2 people 1-F1                      0.832 [0.380,0.952] d247      0.751 [0.652,0.874] d0      0.597 [0.465,0.687] d0      0.694 [0.587,0.743] d0    0.690
+  S3 named unsupported                0.489 [0.472,0.500] d247      0.724 [0.634,0.763] d0      0.554 [0.492,0.624] d0      0.625 [0.557,0.690] d0    0.613
+  S4 trial disagreement (2 runs)      0.814 [0.726,0.987] d247      0.729 [0.574,0.892] d0      0.710 [0.599,0.800] d0      0.784 [0.711,0.871] d0    0.732
+  S6z frozen (fit on 441)             0.776 [0.342,0.901] d247      0.677 [0.549,0.908] d0      0.545 [0.372,0.657] d0      0.635 [0.515,0.721] d0    0.629
+  S6z refit (fit on 404)              0.778 [0.326,0.914] d247      0.675 [0.547,0.909] d0      0.552 [0.375,0.666] d0      0.634 [0.507,0.717] d0    0.631
+  S5a any flag (ref.)                 0.478 [0.456,0.490] d247      0.707 [0.537,0.797] d0      0.545 [0.463,0.667] d0      0.622 [0.525,0.721] d0    0.601
+  model identity (ref.)                                  0.500                       0.500                       0.500                       0.651    0.500
+
+Table C. AUROC for failure, (c) the 37 records where D's verdict differs (36 failures, 1 success)
+  signal                                old_qwen       old_glm  old_deepseek        pooled   strat.
+  P1 re-solve shift (judged)                 —             —           0.667         0.833    0.667
+  S2 people 1-F1                             —             —           0.806         0.889    0.806
+  S3 named unsupported                       —             —           0.694         0.833    0.694
+  S4 trial disagreement (2 runs)             —             —           0.083         0.111    0.083
+  S6z frozen (fit on 441)                    —             —           0.833         0.917    0.833
+  S6z refit (fit on 404)                     —             —           0.889         0.944    0.889
+  S5a any flag (ref.)                        —             —           0.556         0.597    0.556
+
+  model identity = each cell's failure rate within the subset used as the score (outcome-derived; pooled only; per cell it is constant, so 0.500).
+
+Table D. Change from (a) to (b), pooled one ranking and stratified
+  P1 re-solve shift (judged)       pooled 0.708 -> 0.557 (-0.151);  stratified 0.703 -> 0.558 (-0.145)
+  S2 people 1-F1                   pooled 0.741 -> 0.694 (-0.047);  stratified 0.735 -> 0.690 (-0.045)
+  S3 named unsupported             pooled 0.691 -> 0.625 (-0.065);  stratified 0.677 -> 0.613 (-0.064)
+  S4 trial disagreement (2 runs)   pooled 0.774 -> 0.784 (+0.010);  stratified 0.707 -> 0.732 (+0.025)
+  S6z frozen (fit on 441)          pooled 0.752 -> 0.635 (-0.118);  stratified 0.741 -> 0.629 (-0.112)
+  S6z refit (fit on 404)           pooled 0.747 -> 0.634 (-0.113);  stratified 0.739 -> 0.631 (-0.108)
+  S5a any flag (ref.)              pooled 0.595 -> 0.622 (+0.027);  stratified 0.574 -> 0.601 (+0.027)
+
+Table E. Share of the (b) bootstrap draws with AUROC above 0.5
+  signal                                old_qwen       old_glm  old_deepseek        pooled
+  P1 re-solve shift (judged)               0.605         0.858         0.753         0.858
+  S2 people 1-F1                           0.713         1.000         0.917         1.000
+  S3 named unsupported                     0.000         1.000         0.946         1.000
+  S4 trial disagreement (2 runs)           1.000         0.999         0.999         1.000
+  S6z frozen (fit on 441)                  0.861         0.995         0.705         0.984
+  S6z refit (fit on 404)                   0.835         0.995         0.721         0.980
+  S5a any flag (ref.)                      0.000         0.992         0.812         0.996
+
+Table F. Paired differences in pooled AUROC on (b), same draws (descriptive)
+  S2 people 1-F1               - P1 re-solve shift (judged)   +0.137 [-0.027, +0.237]  share > 0: 0.944 over 2000 draws
+  S2 people 1-F1               - S5a any flag (ref.)          +0.071 [-0.083, +0.182]  share > 0: 0.831 over 2000 draws
+  S3 named unsupported         - P1 re-solve shift (judged)   +0.068 [-0.080, +0.213]  share > 0: 0.742 over 2000 draws
+  S6z refit (fit on 404)       - S2 people 1-F1               -0.060 [-0.122, +0.012]  share > 0: 0.043 over 2000 draws
+  S6z frozen (fit on 441)      - P1 re-solve shift (judged)   +0.077 [-0.037, +0.141]  share > 0: 0.914 over 2000 draws
+  S4 trial disagreement (2 runs) - S2 people 1-F1               +0.090 [+0.005, +0.256]  share > 0: 0.983 over 2000 draws
+
+Table G. Selective accuracy at 80% kept on (b) (frozen rule: ties at the cutoff kept in part), with failures caught at 20% abstention (random = 0.2 x failures)
+  signal                                            old_qwen                   old_glm              old_deepseek                    pooled
+  base rate (keep all) / random                0.950 | 1.4/7            0.768 | 5.8/29            0.783 | 6.0/30           0.837 | 13.2/66
+  P1 re-solve shift (judged)            0.957 (+0.006) | 2.1     0.837 (+0.069) | 12.7      0.810 (+0.027) | 9.0     0.864 (+0.027) | 22.0
+  S2 people 1-F1                        0.991 (+0.041) | 6.0     0.887 (+0.119) | 17.7     0.828 (+0.045) | 11.0     0.897 (+0.061) | 32.8
+  S3 named unsupported                  0.949 (-0.001) | 1.3     0.861 (+0.093) | 15.1      0.802 (+0.019) | 8.1     0.873 (+0.036) | 24.9
+  S4 trial disagreement (2 runs)        0.991 (+0.041) | 6.0     0.815 (+0.047) | 10.5     0.822 (+0.039) | 10.3     0.889 (+0.053) | 30.2
+  S6z frozen (fit on 441)               0.973 (+0.023) | 4.0     0.890 (+0.122) | 18.0     0.828 (+0.045) | 11.0     0.892 (+0.055) | 31.0
+  S6z refit (fit on 404)                0.982 (+0.032) | 5.0     0.880 (+0.112) | 17.0     0.828 (+0.045) | 11.0     0.886 (+0.049) | 29.0
+  S5a any flag (ref.)                   0.948 (-0.002) | 1.2     0.860 (+0.092) | 15.0      0.802 (+0.019) | 8.1     0.876 (+0.039) | 25.8
+  (each entry: success among kept (difference from base) | failures caught; (b) has 66 failures pooled, 34 of them wrong-target)
+
+Table H. What the signals see on (b): right-target failures against (b)'s successes, and wrong-target failures against (b)'s successes (point values; per cell and pooled one ranking)
+  signal                                old_qwen       old_glm  old_deepseek        pooled   |      old_qwen       old_glm  old_deepseek        pooled
+  (positives)                               rt 1         rt 15         rt 16         rt 32   |          wt 6         wt 14         wt 14         wt 34
+  P1 re-solve shift (judged)               0.832         0.500         0.456         0.485   |         0.495         0.694         0.619         0.625
+  S2 people 1-F1                           0.884         0.782         0.543         0.671   |         0.823         0.719         0.658         0.716
+  S3 named unsupported                     0.489         0.733         0.550         0.638   |         0.489         0.713         0.558         0.613
+  S4 trial disagreement (2 runs)           0.914         0.597         0.614         0.723   |         0.797         0.870         0.820         0.842
+  S6z frozen (fit on 441)                  0.862         0.650         0.467         0.576   |         0.761         0.705         0.634         0.690
+  S6z refit (fit on 404)                   0.847         0.652         0.467         0.570   |         0.766         0.699         0.648         0.695
+  S5a any flag (ref.)                      0.478         0.748         0.600         0.683   |         0.478         0.662         0.483         0.566
+
+Table I. S6z coefficients, full-data fit on standardised features (lambda 1; intercept unpenalised)
+  fit on 441 (frozen)    b -1.425  ln(1+min(P1,10)) +0.996  1{P1=inf} +0.000  S2 +0.911  S3 -0.204  (iters 6, converged True)
+  fit on 404 (refit)     b -1.837  ln(1+min(P1,10)) +0.393  1{P1=inf} +0.000  S2 +1.004  S3 -0.310  (iters 5, converged True)
+  refit folds: 13, all converged True, max iters 6, training sizes 352-403
+
+Reading (computed values; inference marked):
+  S2 on (b): cells 0.832 / 0.751 / 0.597, pooled 0.694 [0.587, 0.743], stratified 0.690; against P1's 0.543 / 0.594 / 0.532, pooled 0.557 [0.455, 0.673].
+  S2 - P1 on (b): +0.137 [-0.027, +0.237], positive in 94.3% of draws.
+  Model identity on (b) pooled: 0.651 (the bar any pooled value must clear before it says more than which model answered).

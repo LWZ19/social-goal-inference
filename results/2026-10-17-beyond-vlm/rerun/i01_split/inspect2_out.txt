@@ -1,0 +1,23 @@
+(5) wrong targets (score.target_correct False) by scene, of 3 trials x episodes; same for R, E, C
+  Qwen      total 12: plain_eval_09_waiting_line_6 1/6, plain_eval_12_conversation_group_4 2/6, real_eval_00_no_one_place 1/6, real_eval_12_conversation_group_4 4/6, staffed_eval_09_waiting_line_6 2/6, staffed_eval_12_conversation_group_4 2/6
+  GLM       total 33: plain_eval_01_no_one_place 1/6, plain_eval_03_no_one_deep_place 1/6, plain_eval_04_no_one_object 2/6, plain_eval_06_waiting_line_1 5/6, plain_eval_12_conversation_group_4 1/6, real_eval_04_no_one_object 3/6, real_eval_06_waiting_line_1 2/6, real_eval_07_waiting_line_2 1/6, real_eval_08_waiting_line_4 1/6, real_eval_09_waiting_line_6 1/6, real_eval_10_conversation_group_2 2/6, real_eval_12_conversation_group_4 1/6, real_eval_13_waiting_line_3 3/6, staffed_eval_04_no_one_object 3/6, staffed_eval_06_waiting_line_1 4/6, staffed_eval_09_waiting_line_6 1/6, staffed_eval_12_conversation_group_4 1/6
+  DeepSeek  total 24: plain_eval_04_no_one_object 3/6, plain_eval_07_waiting_line_2 1/6, plain_eval_09_waiting_line_6 1/6, plain_eval_12_conversation_group_4 2/6, real_eval_00_no_one_place 1/6, real_eval_04_no_one_object 2/6, real_eval_08_waiting_line_4 1/6, real_eval_11_conversation_group_3 1/6, real_eval_12_conversation_group_4 5/6, real_eval_13_waiting_line_3 1/6, staffed_eval_03_no_one_deep_place 1/6, staffed_eval_04_no_one_object 2/6, staffed_eval_07_waiting_line_2 1/6, staffed_eval_12_conversation_group_4 2/6
+  Haiku     total 1: staffed_eval_12_conversation_group_4 1/6
+  Sonnet    total 7: plain_eval_12_conversation_group_4 1/6, real_eval_12_conversation_group_4 3/6, staffed_eval_12_conversation_group_4 3/6
+  Gemini    total 34: plain_eval_06_waiting_line_1 2/6, plain_eval_08_waiting_line_4 3/6, plain_eval_09_waiting_line_6 3/6, plain_eval_13_waiting_line_3 1/6, real_eval_06_waiting_line_1 3/6, real_eval_08_waiting_line_4 3/6, real_eval_09_waiting_line_6 2/6, real_eval_13_waiting_line_3 3/6, staffed_eval_06_waiting_line_1 3/6, staffed_eval_07_waiting_line_2 3/6, staffed_eval_08_waiting_line_4 3/6, staffed_eval_09_waiting_line_6 2/6, staffed_eval_13_waiting_line_3 3/6
+
+(6) right target, in region, unreachable: min_body_gap_m (goal to nearest person, minus both radii)
+  Qwen      cot n=7 situations {'waiting_line': 4, 'conversation_group': 2, 'no_one': 1} gaps [-0.044, -0.029, -0.018, -0.016, -0.008, 0.002]
+  Qwen      fsc n=8 situations {'waiting_line': 5, 'conversation_group': 2, 'no_one': 1} gaps [-0.029, -0.018, -0.013, -0.01, -0.004, -0.004, 0.002]
+  Qwen      con n=1 situations {'no_one': 1} gaps []
+  GLM       cot n=3 situations {'conversation_group': 3} gaps [-0.027, -0.021, 0.005]
+  GLM       fsc n=5 situations {'conversation_group': 5} gaps [-0.044, -0.037, -0.016, -0.003, 0.019]
+  GLM       con n=1 situations {'waiting_line': 1} gaps [-0.03]
+  DeepSeek  cot n=1 situations {'waiting_line': 1} gaps [-0.013]
+  DeepSeek  fsc n=3 situations {'conversation_group': 2, 'waiting_line': 1} gaps [-0.047, -0.027, -0.024]
+  DeepSeek  con n=3 situations {'waiting_line': 3} gaps [-0.042, -0.028, -0.028]
+  Haiku     fsc n=2 situations {'conversation_group': 2} gaps [-0.017, -0.012]
+  Sonnet    cot n=1 situations {'conversation_group': 1} gaps [0.019]
+  Sonnet    fsc n=2 situations {'conversation_group': 2} gaps [0.0, 0.03]
+  Gemini    cot n=14 situations {'waiting_line': 11, 'conversation_group': 3} gaps [-0.049, -0.042, -0.031, -0.03, -0.03, -0.024, -0.022, -0.019, -0.018, -0.017, -0.012, -0.011, -0.009, 0.015]
+  Gemini    fsc n=10 situations {'waiting_line': 9, 'conversation_group': 1} gaps [-0.044, -0.039, -0.031, -0.019, -0.018, -0.017, -0.016, -0.009, -0.008, 0.002]

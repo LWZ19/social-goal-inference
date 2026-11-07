@@ -1,0 +1,6 @@
+== s23 glm53: records holding a phantom 27, failing 26; records listing a phantom under come_after 24; phantom is the listed detection farthest from target 23; place-to-phantom median 1.45 m
+   distinct phantoms (arm, scene, xy) 20; pixel to nearest true axis median 15.7 px; <=25 px 13; >50 px 5; <=25 px and a never-found member (first record) 13, (any record) 13
+   frame check: matched detections pixel-to-own-axis median 5.1 px (n 257)
+== s23 dsv41: records holding a phantom 6, failing 6; records listing a phantom under come_after 6; phantom is the listed detection farthest from target 6; place-to-phantom median 1.01 m
+   distinct phantoms (arm, scene, xy) 8; pixel to nearest true axis median 17.5 px; <=25 px 7; >50 px 1; <=25 px and a never-found member (first record) 7, (any record) 7
+   frame check: matched detections pixel-to-own-axis median 4.1 px (n 310)

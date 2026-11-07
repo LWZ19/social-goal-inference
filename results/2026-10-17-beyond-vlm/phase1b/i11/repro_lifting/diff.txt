@@ -1,0 +1,3 @@
+lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL
+frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL
+lifting_records.tsv: 130 lines original, 130 reproduced, IDENTICAL

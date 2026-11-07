@@ -1,0 +1,3 @@
+qwen38_low {(False, 'no normal (fit failed)'): 3, (True, 'frontal'): 5}
+glm53 {(True, 'frontal'): 1, (False, 'no normal (fit failed)'): 3, (False, 'normal found, no clear in-view step'): 1}
+dsv41 {(False, 'no normal (fit failed)'): 6, (True, 'frontal'): 8}

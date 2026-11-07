@@ -1,0 +1,26 @@
+unk_count: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --only: not a recorded t0 scene of real, staffed, plain: no_such_scene_xyz
+unk_live: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --only: not a recorded t0 scene of real, staffed, plain: no_such_scene_xyz
+unk_mock: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --only: not a recorded t0 scene of real, staffed, plain: no_such_scene_xyz
+unk_mixed: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --only: not a recorded t0 scene of real, staffed, plain: no_such_scene_xyz
+unk_otherarm: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --only: not a recorded t0 scene of staffed: real_eval_08_waiting_line_4
+unk_othermodel: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --only: not a recorded t0 scene of real, staffed, plain: no_such_scene_xyz
+bad_model: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: argument --model: invalid choice: 'qwen38' (choose from 'dsv41', 'glm53')
+bad_trial: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --trial: only 0 (FROZEN.md runs t0 only)
+bad_cap_total: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: the caps are at most 120 in total and 60 per model
+bad_cap_model: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: the caps are at most 120 in total and 60 per model
+bad_cap_zero: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: the caps are at most 120 in total and 60 per model
+bad_no_envfile: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: live mode needs --env-file, an absolute path; sgi.vlm.env reads it, this script never does
+bad_rel_envfile: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: live mode needs --env-file, an absolute path; sgi.vlm.env reads it, this script never does
+bad_count_envfile: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --env-file is for live mode only
+bad_count_mock: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: argument --mock: not allowed with argument --count-only
+bad_arms: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --arms: of real, staffed, plain
+bad_rel_cache: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --cache-dir: an absolute path to an existing folder is needed (not with --mock)
+bad_missing_cache: exit 2 (expect 2) OK; fake 0; out files: ; msg: driver.py: error: --cache-dir: an absolute path to an existing folder is needed (not with --mock)
+help: exit 0 (expect 0) OK; fake 0; out files: ; msg:   --prefix PREFIX
+bad_out after the bad-argument runs:  (lock or ledger here would be wrong)
+vlm_error: first exit 1 (expect 1), ledger sent 6, fake 6, ledger: line in log: 2; re-run exit 0 (expect 0), ledger sent now 7, fake on re-run 1; folders: 20261018-060437_s24_i09_real_glm53_con=true,vlm_errors=1 20261018-060449_s24_i09_real_glm53_con=false,vlm_errors=0 
+vlm_error twice: exits 1 then 1 (expect 1, 1); ledger sent 9; fake 6+3
+cap glm53 5/5: exit 3 (expect 3); ledger sent 5 refused 1; fake 5; check stopped_by: CapReached: call cap reached: 5 sent in total (cap 5), 5 for glm53 (cap 5); the next request was not sent; config: incomplete: true
+cap dsv41 total 5 on the same ledger: exit 3 (expect 3); ledger sent 5 refused 2; fake 0
+clean: exit 0 (expect 0); ledger sent 4; fake 4; check stopped_by: None
+done

@@ -1,0 +1,12 @@
+qwen38_low real C runs ['s19_real_qwen38_low_con'] E runs ['s16b_real_qwen38_low_fsc']
+qwen38_low staffed C runs ['s19_staffed_qwen38_low_con'] E runs ['s16b_staffed_qwen38_low_fsc']
+qwen38_low plain C runs ['s19_plain_qwen38_low_con'] E runs ['s16b_plain_qwen38_low_fsc']
+qwen38_low paired 252 same pixel 252 different 0 unpaired 0 | C wrong 7 E wrong 7 both 7 | C-wrong plan/locate calls cached {('plan', True): 7}
+glm53 real C runs ['s19_real_glm53_con'] E runs ['s16b_real_glm53_fsc']
+glm53 staffed C runs ['s19_staffed_glm53_con'] E runs ['s16b_staffed_glm53_fsc']
+glm53 plain C runs ['s19_plain_glm53_con'] E runs ['s16b_plain_glm53_fsc']
+glm53 paired 252 same pixel 252 different 0 unpaired 0 | C wrong 28 E wrong 28 both 28 | C-wrong plan/locate calls cached {('plan', True): 28}
+dsv41 real C runs ['s20_real_dsv41_con'] E runs ['s20_real_dsv41_fsc']
+dsv41 staffed C runs ['s20_staffed_dsv41_con'] E runs ['s20_staffed_dsv41_fsc']
+dsv41 plain C runs ['s20_plain_dsv41_con'] E runs ['s20_plain_dsv41_fsc']
+dsv41 paired 252 same pixel 252 different 0 unpaired 0 | C wrong 22 E wrong 22 both 22 | C-wrong plan/locate calls cached {('plan', True): 22}

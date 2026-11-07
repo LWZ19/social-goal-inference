@@ -1,0 +1,16 @@
+false drop: dsv41 sweet_spot_line2_bystanders s30 +group+photo: track 1 at 44.5 s (delivered 16.3); queue order then {1: 0}
+false drop: dsv41 sweet_spot_line2_bystanders s30 CT3-fix gated: track 1 at 44.5 s (delivered 16.3); queue order then {1: 0}
+false drop: dsv41 sweet_spot_line2_bystanders s30 CT3-fix gated: track 2 at 65.0 s (delivered 16.3); queue order then {2: 0}
+false drop: dsv41 sweet_spot_line2_bystanders s35 +group+photo: track 1 at 82.5 s (delivered 20.5); queue order then {1: 0, 2: 1}
+false drop: dsv41 sweet_spot_line2_bystanders s35 CT3-fix gated: track 1 at 82.5 s (delivered 20.5); queue order then {1: 0, 2: 1}
+false drop: sonnet55_low sweet_spot_line2_bystanders s15 CT3-fix gated: track 1 at 62.0 s (delivered 23.1); queue order then {1: 1, 2: 0}
+('dsv41', '+group+photo', 'cafe_line2_bystanders') 13.0 s
+('dsv41', '+group+photo', 'sweet_spot_line2_bystanders') 0.0 s
+('dsv41', 'CT3-fix gated', 'cafe_line2_bystanders') 13.5 s
+('dsv41', 'CT3-fix gated', 'sweet_spot_line2_bystanders') 25.0 s
+('sonnet55_low', '+group+photo', 'cafe_line2_bystanders') 1.5 s
+('sonnet55_low', '+group+photo', 'room_coffee_cart_bystanders') 73.0 s
+('sonnet55_low', '+group+photo', 'sweet_spot_line2_bystanders') 0.0 s
+('sonnet55_low', 'CT3-fix gated', 'cafe_line2_bystanders') 1.5 s
+('sonnet55_low', 'CT3-fix gated', 'room_coffee_cart_bystanders') 73.0 s
+('sonnet55_low', 'CT3-fix gated', 'sweet_spot_line2_bystanders') 0.0 s

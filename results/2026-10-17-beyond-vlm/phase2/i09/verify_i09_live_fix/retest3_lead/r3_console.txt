@@ -1,0 +1,287 @@
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 26: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3_run.sh: line 25: [: 0
+0: integer expression expected
+d5 moved at 06:13:58.047487893
+d2 removed at 06:14:02.356985043
+d1: exit 2; fake 3; ledger now: exists yes, sent 0
+0, lines 0; check file: check_glm53_live_20261018-061348.json; stopped_by: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3/cmd/d1_out/ledger.jsonl has 0 sent rows, fewer than the 3 seen before: it was edited, moved or deleted during the run; nothing more is sent | ledger_at_start {'total': 0, 'glm53': 0} | ledger_at_end {'total': 3, 'glm53': 3} | arms [('real', 2, True)]; config: incomplete: true / stopped_by: 'LedgerLost: .superpowe; stderr stopped line: stopped: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09
+d2: exit 2; fake 3; ledger now: exists yes, sent 0
+0, lines 0; check file: check_glm53_live_20261018-061348.json; stopped_by: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3/cmd/d2_out/ledger.jsonl has 0 sent rows, fewer than the 3 seen before: it was edited, moved or deleted during the run; nothing more is sent | ledger_at_start {'total': 0, 'glm53': 0} | ledger_at_end {'total': 3, 'glm53': 3} | arms [('real', 2, True)]; config: incomplete: true / stopped_by: 'LedgerLost: .superpowe; stderr stopped line: stopped: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09
+d3: exit 2; fake 4; ledger now: exists yes, sent 0
+0, lines 0; check file: check_glm53_live_20261018-061348.json; stopped_by: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3/cmd/d3_out/ledger.jsonl has 0 sent rows, fewer than the 4 seen before: it was edited, moved or deleted during the run; nothing more is sent | ledger_at_start {'total': 0, 'glm53': 0} | ledger_at_end {'total': 4, 'glm53': 4} | arms [('real', 3, True)]; config: incomplete: true / stopped_by: 'LedgerLost: .superpowe; stderr stopped line: stopped: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09
+d4: exit 2; fake 4; ledger now: exists yes, sent 3, lines 6; check file: check_glm53_live_20261018-061348.json; stopped_by: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3/cmd/d4_out/ledger.jsonl has 3 sent rows, fewer than the 4 seen before: it was edited, moved or deleted during the run; nothing more is sent | ledger_at_start {'total': 0, 'glm53': 0} | ledger_at_end {'total': 4, 'glm53': 4} | arms [('real', 3, True)]; config: incomplete: true / stopped_by: 'LedgerLost: .superpowe; stderr stopped line: stopped: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09
+d5: exit 2; fake 3; ledger now: exists yes, sent 0
+0, lines 0; check file: check_glm53_live_20261018-061348.json; stopped_by: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09/verify_i09_live_fix/retest3_lead/r3/cmd/d5_out/ledger.jsonl has 0 sent rows, fewer than the 3 seen before: it was edited, moved or deleted during the run; nothing more is sent | ledger_at_start {'total': 0, 'glm53': 0} | ledger_at_end {'total': 3, 'glm53': 3} | arms [('real', 2, True)]; config: incomplete: true / stopped_by: 'LedgerLost: .superpowe; stderr stopped line: stopped: LedgerLost: results/2026-10-17-beyond-vlm/phase2/i09
+d2_next: exit 2; its start line: ; fake 0
+done

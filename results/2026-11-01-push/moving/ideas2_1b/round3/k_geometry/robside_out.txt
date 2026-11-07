@@ -1,0 +1,4 @@
+CT3F: robot on axis n 836 goal ok 0.73 (goal side med 0.07); robot off axis n 216 goal ok 0.28 (goal side med 0.65); side fails by layout [('cafe_1008', 51), ('cafe_1081', 29), ('sweet_1003', 24), ('cafe_1001', 20), ('sweet_1092', 18)]
+CT4: robot on axis n 339 goal ok 0.65 (goal side med 0.36); robot off axis n 445 goal ok 0.22 (goal side med 0.88); side fails by layout [('cafe_1001', 61), ('sweet_1112', 45), ('cafe_1081', 43), ('cafe_1146', 35), ('sweet_1092', 29)]
+W0: robot on axis n 269 goal ok 0.76 (goal side med 0.38); robot off axis n 385 goal ok 0.19 (goal side med 0.88); side fails by layout [('cafe_1001', 45), ('sweet_1112', 44), ('cafe_1160', 28), ('cafe_1008', 26), ('cafe_1146', 23)]
+CT5: robot on axis n 125 goal ok 0.64 (goal side med 0.32); robot off axis n 382 goal ok 0.10 (goal side med 1.17); side fails by layout [('cafe_1146', 56), ('cafe_1001', 50), ('sweet_1112', 37), ('sweet_1028', 30), ('sweet_1130', 23)]

@@ -1,0 +1,1 @@
+pooled H2, left-out units at worst case for D: net +30, layout sign-flip p 0.0163 over 27 layouts

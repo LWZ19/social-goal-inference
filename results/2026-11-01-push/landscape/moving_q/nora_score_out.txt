@@ -1,0 +1,14 @@
+
+## Sonnet: CT2-nora present in 49/49 cells
+  readmit    cells 25: ran out CT 385 / CT2 217 / CT2-nora 184; share nora-CT2 mean +0.024 mean|d| 0.053 W/L/T 11/9/5; nora-CT mean +0.108
+    P1 ran out >= 301 (halfway; frozen on the full set): 184 -> FAIL
+    P3 |mean drop| < 0.07: 0.024 -> PASS
+  no readmit cells 24: ran out CT 321 / CT2 274 / CT2-nora 236; share nora-CT2 mean -0.016 mean|d| 0.023 W/L/T 5/7/12; nora-CT mean +0.069
+    P4 mean within +-0.04 and mean|d| <= 0.10: -0.016, 0.023 -> PASS
+
+## DeepSeek: CT2-nora present in 25/25 cells
+  readmit    cells 15: ran out CT 220 / CT2 89 / CT2-nora 137; share nora-CT2 mean -0.028 mean|d| 0.070 W/L/T 7/7/1; nora-CT mean +0.127
+    P1 ran out >= 154 (halfway; frozen on the full set): 137 -> FAIL
+    P2 share drop >= 0.07 and losses > wins: mean -0.028, 7 losses / 7 wins -> FAIL
+  no readmit cells 10: ran out CT 162 / CT2 120 / CT2-nora 123; share nora-CT2 mean -0.002 mean|d| 0.004 W/L/T 1/2/7; nora-CT mean -0.040
+    P4 mean within +-0.04 and mean|d| <= 0.10: -0.002, 0.004 -> PASS

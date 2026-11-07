@@ -1,0 +1,3 @@
+s19 glm53: distinct far detections at line goal steps 20; pixel to nearest true person axis: median 15.8 px, <=10 px 0, <=25 px 13, >50 px 5; within 25 px of a line member 13, of a member never found in that record 13
+s23 glm53: distinct far detections at line goal steps 20; pixel to nearest true person axis: median 15.8 px, <=10 px 0, <=25 px 13, >50 px 5; within 25 px of a line member 13, of a member never found in that record 13
+s20 dsv41: distinct far detections at line goal steps 8; pixel to nearest true person axis: median 17.6 px, <=10 px 0, <=25 px 7, >50 px 1; within 25 px of a line member 7, of a member never found in that record 7

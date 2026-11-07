@@ -1,0 +1,83 @@
+# Ideas round 2 candidate layout cafe_443 (make_sweep.py, zero calls): 2 in line; a non-member 0.003 m off the axis, 2.077 m past the last member, facing away; a talking pair; service every 12-20 s.
+# `bystander: true` is read only by the research scripts.
+stage: data/habitat/stages/cafe.glb
+wander_area:
+- 0.5
+- 4.0
+- -7.5
+- -1.5
+robot:
+  x: 8.0
+  y: -2.6
+  face:
+  - 5.0
+  - -2.95
+requests:
+- Get me a coffee
+- Take me to the counter
+queues:
+  counter_line:
+    service_s:
+    - 12.0
+    - 20.0
+    slots:
+    - x: 5.0
+      y: -1.45
+      face:
+      - 5.0
+      - -0.5
+    - x: 5.0
+      y: -2.15
+    - x: 5.0
+      y: -2.85
+    - x: 5.9
+      y: -3.55
+    - x: 5.9
+      y: -4.25
+    - x: 5.9
+      y: -4.95
+    - x: 5.9
+      y: -5.65
+humans:
+- avatar: male_3
+  queue: counter_line
+- avatar: female_2
+  queue: counter_line
+- avatar: female_3
+  start:
+  - 2.0
+  - -6.0
+- avatar: female_0
+  start:
+  - 1.5
+  - -3.0
+- avatar: female_1
+  bystander: true
+  stand:
+  - 4.997
+  - -4.227
+  face:
+  - 4.997
+  - -5.227
+  fidget: &id001
+  - 5.0
+  - 10.0
+  - 0.35
+- avatar: male_0
+  bystander: true
+  stand:
+  - 3.455
+  - -2.531
+  face:
+  - 4.147
+  - -2.821
+  fidget: *id001
+- avatar: male_1
+  bystander: true
+  stand:
+  - 4.147
+  - -2.821
+  face:
+  - 3.455
+  - -2.531
+  fidget: *id001

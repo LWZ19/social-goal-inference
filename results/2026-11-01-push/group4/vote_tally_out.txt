@@ -1,0 +1,6 @@
+qwen38_low    single draws 10/18 = 0.56; majority of 3: 4/6; median click of 3: 2/6
+glm53         single draws 15/18 = 0.83; majority of 3: 6/6; median click of 3: 6/6
+dsv41         single draws 9/18 = 0.50; majority of 3: 4/6; median click of 3: 3/6
+sonnet55_low  single draws 11/18 = 0.61; majority of 3: 4/6; median click of 3: 2/6
+haiku55       single draws 17/18 = 0.94; majority of 3: 6/6; median click of 3: 6/6
+gemini38_low  single draws 18/18 = 1.00; majority of 3: 6/6; median click of 3: 6/6

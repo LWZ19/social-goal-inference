@@ -1,0 +1,27 @@
+# Sonnet bystanders: 30 cells (planned 30: room 10, cafe 10, sweet_spot 10)
+CT2 first-answer sources: {('cafe_line2_bystanders', 'constraints'): 10, ('room_coffee_cart_bystanders', 'constraints'): 10, ('sweet_spot_line2_bystanders', 'constraints'): 9, ('sweet_spot_line2_bystanders', 'standard'): 1}
+
+## Room (BYSTANDERS_FROZEN.md optional arm)
+- C2 room: CT3 130.7 s vs CT2 345.3 s (bar <= 1/3); CT3 captured in 5, CT2 in 5, of 10 cells (bar CT3 <= 20%): FAIL
+
+## Addendum: cafe + sweet_spot
+- C2 cafe+sweet: CT3 191.5 s vs CT2 593.1 s (bar <= 1/3); CT3 captured in 8, CT2 in 15, of 20 cells (bar CT3 <= 20%): FAIL
+- S2 roster (all 30 cells): bystanders named in 13 answers (bar <= 6 of 30): FAIL
+- SR roles (constraint-answer cells, 29 of all 30): Gl capture > CT3 in 27 of 28 (bar >= 80%); CT3 vs Gl strict share 17/1/11, mean +0.115, sign p 0.000 (bar <= 0.05): PASS
+
+## Reported only (no claim unless a sign p <= 0.05 is stated as such)
+  room: CT3 vs CT2: 4/3/3, mean +0.098, sign p 1.000
+  room: CT2 vs Gl: 3/0/7, mean +0.133, sign p 0.250
+  cafe+sweet: CT3 vs CT2: 7/2/11, mean +0.032, sign p 0.180
+  cafe+sweet: CT2 vs R1: 4/3/13, mean -0.002, sign p 1.000
+  cafe+sweet: CT3 vs R1: 9/3/8, mean +0.030, sign p 0.146
+  cafe+sweet: CT2 vs Gl: 6/1/13, mean +0.019, sign p 0.125
+  all: CT3 vs CT2: 11/5/14, mean +0.054, sign p 0.210
+  all: CT2 vs R1: 4/3/13, mean -0.002, sign p 1.000
+  all: CT3 vs R1: 9/3/8, mean +0.030, sign p 0.146
+  all: CT2 vs Gl: 9/1/20, mean +0.057, sign p 0.021
+  strict share R1: 0.024 over 20 cells; cut-in samples 176
+  strict share CT2: 0.059 over 30 cells; cut-in samples 89
+  strict share CT3: 0.113 over 30 cells; cut-in samples 138
+  strict share Gl: 0.002 over 30 cells; cut-in samples 27
+  cells with a CT3 false drop: 0

@@ -1,0 +1,9 @@
+====================================================================================================
+M1 check: recorded success vs the package scoring the recorded pose now (H.score_poses), C realistic; and the 25/14 reading: flag firings (each set flag of SIX counted once per record) over all seven s20 dsv41 con runs
+  ds: records with a pose 252, success differs now 0
+  glm: records with a pose 248, success differs now 0
+  qwen: records with a pose 252, success differs now 0
+  ds realistic : succ 182 fail 70 | records flagged succ 19 / fail 10 | flag firings succ 19 / fail 11
+  ds ph        : succ 58 fail 26 | records flagged succ 3 / fail 3 | flag firings succ 3 / fail 3
+  ds dev seeds : succ 58 fail 14 | records flagged succ 3 / fail 0 | flag firings succ 3 / fail 0
+  ds all seven : succ 298 fail 110 | records flagged succ 25 / fail 13 | flag firings succ 25 / fail 14

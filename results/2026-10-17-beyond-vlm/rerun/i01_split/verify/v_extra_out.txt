@@ -1,0 +1,25 @@
+qwen38_low: no_one sources {('R', 'standard'): 108, ('E', 'standard'): 108, ('C', 'standard'): 108}; R/E/C pose identical 108/108; success identical 108/108
+   R in-region unreachable gaps: [-0.044, -0.029, -0.018, -0.016, -0.008, 0.002]  strip(-0.05..0]=5
+   E in-region unreachable gaps: [-0.029, -0.018, -0.013, -0.01, -0.004, -0.004, 0.002]  strip(-0.05..0]=6
+   C in-region unreachable gaps: []  strip(-0.05..0]=0
+glm53: no_one sources {('R', 'standard'): 108, ('E', 'standard'): 108, ('C', 'standard'): 108}; R/E/C pose identical 108/108; success identical 108/108
+   R in-region unreachable gaps: [-0.027, -0.021, 0.005]  strip(-0.05..0]=2
+   E in-region unreachable gaps: [-0.044, -0.037, -0.016, -0.003, 0.019]  strip(-0.05..0]=4
+   C in-region unreachable gaps: [-0.03]  strip(-0.05..0]=1
+dsv41: no_one sources {('R', 'standard'): 101, ('R', 'direct_marking'): 7, ('E', 'standard'): 101, ('E', 'direct_marking'): 7, ('C', 'standard'): 101, ('C', 'constraints'): 7}; R/E/C pose identical 101/108; success identical 104/108
+   R in-region unreachable gaps: [-0.013]  strip(-0.05..0]=1
+   E in-region unreachable gaps: [-0.047, -0.027, -0.024]  strip(-0.05..0]=3
+   C in-region unreachable gaps: [-0.042, -0.028, -0.028]  strip(-0.05..0]=3
+haiku55: no_one sources {('R', 'standard'): 106, ('R', 'direct_marking'): 2, ('E', 'standard'): 106, ('E', 'direct_marking'): 2, ('C', 'standard'): 106, ('C', 'constraints'): 2}; R/E/C pose identical 106/108; success identical 106/108
+   R in-region unreachable gaps: []  strip(-0.05..0]=0
+   E in-region unreachable gaps: [-0.017, -0.012]  strip(-0.05..0]=2
+   C in-region unreachable gaps: []  strip(-0.05..0]=0
+sonnet55_low: no_one sources {('R', 'standard'): 108, ('E', 'standard'): 108, ('C', 'standard'): 108}; R/E/C pose identical 108/108; success identical 108/108
+   R in-region unreachable gaps: [0.019]  strip(-0.05..0]=0
+   E in-region unreachable gaps: [0.0, 0.03]  strip(-0.05..0]=1
+   C in-region unreachable gaps: []  strip(-0.05..0]=0
+gemini38_low: no_one sources {('R', 'standard'): 108, ('E', 'standard'): 108, ('C', 'standard'): 108}; R/E/C pose identical 108/108; success identical 108/108
+   R in-region unreachable gaps: [-0.049, -0.042, -0.031, -0.03, -0.03, -0.024, -0.022, -0.019, -0.018, -0.017, -0.012, -0.011, -0.009, 0.015]  strip(-0.05..0]=13
+   E in-region unreachable gaps: [-0.044, -0.039, -0.031, -0.019, -0.018, -0.017, -0.016, -0.009, -0.008, 0.002]  strip(-0.05..0]=9
+   C in-region unreachable gaps: []  strip(-0.05..0]=0
+   gemini wrong by arm,scene [(('plain', 'eval_06_waiting_line_1'), 2), (('plain', 'eval_08_waiting_line_4'), 3), (('plain', 'eval_09_waiting_line_6'), 3), (('plain', 'eval_13_waiting_line_3'), 1), (('real', 'eval_06_waiting_line_1'), 3), (('real', 'eval_08_waiting_line_4'), 3), (('real', 'eval_09_waiting_line_6'), 2), (('real', 'eval_13_waiting_line_3'), 3), (('staffed', 'eval_06_waiting_line_1'), 3), (('staffed', 'eval_07_waiting_line_2'), 3), (('staffed', 'eval_08_waiting_line_4'), 3), (('staffed', 'eval_09_waiting_line_6'), 2), (('staffed', 'eval_13_waiting_line_3'), 3)]

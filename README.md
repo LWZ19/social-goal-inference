@@ -8,6 +8,10 @@ Comments in the code that cite a "spec" or "the design" by section refer to the 
 
 Numbers measured on placeholder scenes are not research results. They only show the pipeline works.
 
+## Results
+
+The experiments, their results and the run logs are in [`results/`](results/README.md). Start with `results/README.md`.
+
 ## Setup
 
 Python 3.12 is needed. From the repository root:
@@ -190,10 +194,10 @@ Two commands list what there is to choose from.
 
 | Provider | `provider` | Entries | Key in `.env` | State |
 |---|---|---|---|---|
-| Gemini | `gemini` | `gemini_fast`, `gemini_strong`, `gemini_pointing` | `GEMINI_API_KEY` | Confirmed by a few live calls, on the flash model (`gemini_fast`) only. The key is paid. |
-| SoCLaaS | `openai_compatible` | the fifteen `soclaas_*` entries | `SOCLAAS_API_KEY` | The school's service for open-weight models, internal to the school. Confirmed by full runs on 2026-10-08. A key is allowed 90 requests a minute and has a daily and a monthly allowance. The prices are in the model table. |
+| Gemini | `gemini` | `gemini_fast`, `gemini_strong`, `gemini_pointing`; older models for comparison: `gemini3_flash`, `gemini31_flash_lite`, `gemini35_flash_lite`, `gemini36_flash` | `GEMINI_API_KEY` | Confirmed by a few live calls, on the flash model (`gemini_fast`) only. The key is paid. |
+| SoCLaaS | `openai_compatible` | the seventeen `soclaas_*` entries | `SOCLAAS_API_KEY` | The school's service for open-weight models, internal to the school. Confirmed by full runs on 2026-10-08. A key is allowed 90 requests a minute and has no spending cap. The prices are in the model table. |
 | OpenAI | `openai` | `openai_fast`, `openai_strong` | `OPENAI_API_KEY` | Built and tested offline, never called: there is no key. |
-| Claude | `anthropic` | `claude_opus55`, `claude_opus55_low`, `claude_sonnet55`, `claude_sonnet55_low`, `claude_haiku55`, `claude_haiku55_low` | `ANTHROPIC_API_KEY` | Anthropic's own API. Built and tested offline, never called: there is no key. No request has confirmed a model ID, a level or the shape of an answer. The prices are in the model table. |
+| Claude | `anthropic` | `claude_opus55`, `claude_opus55_low`, `claude_sonnet55`, `claude_sonnet55_low`, `claude_haiku55`, `claude_haiku55_low`; older models for comparison: `claude_haiku45`, `claude_sonnet46_low`, `claude_sonnet5_low` | `ANTHROPIC_API_KEY` | Anthropic's own API, used for live runs. The key is paid. The three older models are paced at 25 requests a minute. The prices are in the model table. |
 | Mock | `mock` | `mock` | none | Answers the image centre. For plumbing runs and tests. |
 
 An `openai_compatible` entry is for any service that speaks the OpenAI chat-completions format. Besides the fields every entry has, it gives the service's address as `base_url` and, as `api_key_env`, the name of the variable in `.env` that holds its key; no entry of another provider may set either. `structured_output` says how the answer's shape is asked for: `json_schema` (the default: the schema is sent, strict), `json_object`, or `none`. The answer is validated in every case.

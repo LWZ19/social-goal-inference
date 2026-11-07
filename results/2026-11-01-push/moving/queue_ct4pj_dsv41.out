@@ -1,0 +1,42 @@
+08:03:37 model soclaas_dsv41: 24 groups x 1 arms, 4 workers
+08:03:37 w0 serve C pid 780326 port 8960
+08:03:37 w0 serve R pid 780329 port 8961
+08:03:37 w1 serve C pid 780330 port 8962
+08:03:37 w2 serve C pid 780332 port 8964
+08:03:37 w3 serve C pid 780331 port 8966
+08:03:37 w1 serve R pid 780333 port 8963
+08:03:37 w2 serve R pid 780334 port 8965
+08:03:37 w3 serve R pid 780335 port 8967
+08:05:21 w2 pilot3/cafe_1081 seed17477 CT4PJ: exit 0 in 100 s | [exp] cafe_1081 CT4PJ seed 17477: in line at end True, share 0.29, first 21.97, cut-in samples 2, calls 4, resolves 150
+08:05:21 w3 pilot3/cafe_1146 seed95995 CT4PJ: exit 0 in 101 s | [exp] cafe_1146 CT4PJ seed 95995: in line at end False, share 0.10, first 49.97, cut-in samples 0, calls 4, resolves 147
+08:05:21 w0 pilot3/cafe_1090 seed28277 CT4PJ: exit 0 in 101 s | [exp] cafe_1090 CT4PJ seed 28277: in line at end False, share 0.00, first None, cut-in samples 11, calls 4, resolves 152
+08:05:21 w1 pilot3/cafe_1038 seed96447 CT4PJ: exit 0 in 101 s | [exp] cafe_1038 CT4PJ seed 96447: in line at end True, share 0.29, first 58.97, cut-in samples 0, calls 4, resolves 152
+08:06:59 w2 pilot3/cafe_1008 seed85483 CT4PJ: exit 0 in 98 s | [exp] cafe_1008 CT4PJ seed 85483: in line at end False, share 0.12, first 71.97, cut-in samples 0, calls 4, resolves 148
+08:06:59 w1 pilot3/cafe_1183 seed56636 CT4PJ: exit 0 in 98 s | [exp] cafe_1183 CT4PJ seed 56636: in line at end False, share 0.00, first None, cut-in samples 56, calls 4, resolves 145
+08:07:00 w3 pilot3/cafe_1031 seed80271 CT4PJ: exit 0 in 99 s | [exp] cafe_1031 CT4PJ seed 80271: in line at end False, share 0.05, first 41.97, cut-in samples 2, calls 4, resolves 149
+08:07:00 w0 pilot3/cafe_1160 seed503 CT4PJ: exit 0 in 99 s | [exp] cafe_1160 CT4PJ seed 503: in line at end True, share 0.32, first 44.97, cut-in samples 16, calls 4, resolves 144
+08:08:48 w0 pilot3/sweet_1101 seed93636 CT4PJ: exit 0 in 108 s | [exp] sweet_1101 CT4PJ seed 93636: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 142
+08:08:50 w1 pilot3/sweet_1092 seed4704 CT4PJ: exit 0 in 110 s | [exp] sweet_1092 CT4PJ seed 4704: in line at end False, share 0.00, first None, cut-in samples 11, calls 4, resolves 144
+08:08:50 w2 pilot3/sweet_1028 seed92358 CT4PJ: exit 0 in 111 s | [exp] sweet_1028 CT4PJ seed 92358: in line at end False, share 0.53, first 23.97, cut-in samples 0, calls 4, resolves 148
+08:08:51 w3 pilot3/sweet_1129 seed5268 CT4PJ: exit 0 in 111 s | [exp] sweet_1129 CT4PJ seed 5268: in line at end False, share 0.03, first 17.97, cut-in samples 66, calls 4, resolves 144
+08:10:37 w0 pilot3/sweet_1042 seed26914 CT4PJ: exit 0 in 109 s | [exp] sweet_1042 CT4PJ seed 26914: in line at end True, share 0.52, first 21.97, cut-in samples 3, calls 5, resolves 142
+08:10:38 w1 pilot3/sweet_1011 seed19413 CT4PJ: exit 0 in 109 s | [exp] sweet_1011 CT4PJ seed 19413: in line at end False, share 0.22, first 32.97, cut-in samples 7, calls 4, resolves 145
+08:10:38 w2 pilot3/sweet_1130 seed27670 CT4PJ: exit 0 in 108 s | [exp] sweet_1130 CT4PJ seed 27670: in line at end True, share 0.22, first 66.97, cut-in samples 0, calls 4, resolves 146
+08:10:39 w3 pilot3/sweet_1112 seed65151 CT4PJ: exit 0 in 109 s | [exp] sweet_1112 CT4PJ seed 65151: in line at end False, share 0.07, first 16.97, cut-in samples 0, calls 4, resolves 145
+08:12:16 w0 pilot3/cafe_1002 seed83427 CT4PJ: exit 0 in 98 s | [exp] cafe_1002 CT4PJ seed 83427: in line at end False, share 0.01, first 31.97, cut-in samples 0, calls 4, resolves 151
+08:12:17 w1 pilot3/cafe_1001 seed19319 CT4PJ: exit 0 in 99 s | [exp] cafe_1001 CT4PJ seed 19319: in line at end False, share 0.03, first 76.97, cut-in samples 20, calls 4, resolves 148
+08:12:26 w2 pilot3/sweet_1000 seed71336 CT4PJ: exit 0 in 108 s | [exp] sweet_1000 CT4PJ seed 71336: in line at end False, share 0.00, first None, cut-in samples 10, calls 4, resolves 147
+08:12:27 w3 pilot3/sweet_1026 seed94911 CT4PJ: exit 0 in 108 s | [exp] sweet_1026 CT4PJ seed 94911: in line at end False, share 0.22, first 26.97, cut-in samples 0, calls 4, resolves 151
+08:13:54 w0 pilot3/cafe_1000 seed3210 CT4PJ: exit 0 in 98 s | [exp] cafe_1000 CT4PJ seed 3210: in line at end True, share 0.45, first 38.97, cut-in samples 0, calls 4, resolves 149
+08:13:54 w0 serve C pid 780326 stopped
+08:13:54 w0 serve R pid 780329 stopped
+08:14:04 w1 pilot3/sweet_1001 seed6492 CT4PJ: exit 0 in 107 s | [exp] sweet_1001 CT4PJ seed 6492: in line at end False, share 0.34, first 15.97, cut-in samples 0, calls 4, resolves 150
+08:14:04 w1 serve C pid 780330 stopped
+08:14:04 w1 serve R pid 780333 stopped
+08:14:04 w2 pilot3/cafe_1007 seed74419 CT4PJ: exit 0 in 98 s | [exp] cafe_1007 CT4PJ seed 74419: in line at end True, share 0.56, first 24.97, cut-in samples 3, calls 4, resolves 152
+08:14:04 w2 serve C pid 780332 stopped
+08:14:04 w2 serve R pid 780334 stopped
+08:14:13 w3 pilot3/sweet_1003 seed65049 CT4PJ: exit 0 in 106 s | [exp] sweet_1003 CT4PJ seed 65049: in line at end True, share 0.04, first 22.97, cut-in samples 6, calls 4, resolves 143
+08:14:13 w3 serve C pid 780331 stopped
+08:14:13 w3 serve R pid 780335 stopped
+08:14:13 done

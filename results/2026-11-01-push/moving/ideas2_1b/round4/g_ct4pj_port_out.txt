@@ -1,0 +1,5 @@
+# CT4PJ port check
+
+{'joined': 1577, 'behind same': 1570, 'behind differs': 7, 'differs by one person': 7}
+
+J1 violations by layout and the arm's own joined flag: {('cafe_1081', True): 6, ('cafe_1031', False): 50}

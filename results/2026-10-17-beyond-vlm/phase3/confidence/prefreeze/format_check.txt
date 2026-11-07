@@ -1,0 +1,100 @@
+    0.6 s old_qwen         20261011-160334_s19_real_qwen38_low_con: allowed 84, goal steps so far 48
+    0.6 s old_qwen         20261011-160344_s19_staffed_qwen38_low_con: allowed 84, goal steps so far 95
+    0.6 s old_qwen         20261011-160527_s19_plain_qwen38_low_con: allowed 84, goal steps so far 143
+    0.6 s old_glm          20261011-160500_s19_real_glm53_con: allowed 84, goal steps so far 50
+    0.7 s old_glm          20261011-160352_s19_staffed_glm53_con: allowed 84, goal steps so far 96
+    0.7 s old_glm          20261011-160452_s19_plain_glm53_con: allowed 84, goal steps so far 141
+    0.7 s old_deepseek     20261013-191337_s20_real_dsv41_con: allowed 84, goal steps so far 53
+    0.7 s old_deepseek     20261013-191345_s20_staffed_dsv41_con: allowed 84, goal steps so far 109
+    0.7 s old_deepseek     20261013-191402_s20_plain_dsv41_con: allowed 84, goal steps so far 157
+    0.7 s watch_qwen       20261011-160326_s19_dev_seed0_qwen38_low_con: allowed 24, goal steps so far 12
+    0.8 s watch_qwen       20261011-160315_s19_dev_seed1_qwen38_low_con: allowed 24, goal steps so far 24
+    0.8 s watch_qwen       20261011-160306_s19_dev_seed2_qwen38_low_con: allowed 24, goal steps so far 36
+    0.8 s watch_glm        20261011-160611_s19_dev_seed0_glm53_con: allowed 24, goal steps so far 12
+    0.8 s watch_glm        20261011-160558_s19_dev_seed1_glm53_con: allowed 24, goal steps so far 24
+    0.8 s watch_glm        20261011-160545_s19_dev_seed2_glm53_con: allowed 24, goal steps so far 36
+    0.8 s watch_deepseek   20261013-190610_s20_dev_seed0_dsv41_con: allowed 24, goal steps so far 12
+    0.8 s watch_deepseek   20261013-190617_s20_dev_seed1_dsv41_con: allowed 24, goal steps so far 24
+    0.8 s watch_deepseek   20261013-191026_s20_dev_seed2_dsv41_con: allowed 24, goal steps so far 36
+    0.9 s new_glm          20261017-125813_s23_real_glm53_con: allowed 84, goal steps so far 47
+    0.9 s new_glm          20261017-125552_s23_staffed_glm53_con: allowed 84, goal steps so far 94
+    0.9 s new_glm          20261017-125556_s23_plain_glm53_con: allowed 84, goal steps so far 141
+    0.9 s new_deepseek     20261017-124936_s23_real_dsv41_con: allowed 84, goal steps so far 51
+    0.9 s new_deepseek     20261017-124931_s23_staffed_dsv41_con: allowed 84, goal steps so far 103
+    1.0 s new_deepseek     20261017-124904_s23_plain_dsv41_con: allowed 84, goal steps so far 151
+    1.0 s new_haiku        20261017-130036_s23_real_haiku55_con: allowed 84, goal steps so far 49
+    1.0 s new_haiku        20261017-130055_s23_staffed_haiku55_con: allowed 84, goal steps so far 98
+    1.0 s new_haiku        20261017-130031_s23_plain_haiku55_con: allowed 84, goal steps so far 146
+    1.0 s new_sonnet       20261017-130300_s23_real_sonnet55_low_con: allowed 84, goal steps so far 48
+    1.1 s new_sonnet       20261017-132708_s23_staffed_sonnet55_low_con: allowed 84, goal steps so far 96
+    1.1 s new_sonnet       20261017-132708_s23_plain_sonnet55_low_con: allowed 84, goal steps so far 143
+    1.1 s new_gemini       20261017-125226_s23_real_gemini38_low_con: allowed 84, goal steps so far 45
+    1.1 s new_gemini       20261017-125459_s23_staffed_gemini38_low_con: allowed 84, goal steps so far 89
+    1.1 s new_gemini       20261017-125351_s23_plain_gemini38_low_con: allowed 84, goal steps so far 135
+
+== goal-step records per cell ==
+  old_qwen         143
+  old_glm          141
+  old_deepseek     157
+  watch_qwen       36
+  watch_glm        36
+  watch_deepseek   36
+  new_glm          141
+  new_deepseek     151
+  new_haiku        146
+  new_sonnet       143
+  new_gemini       135
+  total 1265
+  key set equals I14 rows (s21 excluded): True; here 1265, I14 1265
+
+== layouts (from I04 rows) per cell ==
+  old_qwen         8: ['eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  old_glm          11: ['eval_01', 'eval_02', 'eval_05', 'eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  old_deepseek     12: ['eval_00', 'eval_01', 'eval_02', 'eval_03', 'eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  watch_qwen       6: ['dev_seed0/eval_14_audience_3', 'dev_seed0/eval_15_audience_5', 'dev_seed1/eval_14_audience_3', 'dev_seed1/eval_15_audience_5', 'dev_seed2/eval_14_audience_3', 'dev_seed2/eval_15_audience_5']
+  watch_glm        6: ['dev_seed0/eval_14_audience_3', 'dev_seed0/eval_15_audience_5', 'dev_seed1/eval_14_audience_3', 'dev_seed1/eval_15_audience_5', 'dev_seed2/eval_14_audience_3', 'dev_seed2/eval_15_audience_5']
+  watch_deepseek   6: ['dev_seed0/eval_14_audience_3', 'dev_seed0/eval_15_audience_5', 'dev_seed1/eval_14_audience_3', 'dev_seed1/eval_15_audience_5', 'dev_seed2/eval_14_audience_3', 'dev_seed2/eval_15_audience_5']
+  new_glm          8: ['eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  new_deepseek     11: ['eval_00', 'eval_01', 'eval_03', 'eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  new_haiku        9: ['eval_03', 'eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  new_sonnet       8: ['eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+  new_gemini       8: ['eval_06', 'eval_07', 'eval_08', 'eval_09', 'eval_10', 'eval_11', 'eval_12', 'eval_13']
+
+== field and join counts (over goal-step records) ==
+  A2 join (solver step with D row, D place and both target numbers present): 1157
+  detector mapping present: 1265
+  flag field present constraint_unusable: 1265
+  flag field present exclusion_broken: 1265
+  flag field present far_from_target: 1265
+  i04 cell name equal: 1265
+  i04 flags equal recorded flags: 1265
+  i04 join: 1265
+  i04 layout equals eval index of scene id: 1157
+  named numbers (total distinct per record): 4205
+  named numbers absent from the list (total): 29
+  people list empty: 12
+  people numbers unique: 1265
+  records naming >=1 person: 1257
+  records naming a number absent from the list: 10
+  target world present: 1265
+  trial values 0: 424
+  trial values 1: 422
+  trial values 2: 419
+
+== thresholds (person_radius_m, match_tolerance_m) seen: [(0.25, 0.3)]
+
+== trial groups (run, scene, episode) holding >= 1 goal-step record ==
+  goal-step trials 1 of 3: 16
+  goal-step trials 2 of 3: 17
+  goal-step trials 3 of 3: 405
+  n trials 3 [0, 1, 2]: 438
+  non-goal-step trial: source None status no_target pose False: 4
+  non-goal-step trial: source standard status ok pose True: 45
+  trials with pose 2 of 3: 4
+  trials with pose 3 of 3: 434
+  trials with pose but no target world: 0: 438
+  trials with target world 2 of 3: 4
+  trials with target world 3 of 3: 434
+  trials with target world but no pose: 0: 438
+
+one H.resolve: 0.25 s; total 1.1 s

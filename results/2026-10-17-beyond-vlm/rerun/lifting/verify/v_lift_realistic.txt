@@ -1,0 +1,100 @@
+realistic wrong-target C records with a point: 53
+max recorded-lift reproduction error (m): 0.0
+
+== W1: recoverable (mask pixel within 15 px AND oracle snap+mask-median lift matches) ==
+body {'object': '6/15', 'person': '15/15', 'place': '5/23'} pipeline-lift-at-snap {'object': 6, 'person': 15, 'place': 5} median15 {'object': 6, 'person': 15, 'place': 5}
+floor {'object': '0/15', 'person': '0/15', 'place': '0/23'} pipeline-lift-at-snap {'object': 0, 'person': 0, 'place': 0} median15 {'object': 0, 'person': 0, 'place': 0}
+match {'object': '6/15', 'person': '15/15', 'place': '6/23'} pipeline-lift-at-snap {'object': 6, 'person': 15, 'place': 6} median15 {'object': 6, 'person': 15, 'place': 6}
+by model (body): {('object', 'qwen38_low'): '0/0', ('object', 'glm53'): '1/8', ('object', 'dsv41'): '5/7', ('person', 'qwen38_low'): '5/5', ('person', 'glm53'): '2/2', ('person', 'dsv41'): '8/8', ('place', 'qwen38_low'): '1/2', ('place', 'glm53'): '3/14', ('place', 'dsv41'): '1/7'}
+radius sweep (body mask within r px, any lift):
+ r 3 {'object': 0, 'person': 8, 'place': 2}
+ r 5 {'object': 2, 'person': 9, 'place': 3}
+ r 10 {'object': 5, 'person': 12, 'place': 5}
+ r 15 {'object': 6, 'person': 15, 'place': 5}
+ r 20 {'object': 8, 'person': 15, 'place': 6}
+ r 30 {'object': 11, 'person': 15, 'place': 7}
+radius sweep (body mask within r px AND oracle lift matches) is body_ok for r=15 only
+classes (body, 15 px): {'object': {'occluder': 5, 'choice': 9, 'background': 1}, 'person': {'occluder': 9, 'background': 6}, 'place': {'choice': 18, 'background': 5}}
+
+place records:
+  qwen38_low staffed_eval_06_waiting_line_1 e1 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 3.97 Ztg None surf person:p0 z 0.98
+  qwen38_low staffed_eval_09_waiting_line_6 e1 1 body_px 2.5 floor_px inf match_px 2.5 ok True False True cls background Zpt 9.62 Ztg 5.07 surf other z 0.24
+  glm53 real_eval_00_no_one_place e1 1 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 7.80 Ztg None surf other z 2.33
+  glm53 real_eval_06_waiting_line_1 e0 1 body_px 7.7 floor_px inf match_px 7.7 ok True False True cls background Zpt 8.00 Ztg 3.85 surf other z 0.79
+  glm53 real_eval_06_waiting_line_1 e0 2 body_px 15.5 floor_px inf match_px 15.5 ok False False False cls choice Zpt 7.83 Ztg None surf other z 1.81
+  glm53 real_eval_06_waiting_line_1 e1 1 body_px 4.4 floor_px inf match_px 4.4 ok True False True cls background Zpt 7.92 Ztg 3.81 surf other z 1.25
+  glm53 real_eval_06_waiting_line_1 e1 2 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 4.10 Ztg None surf person:p0 z 1.03
+  glm53 real_eval_07_waiting_line_2 e0 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 6.20 Ztg None surf floor z 0.00
+  glm53 real_eval_07_waiting_line_2 e1 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 8.09 Ztg None surf other z 0.30
+  glm53 real_eval_13_waiting_line_3 e0 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 6.69 Ztg None surf floor z -0.00
+  glm53 real_eval_13_waiting_line_3 e1 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 4.80 Ztg None surf person:p1 z 0.50
+  glm53 staffed_eval_13_waiting_line_3 e0 2 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 8.67 Ztg None surf other z 0.39
+  glm53 plain_eval_06_waiting_line_1 e1 0 body_px 8.6 floor_px inf match_px 8.6 ok True False True cls background Zpt 8.04 Ztg 3.87 surf other z 0.58
+  glm53 plain_eval_06_waiting_line_1 e1 1 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 3.96 Ztg None surf person:p0 z 0.99
+  glm53 plain_eval_08_waiting_line_4 e1 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 5.44 Ztg None surf person:p3 z 0.46
+  glm53 plain_eval_09_waiting_line_6 e1 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 9.64 Ztg None surf floor z 0.01
+  dsv41 real_eval_01_no_one_place e1 1 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 8.51 Ztg None surf floor z -0.01
+  dsv41 real_eval_06_waiting_line_1 e1 2 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 4.16 Ztg None surf person:p0 z 0.71
+  dsv41 staffed_eval_06_waiting_line_1 e1 1 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 4.00 Ztg None surf person:p0 z 0.81
+  dsv41 staffed_eval_09_waiting_line_6 e0 0 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 3.01 Ztg None surf floor z 0.00
+  dsv41 staffed_eval_09_waiting_line_6 e1 1 body_px inf floor_px inf match_px inf ok False False False cls choice Zpt 3.64 Ztg None surf floor z 0.00
+  dsv41 staffed_eval_13_waiting_line_3 e0 1 body_px 27.6 floor_px 18.3 match_px 6.0 ok False False True cls choice Zpt 3.87 Ztg None surf floor z 0.00
+  dsv41 plain_eval_13_waiting_line_3 e0 1 body_px 1.5 floor_px inf match_px 1.5 ok True False True cls background Zpt 7.80 Ztg 4.13 surf floor z 0.01
+
+object records:
+  glm53 real_eval_04_no_one_object e1 0 body_px 3.3 ok True True cls occluder surf other
+  glm53 real_eval_04_no_one_object e1 1 body_px 16.1 ok False False cls choice surf other
+  glm53 staffed_eval_04_no_one_object e1 0 body_px 25.9 ok False False cls choice surf floor
+  glm53 staffed_eval_04_no_one_object e1 1 body_px 28.4 ok False False cls choice surf floor
+  glm53 staffed_eval_04_no_one_object e1 2 body_px inf ok False False cls choice surf floor
+  glm53 plain_eval_04_no_one_object e1 0 body_px 31.9 ok False False cls choice surf other
+  glm53 plain_eval_04_no_one_object e1 1 body_px 34.3 ok False False cls choice surf other
+  glm53 plain_eval_04_no_one_object e1 2 body_px 15.3 ok False False cls choice surf other
+  dsv41 real_eval_04_no_one_object e1 1 body_px 9.6 ok True True cls occluder surf other
+  dsv41 real_eval_04_no_one_object e1 2 body_px 4.0 ok True True cls occluder surf other
+  dsv41 staffed_eval_04_no_one_object e1 0 body_px 13.3 ok True True cls background surf floor
+  dsv41 staffed_eval_04_no_one_object e1 1 body_px 22.5 ok False False cls choice surf floor
+  dsv41 plain_eval_04_no_one_object e1 0 body_px 8.1 ok True True cls occluder surf other
+  dsv41 plain_eval_04_no_one_object e1 1 body_px inf ok False False cls choice surf floor
+  dsv41 plain_eval_04_no_one_object e1 2 body_px 8.1 ok True True cls occluder surf other
+
+== W2: person wrong targets == 15 {'qwen38_low': 5, 'glm53': 2, 'dsv41': 8} {'real_eval_12_conversation_group_4': 4, 'staffed_eval_12_conversation_group_4': 2, 'plain_eval_12_conversation_group_4': 7, 'plain_eval_10_conversation_group_2': 1, 'plain_eval_11_conversation_group_3': 1}
+within 15 px: 15 max px 13.95 within 3 px: 8
+r=0.25 max px 13.95, r=0.35 max px 13.95, match mask max px 13.95
+landed m: min 1.03 max 12.34
+  qwen38_low plain plain_eval_12_conversation_group_4 e1 1 px 1.5 landed 1.03 cls occluder surf person:p3 z 1.10 dwall 5.44 Zpt 3.51 Ztg 4.40 side left centre_on False win_range 0.92 win_has_tgt True ok True True
+  qwen38_low staffed staffed_eval_12_conversation_group_4 e1 0 px 2.2 landed 1.05 cls occluder surf person:p3 z 1.04 dwall 5.40 Zpt 3.51 Ztg 4.40 side left centre_on False win_range 0.92 win_has_tgt True ok True True
+  qwen38_low real real_eval_12_conversation_group_4 e1 1 px 2.7 landed 1.05 cls occluder surf person:p3 z 1.04 dwall 5.39 Zpt 3.51 Ztg 4.40 side left centre_on False win_range 0.92 win_has_tgt True ok True True
+  qwen38_low staffed staffed_eval_12_conversation_group_4 e0 2 px 1.8 landed 1.08 cls occluder surf person:p3 z 1.20 dwall 5.39 Zpt 3.45 Ztg 4.31 side left centre_on False win_range 0.87 win_has_tgt True ok True True
+  dsv41 real real_eval_12_conversation_group_4 e0 1 px 1.3 landed 1.08 cls occluder surf person:p3 z 1.21 dwall 5.39 Zpt 3.45 Ztg 4.30 side left centre_on False win_range 0.97 win_has_tgt True ok True True
+  dsv41 plain plain_eval_12_conversation_group_4 e1 2 px 13.3 landed 1.09 cls occluder surf person:p3 z 1.13 dwall 5.34 Zpt 3.47 Ztg 4.36 side left centre_on False win_range 0.03 win_has_tgt False ok True True
+  qwen38_low plain plain_eval_12_conversation_group_4 e1 0 px 6.9 landed 1.09 cls occluder surf person:p3 z 1.14 dwall 5.37 Zpt 3.46 Ztg 4.39 side left centre_on False win_range 0.02 win_has_tgt False ok True True
+  dsv41 plain plain_eval_12_conversation_group_4 e1 1 px 13.9 landed 1.10 cls occluder surf person:p3 z 1.20 dwall 5.31 Zpt 3.45 Ztg 4.39 side left centre_on False win_range 0.07 win_has_tgt False ok True True
+  dsv41 plain plain_eval_12_conversation_group_4 e0 1 px 9.7 landed 1.11 cls occluder surf person:p3 z 1.20 dwall 5.34 Zpt 3.43 Ztg 4.32 side left centre_on False win_range 0.03 win_has_tgt False ok True True
+  dsv41 plain plain_eval_11_conversation_group_3 e0 1 px 1.4 landed 4.51 cls background surf other z 0.55 dwall 0.02 Zpt 9.01 Ztg 4.46 side right centre_on False win_range 4.55 win_has_tgt True ok True True
+  dsv41 plain plain_eval_10_conversation_group_2 e0 2 px 7.7 landed 5.08 cls background surf floor z 0.00 dwall 3.07 Zpt 9.57 Ztg 4.22 side right centre_on False win_range 0.43 win_has_tgt False ok True True
+  dsv41 plain plain_eval_12_conversation_group_4 e0 2 px 11.2 landed 9.97 cls background surf floor z -0.00 dwall 2.09 Zpt 14.25 Ztg 4.44 side right centre_on False win_range 0.96 win_has_tgt False ok True True
+  dsv41 real real_eval_12_conversation_group_4 e1 2 px 1.0 landed 10.43 cls background surf floor z 0.03 dwall 1.65 Zpt 14.75 Ztg 4.40 side right centre_on False win_range 11.13 win_has_tgt True ok True True
+  glm53 plain plain_eval_12_conversation_group_4 e0 2 px 4.5 landed 12.32 cls background surf floor z 0.04 dwall 0.03 Zpt 16.56 Ztg 4.30 side right centre_on False win_range 0.44 win_has_tgt False ok True True
+  glm53 real real_eval_12_conversation_group_4 e1 2 px 1.6 landed 12.34 cls background surf other z 0.75 dwall 0.01 Zpt 16.47 Ztg 4.27 side right centre_on False win_range 12.23 win_has_tgt True ok True True
+
+== W3: eval_12 wrong targets == 13 {'qwen38_low': 5, 'glm53': 2, 'dsv41': 6}
+px<=3 7 px<=10 10 max 13.95
+side {('left', 'occluder', 'person:p3'): 9, ('right', 'background', 'other'): 1, ('right', 'background', 'floor'): 3}
+window range > 0.5 m: 8 window holds target px: 7 centre on target: 0
+oracle fixes 13 pipeline lift at snap fixes 13
+
+== N6: lifts at the snapped pixel (body mask) ==
+oracle 26 pipeline 26 median15 26 any 26
+
+== N3: oracle fixes -> full successes ==
+fixes {('qwen38_low', 'person'): 5, ('qwen38_low', 'place'): 1, ('glm53', 'object'): 1, ('glm53', 'place'): 3, ('glm53', 'person'): 2, ('dsv41', 'object'): 5, ('dsv41', 'person'): 8, ('dsv41', 'place'): 1}
+full successes {('qwen38_low', 'person'): 5, ('qwen38_low', 'place'): 1, ('glm53', 'object'): 1, ('glm53', 'place'): 2, ('glm53', 'person'): 2, ('dsv41', 'object'): 5, ('dsv41', 'person'): 5, ('dsv41', 'place'): 1}
+  qwen38_low fixes 6 full 6
+  glm53 fixes 6 full 5
+  dsv41 fixes 14 full 11
+  person fixes 15 full 12
+  object fixes 6 full 6
+  place fixes 5 full 4
+GLM+DeepSeek with a point 46 lift classes (target px within 15) 20 oracle fixes 20 full 16
+sources of wrong records {'constraints': 34, 'standard': 19}

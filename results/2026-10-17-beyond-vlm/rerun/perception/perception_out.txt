@@ -1,0 +1,126 @@
+
+=== GLM s19 realistic: s19 glm53 con ('real', 'staffed', 'plain')
+  records 252, with people 141, solver steps 141, success 186
+  [GLM s19 realistic] check vs recorded measures: people_found_share 141/141 agree; members_recall 83/83 agree
+  [GLM s19 realistic] C line failures (waiting_line, solver step, right target, place outside region or unreachable): 29
+      members_recall <1: 29 (None 0), =0: 12
+      people_found_share <1: 25, =0: 7; unmatched >0: 23; no come_after stated: 8
+      of them unreachable: 4; outside region: 29
+  [GLM s19 realistic] all records with members_recall measured: records 83; missed members 74; never found (package match, 0.5 m) 56 = 0.757; no detection within 1.0 m 17 = 0.230
+  [GLM s19 realistic] line failures (P3 set): records 29; missed members 49; never found (package match, 0.5 m) 42 = 0.857; no detection within 1.0 m 17 = 0.347
+  [GLM s19 realistic] variant groups (conversation_group goal-step records, member = visible person of the group at the target, named = in any constraint people list): records 54; missed 27; never found 18 = 0.667
+  [GLM s19 realistic] context: mean members_recall 0.661 (n 83); mean people_found_share (goal steps) 0.826 (n 141)
+  [GLM s19 realistic] constraints calls 141, with raw_text 141, distinct answers 141
+      chars: "people": [...] incl. key 8867/266618 = 0.0333; list values only 0.0116; come_after lists only 0.0054; per-answer median (incl. key) 0.0320
+      regex tokens (\w+ | punct): people lists 4907/69959 = 0.0701; come_after lists 0.0119
+      GPT-2-style pre-tokens: people lists incl. key 4181/65389 = 0.0639; values only 0.0378
+      (reported output_tokens of fresh constraints calls 0; reasoning_tokens of all 0; pre-tokens per answer 464)
+  [GLM s19 realistic] line records with people: records 83; detections 296; >1 m from every true person 34; >1 m from every visible true person 34
+  [GLM s19 realistic] line goal-step records: records 83; detections 296; >1 m from every true person 34; >1 m from every visible true person 34
+  [GLM s19 realistic] distinct line people answers: 45; detections 161; >1 m from every true person 20
+  [GLM s19 realistic] far detections: distance to the wall along the camera ray through them: median -0.25 m (min -0.25, max 0.11; negative = beyond the wall line), |gap| <=0.3 m 34/34; true people (per record) within 0.5 m of the boundary 56/366
+  [GLM s19 realistic] far detections in line goal-step records: 34; farther from the camera than the nearest true person 34; within 0.5 m of the room boundary 34; listed under come_after 28; joined by the solver 0; records holding one 25, of them failed 22
+
+=== DeepSeek s20 realistic: s20 dsv41 con ('real', 'staffed', 'plain')
+  records 252, with people 157, solver steps 157, success 182
+  [DeepSeek s20 realistic] check vs recorded measures: people_found_share 157/157 agree; members_recall 89/89 agree
+  [DeepSeek s20 realistic] C line failures (waiting_line, solver step, right target, place outside region or unreachable): 15
+      members_recall <1: 15 (None 0), =0: 0
+      people_found_share <1: 10, =0: 0; unmatched >0: 6; no come_after stated: 0
+      of them unreachable: 2; outside region: 13
+  [DeepSeek s20 realistic] all records with members_recall measured: records 89; missed members 33; never found (package match, 0.5 m) 20 = 0.606; no detection within 1.0 m 8 = 0.242
+  [DeepSeek s20 realistic] line failures (P3 set): records 15; missed members 28; never found (package match, 0.5 m) 20 = 0.714; no detection within 1.0 m 8 = 0.286
+  [DeepSeek s20 realistic] variant groups (conversation_group goal-step records, member = visible person of the group at the target, named = in any constraint people list): records 54; missed 23; never found 18 = 0.783
+  [DeepSeek s20 realistic] context: mean members_recall 0.892 (n 89); mean people_found_share (goal steps) 0.913 (n 157)
+  [DeepSeek s20 realistic] constraints calls 157, with raw_text 157, distinct answers 157
+      chars: "people": [...] incl. key 12176/328510 = 0.0371; list values only 0.0138; come_after lists only 0.0065; per-answer median (incl. key) 0.0352
+      regex tokens (\w+ | punct): people lists 6433/80473 = 0.0799; come_after lists 0.0139
+      GPT-2-style pre-tokens: people lists incl. key 5633/79860 = 0.0705; values only 0.0419
+      (reported output_tokens of fresh constraints calls 86263; reasoning_tokens of all 0; pre-tokens per answer 509)
+  [DeepSeek s20 realistic] line records with people: records 89; detections 331; >1 m from every true person 16; >1 m from every visible true person 16
+  [DeepSeek s20 realistic] line goal-step records: records 89; detections 331; >1 m from every true person 16; >1 m from every visible true person 16
+  [DeepSeek s20 realistic] distinct line people answers: 45; detections 166; >1 m from every true person 8
+  [DeepSeek s20 realistic] far detections: distance to the wall along the camera ray through them: median -0.25 m (min -0.30, max 0.11; negative = beyond the wall line), |gap| <=0.3 m 16/16; true people (per record) within 0.5 m of the boundary 59/394
+  [DeepSeek s20 realistic] far detections in line goal-step records: 16; farther from the camera than the nearest true person 16; within 0.5 m of the room boundary 16; listed under come_after 15; joined by the solver 0; records holding one 6, of them failed 6
+
+=== Qwen s19 realistic (context): s19 qwen38_low con ('real', 'staffed', 'plain')
+  records 252, with people 143, solver steps 143, success 234
+  [Qwen s19 realistic (context)] check vs recorded measures: people_found_share 143/143 agree; members_recall 89/89 agree
+  [Qwen s19 realistic (context)] C line failures (waiting_line, solver step, right target, place outside region or unreachable): 2
+      members_recall <1: 2 (None 0), =0: 0
+      people_found_share <1: 2, =0: 0; unmatched >0: 2; no come_after stated: 0
+      of them unreachable: 0; outside region: 2
+  [Qwen s19 realistic (context)] all records with members_recall measured: records 89; missed members 7; never found (package match, 0.5 m) 4 = 0.571; no detection within 1.0 m 0 = 0.000
+  [Qwen s19 realistic (context)] line failures (P3 set): records 2; missed members 3; never found (package match, 0.5 m) 2 = 0.667; no detection within 1.0 m 0 = 0.000
+  [Qwen s19 realistic (context)] variant groups (conversation_group goal-step records, member = visible person of the group at the target, named = in any constraint people list): records 54; missed 18; never found 18 = 1.000
+  [Qwen s19 realistic (context)] context: mean members_recall 0.978 (n 89); mean people_found_share (goal steps) 0.968 (n 143)
+  [Qwen s19 realistic (context)] constraints calls 143, with raw_text 143, distinct answers 143
+      chars: "people": [...] incl. key 4426/202825 = 0.0218; list values only 0.0091; come_after lists only 0.0087; per-answer median (incl. key) 0.0215
+      regex tokens (\w+ | punct): people lists 2518/48619 = 0.0518; come_after lists 0.0211
+      GPT-2-style pre-tokens: people lists incl. key 2223/47852 = 0.0465; values only 0.0304
+      (reported output_tokens of fresh constraints calls 0; reasoning_tokens of all 0; pre-tokens per answer 335)
+  [Qwen s19 realistic (context)] line records with people: records 89; detections 333; >1 m from every true person 4; >1 m from every visible true person 4
+  [Qwen s19 realistic (context)] line goal-step records: records 89; detections 333; >1 m from every true person 4; >1 m from every visible true person 4
+  [Qwen s19 realistic (context)] distinct line people answers: 43; detections 165; >1 m from every true person 2
+  [Qwen s19 realistic (context)] far detections: distance to the wall along the camera ray through them: median -0.25 m (min -0.25, max -0.25; negative = beyond the wall line), |gap| <=0.3 m 4/4; true people (per record) within 0.5 m of the boundary 59/394
+  [Qwen s19 realistic (context)] far detections in line goal-step records: 4; farther from the camera than the nearest true person 4; within 0.5 m of the room boundary 4; listed under come_after 2; joined by the solver 0; records holding one 4, of them failed 2
+
+=== GLM s23 realistic (new wording): s23 glm53 con ('real', 'staffed', 'plain')
+  records 252, with people 141, solver steps 141, success 170
+  [GLM s23 realistic (new wording)] check vs recorded measures: people_found_share 141/141 agree; members_recall 88/88 agree
+  [GLM s23 realistic (new wording)] C line failures (waiting_line, solver step, right target, place outside region or unreachable): 32
+      members_recall <1: 32 (None 0), =0: 10
+      people_found_share <1: 28, =0: 5; unmatched >0: 26; no come_after stated: 5
+      of them unreachable: 4; outside region: 31
+  [GLM s23 realistic (new wording)] all records with members_recall measured: records 88; missed members 84; never found (package match, 0.5 m) 61 = 0.726; no detection within 1.0 m 20 = 0.238
+  [GLM s23 realistic (new wording)] line failures (P3 set): records 32; missed members 61; never found (package match, 0.5 m) 47 = 0.770; no detection within 1.0 m 17 = 0.279
+  [GLM s23 realistic (new wording)] variant groups (conversation_group goal-step records, member = visible person of the group at the target, named = in any constraint people list): records 53; missed 21; never found 18 = 0.857
+  [GLM s23 realistic (new wording)] context: mean members_recall 0.635 (n 88); mean people_found_share (goal steps) 0.816 (n 141)
+  [GLM s23 realistic (new wording)] constraints calls 141, with raw_text 141, distinct answers 141
+      chars: "people": [...] incl. key 9095/264890 = 0.0343; list values only 0.0125; come_after lists only 0.0058; per-answer median (incl. key) 0.0329
+      regex tokens (\w+ | punct): people lists 5021/69863 = 0.0719; come_after lists 0.0126
+      GPT-2-style pre-tokens: people lists incl. key 4271/65165 = 0.0655; values only 0.0394
+      (reported output_tokens of fresh constraints calls 69246; reasoning_tokens of all 0; pre-tokens per answer 462)
+  [GLM s23 realistic (new wording)] line records with people: records 88; detections 310; >1 m from every true person 39; >1 m from every visible true person 39
+  [GLM s23 realistic (new wording)] line goal-step records: records 88; detections 310; >1 m from every true person 39; >1 m from every visible true person 39
+  [GLM s23 realistic (new wording)] distinct line people answers: 45; detections 161; >1 m from every true person 20
+  [GLM s23 realistic (new wording)] far detections: distance to the wall along the camera ray through them: median -0.25 m (min -0.25, max 0.11; negative = beyond the wall line), |gap| <=0.3 m 39/39; true people (per record) within 0.5 m of the boundary 58/382
+  [GLM s23 realistic (new wording)] far detections in line goal-step records: 39; farther from the camera than the nearest true person 39; within 0.5 m of the room boundary 39; listed under come_after 36; joined by the solver 0; records holding one 27, of them failed 26
+
+=== DeepSeek s23 realistic (new wording): s23 dsv41 con ('real', 'staffed', 'plain')
+  records 252, with people 151, solver steps 151, success 185
+  [DeepSeek s23 realistic (new wording)] check vs recorded measures: people_found_share 151/151 agree; members_recall 90/90 agree
+  [DeepSeek s23 realistic (new wording)] C line failures (waiting_line, solver step, right target, place outside region or unreachable): 17
+      members_recall <1: 16 (None 0), =0: 2
+      people_found_share <1: 9, =0: 0; unmatched >0: 6; no come_after stated: 1
+      of them unreachable: 3; outside region: 14
+  [DeepSeek s23 realistic (new wording)] all records with members_recall measured: records 90; missed members 39; never found (package match, 0.5 m) 20 = 0.513; no detection within 1.0 m 8 = 0.205
+  [DeepSeek s23 realistic (new wording)] line failures (P3 set): records 17; missed members 30; never found (package match, 0.5 m) 19 = 0.633; no detection within 1.0 m 8 = 0.267
+  [DeepSeek s23 realistic (new wording)] variant groups (conversation_group goal-step records, member = visible person of the group at the target, named = in any constraint people list): records 54; missed 26; never found 18 = 0.692
+  [DeepSeek s23 realistic (new wording)] context: mean members_recall 0.858 (n 90); mean people_found_share (goal steps) 0.910 (n 151)
+  [DeepSeek s23 realistic (new wording)] constraints calls 151, with raw_text 151, distinct answers 151
+      chars: "people": [...] incl. key 11606/317540 = 0.0365; list values only 0.0132; come_after lists only 0.0058; per-answer median (incl. key) 0.0339
+      regex tokens (\w+ | punct): people lists 6105/78031 = 0.0782; come_after lists 0.0130
+      GPT-2-style pre-tokens: people lists incl. key 5310/77295 = 0.0687; values only 0.0400
+      (reported output_tokens of fresh constraints calls 82221; reasoning_tokens of all 0; pre-tokens per answer 512)
+  [DeepSeek s23 realistic (new wording)] line records with people: records 90; detections 332; >1 m from every true person 16; >1 m from every visible true person 16
+  [DeepSeek s23 realistic (new wording)] line goal-step records: records 90; detections 332; >1 m from every true person 16; >1 m from every visible true person 16
+  [DeepSeek s23 realistic (new wording)] distinct line people answers: 45; detections 166; >1 m from every true person 8
+  [DeepSeek s23 realistic (new wording)] far detections: distance to the wall along the camera ray through them: median -0.25 m (min -0.30, max 0.11; negative = beyond the wall line), |gap| <=0.3 m 16/16; true people (per record) within 0.5 m of the boundary 60/396
+  [DeepSeek s23 realistic (new wording)] far detections in line goal-step records: 16; farther from the camera than the nearest true person 16; within 0.5 m of the room boundary 16; listed under come_after 15; joined by the solver 0; records holding one 6, of them failed 6
+
+=== P2 on development seeds (placeholder dev_seed0-2), for range
+  [glm53 s19 dev seeds] constraints calls 36, with raw_text 36, distinct answers 36
+      chars: "people": [...] incl. key 2430/64270 = 0.0378; list values only 0.0158; come_after lists only 0.0027; per-answer median (incl. key) 0.0368
+      regex tokens (\w+ | punct): people lists 1398/16894 = 0.0828; come_after lists 0.0062
+      GPT-2-style pre-tokens: people lists incl. key 1182/15727 = 0.0752; values only 0.0490
+      (reported output_tokens of fresh constraints calls 0; reasoning_tokens of all 0; pre-tokens per answer 437)
+  [dsv41 s20 dev seeds] constraints calls 36, with raw_text 36, distinct answers 36
+      chars: "people": [...] incl. key 3392/73058 = 0.0464; list values only 0.0226; come_after lists only 0.0078; per-answer median (incl. key) 0.0431
+      regex tokens (\w+ | punct): people lists 1781/18218 = 0.0978; come_after lists 0.0172
+      GPT-2-style pre-tokens: people lists incl. key 1614/18180 = 0.0888; values only 0.0601
+      (reported output_tokens of fresh constraints calls 6577; reasoning_tokens of all 0; pre-tokens per answer 505)
+
+=== Are s23 C people answers copies of s19/s20 (same people list per arm, scene, episode, trial)?
+  glm53: people list same 134, different 0; constraints raw_text same 0, different 134; s23 constraints calls cached 0, fresh 134
+  dsv41: people list same 144, different 0; constraints raw_text same 2, different 142; s23 constraints calls cached 2, fresh 142

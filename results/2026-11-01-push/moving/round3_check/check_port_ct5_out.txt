@@ -1,0 +1,6 @@
+129 design cells; research params {'WALKERS_STATIC': True, 'LR_EXIT': 1.0, 'STATIC_WIN_S': 5.0}
+  clean: 17719/17719 choices agree (1.0000)
+  S2m: 17719/17719 choices agree (1.0000)
+  S3: 17719/17719 choices agree (1.0000)
+  S23m: 17719/17719 choices agree (1.0000)
+all: 70876/70876 (1.0000); worst marginal difference 0.00e+00

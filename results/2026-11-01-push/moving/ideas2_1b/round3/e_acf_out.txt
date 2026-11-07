@@ -1,0 +1,20 @@
+# Decorrelation of the static log ratio: 1404 person-episodes
+
+- lag  0.0 s: 1.000
+- lag  1.0 s: 0.851
+- lag  2.0 s: 0.696
+- lag  3.0 s: 0.564
+- lag  4.0 s: 0.453
+- lag  5.0 s: 0.360
+- lag  6.0 s: 0.280
+- lag  7.0 s: 0.211
+- lag  8.0 s: 0.146
+- lag  9.0 s: 0.087
+- lag 10.0 s: 0.031
+- lag 11.0 s: -0.020
+- lag 12.0 s: -0.066
+- lag 13.0 s: -0.105
+- lag 14.0 s: -0.135
+- lag 15.0 s: -0.156
+
+1/e time: 5.0 s

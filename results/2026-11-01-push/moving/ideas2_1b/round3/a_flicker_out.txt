@@ -1,0 +1,33 @@
+# Round 3, step A: frozen CT4-min offline on 129 design cells
+
+## clean
+
+- right last (ticks with a queue): 0.477 (17719 ticks)
+- roster changed between consecutive ticks: with the static snapshot 0.155; dynamic belief alone 0.060
+- calibration (marginal bin: share in the queue, n):
+  - 0.0-0.1: 0.007 (46233)
+  - 0.1-0.2: 0.088 (12102)
+  - 0.2-0.3: 0.187 (6968)
+  - 0.3-0.4: 0.176 (4293)
+  - 0.4-0.5: 0.238 (3818)
+  - 0.5-0.6: 0.274 (3308)
+  - 0.6-0.7: 0.303 (3253)
+  - 0.7-0.8: 0.487 (4127)
+  - 0.8-0.9: 0.635 (7326)
+  - 0.9-1.0: 0.765 (20737)
+
+## S2m
+
+- right last (ticks with a queue): 0.426 (17719 ticks)
+- roster changed between consecutive ticks: with the static snapshot 0.168; dynamic belief alone 0.055
+- calibration (marginal bin: share in the queue, n):
+  - 0.0-0.1: 0.011 (43541)
+  - 0.1-0.2: 0.094 (12723)
+  - 0.2-0.3: 0.233 (8263)
+  - 0.3-0.4: 0.250 (5124)
+  - 0.4-0.5: 0.285 (4190)
+  - 0.5-0.6: 0.292 (3736)
+  - 0.6-0.7: 0.347 (3579)
+  - 0.7-0.8: 0.443 (4272)
+  - 0.8-0.9: 0.565 (7014)
+  - 0.9-1.0: 0.737 (19723)

@@ -1,0 +1,17 @@
+# Round 7 part B, DESCRIPTIVE: band top 1.2 m (frozen) against 1.5 m (sweep/confirm_selection.json, runs_confirm4/sonnet55_low)
+
+| arm | episodes | strict at 1.2 | strict at 1.5 | 'too far' seconds at 1.2 that pass at 1.5 |
+|---|---|---|---|---|
+| CT3F | 71 | 0.246 | 0.273 | 123/1765 |
+| CT4PJ | 71 | 0.174 | 0.200 | 119/2449 |
+| CT4P | 71 | 0.124 | 0.146 | 102/2805 |
+| CT4 | 71 | 0.131 | 0.155 | 110/2908 |
+
+| pair (a − b) | top | n | wins/losses/ties | sign p | mean d | 95% lower bound |
+|---|---|---|---|---|---|---|
+| CT4PJ − CT4P | 1.2 | 71 | 33/17/21 | 0.033 | +0.050 | +0.014 |
+| CT4PJ − CT4P | 1.5 | 71 | 33/21/17 | 0.134 | +0.054 | +0.016 |
+| CT4PJ − CT3F | 1.2 | 71 | 18/44/9 | 0.001 | -0.072 | -0.105 |
+| CT4PJ − CT3F | 1.5 | 71 | 19/43/9 | 0.003 | -0.073 | -0.109 |
+| CT4 − CT3F | 1.2 | 71 | 17/48/6 | 0.000 | -0.115 | -0.160 |
+| CT4 − CT3F | 1.5 | 71 | 19/48/4 | 0.001 | -0.118 | -0.167 |

@@ -1,0 +1,11 @@
+BROKEN dsv41 real_eval_11_conversation_group_3 e1 2 moved 0.27 m success=False target_correct=True matched_target_id='t0' reachable=True in_region=False heading_ok=False distance_to_region_m=0.12509362713150504 min_body_gap_m=0.7733290700207829 personal_space_intrusion=False forbidden={'group_space': False}
+BROKEN dsv41 staffed_eval_10_conversation_group_2 e1 0 moved 0.19 m success=False target_correct=True matched_target_id='t0' reachable=True in_region=False heading_ok=False distance_to_region_m=3.7793030282089353 min_body_gap_m=0.6406554007988585 personal_space_intrusion=False forbidden={'group_space': False}
+BROKEN dsv41 plain_eval_12_conversation_group_4 e0 1 moved 0.17 m success=False target_correct=True matched_target_id='t0' reachable=True in_region=False heading_ok=False distance_to_region_m=0.06269723757384785 min_body_gap_m=0.700016463274735 personal_space_intrusion=False forbidden={'group_space': False}
+BROKEN dsv41 plain_eval_12_conversation_group_4 e0 2 moved 0.20 m success=False target_correct=True matched_target_id='t0' reachable=True in_region=False heading_ok=False distance_to_region_m=0.06742638665659088 min_body_gap_m=0.7078900111764113 personal_space_intrusion=False forbidden={'group_space': False}
+qwen38_low {'records': 252, 'snap_fires': 84, 'no_solver_step': 23, 'resolved': 61, 'succ_before': 53, 'succ_after': 61, 'fixed': 8}
+glm53 {'records': 252, 'snap_fires': 83, 'no_solver_step': 23, 'resolved': 60, 'succ_before': 49, 'succ_after': 51, 'fixed': 2}
+dsv41 {'records': 252, 'snap_fires': 82, 'no_solver_step': 20, 'resolved': 62, 'succ_before': 39, 'succ_after': 41, 'BROKEN': 4, 'fixed': 6}
+sonnet55_low {'records': 252, 'snap_fires': 75, 'no_solver_step': 18, 'resolved': 57, 'succ_before': 50, 'succ_after': 57, 'fixed': 7}
+haiku55 {'records': 252, 'snap_fires': 72, 'no_solver_step': 18, 'resolved': 54, 'succ_before': 53, 'succ_after': 54, 'fixed': 1}
+gemini38_low {'records': 252, 'snap_fires': 110, 'no_solver_step': 31, 'resolved': 79, 'succ_before': 53, 'succ_after': 53}
+target moved by the snap (m): median 0.20, 90th 0.29, max 12.30

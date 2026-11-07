@@ -1,0 +1,26 @@
+20261013-191337_s20_real_dsv41_con real
+20261013-191345_s20_staffed_dsv41_con staffed
+20261013-191402_s20_plain_dsv41_con plain
+20261013-190939_s20_ph_dsv41_con ph
+20261013-190610_s20_dev_seed0_dsv41_con dev_seed0
+20261013-190617_s20_dev_seed1_dsv41_con dev_seed1
+20261013-191026_s20_dev_seed2_dsv41_con dev_seed2
+20261011-160334_s19_real_qwen38_low_con real qwen38_low con
+20261011-160500_s19_real_glm53_con real glm53 con
+20261011-160344_s19_staffed_qwen38_low_con staffed qwen38_low con
+20261011-160352_s19_staffed_glm53_con staffed glm53 con
+20261011-160527_s19_plain_qwen38_low_con plain qwen38_low con
+20261011-160452_s19_plain_glm53_con plain glm53 con
+20261011-160610_s19_ph_qwen38_low_con ph qwen38_low con
+20261011-160439_s19_ph_glm53_con ph glm53 con
+20261011-160326_s19_dev_seed0_qwen38_low_con dev_seed0 qwen38_low con
+20261011-160611_s19_dev_seed0_glm53_con dev_seed0 glm53 con
+20261011-160315_s19_dev_seed1_qwen38_low_con dev_seed1 qwen38_low con
+20261011-160558_s19_dev_seed1_glm53_con dev_seed1 glm53 con
+20261011-160306_s19_dev_seed2_qwen38_low_con dev_seed2 qwen38_low con
+20261011-160545_s19_dev_seed2_glm53_con dev_seed2 glm53 con
+84
+real_eval_00_no_one_place e0 no_one {'request_type': 'grounded', 'situation': 'no_one', 'factors': {'density': 'low', 'group_size': 0, 'bystanders': 0, 'other_groups': 0, 'view_angle_deg': 1.910885061964377}}
+{"status": "ok", "source": "standard", "pose_robot": [3.5273529098052836, 0.30377988580533377, 0.05127830667602673], "pose_world": [-0.24061129819630256, 3.9844257874057147, -1.8464054248906763], "goal_pixel": null, "target": {"point": {"x": 430, "y": 500}, "pixel": [275.2, 240.0], "world": [-0.5127443960993517, 3.022166167019569, 0.7372026989498591]}, "flags": {"marked_point_off_floor": false, "standard_goal_blocked": false, "standard_goal_frontal": true, "heading_fallback": false, "heading_degenerate": false, "no_usable_constraint": false, "constraint_unusable": false, "constraints_cut": false, "exclusion_broken": false, "people_cut": false, "far_from_target": false}, "timings_s": {"geometry": 0.04316526499997053, "context": 1.1100731700003053, "goal": 0.0, "plan": 1.5332593430002817}, "location": null, "context_check": {"reasoning": null, "relevant_people": "A person is standing behind the help desk counter, working at the target.", "people_matter": false}, "goal_mark": null}
+{"success": true, "target_correct": true, "matched_target_id": "t0", "reachable": true, "in_region": true, "heading_ok": true, "distance_to_region_m": 0.0, "min_body_gap_m": 1.0587991889487962, "personal_space_intrusion": false, "forbidden": {}}
+None

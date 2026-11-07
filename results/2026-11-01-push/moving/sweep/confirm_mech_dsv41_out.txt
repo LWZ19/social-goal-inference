@@ -1,0 +1,29 @@
+groups 72, arms ['CT2', 'CT3F', 'CT4P', 'CT4PJ', 'CT4']
+
+first-answer status by arm:
+  CT2   no_target: 5
+  CT2   ok: 67
+  CT3F  no_target: 5
+  CT3F  ok: 67
+  CT4   no_target: 5
+  CT4   ok: 67
+  CT4P  no_target: 5
+  CT4P  ok: 67
+  CT4PJ no_target: 5
+  CT4PJ ok: 67
+
+re-solve status by arm:
+  CT2   ok: 9635
+  CT3F  ok: 9646
+  CT4   ok: 9652
+  CT4P  ok: 9650
+  CT4PJ ok: 9654
+
+re-solves per episode (min / median / max):
+  CT2   0 / 147 / 156
+  CT3F  0 / 147 / 157
+  CT4   0 / 147 / 156
+  CT4P  0 / 147 / 157
+  CT4PJ 0 / 147 / 157
+
+faults: none

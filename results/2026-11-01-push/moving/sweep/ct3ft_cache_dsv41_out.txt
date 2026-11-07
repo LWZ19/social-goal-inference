@@ -1,0 +1,4 @@
+groups 72
+CT3FT against CT3F, first re-solve goal: {'first goal differs > 0.05 m': 28, 'first goal same': 38}
+
+faults: none

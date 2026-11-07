@@ -1,0 +1,1 @@
+v_c2: verifier re-implementation on A1's development raw pass: 42 E-real scenes, 119 people; mismatches beyond 1e-9: 0; max |diff| 4.44e-16

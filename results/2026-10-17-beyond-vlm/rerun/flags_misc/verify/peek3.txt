@@ -1,0 +1,3 @@
+real_eval_02_no_one_place 58.157133776661006
+real_eval_03_no_one_deep_place 28.20975291946845
+scenes 42 max camera-robot xy offset 0.20000000000000034

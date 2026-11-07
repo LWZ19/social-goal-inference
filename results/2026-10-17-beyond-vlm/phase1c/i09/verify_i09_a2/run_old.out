@@ -1,0 +1,11 @@
+2026-10-17 22:26:21 +0800 start old; FROZEN and eval_people hashes verified
+2026-10-17 22:26:46 +0800 old 20261011-160334_s19_real_qwen38_low_con: 84 records, 48 solver steps, 24 s
+2026-10-17 22:27:10 +0800 old 20261011-160344_s19_staffed_qwen38_low_con: 84 records, 47 solver steps, 24 s
+2026-10-17 22:27:34 +0800 old 20261011-160527_s19_plain_qwen38_low_con: 84 records, 48 solver steps, 25 s
+2026-10-17 22:28:02 +0800 old 20261011-160500_s19_real_glm53_con: 84 records, 50 solver steps, 27 s
+2026-10-17 22:28:27 +0800 old 20261011-160352_s19_staffed_glm53_con: 84 records, 46 solver steps, 25 s
+2026-10-17 22:28:50 +0800 old 20261011-160452_s19_plain_glm53_con: 84 records, 45 solver steps, 23 s
+2026-10-17 22:29:19 +0800 old 20261013-191337_s20_real_dsv41_con: 84 records, 53 solver steps, 29 s
+2026-10-17 22:29:49 +0800 old 20261013-191345_s20_staffed_dsv41_con: 84 records, 56 solver steps, 30 s
+2026-10-17 22:30:15 +0800 old 20261013-191402_s20_plain_dsv41_con: 84 records, 48 solver steps, 26 s
+2026-10-17 22:30:15 +0800 done old in 234 s

@@ -1,0 +1,248 @@
+I09 fix diagnosis, fit-train (seeds 110-115, 84 images): A1's frozen detector (RT-DETRv2 tau 0.25, band 1.00-2.30, flat off, d_dup 0.50, d_push 0.20, F5), I03's scorer unchanged (facing full, exempt_points, default thresholds).
+recall 226/238 = 0.950; by role {'line': [92, 96], 'group': [54, 54], 'staff': [26, 34], 'other': [54, 54]}; false 17/84 = 0.202 per image; exempt 5; near hidden 4; merged pairs 2/66; median xy 0.059 m; non-profile within 45 125/128 (median 12.6); profile front/back 98/98
+
+By row (6 images each): visible | matched | false | exempt | misses (role class)
+  real_eval_00_no_one_place: 3 | 3 | 0 | 0 | {}
+  real_eval_01_no_one_place: 10 | 10 | 0 | 0 | {}
+  real_eval_02_no_one_place: 2 | 1 | 1 | 2 | {'staff': 1}
+  real_eval_03_no_one_deep_place: 5 | 5 | 0 | 0 | {}
+  real_eval_04_no_one_object: 0 | 0 | 0 | 0 | {}
+  real_eval_05_no_one_person: 6 | 6 | 2 | 0 | {}
+  real_eval_06_waiting_line_1: 11 | 9 | 2 | 0 | {'staff': 2}
+  real_eval_07_waiting_line_2: 16 | 12 | 6 | 0 | {'staff': 4}
+  real_eval_08_waiting_line_4: 26 | 24 | 2 | 1 | {'staff': 1, 'line': 1}
+  real_eval_09_waiting_line_6: 39 | 37 | 3 | 1 | {'line': 2}
+  real_eval_10_conversation_group_2: 24 | 24 | 1 | 0 | {}
+  real_eval_11_conversation_group_3: 33 | 33 | 0 | 0 | {}
+  real_eval_12_conversation_group_4: 42 | 42 | 0 | 0 | {}
+  real_eval_13_waiting_line_3: 21 | 20 | 0 | 1 | {'line': 1}
+
+FALSE AND EXEMPT DETECTIONS by post hoc class (posthoc_false.py rules: A within 0.8 m of a visible staff member with the lower body hidden; B within 0.5 m of a true person failing is_visible; C within 1.5 m of any true person; D farther)
+  A: false 9, exempt 0; scores 0.37 / 0.78 / 0.90 (n 9); box h px 72 / 220 / 237 (n 9)
+  B: false 4, exempt 4; scores 0.79 / 0.84 / 0.88 (n 8); box h px 50 / 71 / 95 (n 8)
+  C: false 0, exempt 1; scores 0.88 / 0.88 / 0.88 (n 1); box h px 76 / 76 / 76 (n 1)
+  D: false 4, exempt 0; scores 0.26 / 0.29 / 0.29 (n 4); box h px 9 / 14 / 34 (n 4)
+
+Per false/exempt detection: seed row number F/E class score | box (h px) | region (valid px) | Z_med | head Z - Z_med | metric h m | z_top | z_bot | flat share | side Z - Z_med | below Z - Z_med | identity | nearest true m
+  110 eval_02_no_one_place n1 F A 0.770 | [292,115,332,187] (72) | hull (740) | 3.86 | 0.63 | 0.50 | 1.69 | 1.20 | 0.17 | 0.78 | -0.05 | s0 | 0.62
+  110 eval_05_no_one_person n2 F D 0.294 | [451,143,463,152] (9) | hull (38) | 7.24 | -0.02 | 0.12 | 1.49 | 1.37 | - | -0.02 | 0.01 | None | 3.48
+  110 eval_06_waiting_line_1 n2 F A 0.890 | [461,104,499,341] (237) | hull (1213) | 3.43 | 0.65 | 1.47 | 1.73 | 0.29 | 0.31 | 0.00 | 0.71 | s0 | 0.63
+  110 eval_07_waiting_line_2 n3 F A 0.685 | [97,112,136,254] (142) | hull (846) | 3.43 | 0.65 | 0.87 | 1.68 | 0.82 | 0.36 | 0.77 | 0.05 | s0 | 0.64
+  110 eval_09_waiting_line_6 n5 F B 0.823 | [540,123,577,187] (64) | box (285) | 5.03 | 0.27 | 0.58 | 1.67 | 1.10 | 0.69 | -0.13 | -0.09 | s0 | 0.48
+  111 eval_06_waiting_line_1 n2 F A 0.900 | [459,105,499,340] (236) | hull (1234) | 3.43 | 0.65 | 1.46 | 1.73 | 0.29 | 0.33 | 0.01 | 0.72 | s0 | 0.63
+  111 eval_07_waiting_line_2 n3 F A 0.863 | [507,114,543,340] (226) | hull (933) | 3.42 | 0.68 | 1.40 | 1.67 | 0.30 | 0.40 | 0.01 | 0.71 | s0 | 0.63
+  111 eval_08_waiting_line_4 n5 F A 0.774 | [86,121,115,297] (176) | hull (484) | 4.69 | 0.65 | 1.49 | 1.68 | 0.21 | 0.32 | 0.01 | 0.55 | s0 | 0.64
+  111 eval_09_waiting_line_6 n7 E B 0.856 | [535,112,567,187] (75) | hull (565) | 5.16 | 0.20 | 0.70 | 1.78 | 1.09 | 0.48 | -0.27 | -0.22 | s0 | 0.38
+  111 eval_10_conversation_group_2 n5 F D 0.283 | [314,124,331,158] (34) | box (70) | 13.19 | 0.01 | 0.81 | 1.93 | 1.14 | 1.00 | 0.01 | 0.06 | None | 3.33
+  112 eval_07_waiting_line_2 n3 F A 0.776 | [506,113,542,333] (220) | hull (1020) | 3.42 | 0.68 | 1.36 | 1.68 | 0.34 | 0.47 | 0.02 | 0.86 | s0 | 0.63
+  113 eval_07_waiting_line_2 n3 F B 0.877 | [96,113,138,207] (95) | hull (724) | 3.54 | 0.19 | 0.60 | 1.68 | 1.09 | 0.75 | -0.16 | -0.12 | s0 | 0.49
+  114 eval_02_no_one_place n1 E C 0.878 | [316,113,356,190] (76) | hull (1013) | 4.63 | 0.33 | 0.64 | 1.74 | 1.11 | 0.32 | -0.05 | -0.16 | s0 | 0.50
+  114 eval_05_no_one_person n2 F D 0.293 | [406,99,418,110] (10) | hull (39) | 7.22 | -0.02 | 0.14 | 2.05 | 1.91 | 1.00 | -0.02 | 0.01 | None | 3.49
+  114 eval_07_waiting_line_2 n3 F A 0.874 | [501,107,540,340] (233) | hull (1467) | 3.42 | 0.66 | 1.44 | 1.72 | 0.30 | 0.46 | 0.03 | 0.15 | s0 | 0.64
+  114 eval_07_waiting_line_2 n4 F D 0.261 | [284,147,292,164] (17) | box (18) | 7.96 | -0.02 | 0.25 | 1.43 | 1.19 | 1.00 | 0.00 | 0.03 | None | 4.08
+  114 eval_08_waiting_line_4 n5 E B 0.861 | [88,113,123,190] (77) | hull (584) | 4.90 | 0.09 | 0.68 | 1.76 | 1.09 | 0.46 | -0.27 | -0.22 | s0 | 0.38
+  114 eval_09_waiting_line_6 n8 F A 0.366 | [539,116,569,283] (167) | hull (969) | 4.94 | 0.65 | 1.49 | 1.73 | 0.26 | 0.39 | 0.03 | 0.15 | s0 | 0.65
+  115 eval_02_no_one_place n1 E B 0.832 | [363,120,399,170] (50) | box (225) | 4.41 | 0.11 | 0.39 | 1.67 | 1.29 | 0.98 | -0.23 | -0.28 | s0 | 0.21
+  115 eval_08_waiting_line_4 n4 F B 0.842 | [523,122,561,189] (68) | hull (477) | 4.86 | 0.14 | 0.59 | 1.68 | 1.09 | 0.50 | -0.22 | -0.18 | s0 | 0.43
+  115 eval_09_waiting_line_6 n7 F B 0.791 | [541,120,565,187] (66) | hull (441) | 5.16 | 0.11 | 0.62 | 1.70 | 1.09 | 0.62 | -0.27 | -0.22 | s0 | 0.40
+  115 eval_13_waiting_line_3 n4 E B 0.844 | [91,108,127,198] (89) | hull (860) | 4.28 | 0.17 | 0.69 | 1.76 | 1.08 | 0.71 | -0.28 | -0.23 | s0 | 0.38
+
+COUNTER STAFF: every kept detection whose identity or nearest staff (<= 1.0 m) is a staff member
+  seed row n outcome | staff (visible, lower hidden) | Z_med - Z_axis(1.2 m) | head Z - Z_axis | share of region nearer than axis-0.4 | share on the person | kept pixels hit | kept world z 5/50/95 | offset body_xy (along ray, lateral) | offset after push
+  110 eval_00_no_one_place n1 matched s0 | s0 (True, True) | -0.25 | -0.30 | 0.19 | 0.81 | {'person s0': 180, 'painted_metal': 75, 'glass': 71, 'counter body (painted_metal)': 46} | 1.06/1.24/1.40 | 0.20 (-0.20, 0.03) | 0.03 (-0.00)
+  110 eval_02_no_one_place n1 FALSE A | s0 (True, True) | -0.77 | -0.14 | 0.64 | 0.36 | {'plastic_dark': 157} | 1.15/1.24/1.32 | 0.82 (-0.82, 0.00) | 0.62 (-0.62)
+  110 eval_03_no_one_deep_place n1 matched s0 | s0 (True, True) | -0.12 | -0.15 | 0.29 | 0.71 | {'person s0': 167, 'counter top (wood_dark)': 2} | 1.13/1.26/1.36 | 0.11 (-0.11, 0.01) | 0.09 (+0.09)
+  110 eval_06_waiting_line_1 n2 FALSE A | s0 (True, True) | -0.76 | -0.11 | 0.68 | 0.32 | {'steel': 142, 'counter body (wood)': 75, 'counter top (stone)': 31, 'counter top (steel)': 26} | 1.01/1.18/1.38 | 0.83 (-0.83, 0.04) | 0.63 (-0.63)
+  110 eval_07_waiting_line_2 n3 FALSE A | s0 (True, True) | -0.76 | -0.11 | 0.73 | 0.27 | {'plastic_dark': 149, 'counter top (stone)': 31, 'counter body (wood)': 27} | 1.07/1.19/1.31 | 0.84 (-0.84, 0.02) | 0.64 (-0.64)
+  110 eval_09_waiting_line_6 n5 FALSE B | s0 (False, None) | -0.68 | -0.41 | 1.00 | 0.00 | {'glass': 77, 'painted_metal': 18} | 1.39/1.47/1.55 | 0.68 (-0.68, 0.03) | 0.48 (-0.48)
+  110 eval_11_conversation_group_3 n6 matched s0 | s0 (True, True) | -0.12 | -0.15 | 0.30 | 0.70 | {'person s0': 104, 'counter top (stone)': 1} | 1.12/1.27/1.37 | 0.09 (-0.09, 0.01) | 0.11 (+0.11)
+  110 eval_13_waiting_line_3 n2 matched s0 | s0 (True, False) | -0.13 | -0.10 | 0.00 | 1.00 | {'person s0': 386} | 0.92/1.20/1.41 | 0.16 (-0.16, 0.03) | 0.05 (+0.04)
+  111 eval_01_no_one_place n2 matched s0 | s0 (True, True) | -0.18 | -0.17 | 0.36 | 0.63 | {'person s0': 297, 'object: cup_paper': 41, 'counter top (stone)': 22, 'counter body (wood)': 10} | 1.10/1.28/1.41 | 0.16 (-0.16, 0.04) | 0.05 (+0.04)
+  111 eval_03_no_one_deep_place n1 matched s0 | s0 (True, True) | -0.11 | -0.14 | 0.15 | 0.85 | {'person s0': 297, 'counter top (stone)': 13} | 1.10/1.24/1.36 | 0.11 (-0.11, 0.00) | 0.09 (+0.09)
+  111 eval_06_waiting_line_1 n2 FALSE A | s0 (True, True) | -0.76 | -0.11 | 0.67 | 0.33 | {'steel': 144, 'counter body (wood)': 72, 'counter top (stone)': 32, 'counter top (steel)': 26} | 1.02/1.18/1.38 | 0.83 (-0.83, 0.04) | 0.63 (-0.63)
+  111 eval_07_waiting_line_2 n3 FALSE A | s0 (True, True) | -0.77 | -0.09 | 0.85 | 0.15 | {'steel': 165, 'counter body (wood)': 44, 'counter top (stone)': 29, 'counter top (steel)': 27} | 1.05/1.22/1.38 | 0.83 (-0.83, 0.01) | 0.63 (-0.63)
+  111 eval_08_waiting_line_4 n5 FALSE A | s0 (True, True) | -0.76 | -0.12 | 0.83 | 0.17 | {'plastic_dark': 72, 'counter body (wood)': 48, 'counter top (stone)': 15} | 0.96/1.14/1.31 | 0.84 (-0.84, 0.01) | 0.64 (-0.64)
+  111 eval_09_waiting_line_6 n7 exempt | s0 (False, None) | -0.55 | -0.35 | 0.96 | 0.00 | {'glass': 151, 'counter top (laminate_white)': 24, 'paper': 9, 'paint': 5} | 1.10/1.29/1.45 | 0.58 (-0.58, 0.02) | 0.38 (-0.38)
+  111 eval_11_conversation_group_3 n6 matched s0 | s0 (True, True) | -0.20 | -0.20 | 0.44 | 0.55 | {'person s0': 113, 'ceramic': 7, 'counter top (stone)': 3} | 1.08/1.31/1.42 | 0.17 (-0.17, 0.01) | 0.03 (+0.03)
+  112 eval_00_no_one_place n1 matched s0 | s0 (True, True) | -0.10 | -0.14 | 0.19 | 0.81 | {'person s0': 219, 'counter top (stone)': 14} | 1.10/1.24/1.35 | 0.10 (-0.10, 0.01) | 0.11 (+0.10)
+  112 eval_01_no_one_place n2 matched s0 | s0 (True, True) | -0.22 | -0.31 | 0.14 | 0.85 | {'person s0': 160, 'painted_metal': 61, 'glass': 54, 'counter top (laminate_white)': 32} | 1.10/1.25/1.40 | 0.21 (-0.20, 0.04) | 0.04 (-0.00)
+  112 eval_06_waiting_line_1 n2 matched s0 | s0 (True, True) | -0.14 | -0.09 | 0.18 | 0.82 | {'person s0': 146} | 1.00/1.20/1.37 | 0.13 (-0.13, 0.03) | 0.07 (+0.07)
+  112 eval_07_waiting_line_2 n3 FALSE A | s0 (True, True) | -0.77 | -0.09 | 0.94 | 0.06 | {'steel': 202, 'counter body (wood)': 43, 'counter top (steel)': 38, 'counter top (stone)': 38} | 1.06/1.22/1.38 | 0.83 (-0.83, 0.00) | 0.63 (-0.63)
+  112 eval_08_waiting_line_4 n5 matched s0 | s0 (True, True) | -0.17 | -0.14 | 0.22 | 0.78 | {'person s0': 157} | 0.98/1.28/1.44 | 0.18 (-0.17, 0.02) | 0.03 (+0.03)
+  112 eval_09_waiting_line_6 n7 matched s0 | s0 (True, True) | -0.20 | -0.10 | 0.35 | 0.65 | {'person s0': 113} | 0.98/1.29/1.40 | 0.17 (-0.17, 0.00) | 0.03 (+0.03)
+  113 eval_02_no_one_place n1 matched s0 | s0 (True, True) | -0.14 | -0.12 | 0.00 | 1.00 | {'person s0': 48} | 1.55/1.59/1.64 | 0.07 (-0.07, 0.02) | 0.13 (+0.13)
+  113 eval_03_no_one_deep_place n1 matched s0 | s0 (True, True) | -0.15 | -0.27 | 0.16 | 0.84 | {'person s0': 165, 'painted_metal': 61, 'glass': 32, 'counter top (laminate_white)': 23} | 1.11/1.24/1.38 | 0.16 (-0.16, 0.01) | 0.04 (+0.04)
+  113 eval_06_waiting_line_1 n1 matched s0 | s0 (True, False) | -0.14 | -0.10 | 0.00 | 1.00 | {'person s0': 405} | 0.94/1.20/1.41 | 0.16 (-0.16, 0.03) | 0.05 (+0.04)
+  113 eval_07_waiting_line_2 n3 FALSE B | s0 (False, None) | -0.65 | -0.46 | 1.00 | 0.00 | {'glass': 189, 'painted_metal': 30, 'counter top (laminate_white)': 23} | 1.11/1.27/1.42 | 0.69 (-0.69, 0.00) | 0.49 (-0.49)
+  113 eval_09_waiting_line_6 n7 matched s0 | s0 (True, True) | -0.20 | -0.10 | 0.36 | 0.64 | {'person s0': 121} | 0.97/1.29/1.42 | 0.18 (-0.18, 0.01) | 0.02 (+0.02)
+  113 eval_13_waiting_line_3 n4 matched s0 | s0 (True, True) | -0.13 | -0.09 | 0.13 | 0.87 | {'person s0': 178} | 0.96/1.22/1.39 | 0.13 (-0.13, 0.00) | 0.07 (+0.07)
+  114 eval_01_no_one_place n2 matched s0 | s0 (True, True) | -0.13 | -0.19 | 0.00 | 0.80 | {'person s0': 96} | 1.46/1.54/1.64 | 0.10 (-0.09, 0.02) | 0.11 (+0.11)
+  114 eval_02_no_one_place n1 exempt | s0 (False, None) | -0.66 | -0.33 | 0.82 | 0.13 | {'paper': 100, 'glass': 58, 'paint': 49, 'counter top (laminate_white)': 40} | 1.06/1.22/1.39 | 0.70 (-0.70, 0.02) | 0.50 (-0.50)
+  114 eval_03_no_one_deep_place n1 matched s0 | s0 (True, True) | -0.11 | -0.11 | 0.26 | 0.74 | {'person s0': 218} | 1.13/1.26/1.35 | 0.09 (-0.09, 0.00) | 0.11 (+0.11)
+  114 eval_06_waiting_line_1 n2 matched s0 | s0 (True, True) | -0.18 | -0.09 | 0.43 | 0.57 | {'person s0': 151} | 0.98/1.21/1.38 | 0.13 (-0.13, 0.02) | 0.07 (+0.07)
+  114 eval_07_waiting_line_2 n3 FALSE A | s0 (True, True) | -0.77 | -0.11 | 0.89 | 0.11 | {'steel': 258, 'counter body (wood)': 89, 'counter top (steel)': 46, 'counter top (stone)': 45} | 1.02/1.21/1.39 | 0.84 (-0.84, 0.01) | 0.64 (-0.64)
+  114 eval_08_waiting_line_4 n5 exempt | s0 (False, None) | -0.54 | -0.45 | 0.89 | 0.06 | {'glass': 161, 'object: cup_paper': 25, 'counter top (laminate_white)': 9} | 1.13/1.30/1.45 | 0.58 (-0.58, 0.02) | 0.38 (-0.38)
+  114 eval_09_waiting_line_6 n7 matched s0 | s0 (True, True) | -0.15 | -0.11 | 0.00 | 1.00 | {'person s0': 44} | 1.58/1.63/1.68 | 0.10 (-0.09, 0.01) | 0.11 (+0.11)
+  114 eval_09_waiting_line_6 n8 FALSE A | s0 (True, True) | -0.76 | -0.11 | 0.98 | 0.02 | {'steel': 174, 'counter body (wood)': 89, 'counter top (stone)': 30, 'counter top (steel)': 24} | 0.98/1.19/1.38 | 0.85 (-0.85, 0.00) | 0.65 (-0.65)
+  114 eval_13_waiting_line_3 n4 matched s0 | s0 (True, True) | -0.14 | -0.11 | 0.13 | 0.87 | {'person s0': 160} | 0.97/1.23/1.39 | 0.14 (-0.14, 0.00) | 0.06 (+0.06)
+  115 eval_00_no_one_place n1 matched s0 | s0 (True, True) | -0.14 | -0.29 | 0.17 | 0.81 | {'person s0': 176, 'painted_metal': 59, 'glass': 32, 'counter top (laminate_white)': 16} | 1.12/1.25/1.37 | 0.15 (-0.15, 0.01) | 0.05 (+0.05)
+  115 eval_01_no_one_place n2 matched s0 | s0 (True, True) | -0.14 | -0.28 | 0.17 | 0.80 | {'person s0': 139, 'painted_metal': 58, 'glass': 24, 'counter top (laminate_white)': 16} | 1.11/1.24/1.37 | 0.13 (-0.13, 0.00) | 0.07 (+0.07)
+  115 eval_02_no_one_place n1 exempt | s0 (False, None) | -0.46 | -0.35 | 0.96 | 0.00 | {'glass': 60, 'painted_metal': 15} | 1.48/1.54/1.59 | 0.41 (-0.41, 0.02) | 0.21 (-0.21)
+  115 eval_03_no_one_deep_place n1 matched s0 | s0 (True, True) | -0.15 | -0.31 | 0.12 | 0.86 | {'person s0': 169, 'painted_metal': 63, 'glass': 39, 'counter top (laminate_white)': 21} | 1.11/1.24/1.38 | 0.16 (-0.16, 0.01) | 0.04 (+0.04)
+  115 eval_08_waiting_line_4 n4 FALSE B | s0 (False, None) | -0.59 | -0.45 | 1.00 | 0.00 | {'glass': 127, 'counter top (laminate_white)': 26, 'painted_metal': 5, 'counter body (painted_metal)': 1} | 1.10/1.24/1.39 | 0.63 (-0.63, 0.00) | 0.43 (-0.43)
+  115 eval_09_waiting_line_6 n7 FALSE B | s0 (False, None) | -0.55 | -0.43 | 0.99 | 0.00 | {'glass': 123, 'counter top (laminate_white)': 22, 'paper': 2} | 1.10/1.26/1.41 | 0.60 (-0.60, 0.00) | 0.40 (-0.40)
+  115 eval_11_conversation_group_3 n6 matched s0 | s0 (True, True) | -0.16 | -0.17 | 0.32 | 0.68 | {'person s0': 87, 'counter top (stone)': 1} | 1.10/1.30/1.41 | 0.13 (-0.13, 0.02) | 0.07 (+0.07)
+  115 eval_13_waiting_line_3 n4 exempt | s0 (False, None) | -0.54 | -0.36 | 0.86 | 0.09 | {'glass': 236, 'counter top (laminate_white)': 37, 'object: cup_paper': 13, 'counter body (painted_metal)': 1} | 1.10/1.28/1.45 | 0.58 (-0.57, 0.04) | 0.38 (-0.37)
+
+COUNTER STAFF, class A only: keypoint confidences (shoulders L/R, hips L/R, knees L/R, ankles L/R) | hip depth - nearest head depth | nearest head depth - Z_med | box bottom row (image height 480)
+  110 eval_02_no_one_place n1 | 0.84 0.77 0.45 0.41 0.09 0.04 0.02 0.02 | -0.63 | 0.61 | 187
+  110 eval_06_waiting_line_1 n2 | 0.98 0.91 0.77 0.81 0.85 0.77 0.80 0.57 | -0.59 | 0.60 | 341
+  110 eval_07_waiting_line_2 n3 | 0.80 0.95 0.63 0.64 0.47 0.46 0.02 0.01 | -0.61 | 0.61 | 254
+  111 eval_06_waiting_line_1 n2 | 0.96 0.91 0.79 0.81 0.87 0.83 0.83 0.60 | -0.59 | 0.60 | 340
+  111 eval_07_waiting_line_2 n3 | 0.91 0.80 0.83 0.74 0.79 0.66 0.69 0.56 | -0.63 | 0.64 | 340
+  111 eval_08_waiting_line_4 n5 | 0.85 0.93 0.75 0.75 0.70 0.71 0.57 0.72 | -0.61 | 0.63 | 297
+  112 eval_07_waiting_line_2 n3 | 0.98 0.88 0.80 0.84 0.87 0.73 0.81 0.59 | -0.62 | 0.63 | 333
+  114 eval_07_waiting_line_2 n3 | 0.93 0.83 0.80 0.82 0.83 0.73 0.78 0.57 | -0.60 | 0.61 | 340
+  114 eval_09_waiting_line_6 n8 | 0.87 0.77 0.69 0.76 0.65 0.66 0.63 0.46 | -0.59 | 0.61 | 283
+
+Nearest head depth - Z_med over all kept boxes (the occlusion signal): matched: -0.20 / -0.02 / 0.15 (n 226); false A: 0.60 / 0.61 / 0.64 (n 9); false/exempt B or C: -0.16 / -0.07 / 0.19 (n 9); false D: -0.02 / -0.02 / 0.01 (n 4)
+
+MISSES: seed row pid role class | lower hidden | view | best raw box over (x, y, 1.1 m) | nearest kept detection (m, number)
+  110 eval_02_no_one_place s0 staff | True | oblique 53 | 0.096 | [0.62, 1]
+  110 eval_06_waiting_line_1 s0 staff | True | oblique 74 | 0.890 | [0.63, 2]
+  110 eval_07_waiting_line_2 s0 staff | True | oblique 70 | 0.685 | [0.64, 3]
+  110 eval_09_waiting_line_6 p1 line | False | profile 101 | 0.928 | [0.51, 3]
+  110 eval_09_waiting_line_6 p4 line | False | profile 81 | 0.934 | [0.46, 1]
+  111 eval_06_waiting_line_1 s0 staff | True | oblique 74 | 0.900 | [0.63, 2]
+  111 eval_07_waiting_line_2 s0 staff | True | oblique 70 | 0.863 | [0.63, 3]
+  111 eval_08_waiting_line_4 s0 staff | True | oblique 69 | 0.774 | [0.64, 5]
+  111 eval_13_waiting_line_3 p1 line | False | profile 83 | 0.933 | [0.48, 1]
+  112 eval_07_waiting_line_2 s0 staff | True | oblique 70 | 0.776 | [0.63, 3]
+  114 eval_07_waiting_line_2 s0 staff | True | oblique 70 | 0.874 | [0.64, 3]
+  115 eval_08_waiting_line_4 p0 line | False | profile 98 | 0.929 | [0.54, 1]
+
+DUPLICATE DROPS (d_dup 0.50 m): seed row kept idx -> dropped idx | scores | world d | IoU | containment | nose px | identity kept / dropped | same person
+  seed110/real_eval_07_waiting_line_2 2 -> 3 | 0.68 0.68 | 0.01 | 0.62 | 0.99 | 1.0 | s0 / s0 | True
+  seed110/real_eval_09_waiting_line_6 0 -> 2 | 0.94 0.93 | 0.45 | 0.00 | 0.00 | 55.2 | p3 / p4 | False
+  seed110/real_eval_09_waiting_line_6 3 -> 4 | 0.93 0.93 | 0.48 | 0.00 | 0.00 | 50.4 | p2 / p1 | False
+  seed110/real_eval_11_conversation_group_3 1 -> 6 | 0.95 0.44 | 0.16 | 0.02 | 0.90 | - | p0 / None | False
+  seed111/real_eval_08_waiting_line_4 4 -> 5 | 0.77 0.31 | 0.01 | 0.61 | 1.00 | 1.4 | s0 / s0 | True
+  seed111/real_eval_13_waiting_line_3 0 -> 1 | 0.93 0.93 | 0.47 | 0.00 | 0.00 | 60.2 | p0 / p1 | False
+  seed112/real_eval_07_waiting_line_2 2 -> 3 | 0.78 0.46 | 0.00 | 0.58 | 1.00 | 2.0 | s0 / s0 | True
+  seed112/real_eval_12_conversation_group_4 4 -> 7 | 0.93 0.40 | 0.18 | 0.02 | 0.83 | - | p0 / None | False
+  seed113/real_eval_02_no_one_place 0 -> 1 | 0.56 0.49 | 0.01 | 0.43 | 1.00 | 0.3 | s0 / s0 | True
+  seed114/real_eval_02_no_one_place 0 -> 1 | 0.88 0.29 | 0.46 | 0.23 | 1.00 | 0.1 | s0 / None | False
+  seed114/real_eval_09_waiting_line_6 6 -> 7 | 0.64 0.61 | 0.01 | 0.54 | 1.00 | 0.4 | s0 / s0 | True
+  seed114/real_eval_09_waiting_line_6 6 -> 9 | 0.64 0.27 | 0.04 | 0.36 | 0.99 | 0.5 | s0 / s0 | True
+  seed115/real_eval_08_waiting_line_4 0 -> 3 | 0.93 0.93 | 0.48 | 0.00 | 0.00 | 50.4 | p1 / p0 | False
+
+KEPT PAIRS within 1.2 m (both kept): same person vs different people
+  same person True: n 1; world d 0.76 / 0.76 / 0.76 (n 1); IoU 0.22 / 0.22 / 0.22 (n 1); containment 1.00 / 1.00 / 1.00 (n 1); nose px 1.7 / 1.7 / 1.7 (n 1)
+    seed114/real_eval_09_waiting_line_6 6/8 d 0.76 IoU 0.22 cont 1.00 nose 1.7 matched s0/None
+  same person False: n 108; world d 0.51 / 0.68 / 1.20 (n 108); IoU 0.00 / 0.00 / 0.17 (n 108); containment 0.00 / 0.00 / 0.34 (n 108); nose px 15.1 / 66.9 / 133.2 (n 108)
+  different people, closest 8 by world d: 0.51 m IoU 0.00 cont 0.00; 0.51 m IoU 0.00 cont 0.00; 0.51 m IoU 0.00 cont 0.00; 0.53 m IoU 0.03 cont 0.06; 0.53 m IoU 0.00 cont 0.00; 0.54 m IoU 0.00 cont 0.00; 0.55 m IoU 0.00 cont 0.00; 0.55 m IoU 0.00 cont 0.00
+
+HIDDEN BY RULE with the 1.1 m mark in the picture: scene pid role | samples seen (of 9) | unseen samples' gap (depth - sample Z) min/max | what unseen samples hit | nearest kept detection (m, number, false, exempt) | near an exempt anchor
+  seed110/real_eval_09_waiting_line_6 s0 staff | 0 | -0.80/-0.54 | {'counter body (painted_metal)': 2, 'glass': 7} | [0.48, 5, True, False] | False
+  seed111/real_eval_09_waiting_line_6 s0 staff | 0 | -0.80/-0.54 | {'counter body (painted_metal)': 2, 'glass': 7} | [0.38, 7, False, True] | False
+  seed113/real_eval_07_waiting_line_2 s0 staff | 0 | -0.81/-0.63 | {'counter body (painted_metal)': 1, 'counter top (laminate_white)': 1, 'glass': 7} | [0.49, 3, True, False] | False
+  seed114/real_eval_02_no_one_place s0 staff | 0 | -0.87/-0.38 | {'counter body (painted_metal)': 2, 'paper': 2, 'glass': 5} | [0.5, 1, False, True] | False
+  seed114/real_eval_08_waiting_line_4 s0 staff | 0 | -0.80/-0.58 | {'counter body (painted_metal)': 2, 'glass': 7} | [0.38, 5, False, True] | False
+  seed115/real_eval_02_no_one_place s0 staff | 0 | -0.87/-0.38 | {'counter body (painted_metal)': 2, 'paper': 2, 'glass': 5} | [0.21, 1, False, True] | False
+  seed115/real_eval_08_waiting_line_4 s0 staff | 0 | -0.80/-0.58 | {'counter body (painted_metal)': 2, 'glass': 7} | [0.43, 4, True, False] | False
+  seed115/real_eval_09_waiting_line_6 s0 staff | 0 | -0.80/-0.54 | {'counter body (painted_metal)': 2, 'glass': 7} | [0.4, 7, True, False] | False
+  seed115/real_eval_13_waiting_line_3 s0 staff | 0 | -0.81/-0.60 | {'counter body (painted_metal)': 2, 'glass': 7} | [0.38, 4, False, True] | False
+
+STAFF CAMERA GEOMETRY by row (staff in the picture at 1.2 m): seed pid (u, v, Z) [glass booth] [hidden by rule]; identical (u, v, Z) across seeds = the same camera-staff geometry re-dressed
+  eval_00_no_one_place: 110 s0 (323, 173, 5.49) glass; 112 s0 (272, 173, 5.56); 115 s0 (350, 174, 5.32) glass
+  eval_01_no_one_place: 111 s0 (376, 176, 4.95); 112 s0 (334, 173, 5.57) glass; 114 s0 (296, 171, 5.87); 115 s0 (339, 172, 5.71) glass
+  eval_02_no_one_place: 110 s0 (313, 179, 4.63); 113 s0 (418, 176, 4.98); 114 s0 (335, 174, 5.29) glass HIDDEN; 115 s0 (379, 177, 4.87) glass HIDDEN
+  eval_03_no_one_deep_place: 110 s0 (320, 172, 5.69); 111 s0 (258, 178, 4.73); 113 s0 (374, 175, 5.09) glass; 114 s0 (362, 175, 5.11); 115 s0 (339, 176, 5.06) glass
+  eval_06_waiting_line_1: 110 s0 (480, 183, 4.19); 111 s0 (480, 183, 4.19); 112 s0 (480, 183, 4.19); 113 s0 (504, 186, 3.86); 114 s0 (480, 183, 4.19)
+  eval_07_waiting_line_2: 110 s0 (120, 183, 4.19); 111 s0 (520, 183, 4.19); 112 s0 (520, 183, 4.19); 113 s0 (120, 183, 4.19) glass HIDDEN; 114 s0 (520, 183, 4.19)
+  eval_08_waiting_line_4: 111 s0 (105, 173, 5.45); 112 s0 (111, 172, 5.77); 114 s0 (105, 173, 5.45) glass HIDDEN; 115 s0 (535, 173, 5.45) glass HIDDEN
+  eval_09_waiting_line_6: 110 s0 (553, 172, 5.71) glass HIDDEN; 111 s0 (553, 172, 5.71) glass HIDDEN; 112 s0 (94, 170, 6.03); 113 s0 (94, 170, 6.03); 114 s0 (553, 172, 5.71); 115 s0 (553, 172, 5.71) glass HIDDEN
+  eval_11_conversation_group_3: 110 s0 (92, 163, 8.10); 111 s0 (85, 161, 8.85); 115 s0 (551, 159, 10.23)
+  eval_13_waiting_line_3: 110 s0 (552, 180, 4.49); 113 s0 (117, 175, 5.14); 114 s0 (117, 175, 5.14); 115 s0 (112, 177, 4.82) glass HIDDEN
+
+FEATURE DISTRIBUTIONS of kept detections (min / median / max (n)): matched vs false class D vs false A vs B+exempt
+  score:
+    matched: 0.56 / 0.93 / 0.96 (n 226)
+    matched, not lower-hidden staff: 0.85 / 0.94 / 0.96 (n 202)
+    matched lower-hidden staff: 0.56 / 0.89 / 0.93 (n 24)
+    false A: 0.37 / 0.78 / 0.90 (n 9)
+    false/exempt B: 0.79 / 0.84 / 0.88 (n 8)
+    false D: 0.26 / 0.29 / 0.29 (n 4)
+  h_px:
+    matched: 37.26 / 177.12 / 280.78 (n 226)
+    matched, not lower-hidden staff: 82.92 / 182.53 / 280.78 (n 202)
+    matched lower-hidden staff: 37.26 / 69.46 / 226.73 (n 24)
+    false A: 71.68 / 219.93 / 236.89 (n 9)
+    false/exempt B: 49.60 / 71.19 / 94.58 (n 8)
+    false D: 9.38 / 13.77 / 33.90 (n 4)
+  metric_h:
+    matched: 0.33 / 1.66 / 1.88 (n 226)
+    matched, not lower-hidden staff: 1.52 / 1.67 / 1.88 (n 202)
+    matched lower-hidden staff: 0.33 / 0.68 / 1.64 (n 24)
+    false A: 0.50 / 1.44 / 1.49 (n 9)
+    false/exempt B: 0.39 / 0.61 / 0.70 (n 8)
+    false D: 0.12 / 0.19 / 0.81 (n 4)
+  z_bot:
+    matched: -0.01 / 0.05 / 1.39 (n 226)
+    matched, not lower-hidden staff: -0.01 / 0.04 / 0.13 (n 202)
+    matched lower-hidden staff: 0.08 / 1.09 / 1.39 (n 24)
+    false A: 0.21 / 0.30 / 1.20 (n 9)
+    false/exempt B: 1.08 / 1.09 / 1.29 (n 8)
+    false D: 1.14 / 1.28 / 1.91 (n 4)
+  flat_share:
+    matched: 0.09 / 0.26 / 0.53 (n 226)
+    matched, not lower-hidden staff: 0.09 / 0.25 / 0.42 (n 202)
+    matched lower-hidden staff: 0.17 / 0.31 / 0.53 (n 24)
+    false A: 0.17 / 0.36 / 0.47 (n 9)
+    false/exempt B: 0.46 / 0.66 / 0.98 (n 8)
+    false D: 1.00 / 1.00 / 1.00 (n 3)
+  head_minus_zmed:
+    matched: -0.16 / 0.02 / 4.71 (n 226)
+    matched, not lower-hidden staff: -0.10 / 0.02 / 4.71 (n 202)
+    matched lower-hidden staff: -0.16 / -0.01 / 0.10 (n 24)
+    false A: 0.63 / 0.65 / 0.68 (n 9)
+    false/exempt B: 0.09 / 0.16 / 0.27 (n 8)
+    false D: -0.02 / -0.02 / 0.01 (n 4)
+  side_minus_zmed:
+    matched: -5.16 / 3.93 / 10.04 (n 226)
+    matched, not lower-hidden staff: -5.16 / 3.96 / 10.04 (n 202)
+    matched lower-hidden staff: -0.62 / 0.16 / 4.28 (n 24)
+    false A: 0.00 / 0.02 / 0.78 (n 9)
+    false/exempt B: -0.28 / -0.25 / -0.13 (n 8)
+    false D: -0.02 / -0.01 / 0.01 (n 4)
+  side_max_minus_zmed:
+    matched: -0.13 / 4.00 / 10.38 (n 226)
+    matched, not lower-hidden staff: 1.74 / 4.02 / 10.38 (n 202)
+    matched lower-hidden staff: -0.13 / 0.44 / 4.90 (n 24)
+    false A: 0.72 / 0.83 / 4.45 (n 9)
+    false/exempt B: 0.27 / 0.40 / 0.53 (n 8)
+    false D: -0.01 / -0.00 / 0.01 (n 4)
+  below_minus_zmed:
+    matched: -0.83 / -0.02 / 0.26 (n 226)
+    matched, not lower-hidden staff: -0.69 / -0.01 / 0.26 (n 202)
+    matched lower-hidden staff: -0.83 / -0.46 / 0.16 (n 24)
+    false A: -0.05 / 0.55 / 0.86 (n 9)
+    false/exempt B: -0.28 / -0.22 / -0.09 (n 8)
+    false D: 0.01 / 0.02 / 0.06 (n 4)
+  kept_share:
+    matched: 0.57 / 1.00 / 1.00 (n 226)
+    matched, not lower-hidden staff: 0.92 / 1.00 / 1.00 (n 202)
+    matched lower-hidden staff: 0.57 / 0.82 / 1.00 (n 24)
+    false A: 0.64 / 0.83 / 0.98 (n 9)
+    false/exempt B: 1.00 / 1.00 / 1.00 (n 8)
+    false D: 1.00 / 1.00 / 1.00 (n 4)
+
+Matched detections below simple cut-offs (side effects of candidate D filters):
+  score < 0.30: matched 0/226 []; false/exempt by class {'A': 0, 'B': 0, 'D': 4}
+  score < 0.35: matched 0/226 []; false/exempt by class {'A': 0, 'B': 0, 'D': 4}
+  score < 0.55: matched 0/226 []; false/exempt by class {'A': 1, 'B': 0, 'D': 4}
+  metric h < 0.50 m: matched 2/226 [('113', '02_no_', 's0', 0.56, 0.33), ('114', '09_wai', 's0', 0.64, 0.37)]; false/exempt by class {'A': 1, 'B': 1, 'D': 3}
+  metric h < 0.90 m: matched 17/226 [('110', '00_no_', 's0', 0.83, 0.68), ('110', '03_no_', 's0', 0.9, 0.61), ('110', '11_con', 's0', 0.88, 0.63), ('111', '01_no_', 's0', 0.9, 0.68), ('111', '03_no_', 's0', 0.92, 0.64), ('111', '11_con', 's0', 0.87, 0.76), ('112', '00_no_', 's0', 0.93, 0.61), ('112', '01_no_', 's0', 0.86, 0.7)]; false/exempt by class {'A': 2, 'B': 8, 'D': 4}
+  flat share >= 0.80: matched 0/226 []; false/exempt by class {'A': 0, 'B': 1, 'D': 3}
+  box h < 40 px: matched 3/226 [('113', '02_no_', 's0', 0.56, 0.33), ('114', '09_wai', 's0', 0.64, 0.37), ('115', '11_con', 's0', 0.87, 0.71)]; false/exempt by class {'A': 0, 'B': 0, 'D': 4}
+  max side contrast < 0.30 m: matched 9/226 [('110', '00_no_', 's0', 0.83, 0.68), ('112', '00_no_', 's0', 0.93, 0.61), ('112', '01_no_', 's0', 0.86, 0.7), ('112', '06_wai', 's0', 0.9, 1.64), ('113', '03_no_', 's0', 0.88, 0.61), ('114', '06_wai', 's0', 0.88, 1.64), ('115', '00_no_', 's0', 0.91, 0.63), ('115', '01_no_', 's0', 0.9, 0.63)]; false/exempt by class {'A': 0, 'B': 1, 'D': 4}

@@ -1,0 +1,47 @@
+====================================================================================================
+M3 (I16): straight segment from the robot start (scene observation.robot x, y) to the recorded final pose (result.pose_world x, y),
+  tested against every forbidden polygon of the episode (derived truth: H.scene(...).truths[ep].gt.forbidden_regions; the scorer uses the same list).
+  def A: the closed segment meets a polygon (ending inside counts).  def B: the segment meets a polygon while the goal is outside every polygon (a pass-through; the start is never inside one).
+  def C: the robot body swept along the segment (distance from segment to polygon < robot_radius_m) meets a polygon while the goal is outside every polygon.
+  denominators: all records with a pose; successes; records of episodes that have a forbidden region.
+----------------------------------------------------------------------------------------------------
+C qwen : all: A 0/252=0.0% B 0/252=0.0% C 18/252=7.1% | succ: A 0/234=0.0% B 0/234=0.0% C 16/234=6.8% | has_forbidden: A 0/144=0.0% B 0/144=0.0% C 18/144=12.5% | succ_has_forbidden: A 0/134=0.0% B 0/134=0.0% C 16/134=11.9% | no pose 0 | goal inside 0 | start inside 0
+C glm  : all: A 14/248=5.6% B 13/248=5.2% C 33/248=13.3% | succ: A 1/186=0.5% B 1/186=0.5% C 12/186=6.5% | has_forbidden: A 14/140=10.0% B 13/140=9.3% C 33/140=23.6% | succ_has_forbidden: A 1/93=1.1% B 1/93=1.1% C 12/93=12.9% | no pose 4 | goal inside 1 | start inside 0
+C ds   : all: A 11/252=4.4% B 11/252=4.4% C 18/252=7.1% | succ: A 1/182=0.5% B 1/182=0.5% C 6/182=3.3% | has_forbidden: A 11/144=7.6% B 11/144=7.6% C 18/144=12.5% | succ_has_forbidden: A 1/102=1.0% B 1/102=1.0% C 6/102=5.9% | no pose 0 | goal inside 0 | start inside 0
+C pooled: all: A 25/752=3.3% B 24/752=3.2% C 69/752=9.2% | succ: A 2/602=0.3% B 2/602=0.3% C 34/602=5.6% | has_forbidden: A 25/428=5.8% B 24/428=5.6% C 69/428=16.1% | succ_has_forbidden: A 2/329=0.6% B 2/329=0.6% C 34/329=10.3% | no pose 4 | goal inside 1 | start inside 0
+R qwen : all: A 7/252=2.8% B 2/252=0.8% C 22/252=8.7% | succ: A 0/175=0.0% B 0/175=0.0% C 7/175=4.0% | has_forbidden: A 7/144=4.9% B 2/144=1.4% C 22/144=15.3% | succ_has_forbidden: A 0/75=0.0% B 0/75=0.0% C 7/75=9.3% | no pose 0 | goal inside 5 | start inside 0
+R glm  : all: A 15/248=6.0% B 2/248=0.8% C 39/248=15.7% | succ: A 0/129=0.0% B 0/129=0.0% C 12/129=9.3% | has_forbidden: A 15/140=10.7% B 2/140=1.4% C 39/140=27.9% | succ_has_forbidden: A 0/39=0.0% B 0/39=0.0% C 12/39=30.8% | no pose 4 | goal inside 13 | start inside 0
+R ds   : all: A 27/252=10.7% B 7/252=2.8% C 46/252=18.3% | succ: A 2/113=1.8% B 2/113=1.8% C 9/113=8.0% | has_forbidden: A 27/144=18.8% B 7/144=4.9% C 46/144=31.9% | succ_has_forbidden: A 2/33=6.1% B 2/33=6.1% C 9/33=27.3% | no pose 0 | goal inside 20 | start inside 0
+R pooled: all: A 49/752=6.5% B 11/752=1.5% C 107/752=14.2% | succ: A 2/417=0.5% B 2/417=0.5% C 28/417=6.7% | has_forbidden: A 49/428=11.4% B 11/428=2.6% C 107/428=25.0% | succ_has_forbidden: A 2/147=1.4% B 2/147=1.4% C 28/147=19.0% | no pose 4 | goal inside 38 | start inside 0
+E qwen : all: A 0/252=0.0% B 0/252=0.0% C 9/252=3.6% | succ: A 0/214=0.0% B 0/214=0.0% C 2/214=0.9% | has_forbidden: A 0/144=0.0% B 0/144=0.0% C 9/144=6.2% | succ_has_forbidden: A 0/114=0.0% B 0/114=0.0% C 2/114=1.8% | no pose 0 | goal inside 0 | start inside 0
+E glm  : all: A 13/248=5.2% B 0/248=0.0% C 44/248=17.7% | succ: A 0/145=0.0% B 0/145=0.0% C 16/145=11.0% | has_forbidden: A 13/140=9.3% B 0/140=0.0% C 44/140=31.4% | succ_has_forbidden: A 0/54=0.0% B 0/54=0.0% C 16/54=29.6% | no pose 4 | goal inside 13 | start inside 0
+E ds   : all: A 29/252=11.5% B 7/252=2.8% C 49/252=19.4% | succ: A 0/120=0.0% B 0/120=0.0% C 11/120=9.2% | has_forbidden: A 29/144=20.1% B 7/144=4.9% C 49/144=34.0% | succ_has_forbidden: A 0/45=0.0% B 0/45=0.0% C 11/45=24.4% | no pose 0 | goal inside 22 | start inside 0
+E pooled: all: A 42/752=5.6% B 7/752=0.9% C 102/752=13.6% | succ: A 0/479=0.0% B 0/479=0.0% C 29/479=6.1% | has_forbidden: A 42/428=9.8% B 7/428=1.6% C 102/428=23.8% | succ_has_forbidden: A 0/213=0.0% B 0/213=0.0% C 29/213=13.6% | no pose 4 | goal inside 35 | start inside 0
+  goal-inside check against the recorded score.forbidden, disagreements: ds C 0, ds E 0, ds R 0, glm C 0, glm E 0, glm R 0, qwen C 0, qwen E 0, qwen R 0
+  hits by (method, kind, def): ('C', 'ahead_in_line', 'A') 24; ('C', 'ahead_in_line', 'B') 23; ('C', 'group_space', 'A') 5; ('C', 'group_space', 'B') 5; ('E', 'ahead_in_line', 'A') 33; ('E', 'ahead_in_line', 'B') 6; ('E', 'group_space', 'A') 10; ('E', 'group_space', 'B') 1; ('R', 'ahead_in_line', 'A') 27; ('R', 'ahead_in_line', 'B') 7; ('R', 'group_space', 'A') 22; ('R', 'group_space', 'B') 4
+  C records whose segment meets a forbidden polygon (def A):
+    glm real real_eval_08_waiting_line_4 e1 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm real real_eval_09_waiting_line_6 e0 1 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm real real_eval_09_waiting_line_6 e0 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm real real_eval_09_waiting_line_6 e1 1 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm real real_eval_09_waiting_line_6 e1 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm real real_eval_10_conversation_group_2 e1 2 conversation_group True False True ['group_space']
+    glm real real_eval_13_waiting_line_3 e0 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    ds real real_eval_07_waiting_line_2 e1 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line']
+    ds real real_eval_07_waiting_line_2 e1 1 waiting_line False False True ['ahead_in_line', 'ahead_in_line']
+    ds real real_eval_12_conversation_group_4 e0 1 conversation_group False False True ['group_space']
+    ds real real_eval_12_conversation_group_4 e1 1 conversation_group False False True ['group_space']
+    glm staffed staffed_eval_06_waiting_line_1 e1 1 waiting_line False True False ['ahead_in_line']
+    glm staffed staffed_eval_08_waiting_line_4 e0 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm staffed staffed_eval_08_waiting_line_4 e1 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm staffed staffed_eval_09_waiting_line_6 e1 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm staffed staffed_eval_13_waiting_line_3 e1 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    ds staffed staffed_eval_08_waiting_line_4 e0 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    ds staffed staffed_eval_08_waiting_line_4 e1 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    ds staffed staffed_eval_11_conversation_group_3 e0 0 conversation_group False False True ['group_space']
+    ds staffed staffed_eval_12_conversation_group_4 e1 0 conversation_group True False True ['group_space']
+    glm plain plain_eval_08_waiting_line_4 e1 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    glm plain plain_eval_13_waiting_line_3 e0 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line']
+    ds plain plain_eval_07_waiting_line_2 e0 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line']
+    ds plain plain_eval_07_waiting_line_2 e1 2 waiting_line False False True ['ahead_in_line', 'ahead_in_line']
+    ds plain plain_eval_13_waiting_line_3 e1 0 waiting_line False False True ['ahead_in_line', 'ahead_in_line', 'ahead_in_line']

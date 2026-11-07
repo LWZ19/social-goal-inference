@@ -1,0 +1,267 @@
+
+# sonnet55_low: 240 episodes over 72 layouts
+
+C1's comparison (reported for this model), lag-flagged: 5/15/0 (wins/losses/ties), untied win rate 0.25, sign p 0.041, mean d -0.068, missing 16
+
+- sensitivity (reported, not the claim): C1 with vacated ticks left out of the denominator: 5/15/0 (wins/losses/ties), untied win rate 0.25, sign p 0.041, mean d -0.072, missing 16
+- excursion only (n = 18; predicted tie): 3/6/1 (wins/losses/ties), untied win rate 0.33, sign p 0.508, mean d -0.046, missing 8
+- clean (n = 18; predicted tie): 5/5/0 (wins/losses/ties), untied win rate 0.50, sign p 1.000, mean d +0.044, missing 8
+- ours, lag-flagged (n = 20; predicted CT4 ahead): 5/15/0 (wins/losses/ties), untied win rate 0.25, sign p 0.041, mean d -0.068, missing 0
+- all layouts (n = 72): 13/26/1 (wins/losses/ties), untied win rate 0.33, sign p 0.053, mean d -0.034, missing 32
+
+## Against CT3 (right last, all layouts)
+
+- CT4 vs CT3: 24/16/0 (wins/losses/ties), untied win rate 0.60, sign p 0.268, mean d +0.091, missing 32
+- CT3F vs CT3: 20/12/8 (wins/losses/ties), untied win rate 0.62, sign p 0.215, mean d +0.125, missing 32
+- Gl vs CT3: 1/32/7 (wins/losses/ties), untied win rate 0.03, sign p 0.000, mean d -0.371, missing 32
+- CT2 vs CT3: 2/29/9 (wins/losses/ties), untied win rate 0.06, sign p 0.000, mean d -0.303, missing 32
+
+## By flag cell: means over layouts
+
+| Cell | Arm | n | Right last | Capture (s) | Recall | Empty | Vacated ticks | Cut-ins | Strict share |
+|---|---|---|---|---|---|---|---|---|---|
+| clean | CT3 | 10 | 0.321 | 9.850 | 0.460 | 0.356 | 80 | 15.300 | 0.178 |
+| clean | CT3F | 10 | 0.566 | 2.450 | 0.702 | 0.157 | 78 | 11.800 | 0.278 |
+| clean | CT4 | 10 | 0.610 | 3.100 | 0.922 | 0.020 | 0 | 4.100 | 0.165 |
+| clean | Gl | 10 | 0.042 | 62.000 | 0.287 | 0.048 | 30 | 3.400 | 0.014 |
+| clean | CT2 | 10 | 0.140 | 50.900 | 0.348 | 0.050 | 41 | 4.800 | 0.070 |
+| clean | R1 | 10 | - | - | - | - | - | 0.000 | 0.052 |
+| lag only | CT3 | 10 | 0.447 | 13.100 | 0.790 | 0.000 | 0 | 3.200 | 0.092 |
+| lag only | CT3F | 10 | 0.503 | 0.700 | 0.747 | 0.098 | 15 | 7.400 | 0.113 |
+| lag only | CT4 | 10 | 0.451 | 4.000 | 0.932 | 0.000 | 0 | 0.800 | 0.091 |
+| lag only | Gl | 10 | 0.000 | 63.050 | 0.284 | 0.000 | 0 | 1.400 | 0.000 |
+| lag only | CT2 | 10 | 0.125 | 48.900 | 0.472 | 0.000 | 0 | 1.000 | 0.005 |
+| lag only | R1 | 10 | - | - | - | - | - | 2.100 | 0.040 |
+| excursion only | CT3 | 10 | 0.438 | 12.250 | 0.667 | 0.132 | 51 | 25.800 | 0.169 |
+| excursion only | CT3F | 10 | 0.507 | 4.250 | 0.712 | 0.072 | 54 | 16.400 | 0.199 |
+| excursion only | CT4 | 10 | 0.461 | 12.900 | 0.922 | 0.000 | 0 | 10.300 | 0.068 |
+| excursion only | Gl | 10 | 0.068 | 57.300 | 0.438 | 0.079 | 0 | 3.600 | 0.016 |
+| excursion only | CT2 | 10 | 0.060 | 47.200 | 0.359 | 0.168 | 48 | 20.500 | 0.014 |
+| excursion only | R1 | 10 | - | - | - | - | - | 1.800 | 0.042 |
+| both | CT3 | 10 | 0.469 | 8.350 | 0.782 | 0.092 | 0 | 0.800 | 0.154 |
+| both | CT3F | 10 | 0.602 | 3.100 | 0.904 | 0.028 | 0 | 2.300 | 0.174 |
+| both | CT4 | 10 | 0.518 | 5.350 | 0.934 | 0.000 | 0 | 0.400 | 0.114 |
+| both | Gl | 10 | 0.083 | 56.100 | 0.473 | 0.000 | 0 | 0.500 | 0.013 |
+| both | CT2 | 10 | 0.139 | 48.200 | 0.569 | 0.000 | 0 | 0.600 | 0.030 |
+| both | R1 | 10 | - | - | - | - | - | 0.000 | 0.027 |
+
+## Stated predictions: held or not
+
+- excursion only: a tie (untied win rate in 0.35-0.65): 0.33 -> NOT held
+- clean: a tie (untied win rate in 0.35-0.65): 0.50 -> held
+- ours, lag-flagged: CT4 ahead (w > l): 5/15 -> NOT held
+- CT3F lower capture in every flag cell: held (clean: CT4 3.100, CT3F 2.450; lag only: CT4 4.000, CT3F 0.700; excursion only: CT4 12.900, CT3F 4.250; both: CT4 5.350, CT3F 3.100)
+- CT4 higher recall in every flag cell: held (clean: CT4 0.922, CT3F 0.702; lag only: CT4 0.932, CT3F 0.747; excursion only: CT4 0.922, CT3F 0.712; both: CT4 0.934, CT3F 0.904)
+- CT4 lower empty in every flag cell: held (clean: CT4 0.020, CT3F 0.157; lag only: CT4 0.000, CT3F 0.098; excursion only: CT4 0.000, CT3F 0.072; both: CT4 0.000, CT3F 0.028)
+
+## "ours" layouts: time to a right roster after delivery, and share in line after the first service
+
+- CT3 (n = 40): right roster after a median 0.5 s (36 layouts; never in 4); share in line after the first service: frozen 0.196, strict 0.170
+- CT3F (n = 40): right roster after a median 2.0 s (40 layouts; never in 0); share in line after the first service: frozen 0.276, strict 0.223
+- CT4 (n = 40): right roster after a median 1.5 s (40 layouts; never in 0); share in line after the first service: frozen 0.149, strict 0.121
+- Gl (n = 40): right roster after a median 0.0 s (24 layouts; never in 16); share in line after the first service: frozen 0.015, strict 0.010
+- CT2 (n = 40): right roster after a median 0.0 s (20 layouts; never in 20); share in line after the first service: frozen 0.038, strict 0.029
+
+## Layouts and arms without a right-last value
+
+- cafe_020 CT2: no episode
+- cafe_020 CT3: no episode
+- cafe_020 Gl: no episode
+- cafe_020 CT3F: no episode
+- cafe_020 CT4: no episode
+- cafe_020 R1: no episode
+- cafe_013 CT2: no episode
+- cafe_013 CT3: no episode
+- cafe_013 Gl: no episode
+- cafe_013 CT3F: no episode
+- cafe_013 CT4: no episode
+- cafe_013 R1: no episode
+- cafe_000 CT2: no episode
+- cafe_000 CT3: no episode
+- cafe_000 Gl: no episode
+- cafe_000 CT3F: no episode
+- cafe_000 CT4: no episode
+- cafe_000 R1: no episode
+- cafe_059 CT2: no episode
+- cafe_059 CT3: no episode
+- cafe_059 Gl: no episode
+- cafe_059 CT3F: no episode
+- cafe_059 CT4: no episode
+- cafe_059 R1: no episode
+- cafe_132 CT2: no episode
+- cafe_132 CT3: no episode
+- cafe_132 Gl: no episode
+- cafe_132 CT3F: no episode
+- cafe_132 CT4: no episode
+- cafe_132 R1: no episode
+- cafe_310 CT2: no episode
+- cafe_310 CT3: no episode
+- cafe_310 Gl: no episode
+- cafe_310 CT3F: no episode
+- cafe_310 CT4: no episode
+- cafe_310 R1: no episode
+- sweet_002 CT2: no episode
+- sweet_002 CT3: no episode
+- sweet_002 Gl: no episode
+- sweet_002 CT3F: no episode
+- sweet_002 CT4: no episode
+- sweet_002 R1: no episode
+- sweet_145 CT2: no episode
+- sweet_145 CT3: no episode
+- sweet_145 Gl: no episode
+- sweet_145 CT3F: no episode
+- sweet_145 CT4: no episode
+- sweet_145 R1: no episode
+- sweet_003 CT2: no episode
+- sweet_003 CT3: no episode
+- sweet_003 Gl: no episode
+- sweet_003 CT3F: no episode
+- sweet_003 CT4: no episode
+- sweet_003 R1: no episode
+- sweet_111 CT2: no episode
+- sweet_111 CT3: no episode
+- sweet_111 Gl: no episode
+- sweet_111 CT3F: no episode
+- sweet_111 CT4: no episode
+- sweet_111 R1: no episode
+- sweet_076 CT2: no episode
+- sweet_076 CT3: no episode
+- sweet_076 Gl: no episode
+- sweet_076 CT3F: no episode
+- sweet_076 CT4: no episode
+- sweet_076 R1: no episode
+- sweet_119 CT2: no episode
+- sweet_119 CT3: no episode
+- sweet_119 Gl: no episode
+- sweet_119 CT3F: no episode
+- sweet_119 CT4: no episode
+- sweet_119 R1: no episode
+- cafe_001 CT2: no episode
+- cafe_001 CT3: no episode
+- cafe_001 Gl: no episode
+- cafe_001 CT3F: no episode
+- cafe_001 CT4: no episode
+- cafe_001 R1: no episode
+- cafe_044 CT2: no episode
+- cafe_044 CT3: no episode
+- cafe_044 Gl: no episode
+- cafe_044 CT3F: no episode
+- cafe_044 CT4: no episode
+- cafe_044 R1: no episode
+- cafe_246 CT2: no episode
+- cafe_246 CT3: no episode
+- cafe_246 Gl: no episode
+- cafe_246 CT3F: no episode
+- cafe_246 CT4: no episode
+- cafe_246 R1: no episode
+- cafe_004 CT2: no episode
+- cafe_004 CT3: no episode
+- cafe_004 Gl: no episode
+- cafe_004 CT3F: no episode
+- cafe_004 CT4: no episode
+- cafe_004 R1: no episode
+- sweet_027 CT2: no episode
+- sweet_027 CT3: no episode
+- sweet_027 Gl: no episode
+- sweet_027 CT3F: no episode
+- sweet_027 CT4: no episode
+- sweet_027 R1: no episode
+- sweet_161 CT2: no episode
+- sweet_161 CT3: no episode
+- sweet_161 Gl: no episode
+- sweet_161 CT3F: no episode
+- sweet_161 CT4: no episode
+- sweet_161 R1: no episode
+- sweet_292 CT2: no episode
+- sweet_292 CT3: no episode
+- sweet_292 Gl: no episode
+- sweet_292 CT3F: no episode
+- sweet_292 CT4: no episode
+- sweet_292 R1: no episode
+- sweet_009 CT2: no episode
+- sweet_009 CT3: no episode
+- sweet_009 Gl: no episode
+- sweet_009 CT3F: no episode
+- sweet_009 CT4: no episode
+- sweet_009 R1: no episode
+- cafe_005 CT2: no episode
+- cafe_005 CT3: no episode
+- cafe_005 Gl: no episode
+- cafe_005 CT3F: no episode
+- cafe_005 CT4: no episode
+- cafe_005 R1: no episode
+- cafe_015 CT2: no episode
+- cafe_015 CT3: no episode
+- cafe_015 Gl: no episode
+- cafe_015 CT3F: no episode
+- cafe_015 CT4: no episode
+- cafe_015 R1: no episode
+- cafe_346 CT2: no episode
+- cafe_346 CT3: no episode
+- cafe_346 Gl: no episode
+- cafe_346 CT3F: no episode
+- cafe_346 CT4: no episode
+- cafe_346 R1: no episode
+- cafe_003 CT2: no episode
+- cafe_003 CT3: no episode
+- cafe_003 Gl: no episode
+- cafe_003 CT3F: no episode
+- cafe_003 CT4: no episode
+- cafe_003 R1: no episode
+- cafe_098 CT2: no episode
+- cafe_098 CT3: no episode
+- cafe_098 Gl: no episode
+- cafe_098 CT3F: no episode
+- cafe_098 CT4: no episode
+- cafe_098 R1: no episode
+- cafe_193 CT2: no episode
+- cafe_193 CT3: no episode
+- cafe_193 Gl: no episode
+- cafe_193 CT3F: no episode
+- cafe_193 CT4: no episode
+- cafe_193 R1: no episode
+- sweet_004 CT2: no episode
+- sweet_004 CT3: no episode
+- sweet_004 Gl: no episode
+- sweet_004 CT3F: no episode
+- sweet_004 CT4: no episode
+- sweet_004 R1: no episode
+- sweet_015 CT2: no episode
+- sweet_015 CT3: no episode
+- sweet_015 Gl: no episode
+- sweet_015 CT3F: no episode
+- sweet_015 CT4: no episode
+- sweet_015 R1: no episode
+- sweet_263 CT2: no episode
+- sweet_263 CT3: no episode
+- sweet_263 Gl: no episode
+- sweet_263 CT3F: no episode
+- sweet_263 CT4: no episode
+- sweet_263 R1: no episode
+- sweet_019 CT2: no episode
+- sweet_019 CT3: no episode
+- sweet_019 Gl: no episode
+- sweet_019 CT3F: no episode
+- sweet_019 CT4: no episode
+- sweet_019 R1: no episode
+- sweet_123 CT2: no episode
+- sweet_123 CT3: no episode
+- sweet_123 Gl: no episode
+- sweet_123 CT3F: no episode
+- sweet_123 CT4: no episode
+- sweet_123 R1: no episode
+- sweet_035 CT2: no episode
+- sweet_035 CT3: no episode
+- sweet_035 Gl: no episode
+- sweet_035 CT3F: no episode
+- sweet_035 CT4: no episode
+- sweet_035 R1: no episode
+
+## Mechanical checks (RUN_NOTE: these, not scores, may stop the next run)
+
+- CT2: 40 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 89; first answer not CT2's (uncached or another pose) 0
+- CT3: 40 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 131; first answer not CT2's (uncached or another pose) 0
+- Gl: 40 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 30; first answer not CT2's (uncached or another pose) 0
+- CT3F: 40 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 147; first answer not CT2's (uncached or another pose) 0
+- CT4: 40 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 0; first answer not CT2's (uncached or another pose) 0
+- R1: 40 episodes; re-solve errors 0; re-solves without truth 0; history_t missing 0; vacated ticks with someone ahead 0; first answer not CT2's (uncached or another pose) 0

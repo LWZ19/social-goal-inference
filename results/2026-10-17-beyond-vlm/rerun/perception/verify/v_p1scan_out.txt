@@ -1,0 +1,31 @@
+closest to 0.81 (deduplicated):
+   ph        both   vis_only=False groupname=shared linename=come_after found=match all   : 30/37 = 0.811
+   ph        both   vis_only=False groupname=shared linename=come_after found=r0.25 all   : 30/37 = 0.811
+   ph        both   vis_only=False groupname=shared linename=come_after found=r0.5  all   : 30/37 = 0.811
+   ph        both   vis_only=True  groupname=shared linename=come_after found=match all   : 30/37 = 0.811
+   ph        both   vis_only=True  groupname=shared linename=come_after found=r0.25 all   : 30/37 = 0.811
+   ph        both   vis_only=True  groupname=shared linename=come_after found=r0.5  all   : 30/37 = 0.811
+   realistic both   vis_only=False groupname=any    linename=come_after found=match failed: 55/68 = 0.809
+   realistic both   vis_only=True  groupname=any    linename=come_after found=match failed: 55/68 = 0.809
+   +ph       both   vis_only=False groupname=shared linename=come_after found=match failed: 76/94 = 0.809
+   +ph       both   vis_only=True  groupname=shared linename=come_after found=match failed: 76/94 = 0.809
+   realistic both   vis_only=False groupname=shared linename=come_after found=r0.25 failed: 56/69 = 0.812
+   realistic both   vis_only=True  groupname=shared linename=come_after found=r0.25 failed: 56/69 = 0.812
+   +ph       lines  vis_only=False groupname=any    linename=come_after found=match failed: 69/85 = 0.812
+   +ph       lines  vis_only=False groupname=shared linename=come_after found=match failed: 69/85 = 0.812
+   +ph       lines  vis_only=True  groupname=any    linename=come_after found=match failed: 69/85 = 0.812
+   +ph       lines  vis_only=True  groupname=shared linename=come_after found=match failed: 69/85 = 0.812
+   realistic lines  vis_only=False groupname=any    linename=come_after found=r0.25 failed: 52/64 = 0.812
+   realistic lines  vis_only=False groupname=shared linename=come_after found=r0.25 failed: 52/64 = 0.812
+   realistic lines  vis_only=True  groupname=any    linename=come_after found=r0.25 failed: 52/64 = 0.812
+   realistic lines  vis_only=True  groupname=shared linename=come_after found=r0.25 failed: 52/64 = 0.812
+   realistic both   vis_only=False groupname=any    linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic both   vis_only=False groupname=shared linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic both   vis_only=True  groupname=any    linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic both   vis_only=True  groupname=shared linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic lines  vis_only=False groupname=any    linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic lines  vis_only=False groupname=shared linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic lines  vis_only=True  groupname=any    linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   realistic lines  vis_only=True  groupname=shared linename=come_after found=r0.5  P3fail: 40/49 = 0.816
+   +ph       both   vis_only=False groupname=shared linename=come_after found=r0.25 failed: 77/94 = 0.819
+   +ph       both   vis_only=True  groupname=shared linename=come_after found=r0.25 failed: 77/94 = 0.819

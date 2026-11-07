@@ -1,0 +1,30 @@
+M1b (POST HOC): why the perfect pick replays below the models' own clicks
+records with a target: 1512; lost by the pick (success -> failure): 109; won (failure -> success): 122
+
+== LOST: by model / situation / target kind / recorded source / picked class
+  model: qwen38_low 21, dsv41 21, haiku55 19, sonnet55_low 18, gemini38_low 18, glm53 12
+  situation: no_one 96, waiting_line 13
+  kind: place 109
+  source: standard 93, constraints 16
+  pick_class: object 109
+  distance pick point -> model point (m): median 0.49, p10 0.30, p90 0.56
+  pick replay reasons: standard 93, solver 16
+
+== WON: by model / situation / target kind / recorded source / picked class
+  model: dsv41 34, glm53 30, gemini38_low 30, qwen38_low 19, sonnet55_low 7, haiku55 2
+  situation: no_one 52, waiting_line 45, conversation_group 25
+  kind: place 81, person 25, object 16
+  source: constraints 71, standard 51
+  pick_class: object 122
+  distance pick point -> model point (m): median 0.91, p10 0.31, p90 3.81
+  pick replay reasons: solver 71, standard 51
+
+== M1b-snap (click moved into the picked component): successes per model
+model          recorded  pick  snap
+dsv41               185   198   201   (records with a target only)
+gemini38_low        214   226   252   (records with a target only)
+glm53               170   188   187   (records with a target only)
+haiku55             240   223   242   (records with a target only)
+qwen38_low          228   226   246   (records with a target only)
+sonnet55_low        242   231   249   (records with a target only)
+pooled: recorded 1279, pick 1292, snap 1377

@@ -1,0 +1,3 @@
+early: pid 375541; before kill: lock file 'NONE'; sent 0
+early: exit 130; lock file after: 'NONE'; ledger sent 0 answered  error ; fake 0; check files 0; run folders 0; results lines 0; config incomplete: ; stopped_by in config: ; summary.csv: no; KeyboardInterrupt in log: 2; tmp files in cache: 0
+early: next invocation pid 375697 exit 0; it wrote its pid into the lock file: yes; refused line: ; ledger sent now 4; fake y 4

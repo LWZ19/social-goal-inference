@@ -1,0 +1,9 @@
+points: 4 of 10 place and object targets in 14 scenes, those farthest from the image centre
+  real_eval_07_waiting_line_2: "help desk" at (451, 209), 134.9 px from the centre
+  real_eval_08_waiting_line_4: "coffee stall" at (158, 194), 168.3 px from the centre
+  real_eval_09_waiting_line_6: "help desk" at (502, 191), 188.4 px from the centre
+  real_eval_13_waiting_line_3: "help desk" at (468, 200), 153.7 px from the centre
+xy_1000: median error 159.5 px (4 of 4 points answered)
+xy_1000: image centre 161.0 px (the median error of the image centre over the points answered)
+xy_pixel: median error 52.0 px (4 of 4 points answered)
+xy_pixel: image centre 161.0 px (the median error of the image centre over the points answered)

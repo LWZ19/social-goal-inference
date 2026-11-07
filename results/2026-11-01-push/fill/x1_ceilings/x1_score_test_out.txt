@@ -1,0 +1,9 @@
+# X1: CT3FT against CT3F, strict from the first service (band top 1.2 m) TEST
+
+| model | layouts | mean d | 95% lower bound | front part | W/L/T | sign p |
+|---|---|---|---|---|---|---|
+| DeepSeek V4.1 | 66 | +0.053 | +0.013 | +0.026 | 27/23/16 | 0.6718 |
+
+Pooled: per-layout mean over the models, 66 layouts (66 with every model): mean +0.053, lower bound +0.013, W/L/T 27/23/16, sign p 0.6718
+BAR X1-consistent (wins > losses and sign p <= 0.05): False
+BAR X1-size (pooled mean >= 0.05, ROUND7_D's bar): True; with the lower bound above 0: True

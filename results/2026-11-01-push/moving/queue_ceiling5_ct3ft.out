@@ -1,0 +1,82 @@
+00:18:04 model soclaas_dsv41: 72 groups x 1 arms, 2 workers
+00:18:04 w0 serve C pid 79050 port 8960
+00:18:04 w1 serve C pid 79051 port 8962
+00:18:04 w0 serve R pid 79052 port 8961
+00:18:04 w1 serve R pid 79053 port 8963
+00:19:42 w1 confirm4/cafe_2323 seed36234 CT3FT: exit 0 in 95 s | [exp] cafe_2323 CT3FT seed 36234: in line at end False, share 0.04, first 23.97, cut-in samples 26, calls 4, resolves 150
+00:19:42 w0 confirm4/cafe_2065 seed18182 CT3FT: exit 0 in 96 s | [exp] cafe_2065 CT3FT seed 18182: in line at end False, share 0.30, first 34.97, cut-in samples 5, calls 4, resolves 152
+00:21:18 w0 confirm4/cafe_2006 seed55831 CT3FT: exit 0 in 96 s | [exp] cafe_2006 CT3FT seed 55831: in line at end True, share 0.35, first 43.97, cut-in samples 0, calls 4, resolves 149
+00:21:18 w1 confirm4/cafe_2010 seed73572 CT3FT: exit 0 in 96 s | [exp] cafe_2010 CT3FT seed 73572: in line at end False, share 0.23, first 40.97, cut-in samples 0, calls 4, resolves 151
+00:22:53 w1 confirm4/cafe_2325 seed3759 CT3FT: exit 0 in 95 s | [exp] cafe_2325 CT3FT seed 3759: in line at end False, share 0.05, first 23.97, cut-in samples 6, calls 4, resolves 145
+00:22:53 w0 confirm4/cafe_2036 seed53047 CT3FT: exit 0 in 95 s | [exp] cafe_2036 CT3FT seed 53047: in line at end False, share 0.12, first 57.97, cut-in samples 31, calls 4, resolves 150
+00:24:28 w0 confirm4/cafe_2083 seed68079 CT3FT: exit 0 in 95 s | [exp] cafe_2083 CT3FT seed 68079: in line at end False, share 0.15, first 15.97, cut-in samples 0, calls 4, resolves 149
+00:24:28 w1 confirm4/cafe_2438 seed72485 CT3FT: exit 0 in 95 s | [exp] cafe_2438 CT3FT seed 72485: in line at end True, share 0.48, first 17.97, cut-in samples 0, calls 4, resolves 148
+00:26:03 w1 confirm4/cafe_2112 seed81566 CT3FT: exit 0 in 95 s | [exp] cafe_2112 CT3FT seed 81566: in line at end False, share 0.12, first 44.97, cut-in samples 25, calls 4, resolves 144
+00:26:03 w0 confirm4/cafe_2277 seed14037 CT3FT: exit 0 in 95 s | [exp] cafe_2277 CT3FT seed 14037: in line at end True, share 0.67, first 25.97, cut-in samples 0, calls 4, resolves 145
+00:27:38 w1 confirm4/cafe_2131 seed53591 CT3FT: exit 0 in 95 s | [exp] cafe_2131 CT3FT seed 53591: in line at end False, share 0.03, first 74.97, cut-in samples 4, calls 4, resolves 141
+00:27:38 w0 confirm4/cafe_2173 seed74257 CT3FT: exit 0 in 95 s | [exp] cafe_2173 CT3FT seed 74257: in line at end False, share 0.24, first 29.97, cut-in samples 0, calls 4, resolves 142
+00:29:12 w1 confirm4/cafe_2270 seed22607 CT3FT: exit 0 in 95 s | [exp] cafe_2270 CT3FT seed 22607: in line at end False, share 0.20, first 14.97, cut-in samples 8, calls 4, resolves 153
+00:29:13 w0 confirm4/cafe_2067 seed94879 CT3FT: exit 0 in 95 s | [exp] cafe_2067 CT3FT seed 94879: in line at end True, share 0.07, first 65.97, cut-in samples 3, calls 4, resolves 153
+00:30:48 w1 confirm4/cafe_2013 seed56524 CT3FT: exit 0 in 95 s | [exp] cafe_2013 CT3FT seed 56524: in line at end True, share 0.04, first 86.97, cut-in samples 11, calls 4, resolves 147
+00:30:48 w0 confirm4/cafe_2248 seed34936 CT3FT: exit 0 in 95 s | [exp] cafe_2248 CT3FT seed 34936: in line at end False, share 0.21, first 24.97, cut-in samples 7, calls 4, resolves 147
+00:32:23 w1 confirm4/cafe_2038 seed60388 CT3FT: exit 0 in 95 s | [exp] cafe_2038 CT3FT seed 60388: in line at end False, share 0.01, first 37.97, cut-in samples 1, calls 4, resolves 131
+00:32:23 w0 confirm4/cafe_2343 seed9593 CT3FT: exit 0 in 95 s | [exp] cafe_2343 CT3FT seed 9593: in line at end False, share 0.11, first 42.97, cut-in samples 3, calls 4, resolves 149
+00:33:58 w1 confirm4/cafe_2109 seed94178 CT3FT: exit 0 in 95 s | [exp] cafe_2109 CT3FT seed 94178: in line at end True, share 0.56, first 35.97, cut-in samples 0, calls 4, resolves 136
+00:33:58 w0 confirm4/cafe_2290 seed57705 CT3FT: exit 0 in 95 s | [exp] cafe_2290 CT3FT seed 57705: in line at end True, share 0.65, first 16.97, cut-in samples 0, calls 4, resolves 148
+00:35:33 w1 confirm4/cafe_2145 seed9347 CT3FT: exit 0 in 96 s | [exp] cafe_2145 CT3FT seed 9347: in line at end False, share 0.29, first 50.97, cut-in samples 0, calls 4, resolves 150
+00:35:33 w0 confirm4/cafe_2068 seed3762 CT3FT: exit 0 in 95 s | [exp] cafe_2068 CT3FT seed 3762: in line at end True, share 0.25, first 38.97, cut-in samples 7, calls 4, resolves 147
+00:37:10 w1 confirm4/cafe_2190 seed43765 CT3FT: exit 0 in 97 s | [exp] cafe_2190 CT3FT seed 43765: in line at end False, share 0.59, first 21.97, cut-in samples 0, calls 4, resolves 146
+00:37:10 w0 confirm4/cafe_2024 seed76653 CT3FT: exit 0 in 97 s | [exp] cafe_2024 CT3FT seed 76653: in line at end False, share 0.02, first 18.97, cut-in samples 4, calls 4, resolves 148
+00:38:49 w0 confirm4/sweet_2179 seed77970 CT3FT: exit 0 in 99 s | [exp] sweet_2179 CT3FT seed 77970: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+00:38:49 w1 confirm4/sweet_2163 seed37360 CT3FT: exit 0 in 99 s | [exp] sweet_2163 CT3FT seed 37360: in line at end False, share 0.54, first 33.97, cut-in samples 0, calls 4, resolves 119
+00:40:34 w0 confirm4/sweet_2396 seed44804 CT3FT: exit 0 in 105 s | [exp] sweet_2396 CT3FT seed 44804: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+00:40:35 w1 confirm4/sweet_2377 seed22683 CT3FT: exit 0 in 106 s | [exp] sweet_2377 CT3FT seed 22683: in line at end False, share 0.27, first 30.97, cut-in samples 0, calls 4, resolves 120
+00:42:19 w0 confirm4/sweet_2195 seed91972 CT3FT: exit 0 in 106 s | [exp] sweet_2195 CT3FT seed 91972: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 144
+00:42:20 w1 confirm4/sweet_2170 seed41381 CT3FT: exit 0 in 105 s | [exp] sweet_2170 CT3FT seed 41381: in line at end False, share 0.11, first 19.97, cut-in samples 2, calls 4, resolves 135
+00:44:06 w1 confirm4/sweet_2107 seed62081 CT3FT: exit 0 in 106 s | [exp] sweet_2107 CT3FT seed 62081: in line at end False, share 0.22, first 23.97, cut-in samples 1, calls 4, resolves 144
+00:44:07 w0 confirm4/sweet_2243 seed56926 CT3FT: exit 0 in 107 s | [exp] sweet_2243 CT3FT seed 56926: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 144
+00:45:51 w0 confirm4/sweet_2188 seed36383 CT3FT: exit 0 in 105 s | [exp] sweet_2188 CT3FT seed 36383: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+00:45:52 w1 confirm4/sweet_2381 seed47639 CT3FT: exit 0 in 106 s | [exp] sweet_2381 CT3FT seed 47639: in line at end False, share 0.56, first 22.97, cut-in samples 0, calls 4, resolves 147
+00:47:36 w0 confirm4/sweet_2364 seed79303 CT3FT: exit 0 in 105 s | [exp] sweet_2364 CT3FT seed 79303: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+00:47:38 w1 confirm4/sweet_2066 seed6090 CT3FT: exit 0 in 106 s | [exp] sweet_2066 CT3FT seed 6090: in line at end False, share 0.00, first None, cut-in samples 8, calls 4, resolves 145
+00:49:22 w0 confirm4/sweet_2088 seed46189 CT3FT: exit 0 in 106 s | [exp] sweet_2088 CT3FT seed 46189: in line at end True, share 0.30, first 37.97, cut-in samples 13, calls 4, resolves 154
+00:49:23 w1 confirm4/sweet_2177 seed28136 CT3FT: exit 0 in 105 s | [exp] sweet_2177 CT3FT seed 28136: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+00:51:12 w0 confirm4/sweet_2022 seed7071 CT3FT: exit 0 in 110 s | [exp] sweet_2022 CT3FT seed 7071: in line at end True, share 0.63, first 15.97, cut-in samples 0, calls 4, resolves 145
+00:51:13 w1 confirm4/sweet_2239 seed5897 CT3FT: exit 0 in 110 s | [exp] sweet_2239 CT3FT seed 5897: in line at end False, share 0.01, first 72.97, cut-in samples 0, calls 4, resolves 130
+00:53:05 w0 confirm4/sweet_2317 seed14766 CT3FT: exit 0 in 113 s | [exp] sweet_2317 CT3FT seed 14766: in line at end True, share 0.70, first 16.97, cut-in samples 0, calls 4, resolves 144
+00:53:06 w1 confirm4/sweet_2235 seed34111 CT3FT: exit 0 in 113 s | [exp] sweet_2235 CT3FT seed 34111: in line at end False, share 0.12, first 20.97, cut-in samples 0, calls 4, resolves 147
+00:54:52 w0 confirm4/sweet_2175 seed36607 CT3FT: exit 0 in 107 s | [exp] sweet_2175 CT3FT seed 36607: in line at end False, share 0.02, first 70.97, cut-in samples 0, calls 4, resolves 149
+00:54:53 w1 confirm4/sweet_2034 seed53994 CT3FT: exit 0 in 107 s | [exp] sweet_2034 CT3FT seed 53994: in line at end True, share 0.29, first 45.97, cut-in samples 3, calls 4, resolves 146
+00:56:38 w0 confirm4/sweet_2148 seed92005 CT3FT: exit 0 in 106 s | [exp] sweet_2148 CT3FT seed 92005: in line at end False, share 0.00, first None, cut-in samples 0, calls 2, resolves 0
+00:56:39 w1 confirm4/sweet_2156 seed7475 CT3FT: exit 0 in 106 s | [exp] sweet_2156 CT3FT seed 7475: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 146
+00:58:24 w0 confirm4/sweet_2140 seed93637 CT3FT: exit 0 in 106 s | [exp] sweet_2140 CT3FT seed 93637: in line at end False, share 0.02, first 22.97, cut-in samples 0, calls 4, resolves 134
+00:58:26 w1 confirm4/sweet_2144 seed84730 CT3FT: exit 0 in 107 s | [exp] sweet_2144 CT3FT seed 84730: in line at end False, share 0.11, first 27.97, cut-in samples 0, calls 5, resolves 128
+01:00:03 w0 confirm4/cafe_2023 seed68690 CT3FT: exit 0 in 99 s | [exp] cafe_2023 CT3FT seed 68690: in line at end True, share 0.37, first 36.97, cut-in samples 0, calls 4, resolves 144
+01:00:03 w1 confirm4/cafe_2019 seed89202 CT3FT: exit 0 in 98 s | [exp] cafe_2019 CT3FT seed 89202: in line at end True, share 0.63, first 21.97, cut-in samples 0, calls 4, resolves 142
+01:01:43 w1 confirm4/cafe_2000 seed82051 CT3FT: exit 0 in 100 s | [exp] cafe_2000 CT3FT seed 82051: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 146
+01:01:44 w0 confirm4/cafe_2126 seed24488 CT3FT: exit 0 in 101 s | [exp] cafe_2126 CT3FT seed 24488: in line at end True, share 0.20, first 62.97, cut-in samples 8, calls 4, resolves 146
+01:03:23 w1 confirm4/cafe_2014 seed93908 CT3FT: exit 0 in 100 s | [exp] cafe_2014 CT3FT seed 93908: in line at end True, share 0.22, first 24.97, cut-in samples 0, calls 4, resolves 145
+01:03:24 w0 confirm4/cafe_2043 seed22442 CT3FT: exit 0 in 100 s | [exp] cafe_2043 CT3FT seed 22442: in line at end True, share 0.09, first 64.97, cut-in samples 7, calls 4, resolves 148
+01:05:09 w1 confirm4/sweet_2009 seed14978 CT3FT: exit 0 in 106 s | [exp] sweet_2009 CT3FT seed 14978: in line at end True, share 0.48, first 15.97, cut-in samples 0, calls 4, resolves 149
+01:05:10 w0 confirm4/sweet_2079 seed46354 CT3FT: exit 0 in 106 s | [exp] sweet_2079 CT3FT seed 46354: in line at end False, share 0.13, first 31.97, cut-in samples 0, calls 4, resolves 147
+01:06:59 w0 confirm4/sweet_2005 seed36862 CT3FT: exit 0 in 109 s | [exp] sweet_2005 CT3FT seed 36862: in line at end False, share 0.14, first 18.97, cut-in samples 0, calls 4, resolves 132
+01:06:59 w1 confirm4/sweet_2269 seed26335 CT3FT: exit 0 in 110 s | [exp] sweet_2269 CT3FT seed 26335: in line at end False, share 0.00, first None, cut-in samples 31, calls 4, resolves 148
+01:08:45 w0 confirm4/sweet_2076 seed2655 CT3FT: exit 0 in 106 s | [exp] sweet_2076 CT3FT seed 2655: in line at end True, share 0.02, first 88.97, cut-in samples 0, calls 4, resolves 114
+01:08:46 w1 confirm4/sweet_2057 seed76169 CT3FT: exit 0 in 107 s | [exp] sweet_2057 CT3FT seed 76169: in line at end False, share 0.00, first None, cut-in samples 0, calls 4, resolves 142
+01:10:25 w0 confirm4/cafe_2008 seed9687 CT3FT: exit 0 in 100 s | [exp] cafe_2008 CT3FT seed 9687: in line at end False, share 0.36, first 19.97, cut-in samples 6, calls 4, resolves 152
+01:10:26 w1 confirm4/cafe_2042 seed48182 CT3FT: exit 0 in 100 s | [exp] cafe_2042 CT3FT seed 48182: in line at end False, share 0.13, first 18.97, cut-in samples 0, calls 4, resolves 154
+01:12:05 w0 confirm4/cafe_2016 seed12051 CT3FT: exit 0 in 100 s | [exp] cafe_2016 CT3FT seed 12051: in line at end True, share 0.51, first 29.97, cut-in samples 0, calls 4, resolves 142
+01:12:17 w1 confirm4/sweet_2010 seed11608 CT3FT: exit 0 in 111 s | [exp] sweet_2010 CT3FT seed 11608: in line at end False, share 0.08, first 16.97, cut-in samples 0, calls 4, resolves 130
+01:13:56 w0 confirm4/sweet_2063 seed50851 CT3FT: exit 0 in 111 s | [exp] sweet_2063 CT3FT seed 50851: in line at end True, share 0.54, first 15.97, cut-in samples 0, calls 4, resolves 153
+01:14:07 w1 confirm4/sweet_2020 seed80732 CT3FT: exit 0 in 110 s | [exp] sweet_2020 CT3FT seed 80732: in line at end False, share 0.21, first 38.97, cut-in samples 4, calls 4, resolves 149
+01:15:34 w0 confirm4/cafe_2004 seed70564 CT3FT: exit 0 in 98 s | [exp] cafe_2004 CT3FT seed 70564: in line at end True, share 0.36, first 18.97, cut-in samples 5, calls 4, resolves 152
+01:15:45 w1 confirm4/cafe_2015 seed67594 CT3FT: exit 0 in 98 s | [exp] cafe_2015 CT3FT seed 67594: in line at end False, share 0.26, first 25.97, cut-in samples 7, calls 4, resolves 152
+01:17:13 w0 confirm4/cafe_2005 seed81138 CT3FT: exit 0 in 99 s | [exp] cafe_2005 CT3FT seed 81138: in line at end False, share 0.37, first 12.97, cut-in samples 0, calls 4, resolves 156
+01:17:33 w1 confirm4/sweet_2002 seed29457 CT3FT: exit 0 in 108 s | [exp] sweet_2002 CT3FT seed 29457: in line at end False, share 0.00, first None, cut-in samples 30, calls 4, resolves 154
+01:19:04 w0 confirm4/sweet_2006 seed75425 CT3FT: exit 0 in 111 s | [exp] sweet_2006 CT3FT seed 75425: in line at end True, share 0.75, first 15.97, cut-in samples 0, calls 5, resolves 148
+01:19:04 w0 serve C pid 79050 stopped
+01:19:04 w0 serve R pid 79052 stopped
+01:19:24 w1 confirm4/sweet_2154 seed12306 CT3FT: exit 0 in 111 s | [exp] sweet_2154 CT3FT seed 12306: in line at end False, share 0.19, first 12.97, cut-in samples 0, calls 4, resolves 150
+01:19:24 w1 serve C pid 79051 stopped
+01:19:24 w1 serve R pid 79053 stopped
+01:19:24 done

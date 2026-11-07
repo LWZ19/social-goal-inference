@@ -1,0 +1,327 @@
+C5 (I52) zero-call gates 1 and 2: tables. Protocol: FROZEN.md (sha256 8b7d3ae294ad81a810c70c23706247674bbfed22cc0247445e91f6615426419c).
+Every gate-2 number measures agreement with the project's own reference rules (src/sgi/gt/regions.py), not social correctness.
+
+== T1. Gate 1: configuration count (C2 Step 0) ==
+PRIMARY (decides) = 22 distinct (recipe, amount, kind, bystanders, second group) over 26 development rows (both splits, both passes).
+LOWER = 15 distinct (situation, structure size, bystanders, second group).
+Gate 1 (>= 30 met; 25-29 borderline, not met): NOT MET.  C2 Source A kill: FIRES.
+EMPIRICAL (descriptive; seeds 100-109, 45 pairs per row): structure members, best matching with mirror: median per row 0.00-0.48 m, maximum per row 0.09-1.00 m over 15 rows with members. Full table: gate1.txt.
+
+== T2. Gate 2 data and cells ==
+fresh: eligible 520, episodes 520, scenes 260
+  point-in-polygon replica vs sgi.polygons.point_in_polygon: 287304 cell tests (every region cell of every episode with polygons, plus 300 random floor cells per scene), 0 disagreements
+dev: eligible 136, episodes 136, scenes 68, scenes_placeholder 26, scenes_realistic 42
+  point-in-polygon replica vs sgi.polygons.point_in_polygon: 75138 cell tests (every region cell of every episode with polygons, plus 300 random floor cells per scene), 0 disagreements
+fresh scenes whose eligible episodes have more than one distinct region set: 0 []
+dev scenes whose first listed run recorded a different grid, robot or person radius: 0
+dev episodes whose acceptable regions under the first run's recorded config equal those under default.yaml (descriptive): {'same': 136}
+fresh floor cells per scene: min 4514 median 7882 max 18867; region cells per eligible episode: min 81 median 178 max 701
+dev floor cells per scene: min 4708 median 8504 max 19850; region cells per eligible episode: min 84 median 178 max 690
+episodes by (kind, domain, situation, eligible):
+  ('dev', 'placeholder', 'audience', True): 12
+  ('dev', 'placeholder', 'conversation_group', True): 6
+  ('dev', 'placeholder', 'no_one', True): 24
+  ('dev', 'placeholder', 'waiting_line', True): 10
+  ('dev', 'realistic', 'conversation_group', True): 18
+  ('dev', 'realistic', 'no_one', True): 36
+  ('dev', 'realistic', 'waiting_line', True): 30
+  ('fresh', 'fresh', 'audience', True): 60
+  ('fresh', 'fresh', 'conversation_group', True): 100
+  ('fresh', 'fresh', 'no_one', True): 220
+  ('fresh', 'fresh', 'waiting_line', True): 140
+
+== T3. Configurations chosen by inner CV (training data only) ==
+fold                     ratio KDE                    plain KDE                    1-D ratio         
+LOSO_waiting_line        FS3 m=0.5 h=0.220 EDGE       FS3 m=0.5 h=0.220 EDGE       F1D m=0.5 h=0.070 EDGE
+LOSO_conversation_group  FS3 m=0.5 h=0.218 EDGE       FS3 m=0.5 h=0.218 EDGE       F1D m=0.5 h=0.069 EDGE
+LOSO_audience            FS3 m=0.5 h=0.217 EDGE       FS3 m=0.5 h=0.217 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_100               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_101               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_102               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_103               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_104               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_105               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_106               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_107               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_108               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+LOSeed_109               FS3 m=0.5 h=0.216 EDGE       FS3 m=0.5 h=0.216 EDGE       F1D m=0.5 h=0.067 EDGE
+DEV                      FS3 m=0.5 h=0.215 EDGE       FS3 m=0.5 h=0.215 EDGE       F1D m=0.5 h=0.066 EDGE
+EDGE = optimum at the end of the m grid {0.5, 1, 2, 4}: reported, not extended.
+
+== T4. PRIMARY: leave one people situation out (decides gate 2) ==
+Fold: test waiting_line (train no_one + the other two): n = 140 episodes, 70 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -7.129    0.393   16.27
+  plain                    -9.322    0.314   12.30
+  ratio1d                  -9.316    0.036    1.37
+  band                     -9.084    0.038    1.58
+  uniform                  -8.953    0.023    1.00
+  Delta = S_ratio - S_band = +1.955  (seed-cluster bootstrap 95% +1.927 to +1.981; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = -0.238
+  S_ratio1d - S_band = -0.232
+  S_ratio - S_ratio1d = +2.186
+  S_ratio - S_uniform = +1.823
+  S_band - S_uniform = -0.131
+  meets Delta >= 0.1: True
+
+Fold: test conversation_group (train no_one + the other two): n = 100 episodes, 50 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -9.938    0.699   13.59
+  plain                   -10.788    0.750   15.09
+  ratio1d                  -7.763    0.426    8.31
+  band                     -9.157    0.111    2.14
+  uniform                  -9.262    0.059    1.00
+  Delta = S_ratio - S_band = -0.781  (seed-cluster bootstrap 95% -0.806 to -0.756; seeds with Delta > 0: 0 of 10)
+  S_plain - S_band = -1.631
+  S_ratio1d - S_band = +1.395
+  S_ratio - S_ratio1d = -2.176
+  S_ratio - S_uniform = -0.676
+  S_band - S_uniform = +0.105
+  meets Delta >= 0.1: False
+
+Fold: test audience (train no_one + the other two): n = 60 episodes, 30 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -7.911    0.650   16.68
+  plain                   -12.733    0.004    0.10
+  ratio1d                 -10.328    0.014    0.34
+  band                    -12.025    0.039    1.00
+  uniform                  -9.106    0.040    1.00
+  Delta = S_ratio - S_band = +4.113  (seed-cluster bootstrap 95% +3.794 to +4.454; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = -0.709
+  S_ratio1d - S_band = +1.697
+  S_ratio - S_ratio1d = +2.417
+  S_ratio - S_uniform = +1.195
+  S_band - S_uniform = -2.919
+  meets Delta >= 0.1: True
+
+Post hoc (added after the primary scores were seen; descriptive, decides nothing):
+  waiting_line         band [0.71, 3.90] m covers 0.859 of the region cells (mean over episodes); per-episode Delta median +2.255, positive in 124 of 140 episodes; S_ratio - S_uniform +1.823
+  conversation_group   band [0.82, 4.20] m covers 0.862 of the region cells (mean over episodes); per-episode Delta median -0.690, positive in 0 of 100 episodes; S_ratio - S_uniform -0.676
+  audience             band [0.71, 3.19] m covers 0.289 of the region cells (mean over episodes); per-episode Delta median +4.094, positive in 60 of 60 episodes; S_ratio - S_uniform +1.195
+
+Gate 2 (Delta >= 0.1 nats per region cell in at least 2 of 3 folds, ratio KDE): 2 of 3 -> MET
+
+== T5. In-distribution ceiling: leave one seed out over all four situations (secondary) ==
+Situation no_one (pooled over the 10 seed folds): n = 220 episodes, 110 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.270    0.684   42.32
+  plain                    -5.304    0.666   41.69
+  ratio1d                  -6.789    0.176    9.48
+  band                     -8.734    0.034    1.69
+  uniform                  -8.893    0.021    1.00
+  Delta = S_ratio - S_band = +3.465  (seed-cluster bootstrap 95% +3.450 to +3.477; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = +3.430
+  S_ratio1d - S_band = +1.945
+  S_ratio - S_ratio1d = +1.519
+  S_ratio - S_uniform = +3.623
+  S_band - S_uniform = +0.159
+
+Situation waiting_line (pooled over the 10 seed folds): n = 140 episodes, 70 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.606    0.716   31.20
+  plain                    -5.789    0.656   28.51
+  ratio1d                  -8.773    0.039    1.52
+  band                     -9.060    0.037    1.54
+  uniform                  -8.953    0.023    1.00
+  Delta = S_ratio - S_band = +3.453  (seed-cluster bootstrap 95% +3.443 to +3.465; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = +3.271
+  S_ratio1d - S_band = +0.287
+  S_ratio - S_ratio1d = +3.166
+  S_ratio - S_uniform = +3.346
+  S_band - S_uniform = -0.107
+
+Situation conversation_group (pooled over the 10 seed folds): n = 100 episodes, 50 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -6.655    0.786   15.67
+  plain                    -6.857    0.768   15.38
+  ratio1d                  -7.613    0.435    8.53
+  band                     -8.823    0.125    2.42
+  uniform                  -9.262    0.059    1.00
+  Delta = S_ratio - S_band = +2.168  (seed-cluster bootstrap 95% +2.148 to +2.188; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = +1.966
+  S_ratio1d - S_band = +1.210
+  S_ratio - S_ratio1d = +0.958
+  S_ratio - S_uniform = +2.607
+  S_band - S_uniform = +0.439
+
+Situation audience (pooled over the 10 seed folds): n = 60 episodes, 30 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -6.271    0.714   18.28
+  plain                    -6.632    0.624   15.99
+  ratio1d                  -9.507    0.027    0.68
+  band                     -9.181    0.074    1.86
+  uniform                  -9.106    0.040    1.00
+  Delta = S_ratio - S_band = +2.909  (seed-cluster bootstrap 95% +2.763 to +3.075; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = +2.548
+  S_ratio1d - S_band = -0.326
+  S_ratio - S_ratio1d = +3.236
+  S_ratio - S_uniform = +2.835
+  S_band - S_uniform = -0.075
+
+All situations pooled: n = 520 episodes, 260 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.742    0.715   31.43
+  plain                    -5.887    0.678   30.11
+  ratio1d                  -7.795    0.172    6.14
+  band                     -8.890    0.057    1.81
+  uniform                  -9.005    0.031    1.00
+  Delta = S_ratio - S_band = +3.148  (seed-cluster bootstrap 95% +3.130 to +3.170; seeds with Delta > 0: 10 of 10)
+  S_plain - S_band = +3.004
+  S_ratio1d - S_band = +1.095
+  S_ratio - S_ratio1d = +2.053
+  S_ratio - S_uniform = +3.262
+  S_band - S_uniform = +0.114
+
+Transfer gap (ceiling minus primary fold, same test episodes):
+  waiting_line         S_ratio   -5.606 -   -7.129 = +1.523;  Delta +3.453 - +1.955 = +1.499  (n = 140 episodes)
+  conversation_group   S_ratio   -6.655 -   -9.938 = +3.283;  Delta +2.168 - -0.781 = +2.949  (n = 100 episodes)
+  audience             S_ratio   -6.271 -   -7.911 = +1.640;  Delta +2.909 - +4.113 = -1.204  (n = 60 episodes)
+
+== T6. Development transfer: train on all 260 fresh scenes, test on the 68 development scenes (secondary) ==
+realistic / no_one: n = 36 episodes, 18 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -7.870    0.521   28.72
+  plain                    -7.775    0.657   40.04
+  ratio1d                  -6.816    0.201    9.44
+  band                     -8.688    0.041    1.74
+  uniform                  -8.904    0.026    1.00
+  Delta = S_ratio - S_band = +0.818
+  S_plain - S_band = +0.913
+  S_ratio1d - S_band = +1.872
+  S_ratio - S_ratio1d = -1.054
+  S_ratio - S_uniform = +1.034
+  S_band - S_uniform = +0.216
+
+realistic / waiting_line: n = 30 episodes, 15 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.768    0.613   27.11
+  plain                    -5.835    0.644   28.35
+  ratio1d                  -8.807    0.042    1.60
+  band                     -9.342    0.035    1.46
+  uniform                  -8.973    0.023    1.00
+  Delta = S_ratio - S_band = +3.574
+  S_plain - S_band = +3.507
+  S_ratio1d - S_band = +0.534
+  S_ratio - S_ratio1d = +3.040
+  S_ratio - S_uniform = +3.206
+  S_band - S_uniform = -0.368
+
+realistic / conversation_group: n = 18 episodes, 9 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -6.669    0.789   21.91
+  plain                    -6.936    0.765   21.30
+  ratio1d                  -7.707    0.416   11.52
+  band                     -8.916    0.120    3.27
+  uniform                  -9.686    0.037    1.00
+  Delta = S_ratio - S_band = +2.247
+  S_plain - S_band = +1.980
+  S_ratio1d - S_band = +1.210
+  S_ratio - S_ratio1d = +1.037
+  S_ratio - S_uniform = +3.017
+  S_band - S_uniform = +0.770
+
+realistic / all: n = 84 episodes, 42 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -6.862    0.611   26.68
+  plain                    -6.902    0.675   31.85
+  ratio1d                  -7.718    0.190    7.09
+  band                     -8.970    0.056    1.97
+  uniform                  -9.096    0.027    1.00
+  Delta = S_ratio - S_band = +2.109
+  S_plain - S_band = +2.068
+  S_ratio1d - S_band = +1.252
+  S_ratio - S_ratio1d = +0.856
+  S_ratio - S_uniform = +2.235
+  S_band - S_uniform = +0.126
+
+placeholder / no_one: n = 24 episodes, 12 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.301    0.681   42.67
+  plain                    -5.339    0.661   41.72
+  ratio1d                  -6.786    0.181   10.06
+  band                     -8.694    0.034    1.73
+  uniform                  -8.936    0.021    1.00
+  Delta = S_ratio - S_band = +3.393
+  S_plain - S_band = +3.355
+  S_ratio1d - S_band = +1.908
+  S_ratio - S_ratio1d = +1.484
+  S_ratio - S_uniform = +3.635
+  S_band - S_uniform = +0.242
+
+placeholder / waiting_line: n = 10 episodes, 5 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.579    0.727   32.34
+  plain                    -5.809    0.659   29.07
+  ratio1d                  -8.785    0.042    1.62
+  band                     -9.338    0.035    1.46
+  uniform                  -8.971    0.023    1.00
+  Delta = S_ratio - S_band = +3.759
+  S_plain - S_band = +3.530
+  S_ratio1d - S_band = +0.553
+  S_ratio - S_ratio1d = +3.206
+  S_ratio - S_uniform = +3.392
+  S_band - S_uniform = -0.367
+
+placeholder / conversation_group: n = 6 episodes, 3 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -6.669    0.789   21.91
+  plain                    -6.936    0.765   21.30
+  ratio1d                  -7.707    0.416   11.52
+  band                     -8.916    0.120    3.27
+  uniform                  -9.686    0.037    1.00
+  Delta = S_ratio - S_band = +2.247
+  S_plain - S_band = +1.980
+  S_ratio1d - S_band = +1.210
+  S_ratio - S_ratio1d = +1.037
+  S_ratio - S_uniform = +3.017
+  S_band - S_uniform = +0.770
+
+placeholder / audience: n = 12 episodes, 6 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -6.226    0.721   19.29
+  plain                    -6.488    0.661   17.62
+  ratio1d                  -9.553    0.026    0.66
+  band                     -9.027    0.075    1.98
+  uniform                  -9.131    0.039    1.00
+  Delta = S_ratio - S_band = +2.801
+  S_plain - S_band = +2.539
+  S_ratio1d - S_band = -0.526
+  S_ratio - S_ratio1d = +3.327
+  S_ratio - S_uniform = +2.904
+  S_band - S_uniform = +0.103
+
+placeholder / all: n = 52 episodes, 26 scenes
+  method     S (nats/region cell)   mass M    lift
+  ratio                    -5.726    0.712   32.89
+  plain                    -5.879    0.673   31.37
+  ratio1d                  -7.915    0.146    6.44
+  band                     -8.920    0.054    1.92
+  uniform                  -9.074    0.027    1.00
+  Delta = S_ratio - S_band = +3.194
+  S_plain - S_band = +3.042
+  S_ratio1d - S_band = +1.005
+  S_ratio - S_ratio1d = +2.189
+  S_ratio - S_uniform = +3.348
+  S_band - S_uniform = +0.154
+
+(No bootstrap for the development scenes: they have no fresh-seed clusters, and the note fixes the bootstrap by seed.)
+
+Post hoc (added after the development scores were seen; descriptive, decides nothing): by source. The 42 realistic scenes are three arms (plain, real, staffed) of the 14 layouts of placeholder/eval (ph_first14); ph_devnew = the 12 scenes of keep/dev_new seed0-2. The plain arm scores the same as ph_first14 here.
+  source      situation            n ep  S_ratio   S_band   Delta lift_ratio
+  ph_devnew   audience               12   -6.226   -9.027  +2.801      19.29
+  ph_devnew   no_one                 12   -5.233   -8.701  +3.468      44.10
+  ph_first14  conversation_group      6   -6.669   -8.916  +2.247      21.91
+  ph_first14  no_one                 12   -5.370   -8.687  +3.317      41.25
+  ph_first14  waiting_line           10   -5.579   -9.338  +3.759      32.34
+  plain       conversation_group      6   -6.669   -8.916  +2.247      21.91
+  plain       no_one                 12   -5.370   -8.688  +3.318      41.30
+  plain       waiting_line           10   -5.579   -9.342  +3.763      32.42
+  real        conversation_group      6   -6.669   -8.916  +2.247      21.91
+  real        no_one                 12   -9.121   -8.688  -0.433      22.41
+  real        waiting_line           10   -5.868   -9.343  +3.475      24.34
+  staffed     conversation_group      6   -6.669   -8.916  +2.247      21.91
+  staffed     no_one                 12   -9.119   -8.687  -0.432      22.46
+  staffed     waiting_line           10   -5.856   -9.340  +3.484      24.56
+  no_one scenes with at least one person within 1.5 m of some floor cell (f6 > 0), by source: placeholder 2 of 12, plain 2 of 6, real 6 of 6, staffed 6 of 6
+
+Definitions. S = mean over an episode's region cells of log q (nats per region cell), then the mean over episodes. M = sum of q over the region cells; lift = M / (n_region / N_floor); both means of per-episode values. q mixes 1% uniform into every density method; band = 0.99 uniform on floor cells with d_t in [q05, q95] of the training region cells; uniform = 1 / N_floor. e0 and e1 of a scene share one region set and one q, so they carry identical values; n is given as episodes and scenes.

@@ -1,0 +1,20 @@
+2026-10-17 22:28:32 +0800 start new; FROZEN and eval_people hashes verified
+2026-10-17 22:28:57 +0800 new 20261017-022122_s21_real_qwen38_low_con: 84 records, 48 solver steps, 25 s
+2026-10-17 22:29:22 +0800 new 20261017-021937_s21_staffed_qwen38_low_con: 84 records, 48 solver steps, 25 s
+2026-10-17 22:29:47 +0800 new 20261017-021852_s21_plain_qwen38_low_con: 84 records, 48 solver steps, 25 s
+2026-10-17 22:30:10 +0800 new 20261017-125813_s23_real_glm53_con: 84 records, 47 solver steps, 23 s
+2026-10-17 22:30:31 +0800 new 20261017-125552_s23_staffed_glm53_con: 84 records, 47 solver steps, 21 s
+2026-10-17 22:30:51 +0800 new 20261017-125556_s23_plain_glm53_con: 84 records, 47 solver steps, 20 s
+2026-10-17 22:31:16 +0800 new 20261017-124936_s23_real_dsv41_con: 84 records, 51 solver steps, 24 s
+2026-10-17 22:31:41 +0800 new 20261017-124931_s23_staffed_dsv41_con: 84 records, 52 solver steps, 25 s
+2026-10-17 22:32:03 +0800 new 20261017-124904_s23_plain_dsv41_con: 84 records, 48 solver steps, 22 s
+2026-10-17 22:32:25 +0800 new 20261017-130036_s23_real_haiku55_con: 84 records, 49 solver steps, 22 s
+2026-10-17 22:32:47 +0800 new 20261017-130055_s23_staffed_haiku55_con: 84 records, 49 solver steps, 23 s
+2026-10-17 22:33:10 +0800 new 20261017-130031_s23_plain_haiku55_con: 84 records, 48 solver steps, 23 s
+2026-10-17 22:33:33 +0800 new 20261017-130300_s23_real_sonnet55_low_con: 84 records, 48 solver steps, 23 s
+2026-10-17 22:33:54 +0800 new 20261017-132708_s23_staffed_sonnet55_low_con: 84 records, 48 solver steps, 21 s
+2026-10-17 22:34:15 +0800 new 20261017-132708_s23_plain_sonnet55_low_con: 84 records, 47 solver steps, 21 s
+2026-10-17 22:34:35 +0800 new 20261017-125226_s23_real_gemini38_low_con: 84 records, 45 solver steps, 20 s
+2026-10-17 22:34:54 +0800 new 20261017-125459_s23_staffed_gemini38_low_con: 84 records, 44 solver steps, 20 s
+2026-10-17 22:35:15 +0800 new 20261017-125351_s23_plain_gemini38_low_con: 84 records, 46 solver steps, 20 s
+2026-10-17 22:35:15 +0800 done new in 403 s

@@ -1,0 +1,26 @@
+# Item 5: CTd against CT2 (non-inferiority, margin -0.05 on strict share) TEST on old data
+
+- Sonnet 5.5 CTd: 15 episodes, strict 0.247, primary 0.316, vlm_error episodes 0
+- Sonnet 5.5 CT2: 50 episodes, strict 0.306, primary 0.404, vlm_error episodes 0
+- DeepSeek V4.1 CTd: 15 episodes, strict 0.248, primary 0.281, vlm_error episodes 0
+- DeepSeek V4.1 CT2: 25 episodes, strict 0.273, primary 0.311, vlm_error episodes 0
+- Haiku 5.5: no CTd episodes yet
+- Gemini 3.8: no CTd episodes yet
+- Qwen 3.8: no CTd episodes yet
+- GLM-5.3: no CTd episodes yet
+
+| | pairs | strict mean d | strict 95% lower bound | primary mean d | primary 95% lower bound | strict W/L/T (sign p) |
+|---|---|---|---|---|---|---|
+| Sonnet 5.5 | 15 | -0.018 | -0.073 | -0.050 | -0.142 | 5/6/4 (1.000) |
+| DeepSeek V4.1 | 15 | -0.017 | -0.070 | -0.015 | -0.071 | 5/4/6 (1.000) |
+| pooled (Sonnet, DeepSeek, Haiku, Gemini) | 30 | -0.018 | -0.054 | -0.032 | -0.084 | 10/10/10 (1.000) |
+
+BAR H5 (pooled, strict: one-sided 95% lower bound of mean(CTd - CT2) > -0.05): False  [pooled pairs 30, expected 125: check mechanics]
+Same under the primary scoring (reported): False
+
+## CTd: people tracked from the robot's own camera (E1D_FROZEN.md)
+
+| Model | Episodes | Frames | Errors | Median ms | Live tracks matched to a true person (0.5 m) | Id switches / live track-frames | Stale share of tracks | First-match rate |
+|---|---|---|---|---|---|---|---|---|
+| claude_sonnet55_low | 15 | 2518 | 0 | 162 | 3622/4073 = 0.89 | 93/4073 | 0.71 | 1.0 |
+| soclaas_dsv41 | 15 | 2499 | 0 | 173 | 4394/4734 = 0.93 | 107/4734 | 0.67 | 0.9697802197802198 |

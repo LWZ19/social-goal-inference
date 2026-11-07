@@ -1,0 +1,70 @@
+20261010-201358_s16b_real_qwen38_low_cot {'allowed': 84}
+20261010-201359_s16b_staffed_qwen38_low_cot {'allowed': 84}
+20261010-201401_s16b_plain_qwen38_low_cot {'allowed': 84}
+20261010-202647_s16b_real_qwen38_low_fsc {'allowed': 84}
+20261010-202635_s16b_staffed_qwen38_low_fsc {'allowed': 84}
+20261010-202550_s16b_plain_qwen38_low_fsc {'allowed': 84}
+20261010-203755_s16b_real_glm53_cot {'allowed': 84}
+20261010-203708_s16b_staffed_glm53_cot {'allowed': 84}
+20261010-203707_s16b_plain_glm53_cot {'allowed': 84}
+20261010-204211_s16b_real_glm53_fsc {'allowed': 84}
+20261010-204058_s16b_staffed_glm53_fsc {'allowed': 84}
+20261010-204052_s16b_plain_glm53_fsc {'allowed': 84}
+20261013-200416_s20_real_dsv41_cot {'allowed': 84}
+20261013-200416_s20_staffed_dsv41_cot {'allowed': 84}
+20261013-200418_s20_plain_dsv41_cot {'allowed': 84}
+20261013-192254_s20_real_dsv41_fsc {'allowed': 84}
+20261013-192322_s20_staffed_dsv41_fsc {'allowed': 84}
+20261013-192208_s20_plain_dsv41_fsc {'allowed': 84}
+records 1512 recorded vs now mismatches (success or distance): 0
+
+== N2: median distance_to_region_m of failures with right target at waiting_line ==
+qwen38_low  cot: all sources n 52 median 0.514 | marked n 52 median 0.514 | sources {'direct_marking': 52}
+qwen38_low  fsc: all sources n 18 median 0.341 | marked n 18 median 0.341 | sources {'direct_marking': 18}
+qwen38_low  R+E pooled n 70 median 0.487
+glm53       cot: all sources n 60 median 0.601 | marked n 58 median 0.598 | sources {'direct_marking': 58, 'standard': 2}
+glm53       fsc: all sources n 55 median 0.878 | marked n 53 median 0.875 | sources {'direct_marking': 53, 'standard': 2}
+glm53       R+E pooled n 115 median 0.807
+dsv41       cot: all sources n 72 median 0.741 | marked n 72 median 0.741 | sources {'direct_marking': 72}
+dsv41       fsc: all sources n 62 median 0.346 | marked n 62 median 0.346 | sources {'direct_marking': 62}
+dsv41       R+E pooled n 134 median 0.531
+
+== N1: E (fsc) failures at conversation_group with right target ==
+qwen38_low  fsc: n 5 near 4 near&gap<0.3 3 near&gap<0 2 near&unreach&gap<0.3 3 sources {'direct_marking': 5}
+qwen38_low  cot: n 10 near 9 near&gap<0.3 7 near&gap<0 6 near&unreach&gap<0.3 7 sources {'direct_marking': 10}
+glm53       fsc: n 16 near 15 near&gap<0.3 13 near&gap<0 11 near&unreach&gap<0.3 11 sources {'direct_marking': 16}
+glm53       cot: n 26 near 19 near&gap<0.3 17 near&gap<0 14 near&unreach&gap<0.3 16 sources {'direct_marking': 26}
+dsv41       fsc: n 23 near 15 near&gap<0.3 12 near&gap<0 12 near&unreach&gap<0.3 12 sources {'direct_marking': 23}
+dsv41       cot: n 25 near 16 near&gap<0.3 9 near&gap<0 7 near&unreach&gap<0.3 7 sources {'direct_marking': 25}
+fsc pooled {'n': 44, 'near': 34, 'nb': 28, 'nb0': 25, 'nub': 26}
+
+== near.py part-2 style table (fsc, sit != no_one) ==
+qwen38_low ('conversation_group', 'far', 'unreach', 'gap>=0.3') 1
+qwen38_low ('conversation_group', 'near', 'reach', 'gap>=0.3') 1
+qwen38_low ('conversation_group', 'near', 'unreach', 'gap<0.3') 3
+qwen38_low ('waiting_line', 'far', 'reach', 'gap>=0.3') 10
+qwen38_low ('waiting_line', 'near', 'reach', 'gap>=0.3') 2
+qwen38_low ('waiting_line', 'near', 'unreach', 'gap<0.3') 6
+glm53 ('conversation_group', 'far', 'unreach', 'gap<0.3') 1
+glm53 ('conversation_group', 'near', 'reach', 'gap<0.3') 2
+glm53 ('conversation_group', 'near', 'reach', 'gap>=0.3') 2
+glm53 ('conversation_group', 'near', 'unreach', 'gap<0.3') 11
+glm53 ('waiting_line', 'far', 'reach', 'gap<0.3') 9
+glm53 ('waiting_line', 'far', 'reach', 'gap>=0.3') 25
+glm53 ('waiting_line', 'far', 'unreach', 'gap<0.3') 4
+glm53 ('waiting_line', 'far', 'unreach', 'gap>=0.3') 7
+glm53 ('waiting_line', 'near', 'reach', 'gap<0.3') 4
+glm53 ('waiting_line', 'near', 'reach', 'gap>=0.3') 2
+glm53 ('waiting_line', 'near', 'unreach', 'gap<0.3') 4
+dsv41 ('conversation_group', 'far', 'reach', 'gap<0.3') 1
+dsv41 ('conversation_group', 'far', 'reach', 'gap>=0.3') 2
+dsv41 ('conversation_group', 'far', 'unreach', 'gap<0.3') 5
+dsv41 ('conversation_group', 'near', 'reach', 'gap>=0.3') 3
+dsv41 ('conversation_group', 'near', 'unreach', 'gap<0.3') 12
+dsv41 ('waiting_line', 'far', 'reach', 'gap<0.3') 1
+dsv41 ('waiting_line', 'far', 'reach', 'gap>=0.3') 18
+dsv41 ('waiting_line', 'far', 'unreach', 'gap<0.3') 17
+dsv41 ('waiting_line', 'far', 'unreach', 'gap>=0.3') 2
+dsv41 ('waiting_line', 'near', 'reach', 'gap<0.3') 5
+dsv41 ('waiting_line', 'near', 'reach', 'gap>=0.3') 10
+dsv41 ('waiting_line', 'near', 'unreach', 'gap<0.3') 9

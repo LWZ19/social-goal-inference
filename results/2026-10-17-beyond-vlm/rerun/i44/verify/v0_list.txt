@@ -1,0 +1,36 @@
+20261010-004334_s8_none_glm53 s8 ph glm53 none 84 40 trials [0, 1, 2]
+20261010-005140_s8_none_ornith15 s8 ph ornith15 none 84 39 trials [0, 1, 2]
+20261010-003520_s8_none_qwen36_35 s8 ph qwen36_35 none 84 45 trials [0, 1, 2]
+20261010-003518_s8_none_qwen38 s8 ph qwen38 none 84 43 trials [0, 1, 2]
+20261010-004700_s8_none_qwen3vl s8 ph qwen3vl none 84 39 trials [0, 1, 2]
+20261010-004747_s8_convlm_glm53 s8 ph glm53 convlm 84 54 trials [0, 1, 2]
+20261010-005514_s8_convlm_ornith15 s8 ph ornith15 convlm 84 61 trials [0, 1, 2]
+20261010-003923_s8_convlm_qwen36_35 s8 ph qwen36_35 convlm 84 69 trials [0, 1, 2]
+20261010-004041_s8_convlm_qwen38 s8 ph qwen38 convlm 84 65 trials [0, 1, 2]
+20261010-005734_s8_convlm_qwen3vl s8 ph qwen3vl convlm 84 54 trials [0, 1, 2]
+20261010-004411_s8_conorc_glm53 s8 ph glm53 conorc 84 59 trials [0, 1, 2]
+20261010-005218_s8_conorc_ornith15 s8 ph ornith15 conorc 84 63 trials [0, 1, 2]
+20261010-003604_s8_conorc_qwen36_35 s8 ph qwen36_35 conorc 84 71 trials [0, 1, 2]
+20261010-003601_s8_conorc_qwen38 s8 ph qwen38 conorc 84 67 trials [0, 1, 2]
+20261010-004740_s8_conorc_qwen3vl s8 ph qwen3vl conorc 84 65 trials [0, 1, 2]
+20261010-121744_s10_glm53_none_cot s10 ph glm53 cot 28 14 trials [0]
+20261010-122014_s10_glm53_none_fsc s10 ph glm53 fsc 28 13 trials [0]
+20261010-122223_s10_glm53_none_con s10 ph glm53 con 28 17 trials [0]
+20261010-120006_s10_glm53_low_cot s10 ph glm53_low cot 28 12 trials [0]
+20261010-120334_s10_glm53_low_fsc s10 ph glm53_low fsc 28 15 trials [0]
+20261010-120459_s10_glm53_low_con s10 ph glm53_low con 28 16 trials [0]
+20261010-121111_s10_qwen38_none_cot s10 ph qwen38 cot 28 12 trials [0]
+20261010-121342_s10_qwen38_none_fsc s10 ph qwen38 fsc 28 14 trials [0]
+20261010-121526_s10_qwen38_none_con s10 ph qwen38 con 28 21 trials [0]
+20261010-113310_s10_qwen38_low_cot s10 ph qwen38_low cot 28 22 trials [0]
+20261010-114653_s10_qwen38_low_fsc s10 ph qwen38_low fsc 28 24 trials [0]
+20261010-121108_s10_qwen38_low_con s10 ph qwen38_low con 28 27 trials [0]
+20261010-113304_s10_qwen38_medium_cot s10 ph qwen38_medium cot 28 21 trials [0]
+20261010-114330_s10_qwen38_medium_fsc s10 ph qwen38_medium fsc 28 22 trials [0]
+20261010-114753_s10_qwen38_medium_con s10 ph qwen38_medium con 28 26 trials [0]
+20261010-201401_s16b_ph_qwen38_low_cot s16b ph qwen38_low cot 84 55
+20261010-202545_s16b_ph_qwen38_low_fsc s16b ph qwen38_low fsc 84 67
+20261010-203754_s16b_ph_glm53_cot s16b ph glm53 cot 84 45
+20261010-204126_s16b_ph_glm53_fsc s16b ph glm53 fsc 84 44
+20261011-160610_s19_ph_qwen38_low_con s19 ph qwen38_low con 84 79
+20261011-160439_s19_ph_glm53_con s19 ph glm53 con 84 55

@@ -1,0 +1,3 @@
+recorded kinds ['within_distance', 'keep_out_of_view']
+empty: uses [] pose (2.475316083554392, -0.24960885352411788, -2.624268528224251) success False constraints in result []
+recorded: reproduced True success False rec False

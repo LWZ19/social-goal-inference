@@ -1,0 +1,4 @@
+yaw +0.0: G3 in the area True, outside the forbidden zones True
+yaw +1.0: G3 in the area True, outside the forbidden zones True
+yaw +2.5: G3 in the area True, outside the forbidden zones True
+yaw -2.0: G3 in the area True, outside the forbidden zones True

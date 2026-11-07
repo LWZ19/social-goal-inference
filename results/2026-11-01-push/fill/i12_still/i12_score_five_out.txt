@@ -1,0 +1,38 @@
+# Item 12: R, E and C on fresh seeds of the development rows; layout-level sign-flip
+
+| model | records per method | layouts | R | E | C | C-R W/L/T, net, p | C-E W/L/T, net, p | E-R W/L/T, net, p |
+|---|---|---|---|---|---|---|---|---|
+| soclaas_qwen38_low | 280 | 70 | 191 | 227 | 246 | 29/2/39, +55, p 0.0000 | 20/6/44, +19, p 0.0209 | 24/8/38, +36, p 0.0006 |
+| soclaas_dsv41 | 280 | 70 | 141 | 141 | 228 | 38/0/32, +87, p 0.0000 | 36/1/33, +87, p 0.0000 | 13/13/44, +0, p 1.0000 |
+| claude_haiku55 | 280 | 70 | 151 | 156 | 260 | 35/0/35, +109, p 0.0000 | 38/2/30, +104, p 0.0000 | 11/8/51, +5, p 0.6079 |
+| gemini_fast | 280 | 70 | 167 | 174 | 237 | 32/2/36, +70, p 0.0000 | 28/1/41, +63, p 0.0000 | 17/10/43, +7, p 0.4397 |
+| claude_sonnet55_low | 280 | 70 | 198 | 194 | 257 | 26/2/42, +59, p 0.0000 | 27/2/41, +63, p 0.0000 | 12/15/43, -4, p 0.6926 |
+
+Per model (I12 bars: net > 0 and p <= 0.05):
+- soclaas_qwen38_low: BAR C beats R True; BAR C beats E True
+- soclaas_dsv41: BAR C beats R True; BAR C beats E True
+- claude_haiku55: BAR C beats R True; BAR C beats E True
+- gemini_fast: BAR C beats R True; BAR C beats E True
+- claude_sonnet55_low: BAR C beats R True; BAR C beats E True
+
+Pooled over the six models:
+- C-R: 42/0/28, +380, p 0.0000: BAR True
+- C-E: 42/0/28, +336, p 0.0000: BAR True
+- E-R: 24/10/36, +44, p 0.0076 (reported)
+
+Pooled over the three free models:
+- C-R: 39/0/31, +142, p 0.0000: BAR True
+- C-E: 36/1/33, +106, p 0.0000: BAR True
+- E-R: 24/6/40, +36, p 0.0031 (reported)
+
+## Success by situation (R / E / C)
+
+| model | conversation_group | no_one | waiting_line |
+|---|---|---|---|
+| soclaas_qwen38_low | 36/45/55 of 60 | 103/103/103 of 120 | 52/79/88 of 100 |
+| soclaas_dsv41 | 27/29/51 of 60 | 95/96/97 of 120 | 19/16/80 of 100 |
+| claude_haiku55 | 34/33/55 of 60 | 113/112/113 of 120 | 4/11/92 of 100 |
+| gemini_fast | 21/23/60 of 60 | 106/106/106 of 120 | 40/45/71 of 100 |
+| claude_sonnet55_low | 52/42/59 of 60 | 113/113/113 of 120 | 33/39/85 of 100 |
+
+models not (yet) in the runs given: ['soclaas_glm53']

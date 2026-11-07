@@ -1,0 +1,8 @@
+s19 glm53: answers 141, output_tokens 69352 (reasoning 0), chars/token 3.84, lists 582 (4.1/answer)
+   list values incl brackets, proxy tokens 2579 = 3.72% of output_tokens; with key 4907 = 7.08%
+s20 dsv41: answers 157, output_tokens 86263 (reasoning 0), chars/token 3.81, lists 766 (4.9/answer)
+   list values incl brackets, proxy tokens 3369 = 3.91% of output_tokens; with key 6433 = 7.46%
+s23 glm53: answers 141, output_tokens 69246 (reasoning 0), chars/token 3.83, lists 583 (4.1/answer)
+   list values incl brackets, proxy tokens 2689 = 3.88% of output_tokens; with key 5021 = 7.25%
+s23 dsv41: answers 151, output_tokens 83224 (reasoning 0), chars/token 3.82, lists 742 (4.9/answer)
+   list values incl brackets, proxy tokens 3137 = 3.77% of output_tokens; with key 6105 = 7.34%

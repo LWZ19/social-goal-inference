@@ -1,0 +1,25 @@
+seed,split,index,twin_id,real_id,situation,n_visitors,n_staff_real,target_kind,target_label,hidden_twin,occluders_twin,hidden_real,occluders_real,target_in_image,bin,near_person,near_role,near_anchor_m,near_footprint_m,near_shown,anchor_in_box,set,role_in_set,spare
+401,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.252,p1,0.252,p1,1.0,15-40,,,,,,,occluded,occluded 15-40,False
+402,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.215,p3,0.215,p3,1.0,15-40,,,,,,,occluded,occluded 15-40,False
+403,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.219,p3,0.219,p3,1.0,15-40,,,,,,,occluded,occluded 15-40,False
+404,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.304,p3,0.304,p3,1.0,15-40,,,,,,,occluded,occluded 15-40,False
+405,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.252,p1,0.252,p1,1.0,15-40,,,,,,,occluded,occluded 15-40,False
+406,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.226,p1,0.226,p1,1.0,15-40,,,,,,,occluded,occluded 15-40,False
+409,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.259,p3,0.259,p3,1.0,15-40,,,,,,,occluded,occluded 15-40,True
+410,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.363,p3,0.363,p3,1.0,15-40,,,,,,,occluded,occluded 15-40,True
+401,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,False
+401,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,False
+401,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,False
+407,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,False
+401,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,False
+401,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,False
+402,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person,control_person,True
+408,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.037,p1,0.037,p1,1.0,unhidden,,,,,,,control_person,control_person,True
+401,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place,control_object,False
+401,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place,control_object,False
+403,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place,control_object,False
+403,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place,control_object,False
+404,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.75,0.75,1.0,,control_place,control_object,False
+404,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place,control_object,False
+404,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place,control_object,True
+405,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place,control_object,True

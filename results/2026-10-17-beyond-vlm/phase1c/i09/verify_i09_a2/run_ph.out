@@ -1,0 +1,14 @@
+2026-10-17 22:26:21 +0800 start ph; FROZEN and eval_people hashes verified
+2026-10-17 22:26:45 +0800 ph 20261011-160610_s19_ph_qwen38_low_con: 84 records, 48 solver steps, 24 s
+2026-10-17 22:26:51 +0800 ph 20261011-160326_s19_dev_seed0_qwen38_low_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:26:57 +0800 ph 20261011-160315_s19_dev_seed1_qwen38_low_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:27:03 +0800 ph 20261011-160306_s19_dev_seed2_qwen38_low_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:27:27 +0800 ph 20261011-160439_s19_ph_glm53_con: 84 records, 48 solver steps, 23 s
+2026-10-17 22:27:33 +0800 ph 20261011-160611_s19_dev_seed0_glm53_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:27:39 +0800 ph 20261011-160558_s19_dev_seed1_glm53_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:27:45 +0800 ph 20261011-160545_s19_dev_seed2_glm53_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:28:06 +0800 ph 20261013-190939_s20_ph_dsv41_con: 84 records, 44 solver steps, 22 s
+2026-10-17 22:28:12 +0800 ph 20261013-190610_s20_dev_seed0_dsv41_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:28:18 +0800 ph 20261013-190617_s20_dev_seed1_dsv41_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:28:24 +0800 ph 20261013-191026_s20_dev_seed2_dsv41_con: 24 records, 12 solver steps, 6 s
+2026-10-17 22:28:24 +0800 done ph in 123 s

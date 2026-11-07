@@ -1,0 +1,24 @@
+dsv41 lines still failing after snapD with gapD<0: 12 ; of them still failing after snapP with gapP<0: 5
+dsv41 lines still failing after snapP with gapP<0 (all): 5
+gemini groups still failing after snapP: 8 Counter({'near': 8})
+
+-- gate pooled over lines and groups (as I34 words it), near = d <= 0.3 before the snap
+  pooled6 cot: near 159 fixedD 71 (45%) fixedP 78 (49%)
+  pooled6 fsc: near 202 fixedD 92 (46%) fixedP 102 (50%)
+  glm53 cot: near 30 fixedD 8 (27%) fixedP 8 (27%)
+  glm53 fsc: near 27 fixedD 14 (52%) fixedP 15 (56%)
+  dsv41 cot: near 27 fixedD 7 (26%) fixedP 11 (41%)
+  dsv41 fsc: near 44 fixedD 18 (41%) fixedP 20 (45%)
+
+-- still failing after snapD, on a body under N1 definition (gap<0.3) vs strict (gap<0), lines
+  qwen38_low: 55 gap<0 0 gap<0.3 5
+  glm53: 115 gap<0 0 gap<0.3 36
+  dsv41: 121 gap<0 12 gap<0.3 53
+  haiku55: 156 gap<0 3 gap<0.3 33
+  sonnet55_low: 126 gap<0 0 gap<0.3 0
+  gemini38_low: 14 gap<0 2 gap<0.3 6
+
+-- depth-only snap on the old E sets (s16b/s20 fsc, realistic arms): E failures with the right target, marked
+  qwen38_low s16b: broken: 0, succ: 114, ('conversation_group', 'far'): 1, ('conversation_group', 'fixed'): 3, ('conversation_group', 'n'): 5, ('conversation_group', 'near&body'): 3, ('conversation_group', 'near&body_fixed'): 3, ('conversation_group', 'near'): 4, ('conversation_group', 'near_fixed'): 3, ('waiting_line', 'far'): 2, ('waiting_line', 'fixed'): 4, ('waiting_line', 'n'): 18, ('waiting_line', 'near&body'): 6, ('waiting_line', 'near&body_fixed'): 4, ('waiting_line', 'near'): 8, ('waiting_line', 'near_fixed'): 4
+  glm53 s16b: broken: 0, succ: 55, ('conversation_group', 'fixed'): 9, ('conversation_group', 'n'): 16, ('conversation_group', 'near&body'): 13, ('conversation_group', 'near&body_fixed'): 8, ('conversation_group', 'near'): 15, ('conversation_group', 'near_fixed'): 8, ('no_one', 'fixed'): 0, ('no_one', 'n'): 3, ('no_one', 'near'): 1, ('no_one', 'near_fixed'): 0, ('waiting_line', 'far'): 24, ('waiting_line', 'fixed'): 2, ('waiting_line', 'n'): 53, ('waiting_line', 'near&body'): 8, ('waiting_line', 'near&body_fixed'): 2, ('waiting_line', 'near'): 10, ('waiting_line', 'near_fixed'): 2
+  dsv41 s20: broken: 0, succ: 47, ('conversation_group', 'fixed'): 15, ('conversation_group', 'n'): 23, ('conversation_group', 'near&body'): 12, ('conversation_group', 'near&body_fixed'): 10, ('conversation_group', 'near'): 15, ('conversation_group', 'near_fixed'): 10, ('no_one', 'fixed'): 0, ('no_one', 'n'): 11, ('no_one', 'near&body'): 1, ('no_one', 'near&body_fixed'): 0, ('no_one', 'near'): 8, ('no_one', 'near_fixed'): 0, ('waiting_line', 'far'): 6, ('waiting_line', 'fixed'): 8, ('waiting_line', 'n'): 62, ('waiting_line', 'near&body'): 14, ('waiting_line', 'near&body_fixed'): 3, ('waiting_line', 'near'): 24, ('waiting_line', 'near_fixed'): 3

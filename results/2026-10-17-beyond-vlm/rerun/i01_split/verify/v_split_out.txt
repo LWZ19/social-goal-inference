@@ -1,0 +1,177 @@
+=== NEW WORDING ===
+qwen38_low R (s21)           n=252 succ=179 found=240(raw 240) notok=0 givenT=179/240=74.6% | no_on: n=108 found=107 succ=97 givenT=97/107=90.7% | waiti: n=90 found=87 succ=44 givenT=44/87=50.6% | conve: n=54 found=46 succ=38 givenT=38/46=82.6% | fails=73: wrong=12 out=54 unreach=7 heading=0 other=0 (out&unr=14)
+qwen38_low E (s21)           n=252 succ=196 found=240(raw 240) notok=0 givenT=196/240=81.7% | no_on: n=108 found=107 succ=97 givenT=97/107=90.7% | waiti: n=90 found=87 succ=61 givenT=61/87=70.1% | conve: n=54 found=46 succ=38 givenT=38/46=82.6% | fails=56: wrong=12 out=36 unreach=8 heading=0 other=0 (out&unr=9)
+qwen38_low C (s21)           n=252 succ=228 found=240(raw 240) notok=0 givenT=228/240=95.0% | no_on: n=108 found=107 succ=97 givenT=97/107=90.7% | waiti: n=90 found=87 succ=85 givenT=85/87=97.7% | conve: n=54 found=46 succ=46 givenT=46/46=100.0% | fails=24: wrong=12 out=11 unreach=1 heading=0 other=0 (out&unr=0)
+glm53 R (s23)                n=252 succ=132 found=219(raw 219) notok=0 givenT=132/219=60.3% | no_on: n=108 found=98 succ=83 givenT=83/98=84.7% | waiti: n=90 found=72 succ=15 givenT=15/72=20.8% | conve: n=54 found=49 succ=34 givenT=34/49=69.4% | fails=120: wrong=33 out=84 unreach=3 heading=0 other=0 (out&unr=17)
+glm53 E (s23)                n=252 succ=123 found=219(raw 219) notok=0 givenT=123/219=56.2% | no_on: n=108 found=98 succ=83 givenT=83/98=84.7% | waiti: n=90 found=72 succ=10 givenT=10/72=13.9% | conve: n=54 found=49 succ=30 givenT=30/49=61.2% | fails=129: wrong=33 out=91 unreach=5 heading=0 other=0 (out&unr=25)
+glm53 C (s23)                n=252 succ=170 found=219(raw 219) notok=0 givenT=170/219=77.6% | no_on: n=108 found=98 succ=83 givenT=83/98=84.7% | waiti: n=90 found=72 succ=39 givenT=39/72=54.2% | conve: n=54 found=49 succ=48 givenT=48/49=98.0% | fails=82: wrong=33 out=48 unreach=1 heading=0 other=0 (out&unr=3)
+dsv41 R (s23)                n=252 succ=120 found=228(raw 228) notok=0 givenT=120/228=52.6% | no_on: n=108 found=99 succ=81 givenT=81/99=81.8% | waiti: n=90 found=85 succ=13 givenT=13/85=15.3% | conve: n=54 found=44 succ=26 givenT=26/44=59.1% | fails=132: wrong=24 out=107 unreach=1 heading=0 other=0 (out&unr=41)
+dsv41 E (s23)                n=252 succ=126 found=228(raw 228) notok=0 givenT=126/228=55.3% | no_on: n=108 found=99 succ=82 givenT=82/99=82.8% | waiti: n=90 found=85 succ=21 givenT=21/85=24.7% | conve: n=54 found=44 succ=23 givenT=23/44=52.3% | fails=126: wrong=24 out=99 unreach=3 heading=0 other=0 (out&unr=45)
+dsv41 C (s23)                n=252 succ=185 found=228(raw 228) notok=0 givenT=185/228=81.1% | no_on: n=108 found=99 succ=83 givenT=83/99=83.8% | waiti: n=90 found=85 succ=68 givenT=68/85=80.0% | conve: n=54 found=44 succ=34 givenT=34/44=77.3% | fails=67: wrong=24 out=39 unreach=3 heading=1 other=0 (out&unr=1)
+haiku55 R (s23)              n=252 succ=151 found=251(raw 251) notok=0 givenT=151/251=60.2% | no_on: n=108 found=108 succ=106 givenT=106/108=98.1% | waiti: n=90 found=90 succ=6 givenT=6/90=6.7% | conve: n=54 found=53 succ=39 givenT=39/53=73.6% | fails=101: wrong=1 out=100 unreach=0 heading=0 other=0 (out&unr=42)
+haiku55 E (s23)              n=252 succ=148 found=251(raw 251) notok=0 givenT=148/251=59.0% | no_on: n=108 found=108 succ=106 givenT=106/108=98.1% | waiti: n=90 found=90 succ=10 givenT=10/90=11.1% | conve: n=54 found=53 succ=32 givenT=32/53=60.4% | fails=104: wrong=1 out=101 unreach=2 heading=0 other=0 (out&unr=63)
+haiku55 C (s23)              n=252 succ=240 found=251(raw 251) notok=0 givenT=240/251=95.6% | no_on: n=108 found=108 succ=108 givenT=108/108=100.0% | waiti: n=90 found=90 succ=79 givenT=79/90=87.8% | conve: n=54 found=53 succ=53 givenT=53/53=100.0% | fails=12: wrong=1 out=11 unreach=0 heading=0 other=0 (out&unr=0)
+sonnet55_low R (s23)         n=252 succ=178 found=245(raw 245) notok=0 givenT=178/245=72.7% | no_on: n=108 found=108 succ=108 givenT=108/108=100.0% | waiti: n=90 found=90 succ=25 givenT=25/90=27.8% | conve: n=54 found=47 succ=45 givenT=45/47=95.7% | fails=74: wrong=7 out=66 unreach=1 heading=0 other=0 (out&unr=1)
+sonnet55_low E (s23)         n=252 succ=178 found=245(raw 245) notok=0 givenT=178/245=72.7% | no_on: n=108 found=108 succ=108 givenT=108/108=100.0% | waiti: n=90 found=90 succ=27 givenT=27/90=30.0% | conve: n=54 found=47 succ=43 givenT=43/47=91.5% | fails=74: wrong=7 out=65 unreach=2 heading=0 other=0 (out&unr=3)
+sonnet55_low C (s23)         n=252 succ=242 found=245(raw 245) notok=0 givenT=242/245=98.8% | no_on: n=108 found=108 succ=108 givenT=108/108=100.0% | waiti: n=90 found=90 succ=87 givenT=87/90=96.7% | conve: n=54 found=47 succ=47 givenT=47/47=100.0% | fails=10: wrong=7 out=3 unreach=0 heading=0 other=0 (out&unr=0)
+gemini38_low R (s23)         n=252 succ=164 found=218(raw 218) notok=0 givenT=164/218=75.2% | no_on: n=108 found=108 succ=104 givenT=104/108=96.3% | waiti: n=90 found=56 succ=32 givenT=32/56=57.1% | conve: n=54 found=54 succ=28 givenT=28/54=51.9% | fails=88: wrong=34 out=40 unreach=14 heading=0 other=0 (out&unr=26)
+gemini38_low E (s23)         n=252 succ=173 found=218(raw 218) notok=0 givenT=173/218=79.4% | no_on: n=108 found=108 succ=104 givenT=104/108=96.3% | waiti: n=90 found=56 succ=35 givenT=35/56=62.5% | conve: n=54 found=54 succ=34 givenT=34/54=63.0% | fails=79: wrong=34 out=35 unreach=10 heading=0 other=0 (out&unr=22)
+gemini38_low C (s23)         n=252 succ=214 found=218(raw 218) notok=0 givenT=214/218=98.2% | no_on: n=108 found=108 succ=104 givenT=104/108=96.3% | waiti: n=90 found=56 succ=56 givenT=56/56=100.0% | conve: n=54 found=54 succ=54 givenT=54/54=100.0% | fails=38: wrong=34 out=4 unreach=0 heading=0 other=0 (out&unr=0)
+
+=== c0 totals R/E/C ===
+qwen38_low 179/196/228 [252, 252, 252]
+glm53 132/123/170 [252, 252, 252]
+dsv41 120/126/185 [252, 252, 252]
+haiku55 151/148/240 [252, 252, 252]
+sonnet55_low 178/178/242 [252, 252, 252]
+gemini38_low 164/173/214 [252, 252, 252]
+
+=== c1 lines given target, R ===
+qwen38_low: 44/87 = 50.6%  (found 87/90)
+glm53: 15/72 = 20.8%  (found 72/90)
+dsv41: 13/85 = 15.3%  (found 85/90)
+haiku55: 6/90 = 6.7%  (found 90/90)
+sonnet55_low: 25/90 = 27.8%  (found 90/90)
+gemini38_low: 32/56 = 57.1%  (found 56/90)
+
+=== c2 C people scenes ===
+qwen38_low: 131/144  fails {('conversation_group', 'wrong'): 8, ('waiting_line', 'wrong'): 3, ('waiting_line', 'out'): 2}
+glm53: 87/144  fails {('waiting_line', 'wrong'): 18, ('waiting_line', 'out'): 32, ('waiting_line', 'unreach'): 1, ('conversation_group', 'wrong'): 5, ('conversation_group', 'out'): 1}
+dsv41: 102/144  fails {('waiting_line', 'out'): 14, ('waiting_line', 'wrong'): 5, ('conversation_group', 'out'): 9, ('conversation_group', 'wrong'): 10, ('waiting_line', 'unreach'): 3, ('conversation_group', 'heading'): 1}
+haiku55: 132/144  fails {('waiting_line', 'out'): 11, ('conversation_group', 'wrong'): 1}
+sonnet55_low: 134/144  fails {('conversation_group', 'wrong'): 7, ('waiting_line', 'out'): 3}
+gemini38_low: 110/144  fails {('waiting_line', 'wrong'): 34}
+
+=== c3 C gap to Sonnet by situation and failure class ===
+qwen38_low: total 228 gap -14: {'no_one': (-11, {'wrong': 1, 'out': 9, 'unreach': 1}), 'waiting_line': (-2, {'wrong': 3, 'out': 2}), 'conversation_group': (-1, {'wrong': 8})}
+glm53: total 170 gap -72: {'no_one': (-25, {'out': 15, 'wrong': 10}), 'waiting_line': (-48, {'wrong': 18, 'out': 32, 'unreach': 1}), 'conversation_group': (1, {'wrong': 5, 'out': 1})}
+dsv41: total 185 gap -57: {'no_one': (-25, {'wrong': 9, 'out': 16}), 'waiting_line': (-19, {'out': 14, 'wrong': 5, 'unreach': 3}), 'conversation_group': (-13, {'out': 9, 'wrong': 10, 'heading': 1})}
+haiku55: total 240 gap -2: {'no_one': (0, {}), 'waiting_line': (-8, {'out': 11}), 'conversation_group': (6, {'wrong': 1})}
+sonnet55_low: total 242 gap 0: {'no_one': (0, {}), 'waiting_line': (0, {'out': 3}), 'conversation_group': (0, {'wrong': 7})}
+gemini38_low: total 214 gap -28: {'no_one': (-4, {'out': 4}), 'waiting_line': (-31, {'wrong': 34}), 'conversation_group': (7, {})}
+Qwen C no_one failures:
+   real real_eval_00_no_one_place e1 0 wrong standard 0 True
+   staffed staffed_eval_00_no_one_place e1 2 out standard 0.098 True
+   staffed staffed_eval_01_no_one_place e0 2 out standard 0.055 True
+   staffed staffed_eval_02_no_one_place e1 0 out standard 0.587 True
+   staffed staffed_eval_02_no_one_place e1 2 out standard 0.587 True
+   plain plain_eval_01_no_one_place e1 0 out standard 0.17 True
+   plain plain_eval_02_no_one_place e1 1 out standard 0.178 True
+   plain plain_eval_03_no_one_deep_place e0 0 out standard 0.173 True
+   plain plain_eval_03_no_one_deep_place e1 0 out standard 0.171 True
+   plain plain_eval_03_no_one_deep_place e1 1 out standard 0.171 True
+   plain plain_eval_04_no_one_object e1 2 unreach standard 0 False
+Gemini C no_one failures:
+   real real_eval_00_no_one_place e1 2 out standard 0.033
+   staffed staffed_eval_00_no_one_place e1 0 out standard 0.043
+   staffed staffed_eval_00_no_one_place e1 1 out standard 0.034
+   staffed staffed_eval_00_no_one_place e1 2 out standard 0.043
+wrong targets at no_one, C: {'qwen38_low': 1, 'glm53': 10, 'dsv41': 9, 'haiku55': 0, 'sonnet55_low': 0, 'gemini38_low': 0}
+wrong targets at no_one, R: {'qwen38_low': 1, 'glm53': 10, 'dsv41': 9, 'haiku55': 0, 'sonnet55_low': 0, 'gemini38_low': 0}
+
+=== n1 target shared across methods ===
+qwen38_low new: keys=252 same world=252 same target_correct=252
+   E cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   C cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   R cache: {('plan', 'calls'): 252, ('plan', 'cached'): 0, ('context', 'calls'): 252, ('context', 'cached'): 1, ('goal', 'calls'): 144, ('goal', 'cached'): 0}
+glm53 new: keys=252 same world=252 same target_correct=252
+   E cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   C cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   R cache: {('plan', 'calls'): 252, ('plan', 'cached'): 0, ('context', 'calls'): 252, ('context', 'cached'): 0, ('goal', 'calls'): 141, ('goal', 'cached'): 0}
+dsv41 new: keys=252 same world=252 same target_correct=252
+   E cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   C cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   R cache: {('plan', 'calls'): 252, ('plan', 'cached'): 0, ('context', 'calls'): 252, ('context', 'cached'): 3, ('goal', 'calls'): 151, ('goal', 'cached'): 2}
+haiku55 new: keys=252 same world=252 same target_correct=252
+   E cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   C cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   R cache: {('plan', 'calls'): 252, ('plan', 'cached'): 6, ('context', 'calls'): 252, ('context', 'cached'): 6, ('goal', 'calls'): 146, ('goal', 'cached'): 6}
+sonnet55_low new: keys=252 same world=252 same target_correct=252
+   E cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   C cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   R cache: {('plan', 'calls'): 252, ('plan', 'cached'): 6, ('context', 'calls'): 252, ('context', 'cached'): 6, ('goal', 'calls'): 143, ('goal', 'cached'): 6}
+gemini38_low new: keys=252 same world=252 same target_correct=252
+   E cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   C cache: {('plan', 'calls'): 252, ('plan', 'cached'): 252, ('context', 'calls'): 252, ('context', 'cached'): 252}
+   R cache: {('plan', 'calls'): 252, ('plan', 'cached'): 6, ('context', 'calls'): 252, ('context', 'cached'): 6, ('goal', 'calls'): 135, ('goal', 'cached'): 6}
+
+=== n2 found by situation (R records) ===
+qwen38_low [107, 87, 46] 240 95.2% notok all methods 0
+glm53 [98, 72, 49] 219 86.9% notok all methods 0
+dsv41 [99, 85, 44] 228 90.5% notok all methods 0
+haiku55 [108, 90, 53] 251 99.6% notok all methods 0
+sonnet55_low [108, 90, 47] 245 97.2% notok all methods 0
+gemini38_low [108, 56, 54] 218 86.5% notok all methods 0
+
+=== n11 E-R ===
+{'qwen38_low': 17, 'glm53': -9, 'dsv41': 6, 'haiku55': -3, 'sonnet55_low': 0, 'gemini38_low': 9} s23 sum 3 all 20
+
+=== n9 wrong targets by scene (R) ===
+qwen38_low 12 {'eval_12_conversation_group_4': 8, 'eval_09_waiting_line_6': 3, 'eval_00_no_one_place': 1}
+    {'real_eval_12_conversation_group_4': 4, 'staffed_eval_09_waiting_line_6': 2, 'staffed_eval_12_conversation_group_4': 2, 'plain_eval_12_conversation_group_4': 2, 'real_eval_00_no_one_place': 1, 'plain_eval_09_waiting_line_6': 1}
+glm53 33 {'eval_06_waiting_line_1': 11, 'eval_04_no_one_object': 8, 'eval_12_conversation_group_4': 3, 'eval_13_waiting_line_3': 3, 'eval_09_waiting_line_6': 2, 'eval_10_conversation_group_2': 2, 'eval_07_waiting_line_2': 1, 'eval_08_waiting_line_4': 1, 'eval_01_no_one_place': 1, 'eval_03_no_one_deep_place': 1}
+    {'plain_eval_06_waiting_line_1': 5, 'staffed_eval_06_waiting_line_1': 4, 'real_eval_04_no_one_object': 3, 'real_eval_13_waiting_line_3': 3, 'staffed_eval_04_no_one_object': 3, 'real_eval_06_waiting_line_1': 2, 'real_eval_10_conversation_group_2': 2, 'plain_eval_04_no_one_object': 2, 'real_eval_07_waiting_line_2': 1, 'real_eval_08_waiting_line_4': 1, 'real_eval_09_waiting_line_6': 1, 'real_eval_12_conversation_group_4': 1, 'staffed_eval_09_waiting_line_6': 1, 'staffed_eval_12_conversation_group_4': 1, 'plain_eval_01_no_one_place': 1, 'plain_eval_03_no_one_deep_place': 1, 'plain_eval_12_conversation_group_4': 1}
+dsv41 24 {'eval_12_conversation_group_4': 9, 'eval_04_no_one_object': 7, 'eval_07_waiting_line_2': 2, 'eval_00_no_one_place': 1, 'eval_08_waiting_line_4': 1, 'eval_11_conversation_group_3': 1, 'eval_13_waiting_line_3': 1, 'eval_03_no_one_deep_place': 1, 'eval_09_waiting_line_6': 1}
+    {'real_eval_12_conversation_group_4': 5, 'plain_eval_04_no_one_object': 3, 'real_eval_04_no_one_object': 2, 'staffed_eval_04_no_one_object': 2, 'staffed_eval_12_conversation_group_4': 2, 'plain_eval_12_conversation_group_4': 2, 'real_eval_00_no_one_place': 1, 'real_eval_08_waiting_line_4': 1, 'real_eval_11_conversation_group_3': 1, 'real_eval_13_waiting_line_3': 1, 'staffed_eval_03_no_one_deep_place': 1, 'staffed_eval_07_waiting_line_2': 1, 'plain_eval_07_waiting_line_2': 1, 'plain_eval_09_waiting_line_6': 1}
+haiku55 1 {'eval_12_conversation_group_4': 1}
+    {'staffed_eval_12_conversation_group_4': 1}
+sonnet55_low 7 {'eval_12_conversation_group_4': 7}
+    {'real_eval_12_conversation_group_4': 3, 'staffed_eval_12_conversation_group_4': 3, 'plain_eval_12_conversation_group_4': 1}
+gemini38_low 34 {'eval_08_waiting_line_4': 9, 'eval_06_waiting_line_1': 8, 'eval_09_waiting_line_6': 7, 'eval_13_waiting_line_3': 7, 'eval_07_waiting_line_2': 3}
+    {'real_eval_06_waiting_line_1': 3, 'real_eval_08_waiting_line_4': 3, 'real_eval_13_waiting_line_3': 3, 'staffed_eval_06_waiting_line_1': 3, 'staffed_eval_07_waiting_line_2': 3, 'staffed_eval_08_waiting_line_4': 3, 'staffed_eval_13_waiting_line_3': 3, 'plain_eval_08_waiting_line_4': 3, 'plain_eval_09_waiting_line_6': 3, 'real_eval_09_waiting_line_6': 2, 'staffed_eval_09_waiting_line_6': 2, 'plain_eval_06_waiting_line_1': 2, 'plain_eval_13_waiting_line_3': 1}
+
+=== n10 right target, in region, unreachable ===
+qwen38_low R: unreach=7 gap<=0: 5 gap<=0.002: 5 no_one: 1
+qwen38_low E: unreach=8 gap<=0: 6 gap<=0.002: 6 no_one: 1
+qwen38_low C: unreach=1 gap<=0: 0 gap<=0.002: 0 no_one: 1
+glm53 R: unreach=3 gap<=0: 2 gap<=0.002: 2 no_one: 0
+glm53 E: unreach=5 gap<=0: 4 gap<=0.002: 4 no_one: 0
+glm53 C: unreach=1 gap<=0: 1 gap<=0.002: 1 no_one: 0
+dsv41 R: unreach=1 gap<=0: 1 gap<=0.002: 1 no_one: 0
+dsv41 E: unreach=3 gap<=0: 3 gap<=0.002: 3 no_one: 0
+dsv41 C: unreach=3 gap<=0: 3 gap<=0.002: 3 no_one: 0
+haiku55 R: unreach=0 gap<=0: 0 gap<=0.002: 0 no_one: 0
+haiku55 E: unreach=2 gap<=0: 2 gap<=0.002: 2 no_one: 0
+haiku55 C: unreach=0 gap<=0: 0 gap<=0.002: 0 no_one: 0
+sonnet55_low R: unreach=1 gap<=0: 0 gap<=0.002: 0 no_one: 0
+sonnet55_low E: unreach=2 gap<=0: 0 gap<=0.002: 1 no_one: 0
+sonnet55_low C: unreach=0 gap<=0: 0 gap<=0.002: 0 no_one: 0
+gemini38_low R: unreach=14 gap<=0: 13 gap<=0.002: 13 no_one: 0
+gemini38_low E: unreach=10 gap<=0: 9 gap<=0.002: 10 no_one: 0
+gemini38_low C: unreach=0 gap<=0: 0 gap<=0.002: 0 no_one: 0
+
+=== n5 OLD WORDING ===
+OLD qwen38_low R (s16b)      n=252 succ=175 found=245(raw 245) notok=0 givenT=175/245=71.4% | no_on: n=108 found=108 succ=100 givenT=100/108=92.6% | waiti: n=90 found=88 succ=36 givenT=36/88=40.9% | conve: n=54 found=49 succ=39 givenT=39/49=79.6% | fails=77: wrong=7 out=63 unreach=7 heading=0 other=0 (out&unr=16)
+OLD qwen38_low E (s16b)      n=252 succ=214 found=245(raw 245) notok=0 givenT=214/245=87.3% | no_on: n=108 found=108 succ=100 givenT=100/108=92.6% | waiti: n=90 found=88 succ=70 givenT=70/88=79.5% | conve: n=54 found=49 succ=44 givenT=44/49=89.8% | fails=38: wrong=7 out=27 unreach=4 heading=0 other=0 (out&unr=6)
+OLD qwen38_low C (s19)       n=252 succ=234 found=245(raw 245) notok=0 givenT=234/245=95.5% | no_on: n=108 found=108 succ=100 givenT=100/108=92.6% | waiti: n=90 found=88 succ=86 givenT=86/88=97.7% | conve: n=54 found=49 succ=48 givenT=48/49=98.0% | fails=18: wrong=7 out=11 unreach=0 heading=0 other=0 (out&unr=0)
+OLD qwen38_low: totals 175/214/234; found R 245; lines givenT ['36/88=40.9%', '70/88=79.5%', '86/88=97.7%']; C people 134/144; notok 0 {}
+OLD qwen38_low: keys=252 same world=252 same target_correct=252
+OLD qwen38_low R,E only: keys=252 same world=252 same target_correct=252
+OLD glm53 R (s16b)           n=252 succ=129 found=224(raw 224) notok=4 givenT=129/224=57.6% | no_on: n=108 found=99 succ=90 givenT=90/99=90.9% | waiti: n=90 found=73 succ=13 givenT=13/73=17.8% | conve: n=54 found=52 succ=26 givenT=26/52=50.0% | fails=123: wrong=28 out=87 unreach=7 heading=1 other=0 (out&unr=20)
+OLD glm53 E (s16b)           n=252 succ=145 found=224(raw 224) notok=4 givenT=145/224=64.7% | no_on: n=108 found=99 succ=91 givenT=91/99=91.9% | waiti: n=90 found=73 succ=18 givenT=18/73=24.7% | conve: n=54 found=52 succ=36 givenT=36/52=69.2% | fails=107: wrong=28 out=78 unreach=1 heading=0 other=0 (out&unr=27)
+OLD glm53 C (s19)            n=252 succ=186 found=224(raw 224) notok=4 givenT=186/224=83.0% | no_on: n=108 found=99 succ=93 givenT=93/99=93.9% | waiti: n=90 found=73 succ=42 givenT=42/73=57.5% | conve: n=54 found=52 succ=51 givenT=51/52=98.1% | fails=66: wrong=28 out=38 unreach=0 heading=0 other=0 (out&unr=4)
+OLD glm53: totals 129/145/186; found R 224; lines givenT ['13/73=17.8%', '18/73=24.7%', '42/73=57.5%']; C people 93/144; notok 12 {('R', 'waiting_line'): 4, ('E', 'waiting_line'): 4, ('C', 'waiting_line'): 4}
+OLD glm53: keys=252 same world=252 same target_correct=252
+OLD glm53 R,E only: keys=252 same world=252 same target_correct=252
+OLD dsv41 R (s20)            n=252 succ=113 found=230(raw 230) notok=0 givenT=113/230=49.1% | no_on: n=108 found=100 succ=80 givenT=80/100=80.0% | waiti: n=90 found=84 succ=12 givenT=12/84=14.3% | conve: n=54 found=46 succ=21 givenT=21/46=45.7% | fails=139: wrong=22 out=115 unreach=2 heading=0 other=0 (out&unr=37)
+OLD dsv41 E (s20)            n=252 succ=120 found=230(raw 230) notok=0 givenT=120/230=52.2% | no_on: n=108 found=100 succ=75 givenT=75/100=75.0% | waiti: n=90 found=84 succ=22 givenT=22/84=26.2% | conve: n=54 found=46 succ=23 givenT=23/46=50.0% | fails=132: wrong=22 out=108 unreach=2 heading=0 other=0 (out&unr=45)
+OLD dsv41 C (s20)            n=252 succ=182 found=230(raw 230) notok=0 givenT=182/230=79.1% | no_on: n=108 found=100 succ=80 givenT=80/100=80.0% | waiti: n=90 found=84 succ=68 givenT=68/84=81.0% | conve: n=54 found=46 succ=34 givenT=34/46=73.9% | fails=70: wrong=22 out=44 unreach=2 heading=2 other=0 (out&unr=1)
+OLD dsv41: totals 113/120/182; found R 230; lines givenT ['12/84=14.3%', '22/84=26.2%', '68/84=81.0%']; C people 102/144; notok 0 {}
+OLD dsv41: keys=252 same world=252 same target_correct=252
+OLD dsv41 R,E only: keys=252 same world=252 same target_correct=252
+
+=== n6 Qwen 9-draw pool ===
+s22 trials: [(0, 84), (1, 84), (2, 84), (3, 84), (4, 84), (5, 84)]
+POOL9 qwen R                 n=756 succ=542 found=728(raw 728) notok=0 givenT=542/728=74.5% | no_on: n=324 found=323 succ=294 givenT=294/323=91.0% | waiti: n=270 found=261 succ=130 givenT=130/261=49.8% | conve: n=162 found=144 succ=118 givenT=118/144=81.9% | fails=214: wrong=28 out=167 unreach=19 heading=0 other=0 (out&unr=44)
+   s22 trials 3-5 alone succ: 188 252
+   lines givenT 130/261=49.8%
+POOL9 qwen E                 n=756 succ=614 found=728(raw 728) notok=0 givenT=614/728=84.3% | no_on: n=324 found=323 succ=294 givenT=294/323=91.0% | waiti: n=270 found=261 succ=195 givenT=195/261=74.7% | conve: n=162 found=144 succ=125 givenT=125/144=86.8% | fails=142: wrong=28 out=100 unreach=14 heading=0 other=0 (out&unr=24)
+   s22 trials 3-5 alone succ: 204 252
+   lines givenT 195/261=74.7%
+E-R pool9: 72
+POOL6 qwen C                 n=504 succ=462 found=485(raw 485) notok=0 givenT=462/485=95.3% | no_on: n=216 found=215 succ=197 givenT=197/215=91.6% | waiti: n=180 found=175 succ=171 givenT=171/175=97.7% | conve: n=108 found=95 succ=94 givenT=94/95=98.9% | fails=42: wrong=19 out=22 unreach=1 heading=0 other=0 (out&unr=0)
+   C lines givenT 171 175 people 265
+
+=== n7 s22 duplicates ===
+R: dup records 252 same score+pose 252 same target 252
+E: dup records 252 same score+pose 252 same target 252

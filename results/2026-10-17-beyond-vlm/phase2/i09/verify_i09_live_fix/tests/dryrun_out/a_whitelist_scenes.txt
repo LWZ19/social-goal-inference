@@ -1,0 +1,5 @@
+.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/real/scenes/real_eval_01_no_one_place
+.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/real/scenes/real_eval_08_waiting_line_4
+.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/real/scenes/real_eval_11_conversation_group_3
+.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/staffed/scenes/staffed_eval_12_conversation_group_4
+.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/plain/scenes/plain_eval_09_waiting_line_6

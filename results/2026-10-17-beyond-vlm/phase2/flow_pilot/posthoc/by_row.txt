@@ -1,0 +1,29 @@
+POST HOC, decides nothing.
+setting (b): row, n, C top-1, flow top-1, flow top in region / heading ok / reachable, fallbacks, valid share
+  audience_3                 n  54  C  46  flow  50  inreg  51 head  51 reach  53  fb  12  valid 0.05
+  audience_5                 n  54  C  32  flow  44  inreg  46 head  44 reach  53  fb  20  valid 0.05
+  conversation_group_2       n  54  C  45  flow  38  inreg  38 head  38 reach  53  fb   6  valid 0.39
+  conversation_group_3       n  54  C  50  flow  49  inreg  49 head  49 reach  54  fb   3  valid 0.24
+  conversation_group_4       n  54  C  38  flow  40  inreg  40 head  40 reach  53  fb   3  valid 0.27
+  no_one_deep_place          n   2  C   2  flow   2  inreg   2 head   2 reach   2  fb   0  valid 1.00
+  no_one_person              n   1  C   1  flow   1  inreg   1 head   1 reach   1  fb   0  valid 0.95
+  no_one_place               n  15  C   7  flow   5  inreg   5 head   5 reach  15  fb   4  valid 0.68
+  waiting_line_1             n  51  C  35  flow   5  inreg   5 head   5 reach  49  fb   4  valid 0.54
+  waiting_line_2             n  52  C  43  flow   6  inreg   6 head   6 reach  52  fb   3  valid 0.21
+  waiting_line_3             n  53  C  35  flow  21  inreg  21 head  21 reach  53  fb  20  valid 0.07
+  waiting_line_4             n  52  C  44  flow  12  inreg  12 head  12 reach  49  fb  10  valid 0.16
+  waiting_line_6             n  53  C  39  flow  39  inreg  39 head  39 reach  53  fb  51  valid 0.04
+setting (a): row, n, P top-1, flow top-1, flow top in region / heading ok / reachable, fallbacks, valid share
+  audience_3                 n  54  P  50  flow  53  inreg  53 head  53 reach  54  fb  11  valid 0.03
+  audience_5                 n  54  P  43  flow  48  inreg  50 head  48 reach  54  fb  15  valid 0.04
+  conversation_group_2       n  54  P  50  flow  39  inreg  39 head  39 reach  54  fb   1  valid 0.30
+  conversation_group_3       n  54  P  48  flow  48  inreg  48 head  48 reach  54  fb   4  valid 0.22
+  conversation_group_4       n  54  P  40  flow  39  inreg  39 head  39 reach  54  fb   3  valid 0.24
+  no_one_deep_place          n   2  P   2  flow   2  inreg   2 head   2 reach   2  fb   0  valid 1.00
+  no_one_person              n   1  P   1  flow   1  inreg   1 head   1 reach   1  fb   0  valid 0.73
+  no_one_place               n  15  P   7  flow   5  inreg   5 head   5 reach  15  fb   4  valid 0.71
+  waiting_line_1             n  51  P  35  flow   4  inreg   4 head   4 reach  49  fb   2  valid 0.55
+  waiting_line_2             n  52  P  43  flow   8  inreg   8 head   8 reach  52  fb   1  valid 0.25
+  waiting_line_3             n  53  P  46  flow  16  inreg  16 head  16 reach  53  fb  10  valid 0.12
+  waiting_line_4             n  52  P  50  flow  11  inreg  11 head  11 reach  52  fb   0  valid 0.24
+  waiting_line_6             n  53  P  46  flow  46  inreg  46 head  46 reach  53  fb  51  valid 0.01

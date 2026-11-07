@@ -1,0 +1,45 @@
+==============================================================================================================
+PART 5. Minimum detectable differences (MDD) for live A/B runs: 80% power, two-sided alpha 0.05
+Normal approximation, MDD = (z0.975 + z0.80) x SD of the difference = 2.802 x SD. Records of 252 (pp = /2.52).
+
+M1. Two independent live batches (A and B each one 3-trial batch, nothing shared): SD diff = sqrt(2) x batch SD.
+  batch SD 5 (old first figure)     =  5.00: MDD  19.8 records ( 7.9 pp)
+  batch SD 6                        =  6.00: MDD  23.8 records ( 9.4 pp)
+  batch SD 7                        =  7.00: MDD  27.7 records (11.0 pp)
+  batch SD Qwen (a) pooled          =  7.93: MDD  31.4 records (12.5 pp)
+  batch SD 8                        =  8.00: MDD  31.7 records (12.6 pp)
+  batch SD Qwen (c) item binomial   =  5.98: MDD  23.7 records ( 9.4 pp)
+  With b batches per arm (3b trials), divide by sqrt(b): Qwen (a) 7.93 -> MDD b=1: 31.4, b=2: 22.2, b=3: 18.1, b=4: 15.7 records of 252.
+
+M2. Paired live A/B in one stage (same trials share the plan/context target draw; ideally cached perception too):
+  Qwen pool E-R item-level paired SD 7.00 -> MDD 19.6 records (7.8 pp) per 3-trial batch.
+  Qwen pool E-R SD of the 3 batch differences 13.00 (df 2) -> MDD 36.4 records (includes between-batch shifts; very imprecise).
+  Qwen      within-batch paired SD C-E 5.4, C-R 5.2, E-R 6.9 -> MDD 15 / 15 / 19 records
+  GLM       within-batch paired SD C-E 6.1, C-R 6.2, E-R 6.2 -> MDD 17 / 17 / 17 records
+  DeepSeek  within-batch paired SD C-E 6.8, C-R 7.3, E-R 6.9 -> MDD 19 / 21 / 19 records
+  Haiku     within-batch paired SD C-E 5.1, C-R 4.9, E-R 5.8 -> MDD 14 / 14 / 16 records
+  Sonnet    within-batch paired SD C-E 4.7, C-R 3.9, E-R 6.1 -> MDD 13 / 11 / 17 records
+  Gemini    within-batch paired SD C-E 4.7, C-R 5.0, E-R 7.1 -> MDD 13 / 14 / 20 records
+
+M3. Generalising over layouts (the reported unit): t over the 14 layout differences. MDD(n) = (t0.975,n-1 + t0.80,n-1) x sd_layout / sqrt(n) x 252, with sd_layout the observed SD of the 14 layout mean differences.
+  t0.975,13 = 2.160, t0.80,13 = 0.870
+  Qwen      C-E: sd_layout 0.1622 -> MDD at 14 layouts  33.1 records (13.1 pp); observed +32
+  Qwen      C-R: sd_layout 0.2548 -> MDD at 14 layouts  52.0 records (20.6 pp); observed +49
+  Qwen      E-R: sd_layout 0.1364 -> MDD at 14 layouts  27.8 records (11.0 pp); observed +17
+  GLM       C-E: sd_layout 0.2040 -> MDD at 14 layouts  41.6 records (16.5 pp); observed +47
+  GLM       C-R: sd_layout 0.2049 -> MDD at 14 layouts  41.8 records (16.6 pp); observed +38
+  GLM       E-R: sd_layout 0.1206 -> MDD at 14 layouts  24.6 records ( 9.8 pp); observed -9
+  DeepSeek  C-E: sd_layout 0.2653 -> MDD at 14 layouts  54.1 records (21.5 pp); observed +59
+  DeepSeek  C-R: sd_layout 0.2928 -> MDD at 14 layouts  59.8 records (23.7 pp); observed +65
+  DeepSeek  E-R: sd_layout 0.1147 -> MDD at 14 layouts  23.4 records ( 9.3 pp); observed +6
+  Haiku     C-E: sd_layout 0.3703 -> MDD at 14 layouts  75.6 records (30.0 pp); observed +92
+  Haiku     C-R: sd_layout 0.3890 -> MDD at 14 layouts  79.4 records (31.5 pp); observed +89
+  Haiku     E-R: sd_layout 0.0903 -> MDD at 14 layouts  18.4 records ( 7.3 pp); observed -3
+  Sonnet    C-E: sd_layout 0.3409 -> MDD at 14 layouts  69.6 records (27.6 pp); observed +64
+  Sonnet    C-R: sd_layout 0.3847 -> MDD at 14 layouts  78.5 records (31.2 pp); observed +64
+  Sonnet    E-R: sd_layout 0.1233 -> MDD at 14 layouts  25.2 records (10.0 pp); observed +0
+  Gemini    C-E: sd_layout 0.2061 -> MDD at 14 layouts  42.1 records (16.7 pp); observed +41
+  Gemini    C-R: sd_layout 0.2303 -> MDD at 14 layouts  47.0 records (18.7 pp); observed +50
+  Gemini    E-R: sd_layout 0.1206 -> MDD at 14 layouts  24.6 records ( 9.8 pp); observed +9
+  Range over the 18 rows: 18 to 79 records.
+  Floor of the exact test: two-sided p >= 2 / 2^k with k non-tied layouts, so at least 6 layouts must move. On these sets a change confined to lines (5 layouts, floor 0.0625) or groups (3 layouts, floor 0.25) cannot reach p <= 0.05 two-sided.

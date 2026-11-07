@@ -1,0 +1,14 @@
+LOSO_audience, test seeds [100, 101]: n_r mine 22659, with their subsample 22659; band mine (0.7148830784095412, 3.1875535470756393), theirs-subsample (0.7148830784095412, 3.1875535470756393)
+  eval_14_audience_3               e0  theirs   -7.4244  me+their-subsample   -7.4244  me+my-subsample   -8.1601  floor-like share their/mine 0.050/0.204
+  eval_14_audience_3               e1  theirs   -7.4244  me+their-subsample   -7.4244  me+my-subsample   -8.1601  floor-like share their/mine 0.050/0.204
+  eval_15_audience_5               e0  theirs   -8.2136  me+their-subsample   -8.2136  me+my-subsample   -8.2589  floor-like share their/mine 0.157/0.197
+  eval_15_audience_5               e1  theirs   -8.2136  me+their-subsample   -8.2136  me+my-subsample   -8.2589  floor-like share their/mine 0.157/0.197
+  examples_07_audience_4           e0  theirs   -7.8565  me+their-subsample   -7.8565  me+my-subsample   -7.8464  floor-like share their/mine 0.136/0.139
+  examples_07_audience_4           e1  theirs   -7.8565  me+their-subsample   -7.8565  me+my-subsample   -7.8464  floor-like share their/mine 0.136/0.139
+  eval_14_audience_3               e0  theirs   -7.3462  me+their-subsample   -7.3462  me+my-subsample   -8.1488  floor-like share their/mine 0.039/0.193
+  eval_14_audience_3               e1  theirs   -7.3462  me+their-subsample   -7.3462  me+my-subsample   -8.1488  floor-like share their/mine 0.039/0.193
+  eval_15_audience_5               e0  theirs   -8.6360  me+their-subsample   -8.6360  me+my-subsample   -9.0102  floor-like share their/mine 0.198/0.270
+  eval_15_audience_5               e1  theirs   -8.6360  me+their-subsample   -8.6360  me+my-subsample   -9.0102  floor-like share their/mine 0.198/0.270
+  examples_07_audience_4           e0  theirs   -7.7459  me+their-subsample   -7.7459  me+my-subsample   -7.8282  floor-like share their/mine 0.115/0.131
+  examples_07_audience_4           e1  theirs   -7.7459  me+their-subsample   -7.7459  me+my-subsample   -7.8282  floor-like share their/mine 0.115/0.131
+  max |me with their subsample - theirs| S_ratio 2.93e-14; S_band 0.00e+00; mean (my subsample - theirs) -0.338 (n 12)

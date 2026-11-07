@@ -1,0 +1,84 @@
+# E2 score (E2_FROZEN.md)
+- detector check (reported): recall other 159/160, staff 11/13; false people 19 in 40 images (0.475 per image); warm detector time 0.164 s per image
+
+## claude_haiku55: 160 units (0 left out for vlm_error), 158 people-matter
+- success A0: people-matter 143/158, all units 143/160
+- success A0b: people-matter 137/158, all units 137/160
+- success D: people-matter 147/158, all units 147/160
+- redraw floor A0 -> A0b: right->wrong 12, wrong->right 6
+- D vs A0: gain 9, harm 5, net +4; layout sign-flip p 0.4062 over 6 layouts; row sign-flip p 0.3750 over 4 rows
+- calls per people-matter unit (with plan and context): A0 4.00, A0b 4.00, D 3.00; people calls in D 0; one fewer wherever A0 people ok: True
+- goal-step retries (validation + transient) on people-matter units: {'A0': 0, 'A0b': 0, 'D': 0}
+- goal-step seconds, 158 people-matter units with every call ok: median A0 5.9, A0b 5.9, D 3.8 (constraints 3.6 + detector 0.16); mean A0 5.9, D 3.8
+- whole unit seconds, median: A0 9.9, A0b 9.8, D 7.7
+- D faster than A0 in 157, slower in 1: sign p 0.0000; placebo A0b faster than A0 in 83, slower in 75: sign p 0.5777
+- BARS: A (harm - gain <= 12) True; G True; S1 True; S2 True; H2 (secondary) False
+
+## claude_sonnet55_low: 160 units (0 left out for vlm_error), 160 people-matter
+- success A0: people-matter 155/160, all units 155/160
+- success A0b: people-matter 157/160, all units 157/160
+- success D: people-matter 155/160, all units 155/160
+- redraw floor A0 -> A0b: right->wrong 2, wrong->right 4
+- D vs A0: gain 4, harm 4, net +0; layout sign-flip p 1.0000 over 7 layouts; row sign-flip p 1.0000 over 3 rows
+- calls per people-matter unit (with plan and context): A0 4.00, A0b 4.00, D 3.00; people calls in D 0; one fewer wherever A0 people ok: True
+- goal-step retries (validation + transient) on people-matter units: {'A0': 0, 'A0b': 0, 'D': 0}
+- goal-step seconds, 159 people-matter units with every call ok: median A0 7.4, A0b 7.4, D 4.8 (constraints 4.6 + detector 0.16); mean A0 7.7, D 5.0
+- whole unit seconds, median: A0 12.9, A0b 12.7, D 10.2
+- D faster than A0 in 156, slower in 3: sign p 0.0000; placebo A0b faster than A0 in 88, slower in 71: sign p 0.2043
+- BARS: A (harm - gain <= 2) True; G True; S1 True; S2 True; H2 (secondary) False
+
+## gemini_fast: 160 units (0 left out for vlm_error), 158 people-matter
+- success A0: people-matter 129/158, all units 129/160
+- success A0b: people-matter 129/158, all units 129/160
+- success D: people-matter 132/158, all units 132/160
+- redraw floor A0 -> A0b: right->wrong 2, wrong->right 2
+- D vs A0: gain 3, harm 0, net +3; layout sign-flip p 0.2500 over 3 layouts; row sign-flip p 0.5000 over 2 rows
+- calls per people-matter unit (with plan and context): A0 4.00, A0b 4.00, D 3.00; people calls in D 0; one fewer wherever A0 people ok: True
+- goal-step retries (validation + transient) on people-matter units: {'A0': 0, 'A0b': 0, 'D': 0}
+- goal-step seconds, 158 people-matter units with every call ok: median A0 9.9, A0b 9.7, D 4.9 (constraints 4.8 + detector 0.16); mean A0 10.1, D 5.1
+- whole unit seconds, median: A0 19.1, A0b 19.0, D 14.3
+- D faster than A0 in 157, slower in 1: sign p 0.0000; placebo A0b faster than A0 in 97, slower in 61: sign p 0.0052
+- BARS: A (harm - gain <= 2) True; G True; S1 True; S2 not judgeable (placebo p <= 0.05); H2 (secondary) False
+
+## soclaas_dsv41: 160 units (0 left out for vlm_error), 157 people-matter
+- success A0: people-matter 126/157, all units 126/160
+- success A0b: people-matter 131/157, all units 131/160
+- success D: people-matter 132/157, all units 132/160
+- redraw floor A0 -> A0b: right->wrong 9, wrong->right 14
+- D vs A0: gain 16, harm 10, net +6; layout sign-flip p 0.4140 over 19 layouts; row sign-flip p 0.4062 over 6 rows
+- calls per people-matter unit (with plan and context): A0 4.00, A0b 4.00, D 3.00; people calls in D 0; one fewer wherever A0 people ok: True
+- goal-step retries (validation + transient) on people-matter units: {'A0': 2, 'A0b': 1, 'D': 0}
+- goal-step seconds, 157 people-matter units with every call ok: median A0 34.5, A0b 32.6, D 18.8 (constraints 18.7 + detector 0.16); mean A0 34.9, D 20.6
+- whole unit seconds, median: A0 65.9, A0b 65.0, D 50.3
+- D faster than A0 in 148, slower in 9: sign p 0.0000; placebo A0b faster than A0 in 76, slower in 81: sign p 0.7497
+- BARS: A (harm - gain <= 9) True; G True; S1 True; S2 True; H2 (secondary) False
+
+## soclaas_glm53: 149 units (11 left out for vlm_error), 143 people-matter
+- success A0: people-matter 100/143, all units 100/149
+- success A0b: people-matter 93/143, all units 93/149
+- success D: people-matter 125/143, all units 125/149
+- redraw floor A0 -> A0b: right->wrong 23, wrong->right 16
+- D vs A0: gain 26, harm 1, net +25; layout sign-flip p 0.0010 over 14 layouts; row sign-flip p 0.0625 over 7 rows
+- calls per people-matter unit (with plan and context): A0 4.00, A0b 4.00, D 3.00; people calls in D 0; one fewer wherever A0 people ok: True
+- goal-step retries (validation + transient) on people-matter units: {'A0': 40, 'A0b': 36, 'D': 27}
+- goal-step seconds, 143 people-matter units with every call ok: median A0 122.2, A0b 124.8, D 89.2 (constraints 89.0 + detector 0.16); mean A0 129.0, D 94.4
+- whole unit seconds, median: A0 142.3, A0b 143.4, D 109.2
+- D faster than A0 in 107, slower in 36: sign p 0.0000; placebo A0b faster than A0 in 72, slower in 71: sign p 1.0000
+- BARS: A (harm - gain <= 23) True; G True; S1 True; S2 True; H2 (secondary) True
+
+## soclaas_qwen38_low: 160 units (0 left out for vlm_error), 159 people-matter
+- success A0: people-matter 144/159, all units 144/160
+- success A0b: people-matter 146/159, all units 146/160
+- success D: people-matter 154/159, all units 154/160
+- redraw floor A0 -> A0b: right->wrong 6, wrong->right 8
+- D vs A0: gain 11, harm 1, net +10; layout sign-flip p 0.0312 over 6 layouts; row sign-flip p 0.5000 over 2 rows
+- calls per people-matter unit (with plan and context): A0 4.00, A0b 4.00, D 3.00; people calls in D 0; one fewer wherever A0 people ok: True
+- goal-step retries (validation + transient) on people-matter units: {'A0': 0, 'A0b': 0, 'D': 0}
+- goal-step seconds, 159 people-matter units with every call ok: median A0 70.0, A0b 71.8, D 45.0 (constraints 44.8 + detector 0.16); mean A0 73.4, D 48.7
+- whole unit seconds, median: A0 107.4, A0b 110.6, D 83.3
+- D faster than A0 in 133, slower in 26: sign p 0.0000; placebo A0b faster than A0 in 78, slower in 81: sign p 0.8740
+- BARS: A (harm - gain <= 6) True; G True; S1 True; S2 True; H2 (secondary) True
+
+## The claim (free models)
+- "D beats C on fresh static scenes, faster at no loss of accuracy": True
+- H2 pooled over the free models: net +41, layout sign-flip p 0.0001: True; per model: ['soclaas_glm53', 'soclaas_qwen38_low']

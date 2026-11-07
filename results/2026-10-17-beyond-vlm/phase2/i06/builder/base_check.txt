@@ -1,0 +1,44 @@
+I06 base reproduction check (FROZEN.md section 2). Whitelisted scenes loaded through the step-0 harness:
+  seed 0 eval_06..13 via run 20261010-121108_s10_qwen38_low_con (scenes data/placeholder/eval)
+  seed 0 eval_14..15 via run 20261010-205408_s17_seed0_qwen38_low_cot (scenes .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/dev_new/seed0/scenes)
+  seed 1 eval_14..15 via run 20261010-205410_s17_seed1_qwen38_low_cot (scenes .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/dev_new/seed1/scenes)
+  seed 2 eval_14..15 via run 20261010-205411_s17_seed2_qwen38_low_cot (scenes .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/dev_new/seed2/scenes)
+
+seed 0: 10 bases reproduced: eval_06_waiting_line_1, eval_07_waiting_line_2, eval_08_waiting_line_4, eval_09_waiting_line_6, eval_10_conversation_group_2, eval_11_conversation_group_3, eval_12_conversation_group_4, eval_13_waiting_line_3, eval_14_audience_3, eval_15_audience_5
+  eval_06_waiting_line_1: EQUAL (people 1, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_07_waiting_line_2: EQUAL (people 2, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_08_waiting_line_4: EQUAL (people 4, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_09_waiting_line_6: EQUAL (people 6, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_10_conversation_group_2: EQUAL (people 4, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_11_conversation_group_3: EQUAL (people 5, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_12_conversation_group_4: EQUAL (people 7, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_13_waiting_line_3: EQUAL (people 3, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_14_audience_3: EQUAL (people 3, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_15_audience_5: EQUAL (people 5, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+
+seed 1: 10 bases reproduced: eval_06_waiting_line_1, eval_07_waiting_line_2, eval_08_waiting_line_4, eval_09_waiting_line_6, eval_10_conversation_group_2, eval_11_conversation_group_3, eval_12_conversation_group_4, eval_13_waiting_line_3, eval_14_audience_3, eval_15_audience_5
+  eval_06_waiting_line_1: no whitelisted copy on disk (not checkable); people 1, rejected draws before it none
+  eval_07_waiting_line_2: no whitelisted copy on disk (not checkable); people 2, rejected draws before it none
+  eval_08_waiting_line_4: no whitelisted copy on disk (not checkable); people 4, rejected draws before it none
+  eval_09_waiting_line_6: no whitelisted copy on disk (not checkable); people 6, rejected draws before it none
+  eval_10_conversation_group_2: no whitelisted copy on disk (not checkable); people 4, rejected draws before it none
+  eval_11_conversation_group_3: no whitelisted copy on disk (not checkable); people 5, rejected draws before it none
+  eval_12_conversation_group_4: no whitelisted copy on disk (not checkable); people 7, rejected draws before it none
+  eval_13_waiting_line_3: no whitelisted copy on disk (not checkable); people 3, rejected draws before it none
+  eval_14_audience_3: EQUAL (people 3, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_15_audience_5: EQUAL (people 5, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+
+seed 2: 10 bases reproduced: eval_06_waiting_line_1, eval_07_waiting_line_2, eval_08_waiting_line_4, eval_09_waiting_line_6, eval_10_conversation_group_2, eval_11_conversation_group_3, eval_12_conversation_group_4, eval_13_waiting_line_3, eval_14_audience_3, eval_15_audience_5
+  eval_06_waiting_line_1: no whitelisted copy on disk (not checkable); people 1, rejected draws before it none
+  eval_07_waiting_line_2: no whitelisted copy on disk (not checkable); people 2, rejected draws before it none
+  eval_08_waiting_line_4: no whitelisted copy on disk (not checkable); people 4, rejected draws before it none
+  eval_09_waiting_line_6: no whitelisted copy on disk (not checkable); people 6, rejected draws before it none
+  eval_10_conversation_group_2: no whitelisted copy on disk (not checkable); people 4, rejected draws before it none
+  eval_11_conversation_group_3: no whitelisted copy on disk (not checkable); people 5, rejected draws before it none
+  eval_12_conversation_group_4: no whitelisted copy on disk (not checkable); people 7, rejected draws before it none
+  eval_13_waiting_line_3: no whitelisted copy on disk (not checkable); people 3, rejected draws before it none
+  eval_14_audience_3: EQUAL (people 3, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+  eval_15_audience_5: EQUAL (people 5, targets, camera, robot, both episodes' regions and representative points, forbidden regions, bounds, obstacles, rgb and depth arrays; max difference 0); rejected draws before it none
+
+14 bases checked, 0 with a difference; 16 not checkable (no whitelisted copy): seed 1 eval_06_waiting_line_1, seed 1 eval_07_waiting_line_2, seed 1 eval_08_waiting_line_4, seed 1 eval_09_waiting_line_6, seed 1 eval_10_conversation_group_2, seed 1 eval_11_conversation_group_3, seed 1 eval_12_conversation_group_4, seed 1 eval_13_waiting_line_3, seed 2 eval_06_waiting_line_1, seed 2 eval_07_waiting_line_2, seed 2 eval_08_waiting_line_4, seed 2 eval_09_waiting_line_6, seed 2 eval_10_conversation_group_2, seed 2 eval_11_conversation_group_3, seed 2 eval_12_conversation_group_4, seed 2 eval_13_waiting_line_3
+RESULT: PASS

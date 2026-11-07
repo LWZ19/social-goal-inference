@@ -1,0 +1,8 @@
+glm53_1 exit 3
+glm53_2 exit 3
+glm53_3 exit 3
+dsv41_1 exit 3
+glm53_1 lock left: none
+glm53_2 lock left: none
+glm53_3 lock left: none
+dsv41_1 lock left: none

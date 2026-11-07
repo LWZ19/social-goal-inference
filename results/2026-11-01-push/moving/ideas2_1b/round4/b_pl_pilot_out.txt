@@ -1,0 +1,15 @@
+# Round 4, step B: PL offline (ROUND4.md cc30d5e0)
+
+## Pilot layouts, robot idle: 24 layouts (0 left out)
+
+| Variant | right | cut | far | empty | last switches / min | goal in line (proxy) |
+|---|---|---|---|---|---|---|
+| CT4 (threshold, chord) | 0.400 | 0.263 | 0.323 | 0.014 | 14.2 | 0.241 |
+| CT4P (threshold, path) | 0.393 | 0.286 | 0.307 | 0.014 | 14.3 | 0.251 |
+| W0 (threshold, chord) | 0.342 | 0.304 | 0.340 | 0.014 | 9.0 | 0.232 |
+| W0 threshold, path | 0.338 | 0.324 | 0.324 | 0.014 | 9.3 | 0.244 |
+| CT5 (cost, chord) | 0.312 | 0.197 | 0.492 | 0.000 | 8.5 | 0.172 |
+| CT5 cost, path | 0.309 | 0.205 | 0.486 | 0.000 | 8.8 | 0.182 |
+| PL-chord (W0 belief) | 0.300 | 0.251 | 0.442 | 0.006 | 6.8 | 0.186 |
+| PL-path (W0 belief) | 0.297 | 0.267 | 0.430 | 0.006 | 7.1 | 0.197 |
+| PL-path, CT4 belief (check) | 0.348 | 0.225 | 0.428 | 0.000 | 10.7 | 0.200 |

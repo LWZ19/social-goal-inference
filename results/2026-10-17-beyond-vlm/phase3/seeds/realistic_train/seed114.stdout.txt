@@ -1,0 +1,18 @@
+results/2026-10-17-beyond-vlm/phase3/seeds/realistic_train/seed114: 14 scenes rendered, 0 skipped as unchanged, 0 dressed again
+
+---
+INFO:sgi.synth.generate:rejected layouts: none
+INFO:sgi.synth.realistic.generate:real_eval_00_no_one_place: rendered in 24.0 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_01_no_one_place: rendered in 29.2 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_02_no_one_place: rendered in 24.1 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_03_no_one_deep_place: rendered in 24.4 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_04_no_one_object: rendered in 26.9 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_05_no_one_person: rendered in 22.2 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_06_waiting_line_1: rendered in 21.7 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_07_waiting_line_2: rendered in 24.6 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_08_waiting_line_4: rendered in 26.3 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_09_waiting_line_6: rendered in 23.8 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_10_conversation_group_2: rendered in 29.9 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_11_conversation_group_3: rendered in 34.7 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_12_conversation_group_4: rendered in 37.7 s, after 0 dressings given up
+INFO:sgi.synth.realistic.generate:real_eval_13_waiting_line_3: rendered in 27.2 s, after 0 dressings given up

@@ -1,0 +1,7 @@
+c1 exit 3 ; lock left: none; ledger sent 5; fake 5
+c2 exit 3 ; lock left: none; ledger sent 5; fake 0
+c3 exit 0 ; lock left: none; ledger sent 30; fake 25
+c4a exit 2 ; ledger sent 30
+c4b exit 2 ; ledger sent 30
+refused rows: 2
+done

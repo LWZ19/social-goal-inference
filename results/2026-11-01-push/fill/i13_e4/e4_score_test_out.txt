@@ -1,0 +1,43 @@
+# E4 (I13_FROZEN.md): success by situation, model and method; layout-level sign-flip
+
+## conversation_group (conversation_group)
+
+| model | records per method | R | E | C | C-R layout W/L/T, net, p | C-E layout W/L/T, net, p |
+|---|---|---|---|---|---|---|
+| soclaas_qwen38_low | 18 | 12 | 10 | 14 | 2/0/1, +2, 0.5000 | 1/0/2, +4, 1.0000 |
+| soclaas_glm53 | 18 | 12 | 7 | 15 | 2/0/1, +3, 0.5000 | 3/0/0, +8, 0.2500 |
+| soclaas_dsv41 | 18 | 7 | 4 | 10 | 2/0/1, +3, 0.5000 | 3/0/0, +6, 0.2500 |
+| claude_sonnet55_low | 18 | 14 | 12 | 15 | 1/0/2, +1, 1.0000 | 2/0/1, +3, 0.5000 |
+| claude_haiku55 | 18 | 12 | 11 | 18 | 3/0/0, +6, 0.2500 | 3/0/0, +7, 0.2500 |
+| gemini_fast | 18 | 8 | 12 | 18 | 3/0/0, +10, 0.2500 | 3/0/0, +6, 0.2500 |
+
+- BAR (pooled over the six models): C beats pointing on conversation_group: net +25, layouts 3/0/0, p 0.2500: False
+- BAR (pooled over the six models): C beats pointing with examples on conversation_group: net +34, layouts 3/0/0, p 0.2500: False
+
+## no_one (no_one)
+
+| model | records per method | R | E | C | C-R layout W/L/T, net, p | C-E layout W/L/T, net, p |
+|---|---|---|---|---|---|---|
+| soclaas_qwen38_low | 36 | 35 | 35 | 35 | 0/0/6, +0, 1.0000 | 0/0/6, +0, 1.0000 |
+| soclaas_glm53 | 36 | 29 | 29 | 29 | 0/0/6, +0, 1.0000 | 0/0/6, +0, 1.0000 |
+| soclaas_dsv41 | 36 | 26 | 26 | 26 | 0/0/6, +0, 1.0000 | 0/0/6, +0, 1.0000 |
+| claude_sonnet55_low | 36 | 36 | 36 | 36 | 0/0/6, +0, 1.0000 | 0/0/6, +0, 1.0000 |
+| claude_haiku55 | 36 | 35 | 35 | 36 | 1/0/5, +1, 1.0000 | 1/0/5, +1, 1.0000 |
+| gemini_fast | 36 | 35 | 35 | 35 | 0/0/6, +0, 1.0000 | 0/0/6, +0, 1.0000 |
+
+- BAR (pooled over the six models): C beats pointing on no_one: net +1, layouts 1/0/5, p 1.0000: False
+- BAR (pooled over the six models): C beats pointing with examples on no_one: net +1, layouts 1/0/5, p 1.0000: False
+
+## bent line (waiting_line)
+
+| model | records per method | R | E | C | C-R layout W/L/T, net, p | C-E layout W/L/T, net, p |
+|---|---|---|---|---|---|---|
+| soclaas_qwen38_low | 30 | 15 | 20 | 30 | 5/0/0, +15, 0.0625 | 5/0/0, +10, 0.0625 |
+| soclaas_glm53 | 30 | 3 | 3 | 11 | 3/1/1, +8, 0.3750 | 4/0/1, +8, 0.1250 |
+| soclaas_dsv41 | 30 | 3 | 8 | 21 | 5/0/0, +18, 0.0625 | 5/0/0, +13, 0.0625 |
+| claude_sonnet55_low | 30 | 11 | 13 | 30 | 5/0/0, +19, 0.0625 | 5/0/0, +17, 0.0625 |
+| claude_haiku55 | 30 | 3 | 2 | 26 | 5/0/0, +23, 0.0625 | 5/0/0, +24, 0.0625 |
+| gemini_fast | 30 | 8 | 13 | 19 | 5/0/0, +11, 0.0625 | 4/0/1, +6, 0.1250 |
+
+- BAR (pooled over the six models): C beats pointing on bent line: net +94, layouts 5/0/0, p 0.0625: False
+- BAR (pooled over the six models): C beats pointing with examples on bent line: net +78, layouts 5/0/0, p 0.0625: False

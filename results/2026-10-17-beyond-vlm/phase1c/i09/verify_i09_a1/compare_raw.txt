@@ -1,0 +1,2 @@
+rtdetr_v2_r50vd: images 97, same box count 97, max |box diff| 0 px, max |score diff| 0, max |kp diff| 0 px, max |kp conf diff| 0; count mismatches []
+dfine_large: images 29, same box count 29, max |box diff| 0 px, max |score diff| 0, max |kp diff| 0 px, max |kp conf diff| 0; count mismatches []

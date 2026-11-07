@@ -1,0 +1,104 @@
+records 3024 Counter({('qwen38_low', 'cot'): 252, ('qwen38_low', 'fsc'): 252, ('glm53', 'cot'): 252, ('glm53', 'fsc'): 252, ('dsv41', 'cot'): 252, ('dsv41', 'fsc'): 252, ('haiku55', 'cot'): 252, ('haiku55', 'fsc'): 252, ('sonnet55_low', 'cot'): 252, ('sonnet55_low', 'fsc'): 252, ('gemini38_low', 'cot'): 252, ('gemini38_low', 'fsc'): 252})
+
+=== T1 per model: failures with right target, snapD/snapP fixes, breaks, successes ===
+
+qwen38_low: records 504 failures(tc) 105 standard 20 {'no_one': 20} marked 85 {'waiting_line': 69, 'conversation_group': 16}; other (no pose etc) 0
+   waiting_line        marked fails  69 (R 43, E 26) fixedD 14 (R 7, E 7) fixedP 15; still 55 {'mid': 23, 'far': 13, 'near': 18, 'inreg': 1} body(gap<0) 0 gap<0.3 5 behind(not_ahead,snapped) 18; >0.3m camera side of axis 46
+   conversation_group  marked fails  16 (R 8, E 8) fixedD 8 (R 4, E 4) fixedP 8; still 8 {'far': 1, 'near': 5, 'mid': 2} body(gap<0) 0 gap<0.3 0
+   marked successes 181 moved 21 broken by snapD 0
+   R: 179 -> snapD 190 snapP 190 of 252
+   E: 196 -> snapD 207 snapP 208 of 252
+   C successes (paired keys) 228 of 252
+
+glm53: records 504 failures(tc) 183 standard 32 {'no_one': 30, 'waiting_line': 2} marked 151 {'waiting_line': 117, 'conversation_group': 34}; other (no pose etc) 0
+   waiting_line        marked fails 117 (R 56, E 61) fixedD 2 (R 0, E 2) fixedP 2; still 115 {'far': 44, 'mid': 45, 'near': 26} body(gap<0) 0 gap<0.3 36 behind(not_ahead,snapped) 2; >0.3m camera side of axis 110
+   conversation_group  marked fails  34 (R 15, E 19) fixedD 20 (R 8, E 12) fixedP 22; still 14 {'mid': 4, 'near': 8, 'inreg': 2} body(gap<0) 2 gap<0.3 9
+   marked successes 87 moved 18 broken by snapD 0
+   R: 132 -> snapD 140 snapP 140 of 252
+   E: 123 -> snapD 137 snapP 139 of 252
+   C successes (paired keys) 170 of 252
+
+dsv41: records 504 failures(tc) 210 standard 26 {'no_one': 26} marked 184 {'no_one': 9, 'waiting_line': 136, 'conversation_group': 39}; other (no pose etc) 0
+   no_one              marked fails   9 (R 5, E 4) fixedD 0 (R 0, E 0) fixedP 0; still 9 {'mid': 3, 'near': 6} body(gap<0) 0 gap<0.3 0
+   waiting_line        marked fails 136 (R 72, E 64) fixedD 15 (R 6, E 9) fixedP 19; still 121 {'mid': 53, 'far': 25, 'near': 39, 'inreg': 4} body(gap<0) 12 gap<0.3 53 behind(not_ahead,snapped) 26; >0.3m camera side of axis 78
+   conversation_group  marked fails  39 (R 18, E 21) fixedD 15 (R 3, E 12) fixedP 17; still 24 {'mid': 5, 'far': 4, 'near': 14, 'inreg': 1} body(gap<0) 2 gap<0.3 13
+   marked successes 88 moved 10 broken by snapD 0
+   R: 120 -> snapD 129 snapP 133 of 252
+   E: 126 -> snapD 147 snapP 149 of 252
+   C successes (paired keys) 185 of 252
+
+haiku55: records 504 failures(tc) 203 standard 0 {} marked 203 {'no_one': 4, 'waiting_line': 164, 'conversation_group': 35}; other (no pose etc) 0
+   no_one              marked fails   4 (R 2, E 2) fixedD 0 (R 0, E 0) fixedP 0; still 4 {'near': 3, 'far': 1} body(gap<0) 0 gap<0.3 0
+   waiting_line        marked fails 164 (R 84, E 80) fixedD 8 (R 0, E 8) fixedP 8; still 156 {'mid': 48, 'near': 2, 'far': 106} body(gap<0) 3 gap<0.3 33 behind(not_ahead,snapped) 0; >0.3m camera side of axis 143
+   conversation_group  marked fails  35 (R 14, E 21) fixedD 20 (R 8, E 12) fixedP 20; still 15 {'near': 12, 'far': 3} body(gap<0) 0 gap<0.3 1
+   marked successes 87 moved 14 broken by snapD 0
+   R: 151 -> snapD 159 snapP 159 of 252
+   E: 148 -> snapD 168 snapP 168 of 252
+   C successes (paired keys) 240 of 252
+
+sonnet55_low: records 504 failures(tc) 134 standard 2 {'waiting_line': 2} marked 132 {'waiting_line': 126, 'conversation_group': 6}; other (no pose etc) 0
+   waiting_line        marked fails 126 (R 64, E 62) fixedD 0 (R 0, E 0) fixedP 0; still 126 {'mid': 70, 'near': 51, 'far': 5} body(gap<0) 0 gap<0.3 0 behind(not_ahead,snapped) 3; >0.3m camera side of axis 126
+   conversation_group  marked fails   6 (R 2, E 4) fixedD 4 (R 1, E 3) fixedP 4; still 2 {'inreg': 2} body(gap<0) 0 gap<0.3 2
+   marked successes 140 moved 31 broken by snapD 0
+   R: 178 -> snapD 179 snapP 179 of 252
+   E: 178 -> snapD 181 snapP 181 of 252
+   C successes (paired keys) 242 of 252
+
+gemini38_low: records 504 failures(tc) 99 standard 8 {'no_one': 8} marked 91 {'waiting_line': 45, 'conversation_group': 46}; other (no pose etc) 0
+   waiting_line        marked fails  45 (R 24, E 21) fixedD 31 (R 17, E 14) fixedP 33; still 14 {'near': 8, 'inreg': 3, 'mid': 2, 'far': 1} body(gap<0) 2 gap<0.3 6 behind(not_ahead,snapped) 4; >0.3m camera side of axis 11
+   conversation_group  marked fails  46 (R 26, E 20) fixedD 31 (R 19, E 12) fixedP 38; still 15 {'near': 8, 'inreg': 7} body(gap<0) 7 gap<0.3 9
+   marked successes 127 moved 28 broken by snapD 0
+   R: 164 -> snapD 200 snapP 203 of 252
+   E: 173 -> snapD 199 snapP 205 of 252
+   C successes (paired keys) 214 of 252
+
+=== SNAP-gate, pooled over six models (marked failures with right target) ===
+cot waiting_line: n 343 near 95 fixedD 30 (32%) fixedP 32 (34%); far 116 (34%)
+cot conversation_group: n 83 near 64 fixedD 41 (64%) fixedP 46 (72%); far 7 (8%)
+fsc waiting_line: n 314 near 119 fixedD 38 (32%) fixedP 43 (36%); far 93 (30%)
+fsc conversation_group: n 93 near 83 fixedD 54 (65%) fixedP 59 (71%); far 1 (1%)
+  far share at lines incl standard-goal: cot 118/345
+  far share at lines incl standard-goal: fsc 95/316
+  glm53 E waiting_line: n 61 near 11 fixedD 2 fixedP 2 far 26
+  glm53 E conversation_group: n 19 near 16 fixedD 12 fixedP 13 far 0
+  dsv41 E waiting_line: n 64 near 29 fixedD 7 fixedP 9 far 10
+  dsv41 E conversation_group: n 21 near 15 fixedD 11 fixedP 11 far 1
+snapD fixes 168; within 0.55 m of a true person centre 163; in 0.50-0.55 strip 50; >1 m from region 0; by model {'qwen38_low': 22, 'glm53': 22, 'dsv41': 30, 'haiku55': 28, 'sonnet55_low': 4, 'gemini38_low': 62}
+  gemini snapD fixes in strip 23 {'waiting_line': 18, 'conversation_group': 5}
+
+=== N1-s23: E failures at groups, right target, near & gap<0.3 ===
+  fsc qwen38_low: n 8 near 7 near&body 4 fixedD 4 fixedP 4
+  fsc glm53: n 19 near 16 near&body 16 fixedD 12 fixedP 13
+  fsc dsv41: n 21 near 15 near&body 13 fixedD 11 fixedP 11
+  fsc haiku55: n 21 near 21 near&body 12 fixedD 12 fixedP 12
+  fsc sonnet55_low: n 4 near 4 near&body 4 fixedD 3 fixedP 3
+  fsc gemini38_low: n 20 near 20 near&body 18 fixedD 12 fixedP 16
+  cot qwen38_low: n 8 near 6 near&body 4 fixedD 4 fixedP 4
+  cot glm53: n 15 near 12 near&body 10 fixedD 8 fixedP 8
+  cot dsv41: n 18 near 7 near&body 5 fixedD 1 fixedP 3
+  cot haiku55: n 14 near 11 near&body 9 fixedD 8 fixedP 8
+  cot sonnet55_low: n 2 near 2 near&body 2 fixedD 1 fixedP 1
+  cot gemini38_low: n 26 near 26 near&body 22 fixedD 19 fixedP 22
+  pooled {('fsc', 'n'): 93, ('fsc', 'near'): 83, ('fsc', 'nb'): 67, ('fsc', 'fD'): 54, ('fsc', 'fP'): 59, ('cot', 'n'): 83, ('cot', 'near'): 64, ('cot', 'nb'): 52, ('cot', 'fD'): 41, ('cot', 'fP'): 46}
+
+=== MECH: lines, marked, right target ===
+  qwen38_low   cot: n 87 dv med 25.395 drange med -0.838 | fails n 43 dv 48.715 drange -1.057 lat>0.3 31 lat med 1.044 t med 0.774
+  qwen38_low   fsc: n 87 dv med 19.915 drange med -0.632 | fails n 26 dv 41.165 drange -1.165 lat>0.3 18 lat med 1.120 t med 1.090
+  glm53        cot: n 71 dv med 40.725 drange med -1.129 | fails n 56 dv 49.860 drange -1.267 lat>0.3 52 lat med 1.090 t med 0.747
+  glm53        fsc: n 71 dv med 30.195 drange med -1.036 | fails n 61 dv 33.525 drange -1.089 lat>0.3 58 lat med 0.876 t med 0.527
+  dsv41        cot: n 85 dv med 24.715 drange med -0.721 | fails n 72 dv 24.320 drange -0.660 lat>0.3 45 lat med 0.531 t med 0.878
+  dsv41        fsc: n 85 dv med 18.984 drange med -0.690 | fails n 64 dv 17.115 drange -0.648 lat>0.3 37 lat med 0.509 t med 0.927
+  haiku55      cot: n 90 dv med 45.005 drange med -1.221 | fails n 84 dv 45.005 drange -1.221 lat>0.3 79 lat med 1.184 t med 0.055
+  haiku55      fsc: n 90 dv med 22.965 drange med -0.839 | fails n 80 dv 15.040 drange -0.809 lat>0.3 72 lat med 0.800 t med 0.186
+  sonnet55_low cot: n 89 dv med 54.605 drange med -1.351 | fails n 64 dv 65.235 drange -1.470 lat>0.3 64 lat med 1.377 t med 0.836
+  sonnet55_low fsc: n 89 dv med 46.824 drange med -1.262 | fails n 62 dv 52.725 drange -1.353 lat>0.3 62 lat med 1.184 t med 0.943
+  gemini38_low cot: n 56 dv med 13.380 drange med -0.405 | fails n 24 dv 10.740 drange -0.394 lat>0.3 10 lat med 0.270 t med 1.142
+  gemini38_low fsc: n 56 dv med 13.325 drange med -0.454 | fails n 21 dv 12.915 drange -0.466 lat>0.3 11 lat med 0.301 t med 1.168
+  sonnet R drange IQR -1.61 .. -1.23
+ Haiku:
+  cot: fails n 84 counter(t<t_first) 75 front half 5 t med 0.055 d_anchor med 1.209 lat>0.3 79 far 64 nearer anchor than first 59 fixedD 0
+  fsc: fails n 80 counter(t<t_first) 49 front half 14 t med 0.186 d_anchor med 0.995 lat>0.3 72 far 53 nearer anchor than first 38 fixedD 8
+ Gemini:
+  cot: n 56 d_last med 0.613; succ 32 0.650; fails 24 0.530
+  fsc: n 56 d_last med 0.621; succ 35 0.677; fails 21 0.531
+  R+E fails 45 behind(not_ahead) 35 behind&unreach 34 d_person<0.5 14 strip 18 fixedD 31 fixedP 33

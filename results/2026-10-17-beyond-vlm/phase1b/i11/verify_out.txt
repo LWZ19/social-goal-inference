@@ -1,0 +1,38 @@
+verify_indep.py: separate-code recomputation on the 9 primary runs (same agent; DEVIATIONS.md D5)
+  n46: 46
+  n454: 454
+  n53: 53
+  n699: 699
+  lift46: 20
+  choice46: 26
+  cls53: {'choice': 27, 'occluder': 14, 'background': 12}
+  orc_fix46: 20
+  orc_brk454: 0
+  orc_brk699: 0
+  orc_fix53: 26
+  orc_succ46: 16
+  v1_fix46: 9
+  v1_brk454: 0
+  v1_share: 0.45
+  t1_catch: 11
+  n15: 15
+  t1_d1: 12
+  nd1: 201
+  t1_d2: 45
+comparison with run_eval.py / report.py (summary.json):
+  lift46       verifier       20  main       20  AGREE
+  choice46     verifier       26  main       26  AGREE
+  orc_fix46    verifier       20  main       20  AGREE
+  orc_brk454   verifier        0  main        0  AGREE
+  orc_brk699   verifier        0  main        0  AGREE
+  orc_fix53    verifier       26  main       26  AGREE
+  orc_succ46   verifier       16  main       16  AGREE
+  v1_fix46     verifier        9  main        9  AGREE
+  v1_brk454    verifier        0  main        0  AGREE
+  v1_share     verifier     0.45  main     0.45  AGREE
+  t1_catch     verifier       11  main       11  AGREE
+  n15          verifier       15  main       15  AGREE
+  t1_d1        verifier       12  main       12  AGREE
+  nd1          verifier      201  main      201  AGREE
+  t1_d2        verifier       45  main       45  AGREE
+  ALL AGREE

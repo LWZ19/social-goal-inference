@@ -1,0 +1,48 @@
+target_correct by model and method (all three variants, both episodes, all trials):
+  ('dsv41', 'con') {'n': 18, 'tc': 9, 'wrong->p3': 6, 'wrong->p6': 2, 'wrong->p1': 1}
+  ('dsv41', 'cot') {'n': 18, 'tc': 9, 'wrong->p3': 6, 'wrong->p6': 2, 'wrong->p1': 1}
+  ('dsv41', 'fsc') {'n': 18, 'tc': 9, 'wrong->p3': 6, 'wrong->p6': 2, 'wrong->p1': 1}
+  ('gemini38_low', 'con') {'n': 18, 'tc': 18}
+  ('gemini38_low', 'cot') {'n': 18, 'tc': 18}
+  ('gemini38_low', 'fsc') {'n': 18, 'tc': 18}
+  ('glm53', 'con') {'n': 18, 'tc': 15, 'wrong->p6': 2, 'wrong->p3': 1}
+  ('glm53', 'cot') {'n': 18, 'tc': 15, 'wrong->p6': 2, 'wrong->p3': 1}
+  ('glm53', 'fsc') {'n': 18, 'tc': 15, 'wrong->p6': 2, 'wrong->p3': 1}
+  ('haiku55', 'con') {'n': 18, 'tc': 17, 'wrong->p3': 1}
+  ('haiku55', 'cot') {'n': 18, 'tc': 17, 'wrong->p3': 1}
+  ('haiku55', 'fsc') {'n': 18, 'tc': 17, 'wrong->p3': 1}
+  ('qwen38_low', 'con') {'n': 18, 'tc': 10, 'wrong->p3': 8}
+  ('qwen38_low', 'cot') {'n': 18, 'tc': 10, 'wrong->p3': 8}
+  ('qwen38_low', 'fsc') {'n': 18, 'tc': 10, 'wrong->p3': 8}
+  ('sonnet55_low', 'con') {'n': 18, 'tc': 11, 'wrong->p3': 7}
+  ('sonnet55_low', 'cot') {'n': 18, 'tc': 11, 'wrong->p3': 7}
+  ('sonnet55_low', 'fsc') {'n': 18, 'tc': 11, 'wrong->p3': 7}
+
+qwen38_low real e0 t 1 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.1) px {'x': 650, 'y': 430} | person in red
+qwen38_low real e1 t 0 ok nearest/dist/dist_p0/z ('p3', 0.28, 1.07, 1.1) px {'x': 645, 'y': 430} | person wearing red
+qwen38_low real e1 t 1 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.1) px {'x': 650, 'y': 430} | person wearing red
+qwen38_low real e1 t 2 ok nearest/dist/dist_p0/z ('p3', 0.28, 1.08, 1.13) px {'x': 645, 'y': 420} | person wearing red
+qwen38_low staffed e1 t 0 ok nearest/dist/dist_p0/z ('p3', 0.27, 1.09, 1.14) px {'x': 642, 'y': 420} | woman in red top (Sam)
+qwen38_low staffed e1 t 1 ok nearest/dist/dist_p0/z ('p3', 0.26, 1.08, 1.1) px {'x': 640, 'y': 430} | woman in red shirt
+qwen38_low plain e0 t 0 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.1) px {'x': 650, 'y': 430} | person in red
+qwen38_low plain e1 t 2 ok nearest/dist/dist_p0/z ('p3', 0.28, 1.08, 1.2) px {'x': 645, 'y': 400} | person in red top
+glm53 real e0 t 1 ok nearest/dist/dist_p0/z ('p6', 7.37, 12.35, 0.18) px {'x': 676, 'y': 390} | person in red shirt
+glm53 staffed e1 t 0 ok nearest/dist/dist_p0/z ('p3', 0.27, 1.09, 1.14) px {'x': 642, 'y': 420} | person wearing red
+glm53 plain e0 t 0 ok nearest/dist/dist_p0/z ('p6', 7.34, 12.29, 0.32) px {'x': 670, 'y': 380} | the woman in the red shirt
+dsv41 real e0 t 0 ok nearest/dist/dist_p0/z ('p3', 0.23, 1.13, 1.27) px {'x': 635, 'y': 375} | person in red
+dsv41 real e0 t 1 ok nearest/dist/dist_p0/z ('p6', 7.63, 12.79, 0.3) px {'x': 715, 'y': 380} | person in red
+dsv41 real e0 t 2 ok nearest/dist/dist_p0/z ('p3', 0.22, 1.08, 1.1) px {'x': 630, 'y': 430} | person in red
+dsv41 real e1 t 1 ok nearest/dist/dist_p0/z ('p3', 0.25, 1.12, 1.28) px {'x': 639, 'y': 371} | person wearing red
+dsv41 real e1 t 2 ok nearest/dist/dist_p0/z ('p1', 2.7, 2.71, 0.0) px {'x': 685, 'y': 538} | person wearing red
+dsv41 staffed e0 t 0 ok nearest/dist/dist_p0/z ('p3', 0.26, 1.1, 1.2) px {'x': 642, 'y': 400} | person in red
+dsv41 staffed e1 t 1 ok nearest/dist/dist_p0/z ('p6', 2.37, 6.8, 0.03) px {'x': 680, 'y': 450} | person wearing red
+dsv41 plain e0 t 0 ok nearest/dist/dist_p0/z ('p3', 0.28, 1.07, 1.13) px {'x': 645, 'y': 422} | person in red top
+dsv41 plain e1 t 1 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.1) px {'x': 650, 'y': 430} | person wearing red
+sonnet55_low real e0 t 2 ok nearest/dist/dist_p0/z ('p3', 0.29, 1.06, 1.14) px {'x': 647, 'y': 417} | woman in red top
+sonnet55_low real e1 t 0 ok nearest/dist/dist_p0/z ('p3', 0.29, 1.06, 1.14) px {'x': 647, 'y': 417} | woman in red top
+sonnet55_low real e1 t 2 ok nearest/dist/dist_p0/z ('p3', 0.29, 1.06, 1.14) px {'x': 647, 'y': 417} | woman in red top
+sonnet55_low staffed e0 t 0 ok nearest/dist/dist_p0/z ('p3', 0.29, 1.06, 1.14) px {'x': 648, 'y': 417} | woman in red top
+sonnet55_low staffed e1 t 0 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.08) px {'x': 650, 'y': 438} | person in red top
+sonnet55_low staffed e1 t 2 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.08) px {'x': 650, 'y': 438} | woman in red top
+sonnet55_low plain e1 t 1 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.03, 1.11) px {'x': 650, 'y': 427} | woman in red top
+haiku55 staffed e0 t 2 ok nearest/dist/dist_p0/z ('p3', 0.31, 1.02, 1.04) px {'x': 648, 'y': 448} | person in red top

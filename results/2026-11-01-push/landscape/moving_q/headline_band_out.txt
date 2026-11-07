@@ -1,0 +1,16 @@
+
+Sonnet (49 cells)
+  side check on  band 1.2: R1 0.033, CT 0.229, CT2 0.312 | CT2 vs R1 43/2 +0.279 | CT vs R1 40/3 +0.195 | CT2 vs CT 32/8 +0.084
+  side check on  band 1.5: R1 0.038, CT 0.330, CT2 0.338 | CT2 vs R1 43/2 +0.300 | CT vs R1 40/4 +0.292 | CT2 vs CT 23/14 +0.008
+  side check on  band 2.0: R1 0.044, CT 0.346, CT2 0.349 | CT2 vs R1 42/3 +0.305 | CT vs R1 39/5 +0.302 | CT2 vs CT 20/20 +0.002
+  side check off band 1.2: R1 0.124, CT 0.240, CT2 0.314 | CT2 vs R1 39/7 +0.190 | CT vs R1 37/8 +0.116 | CT2 vs CT 31/10 +0.074
+  side check off band 1.5: R1 0.284, CT 0.345, CT2 0.339 | CT2 vs R1 26/20 +0.055 | CT vs R1 27/21 +0.061 | CT2 vs CT 21/17 -0.005
+  side check off band 2.0: R1 0.352, CT 0.363, CT2 0.351 | CT2 vs R1 21/26 -0.001 | CT vs R1 20/28 +0.011 | CT2 vs CT 17/23 -0.013
+
+DeepSeek (25 cells)
+  side check on  band 1.2: R1 0.040, CT 0.196, CT2 0.273 | CT2 vs R1 19/3 +0.233 | CT vs R1 11/3 +0.156 | CT2 vs CT 18/3 +0.078
+  side check on  band 1.5: R1 0.064, CT 0.264, CT2 0.297 | CT2 vs R1 20/3 +0.233 | CT vs R1 14/3 +0.200 | CT2 vs CT 14/7 +0.033
+  side check on  band 2.0: R1 0.086, CT 0.273, CT2 0.314 | CT2 vs R1 18/5 +0.229 | CT vs R1 14/4 +0.188 | CT2 vs CT 14/7 +0.041
+  side check off band 1.2: R1 0.064, CT 0.225, CT2 0.289 | CT2 vs R1 18/4 +0.225 | CT vs R1 17/5 +0.162 | CT2 vs CT 17/4 +0.064
+  side check off band 1.5: R1 0.126, CT 0.297, CT2 0.316 | CT2 vs R1 19/4 +0.190 | CT vs R1 15/6 +0.171 | CT2 vs CT 12/8 +0.018
+  side check off band 2.0: R1 0.166, CT 0.307, CT2 0.335 | CT2 vs R1 17/6 +0.169 | CT vs R1 15/8 +0.141 | CT2 vs CT 12/8 +0.029

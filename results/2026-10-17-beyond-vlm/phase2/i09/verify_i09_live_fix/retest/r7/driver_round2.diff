@@ -1,0 +1,96 @@
+13c13,14
+<                   the ledger under a file lock; a lock file also refuses a second live invocation on DIR). A plan,
+---
+>                   the ledger under a file lock, and a ledger that loses sent rows stops the run; a held flock on
+>                   DIR/ledger.lock also refuses a second live invocation on DIR). A plan,
+40,41c41,44
+< 2 refused (the lock, FROZEN.md, the prompts, an upstream miss, an unknown scene), or stopped by a configuration,
+< scene, key or provider error, or any other error; 3 stopped by the call cap.
+---
+> 2 refused (the lock, FROZEN.md, the prompts, an upstream miss, an unknown --only scene), or stopped by a
+> configuration, scene, key, ledger or provider error, or any other error; 3 stopped by the call cap. An error while
+> importing the package, before any of this runs, exits 1 with a traceback and sends nothing; 130 is Ctrl-C, SIGTERM
+> or SIGHUP.
+54a58
+> import signal
+121a126,132
+> class LedgerLost(Exception):
+>     """The ledger lost sent rows during the run (edited, moved or deleted): its count no longer holds the caps."""
+> 
+> 
+> STOPS = (CapReached, QuotaExceededError, BackendError, UnexpectedCall, LedgerLost)   # each ends an invocation, reported
+> 
+> 
+139a151
+>         self._floor = 0                                         # sent rows seen so far: the file may only grow
+156a169,171
+>                 if self.total < self._floor:
+>                     raise LedgerLost(f"{self.path} has {self.total} sent rows, fewer than the {self._floor} seen "
+>                                      "before: it was edited, moved or deleted during the run; nothing more is sent")
+159a175
+>                 self._floor = self.total
+191,192c207,210
+<     """One live invocation at a time per output folder. The ledger's caps hold without it; it keeps two runs from
+<     interleaving their run folders. Only the invocation that took the lock removes it."""
+---
+>     """One live invocation at a time per output folder, held as an exclusive flock on the lock file for the
+>     invocation's life. The kernel releases it however the process ends, so no stale lock is left and no invocation
+>     can release another's; the file itself stays, holding the last holder's pid. The ledger's caps hold without it;
+>     it keeps two runs from interleaving their run folders."""
+196c214
+<         self.held = False
+---
+>         self.fd, self.held = None, False
+198a217
+>         fd = os.open(self.path, os.O_CREAT | os.O_RDWR, 0o644)
+200,203c219,225
+<             fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+<         except FileExistsError:
+<             raise SystemExit(f"error: {self.path} exists: another live driver may be running on this folder. "
+<                              "If none is, remove the file and start again.") from None
+---
+>             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+>         except BlockingIOError:
+>             holder = os.read(fd, 200).decode(errors="replace").strip()
+>             os.close(fd)
+>             raise SystemExit(f"error: another live driver holds {self.path} (pid and start: {holder}); "
+>                              "wait for it to finish") from None
+>         os.ftruncate(fd, 0)
+205,206c227
+<         os.close(fd)
+<         self.held = True
+---
+>         self.fd, self.held = fd, True
+211,212c232,234
+<             self.path.unlink(missing_ok=True)
+<             self.held = False
+---
+>             fcntl.flock(self.fd, fcntl.LOCK_UN)
+>             os.close(self.fd)
+>             self.fd, self.held = None, False
+580c602
+<     except (CapReached, QuotaExceededError, BackendError) as error:
+---
+>     except STOPS as error:
+657a680,686
+>     if args.only:
+>         known = set()
+>         for arm in arms:
+>             known |= {r.scene_id for r in H.records(recorded_run(args.model, arm)) if r.trial == 0}
+>         unknown = sorted(set(args.only) - known)
+>         if unknown:
+>             parser.error(f"--only: not a recorded t0 scene of {', '.join(arms)}: {', '.join(unknown)}")
+699c728
+<             except (CapReached, QuotaExceededError, BackendError) as error:
+---
+>             except STOPS as error:
+748c777,783
+<     exits 2, so exit 1 means only that some record ended in vlm_error."""
+---
+>     exits 2, so exit 1 means only that some record ended in vlm_error. SIGTERM and SIGHUP stop it as Ctrl-C does,
+>     through main()'s clean-up."""
+>     def stop(signum, frame):
+>         raise KeyboardInterrupt(f"signal {signum}")
+>     for sig in (signal.SIGTERM, signal.SIGHUP):
+>         if signal.getsignal(sig) is signal.SIG_DFL:             # keep nohup's SIG_IGN
+>             signal.signal(sig, stop)

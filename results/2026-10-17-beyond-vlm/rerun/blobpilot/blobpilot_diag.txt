@@ -1,0 +1,137 @@
+== Recall over people whose body projects into the image (the pilot's denominators: 34, 42, 42, 42) ==
+split half-width | set | in-image people (all truth people) | recall@0.25 | @0.40 | @0.60 | false blobs / image @0.40
+0.15 | plain                                          | 34 (34) | 34/34 | 34/34 | 34/34 | 22/14 = 1.57
+0.15 | real                                           | 42 (56) | 38/42 | 39/42 | 40/42 | 27/14 = 1.93
+0.15 | staffed                                        | 42 (56) | 35/42 | 37/42 | 37/42 | 18/14 = 1.29
+0.15 | ph eval_00-13 + dev seed0 (eval_14,15,20,21)   | 42 (42) | 42/42 | 42/42 | 42/42 | 19/18 = 1.06
+0.15 | ph eval_00-13 + dev seed1                      | 42 (42) | 42/42 | 42/42 | 42/42 | 19/18 = 1.06
+0.15 | ph eval_00-13 + dev seed2                      | 42 (42) | 42/42 | 42/42 | 42/42 | 19/18 = 1.06
+0.15 | ph eval_00-13 + all 3 dev seeds                | 58 (58) | 58/58 | 58/58 | 58/58 | 19/26 = 0.73
+
+0.25 | plain                                          | 34 (34) | 34/34 | 34/34 | 34/34 | 16/14 = 1.14
+0.25 | real                                           | 42 (56) | 36/42 | 37/42 | 39/42 | 17/14 = 1.21
+0.25 | staffed                                        | 42 (56) | 34/42 | 36/42 | 37/42 | 13/14 = 0.93
+0.25 | ph eval_00-13 + dev seed0 (eval_14,15,20,21)   | 42 (42) | 42/42 | 42/42 | 42/42 | 4/18 = 0.22
+0.25 | ph eval_00-13 + dev seed1                      | 42 (42) | 42/42 | 42/42 | 42/42 | 4/18 = 0.22
+0.25 | ph eval_00-13 + dev seed2                      | 42 (42) | 42/42 | 42/42 | 42/42 | 4/18 = 0.22
+0.25 | ph eval_00-13 + all 3 dev seeds                | 58 (58) | 58/58 | 58/58 | 58/58 | 4/26 = 0.15
+
+0.35 | plain                                          | 34 (34) | 34/34 | 34/34 | 34/34 | 11/14 = 0.79
+0.35 | real                                           | 42 (56) | 36/42 | 37/42 | 38/42 | 9/14 = 0.64
+0.35 | staffed                                        | 42 (56) | 34/42 | 36/42 | 37/42 | 8/14 = 0.57
+0.35 | ph eval_00-13 + dev seed0 (eval_14,15,20,21)   | 42 (42) | 42/42 | 42/42 | 42/42 | 3/18 = 0.17
+0.35 | ph eval_00-13 + dev seed1                      | 42 (42) | 42/42 | 42/42 | 42/42 | 3/18 = 0.17
+0.35 | ph eval_00-13 + dev seed2                      | 42 (42) | 42/42 | 42/42 | 42/42 | 3/18 = 0.17
+0.35 | ph eval_00-13 + all 3 dev seeds                | 58 (58) | 58/58 | 58/58 | 58/58 | 3/26 = 0.12
+
+== In-image staff on real and staffed: found? lower body hidden? by what? ==
+per staff: matched at 0.4 m for split 0.15/0.25/0.35; samples on the vertical axis at 0.1-0.8 m: seen / hidden by a nearer surface; median height and camera-Z gap of the hiding surface; the sub-blob (split 0.25) holding the staff's xy: top, footprint, cells
+real     real_eval_00_no_one_place            s0 found Y/Y/Y vis(0.9-1.7) 6/9 low seen 0/8 hidden 8/8 hider z 0.57 m gap 0.59 m | blobs within 0.6 m: top 1.78 foot 0.59 cells 38 kept True d 0.07
+real     real_eval_01_no_one_place            s0 found Y/n/n vis(0.9-1.7) 6/9 low seen 0/8 hidden 8/8 hider z 0.56 m gap 0.57 m | blobs within 0.6 m: top 2.10 foot 0.95 cells 96 kept False d 0.46; top 2.10 foot 0.88 cells 80 kept False d 0.51; top 1.94 foot 0.55 cells 14 kept True d 0.47; top 1.94 foot 0.19 cells 5 kept False d 0.18; top 1.95 foot 0.44 cells 11 kept True d 0.47
+real     real_eval_02_no_one_place            s0 found n/n/n vis(0.9-1.7) 4/9 low seen 0/8 hidden 8/8 hider z 0.63 m gap 0.85 m | blobs within 0.6 m: top 2.00 foot 0.72 cells 54 kept False d 0.09; top 2.10 foot 1.06 cells 77 kept False d 0.48
+real     real_eval_03_no_one_deep_place       s0 found Y/Y/Y vis(0.9-1.7) 7/9 low seen 0/8 hidden 8/8 hider z 0.57 m gap 0.57 m | blobs within 0.6 m: top 2.10 foot 0.95 cells 104 kept False d 0.35; top 1.96 foot 0.69 cells 15 kept True d 0.35; top 1.94 foot 0.51 cells 13 kept True d 0.43
+real     real_eval_07_waiting_line_2          s0 found Y/n/n vis(0.9-1.7) 9/9 low seen 8/8 hidden 0/8 hider z - m gap - m | blobs within 0.6 m: top 2.10 foot 1.25 cells 205 kept False d 0.35; top 0.81 foot 0.10 cells 2 kept False d 0.30
+real     real_eval_08_waiting_line_4          s0 found n/n/n vis(0.9-1.7) 5/9 low seen 0/8 hidden 8/8 hider z 0.60 m gap 0.81 m | blobs within 0.6 m: top 2.03 foot 0.85 cells 40 kept False d 0.53; top 2.10 foot 0.83 cells 63 kept False d 0.24; top 2.10 foot 0.81 cells 42 kept False d 0.55; top 1.10 foot 0.15 cells 3 kept False d 0.42
+real     real_eval_09_waiting_line_6          s0 found Y/Y/Y vis(0.9-1.7) 9/9 low seen 8/8 hidden 0/8 hider z - m gap - m | blobs within 0.6 m: top 2.10 foot 0.98 cells 53 kept False d 0.32; top 2.10 foot 1.03 cells 57 kept False d 0.52; top 0.82 foot 0.05 cells 1 kept False d 0.29; top 1.71 foot 0.49 cells 35 kept True d 0.07; top 1.14 foot 0.05 cells 1 kept False d 0.40
+real     real_eval_13_waiting_line_3          s0 found n/n/n vis(0.9-1.7) 9/9 low seen 8/8 hidden 0/8 hider z - m gap - m | blobs within 0.6 m: top 2.10 foot 0.55 cells 36 kept False d 0.59; top 1.24 foot 0.55 cells 63 kept True d 0.51; top 2.10 foot 0.87 cells 73 kept False d 0.15; top 0.81 foot 0.10 cells 2 kept False d 0.31
+staffed  staffed_eval_00_no_one_place         s0 found Y/Y/Y vis(0.9-1.7) 6/9 low seen 0/8 hidden 8/8 hider z 0.57 m gap 0.60 m | blobs within 0.6 m: top 1.95 foot 0.36 cells 20 kept True d 0.35; top 1.96 foot 1.38 cells 76 kept False d 0.38; top 2.10 foot 0.83 cells 54 kept False d 0.53
+staffed  staffed_eval_01_no_one_place         s0 found Y/n/n vis(0.9-1.7) 6/9 low seen 0/8 hidden 8/8 hider z 0.56 m gap 0.57 m | blobs within 0.6 m: top 2.10 foot 0.87 cells 97 kept False d 0.55; top 2.10 foot 1.05 cells 106 kept False d 0.49; top 1.94 foot 0.55 cells 14 kept True d 0.47; top 1.94 foot 0.19 cells 5 kept False d 0.18; top 1.95 foot 0.44 cells 11 kept True d 0.47
+staffed  staffed_eval_02_no_one_place         s0 found n/n/n vis(0.9-1.7) 4/9 low seen 0/8 hidden 8/8 hider z 0.63 m gap 0.85 m | blobs within 0.6 m: top 2.00 foot 0.72 cells 54 kept False d 0.09; top 2.10 foot 1.06 cells 83 kept False d 0.47
+staffed  staffed_eval_03_no_one_deep_place    s0 found Y/Y/Y vis(0.9-1.7) 7/9 low seen 0/8 hidden 8/8 hider z 0.57 m gap 0.57 m | blobs within 0.6 m: top 2.10 foot 0.58 cells 58 kept False d 0.32; top 2.10 foot 0.91 cells 81 kept False d 0.51; top 1.96 foot 0.69 cells 15 kept True d 0.35; top 1.94 foot 0.51 cells 13 kept True d 0.43
+staffed  staffed_eval_07_waiting_line_2       s0 found n/n/n vis(0.9-1.7) 9/9 low seen 8/8 hidden 0/8 hider z - m gap - m | blobs within 0.6 m: top 2.10 foot 0.90 cells 80 kept False d 0.22; top 2.10 foot 0.86 cells 49 kept False d 0.59; top 2.10 foot 0.56 cells 60 kept False d 0.38; top 0.81 foot 0.10 cells 2 kept False d 0.30
+staffed  staffed_eval_08_waiting_line_4       s0 found n/n/n vis(0.9-1.7) 5/9 low seen 0/8 hidden 8/8 hider z 0.60 m gap 0.81 m | blobs within 0.6 m: top 2.03 foot 0.90 cells 40 kept False d 0.51; top 2.10 foot 0.92 cells 56 kept False d 0.37; top 2.10 foot 0.95 cells 62 kept False d 0.56; top 2.10 foot 0.88 cells 46 kept False d 0.53; top 1.10 foot 0.21 cells 5 kept False d 0.40
+staffed  staffed_eval_09_waiting_line_6       s0 found n/n/n vis(0.9-1.7) 9/9 low seen 8/8 hidden 0/8 hider z - m gap - m | blobs within 0.6 m: top 2.10 foot 0.82 cells 51 kept False d 0.51; top 2.10 foot 0.64 cells 39 kept False d 0.44; top 2.01 foot 1.42 cells 68 kept False d 0.21; top 0.82 foot 0.05 cells 1 kept False d 0.29; top 0.75 foot 0.10 cells 2 kept False d 0.30; top 0.75 foot 0.10 cells 4 kept False d 0.27
+staffed  staffed_eval_13_waiting_line_3       s0 found n/n/n vis(0.9-1.7) 9/9 low seen 8/8 hidden 0/8 hider z - m gap - m | blobs within 0.6 m: top 2.10 foot 0.76 cells 49 kept False d 0.44; top 2.10 foot 0.58 cells 42 kept False d 0.51; top 2.10 foot 0.67 cells 37 kept False d 0.30; top 2.10 foot 0.60 cells 16 kept False d 0.16; top 2.10 foot 0.75 cells 25 kept False d 0.18; top 0.75 foot 0.05 cells 1 kept False d 0.42; top 0.81 foot 0.10 cells 2 kept False d 0.31
+
+== False blobs (kept, unmatched at 0.4 m), split 0.25: per set, top / footprint / distance to the nearest target anchor ==
+-- plain: 16 false blobs
+   plain_eval_00_no_one_place           top 1.95 foot 0.41 cells  15 xy (-1.34,2.61) nearest target 0.95 m nearest person nan m
+   plain_eval_01_no_one_place           top 1.94 foot 0.37 cells  10 xy (-5.49,-2.49) nearest target 0.86 m nearest person 5.88 m
+   plain_eval_01_no_one_place           top 1.94 foot 0.47 cells  15 xy (-5.23,-2.17) nearest target 0.72 m nearest person 5.77 m
+   plain_eval_01_no_one_place           top 1.95 foot 0.44 cells  11 xy (-4.86,-1.78) nearest target 0.82 m nearest person 5.70 m
+   plain_eval_03_no_one_deep_place      top 1.96 foot 0.61 cells  21 xy (2.77,1.38) nearest target 0.84 m nearest person nan m
+   plain_eval_03_no_one_deep_place      top 1.96 foot 0.69 cells  15 xy (2.32,2.37) nearest target 0.76 m nearest person nan m
+   plain_eval_03_no_one_deep_place      top 1.94 foot 0.62 cells  18 xy (2.73,1.91) nearest target 0.77 m nearest person nan m
+   plain_eval_07_waiting_line_2         top 1.79 foot 0.62 cells  17 xy (3.31,-6.95) nearest target 4.23 m nearest person 3.61 m
+   plain_eval_07_waiting_line_2         top 1.79 foot 0.32 cells   8 xy (3.76,-7.07) nearest target 4.52 m nearest person 3.78 m
+   plain_eval_07_waiting_line_2         top 1.79 foot 0.27 cells   7 xy (4.02,-7.13) nearest target 4.69 m nearest person 3.89 m
+   plain_eval_08_waiting_line_4         top 1.79 foot 0.54 cells  16 xy (-6.35,-4.91) nearest target 3.98 m nearest person 3.43 m
+   plain_eval_08_waiting_line_4         top 1.79 foot 0.39 cells  10 xy (-6.15,-5.28) nearest target 3.79 m nearest person 3.44 m
+   plain_eval_08_waiting_line_4         top 1.79 foot 0.21 cells   6 xy (-6.02,-5.51) nearest target 3.69 m nearest person 3.44 m
+   plain_eval_09_waiting_line_6         top 1.99 foot 0.40 cells   9 xy (-3.60,-3.75) nearest target 0.87 m nearest person 1.46 m
+   plain_eval_11_conversation_group_3   top 1.78 foot 0.21 cells   6 xy (-6.98,-6.24) nearest target 11.05 m nearest person 3.35 m
+   plain_eval_12_conversation_group_4   top 1.95 foot 0.21 cells   4 xy (-5.94,-7.15) nearest target 10.77 m nearest person 3.12 m
+-- real: 17 false blobs
+   real_eval_01_no_one_place            top 1.95 foot 0.61 cells  23 xy (-5.37,-2.90) nearest target 0.82 m nearest person 0.76 m
+   real_eval_01_no_one_place            top 1.94 foot 0.55 cells  14 xy (-5.43,-2.43) nearest target 0.82 m nearest person 0.47 m
+   real_eval_01_no_one_place            top 1.95 foot 0.44 cells  11 xy (-4.86,-1.78) nearest target 0.82 m nearest person 0.47 m
+   real_eval_03_no_one_deep_place       top 1.96 foot 0.68 cells  13 xy (2.84,1.47) nearest target 0.88 m nearest person 0.72 m
+   real_eval_03_no_one_deep_place       top 1.94 foot 0.51 cells  13 xy (2.77,1.85) nearest target 0.80 m nearest person 0.43 m
+   real_eval_07_waiting_line_2          top 1.79 foot 0.62 cells  17 xy (3.31,-6.95) nearest target 4.23 m nearest person 3.61 m
+   real_eval_07_waiting_line_2          top 1.79 foot 0.32 cells   8 xy (3.76,-7.07) nearest target 4.52 m nearest person 3.78 m
+   real_eval_07_waiting_line_2          top 1.79 foot 0.27 cells   7 xy (4.02,-7.13) nearest target 4.69 m nearest person 3.89 m
+   real_eval_07_waiting_line_2          top 1.31 foot 0.47 cells  21 xy (1.62,-3.56) nearest target 0.59 m nearest person 1.00 m
+   real_eval_08_waiting_line_4          top 1.79 foot 0.54 cells  16 xy (-6.35,-4.91) nearest target 3.98 m nearest person 3.43 m
+   real_eval_08_waiting_line_4          top 1.79 foot 0.39 cells  10 xy (-6.15,-5.28) nearest target 3.79 m nearest person 3.44 m
+   real_eval_08_waiting_line_4          top 1.79 foot 0.21 cells   6 xy (-6.02,-5.51) nearest target 3.69 m nearest person 3.44 m
+   real_eval_09_waiting_line_6          top 1.31 foot 0.70 cells  35 xy (-3.25,-4.05) nearest target 0.48 m nearest person 0.96 m
+   real_eval_11_conversation_group_3    top 1.78 foot 0.21 cells   6 xy (-6.98,-6.24) nearest target 11.05 m nearest person 3.35 m
+   real_eval_12_conversation_group_4    top 1.95 foot 0.21 cells   4 xy (-5.94,-7.15) nearest target 10.77 m nearest person 3.12 m
+   real_eval_13_waiting_line_3          top 1.31 foot 0.62 cells  31 xy (3.34,0.33) nearest target 0.50 m nearest person 0.99 m
+   real_eval_13_waiting_line_3          top 1.24 foot 0.55 cells  63 xy (3.54,-0.77) nearest target 0.64 m nearest person 0.51 m
+-- staffed: 13 false blobs
+   staffed_eval_01_no_one_place         top 1.94 foot 0.55 cells  14 xy (-5.43,-2.43) nearest target 0.82 m nearest person 0.47 m
+   staffed_eval_01_no_one_place         top 1.95 foot 0.44 cells  11 xy (-4.86,-1.78) nearest target 0.82 m nearest person 0.47 m
+   staffed_eval_03_no_one_deep_place    top 1.96 foot 0.61 cells  21 xy (2.77,1.38) nearest target 0.84 m nearest person 0.75 m
+   staffed_eval_03_no_one_deep_place    top 1.94 foot 0.51 cells  13 xy (2.77,1.85) nearest target 0.80 m nearest person 0.43 m
+   staffed_eval_07_waiting_line_2       top 1.79 foot 0.62 cells  17 xy (3.31,-6.95) nearest target 4.23 m nearest person 3.61 m
+   staffed_eval_07_waiting_line_2       top 1.79 foot 0.32 cells   8 xy (3.76,-7.07) nearest target 4.52 m nearest person 3.78 m
+   staffed_eval_07_waiting_line_2       top 1.79 foot 0.27 cells   7 xy (4.02,-7.13) nearest target 4.69 m nearest person 3.89 m
+   staffed_eval_08_waiting_line_4       top 1.79 foot 0.54 cells  16 xy (-6.35,-4.91) nearest target 3.98 m nearest person 3.43 m
+   staffed_eval_08_waiting_line_4       top 1.79 foot 0.39 cells  10 xy (-6.15,-5.28) nearest target 3.79 m nearest person 3.44 m
+   staffed_eval_08_waiting_line_4       top 1.79 foot 0.21 cells   6 xy (-6.02,-5.51) nearest target 3.69 m nearest person 3.44 m
+   staffed_eval_09_waiting_line_6       top 1.99 foot 0.40 cells   9 xy (-3.60,-3.75) nearest target 0.87 m nearest person 1.11 m
+   staffed_eval_11_conversation_group_3 top 1.78 foot 0.21 cells   6 xy (-6.98,-6.24) nearest target 11.05 m nearest person 3.35 m
+   staffed_eval_12_conversation_group_4 top 1.95 foot 0.21 cells   4 xy (-5.94,-7.15) nearest target 10.77 m nearest person 3.12 m
+-- ph: 4 false blobs
+   eval_00_no_one_place                 top 1.95 foot 0.45 cells  17 xy (-1.32,2.59) nearest target 0.94 m nearest person nan m
+   eval_00_no_one_place                 top 1.28 foot 0.57 cells  14 xy (-0.92,2.81) nearest target 0.48 m nearest person nan m
+   eval_01_no_one_place                 top 1.95 foot 0.53 cells  20 xy (-4.89,-1.84) nearest target 0.77 m nearest person 5.72 m
+   eval_09_waiting_line_6               top 1.99 foot 0.35 cells   8 xy (-3.61,-3.73) nearest target 0.88 m nearest person 1.48 m
+-- dev_seed0: 0 false blobs
+-- dev_seed1: 0 false blobs
+-- dev_seed2: 0 false blobs
+
+== Facing axis (minor axis of PCA, points / cells), within 45 deg mod 180, matched at 0.4 m; camera-ray null ==
+0.15 | plain                                          | n  34 | points 28/34 = 0.824 | cells 25/34 = 0.735 | camera-ray axis 8/34 = 0.235 | PCA minor axis within 45 deg of camera ray 18/34 = 0.529
+0.15 | real                                           | n  39 | points 33/39 = 0.846 | cells 28/39 = 0.718 | camera-ray axis 11/39 = 0.282 | PCA minor axis within 45 deg of camera ray 23/39 = 0.590
+0.15 | staffed                                        | n  37 | points 31/37 = 0.838 | cells 28/37 = 0.757 | camera-ray axis 11/37 = 0.297 | PCA minor axis within 45 deg of camera ray 21/37 = 0.568
+0.15 | ph eval_00-13 + dev seed0 (eval_14,15,20,21)   | n  42 | points 35/42 = 0.833 | cells 39/42 = 0.929 | camera-ray axis 11/42 = 0.262 | PCA minor axis within 45 deg of camera ray 22/42 = 0.524
+0.15 | ph eval_00-13 + dev seed1                      | n  42 | points 34/42 = 0.810 | cells 39/42 = 0.929 | camera-ray axis 13/42 = 0.310 | PCA minor axis within 45 deg of camera ray 23/42 = 0.548
+0.15 | ph eval_00-13 + dev seed2                      | n  42 | points 35/42 = 0.833 | cells 39/42 = 0.929 | camera-ray axis 12/42 = 0.286 | PCA minor axis within 45 deg of camera ray 21/42 = 0.500
+0.15 | ph eval_00-13 + all 3 dev seeds                | n  58 | points 50/58 = 0.862 | cells 55/58 = 0.948 | camera-ray axis 18/58 = 0.310 | PCA minor axis within 45 deg of camera ray 32/58 = 0.552
+
+0.25 | plain                                          | n  34 | points 28/34 = 0.824 | cells 25/34 = 0.735 | camera-ray axis 8/34 = 0.235 | PCA minor axis within 45 deg of camera ray 18/34 = 0.529
+0.25 | real                                           | n  37 | points 31/37 = 0.838 | cells 28/37 = 0.757 | camera-ray axis 10/37 = 0.270 | PCA minor axis within 45 deg of camera ray 21/37 = 0.568
+0.25 | staffed                                        | n  36 | points 30/36 = 0.833 | cells 27/36 = 0.750 | camera-ray axis 10/36 = 0.278 | PCA minor axis within 45 deg of camera ray 20/36 = 0.556
+0.25 | ph eval_00-13 + dev seed0 (eval_14,15,20,21)   | n  42 | points 36/42 = 0.857 | cells 39/42 = 0.929 | camera-ray axis 11/42 = 0.262 | PCA minor axis within 45 deg of camera ray 21/42 = 0.500
+0.25 | ph eval_00-13 + dev seed1                      | n  42 | points 35/42 = 0.833 | cells 39/42 = 0.929 | camera-ray axis 13/42 = 0.310 | PCA minor axis within 45 deg of camera ray 22/42 = 0.524
+0.25 | ph eval_00-13 + dev seed2                      | n  42 | points 36/42 = 0.857 | cells 39/42 = 0.929 | camera-ray axis 12/42 = 0.286 | PCA minor axis within 45 deg of camera ray 20/42 = 0.476
+0.25 | ph eval_00-13 + all 3 dev seeds                | n  58 | points 51/58 = 0.879 | cells 55/58 = 0.948 | camera-ray axis 18/58 = 0.310 | PCA minor axis within 45 deg of camera ray 31/58 = 0.534
+
+0.35 | plain                                          | n  34 | points 28/34 = 0.824 | cells 25/34 = 0.735 | camera-ray axis 8/34 = 0.235 | PCA minor axis within 45 deg of camera ray 18/34 = 0.529
+0.35 | real                                           | n  37 | points 31/37 = 0.838 | cells 28/37 = 0.757 | camera-ray axis 10/37 = 0.270 | PCA minor axis within 45 deg of camera ray 21/37 = 0.568
+0.35 | staffed                                        | n  36 | points 30/36 = 0.833 | cells 27/36 = 0.750 | camera-ray axis 10/36 = 0.278 | PCA minor axis within 45 deg of camera ray 20/36 = 0.556
+0.35 | ph eval_00-13 + dev seed0 (eval_14,15,20,21)   | n  42 | points 36/42 = 0.857 | cells 39/42 = 0.929 | camera-ray axis 11/42 = 0.262 | PCA minor axis within 45 deg of camera ray 21/42 = 0.500
+0.35 | ph eval_00-13 + dev seed1                      | n  42 | points 35/42 = 0.833 | cells 39/42 = 0.929 | camera-ray axis 13/42 = 0.310 | PCA minor axis within 45 deg of camera ray 22/42 = 0.524
+0.35 | ph eval_00-13 + dev seed2                      | n  42 | points 36/42 = 0.857 | cells 39/42 = 0.929 | camera-ray axis 12/42 = 0.286 | PCA minor axis within 45 deg of camera ray 20/42 = 0.476
+0.35 | ph eval_00-13 + all 3 dev seeds                | n  58 | points 51/58 = 0.879 | cells 55/58 = 0.948 | camera-ray axis 18/58 = 0.310 | PCA minor axis within 45 deg of camera ray 31/58 = 0.534
+
+Facing by situation (split 0.25, points minor axis; realistic = plain+real+staffed, placeholder = ph + 3 dev seeds)
+  realistic   group     n  48 PCA 45/48 = 0.938  camera-ray 18/48 = 0.375
+  realistic   line      n  49 PCA 34/49 = 0.694  camera-ray 0/49 = 0.000
+  realistic   other     n  10 PCA 10/10 = 1.000  camera-ray 10/10 = 1.000
+  placeholder audience  n  24 PCA 23/24 = 0.958  camera-ray 9/24 = 0.375
+  placeholder group     n  16 PCA 16/16 = 1.000  camera-ray 7/16 = 0.438
+  placeholder line      n  16 PCA 10/16 = 0.625  camera-ray 0/16 = 0.000
+  placeholder other     n   2 PCA 2/2 = 1.000  camera-ray 2/2 = 1.000

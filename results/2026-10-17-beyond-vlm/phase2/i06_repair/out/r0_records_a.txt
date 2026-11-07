@@ -1,0 +1,15 @@
+I06 repair probe: R0 reproduction, arm 2 setting (a). Written 2026-10-18 06:57:11 +0800. Copy check active (copy-check calls so far 2234).
+compared: H.resolve(rec): reproduced (<= 1e-6 m), success = recorded success, and = I01's C (realistic)
+goal steps 1265 over 11 cells; mismatching 0
+  old_qwen38_low: goal steps 143 (Table 5.1 143), recorded success 134 (134), R0 success in (a) 134 (Table 5.1 target 134), goal steps where R0 absorbed someone 0
+  old_glm53: goal steps 141 (Table 5.1 141), recorded success 96 (96), R0 success in (a) 96 (Table 5.1 target 96), goal steps where R0 absorbed someone 0
+  old_dsv41: goal steps 157 (Table 5.1 157), recorded success 109 (109), R0 success in (a) 109 (Table 5.1 target 109), goal steps where R0 absorbed someone 3
+  watch_qwen38_low: goal steps 36 (Table 5.1 36), recorded success 32 (32), R0 success in (a) 32 (Table 5.1 target 32), goal steps where R0 absorbed someone 0
+  watch_glm53: goal steps 36 (Table 5.1 36), recorded success 23 (23), R0 success in (a) 23 (Table 5.1 target 23), goal steps where R0 absorbed someone 0
+  watch_dsv41: goal steps 36 (Table 5.1 36), recorded success 23 (23), R0 success in (a) 23 (Table 5.1 target 23), goal steps where R0 absorbed someone 1
+  new_glm53: goal steps 141 (Table 5.1 141), recorded success 86 (86), R0 success in (a) 86 (Table 5.1 target 86), goal steps where R0 absorbed someone 0
+  new_dsv41: goal steps 151 (Table 5.1 151), recorded success 106 (106), R0 success in (a) 106 (Table 5.1 target 106), goal steps where R0 absorbed someone 2
+  new_haiku55: goal steps 146 (Table 5.1 146), recorded success 134 (134), R0 success in (a) 134 (Table 5.1 target 134), goal steps where R0 absorbed someone 3
+  new_sonnet55_low: goal steps 143 (Table 5.1 143), recorded success 134 (134), R0 success in (a) 134 (Table 5.1 target 134), goal steps where R0 absorbed someone 0
+  new_gemini38_low: goal steps 135 (Table 5.1 135), recorded success 109 (109), R0 success in (a) 109 (Table 5.1 target 109), goal steps where R0 absorbed someone 15
+FULL REPRODUCTION: yes

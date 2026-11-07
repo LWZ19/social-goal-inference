@@ -1,0 +1,537 @@
+models:
+  mock:
+    provider: mock
+    model: mock-centre
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: null
+    price_output_per_mtok: null
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  gemini_fast:
+    provider: gemini
+    model: gemini-3.8-flash
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: null
+    price_output_per_mtok: null
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  gemini_strong:
+    provider: gemini
+    model: gemini-3.1-pro-preview
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: null
+    price_output_per_mtok: null
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  gemini_pointing:
+    provider: gemini
+    model: gemini-robotics-er-2-preview
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: null
+    price_output_per_mtok: null
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  openai_fast:
+    provider: openai
+    model: gpt-6-luna
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: null
+    price_output_per_mtok: null
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  openai_strong:
+    provider: openai
+    model: gpt-6.1-sol
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: null
+    price_output_per_mtok: null
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_qwen38:
+    provider: openai_compatible
+    model: qwen3.8:27b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.408922
+    price_output_per_mtok: 2.320054
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_qwen38_low:
+    provider: openai_compatible
+    model: qwen3.8:27b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.408922
+    price_output_per_mtok: 2.320054
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_qwen38_medium:
+    provider: openai_compatible
+    model: qwen3.8:27b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.408922
+    price_output_per_mtok: 2.320054
+    reasoning_effort: medium
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_qwen36_35:
+    provider: openai_compatible
+    model: qwen3.6:35b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.450056
+    price_output_per_mtok: 1.5155
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_qwen3vl:
+    provider: openai_compatible
+    model: qwen3-vl:32b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.380025
+    price_output_per_mtok: 2.419278
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_ornith15:
+    provider: openai_compatible
+    model: ornith1.5:35b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.2
+    price_output_per_mtok: 1.7
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_ornith15_low:
+    provider: openai_compatible
+    model: ornith1.5:35b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.2
+    price_output_per_mtok: 1.7
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_glm53:
+    provider: openai_compatible
+    model: x-test-1
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.37
+    price_output_per_mtok: 1.25
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 600.0
+  soclaas_glm53_low:
+    provider: openai_compatible
+    model: x-test-1
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.37
+    price_output_per_mtok: 1.25
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_glm53_high:
+    provider: openai_compatible
+    model: x-test-1
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.37
+    price_output_per_mtok: 1.25
+    reasoning_effort: high
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_glm53_max:
+    provider: openai_compatible
+    model: x-test-1
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.37
+    price_output_per_mtok: 1.25
+    reasoning_effort: max
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_dsv41:
+    provider: openai_compatible
+    model: x-test-2
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.3
+    price_output_per_mtok: 1.2
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_dsv41_low:
+    provider: openai_compatible
+    model: x-test-2
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.3
+    price_output_per_mtok: 1.2
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_gemma4:
+    provider: openai_compatible
+    model: gemma4:26b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.102294
+    price_output_per_mtok: 0.379882
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  soclaas_qwen35_9:
+    provider: openai_compatible
+    model: qwen3.5:9b
+    base_url: https://soclaas-api.comp.nus.edu.sg/v1
+    api_key_env: SOCLAAS_API_KEY
+    structured_output: json_schema
+    max_requests_per_minute: 80
+    price_input_per_mtok: 0.114438
+    price_output_per_mtok: 0.200438
+    reasoning_effort: none
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  claude_opus55:
+    provider: anthropic
+    model: claude-opus-5-5
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: 4.0
+    price_output_per_mtok: 20.0
+    reasoning_effort: medium
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  claude_opus55_low:
+    provider: anthropic
+    model: claude-opus-5-5
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: 4.0
+    price_output_per_mtok: 20.0
+    reasoning_effort: low
+    point_format: xy_1000
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  claude_sonnet55:
+    provider: anthropic
+    model: claude-sonnet-5-5
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: 2.0
+    price_output_per_mtok: 10.0
+    reasoning_effort: medium
+    point_format: xy_pixel
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  claude_sonnet55_low:
+    provider: anthropic
+    model: claude-sonnet-5-5
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: 2.0
+    price_output_per_mtok: 10.0
+    reasoning_effort: low
+    point_format: xy_pixel
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  claude_haiku55:
+    provider: anthropic
+    model: claude-haiku-5-5
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: 0.1
+    price_output_per_mtok: 0.5
+    reasoning_effort: none
+    point_format: xy_pixel
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  claude_haiku55_low:
+    provider: anthropic
+    model: claude-haiku-5-5
+    base_url: null
+    api_key_env: null
+    structured_output: json_schema
+    max_requests_per_minute: null
+    price_input_per_mtok: 0.1
+    price_output_per_mtok: 0.5
+    reasoning_effort: low
+    point_format: xy_pixel
+    temperature: null
+    image_detail: null
+    max_output_tokens: null
+    timeout_s: 180.0
+  gemini3_flash:
+    provider: gemini
+    model: gemini-3-flash-preview
+    reasoning_effort: low
+    point_format: xy_1000
+  gemini31_flash_lite:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    reasoning_effort: low
+    point_format: xy_1000
+  gemini35_flash_lite:
+    provider: gemini
+    model: gemini-3.5-flash-lite
+    reasoning_effort: low
+    point_format: xy_1000
+  gemini36_flash:
+    provider: gemini
+    model: gemini-3.6-flash
+    reasoning_effort: low
+    point_format: xy_1000
+  claude_haiku45:
+    provider: anthropic
+    model: claude-haiku-4-5
+    reasoning_effort: none
+    point_format: xy_1000
+    price_input_per_mtok: 1.0
+    price_output_per_mtok: 5.0
+    max_requests_per_minute: 25
+  claude_sonnet46_low:
+    provider: anthropic
+    model: claude-sonnet-4-6
+    reasoning_effort: low
+    point_format: xy_pixel
+    price_input_per_mtok: 3.0
+    price_output_per_mtok: 15.0
+    max_requests_per_minute: 25
+  claude_sonnet5_low:
+    provider: anthropic
+    model: claude-sonnet-5
+    reasoning_effort: low
+    point_format: xy_pixel
+    price_input_per_mtok: 2.0
+    price_output_per_mtok: 10.0
+    max_requests_per_minute: 25
+stages:
+  plan:
+    model: claude_sonnet55_low
+    strategy: cot
+  locate:
+    model: claude_sonnet55_low
+    strategy: zero_shot
+  context:
+    model: claude_sonnet55_low
+    strategy: zero_shot
+  goal:
+    model: claude_sonnet55_low
+    strategy: cot
+  people:
+    model: claude_sonnet55_low
+    strategy: zero_shot
+  constraints:
+    model: claude_sonnet55_low
+    strategy: cot
+thresholds:
+  standoff_m: 1.0
+  standard_goal_max_slide_m: 0.5
+  standard_goal_step_m: 0.05
+  standard_goal_clearance_m: 0.4
+  surface_radius_m: 0.3
+  surface_min_points: 40
+  surface_min_spread_m: 0.05
+  surface_max_tilt: 0.5
+  surface_max_rms_m: 0.06
+  surface_max_rms_ratio: 0.5
+  floor_tolerance_m: 0.15
+  lift_window: 5
+  heading_degenerate_m: 0.05
+  robot_radius_m: 0.3
+  person_radius_m: 0.25
+  grid_resolution_m: 0.05
+  match_tolerance_m: 0.3
+  default_match_radius_m: 0.75
+  personal_gap_m: 0.3
+  anchor_depth_tolerance_m: 0.3
+  relevant_radius_m: 2.0
+  visibility_depth_tolerance_m: 0.3
+  visibility_min_samples: 3
+  floor_depth_max_rel_error: 0.02
+  floor_min_pixels: 2000
+  floor_person_clearance_m: 0.4
+  camera_height_min_m: 0.2
+  camera_height_max_m: 3.0
+  yaw_tolerance_rad: 0.001
+  free_space_agreement_min: 0.9
+  view_half_angle_deg: 35.0
+  visible_half_angle_deg: 60.0
+  floor_range_m: 12.0
+  seen_depth_ratio: 0.03
+  seen_depth_margin_m: 0.02
+  max_keep_m: 3.0
+  max_people: 40
+  max_constraints: 12
+  person_mark_height_m: 1.1
+  candidate_count: 4
+run:
+  grounding: vlm
+  context_check: vlm
+  goal: direct_marking
+  people: vlm
+  constraints: vlm
+  grounding_source: view
+  heading_mode: face_target
+  trials: 3
+  leave_out_situation: null
+  final_test: false
+  examples_dir: .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/real/examples
+  k: null
+  seed: 0
+  max_tour_frames: 16
+  max_image_side: null
+  prompts_dir: prompts
+  use_cache: true
+  cache_dir: .cache/vlm_noise1
+dev_situations:
+- no_one
+- waiting_line
+- conversation_group
+- audience
+held_out_situations:
+- group_photo
+- lift_wait

@@ -1,0 +1,14 @@
+## design cells
+- member, stays: 247/1224 bouts break a bound (0.202); by path 233, by away 14
+- member, leaves: 0/3 bouts break a bound (0.000); by path 0, by away 0
+- joins: 178/226 bouts break a bound (0.788); by path 33, by away 145
+- ex-member: 706/863 bouts break a bound (0.818); by path 9, by away 697
+- never a member: 2083/3236 bouts break a bound (0.644); by path 1033, by away 1050
+- bar (member bouts at most 5%): FAIL
+
+## pilot layouts
+- member, stays: 63/307 bouts break a bound (0.205); by path 46, by away 17
+- joins: 37/44 bouts break a bound (0.841); by path 7, by away 30
+- ex-member: 127/155 bouts break a bound (0.819); by path 7, by away 120
+- never a member: 292/499 bouts break a bound (0.585); by path 145, by away 147
+- bar (member bouts at most 5%): FAIL

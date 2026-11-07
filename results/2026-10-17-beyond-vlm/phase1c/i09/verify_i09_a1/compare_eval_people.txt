@@ -1,0 +1,2 @@
+scenes 68, people 168, count mismatches 0, max xy diff 0.00e+00 m, max yaw diff (all 5 variants) 8.88e-16 rad, None mismatches 0
+per-scene count differences vs a1/rows.jsonl: 0

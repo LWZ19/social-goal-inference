@@ -1,0 +1,50 @@
+
+Sonnet CT2m vs CT2, seeds 10-19
+scenario                   share W/L/T   mean d    first-in-line earlier/same/later
+cafe_line2_moving           2/ 6/ 2   -0.015    4/1/4
+cafe_line6_moving           1/ 6/ 3   +0.049    0/2/8
+cafe_slots                  4/ 3/ 3   +0.007    6/3/0
+room_coffee_cart_slots      5/ 4/ 1   +0.009    1/7/1
+sweet_spot_line2_moving     0/ 8/ 2   -0.037    0/0/8
+all                        12/27/11   +0.002    11/13/21
+   losses smaller than 0.05: 18 of 27; wins over 0.05: 5 of 12
+
+DeepSeek CT2m vs CT2, seeds 10-14
+scenario                   share W/L/T   mean d    first-in-line earlier/same/later
+cafe_line2_moving           0/ 3/ 2   -0.009    0/1/2
+cafe_line6_moving           2/ 2/ 1   -0.015    1/0/4
+cafe_slots                  3/ 1/ 1   +0.011    3/2/0
+room_coffee_cart_slots      1/ 2/ 2   -0.004    0/4/0
+sweet_spot_line2_moving     1/ 2/ 2   -0.042    0/1/0
+all                         7/10/ 8   -0.012    4/8/6
+   losses smaller than 0.05: 6 of 10; wins over 0.05: 1 of 7
+
+Sonnet CT2m vs CT2, seeds 10-12 only
+scenario                   share W/L/T   mean d    first-in-line earlier/same/later
+cafe_line2_moving           1/ 2/ 0   -0.026    2/0/1
+cafe_line6_moving           1/ 1/ 1   +0.190    0/0/3
+cafe_slots                  2/ 0/ 1   +0.007    3/0/0
+room_coffee_cart_slots      2/ 0/ 1   +0.029    0/2/0
+sweet_spot_line2_moving     0/ 2/ 1   -0.033    0/0/2
+all                         6/ 5/ 4   +0.034    5/2/6
+   losses smaller than 0.05: 3 of 5; wins over 0.05: 2 of 6
+
+Floor: Sonnet CT2 repeat vs CT2, seeds 10-12
+scenario                   share W/L/T   mean d    first-in-line earlier/same/later
+cafe_line2_moving           0/ 1/ 2   -0.022    1/2/0
+cafe_line6_moving           1/ 0/ 2   +0.176    0/2/1
+cafe_slots                  1/ 1/ 1   +0.004    0/2/1
+room_coffee_cart_slots      2/ 0/ 1   +0.037    0/2/0
+sweet_spot_line2_moving     1/ 0/ 2   +0.007    0/2/0
+all                         5/ 2/ 8   +0.040    1/10/2
+   losses smaller than 0.05: 1 of 2; wins over 0.05: 2 of 5
+
+Floor: Sonnet CT repeat vs CT, seeds 10-12
+scenario                   share W/L/T   mean d    first-in-line earlier/same/later
+cafe_line2_moving           0/ 1/ 2   -0.007    0/1/1
+cafe_line6_moving           3/ 0/ 0   +0.194    0/3/0
+cafe_slots                  0/ 3/ 0   -0.220    0/0/1
+room_coffee_cart_slots      2/ 0/ 1   +0.051    0/2/0
+sweet_spot_line2_moving     1/ 0/ 2   +0.007    1/1/0
+all                         6/ 4/ 5   +0.005    1/7/2
+   losses smaller than 0.05: 1 of 4; wins over 0.05: 5 of 6

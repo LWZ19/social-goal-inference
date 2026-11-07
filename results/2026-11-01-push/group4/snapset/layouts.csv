@@ -1,0 +1,1051 @@
+seed,split,index,twin_id,real_id,situation,n_visitors,n_staff_real,target_kind,target_label,hidden_twin,occluders_twin,hidden_real,occluders_real,target_in_image,bin,near_person,near_role,near_anchor_m,near_footprint_m,near_shown,anchor_in_box,set
+400,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+400,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+400,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.5,6.96,0.0,,
+400,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+400,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.41,6.41,0.0,,
+400,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+400,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+400,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+400,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+400,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+400,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+400,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+400,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.111,p1,0.111,p1,1.0,5-15,,,,,,,
+400,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+400,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+400,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+400,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+400,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+400,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+400,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+400,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+401,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+401,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,7.05,5.92,1.0,,
+401,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+401,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+401,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.47,7.47,0.0,,
+401,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+401,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+401,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+401,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+401,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+401,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+401,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.067,p1,0.067,p1,1.0,5-15,,,,,,,
+401,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.252,p1,0.252,p1,1.0,15-40,,,,,,,occluded
+401,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+401,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+401,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+401,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+401,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+401,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+401,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+401,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+402,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+402,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+402,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+402,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+402,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.42,7.42,0.0,,
+402,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+402,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+402,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+402,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+402,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+402,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+402,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+402,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.215,p3,0.215,p3,1.0,15-40,,,,,,,occluded
+402,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+402,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.72,7.71,0.0,,
+402,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+402,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+402,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+402,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+402,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.07,p2,0.07,p2,1.0,5-15,,,,,,,
+402,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+403,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+403,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+403,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.57,5.45,0.0,,
+403,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+403,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.33,5.33,0.0,,
+403,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+403,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+403,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+403,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+403,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+403,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+403,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.056,p1,0.056,p1,1.0,5-15,,,,,,,
+403,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.219,p3,0.219,p3,1.0,15-40,,,,,,,occluded
+403,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+403,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.86,7.69,0.0,,
+403,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+403,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+403,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+403,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+403,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+403,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+404,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+404,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,4.38,3.25,1.0,,
+404,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+404,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+404,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,8.17,8.17,0.0,,
+404,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+404,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+404,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.75,0.75,1.0,,control_place
+404,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+404,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+404,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+404,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+404,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.304,p3,0.304,p3,1.0,15-40,,,,,,,occluded
+404,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+404,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+404,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.33,4.2,0.0,,
+404,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+404,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+404,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+404,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+404,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+405,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.18,6.83,0.0,,
+405,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+405,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+405,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+405,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.39,6.39,0.0,,
+405,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+405,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+405,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.76,0.75,1.0,,control_place
+405,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+405,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+405,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+405,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+405,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.252,p1,0.252,p1,1.0,15-40,,,,,,,occluded
+405,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+405,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+405,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+405,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+405,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+405,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+405,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+405,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+406,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.38,3.77,0.0,,
+406,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,s0,staff,6.91,5.99,1.0,,
+406,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+406,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.72,4.16,0.0,,
+406,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,4.87,4.87,0.0,,
+406,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+406,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+406,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+406,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+406,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+406,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+406,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+406,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.226,p1,0.226,p1,1.0,15-40,,,,,,,occluded
+406,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+406,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+406,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+406,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+406,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+406,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+406,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+406,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+407,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+407,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+407,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.79,5.34,0.0,,
+407,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,4.79,4.79,0.0,,
+407,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+407,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+407,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+407,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+407,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+407,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+407,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.66,5.56,0.0,,
+407,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+407,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+407,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+407,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+408,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.67,7.5,0.0,,
+408,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+408,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+408,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.72,6.72,0.0,,
+408,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+408,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+408,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+408,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.037,p1,0.037,p1,1.0,unhidden,,,,,,,control_person
+408,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.96,4.44,0.0,,
+408,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+408,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+408,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+408,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+408,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+408,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+409,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+409,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,5.1,4.23,1.0,,
+409,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+409,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.34,7.04,0.0,,
+409,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,8.3,8.3,0.0,,
+409,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+409,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+409,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+409,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+409,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+409,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+409,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.085,p1,0.085,p1,1.0,5-15,,,,,,,
+409,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.259,p3,0.259,p3,1.0,15-40,,,,,,,occluded
+409,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+409,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+409,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.69,5.54,0.0,,
+409,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+409,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+409,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+409,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+409,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+410,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+410,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.67,6.67,0.0,,
+410,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.8,7.8,0.0,,
+410,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+410,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+410,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+410,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+410,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.363,p3,0.363,p3,1.0,15-40,,,,,,,occluded
+410,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+410,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.13,5.12,0.0,,
+410,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+410,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+410,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+410,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+410,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+411,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+411,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,s0,staff,6.83,5.93,1.0,,
+411,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.92,5.96,0.0,,
+411,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+411,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.88,7.88,0.0,,
+411,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+411,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+411,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+411,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+411,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+411,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+411,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+411,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.23,p1,0.23,p1,1.0,15-40,,,,,,,occluded
+411,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+411,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+411,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+411,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+411,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+411,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+411,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+411,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+412,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+412,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,5.4,4.55,1.0,,
+412,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.09,6.57,0.0,,
+412,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+412,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,4.92,4.92,0.0,,
+412,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+412,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+412,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+412,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+412,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+412,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+412,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+412,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.015,p1,0.015,p1,1.0,unhidden,,,,,,,control_person
+412,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+412,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.33,5.92,0.0,,
+412,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.48,5.43,0.0,,
+412,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+412,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+412,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+412,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+412,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+413,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+413,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,7.34,6.39,1.0,,
+413,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+413,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.47,7.37,0.0,,
+413,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.31,6.31,0.0,,
+413,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+413,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+413,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+413,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+413,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+413,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+413,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+413,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.019,p3,0.019,p3,1.0,unhidden,,,,,,,control_person
+413,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+413,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+413,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+413,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+413,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+413,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+413,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+413,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+414,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+414,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+414,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.14,4.01,0.0,,
+414,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+414,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.29,6.29,0.0,,
+414,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+414,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+414,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+414,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+414,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+414,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+414,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+414,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.085,p3,0.085,p3,1.0,5-15,,,,,,,
+414,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+414,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.52,5.05,0.0,,
+414,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+414,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+414,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+414,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+414,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+414,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+415,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+415,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+415,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.3,6.51,0.0,,
+415,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+415,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.81,5.81,0.0,,
+415,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+415,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+415,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+415,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+415,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+415,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+415,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+415,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.1,p3,0.1,p3,1.0,5-15,,,,,,,
+415,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+415,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+415,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+415,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+415,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+415,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+415,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+415,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+416,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+416,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,6.21,5.41,1.0,,
+416,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+416,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+416,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.62,6.62,0.0,,
+416,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+416,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+416,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+416,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+416,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+416,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+416,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+416,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.167,p3,0.167,p3,1.0,15-40,,,,,,,occluded
+416,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+416,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+416,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+416,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+416,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.82,0.82,1.0,,control_place
+416,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+416,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+416,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+417,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+417,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,5.51,4.69,1.0,,
+417,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+417,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+417,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.91,5.91,0.0,,
+417,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+417,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+417,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+417,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+417,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+417,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+417,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+417,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.104,p1,0.104,p1,1.0,5-15,,,,,,,
+417,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.85,0.85,1.0,,control_place
+417,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.84,7.76,0.0,,
+417,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.0,5.0,0.0,,
+417,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+417,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+417,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+417,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+417,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+418,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+418,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,5.44,4.51,1.0,,
+418,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+418,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.4,7.26,0.0,,
+418,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.3,5.3,0.0,,
+418,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+418,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+418,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+418,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+418,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+418,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+418,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.022,p1,0.022,p1,1.0,unhidden,,,,,,,control_person
+418,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.015,p3,0.015,p3,1.0,unhidden,,,,,,,control_person
+418,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+418,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.64,5.19,0.0,,
+418,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+418,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+418,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+418,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+418,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+418,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+419,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+419,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,4.08,3.02,1.0,,
+419,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+419,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.04,5.43,0.0,,
+419,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.33,7.33,0.0,,
+419,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+419,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+419,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+419,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+419,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+419,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+419,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+419,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.163,p1,0.163,p1,1.0,15-40,,,,,,,occluded
+419,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+419,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+419,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.19,6.41,0.0,,
+419,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+419,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+419,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+419,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+419,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+420,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+420,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+420,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.42,5.23,0.0,,
+420,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+420,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.25,5.25,0.0,,
+420,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+420,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+420,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+420,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+420,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+420,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+420,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+420,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.274,p3,0.274,p3,1.0,15-40,,,,,,,occluded
+420,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+420,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+420,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+420,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+420,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+420,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+420,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.03,p2,0.03,p2,1.0,unhidden,,,,,,,control_person
+420,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+421,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.08,4.56,0.0,,
+421,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+421,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.58,6.81,0.0,,
+421,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+421,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.7,5.7,0.0,,
+421,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+421,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+421,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+421,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+421,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+421,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+421,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+421,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.115,p1,0.115,p1,1.0,5-15,,,,,,,
+421,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+421,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+421,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+421,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+421,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+421,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+421,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.048,p1,0.048,p1,1.0,unhidden,,,,,,,control_person
+421,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+422,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+422,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+422,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+422,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.23,5.82,0.0,,
+422,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.97,6.97,0.0,,
+422,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+422,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+422,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+422,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+422,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+422,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+422,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+422,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.093,p3,0.093,p3,1.0,5-15,,,,,,,
+422,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+422,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.45,7.45,0.0,,
+422,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+422,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+422,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+422,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+422,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+422,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+423,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+423,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+423,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+423,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+423,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.45,5.45,0.0,,
+423,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+423,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+423,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+423,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+423,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+423,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+423,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+423,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.222,p3,0.222,p3,1.0,15-40,,,,,,,occluded
+423,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+423,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+423,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.92,4.8,0.0,,
+423,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+423,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+423,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+423,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.089,p1,0.089,p1,1.0,5-15,,,,,,,
+423,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+424,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+424,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,4.98,4.11,1.0,,
+424,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+424,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+424,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.02,6.02,0.0,,
+424,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+424,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+424,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.81,0.8,1.0,,control_place
+424,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+424,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+424,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+424,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.052,p2,0.052,p2,1.0,5-15,,,,,,,
+424,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.115,p1,0.115,p1,1.0,5-15,,,,,,,
+424,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+424,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+424,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+424,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+424,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+424,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+424,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+424,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+425,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.32,5.91,0.0,,
+425,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+425,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+425,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,4.74,4.74,0.0,,
+425,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+425,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+425,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+425,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+425,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.063,p1,0.063,p1,1.0,5-15,,,,,,,
+425,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.085,p3,0.085,p3,1.0,5-15,,,,,,,
+425,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+425,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+425,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+425,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+425,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+426,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.33,7.29,0.0,,
+426,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,s0,staff,5.77,5.08,0.0,,
+426,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+426,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+426,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.3,5.3,0.0,,
+426,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+426,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+426,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+426,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+426,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+426,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+426,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+426,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.185,p1,0.185,p1,1.0,15-40,,,,,,,occluded
+426,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+426,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+426,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+426,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+426,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+426,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+426,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+426,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+427,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+427,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+427,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+427,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.02,6.9,0.0,,
+427,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.64,7.64,0.0,,
+427,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+427,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+427,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+427,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+427,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+427,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+427,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+427,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.126,p1,0.126,p1,1.0,5-15,,,,,,,
+427,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+427,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+427,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+427,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+427,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+427,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+427,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.067,p2,0.067,p2,1.0,5-15,,,,,,,
+427,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+428,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+428,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+428,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+428,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+428,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.39,6.39,0.0,,
+428,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+428,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+428,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+428,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+428,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.85,0.85,1.0,,control_place
+428,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+428,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.107,p2,0.107,p2,1.0,5-15,,,,,,,
+428,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.219,p3,0.219,p3,1.0,15-40,,,,,,,occluded
+428,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+428,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.72,5.27,0.0,,
+428,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+428,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.82,0.82,1.0,,control_place
+428,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+428,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+428,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+428,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+429,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.67,4.11,0.0,,
+429,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,4.38,3.57,1.0,,
+429,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+429,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+429,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,4.77,4.77,0.0,,
+429,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+429,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+429,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+429,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+429,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+429,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+429,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+429,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.296,p1,0.296,p1,1.0,15-40,,,,,,,occluded
+429,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.82,0.82,1.0,,control_place
+429,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.72,5.27,0.0,,
+429,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+429,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+429,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+429,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+429,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+429,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+430,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+430,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+430,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.97,4.45,0.0,,
+430,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.85,6.84,0.0,,
+430,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.11,6.11,0.0,,
+430,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+430,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+430,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+430,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+430,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+430,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+430,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+430,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.011,p1,0.011,p1,1.0,unhidden,,,,,,,control_person
+430,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+430,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+430,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+430,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+430,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.82,0.82,1.0,,control_place
+430,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+430,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+430,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+431,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+431,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,4.64,3.63,1.0,,
+431,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+431,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+431,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.12,6.12,0.0,,
+431,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+431,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+431,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+431,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+431,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.8,0.79,1.0,,control_place
+431,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+431,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.067,p1,0.067,p1,1.0,5-15,,,,,,,
+431,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.167,p3,0.167,p3,1.0,15-40,,,,,,,occluded
+431,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+431,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+431,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+431,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+431,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+431,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+431,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.052,p1,0.052,p1,1.0,5-15,,,,,,,
+431,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+432,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+432,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+432,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+432,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.36,4.61,0.0,,
+432,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.94,7.94,0.0,,
+432,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+432,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+432,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+432,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+432,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+432,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+432,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+432,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+432,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+432,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.13,4.62,0.0,,
+432,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+432,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+432,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.85,0.85,1.0,,control_place
+432,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+432,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.004,p2,0.004,p2,1.0,unhidden,,,,,,,control_person
+432,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+433,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+433,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+433,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+433,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+433,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.11,6.11,0.0,,
+433,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+433,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+433,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+433,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+433,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+433,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+433,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+433,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.23,p1,0.23,p1,1.0,15-40,,,,,,,occluded
+433,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+433,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+433,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.22,4.09,0.0,,
+433,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+433,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+433,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+433,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+433,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+434,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+434,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+434,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+434,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+434,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.67,7.67,0.0,,
+434,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+434,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+434,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+434,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+434,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+434,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+434,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+434,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.23,p1,0.23,p1,1.0,15-40,,,,,,,occluded
+434,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+434,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.68,4.12,0.0,,
+434,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+434,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+434,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+434,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+434,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+434,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+435,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+435,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,6.12,5.07,1.0,,
+435,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+435,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+435,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,6.54,6.54,0.0,,
+435,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+435,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+435,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+435,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+435,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+435,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+435,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+435,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.115,p3,0.115,p3,1.0,5-15,,,,,,,
+435,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.8,0.79,1.0,,control_place
+435,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.75,6.37,0.0,,
+435,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+435,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+435,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+435,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+435,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+435,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+436,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+436,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+436,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+436,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+436,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.7,5.7,0.0,,
+436,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+436,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+436,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+436,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+436,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+436,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+436,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+436,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.196,p1,0.196,p1,1.0,15-40,,,,,,,occluded
+436,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+436,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+436,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+436,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+436,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+436,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+436,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+436,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+437,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+437,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,5.73,4.9,1.0,,
+437,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.3,5.92,0.0,,
+437,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+437,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.77,7.77,0.0,,
+437,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+437,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+437,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+437,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.8,0.8,1.0,,control_place
+437,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+437,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+437,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+437,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.07,p3,0.07,p3,1.0,5-15,,,,,,,
+437,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+437,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+437,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+437,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+437,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+437,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+437,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+437,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+438,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+438,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+438,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+438,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+438,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.61,7.61,0.0,,
+438,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+438,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+438,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+438,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+438,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+438,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+438,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+438,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.1,p3,0.1,p3,1.0,5-15,,,,,,,
+438,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+438,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+438,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.31,5.31,0.0,,
+438,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+438,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+438,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+438,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+438,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+439,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+439,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+439,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.81,6.34,0.0,,
+439,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+439,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.89,5.89,0.0,,
+439,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+439,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+439,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+439,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.79,0.78,1.0,,control_place
+439,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+439,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+439,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+439,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.152,p1,0.152,p1,1.0,15-40,,,,,,,occluded
+439,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+439,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.74,4.19,0.0,,
+439,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+439,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+439,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+439,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+439,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+439,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+440,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.75,6.38,0.0,,
+440,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,5.99,5.17,1.0,,
+440,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+440,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.13,7.07,0.0,,
+440,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,8.16,8.16,0.0,,
+440,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+440,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+440,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+440,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+440,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+440,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+440,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.019,p2,0.019,p2,1.0,unhidden,,,,,,,control_person
+440,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.211,p3,0.211,p3,1.0,15-40,,,,,,,occluded
+440,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+440,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+440,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.65,5.85,0.0,,
+440,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+440,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+440,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+440,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+440,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+441,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+441,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+441,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+441,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+441,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,8.08,8.08,0.0,,
+441,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+441,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+441,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+441,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+441,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+441,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+441,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.133,p2,0.133,p2,1.0,5-15,,,,,,,
+441,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.13,p1,0.13,p1,1.0,5-15,,,,,,,
+441,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+441,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.77,4.22,0.0,,
+441,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+441,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+441,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.75,0.75,1.0,,control_place
+441,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+441,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+441,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+442,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+442,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+442,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.47,6.73,0.0,,
+442,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.37,5.97,0.0,,
+442,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.12,7.12,0.0,,
+442,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+442,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+442,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.76,0.76,1.0,,control_place
+442,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+442,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+442,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+442,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+442,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.315,p3,0.315,p3,1.0,15-40,,,,,,,occluded
+442,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+442,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+442,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.51,6.12,0.0,,
+442,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+442,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+442,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+442,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+442,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+443,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+443,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+443,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.92,7.21,0.0,,
+443,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,6.16,4.49,0.0,,
+443,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.39,7.39,0.0,,
+443,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+443,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+443,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+443,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+443,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+443,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+443,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+443,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.233,p3,0.233,p3,1.0,15-40,,,,,,,occluded
+443,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+443,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+443,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+443,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+443,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.75,0.75,1.0,,control_place
+443,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+443,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+443,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+444,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.14,4.64,0.0,,
+444,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+444,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,7.95,7.22,0.0,,
+444,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+444,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.77,7.77,0.0,,
+444,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+444,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+444,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+444,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.8,0.79,1.0,,control_place
+444,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+444,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+444,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+444,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.237,p1,0.237,p1,1.0,15-40,,,,,,,occluded
+444,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+444,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,8.17,8.11,0.0,,
+444,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,8.02,7.31,0.0,,
+444,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.76,0.75,1.0,,control_place
+444,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+444,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+444,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.085,p1,0.085,p1,1.0,5-15,,,,,,,
+444,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+445,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,4.69,4.13,0.0,,
+445,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,1,place,print kiosk,,,,,,,p0,,4.19,3.33,1.0,,
+445,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+445,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+445,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.9,5.9,0.0,,
+445,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+445,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.83,0.82,1.0,,control_place
+445,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+445,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+445,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+445,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+445,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+445,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.119,p3,0.119,p3,1.0,5-15,,,,,,,
+445,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+445,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.14,4.64,0.0,,
+445,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+445,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+445,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+445,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+445,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+445,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+446,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+446,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+446,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+446,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+446,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.7,7.7,0.0,,
+446,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+446,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+446,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.81,0.8,1.0,,control_place
+446,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+446,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+446,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+446,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+446,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.174,p1,0.174,p1,1.0,15-40,,,,,,,occluded
+446,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+446,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,8.01,8.01,0.0,,
+446,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+446,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+446,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+446,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+446,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+446,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+447,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+447,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+447,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+447,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+447,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.2,7.2,0.0,,
+447,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+447,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+447,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.85,0.84,1.0,,control_place
+447,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+447,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+447,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+447,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.056,p1,0.056,p1,1.0,5-15,,,,,,,
+447,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.219,p3,0.219,p3,1.0,15-40,,,,,,,occluded
+447,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+447,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+447,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+447,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,1,place,print kiosk,,,,,,,p0,,0.77,0.77,1.0,,control_place
+447,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+447,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+447,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+447,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+448,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.92,5.48,0.0,,
+448,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+448,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+448,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,s0,control_place
+448,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,5.49,5.49,0.0,,
+448,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+448,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+448,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+448,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,1,place,print kiosk,,,,,,,p0,,0.83,0.83,1.0,,control_place
+448,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+448,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+448,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+448,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.226,p1,0.226,p1,1.0,15-40,,,,,,,occluded
+448,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+448,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+448,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+448,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+448,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.84,0.84,1.0,,control_place
+448,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+448,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+448,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+449,eval,0,eval_00_no_one_place,real_eval_00_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,8.16,8.16,0.0,,
+449,eval,1,eval_01_no_one_place,real_eval_01_no_one_place,no_one,1,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+449,eval,2,eval_02_no_one_place,real_eval_02_no_one_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.61,5.53,0.0,,
+449,eval,3,eval_03_no_one_deep_place,real_eval_03_no_one_deep_place,no_one,0,1,place,print kiosk,,,,,,,s0,staff,5.92,5.2,0.0,,
+449,eval,4,eval_04_no_one_object,real_eval_04_no_one_object,no_one,0,1,object,blue parcel,,,,,,,s0,staff,7.62,7.62,0.0,,
+449,eval,5,eval_05_no_one_person,real_eval_05_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+449,eval,6,eval_06_waiting_line_1,real_eval_06_waiting_line_1,waiting_line,1,1,place,print kiosk,,,,,,,p0,,0.79,0.79,1.0,,control_place
+449,eval,7,eval_07_waiting_line_2,real_eval_07_waiting_line_2,waiting_line,2,2,place,coffee stall,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+449,eval,8,eval_08_waiting_line_4,real_eval_08_waiting_line_4,waiting_line,4,2,place,help desk,,,,,,,s0,staff,0.67,0.0,1.0,,control_place
+449,eval,9,eval_09_waiting_line_6,real_eval_09_waiting_line_6,waiting_line,6,1,place,print kiosk,,,,,,,p0,,0.81,0.81,1.0,,control_place
+449,eval,10,eval_10_conversation_group_2,real_eval_10_conversation_group_2,conversation_group,4,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+449,eval,11,eval_11_conversation_group_3,real_eval_11_conversation_group_3,conversation_group,5,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+449,eval,12,eval_12_conversation_group_4,real_eval_12_conversation_group_4,conversation_group,7,1,person,person in red,0.044,p1,0.044,p1,1.0,unhidden,,,,,,,control_person
+449,eval,13,eval_13_waiting_line_3,real_eval_13_waiting_line_3,waiting_line,3,1,place,print kiosk,,,,,,,p0,,0.78,0.78,1.0,,control_place
+449,examples,0,examples_00_no_one_place,real_examples_00_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,s0,control_place
+449,examples,1,examples_01_no_one_place,real_examples_01_no_one_place,no_one,0,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+449,examples,2,examples_02_waiting_line_2,real_examples_02_waiting_line_2,waiting_line,2,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+449,examples,3,examples_03_waiting_line_3,real_examples_03_waiting_line_3,waiting_line,3,2,place,ticket counter,,,,,,,s0,staff,0.51,0.0,1.0,,control_place
+449,examples,4,examples_04_conversation_group_2,real_examples_04_conversation_group_2,conversation_group,2,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+449,examples,5,examples_05_conversation_group_3,real_examples_05_conversation_group_3,conversation_group,3,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person
+449,examples,6,examples_06_no_one_person,real_examples_06_no_one_person,no_one,1,1,person,person in red,0.0,,0.0,,1.0,unhidden,,,,,,,control_person

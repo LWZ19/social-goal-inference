@@ -1,0 +1,6 @@
+Haiku 5.5  C1 0.01 (n 15) | R1 0.01 (n 25) | CT 0.16 (n 25) | CT2 0.30 (n 25)
+   CT2 vs R1: better 19 worse 2 same 4
+DeepSeek   C1 0.02 (n 15) | R1 0.04 (n 25) | CT 0.20 (n 25) | CT2 0.27 (n 25)
+   CT2 vs R1: better 19 worse 3 same 3
+Sonnet 5.5 C1 0.02 (n 15) | R1 0.06 (n 25) | CT 0.24 (n 25) | CT2 0.29 (n 25)
+   CT2 vs R1: better 21 worse 2 same 2

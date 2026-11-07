@@ -1,0 +1,234 @@
+s16b_real_qwen38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s16b_real_qwen38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s16b_real_glm53_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 50} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 34, ('direct_marking', ('context', 'goal', 'plan')): 50}
+s16b_real_glm53_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 50} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 34, ('direct_marking', ('context', 'goal', 'plan')): 50}
+s16b_staffed_qwen38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s16b_staffed_qwen38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s16b_staffed_glm53_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 82, 'goal': 46} cached {'plan': 84, 'context': 82, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 46, (None, ('plan',)): 2}
+s16b_staffed_glm53_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 82, 'goal': 46} cached {'plan': 84, 'context': 82, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 46, (None, ('plan',)): 2}
+s16b_plain_qwen38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s16b_plain_qwen38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s16b_plain_glm53_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 82, 'goal': 45} cached {'plan': 84, 'context': 82, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 45, (None, ('plan',)): 2}
+s16b_plain_glm53_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 82, 'goal': 45} cached {'plan': 84, 'context': 82, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 45, (None, ('plan',)): 2}
+s19_real_qwen38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s19_real_glm53_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 50, 'constraints': 50} cached {'plan': 84, 'context': 84, 'people': 50, 'constraints': 50}
+   src {('standard', ('context', 'plan')): 34, ('constraints', ('constraints', 'context', 'people', 'plan')): 50}
+s19_staffed_qwen38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 47, 'constraints': 47} cached {'plan': 84, 'context': 84, 'people': 47, 'constraints': 47}
+   src {('standard', ('context', 'plan')): 37, ('constraints', ('constraints', 'context', 'people', 'plan')): 47}
+s19_staffed_glm53_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 82, 'people': 46, 'constraints': 46} cached {'plan': 84, 'context': 82, 'people': 46, 'constraints': 46}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 46, (None, ('plan',)): 2}
+s19_plain_qwen38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s19_plain_glm53_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 82, 'people': 45, 'constraints': 45} cached {'plan': 84, 'context': 82, 'people': 45, 'constraints': 45}
+   src {('standard', ('context', 'plan')): 37, ('constraints', ('constraints', 'context', 'people', 'plan')): 45, (None, ('plan',)): 2}
+s21_real_qwen38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s21_real_qwen38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s21_real_qwen38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 48, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s21_staffed_qwen38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 0, 'context': 1, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s21_staffed_qwen38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s21_staffed_qwen38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 48, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s21_plain_qwen38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s21_plain_qwen38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s21_plain_qwen38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 48, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s22_real_qwen38_low_cot {'allowed': 168} trials {0: 28, 1: 28, 2: 28, 3: 28, 4: 28, 5: 28}
+   calls {'plan': 168, 'context': 168, 'goal': 96} cached {'plan': 84, 'context': 84, 'goal': 48}
+   src {('standard', ('context', 'plan')): 72, ('direct_marking', ('context', 'goal', 'plan')): 96}
+s22_real_qwen38_low_fsc {'allowed': 168} trials {0: 28, 1: 28, 2: 28, 3: 28, 4: 28, 5: 28}
+   calls {'plan': 168, 'context': 168, 'goal': 96} cached {'plan': 168, 'context': 168, 'goal': 48}
+   src {('standard', ('context', 'plan')): 72, ('direct_marking', ('context', 'goal', 'plan')): 96}
+s22_staffed_qwen38_low_cot {'allowed': 168} trials {0: 28, 1: 28, 2: 28, 3: 28, 4: 28, 5: 28}
+   calls {'plan': 168, 'context': 168, 'goal': 95} cached {'plan': 84, 'context': 84, 'goal': 47}
+   src {('standard', ('context', 'plan')): 73, ('direct_marking', ('context', 'goal', 'plan')): 95}
+s22_staffed_qwen38_low_fsc {'allowed': 168} trials {0: 28, 1: 28, 2: 28, 3: 28, 4: 28, 5: 28}
+   calls {'plan': 168, 'context': 168, 'goal': 95} cached {'plan': 168, 'context': 168, 'goal': 47}
+   src {('standard', ('context', 'plan')): 73, ('direct_marking', ('context', 'goal', 'plan')): 95}
+s22_plain_qwen38_low_cot {'allowed': 168} trials {0: 28, 1: 28, 2: 28, 3: 28, 4: 28, 5: 28}
+   calls {'plan': 168, 'context': 168, 'goal': 95} cached {'plan': 84, 'context': 84, 'goal': 48}
+   src {('standard', ('context', 'plan')): 73, ('direct_marking', ('context', 'goal', 'plan')): 95}
+s22_plain_qwen38_low_fsc {'allowed': 168} trials {0: 28, 1: 28, 2: 28, 3: 28, 4: 28, 5: 28}
+   calls {'plan': 168, 'context': 168, 'goal': 95} cached {'plan': 168, 'context': 168, 'goal': 48}
+   src {('standard', ('context', 'plan')): 73, ('direct_marking', ('context', 'goal', 'plan')): 95}
+s23_real_glm53_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_real_glm53_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_real_glm53_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 47, 'constraints': 47} cached {'plan': 84, 'context': 84, 'people': 47, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 37, ('constraints', ('constraints', 'context', 'people', 'plan')): 47}
+s23_real_dsv41_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 51} cached {'plan': 0, 'context': 1, 'goal': 0}
+   src {('standard', ('context', 'plan')): 33, ('direct_marking', ('context', 'goal', 'plan')): 51}
+s23_real_dsv41_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 51} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 33, ('direct_marking', ('context', 'goal', 'plan')): 51}
+s23_real_dsv41_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 51, 'constraints': 51} cached {'plan': 84, 'context': 84, 'people': 50, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 33, ('constraints', ('constraints', 'context', 'people', 'plan')): 51}
+s23_real_haiku55_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 49} cached {'plan': 6, 'context': 6, 'goal': 6}
+   src {('standard', ('context', 'plan')): 35, ('direct_marking', ('context', 'goal', 'plan')): 49}
+s23_real_haiku55_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 49} cached {'plan': 84, 'context': 84, 'goal': 6}
+   src {('standard', ('context', 'plan')): 35, ('direct_marking', ('context', 'goal', 'plan')): 49}
+s23_real_haiku55_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 49, 'constraints': 49} cached {'plan': 84, 'context': 84, 'people': 27, 'constraints': 6}
+   src {('standard', ('context', 'plan')): 35, ('constraints', ('constraints', 'context', 'people', 'plan')): 49}
+s23_real_sonnet55_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 6, 'context': 6, 'goal': 6}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_real_sonnet55_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 6}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_real_sonnet55_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 27, 'constraints': 6}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s23_real_gemini38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 45} cached {'plan': 6, 'context': 6, 'goal': 6}
+   src {('standard', ('context', 'plan')): 39, ('direct_marking', ('context', 'goal', 'plan')): 45}
+s23_real_gemini38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 45} cached {'plan': 84, 'context': 84, 'goal': 6}
+   src {('standard', ('context', 'plan')): 39, ('direct_marking', ('context', 'goal', 'plan')): 45}
+s23_real_gemini38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 45, 'constraints': 45} cached {'plan': 84, 'context': 84, 'people': 24, 'constraints': 6}
+   src {('standard', ('context', 'plan')): 39, ('constraints', ('constraints', 'context', 'people', 'plan')): 45}
+s23_staffed_glm53_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_staffed_glm53_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_staffed_glm53_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 47, 'constraints': 47} cached {'plan': 84, 'context': 84, 'people': 47, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 37, ('constraints', ('constraints', 'context', 'people', 'plan')): 47}
+s23_staffed_dsv41_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 52} cached {'plan': 0, 'context': 1, 'goal': 1}
+   src {('standard', ('context', 'plan')): 32, ('direct_marking', ('context', 'goal', 'plan')): 52}
+s23_staffed_dsv41_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 52} cached {'plan': 84, 'context': 84, 'goal': 1}
+   src {('standard', ('context', 'plan')): 32, ('direct_marking', ('context', 'goal', 'plan')): 52}
+s23_staffed_dsv41_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 52, 'constraints': 52} cached {'plan': 84, 'context': 84, 'people': 51, 'constraints': 1}
+   src {('standard', ('context', 'plan')): 32, ('constraints', ('constraints', 'context', 'people', 'plan')): 52}
+s23_staffed_haiku55_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 49} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 35, ('direct_marking', ('context', 'goal', 'plan')): 49}
+s23_staffed_haiku55_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 49} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 35, ('direct_marking', ('context', 'goal', 'plan')): 49}
+s23_staffed_haiku55_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 49, 'constraints': 49} cached {'plan': 84, 'context': 84, 'people': 24, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 35, ('constraints', ('constraints', 'context', 'people', 'plan')): 49}
+s23_staffed_sonnet55_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_staffed_sonnet55_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_staffed_sonnet55_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 24, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s23_staffed_gemini38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 44} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 40, ('direct_marking', ('context', 'goal', 'plan')): 44}
+s23_staffed_gemini38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 44} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 40, ('direct_marking', ('context', 'goal', 'plan')): 44}
+s23_staffed_gemini38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 44, 'constraints': 44} cached {'plan': 84, 'context': 84, 'people': 20, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 40, ('constraints', ('constraints', 'context', 'people', 'plan')): 44}
+s23_plain_glm53_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_plain_glm53_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_plain_glm53_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 47, 'constraints': 47} cached {'plan': 84, 'context': 84, 'people': 47, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 37, ('constraints', ('constraints', 'context', 'people', 'plan')): 47}
+s23_plain_dsv41_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 0, 'context': 1, 'goal': 1}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_plain_dsv41_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 1}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_plain_dsv41_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 48, 'constraints': 1}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s23_plain_haiku55_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_plain_haiku55_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 48} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 36, ('direct_marking', ('context', 'goal', 'plan')): 48}
+s23_plain_haiku55_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 48, 'constraints': 48} cached {'plan': 84, 'context': 84, 'people': 24, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 36, ('constraints', ('constraints', 'context', 'people', 'plan')): 48}
+s23_plain_sonnet55_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_plain_sonnet55_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 47} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 37, ('direct_marking', ('context', 'goal', 'plan')): 47}
+s23_plain_sonnet55_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 47, 'constraints': 47} cached {'plan': 84, 'context': 84, 'people': 23, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 37, ('constraints', ('constraints', 'context', 'people', 'plan')): 47}
+s23_plain_gemini38_low_cot {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 46} cached {'plan': 0, 'context': 0, 'goal': 0}
+   src {('standard', ('context', 'plan')): 38, ('direct_marking', ('context', 'goal', 'plan')): 46}
+s23_plain_gemini38_low_fsc {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'goal': 46} cached {'plan': 84, 'context': 84, 'goal': 0}
+   src {('standard', ('context', 'plan')): 38, ('direct_marking', ('context', 'goal', 'plan')): 46}
+s23_plain_gemini38_low_con {'allowed': 84} trials {0: 28, 1: 28, 2: 28}
+   calls {'plan': 84, 'context': 84, 'people': 46, 'constraints': 46} cached {'plan': 84, 'context': 84, 'people': 22, 'constraints': 0}
+   src {('standard', ('context', 'plan')): 38, ('constraints', ('constraints', 'context', 'people', 'plan')): 46}

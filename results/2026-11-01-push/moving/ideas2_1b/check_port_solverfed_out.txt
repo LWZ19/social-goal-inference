@@ -1,0 +1,16 @@
+dsv41         cafe_line2_bystanders        s17  re-solves 128, same last 128
+dsv41         cafe_line2_bystanders        s30  re-solves 125, same last 125
+dsv41         cafe_line2_bystanders        s44  re-solves 62, same last 62
+dsv41         sweet_spot_line2_bystanders  s17  re-solves 79, same last 79
+dsv41         sweet_spot_line2_bystanders  s30  re-solves 144, same last 130
+dsv41         sweet_spot_line2_bystanders  s44  re-solves 90, same last 90
+sonnet55_low  cafe_line2_bystanders        s12  re-solves 134, same last 134
+sonnet55_low  cafe_line2_bystanders        s14  re-solves 128, same last 128
+sonnet55_low  cafe_line2_bystanders        s15  re-solves 78, same last 78
+sonnet55_low  room_coffee_cart_bystanders  s12  re-solves 141, same last 141
+sonnet55_low  room_coffee_cart_bystanders  s14  re-solves 136, same last 136
+sonnet55_low  room_coffee_cart_bystanders  s15  re-solves 142, same last 142
+sonnet55_low  sweet_spot_line2_bystanders  s12  re-solves 130, same last 130
+sonnet55_low  sweet_spot_line2_bystanders  s15  re-solves 131, same last 131
+
+CT3F fed the run's own solver output: same last 1634/1648 = 0.992

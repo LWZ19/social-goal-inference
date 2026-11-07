@@ -1,0 +1,151 @@
+s19 real qwen38_low con: 1 wrong-target records (20261011-160334_s19_real_qwen38_low_con)
+s19 staffed qwen38_low con: 4 wrong-target records (20261011-160344_s19_staffed_qwen38_low_con)
+s19 plain qwen38_low con: 2 wrong-target records (20261011-160527_s19_plain_qwen38_low_con)
+s19 ph qwen38_low con: 0 wrong-target records (20261011-160610_s19_ph_qwen38_low_con)
+s19 real glm53 con: 12 wrong-target records (20261011-160500_s19_real_glm53_con)
+s19 staffed glm53 con: 6 wrong-target records (20261011-160352_s19_staffed_glm53_con)
+s19 plain glm53 con: 10 wrong-target records (20261011-160452_s19_plain_glm53_con)
+s19 ph glm53 con: 8 wrong-target records (20261011-160439_s19_ph_glm53_con)
+s20 real dsv41 con: 6 wrong-target records (20261013-191337_s20_real_dsv41_con)
+s20 staffed dsv41 con: 6 wrong-target records (20261013-191345_s20_staffed_dsv41_con)
+s20 plain dsv41 con: 10 wrong-target records (20261013-191402_s20_plain_dsv41_con)
+s20 ph dsv41 con: 7 wrong-target records (20261013-190939_s20_ph_dsv41_con)
+
+counts per model, realistic sets (with point / all):
+  qwen38_low  with point  7  all  7  {'person': 5, 'place': 2}
+  glm53       with point 24  all 28  {'place': 14, 'parcel': 8, 'person': 2}
+  dsv41       with point 22  all 22  {'place': 7, 'parcel': 7, 'person': 8}
+  sanity: lift reproduction max error 0.00e+00 m; recorded points matching a target now: 0; vectorised mask vs match_target mismatches 0 of 40800 sampled pixels; targets per episode {1}
+
+====================================================================================================
+W1 main: C wrong targets, s19 Qwen/GLM + s20 DeepSeek, realistic sets (real, staffed, plain)
+class      n n_pt body<=15 match<=15 fix_oracle fix_pipe fix_med fix->success
+person    15   15       15        15         15       15      15    12 of  15
+parcel    15   15        6         6          6        6       6     6 of   6
+place     27   23        5         6          5        5       5     4 of   5
+ALL       57   53       26        27         26       26      26    22 of  26
+  radius sweep (body mask within r px | oracle fix within r px):
+   person  n=15 r3:8|8 r5:9|9 r10:12|12 r15:15|15 r20:15|15 r30:15|15
+   parcel  n=15 r3:0|0 r5:2|2 r10:5|5 r15:6|6 r20:8|8 r30:11|11
+   place   n=23 r3:2|2 r5:3|3 r10:5|5 r15:5|5 r20:6|6 r30:7|7
+  lift class:
+   person  {'occluder capture': 9, 'background leak': 6}
+   parcel  {'occluder capture': 5, 'choice error': 9, 'background leak': 1}
+   place   {'choice error': 18, 'background leak': 5}
+  no point (no_target): 4 -> {('glm53', 'place', 'help desk'): 3, ('glm53', 'place', 'coffee stall'): 1}
+
+====================================================================================================
+Extra: same models, placeholder set (ph)
+class      n n_pt body<=15 match<=15 fix_oracle fix_pipe fix_med fix->success
+person     2    2        1         1          1        1       1     1 of   1
+parcel     5    5        2         3          2        2       2     2 of   2
+place      8    8        2         2          2        2       2     2 of   2
+ALL       15   15        5         6          5        5       5     5 of   5
+  radius sweep (body mask within r px | oracle fix within r px):
+   person  n= 2 r3:1|1 r5:1|1 r10:1|1 r15:1|1 r20:1|1 r30:1|1
+   parcel  n= 5 r3:0|0 r5:0|0 r10:1|1 r15:2|2 r20:3|3 r30:3|3
+   place   n= 8 r3:0|0 r5:0|0 r10:1|1 r15:2|2 r20:2|2 r30:2|2
+  lift class:
+   person  {'choice error': 1, 'background leak': 1}
+   parcel  {'choice error': 3, 'near-depth miss': 1, 'occluder capture': 1}
+   place   {'background leak': 2, 'choice error': 6}
+
+====================================================================================================
+Extra: realistic + placeholder
+class      n n_pt body<=15 match<=15 fix_oracle fix_pipe fix_med fix->success
+person    17   17       16        16         16       16      16    13 of  16
+parcel    20   20        8         9          8        8       8     8 of   8
+place     35   31        7         8          7        7       7     6 of   7
+ALL       72   68       31        33         31       31      31    27 of  31
+  radius sweep (body mask within r px | oracle fix within r px):
+   person  n=17 r3:9|9 r5:10|10 r10:13|13 r15:16|16 r20:16|16 r30:16|16
+   parcel  n=20 r3:0|0 r5:2|2 r10:6|6 r15:8|8 r20:11|11 r30:14|14
+   place   n=31 r3:2|2 r5:3|3 r10:6|6 r15:7|7 r20:8|8 r30:9|9
+  lift class:
+   person  {'occluder capture': 9, 'background leak': 7, 'choice error': 1}
+   parcel  {'occluder capture': 6, 'choice error': 12, 'background leak': 1, 'near-depth miss': 1}
+   place   {'choice error': 24, 'background leak': 7}
+  no point (no_target): 4 -> {('glm53', 'place', 'help desk'): 3, ('glm53', 'place', 'coffee stall'): 1}
+
+place mask variants (realistic, places with a point): within 15 px of the model point
+  body (footprint+0.05 m, z>0.05): 5 of 23; strict footprint (z>0.05): 5; match mask (package test): 6; floor-only inside footprint: 0
+   qwen38_low staffed staffed_eval_09_waiting_line_6     e1 t1 help desk    dBody 2.5 dMatch 2.5 dFloorOnly 73.4 landed 4.30 m on wall (background leak); oracle fix True -> success True
+   glm53      real    real_eval_06_waiting_line_1        e0 t1 print kiosk  dBody 7.7 dMatch 7.7 dFloorOnly 155.8 landed 4.47 m on wall (background leak); oracle fix True -> success True
+   glm53      real    real_eval_06_waiting_line_1        e1 t1 print kiosk  dBody 4.4 dMatch 4.4 dFloorOnly 187.8 landed 4.44 m on wall (background leak); oracle fix True -> success True
+   glm53      plain   plain_eval_06_waiting_line_1       e1 t0 print kiosk  dBody 8.6 dMatch 8.6 dFloorOnly 141.4 landed 4.47 m on wall (background leak); oracle fix True -> success False
+   dsv41      staffed staffed_eval_13_waiting_line_3     e0 t1 help desk    dBody 27.6 dMatch 6.0 dFloorOnly 21.7 landed 1.19 m on floor (choice error); oracle fix False -> success None
+   dsv41      plain   plain_eval_13_waiting_line_3       e0 t1 help desk    dBody 1.5 dMatch 1.5 dFloorOnly 53.0 landed 3.37 m on floor (background leak); oracle fix True -> success True
+  fix paths used for the success replay: {'solver': 22, 'standard goal again': 9}
+
+====================================================================================================
+W2: person wrong targets (realistic), one row each
+model      arm     scene                                ep  t         pixel  dBody  dB.25  dB.35 dMatch landed_m     z   Zpt  Ztgt  winR winB  ctr class            surface                fixO fixP succ
+qwen38_low real    real_eval_12_conversation_group_4    e1  1 (  410,  216)    2.7    2.7    2.7    2.7     1.05  1.04  3.51  4.40  0.92    2    F occluder capture person p3                 T    T    T
+qwen38_low staffed staffed_eval_12_conversation_group_4 e0  2 (  413,  192)    1.8    1.8    1.8    1.8     1.08  1.20  3.45  4.31  0.87    3    F occluder capture person p3                 T    T    T
+qwen38_low staffed staffed_eval_12_conversation_group_4 e1  0 (  411,  216)    2.2    2.2    2.2    2.2     1.05  1.04  3.51  4.40  0.92    4    F occluder capture person p3                 T    T    T
+qwen38_low plain   plain_eval_12_conversation_group_4   e1  0 (  410,  202)    6.9    6.9    6.9    6.9     1.09  1.14  3.46  4.39  0.02    0    F occluder capture person p3                 T    T    T
+qwen38_low plain   plain_eval_12_conversation_group_4   e1  1 (  416,  206)    1.5    1.5    1.5    1.5     1.03  1.10  3.51  4.40  0.92    9    F occluder capture person p3                 T    T    T
+glm53      real    real_eval_12_conversation_group_4    e1  2 (  432,  168)    1.6    1.6    1.6    1.6    12.34  0.75 16.47  4.27 12.23    6    F background leak  wall                      T    T    T
+glm53      plain   plain_eval_12_conversation_group_4   e0  2 (  432,  192)    4.5    4.5    4.5    4.5    12.32  0.04 16.56  4.30  0.44    0    F background leak  wall base (floor)         T    T    T
+dsv41      real    real_eval_12_conversation_group_4    e0  1 (  413,  190)    1.3    1.3    1.3    1.3     1.08  1.21  3.45  4.30  0.97    7    F occluder capture person p3                 T    T    F
+dsv41      real    real_eval_12_conversation_group_4    e1  2 (  429,  198)    1.0    1.0    1.0    1.0    10.43  0.03 14.75  4.40 11.13    8    F background leak  floor                     T    T    T
+dsv41      plain   plain_eval_10_conversation_group_2   e0  2 (  410,  230)    7.7    7.7    7.7    7.7     5.08  0.00  9.57  4.22  0.43    0    F background leak  floor                     T    T    F
+dsv41      plain   plain_eval_11_conversation_group_3   e0  1 (  411,  202)    1.4    1.4    1.4    1.4     4.51  0.55  9.01  4.46  4.55   10    F background leak  wall                      T    T    T
+dsv41      plain   plain_eval_12_conversation_group_4   e0  1 (  404,  192)    9.7    9.7    9.7    9.7     1.11  1.20  3.43  4.32  0.03    0    F occluder capture person p3                 T    T    T
+dsv41      plain   plain_eval_12_conversation_group_4   e0  2 (  442,  202)   11.2   11.2   11.2   11.2     9.97 -0.00 14.25  4.44  0.96    0    F background leak  floor                     T    T    T
+dsv41      plain   plain_eval_12_conversation_group_4   e1  1 (  400,  192)   13.9   13.9   13.9   13.9     1.10  1.20  3.45  4.39  0.07    0    F occluder capture person p3                 T    T    T
+dsv41      plain   plain_eval_12_conversation_group_4   e1  2 (  403,  202)   13.3   13.3   13.3   13.3     1.09  1.13  3.47  4.36  0.03    0    F occluder capture person p3                 T    T    F
+  n=15; body mask within 15 px: 15; max d_body 13.9 px; max d_match 13.9 px; landed range 1.03-12.34 m; |dZ| range 0.86-12.26 m
+  surfaces: {'person p3': 9, 'wall': 2, 'wall base (floor)': 1, 'floor': 3}
+  classes:  {'occluder capture': 9, 'background leak': 6}
+  scenes:   {'eval_12_conversation_group_4': 13, 'eval_10_conversation_group_2': 1, 'eval_11_conversation_group_3': 1}
+  in front of the target (occluder): 9; behind it (background): 6 -> surfaces behind {'wall': 2, 'wall base (floor)': 1, 'floor': 3}; wall distance of the background ones (m): [0.01, 0.03, 1.65, 3.07, 0.02, 2.09]
+  landed (horizontal distance of the recorded lift from the true person): occluder ones 1.03-1.11 m, background ones 4.51-12.34 m
+
+====================================================================================================
+W3: eval_12 (conversation_group_4) wrong targets, realistic + placeholder, edge diagnostics
+  qwen38_low real    e1 t1 dBody=2.7px window(5x5): depth range 0.92 m, target px 2/25, centre px on target False; Zpt 3.51 vs Ztgt 4.40; class occluder capture; on person p3; landed 1.05 m; oracle fix True pipe fix True
+  qwen38_low staffed e0 t2 dBody=1.8px window(5x5): depth range 0.87 m, target px 3/25, centre px on target False; Zpt 3.45 vs Ztgt 4.31; class occluder capture; on person p3; landed 1.08 m; oracle fix True pipe fix True
+  qwen38_low staffed e1 t0 dBody=2.2px window(5x5): depth range 0.92 m, target px 4/25, centre px on target False; Zpt 3.51 vs Ztgt 4.40; class occluder capture; on person p3; landed 1.05 m; oracle fix True pipe fix True
+  qwen38_low plain   e1 t0 dBody=6.9px window(5x5): depth range 0.02 m, target px 0/25, centre px on target False; Zpt 3.46 vs Ztgt 4.39; class occluder capture; on person p3; landed 1.09 m; oracle fix True pipe fix True
+  qwen38_low plain   e1 t1 dBody=1.5px window(5x5): depth range 0.92 m, target px 9/25, centre px on target False; Zpt 3.51 vs Ztgt 4.40; class occluder capture; on person p3; landed 1.03 m; oracle fix True pipe fix True
+  glm53      real    e1 t2 dBody=1.6px window(5x5): depth range 12.23 m, target px 6/25, centre px on target False; Zpt 16.47 vs Ztgt 4.27; class background leak; on wall; landed 12.34 m; oracle fix True pipe fix True
+  glm53      plain   e0 t2 dBody=4.5px window(5x5): depth range 0.44 m, target px 0/25, centre px on target False; Zpt 16.56 vs Ztgt 4.30; class background leak; on wall base (floor); landed 12.32 m; oracle fix True pipe fix True
+  dsv41      real    e0 t1 dBody=1.3px window(5x5): depth range 0.97 m, target px 7/25, centre px on target False; Zpt 3.45 vs Ztgt 4.30; class occluder capture; on person p3; landed 1.08 m; oracle fix True pipe fix True
+  dsv41      real    e1 t2 dBody=1.0px window(5x5): depth range 11.13 m, target px 8/25, centre px on target False; Zpt 14.75 vs Ztgt 4.40; class background leak; on floor; landed 10.43 m; oracle fix True pipe fix True
+  dsv41      plain   e0 t1 dBody=9.7px window(5x5): depth range 0.03 m, target px 0/25, centre px on target False; Zpt 3.43 vs Ztgt 4.32; class occluder capture; on person p3; landed 1.11 m; oracle fix True pipe fix True
+  dsv41      plain   e0 t2 dBody=11.2px window(5x5): depth range 0.96 m, target px 0/25, centre px on target False; Zpt 14.25 vs Ztgt 4.44; class background leak; on floor; landed 9.97 m; oracle fix True pipe fix True
+  dsv41      plain   e1 t1 dBody=13.9px window(5x5): depth range 0.07 m, target px 0/25, centre px on target False; Zpt 3.45 vs Ztgt 4.39; class occluder capture; on person p3; landed 1.10 m; oracle fix True pipe fix True
+  dsv41      plain   e1 t2 dBody=13.3px window(5x5): depth range 0.03 m, target px 0/25, centre px on target False; Zpt 3.47 vs Ztgt 4.36; class occluder capture; on person p3; landed 1.09 m; oracle fix True pipe fix True
+  n=13: within 3 px of target 7, within 5 px 8, within 10 px 10; window straddles a >0.5 m depth jump 8; window holds target pixels 7; classes {'occluder capture': 9, 'background leak': 4}
+  amodal check (eval_12): model point nearer the projected 3D centre of the target (at anchor height) than the centroid of its visible mask in 10 of 13; projected centre u=414, visible centroid u=415; point u values [400, 403, 404, 410, 410, 411, 413, 413, 416, 429, 432, 432, 442]
+  occluder side (point on p3) 9, background side 4
+s16b real qwen38_low fsc: 1 wrong-target records (20261010-202647_s16b_real_qwen38_low_fsc)
+s16b staffed qwen38_low fsc: 4 wrong-target records (20261010-202635_s16b_staffed_qwen38_low_fsc)
+s16b plain qwen38_low fsc: 2 wrong-target records (20261010-202550_s16b_plain_qwen38_low_fsc)
+s16b real glm53 fsc: 12 wrong-target records (20261010-204211_s16b_real_glm53_fsc)
+s16b staffed glm53 fsc: 6 wrong-target records (20261010-204058_s16b_staffed_glm53_fsc)
+s16b plain glm53 fsc: 10 wrong-target records (20261010-204052_s16b_plain_glm53_fsc)
+s20 real dsv41 fsc: 6 wrong-target records (20261013-192254_s20_real_dsv41_fsc)
+s20 staffed dsv41 fsc: 6 wrong-target records (20261013-192322_s20_staffed_dsv41_fsc)
+s20 plain dsv41 fsc: 10 wrong-target records (20261013-192208_s20_plain_dsv41_fsc)
+
+====================================================================================================
+Extra: E (fsc) wrong targets, s16b Qwen/GLM + s20 DeepSeek, realistic sets
+class      n n_pt body<=15 match<=15 fix_oracle fix_pipe fix_med fix->success
+person    15   15       15        15         15       15      15     3 of  15
+parcel    15   15        6         6          6        6       6     6 of   6
+place     27   23        5         6          5        5       5     0 of   5
+ALL       57   53       26        27         26       26      26     9 of  26
+  radius sweep (body mask within r px | oracle fix within r px):
+   person  n=15 r3:8|8 r5:9|9 r10:12|12 r15:15|15 r20:15|15 r30:15|15
+   parcel  n=15 r3:0|0 r5:2|2 r10:5|5 r15:6|6 r20:8|8 r30:11|11
+   place   n=23 r3:2|2 r5:3|3 r10:5|5 r15:5|5 r20:6|6 r30:7|7
+  lift class:
+   person  {'occluder capture': 9, 'background leak': 6}
+   parcel  {'occluder capture': 5, 'choice error': 9, 'background leak': 1}
+   place   {'choice error': 18, 'background leak': 5}
+  no point (no_target): 4 -> {('glm53', 'place', 'help desk'): 3, ('glm53', 'place', 'coffee stall'): 1}
+  qwen38_low  E wrong targets 7 (with point 7): {'person': 5, 'place': 2}; person recoverable 5
+  glm53       E wrong targets 28 (with point 24): {'place': 14, 'parcel': 8, 'person': 2}; person recoverable 2
+  dsv41       E wrong targets 22 (with point 22): {'place': 7, 'parcel': 7, 'person': 8}; person recoverable 8

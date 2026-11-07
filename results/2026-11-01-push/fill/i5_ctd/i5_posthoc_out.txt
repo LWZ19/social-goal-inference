@@ -1,0 +1,7 @@
+share_strict: 125 cells; median -0.011, quartiles -0.060 / +0.011; losses > 0.05: 39, gains > 0.05: 24; losses <= 0.05: 30, gains <= 0.05: 9, zero 23
+share_frozen: 125 cells; median -0.011, quartiles -0.104 / +0.022; losses > 0.05: 48, gains > 0.05: 20; losses <= 0.05: 17, gains <= 0.05: 21, zero 19
+  cafe_line2_moving: 25 cells, strict mean +0.002, losses 16, gains 5
+  cafe_line6_moving: 25 cells, strict mean -0.025, losses 17, gains 3
+  cafe_slots: 25 cells, strict mean -0.114, losses 19, gains 4
+  room_coffee_cart_slots: 25 cells, strict mean -0.032, losses 15, gains 5
+  sweet_spot_line2_moving: 25 cells, strict mean +0.189, losses 2, gains 16

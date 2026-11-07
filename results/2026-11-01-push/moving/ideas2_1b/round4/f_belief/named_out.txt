@@ -1,0 +1,17 @@
+## CT4
+- people the answer named as waiting, by truth at the first re-solve: {'waiter': 54, 'walker': 10, 'bystander': 31}
+- bystander ticks at P >= 0.5: 1523; named by the answer 1453 (0.95), not named 70
+  - named: 31 people, seconds at P >= 0.5 per person: median 18.0, max 64.5
+  - not named: 3 people, seconds at P >= 0.5 per person: median 9.5, max 25.0
+- walker ticks at P >= 0.5: 1892; named by the answer 1176 (0.62), not named 716
+  - named: 63 people, seconds at P >= 0.5 per person: median 8.0, max 27.5
+  - not named: 36 people, seconds at P >= 0.5 per person: median 8.0, max 37.0
+
+## W0
+- people the answer named as waiting, by truth at the first re-solve: {'waiter': 54, 'walker': 10, 'bystander': 31}
+- bystander ticks at P >= 0.5: 1443; named by the answer 1368 (0.95), not named 75
+  - named: 28 people, seconds at P >= 0.5 per person: median 18.5, max 63.0
+  - not named: 2 people, seconds at P >= 0.5 per person: median 18.8, max 21.0
+- walker ticks at P >= 0.5: 1969; named by the answer 1288 (0.65), not named 681
+  - named: 61 people, seconds at P >= 0.5 per person: median 10.0, max 24.0
+  - not named: 33 people, seconds at P >= 0.5 per person: median 9.0, max 35.0

@@ -1,0 +1,77 @@
+old_qwen38_low: n 143; recorded 134; R0 (b) 136; R0 (c) 136; Table 5.1 (143, 134, 136, 136) OK; R0 mismatches {}
+  (a) R0 134 abs 0(0) | RF90 134 f0 b0 net+0 | RF60 134 f0 b0 net+0 | RN 134 f0 b0 net+0 | f.u of absorbed []
+  (b) R0 136 abs 0(0) | RF90 136 f0 b0 net+0 | RF60 136 f0 b0 net+0 | RN 136 f0 b0 net+0 | f.u of absorbed []
+  (c) R0 136 abs 0(0) | RF90 136 f0 b0 net+0 | RF60 136 f0 b0 net+0 | RN 136 f0 b0 net+0 | f.u of absorbed []
+old_glm53: n 141; recorded 96; R0 (b) 112; R0 (c) 112; Table 5.1 (141, 96, 112, 112) OK; R0 mismatches {}
+  (a) R0 96 abs 0(0) | RF90 96 f0 b0 net+0 | RF60 96 f0 b0 net+0 | RN 96 f0 b0 net+0 | f.u of absorbed []
+  (b) R0 112 abs 3(3) | RF90 112 f0 b0 net+0 | RF60 112 f0 b0 net+0 | RN 112 f0 b0 net+0 | f.u of absorbed [0.997, 0.997, 0.997]
+  (c) R0 112 abs 3(3) | RF90 112 f0 b0 net+0 | RF60 112 f0 b0 net+0 | RN 112 f0 b0 net+0 | f.u of absorbed [0.731, 0.731, 0.729]
+old_dsv41: n 157; recorded 109; R0 (b) 120; R0 (c) 126; Table 5.1 (157, 109, 120, 126) OK; R0 mismatches {}
+  (a) R0 109 abs 3(1) | RF90 110 f1 b0 net+1 | RF60 109 f1 b1 net+0 | RN 109 f1 b1 net+0 | f.u of absorbed [-0.338, -0.389, 0.218]
+  (b) R0 120 abs 8(6) | RF90 120 f0 b0 net+0 | RF60 120 f0 b0 net+0 | RN 115 f0 b5 net-5 | f.u of absorbed [0.996, 0.722, 1.0, 0.999, 0.993, 0.993, 0.993, 1.0]
+  (c) R0 126 abs 8(7) | RF90 126 f0 b0 net+0 | RF60 126 f0 b0 net+0 | RN 121 f0 b5 net-5 | f.u of absorbed [0.932, 0.795, 0.964, 0.974, 0.993, 0.993, 0.993, 0.965]
+watch_qwen38_low: n 36; recorded 32; R0 (b) 33; R0 (c) None; Table 5.1 (36, 32, 33, None) OK; R0 mismatches {}
+  (a) R0 32 abs 0(0) | RF90 32 f0 b0 net+0 | RF60 32 f0 b0 net+0 | RN 32 f0 b0 net+0 | f.u of absorbed []
+  (b) R0 33 abs 0(0) | RF90 33 f0 b0 net+0 | RF60 33 f0 b0 net+0 | RN 33 f0 b0 net+0 | f.u of absorbed []
+watch_glm53: n 36; recorded 23; R0 (b) 29; R0 (c) None; Table 5.1 (36, 23, 29, None) OK; R0 mismatches {}
+  (a) R0 23 abs 0(0) | RF90 23 f0 b0 net+0 | RF60 23 f0 b0 net+0 | RN 23 f0 b0 net+0 | f.u of absorbed []
+  (b) R0 29 abs 0(0) | RF90 29 f0 b0 net+0 | RF60 29 f0 b0 net+0 | RN 29 f0 b0 net+0 | f.u of absorbed []
+watch_dsv41: n 36; recorded 23; R0 (b) 31; R0 (c) None; Table 5.1 (36, 23, 31, None) OK; R0 mismatches {}
+  (a) R0 23 abs 1(1) | RF90 23 f0 b0 net+0 | RF60 23 f0 b0 net+0 | RN 23 f0 b0 net+0 | f.u of absorbed [0.986]
+  (b) R0 31 abs 1(1) | RF90 31 f0 b0 net+0 | RF60 31 f0 b0 net+0 | RN 31 f0 b0 net+0 | f.u of absorbed [0.976]
+new_glm53: n 141; recorded 86; R0 (b) 107; R0 (c) 106; Table 5.1 (141, 86, 107, 106) OK; R0 mismatches {}
+  (a) R0 86 abs 0(0) | RF90 86 f0 b0 net+0 | RF60 86 f0 b0 net+0 | RN 86 f0 b0 net+0 | f.u of absorbed []
+  (b) R0 107 abs 4(4) | RF90 107 f0 b0 net+0 | RF60 107 f0 b0 net+0 | RN 107 f0 b0 net+0 | f.u of absorbed [0.997, 0.997, 0.997, 0.997]
+  (c) R0 106 abs 3(3) | RF90 106 f0 b0 net+0 | RF60 106 f0 b0 net+0 | RN 106 f0 b0 net+0 | f.u of absorbed [0.731, 0.729, 0.729]
+new_dsv41: n 151; recorded 106; R0 (b) 116; R0 (c) 119; Table 5.1 (151, 106, 116, 119) OK; R0 mismatches {}
+  (a) R0 106 abs 2(1) | RF90 106 f0 b0 net+0 | RF60 106 f0 b0 net+0 | RN 106 f0 b0 net+0 | f.u of absorbed [0.454, 0.985]
+  (b) R0 116 abs 9(5) | RF90 116 f0 b0 net+0 | RF60 116 f0 b0 net+0 | RN 115 f0 b1 net-1 | f.u of absorbed [1.0, 0.629, 0.722, 1.0, 1.0, 0.993, 0.997, 0.996, 1.0, 0.995]
+  (c) R0 119 abs 9(6) | RF90 119 f0 b0 net+0 | RF60 119 f0 b0 net+0 | RN 117 f0 b2 net-2 | f.u of absorbed [0.994, 0.855, 0.795, 0.964, 0.964, 0.993, 0.993, 1.0, 0.965, 1.0]
+new_haiku55: n 146; recorded 134; R0 (b) 135; R0 (c) 134; Table 5.1 (146, 134, 135, 134) OK; R0 mismatches {}
+  (a) R0 134 abs 3(3) | RF90 134 f0 b0 net+0 | RF60 134 f0 b0 net+0 | RN 134 f0 b0 net+0 | f.u of absorbed [0.999, 0.669, 0.466]
+  (b) R0 135 abs 3(3) | RF90 135 f0 b0 net+0 | RF60 135 f0 b0 net+0 | RN 135 f0 b0 net+0 | f.u of absorbed [1.0, 1.0, 1.0]
+  (c) R0 134 abs 3(3) | RF90 134 f0 b0 net+0 | RF60 134 f0 b0 net+0 | RN 134 f0 b0 net+0 | f.u of absorbed [0.964, 0.964, 0.965]
+new_sonnet55_low: n 143; recorded 134; R0 (b) 134; R0 (c) 134; Table 5.1 (143, 134, 134, 134) OK; R0 mismatches {}
+  (a) R0 134 abs 0(0) | RF90 134 f0 b0 net+0 | RF60 134 f0 b0 net+0 | RN 134 f0 b0 net+0 | f.u of absorbed []
+  (b) R0 134 abs 0(0) | RF90 134 f0 b0 net+0 | RF60 134 f0 b0 net+0 | RN 134 f0 b0 net+0 | f.u of absorbed []
+  (c) R0 134 abs 0(0) | RF90 134 f0 b0 net+0 | RF60 134 f0 b0 net+0 | RN 134 f0 b0 net+0 | f.u of absorbed []
+new_gemini38_low: n 135; recorded 109; R0 (b) 109; R0 (c) 109; Table 5.1 (135, 109, 109, 109) OK; R0 mismatches {}
+  (a) R0 109 abs 15(0) | RF90 109 f0 b0 net+0 | RF60 109 f0 b0 net+0 | RN 109 f0 b0 net+0 | f.u of absorbed [0.986, 0.994, 0.992, 0.969, 0.968, 0.985, 0.978, 0.994, 0.968, 0.985, 0.982, 0.977, 0.969, 0.985, 0.985]
+  (b) R0 109 abs 15(0) | RF90 109 f0 b0 net+0 | RF60 109 f0 b0 net+0 | RN 109 f0 b0 net+0 | f.u of absorbed [1.0, 1.0, 1.0, 0.979, 0.979, 0.979, 0.975, 0.975, 0.975, 1.0, 1.0, 0.98, 0.979, 0.979, 0.979]
+  (c) R0 109 abs 16(0) | RF90 109 f0 b0 net+0 | RF60 109 f0 b0 net+0 | RN 109 f0 b0 net+0 | f.u of absorbed [0.994, 0.994, 0.994, 0.793, 0.793, 0.793, 0.655, 0.655, 0.655, 0.989, 0.989, 0.989, 0.834, 0.84, 0.84, 0.84]
+R0 mismatches total {}
+flips and breaks:
+  old_dsv41 a RF90 flip 20261013-191337_s20_real_dsv41_con real_eval_13_waiting_line_3 eval_13_waiting_line_3 e1 2 waiting_line [1] [] [-0.389]
+  old_dsv41 a RF60 flip 20261013-191337_s20_real_dsv41_con real_eval_13_waiting_line_3 eval_13_waiting_line_3 e1 2 waiting_line [1] [] [-0.389]
+  old_dsv41 a RF60 break 20261013-191337_s20_real_dsv41_con real_eval_09_waiting_line_6 eval_09_waiting_line_6 e0 1 waiting_line [1] [] [-0.338]
+  old_dsv41 a RN flip 20261013-191337_s20_real_dsv41_con real_eval_13_waiting_line_3 eval_13_waiting_line_3 e1 2 waiting_line [1] [] [-0.389]
+  old_dsv41 a RN break 20261013-191337_s20_real_dsv41_con real_eval_09_waiting_line_6 eval_09_waiting_line_6 e0 1 waiting_line [1] [] [-0.338]
+  old_dsv41 b RN break 20261013-191337_s20_real_dsv41_con real_eval_09_waiting_line_6 eval_09_waiting_line_6 e0 1 waiting_line [1] [] [0.996]
+  old_dsv41 b RN break 20261013-191337_s20_real_dsv41_con real_eval_13_waiting_line_3 eval_13_waiting_line_3 e1 2 waiting_line [4] [] [0.999]
+  old_dsv41 b RN break 20261013-191345_s20_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e0 1 waiting_line [8] [] [0.993]
+  old_dsv41 b RN break 20261013-191345_s20_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e1 0 waiting_line [5] [] [0.993]
+  old_dsv41 b RN break 20261013-191345_s20_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e1 1 waiting_line [8] [] [0.993]
+  old_dsv41 c RN break 20261013-191337_s20_real_dsv41_con real_eval_09_waiting_line_6 eval_09_waiting_line_6 e0 1 waiting_line [1] [] [0.932]
+  old_dsv41 c RN break 20261013-191337_s20_real_dsv41_con real_eval_13_waiting_line_3 eval_13_waiting_line_3 e1 2 waiting_line [4] [] [0.974]
+  old_dsv41 c RN break 20261013-191345_s20_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e0 1 waiting_line [6] [] [0.993]
+  old_dsv41 c RN break 20261013-191345_s20_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e1 0 waiting_line [5] [] [0.993]
+  old_dsv41 c RN break 20261013-191345_s20_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e1 1 waiting_line [6] [] [0.993]
+  new_dsv41 b RN break 20261017-124931_s23_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e1 1 waiting_line [7, 8] [] [0.997, 0.996]
+  new_dsv41 c RN break 20261017-124931_s23_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e0 1 waiting_line [6] [] [0.993]
+  new_dsv41 c RN break 20261017-124931_s23_staffed_dsv41_con staffed_eval_08_waiting_line_4 eval_08_waiting_line_4 e1 1 waiting_line [7, 6] [] [0.993, 1.0]
+S2 True per cell (breaks, net) [('old_qwen38_low', 0, 0), ('old_glm53', 0, 0), ('old_dsv41', 0, 1), ('watch_qwen38_low', 0, 0), ('watch_glm53', 0, 0), ('watch_dsv41', 0, 0)]
+K1 any >=3 breaks False pooled net 1 K1 fires False
+primary goal steps with an R0 absorption in (a): {'old_qwen38_low': 0, 'old_glm53': 0, 'old_dsv41': 3, 'watch_qwen38_low': 0, 'watch_glm53': 0, 'watch_dsv41': 1} total 4
+RN cost (breaks, flips) per cell and setting:
+  old_qwen38_low {'a': (0, 0), 'b': (0, 0), 'c': (0, 0)}
+  old_glm53 {'a': (0, 0), 'b': (0, 0), 'c': (0, 0)}
+  old_dsv41 {'a': (1, 1), 'b': (5, 0), 'c': (5, 0)}
+  watch_qwen38_low {'a': (0, 0), 'b': (0, 0)}
+  watch_glm53 {'a': (0, 0), 'b': (0, 0)}
+  watch_dsv41 {'a': (0, 0), 'b': (0, 0)}
+  new_glm53 {'a': (0, 0), 'b': (0, 0), 'c': (0, 0)}
+  new_dsv41 {'a': (0, 0), 'b': (1, 0), 'c': (2, 0)}
+  new_haiku55 {'a': (0, 0), 'b': (0, 0), 'c': (0, 0)}
+  new_sonnet55_low {'a': (0, 0), 'b': (0, 0), 'c': (0, 0)}
+  new_gemini38_low {'a': (0, 0), 'b': (0, 0), 'c': (0, 0)}
+differences vs agent rows_records: 0 []

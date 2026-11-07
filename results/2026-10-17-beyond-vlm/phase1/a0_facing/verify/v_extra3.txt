@@ -1,0 +1,14 @@
+qwen_s19 profile line n 124 | true right, label right, yaw bin tr: 29 | label side, yaw bin toward-side: 58 | true side, yaw bin toward-side: 60
+glm_s19 profile line n 97 | true right, label right, yaw bin tr: 8 | label side, yaw bin toward-side: 13 | true side, yaw bin toward-side: 18
+dsv_s20 profile line n 117 | true right, label right, yaw bin tr: 11 | label side, yaw bin toward-side: 29 | true side, yaw bin toward-side: 34
+haiku profile line n 126 | true right, label right, yaw bin tr: 14 | label side, yaw bin toward-side: 23 | true side, yaw bin toward-side: 31
+sonnet profile line n 126 | true right, label right, yaw bin tr: 24 | label side, yaw bin toward-side: 61 | true side, yaw bin toward-side: 78
+gemini profile line n 126 | true right, label right, yaw bin tr: 47 | label side, yaw bin toward-side: 69 | true side, yaw bin toward-side: 72
+sonnet dup texts: [('staffed', 'staffed_eval_06_waiting_line_1', [1, 2]), ('plain', 'plain_eval_06_waiting_line_1', [1, 2])]
+staffed staffed_eval_06_waiting_line_1 e0 1 cached False lat 2.13 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}
+staffed staffed_eval_06_waiting_line_1 e0 2 cached False lat 1.96 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}
+staffed staffed_eval_06_waiting_line_1 e1 1 cached True lat 2.13 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}
+staffed staffed_eval_06_waiting_line_1 e1 2 cached True lat 1.96 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}
+plain plain_eval_06_waiting_line_1 e0 1 cached False lat 1.44 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}
+plain plain_eval_06_waiting_line_1 e0 2 cached False lat 1.56 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}
+plain plain_eval_06_waiting_line_1 e1 1 cached True lat 1.44 tokens {'input_tokens': 1950, 'output_tokens': 70, 'reasoning_tokens': 0}

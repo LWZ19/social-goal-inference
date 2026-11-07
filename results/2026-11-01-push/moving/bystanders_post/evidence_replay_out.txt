@@ -1,0 +1,14 @@
+dsv41         bystander scenes  CT3 capture  212.1 s; removed if dropped after k non-follows: k=1 134.4 s, k=2 97.4 s, k=3 34.4 s
+                                named people in the queue: 96; dropped while in the queue (false drops): k=1 20, k=2 17, k=3 6
+dsv41         original scenes   CT3 capture    0.0 s; removed if dropped after k non-follows: k=1 0.0 s, k=2 0.0 s, k=3 0.0 s
+                                named people in the queue: 28; dropped while in the queue (false drops): k=1 4, k=2 5, k=3 2
+sonnet55_low  bystander scenes  CT3 capture  322.3 s; removed if dropped after k non-follows: k=1 146.2 s, k=2 105.5 s, k=3 69.2 s
+                                named people in the queue: 59; dropped while in the queue (false drops): k=1 13, k=2 5, k=3 3
+sonnet55_low  original scenes   CT3 capture    0.0 s; removed if dropped after k non-follows: k=1 0.0 s, k=2 0.0 s, k=3 0.0 s
+                                named people in the queue: 61; dropped while in the queue (false drops): k=1 8, k=2 8, k=3 4
+dsv41         k=1: named bystanders dropped 16, seconds after delivery median 16.6, max 36.2
+dsv41         k=2: named bystanders dropped 16, seconds after delivery median 26.5, max 49.4
+dsv41         k=3: named bystanders dropped 15, seconds after delivery median 38.0, max 55.2
+sonnet55_low  k=1: named bystanders dropped 15, seconds after delivery median 18.4, max 41.0
+sonnet55_low  k=2: named bystanders dropped 15, seconds after delivery median 27.2, max 59.7
+sonnet55_low  k=3: named bystanders dropped 14, seconds after delivery median 40.5, max 56.6

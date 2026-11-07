@@ -1,0 +1,5 @@
+24 layouts -> sim/scenarios/pilot3; scenario files' sha256 ddfc5240
+  ours  16: bases {'cafe': 8, 'sweet': 8}, facing {'side': 5, 'counter': 6, 'away': 5}, members {4: 5, 3: 7, 2: 4}, flags {(False, False): 4, (True, True): 4, (False, True): 4, (True, False): 4}, past 1.25-1.59 m, walkers {1: 7, 2: 7, 0: 2}
+  chain  4: bases {'cafe': 2, 'sweet': 2}, facing {'counter': 2, 'away': 1, 'side': 1}, members {3: 2, 4: 1, 2: 1}, flags {(False, False): 1, (True, True): 1, (False, True): 1, (True, False): 1}, past 0.46-2.15 m, walkers {2: 2, 1: 2}
+  mixed  2: bases {'cafe': 1, 'sweet': 1}, facing {'side': 1, 'away': 1}, members {3: 1, 4: 1}, flags {(False, False): 1, (True, True): 1}, past 1.43-1.73 m, walkers {2: 1, 0: 1}
+  easy   2: bases {'cafe': 1, 'sweet': 1}, facing {'away': 1, 'side': 1}, members {3: 2}, flags {(False, False): 1, (True, True): 1}, past 1.98-2.08 m, walkers {2: 1, 1: 1}

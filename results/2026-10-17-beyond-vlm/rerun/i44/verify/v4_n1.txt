@@ -1,0 +1,25 @@
+== qwen36 off (s8 convlm+conorc): runs ['s8_convlm_qwen36_35', 's8_conorc_qwen36_35']
+  a all        n= 132 median lat   2.99 s  median out tok   410.0  median tok/s  123.3  median reasoning tok 0
+  b agent key  n= 132 median lat   2.99 s  median out tok   410.0  median tok/s  123.3  median reasoning tok 0
+  c distinct   n= 111 median lat   3.10 s  median out tok   424.0  median tok/s  123.3  median reasoning tok 0
+  d fresh      n= 111 median lat   3.10 s  median out tok   424.0  median tok/s  123.3  median reasoning tok 0
+== qwen38 off (s8 convlm+conorc): runs ['s8_convlm_qwen38', 's8_conorc_qwen38']
+  a all        n= 126 median lat   5.11 s  median out tok   345.0  median tok/s   67.5  median reasoning tok 0
+  b agent key  n= 126 median lat   5.11 s  median out tok   345.0  median tok/s   67.5  median reasoning tok 0
+  c distinct   n= 108 median lat   5.19 s  median out tok   352.0  median tok/s   68.6  median reasoning tok 0
+  d fresh      n= 108 median lat   5.19 s  median out tok   352.0  median tok/s   68.6  median reasoning tok 0
+== qwen38 low (s10 con + s19 ph con): runs ['s10_qwen38_low_con', 's19_ph_qwen38_low_con']
+  a all        n= 126 median lat  21.11 s  median out tok  1580.0  median tok/s   76.0  median reasoning tok 0
+  b agent key  n= 111 median lat  21.14 s  median out tok  1617.0  median tok/s   76.2  median reasoning tok 0
+  c distinct   n=  87 median lat  22.46 s  median out tok  1706.0  median tok/s   76.3  median reasoning tok 0
+  d fresh      n=  12 median lat  19.41 s  median out tok  1527.0  median tok/s   76.3  median reasoning tok 0
+== qwen38 low (s10 con only): runs ['s10_qwen38_low_con']
+  a all        n=  30 median lat  21.14 s  median out tok  1634.0  median tok/s   75.3  median reasoning tok 0
+  b agent key  n=  30 median lat  21.14 s  median out tok  1634.0  median tok/s   75.3  median reasoning tok 0
+  c distinct   n=  23 median lat  21.52 s  median out tok  1655.0  median tok/s   76.9  median reasoning tok 0
+  d fresh      n=  12 median lat  19.41 s  median out tok  1527.0  median tok/s   76.3  median reasoning tok 0
+
+a all        36off/38off lat x0.59; 38off/38low lat x0.24 (s10 only x0.24); 38off/38low out tok x0.22
+b agent key  36off/38off lat x0.59; 38off/38low lat x0.24 (s10 only x0.24); 38off/38low out tok x0.21
+c distinct   36off/38off lat x0.60; 38off/38low lat x0.23 (s10 only x0.24); 38off/38low out tok x0.21
+d fresh      36off/38off lat x0.60; 38off/38low lat x0.27 (s10 only x0.27); 38off/38low out tok x0.23

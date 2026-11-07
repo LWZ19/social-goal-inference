@@ -1,0 +1,53 @@
+INDICATIVE what-ifs (not a chosen, tuned or frozen fix). A1's candidates, one step changed, I03's scorer unchanged. Fit-validate (seeds 116-119) not read.
+
+== fit-train (seeds 110-115, 84)
+  base                     recall 226/238 = 0.950 (line 92/96, staff 26/34, group 54/54, other 54/54); false 17/84 = 0.202; exempt 5; merged 2/66; xy median 0.059; non-profile w45 125/128
+  relift                   recall 234/238 = 0.983 (line 92/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 5; merged 2/66; xy median 0.060; non-profile w45 132/136 [rule fired on 9 kept boxes, of which 0 were matched before]
+  imgdup                   recall 226/238 = 0.950 (line 92/96, staff 26/34, group 54/54, other 54/54); false 16/84 = 0.190; exempt 5; merged 2/66; xy median 0.059; non-profile w45 125/128
+  imgonly                  recall 230/238 = 0.966 (line 96/96, staff 26/34, group 54/54, other 54/54); false 16/84 = 0.190; exempt 5; merged 0/66; xy median 0.058; non-profile w45 125/128
+  dup030                   recall 230/238 = 0.966 (line 96/96, staff 26/34, group 54/54, other 54/54); false 17/84 = 0.202; exempt 6; merged 0/66; xy median 0.058; non-profile w45 125/128
+  tau035                   recall 226/238 = 0.950 (line 92/96, staff 26/34, group 54/54, other 54/54); false 13/84 = 0.155; exempt 5; merged 2/66; xy median 0.059; non-profile w45 125/128
+  flat                     recall 226/238 = 0.950 (line 92/96, staff 26/34, group 54/54, other 54/54); false 14/84 = 0.167; exempt 4; merged 2/66; xy median 0.059; non-profile w45 125/128
+  relift+imgdup            recall 234/238 = 0.983 (line 92/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 5; merged 2/66; xy median 0.060; non-profile w45 132/136
+  relift+imgonly           recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 8/84 = 0.095; exempt 5; merged 0/66; xy median 0.060; non-profile w45 132/136
+  relift+imgonly+tau035    recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 4/84 = 0.048; exempt 5; merged 0/66; xy median 0.060; non-profile w45 132/136
+  relift+imgonly+flat      recall 238/238 = 1.000 (line 96/96, staff 34/34, group 54/54, other 54/54); false 5/84 = 0.060; exempt 4; merged 0/66; xy median 0.060; non-profile w45 132/136
+
+== A1 F-real (seed 0 worked examples, 21)
+  base                     recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15
+  relift                   recall 39/39 = 1.000 (line 15/15, staff 6/6, group 15/15, other 3/3); false 1/21 = 0.048; exempt 1; merged 0/9; xy median 0.060; non-profile w45 18/18 [rule fired on 3 kept boxes, of which 0 were matched before]
+  imgdup                   recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15
+  imgonly                  recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 5/21 = 0.238; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15
+  dup030                   recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 5/21 = 0.238; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15
+  tau035                   recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15
+  flat                     recall 36/39 = 0.923 (line 15/15, staff 3/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 2; merged 0/9; xy median 0.059; non-profile w45 15/15
+  relift+imgdup            recall 39/39 = 1.000 (line 15/15, staff 6/6, group 15/15, other 3/3); false 1/21 = 0.048; exempt 1; merged 0/9; xy median 0.060; non-profile w45 18/18
+  relift+imgonly           recall 39/39 = 1.000 (line 15/15, staff 6/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 1; merged 0/9; xy median 0.060; non-profile w45 18/18
+  relift+imgonly+tau035    recall 39/39 = 1.000 (line 15/15, staff 6/6, group 15/15, other 3/3); false 3/21 = 0.143; exempt 1; merged 0/9; xy median 0.060; non-profile w45 18/18
+  relift+imgonly+flat      recall 39/39 = 1.000 (line 15/15, staff 6/6, group 15/15, other 3/3); false 1/21 = 0.048; exempt 1; merged 0/9; xy median 0.060; non-profile w45 18/18
+
+== A1 F-ph (placeholder, 268)
+  base                     recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  relift                   recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263 [rule fired on 0 kept boxes, of which 0 were matched before]
+  imgdup                   recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  imgonly                  recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  dup030                   recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  tau035                   recall 483/585 = 0.826 (line 200/215, staff 0/0, group 184/269, other 99/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 247/251
+  flat                     recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  relift+imgdup            recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  relift+imgonly           recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+  relift+imgonly+tau035    recall 483/585 = 0.826 (line 200/215, staff 0/0, group 184/269, other 99/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 247/251
+  relift+imgonly+flat      recall 513/585 = 0.877 (line 208/215, staff 0/0, group 204/269, other 101/101); false 0/268 = 0.000; exempt 0; merged 0/143; xy median 0.055; non-profile w45 259/263
+
+== A1 dev E-real (42)
+  base                     recall 116/118 = 0.983 (line 48/48, staff 14/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 59/59
+  relift                   recall 118/118 = 1.000 (line 48/48, staff 16/16, group 27/27, other 27/27); false 0/42 = 0.000; exempt 0; merged 0/33; xy median 0.053; non-profile w45 61/61 [rule fired on 3 kept boxes, of which 0 were matched before]
+  imgdup                   recall 115/118 = 0.975 (line 48/48, staff 13/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 58/58
+  imgonly                  recall 115/118 = 0.975 (line 48/48, staff 13/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 58/58
+  dup030                   recall 116/118 = 0.983 (line 48/48, staff 14/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 59/59
+  tau035                   recall 115/118 = 0.975 (line 48/48, staff 13/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 58/58
+  flat                     recall 116/118 = 0.983 (line 48/48, staff 14/16, group 27/27, other 27/27); false 3/42 = 0.071; exempt 0; merged 0/33; xy median 0.053; non-profile w45 59/59
+  relift+imgdup            recall 118/118 = 1.000 (line 48/48, staff 16/16, group 27/27, other 27/27); false 0/42 = 0.000; exempt 0; merged 0/33; xy median 0.053; non-profile w45 61/61
+  relift+imgonly           recall 118/118 = 1.000 (line 48/48, staff 16/16, group 27/27, other 27/27); false 0/42 = 0.000; exempt 0; merged 0/33; xy median 0.053; non-profile w45 61/61
+  relift+imgonly+tau035    recall 118/118 = 1.000 (line 48/48, staff 16/16, group 27/27, other 27/27); false 0/42 = 0.000; exempt 0; merged 0/33; xy median 0.053; non-profile w45 61/61
+  relift+imgonly+flat      recall 118/118 = 1.000 (line 48/48, staff 16/16, group 27/27, other 27/27); false 0/42 = 0.000; exempt 0; merged 0/33; xy median 0.053; non-profile w45 61/61

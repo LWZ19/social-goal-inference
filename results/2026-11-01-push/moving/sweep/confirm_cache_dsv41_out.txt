@@ -1,0 +1,3 @@
+groups 72 {'CT3F': 72, 'CT4P': 72, 'CT4PJ': 72, 'CT4': 72}
+direction source: {('CT4P', 'path'): 6808, ('CT4PJ', 'path'): 6569, ('CT4P', 'belief'): 2842, ('CT4PJ', 'belief'): 3085}
+faults: none
