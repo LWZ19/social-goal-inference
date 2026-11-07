@@ -75,8 +75,12 @@ tar xzf results/logs/still-runs.tar.gz              # still-scene runs -> runs/ 
   per try, with the chosen spot, the score and why it passed or failed).
 - **research-data:** the data files of the analyses (json and jsonl), unpacked beside their notes in each topic folder.
 - **bulk:** generated layout candidates, test sandboxes and run-console logs, unpacked back into their topic folders.
-- **Not included:** camera pictures, depth images and videos (about 20 GB), and the rendered scene sets. Re-scoring
-  still scenes from scratch (`python -m sgi.rescore`) needs the scene sets; the stored scores do not.
+- **Development scenes:** the 89 scenes the October still-scene analyses replay (three realistic versions, three
+  development seeds, early placeholder scenes) are a release download, not in git:
+  `gh release download dev-scenes-v1 --repo LWZ19/social-goal-inference && tar xzf dev-scenes-v1.tar.gz` (unpacks to
+  `data/dev_scenes/`). Held-out scenes are not included.
+- **Not included:** camera pictures, depth images and videos (about 20 GB), and the scenes of the later tests (fresh
+  scenes, new situations). The stored scores do not need them.
 
 Run scripts from the repository root with `PYTHONPATH=src python <script>`; they find every location through
 `results/_lib/paths.py`.
