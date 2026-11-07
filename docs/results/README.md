@@ -1,5 +1,7 @@
 # Results so far
 
+> The full results of the project, grouped by topic, are in [`results/`](../../results/README.md). This page is the short early answer from October.
+
 Last updated 13 October 2026. This page is the short answer to "does it work?".
 
 ## Headline: both methods on the final realistic scenes
