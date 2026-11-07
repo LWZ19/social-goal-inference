@@ -1,1 +1,0 @@
-"""Social goal inference pipeline."""

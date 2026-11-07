@@ -1,5 +1,0 @@
-a: before kill lock: '371097 2026-10-18T05:47:14+0800' pid 371097; sent 3
-a: sigint exit 130 ; lock left: none; ledger sent 3; answered 2; fake 3; KeyboardInterrupt in log: 1; run folder incomplete: incomplete: true
-b: before kill lock: '371248 2026-10-18T05:47:25+0800' pid 371248; sent 3
-b: sigint exit 130 ; lock left: none; ledger sent 3; answered 3; fake 3; KeyboardInterrupt in log: 1; run folder incomplete: incomplete: true
-done
