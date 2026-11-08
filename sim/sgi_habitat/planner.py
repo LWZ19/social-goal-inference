@@ -16,6 +16,7 @@ import numpy as np
 
 RES = 0.1                          # metres per cell
 WINDOW_M = 3.0                     # searched beyond the box round the start and the goal
+GOAL_FREE_M = 0.2                  # the navmesh's cells this near the goal are never blocked by people
 _STEPS = [(dr, dc, math.hypot(dr, dc)) for dr in (-1, 0, 1) for dc in (-1, 0, 1) if dr or dc]
 
 
@@ -34,19 +35,22 @@ class GridPlanner:
     def plan(self, start, goal, people: Sequence[np.ndarray], person_m: float) -> Optional[List[np.ndarray]]:
         """Waypoints in Habitat's frame from `start` to `goal` (the start left out), keeping `person_m` from each
         person; None when the goal is out of reach that way. Cells round the start are freed, so a robot already
-        closer to someone than `person_m` can still get away."""
+        closer to someone than `person_m` can still get away; so are the navmesh's cells round the goal, so a goal
+        chosen nearer someone than `person_m` (a place in a line) can still be reached."""
         (r0, c0), (r1, c1) = self.cell(start), self.cell(goal)
         pad = int(WINDOW_M / RES)
         top, left = max(0, min(r0, r1) - pad), max(0, min(c0, c1) - pad)
         bottom, right = min(self.free.shape[0], max(r0, r1) + pad + 1), min(self.free.shape[1], max(c0, c1) + pad + 1)
         if not (top <= r0 < bottom and left <= c0 < right and top <= r1 < bottom and left <= c1 < right):
             return None
-        free = self.free[top:bottom, left:right].copy()
+        navmesh = self.free[top:bottom, left:right]
+        free = navmesh.copy()
         rows, cols = np.mgrid[top:bottom, left:right]
         xs, zs = self.x0 + cols * RES, self.z0 + rows * RES
         for person in people:
             free &= (xs - person[0]) ** 2 + (zs - person[2]) ** 2 > person_m ** 2
         free |= (xs - start[0]) ** 2 + (zs - start[2]) ** 2 <= 0.3 ** 2            # the robot may always leave
+        free |= navmesh & ((xs - goal[0]) ** 2 + (zs - goal[2]) ** 2 <= GOAL_FREE_M ** 2)   # and always arrive
         s, g = (r0 - top, c0 - left), (r1 - top, c1 - left)
         if not free[g]:
             return None
