@@ -169,6 +169,71 @@ The goal is decided once, from one view. Spot plans its own way there and plans 
 
 ![Spot planning round the end of a moving line](images/local_planner.jpg)
 
+How Spot walks among people:
+
+- **No long detours.** It takes a way round people only if it is not much longer than the straight way. Otherwise it waits for them, as a person in a queue would, instead of circling a table.
+- **It gets past people who stand still.** If no comfortable way is open, it squeezes through a narrower gap. If it is still stuck after a few seconds, it backs off a little and tries again.
+- **Small moves are steps, not turns.** A goal less than a metre away is reached by stepping sideways or backwards, facing the same way.
+
+How the people behave:
+
+- **They join a line only when they reach its end,** so whoever gets there first is ahead. Nobody holds a place from across the room.
+- **They never walk through Spot.** They wait for it, and step round it if it stays in their way.
+
+## Holding a place in a moving line
+
+In the moving-line tests the person at the front is served every 12 to 25 seconds, walks off, and comes back to the end of the line. The model is asked once. After that, Spot keeps its goal up to date from where the people are, with no further model calls.
+
+The **hold-place** version (`--arm CT3FL`) adds three rules to the best earlier version (`CT3F`):
+
+1. **Lock the people ahead.** When Spot joins the line, it remembers everyone standing in the line ahead of it. From then on that group only shrinks as they are served. Nobody new gets in front: not people walking past, not people coming back.
+2. **Only move forward.** In line, Spot never steps back to make room.
+3. **Step up at the front.** When everyone ahead has been served, Spot goes to where they stood while being served, facing the counter.
+
+### Results
+
+Claude Sonnet 5.5, 8 café layouts, each run twice with both versions. A run lasts 92 seconds, and the score is the share of that time Spot stands in the right place. The strict score also requires Spot to be within 0.6 m of the line, and within 0.6 m of the serving spot once it is first.
+
+| | Earlier best (`CT3F`) | Hold-place (`CT3FL`) |
+|---|---|---|
+| Time in the right place, strict | 32% | **55%** (better in 15 of 16 runs) |
+| Time in the right place | 44% | **61%** |
+| Time spent cutting in (all 16 runs) | 170 s | **6 s** |
+
+Both versions ran with the walking and the people described above, so the comparison changes only the three rules. These numbers are not comparable with those in [`results/`](../results/README.md), which were measured before those changes.
+
+### Videos
+
+Each video plays the earlier version on the left and the hold-place version on the right, at the same time:
+
+| Layout | Run 1 | Run 2 |
+|---|---|---|
+| `sweet_2010` | [video](../results/2026-11-08-hold-place/videos/sweet_2010_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/sweet_2010_run2.mp4) |
+| `sweet_2364` | [video](../results/2026-11-08-hold-place/videos/sweet_2364_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/sweet_2364_run2.mp4) |
+| `sweet_2144` | [video](../results/2026-11-08-hold-place/videos/sweet_2144_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/sweet_2144_run2.mp4) |
+| `sweet_2163` | [video](../results/2026-11-08-hold-place/videos/sweet_2163_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/sweet_2163_run2.mp4) |
+| `cafe_2042` | [video](../results/2026-11-08-hold-place/videos/cafe_2042_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/cafe_2042_run2.mp4) |
+| `cafe_2438` | [video](../results/2026-11-08-hold-place/videos/cafe_2438_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/cafe_2438_run2.mp4) |
+| `cafe_2036` | [video](../results/2026-11-08-hold-place/videos/cafe_2036_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/cafe_2036_run2.mp4) |
+| `cafe_2010` | [video](../results/2026-11-08-hold-place/videos/cafe_2010_run1.mp4) | [video](../results/2026-11-08-hold-place/videos/cafe_2010_run2.mp4) |
+
+### Running it
+
+Start the pipeline in one terminal, then run one layout with either version in another:
+
+```bash
+conda run -n sgi python -m sgi.serve --model claude_sonnet55_low --port 8790
+
+PYTHONPATH=sim conda run -n sgi-habitat python -m sgi_habitat.experiment_oracle \
+  --scenario results/2026-11-01-push/moving/sweep/confirm_candidates/sweet_2010.yaml \
+  --arm CT3FL --seed 11608 --sgi-url http://127.0.0.1:8790 \
+  --out runs/sweet_2010 --record runs/sweet_2010/video.mp4
+```
+
+`--arm CT3F` runs the earlier version. The run writes `episode.json`, with a record for every second, and the video.
+
+**Limits:** one model and eight layouts, and the front-of-line rules were tuned on these same layouts. Fresh layouts and other models would make a stronger test.
+
 ## Each step by hand
 
 `sim/setup.sh` (Quick start, step 3) does all of this for you. These are the commands it runs, one by one, for anyone who wants to run or change a step by hand. Everything runs from the repository root, on Linux with an NVIDIA GPU (it was built on an RTX 5060 Laptop, 8 GB). Downloads go under `data/`, which git ignores.

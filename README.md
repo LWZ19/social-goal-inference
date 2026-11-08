@@ -12,6 +12,8 @@ Numbers measured on placeholder scenes are not research results. They only show 
 
 The experiments, their results and the run logs are in [`results/`](results/README.md). Start with `results/README.md`.
 
+A later version that holds Spot's place in a moving line, with its results and side-by-side videos, is described in [`sim/README.md`](sim/README.md#holding-a-place-in-a-moving-line).
+
 ## Setup
 
 Python 3.12 is needed. From the repository root:
