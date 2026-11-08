@@ -286,9 +286,11 @@ def _tracks(body: dict, key: str) -> list[Track]:
 
 
 _IN_TURN_M = 0.3                                   # a place this near the place in turn is it
+_HOLD_BACK_M = 0.05                                # hold_place: a place farther back down the line than this is not taken
 _VARIANT_OPTIONS = {"readmit", "line_span_m", "vacate_after_s", "vacate_rejoined", "path_memory",  # CT2
                     "co_motion_s", "co_motion_follow", "co_motion_rejoin",                            # and CT3
                     "group_follow", "anchor_rederive",                       # ideas round 2: CT3F, the bolt-on
+                    "hold_place",                                            # and CT3FL: the place held in line
                     "role_belief",                                           # and CT4, one estimate of who waits
                     "static_win_s", "role_decision",                         # and CT5: its window, a cost decision
                     "role_direction", "role_joined",                 # and CT4P, CT4PJ: direction, joined rule
@@ -422,8 +424,15 @@ def resolve(pipeline: Pipeline, sessions: Sessions, body: dict) -> dict:
                        line_direction=resolver.solve_direction, exempt=exempt)
     turn_m = solved.note.keys.turn_m                # at the place in turn, not only with a come_after used
     in_turn = turn_m is not None and turn_m <= _IN_TURN_M
-    resolver.record(solved.pose_world[:2], in_turn, solved.note.joined_waiting)
-    item["last"] = {"status": "ok", "pose_world": _triple(solved.pose_world), "pose_robot": _triple(solved.pose_robot),
+    pose_world, pose_robot = _triple(solved.pose_world), _triple(solved.pose_robot)
+    held = item.get("held_pose")                    # hold_place: in line, the place never moves back down it
+    d = resolver.solve_direction
+    if resolver.locked is not None and held is not None and d is not None and (
+            (pose_world[0] - held[0]) * d[0] + (pose_world[1] - held[1]) * d[1] > _HOLD_BACK_M):
+        pose_world, pose_robot = held, None
+    item["held_pose"] = pose_world if resolver.locked is not None else None
+    resolver.record(pose_world[:2], in_turn, solved.note.joined_waiting)
+    item["last"] = {"status": "ok", "pose_world": pose_world, "pose_robot": pose_robot,
                     "in_turn": in_turn, "joined": resolver.joined, "dropped": sorted(resolver.dropped),
                     "line_direction": resolver.line_direction, "solve_direction": resolver.solve_direction,
                     "vacated": False,
@@ -435,6 +444,8 @@ def resolve(pipeline: Pipeline, sessions: Sessions, body: dict) -> dict:
                     "turn_joined": [resolver.track_of(n) for n in solved.note.joined_waiting],
                     "exempt": sorted(resolver.track_of(n) for n in exempt),
                     "roster": sorted(i for i in (resolver.track_of(n) for n in resolver.waiting()) if i is not None),
+                    "locked": None if resolver.locked is None else sorted(
+                        i for i in (resolver.track_of(n) for n in resolver.locked) if i is not None),
                     "non_followers": {str(resolver.track_of(n)): t for n, t in resolver.non_follower_t.items()},
                     "answer_come_after": item.get("answer_come_after"), "chain": item.get("chain"),
                     "co_motion_events": [_event_by_track(resolver, e) for e in resolver.events]}
@@ -538,6 +549,8 @@ def _replay_wait(resolver: Resolver, history: Sequence[dict], target_xy, t_now: 
 def _event_by_track(resolver: Resolver, event: tuple) -> list:
     """A co-motion event of the resolver with its people as track ids: (t, \"advance\", q, p, ...) or
     (t, \"drop\", p, ...)."""
+    if event[1] == "locked":                       # (t, "locked", [numbers]): hold_place's set, as track ids
+        return [event[0], "locked", sorted(i for i in (resolver.track_of(n) for n in event[2]) if i is not None)]
     people = (2, 3) if event[1] == "advance" else (2,)
     return [resolver.track_of(x) if i in people else x for i, x in enumerate(event)]
 

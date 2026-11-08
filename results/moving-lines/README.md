@@ -17,6 +17,7 @@ question, result and files.
 | [`best-version-and-running-guess/`](best-version-and-running-guess/) | The best rule-based version against a running guess of who waits. |
 | [`best-version-new-layouts/`](best-version-new-layouts/) | The best version on fresh layouts. |
 | [`test-robots/`](test-robots/) | Robots given part of the true answer, to show what each missing piece costs. |
+| [`hold-place/`](hold-place/) | Locking the people ahead once in line, and going straight to the serving spot (CT3FL). |
 | [`front-of-line-fix/`](front-of-line-fix/) | A rule-based fix for the front of the line. |
 | [`bumps/`](bumps/) | How close the robot comes to people. |
 | [`cut-ins-and-decomposition/`](cut-ins-and-decomposition/) | Does updating cut in more often, and where does its gain come from? |

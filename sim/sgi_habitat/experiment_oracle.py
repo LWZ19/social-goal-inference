@@ -75,11 +75,13 @@ E.ARMS.update({"CTo": dict(asks_again=False, resolves=True), "CTt": dict(asks_ag
                "CT4OT": dict(asks_again=False, resolves=True, photo_time=True, oracle_ahead=True),
                "CT4PJT": dict(asks_again=False, resolves=True, photo_time=True),
                "CT3FT": dict(asks_again=False, resolves=True, photo_time=True),
+               # CT3F that holds its place once in line: the people ahead are locked in and only leave (hold_place)
+               "CT3FL": dict(asks_again=False, resolves=True, photo_time=True),
                "OW": dict(asks_again=False, resolves=True)})
 # BYSTANDERS_FROZEN.md: CT2's options, and roles from geometry (Gl) or from the model checked by motion (CT3; CT3-j
 # without the follow check); later arms add their own (see ARMS above)
 _ROSTER = ("Gl", "CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT4", "W0", "CT5", "CT4P", "CT4PJ", "CT4O", "CT4OT", "CT4PJT",
-           "CT3FT", "CT3Ff")
+           "CT3FT", "CT3Ff", "CT3FL")
 _FRONT_FIX = ("CT2f", "CT3Ff")
 _CO_MOTION_S = 5.0
 _TRACKED = ("CTd", "CTe")
@@ -107,15 +109,17 @@ class _Inject:
                 arm = self._episode.arm
                 payload["variant"] = {**_V2, "vacate_after_s": None if arm in ("CT2-vac", "CT2-norv") else 5.0,
                                       "readmit": arm not in ("CT2-nora", "CT2-norv")}
-                if arm in ("CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT3FT", "CT3Ff"):
+                if arm in ("CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT3FT", "CT3Ff", "CT3FL"):
                     payload["variant"] = {**payload["variant"], "co_motion_s": _CO_MOTION_S,
                                           "co_motion_follow": arm != "CT3-j"}
                 if arm == "CT3b":                           # post hoc: stale follow checks cancelled on re-admission
                     payload["variant"]["co_motion_rejoin"] = True
-                if arm in ("CT3F", "CT3FT", "CT3Ff"):       # CT4_FROZEN.md: the group test and the gated anchor
+                if arm in ("CT3F", "CT3FT", "CT3Ff", "CT3FL"):  # CT4_FROZEN.md: the group test and the gated anchor
                     payload["variant"] = {**payload["variant"], "group_follow": True, "anchor_rederive": True}
                 if arm in _FRONT_FIX:                       # the vacated place, also when the last served rejoined behind
                     payload["variant"] = {**payload["variant"], "vacate_rejoined": True}
+                if arm == "CT3FL":                          # and the place held once in line
+                    payload["variant"]["hold_place"] = True
                 if arm == "CT4":                            # the roles from sgi.roles; CT2's ratchet stays (sim side)
                     payload["variant"] = {"role_belief": True}
                 if arm in ("CT4P", "CT4PJ"):                # round3/CT4P.md, round4/CT4PJ.md

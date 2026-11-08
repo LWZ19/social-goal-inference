@@ -176,8 +176,8 @@ class Demo:
         robot_pos = self.robot.position_hab
         positions = [h.position_hab for h in self.humans]
         for i, human in enumerate(self.humans):
-            others = positions[:i] + positions[i + 1:] + [robot_pos]
-            human.step(dt, others, self.rng, self.island)
+            others = positions[:i] + positions[i + 1:]
+            human.step(dt, others, self.rng, self.island, robot=robot_pos)
         before = self.robot.state
         self.robot.step(dt, [h.position_hab for h in self.humans])
         if self.robot.state == "arrived" and before != "arrived":

@@ -46,6 +46,7 @@ _ADVANCE_EVERY_S = 5.0       # and one person's advances are taken at most this 
 _STEP_UP_M = 0.55            # moved this much nearer the target lately: stepped up with the others
 _ANCHOR_STILL_M, _ANCHOR_STILL_S = 0.10, 1.0     # anchor_rederive: still means this near over this long
 _ANCHOR_SPACING_X, _ANCHOR_FRONT_TOL = 1.5, 0.5   # a step of the chain; the front gap's tolerance
+_LOCK_LINE_M = 0.6            # hold_place: someone ahead this near the line when the robot joins is in it
 
 
 @dataclass(frozen=True)
@@ -138,7 +139,7 @@ class Resolver:
                  advance_m: float = 0.4,
                  follow_m: float = 0.25,
                  moved_m: float = 1.0, history_s: float = 20.0, group_follow: bool = False,
-                 anchor_rederive: bool = False):
+                 anchor_rederive: bool = False, hold_place: bool = False):
         """The options after `gone_m` are those of re-solving v2 (research arm CT2, `moving/CT2_FROZEN.md`), off by
         default: `readmit` lets a person who left wait again once the solver takes them as joining behind the last;
         `vacate_after_s` gives `vacated_pose`, the last still pose of the last of the waiting people to leave, once
@@ -161,7 +162,18 @@ class Resolver:
         the next; `anchor_rederive` finds the waiting people again from the target point once nobody the answer
         named still waits (the still person at the front gap the named people showed, then still people behind a
         member within 1.5 spacings), never taking someone found not following, and nobody unnamed who has not
-        moved as a joiner would."""
+        moved as a joiner would.
+
+        `hold_place` keeps the robot's place once it has joined (research arm CT3FL): the people ahead of it then
+        are locked in (`locked`): those taken as waiting, and anyone else standing within 0.6 m of the line ahead
+        of it (someone who has just come back to the line, before the rules have taken them back). From then on
+        that set only shrinks. Nobody is added to it: no
+        joiner, no one taken back after leaving, no one found again from the anchor, and everyone outside it is
+        exempt from the solver's place-in-turn rule. People still leave it as before (served and gone, off the
+        line, or not following an advance), so someone wrongly taken as waiting can still be dropped. Once it is
+        empty, the robot is first, and with `vacate_after_s` set it goes at once (`vacated_pose`) to the front of
+        the line: the still pose nearest the target that any of the waiting people stood in (where they were
+        served), not the model's target point nor where the last of them happened to stand."""
         self._target = (float(target_xy[0]), float(target_xy[1]))
         self._readmit, self._vacate_after_s, self._vacate_rejoined = readmit, vacate_after_s, vacate_rejoined
         self._leave_m, self._join_radius_m, self._join_dwell_s = leave_m, join_radius_m, join_dwell_s
@@ -216,6 +228,9 @@ class Resolver:
         steps = [_apart(a, b) for a, b in zip(named, named[1:])]
         self._spacing = sum(steps) / len(steps) if steps else 0.8
         self.rederived = 0                             # times the waiting people were found again from the anchor
+        self._hold_place = hold_place
+        self.locked: set[int] | None = None            # with `hold_place`: those ahead of the robot when it joined
+        self.locked_t: float | None = None
 
     def _line_direction(self, at_answer: Sequence[Track], span_m: float) -> tuple[float, float] | None:
         """From the front of the waiting people to their back as they stood when the answer was asked: the one
@@ -313,6 +328,10 @@ class Resolver:
         """The place the last solve chose, whether it was a place in turn (a `come_after` was used), and whom the
         solver took as joining the waiting people behind the last (`SolverNote.joined_waiting`)."""
         self._place, self._in_turn = (float(place_xy[0]), float(place_xy[1])), in_turn
+        if self.locked is not None:                    # hold_place: nobody joins ahead of the robot any more
+            self._absorbing = {}
+            return
+
         def eligible(n):
             ok = n not in self._waiting or (self._readmit and n in self.dropped)
             return ok and (self._co_motion_s is None or self._moved(n))
@@ -340,6 +359,8 @@ class Resolver:
 
     def _rederive(self, people: list[DetectedPerson], constraints: list[Constraint], t: float) -> list[Constraint]:
         """With `anchor_rederive`: when nobody named still waits, the waiting people found again from the anchor."""
+        if self.locked is not None:                    # hold_place: an empty locked set means the robot is first
+            return constraints
         if self._front_gap is None or (self._waiting - self.dropped - self.gone):
             return constraints
         where = {p.number: p.xy for p in people}
@@ -421,6 +442,26 @@ class Resolver:
             if active:
                 self.solve_direction = self._on_path(max(active, key=lambda tr: self._along(tr.xy)).xy)[2]
         self.vacated_pose = self._vacated(tracks, t, robot_xy)
+        if self._hold_place and self.joined and self.locked is None:
+            where = {p.number: p.xy for p in people}
+            ahead = {n for n, xy in where.items() if not self.behind(xy, robot_xy)}
+            listed = {n for n in self._waiting - self.dropped - self.gone if n in ahead}
+            lined = set()                              # and whoever stands in the line ahead, listed or not
+            if self.line_direction is not None:
+                lined = {n for n in ahead if n not in self.non_followers
+                         and self._off_line(where[n]) <= _LOCK_LINE_M + _EPS
+                         and self._along(where[n]) >= -_LOCK_LINE_M - _EPS}       # not beyond the front
+            for n in lined - listed:
+                self.dropped.discard(n)
+                self.gone.discard(n)
+                if n not in self._waiting:
+                    self._waiting.add(n)
+                    self._joiners.append(n)
+            self.locked = listed | lined
+            self.locked_t = t
+            self.events.append((round(t, 2), "locked", sorted(self.locked)))
+        if self.locked is not None:
+            self._waiting &= self.locked               # the set only shrinks: drops and leaving still apply
         if self.joined:
             people = [p for p in people if not self.behind(p.xy, robot_xy)]
         left = self.dropped | self.gone
@@ -428,6 +469,8 @@ class Resolver:
         for c in self._constraints:
             named = c.people + (self._joiners if c.kind == "come_after" and first else [])
             first = first and c.kind != "come_after"
+            if self.locked is not None and c.kind == "come_after":
+                named = [n for n in named if n in self.locked]
             constraints.append(c.model_copy(update={"people": [n for n in named if n not in left]}))
         return people, constraints
 
@@ -469,9 +512,11 @@ class Resolver:
     def exempt(self) -> set[int]:
         """With co-motion: everyone seen who is not waiting and has not moved as a joiner would, for the solver's
         place-in-turn rule to leave out. Without it: nobody."""
+        waiting = self._waiting - self.dropped - self.gone
+        if self.locked is not None:                    # hold_place: everyone outside the locked set
+            return set(self._number_of.values()) - waiting
         if self._co_motion_s is None:
             return set()
-        waiting = self._waiting - self.dropped - self.gone
         return {n for n in self._history if n not in waiting and not self._moved(n)}
 
     def waiting(self) -> set[int]:
@@ -496,6 +541,17 @@ class Resolver:
             return None
         if self._waiting - self.dropped - self.gone:
             return None
+        if self.locked is not None:                    # hold_place, first in line: at once, to the front of the
+            if not self._still:                        # line, where the people ahead stood still nearest the target
+                return None                            # (where they were served), not where the last to leave stood
+            x, y, _ = min(self._still.values(), key=lambda pose: _apart(pose[:2], self._target))
+            if self._path is not None and len(self._path) >= 2:          # facing up the line, to its front
+                up = (self._path[0][0] - self._path[1][0], self._path[0][1] - self._path[1][1])
+            elif self.line_direction is not None:
+                up = (-self.line_direction[0], -self.line_direction[1])
+            else:
+                up = (self._target[0] - x, self._target[1] - y)
+            return (x, y, math.atan2(up[1], up[0]))
         last = max(self._left_at, key=self._left_at.get)
         if t - self._left_at[last] < self._vacate_after_s - _EPS:
             return None

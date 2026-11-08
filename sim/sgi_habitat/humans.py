@@ -5,6 +5,12 @@ own facing a given point (a barista behind a counter, say), or belongs to a queu
 is a list of slots, the first at the counter; its members stand in the slots in order, the first facing the
 counter and each other one the person ahead. Every `service_s` the person at the front is served: they leave,
 wander for a while, and come back to the end of the line, and the others step up.
+
+Coming back, a person walks to the end of the line as it is then and joins it only on getting there (JOIN_AT_M):
+whoever reaches the end first is ahead, as in a real queue, and nobody holds a place from across the room.
+
+People never walk through the robot. Someone in a walker's way makes them wait; another person at most
+MAX_YIELD_S, the robot until it moves, and after ROBOT_YIELD_S they step round it (a detour to one side).
 """
 from __future__ import annotations
 
@@ -27,7 +33,11 @@ ARRIVED_M = 0.15                   # a waypoint this near is reached
 FACING_RAD = 0.15                  # turned this near to the wanted heading is facing it
 YIELD_M = 0.7                      # someone this near, ahead, makes a walker wait
 YIELD_CONE = math.radians(50)      # half-angle of "ahead"
-MAX_YIELD_S = 2.0                  # a walker waits this long at most, then goes on (no deadlock)
+MAX_YIELD_S = 2.0                  # a walker waits this long at most for another person, then goes on (no deadlock)
+ROBOT_KEEP_M = 0.8                 # the robot this near, ahead, makes a walker wait: never walked through
+ROBOT_YIELD_S = 3.0                # waited this long for the robot: step round it
+DETOUR_M = 0.9                     # how far to the side the step round goes
+JOIN_AT_M = 0.6                    # coming back, a person joins the line this near its end
 
 
 @dataclass
@@ -52,6 +62,10 @@ class Queue:
     def join(self, human: "Human") -> None:
         if human not in self.members:
             self.members.append(human)
+
+    def back_slot(self) -> Slot:
+        """Where someone joining now would stand: the slot after the last member."""
+        return self.slots[min(len(self.members), len(self.slots) - 1)]
 
     def step(self, dt: float, rng: random.Random) -> None:
         if self.service_s is None:                 # nobody is ever served: the line stands still
@@ -88,6 +102,8 @@ class Human:
         self.wander_after_s = 0.0                  # left a queue: wander this long, then join it again
         self.wait_s = 0.0                          # standing before the next wander goal
         self.yielded_s = 0.0
+        self.robot_yielded_s = 0.0                 # waiting for the robot to get out of the way
+        self.returning = False                     # walking back to the end of its queue, not yet in it
         self.settled = False                       # at the end of its path and facing what it should
         self.wander_area: Optional[tuple] = None   # (x0, x1, y0, y1): where wander goals are taken; None: anywhere
         self.fidget: Optional[tuple] = None        # (min_s, max_s, radius_m): standing at home, shift about now and then
@@ -141,12 +157,25 @@ class Human:
         self.wait_s = 0.0
         self.path, self.face, self.settled = [], None, False
 
-    def step(self, dt: float, others: Sequence[np.ndarray], rng: random.Random, island: int) -> None:
-        """Advance one frame: choose what to do next, then take one step of the walking motion."""
+    def step(self, dt: float, others: Sequence[np.ndarray], rng: random.Random, island: int,
+             robot: Optional[np.ndarray] = None) -> None:
+        """Advance one frame: choose what to do next, then take one step of the walking motion. `robot` is the
+        robot's position, which is never walked through."""
         if self.queue is not None and self.wander_after_s > 0:
             self.wander_after_s -= dt
             if self.wander_after_s <= 0:
+                self.returning = True              # walk back to the end of the line; join on getting there
+        if self.returning:
+            end = self.queue.back_slot()
+            here = self.world_xy
+            if math.hypot(here[0] - end.x, here[1] - end.y) <= JOIN_AT_M:
+                self.returning = False
                 self.queue.join(self)
+            else:
+                if not self.path or self._goal_moved(end):
+                    self.go_to(end.x, end.y, face=end.face)
+                self._walk(dt, others, robot)
+                return
         self._excursion_step(dt, others)
         if (self.queue is None and self.fidget is not None and self.anchor is not None and self.settled and not self.path
                 and (self.excursion is None or self.excursion["phase"] != "out")):
@@ -169,7 +198,7 @@ class Human:
             self.wait_s -= dt
             if self.wait_s <= 0:
                 self._new_wander_goal(rng, island)
-        self._walk(dt, others)
+        self._walk(dt, others, robot)
 
     def _queue_slot(self, dt: float, rng: random.Random) -> Optional[Slot]:
         """The slot to stand at. With the queue's `step_lag`, a member who could step up waits a drawn time first
@@ -239,23 +268,51 @@ class Human:
                 self.wait_s = rng.uniform(1.0, 4.0)
                 return
 
-    def _blocked(self, others: Sequence[np.ndarray], direction: np.ndarray) -> bool:
+    def _blocked(self, others: Sequence[np.ndarray], direction: np.ndarray, within_m: float = YIELD_M) -> bool:
         me = self.position_hab
         for other in others:
             offset = (other - me)[[0, 2]]
             distance = float(np.linalg.norm(offset))
-            if 1e-3 < distance < YIELD_M:
+            if 1e-3 < distance < within_m:
                 cos = float(np.dot(offset, direction[[0, 2]])) / (distance * float(np.linalg.norm(direction[[0, 2]])) + 1e-9)
                 if cos > math.cos(YIELD_CONE):
                     return True
         return False
 
-    def _walk(self, dt: float, others: Sequence[np.ndarray]) -> None:
+    def _step_round(self, robot: np.ndarray) -> None:
+        """A detour waypoint DETOUR_M to the side of the robot, on the side away from it, before the path goes on."""
+        me = self.position_hab
+        ahead = (self.path[0] - me)[[0, 2]]
+        norm = float(np.linalg.norm(ahead))
+        if norm < 1e-6:
+            return
+        side = np.array([-ahead[1], ahead[0]]) / norm
+        if float(np.dot((robot - me)[[0, 2]], side)) > 0:
+            side = -side                               # the side the robot is not on
+        via = self.sim.pathfinder.snap_point(mn.Vector3(float(me[0] + DETOUR_M * side[0] + 0.5 * ahead[0] / norm),
+                                                        float(me[1]),
+                                                        float(me[2] + DETOUR_M * side[1] + 0.5 * ahead[1] / norm)))
+        self.path.insert(0, np.array(via))
+
+    def _walk(self, dt: float, others: Sequence[np.ndarray], robot: Optional[np.ndarray] = None) -> None:
         ctrl = self.controller
         ctrl.obj_transform_base = self.agent.base_transformation
         me = self.position_hab
         while self.path and np.linalg.norm((self.path[0] - me)[[0, 2]]) < ARRIVED_M:
             self.path.pop(0)
+        if self.path and robot is not None:            # never through the robot: wait, then step round it
+            target = self.path[0] - me
+            if self._blocked([robot], target, ROBOT_KEEP_M):
+                self.robot_yielded_s += dt
+                if self.robot_yielded_s >= ROBOT_YIELD_S:
+                    self.robot_yielded_s = 0.0
+                    self._step_round(robot)
+                else:
+                    ctrl.calculate_stop_pose()
+                    self._apply()
+                    return
+            else:
+                self.robot_yielded_s = 0.0
         if self.path:
             target = self.path[0] - me
             self.yielded_s = self.yielded_s + dt if self._blocked(others, target) else 0.0
