@@ -33,6 +33,7 @@ Two test beds:
 | The constraint method picks good spots far more often than pointing, on every model | Claude Sonnet 5.5: 96% vs 71%; Claude Haiku 5.5: 95% vs 60%; Qwen 3.8: 90% vs 78% (of 252 tries each) | [`still-scenes/method-comparison/`](still-scenes/method-comparison/), [`../docs/results/`](../docs/results/) |
 | It holds on 70 new scenes never used in development, on all six models | e.g. Claude Haiku at waiting lines: 92 of 100 vs 4 of 100 | [`still-scenes/fresh-scenes/`](still-scenes/fresh-scenes/) |
 | It holds on situations kept hidden until the end, and on two new ones (a bent line, someone at a machine) | wins on all 12 layouts of both new tests over the six models together; GLM-5.3 is level on the machine test | [`still-scenes/hidden-situations-and-more-models/`](still-scenes/hidden-situations-and-more-models/), [`still-scenes/new-situations/`](still-scenes/new-situations/) |
+| The gap between methods is larger than the run-to-run noise | over three repeats, our method leads pointing by +65 to +93 good spots (of 252) on DeepSeek and +24 to +38 on GLM-5.3 | [`still-scenes/run-to-run-noise/`](still-scenes/run-to-run-noise/) |
 | A small people detector can replace one VLM question: faster on all six models, never less accurate | e.g. Qwen 107 → 83 s per answer | [`still-scenes/people-finder/`](still-scenes/people-finder/) |
 | Moving lines: asking once and re-solving the spot as people move beats deciding once | 11 of 13 models; Claude Sonnet 29% vs 6% of the time in the right spot | [`moving-lines/updating-vs-once/`](moving-lines/updating-vs-once/), [`moving-lines/school-models/`](moving-lines/school-models/) |
 | Re-solving beats asking the VLM again and again, with far fewer calls | Claude Sonnet 32% vs 2-10%, 4 calls vs 22-29 per run | [`moving-lines/re-asking/`](moving-lines/re-asking/) |
@@ -144,4 +145,3 @@ still-scenes/people-finder; `E3` hidden-situations-and-more-models; `marks` numb
 group-of-four-case; phase folders and `I01`-`I52` ideas of the October analyses are listed in
 [`still-scenes/overview/`](still-scenes/overview/).
 
-**Still running:** GLM-5.3's repeat runs for the run-to-run noise check; its folder will be updated when they finish.
