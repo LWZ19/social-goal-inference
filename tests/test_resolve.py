@@ -674,3 +674,141 @@ def test_anchor_rederive_finds_a_new_line_once_everyone_named_has_gone_but_not_s
     newcomers = {4, 5}                                       # the numbers the resolver gave the two new tracks
     assert got["group"] == []
     assert set(got["anchor"]) == newcomers
+
+
+# ---- hold_place (research arm CT3FL): once in line, the people ahead are locked in and only leave
+
+HOLD = dict(V2, hold_place=True)
+
+
+def _in_line(options):
+    """Three waiting at 1, 2 and 3 m; the robot settles 1 m behind the last and joins."""
+    r = resolver(options=options)
+    r.record((4.0, 0.0), True)
+    for t in (5.0, 5.5, 6.0, 6.5):
+        r.inputs(tracks(*LINE), robot_xy=(4.0, 0.0), t=t)
+    assert r.joined
+    return r
+
+
+def test_hold_place_locks_in_the_people_ahead_when_the_robot_joins():
+    r = _in_line(HOLD)
+    assert r.locked == {1, 2, 3}
+
+
+def test_hold_place_does_not_lock_before_the_robot_has_joined():
+    r = resolver(options=HOLD)
+    r.inputs(tracks(*LINE), robot_xy=(6.0, 0.0), t=5.0)
+    assert not r.joined and r.locked is None
+
+
+def test_hold_place_lets_nobody_in_ahead_of_the_robot():
+    r = _in_line(HOLD)
+    now = tracks(*LINE, (3.6, 0.1))                    # someone steps in between the last and the robot
+    for t in (7.0, 7.5, 8.0):
+        r.inputs(now, robot_xy=(4.0, 0.0), t=t)
+        r.record((4.0, 0.0), True, absorbed=[4])       # the solver takes them as joining, every time
+    _, constraints = r.inputs(now, robot_xy=(4.0, 0.0), t=8.5)
+    assert constraints[0].people == [1, 2, 3]
+    assert 4 in r.exempt()                             # and the solver is told to leave them out
+
+
+def test_without_hold_place_the_same_person_is_let_in():
+    r = _in_line(V2)
+    now = tracks(*LINE, (3.6, 0.1))
+    for t in (7.0, 7.5, 8.0):
+        r.inputs(now, robot_xy=(4.0, 0.0), t=t)
+        r.record((4.0, 0.0), True, absorbed=[4])
+    _, constraints = r.inputs(now, robot_xy=(4.0, 0.0), t=8.5)
+    assert 4 in constraints[0].people
+
+
+def test_hold_place_does_not_take_back_someone_served_who_walks_back_past_the_robot():
+    r = _in_line(HOLD)
+    r.inputs(tracks((0.3, 3.0), (2.0, 0.0), (3.0, 0.0)), robot_xy=(4.0, 0.0), t=10.0)    # 1 served and gone
+    assert r.dropped == {1}
+    walking_back = tracks((2.5, 0.4), (1.0, 0.0), (2.0, 0.0))    # 1 on the way back, just ahead of the robot
+    for t in (20.0, 20.5, 21.0):
+        r.inputs(walking_back, robot_xy=(3.0, 0.0), t=t)
+        r.record((3.0, 0.0), True, absorbed=[1])       # the solver takes them as joining, every time
+    _, constraints = r.inputs(walking_back, robot_xy=(3.0, 0.0), t=21.5)
+    assert constraints[0].people == [2, 3]
+
+
+def test_without_hold_place_someone_served_walking_back_past_the_robot_is_taken_back_ahead_of_it():
+    r = _in_line(V2)
+    r.inputs(tracks((0.3, 3.0), (2.0, 0.0), (3.0, 0.0)), robot_xy=(4.0, 0.0), t=10.0)
+    walking_back = tracks((2.5, 0.4), (1.0, 0.0), (2.0, 0.0))
+    for t in (20.0, 20.5, 21.0):
+        r.inputs(walking_back, robot_xy=(3.0, 0.0), t=t)
+        r.record((3.0, 0.0), True, absorbed=[1])
+    _, constraints = r.inputs(walking_back, robot_xy=(3.0, 0.0), t=21.5)
+    assert 1 in constraints[0].people                  # case 1 of the failures: the robot lets them in
+
+
+def test_hold_place_still_drops_those_ahead_who_are_served():
+    r = _in_line(HOLD)
+    _, constraints = r.inputs(tracks((0.3, 3.0), (2.0, 0.0), (3.0, 0.0)), robot_xy=(4.0, 0.0), t=10.0)
+    assert constraints[0].people == [2, 3] and r.waiting() == {2, 3}
+
+
+def test_hold_place_with_everyone_ahead_served_leaves_the_robot_first():
+    r = _in_line(HOLD)
+    _, constraints = r.inputs(tracks((0.3, 3.0), (0.3, 3.5), (0.3, 4.0)), robot_xy=(1.0, 0.0), t=40.0)
+    assert constraints[0].people == [] and r.waiting() == set()
+
+
+def test_hold_place_locks_in_someone_back_in_the_line_ahead_who_is_not_yet_listed():
+    r = resolver(options=HOLD)
+    r.record((4.0, 0.0), True)
+    back = tracks(*LINE, (3.4, 0.2))                   # someone unlisted, in the line just ahead of the robot
+    for t in (5.0, 5.5, 6.0, 6.5):
+        r.inputs(back, robot_xy=(4.0, 0.0), t=t)
+    assert r.joined and r.locked == {1, 2, 3, 4}
+    _, constraints = r.inputs(back, robot_xy=(4.0, 0.0), t=7.0)
+    assert sorted(constraints[0].people) == [1, 2, 3, 4]
+
+
+def test_hold_place_does_not_lock_in_someone_off_to_the_side():
+    r = resolver(options=HOLD)
+    r.record((4.0, 0.0), True)
+    aside = tracks(*LINE, (2.5, 1.5))                  # 1.5 m off the line: a bystander
+    for t in (5.0, 5.5, 6.0, 6.5):
+        r.inputs(aside, robot_xy=(4.0, 0.0), t=t)
+    assert r.locked == {1, 2, 3}
+
+
+def test_hold_place_takes_the_front_place_at_once_when_the_last_ahead_is_served():
+    r = resolver(people=[person(1, 1.0, 0.0), person(2, 1.7, 0.0)], constraints=[after(1, 2)],
+                 at_answer=tracks((1.0, 0.0), (1.7, 0.0)), options=HOLD)
+    r.record((2.7, 0.0), True)
+    for t in (5.0, 5.5, 6.0, 6.5):
+        r.inputs(tracks((1.0, 0.0), (1.7, 0.0)), robot_xy=(2.7, 0.0), t=t)
+    assert r.locked == {1, 2}
+    r.inputs(tracks((0.0, 3.0), (1.0, 0.0)), robot_xy=(2.7, 0.0), t=20.0)          # 1 served; 2 stepped up
+    for t in (20.5, 21.0, 21.5):
+        r.inputs(tracks((0.0, 3.5), (1.0, 0.0)), robot_xy=(2.0, 0.0), t=t)
+    r.inputs(tracks((0.0, 4.0), (1.0, 3.5)), robot_xy=(2.0, 0.0), t=30.0)          # 2 served and walks off
+    assert r.vacated_pose is not None and r.vacated_pose[:2] == pytest.approx((1.0, 0.0), abs=0.01)
+
+
+def test_hold_place_first_in_line_goes_to_where_people_were_served_not_where_the_last_one_stood():
+    r = resolver(people=[person(1, 1.0, 0.0), person(2, 1.7, 0.0)], constraints=[after(1, 2)],
+                 at_answer=tracks((1.0, 0.0), (1.7, 0.0)), options=HOLD)
+    r.record((2.7, 0.0), True)
+    for t in (5.0, 5.5, 6.0, 6.5):                     # 1 served at the front (1.0 m); 2 waits at 1.7 m
+        r.inputs(tracks((1.0, 0.0), (1.7, 0.0)), robot_xy=(2.7, 0.0), t=t)
+    r.inputs(tracks((0.0, 3.0), (1.7, 0.0)), robot_xy=(2.7, 0.0), t=20.0)          # 1 served and gone
+    r.inputs(tracks((0.0, 4.0), (1.7, 2.5)), robot_xy=(2.7, 0.0), t=21.0)          # 2 leaves from 1.7 m
+    assert r.vacated_pose is not None and r.vacated_pose[:2] == pytest.approx((1.0, 0.0), abs=0.01)
+
+
+def test_hold_place_first_in_line_faces_up_the_line():
+    r = resolver(people=[person(1, 1.0, 0.0), person(2, 1.7, 0.0)], constraints=[after(1, 2)],
+                 at_answer=tracks((1.0, 0.0), (1.7, 0.0), yaw=None), options=HOLD)
+    r.record((2.7, 0.0), True)
+    for t in (5.0, 5.5, 6.0, 6.5):                     # no headings tracked
+        r.inputs(tracks((1.0, 0.0), (1.7, 0.0), yaw=None), robot_xy=(2.7, 0.0), t=t)
+    r.inputs(tracks((0.0, 3.0), (1.7, 0.0), yaw=None), robot_xy=(2.7, 0.0), t=20.0)
+    r.inputs(tracks((0.0, 4.0), (1.7, 2.5), yaw=None), robot_xy=(2.7, 0.0), t=21.0)
+    assert r.vacated_pose[2] == pytest.approx(math.pi)  # the line runs back along +x: its front is towards -x

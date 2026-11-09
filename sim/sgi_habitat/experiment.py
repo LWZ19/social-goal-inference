@@ -87,6 +87,18 @@ def _slot_of(self: Queue, human) -> Optional[object]:
 Queue.slot_of = _slot_of
 
 
+def _back_slot(self: Queue) -> object:
+    """As Queue.back_slot, but behind where the robot stands once it is in the line."""
+    i = len(self.members)
+    robot = next((m for m in self.members if isinstance(m, RobotInLine)), None)
+    if robot is not None:
+        i = max(i, robot.slot_index + i - self.members.index(robot))
+    return self.slots[min(i, len(self.slots) - 1)]
+
+
+Queue.back_slot = _back_slot
+
+
 class Line:
     """A queue's slots as a polyline from slot 0 backwards, extended straight past both ends."""
 
@@ -250,7 +262,7 @@ class Episode(R.Demo):
                                          **{k: answer.get(k) for k in (
                 "status", "pose_world", "in_turn", "joined", "dropped", "match_rate", "people", "line_direction",
                 "solve_direction", "direction_source", "floor", "error", "last", "turn_joined", "exempt", "non_followers", "co_motion_events", "roster",
-                "choice", "costs", "marginals", "vacated", "behind") if k in answer},
+                "choice", "costs", "marginals", "vacated", "behind", "locked") if k in answer},
                 **({k: answer[k] for k in ("answer_come_after", "chain") if answer.get(k) is not None}
                    if not self.log["resolves"] else {})})
             self._replace_goal(answer)

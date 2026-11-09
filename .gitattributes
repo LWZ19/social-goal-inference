@@ -1,1 +1,2 @@
 results/logs/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+results/2026-11-08-hold-place/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
