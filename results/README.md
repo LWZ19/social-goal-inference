@@ -40,7 +40,8 @@ Two test beds:
 | Remembering who to stand behind beats following the marked spot | 87 of 125 runs better | [`moving-lines/roles-vs-marked-spot/`](moving-lines/roles-vs-marked-spot/) |
 | Tracking people with the robot's own camera costs nothing measurable | mean change +0.4 points over 125 runs | [`moving-lines/own-camera/`](moving-lines/own-camera/) |
 | The updating robot comes close to people least often | within 0.55 m of someone about 2% of the time, against 7-10% for the other methods | [`moving-lines/bumps/`](moving-lines/bumps/) |
-| The biggest remaining loss is at the front of the line: where the counter serves | a test robot told the serving spot gains 4-13 points; a rule-based fix of the front did not | [`moving-lines/test-robots/`](moving-lines/test-robots/), [`moving-lines/front-of-line-fix/`](moving-lines/front-of-line-fix/) |
+| Holding the place once in line, and going straight to the serving spot when first, lifts the best version on every model | on 64 unseen layouts: Claude Sonnet 25% → 47%, Gemini 21% → 37%, DeepSeek 21% → 31%, Claude Haiku 20% → 28% | [`moving-lines/hold-place/`](moving-lines/hold-place/) |
+| Before that, the biggest loss was at the front of the line | a test robot told the serving spot gained 4-13 points; a simpler rule-based fix did not | [`moving-lines/test-robots/`](moving-lines/test-robots/), [`moving-lines/front-of-line-fix/`](moving-lines/front-of-line-fix/) |
 
 The full list, about 110 findings with their strength (conclusive, suggestive, quick probe) and their files, is
 [`overview/EVIDENCE_AUDIT.md`](overview/EVIDENCE_AUDIT.md); the final round of checks is summarised in
