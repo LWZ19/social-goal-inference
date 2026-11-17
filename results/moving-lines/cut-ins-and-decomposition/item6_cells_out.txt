@@ -1,0 +1,785 @@
+# Audit item 6: cut-ins normalised by exposure (zero calls; logs only)
+
+exposure = samples with side <= 1.0 m; cut-ins = samples with cut_in; rate = cut-ins / exposure (undefined at zero exposure). Paired by (scenario, seed) within a model. Every episode has 91 samples.
+
+## (a) Fresh headline cells: sonnet55_low (claude_sonnet55_low)
+
+Cells: ['cafe_slots', 'room_coffee_cart_slots', 'cafe_line2_moving', 'cafe_line6_moving', 'sweet_spot_line2_moving'] x seeds 10-19 = 50 planned
+Missing episodes: none
+
+**CT2 vs R1**, 50 paired cells (4550 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 481 | 3313 | 0.728 | 0.145 |
+| R1 | 162 | 1182 | 0.260 | 0.137 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 25 / 4 / 21, sign p 0.000
+- Rate per cell, over the 17 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 9 / 4 / 4, sign p 0.267; exact ties 9 / 4 / 4, sign p 0.267; mean rate CT2 0.205, R1 0.122, mean difference +0.083
+- Cells dropped from the rate test for zero exposure: 33 (CT2 only 0, R1 only 30, both 3)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | R1 cut | R1 exposure | R1 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 25 | 75 | 0.333 | 20 | 78 | 0.256 |
+| cafe_line2_moving | 11 | 0 | 75 | 0.000 | 0 | 0 | - |
+| cafe_line2_moving | 12 | 24 | 73 | 0.329 | 0 | 0 | - |
+| cafe_line2_moving | 13 | 28 | 74 | 0.378 | 21 | 78 | 0.269 |
+| cafe_line2_moving | 14 | 28 | 75 | 0.373 | 0 | 0 | - |
+| cafe_line2_moving | 15 | 0 | 74 | 0.000 | 0 | 78 | 0.000 |
+| cafe_line2_moving | 16 | 0 | 74 | 0.000 | 0 | 0 | - |
+| cafe_line2_moving | 17 | 19 | 74 | 0.257 | 0 | 0 | - |
+| cafe_line2_moving | 18 | 0 | 0 | - | 0 | 0 | - |
+| cafe_line2_moving | 19 | 32 | 74 | 0.432 | 13 | 79 | 0.165 |
+| cafe_line6_moving | 10 | 0 | 72 | 0.000 | 0 | 0 | - |
+| cafe_line6_moving | 11 | 0 | 72 | 0.000 | 0 | 0 | - |
+| cafe_line6_moving | 12 | 0 | 67 | 0.000 | 0 | 0 | - |
+| cafe_line6_moving | 13 | 0 | 71 | 0.000 | 16 | 77 | 0.208 |
+| cafe_line6_moving | 14 | 0 | 73 | 0.000 | 13 | 77 | 0.169 |
+| cafe_line6_moving | 15 | 0 | 72 | 0.000 | 25 | 77 | 0.325 |
+| cafe_line6_moving | 16 | 0 | 70 | 0.000 | 0 | 0 | - |
+| cafe_line6_moving | 17 | 0 | 72 | 0.000 | 0 | 0 | - |
+| cafe_line6_moving | 18 | 0 | 72 | 0.000 | 0 | 0 | - |
+| cafe_line6_moving | 19 | 0 | 72 | 0.000 | 0 | 0 | - |
+| cafe_slots | 10 | 19 | 69 | 0.275 | 0 | 0 | - |
+| cafe_slots | 11 | 0 | 71 | 0.000 | 0 | 0 | - |
+| cafe_slots | 12 | 18 | 66 | 0.273 | 0 | 0 | - |
+| cafe_slots | 13 | 18 | 71 | 0.254 | 0 | 0 | - |
+| cafe_slots | 14 | 9 | 70 | 0.129 | 0 | 0 | - |
+| cafe_slots | 15 | 15 | 54 | 0.278 | 0 | 0 | - |
+| cafe_slots | 16 | 18 | 68 | 0.265 | 0 | 0 | - |
+| cafe_slots | 17 | 10 | 59 | 0.169 | 0 | 0 | - |
+| cafe_slots | 18 | 0 | 69 | 0.000 | 0 | 0 | - |
+| cafe_slots | 19 | 12 | 64 | 0.188 | 0 | 0 | - |
+| room_coffee_cart_slots | 10 | 0 | 0 | - | 0 | 0 | - |
+| room_coffee_cart_slots | 11 | 8 | 74 | 0.108 | 0 | 0 | - |
+| room_coffee_cart_slots | 12 | 7 | 75 | 0.093 | 0 | 0 | - |
+| room_coffee_cart_slots | 13 | 2 | 74 | 0.027 | 0 | 78 | 0.000 |
+| room_coffee_cart_slots | 14 | 3 | 72 | 0.042 | 0 | 0 | - |
+| room_coffee_cart_slots | 15 | 4 | 72 | 0.056 | 0 | 0 | - |
+| room_coffee_cart_slots | 16 | 0 | 73 | 0.000 | 0 | 78 | 0.000 |
+| room_coffee_cart_slots | 17 | 3 | 73 | 0.041 | 10 | 78 | 0.128 |
+| room_coffee_cart_slots | 18 | 0 | 70 | 0.000 | 0 | 0 | - |
+| room_coffee_cart_slots | 19 | 0 | 75 | 0.000 | 0 | 0 | - |
+| sweet_spot_line2_moving | 10 | 9 | 15 | 0.600 | 0 | 0 | - |
+| sweet_spot_line2_moving | 11 | 0 | 75 | 0.000 | 0 | 79 | 0.000 |
+| sweet_spot_line2_moving | 12 | 33 | 75 | 0.440 | 9 | 78 | 0.115 |
+| sweet_spot_line2_moving | 13 | 33 | 75 | 0.440 | 10 | 79 | 0.127 |
+| sweet_spot_line2_moving | 14 | 31 | 75 | 0.413 | 25 | 79 | 0.316 |
+| sweet_spot_line2_moving | 15 | 38 | 75 | 0.507 | 0 | 79 | 0.000 |
+| sweet_spot_line2_moving | 16 | 0 | 74 | 0.000 | 0 | 5 | 0.000 |
+| sweet_spot_line2_moving | 17 | 0 | 75 | 0.000 | 0 | 0 | - |
+| sweet_spot_line2_moving | 18 | 35 | 74 | 0.473 | 0 | 5 | 0.000 |
+| sweet_spot_line2_moving | 19 | 0 | 0 | - | 0 | 0 | - |
+
+| Scenario | Cells | Cut-ins CT2 / R1 | Exposure CT2 / R1 | Pooled rate CT2 / R1 |
+|---|---|---|---|---|
+| cafe_line2_moving | 10 | 156 / 54 | 668 / 313 | 0.234 / 0.173 |
+| cafe_line6_moving | 10 | 0 / 54 | 713 / 231 | 0.000 / 0.234 |
+| cafe_slots | 10 | 119 / 0 | 661 / 0 | 0.180 / - |
+| room_coffee_cart_slots | 10 | 27 / 10 | 658 / 234 | 0.041 / 0.043 |
+| sweet_spot_line2_moving | 10 | 179 / 44 | 613 / 404 | 0.292 / 0.109 |
+
+**CT2 vs CT**, 50 paired cells (4550 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 481 | 3313 | 0.728 | 0.145 |
+| CT | 348 | 3113 | 0.684 | 0.112 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 21 / 7 / 22, sign p 0.013
+- Rate per cell, over the 46 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 19 / 8 / 19, sign p 0.052; exact ties 19 / 8 / 19, sign p 0.052; mean rate CT2 0.143, CT 0.108, mean difference +0.035
+- Cells dropped from the rate test for zero exposure: 4 (CT2 only 0, CT only 1, both 3)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | CT cut | CT exposure | CT rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 25 | 75 | 0.333 | 30 | 72 | 0.417 |
+| cafe_line2_moving | 11 | 0 | 75 | 0.000 | 36 | 75 | 0.480 |
+| cafe_line2_moving | 12 | 24 | 73 | 0.329 | 0 | 73 | 0.000 |
+| cafe_line2_moving | 13 | 28 | 74 | 0.378 | 0 | 74 | 0.000 |
+| cafe_line2_moving | 14 | 28 | 75 | 0.373 | 0 | 75 | 0.000 |
+| cafe_line2_moving | 15 | 0 | 74 | 0.000 | 0 | 74 | 0.000 |
+| cafe_line2_moving | 16 | 0 | 74 | 0.000 | 40 | 74 | 0.541 |
+| cafe_line2_moving | 17 | 19 | 74 | 0.257 | 24 | 74 | 0.324 |
+| cafe_line2_moving | 18 | 0 | 0 | - | 0 | 0 | - |
+| cafe_line2_moving | 19 | 32 | 74 | 0.432 | 25 | 74 | 0.338 |
+| cafe_line6_moving | 10 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 11 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 12 | 0 | 67 | 0.000 | 0 | 67 | 0.000 |
+| cafe_line6_moving | 13 | 0 | 71 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 14 | 0 | 73 | 0.000 | 0 | 73 | 0.000 |
+| cafe_line6_moving | 15 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 16 | 0 | 70 | 0.000 | 0 | 70 | 0.000 |
+| cafe_line6_moving | 17 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 18 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 19 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_slots | 10 | 19 | 69 | 0.275 | 20 | 69 | 0.290 |
+| cafe_slots | 11 | 0 | 71 | 0.000 | 15 | 56 | 0.268 |
+| cafe_slots | 12 | 18 | 66 | 0.273 | 0 | 47 | 0.000 |
+| cafe_slots | 13 | 18 | 71 | 0.254 | 0 | 71 | 0.000 |
+| cafe_slots | 14 | 9 | 70 | 0.129 | 17 | 70 | 0.243 |
+| cafe_slots | 15 | 15 | 54 | 0.278 | 12 | 39 | 0.308 |
+| cafe_slots | 16 | 18 | 68 | 0.265 | 0 | 49 | 0.000 |
+| cafe_slots | 17 | 10 | 59 | 0.169 | 2 | 52 | 0.038 |
+| cafe_slots | 18 | 0 | 69 | 0.000 | 0 | 38 | 0.000 |
+| cafe_slots | 19 | 12 | 64 | 0.188 | 0 | 48 | 0.000 |
+| room_coffee_cart_slots | 10 | 0 | 0 | - | 0 | 0 | - |
+| room_coffee_cart_slots | 11 | 8 | 74 | 0.108 | 0 | 74 | 0.000 |
+| room_coffee_cart_slots | 12 | 7 | 75 | 0.093 | 1 | 73 | 0.014 |
+| room_coffee_cart_slots | 13 | 2 | 74 | 0.027 | 0 | 71 | 0.000 |
+| room_coffee_cart_slots | 14 | 3 | 72 | 0.042 | 0 | 71 | 0.000 |
+| room_coffee_cart_slots | 15 | 4 | 72 | 0.056 | 0 | 68 | 0.000 |
+| room_coffee_cart_slots | 16 | 0 | 73 | 0.000 | 0 | 71 | 0.000 |
+| room_coffee_cart_slots | 17 | 3 | 73 | 0.041 | 2 | 73 | 0.027 |
+| room_coffee_cart_slots | 18 | 0 | 70 | 0.000 | 0 | 70 | 0.000 |
+| room_coffee_cart_slots | 19 | 0 | 75 | 0.000 | 0 | 75 | 0.000 |
+| sweet_spot_line2_moving | 10 | 9 | 15 | 0.600 | 0 | 0 | - |
+| sweet_spot_line2_moving | 11 | 0 | 75 | 0.000 | 0 | 75 | 0.000 |
+| sweet_spot_line2_moving | 12 | 33 | 75 | 0.440 | 33 | 75 | 0.440 |
+| sweet_spot_line2_moving | 13 | 33 | 75 | 0.440 | 31 | 75 | 0.413 |
+| sweet_spot_line2_moving | 14 | 31 | 75 | 0.413 | 24 | 75 | 0.320 |
+| sweet_spot_line2_moving | 15 | 38 | 75 | 0.507 | 35 | 75 | 0.467 |
+| sweet_spot_line2_moving | 16 | 0 | 74 | 0.000 | 0 | 73 | 0.000 |
+| sweet_spot_line2_moving | 17 | 0 | 75 | 0.000 | 0 | 75 | 0.000 |
+| sweet_spot_line2_moving | 18 | 35 | 74 | 0.473 | 1 | 26 | 0.038 |
+| sweet_spot_line2_moving | 19 | 0 | 0 | - | 0 | 0 | - |
+
+| Scenario | Cells | Cut-ins CT2 / CT | Exposure CT2 / CT | Pooled rate CT2 / CT |
+|---|---|---|---|---|
+| cafe_line2_moving | 10 | 156 / 155 | 668 / 665 | 0.234 / 0.233 |
+| cafe_line6_moving | 10 | 0 / 0 | 713 / 714 | 0.000 / 0.000 |
+| cafe_slots | 10 | 119 / 66 | 661 / 539 | 0.180 / 0.122 |
+| room_coffee_cart_slots | 10 | 27 / 3 | 658 / 646 | 0.041 / 0.005 |
+| sweet_spot_line2_moving | 10 | 179 / 124 | 613 / 549 | 0.292 / 0.226 |
+
+## (a) Fresh headline cells: dsv41 (soclaas_dsv41)
+
+Cells: ['cafe_slots', 'room_coffee_cart_slots', 'cafe_line2_moving', 'cafe_line6_moving', 'sweet_spot_line2_moving'] x seeds 10-14 = 25 planned
+Missing episodes: none
+
+**CT2 vs R1**, 25 paired cells (2275 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 226 | 1428 | 0.628 | 0.158 |
+| R1 | 504 | 1254 | 0.551 | 0.402 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 9 / 10 / 6, sign p 1.000
+- Rate per cell, over the 17 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 6 / 10 / 1, sign p 0.454; exact ties 6 / 10 / 1, sign p 0.454; mean rate CT2 0.174, R1 0.403, mean difference -0.229
+- Cells dropped from the rate test for zero exposure: 8 (CT2 only 0, R1 only 7, both 1)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | R1 cut | R1 exposure | R1 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 30 | 68 | 0.441 | 0 | 77 | 0.000 |
+| cafe_line2_moving | 11 | 31 | 60 | 0.517 | 0 | 79 | 0.000 |
+| cafe_line2_moving | 12 | 1 | 45 | 0.022 | 12 | 72 | 0.167 |
+| cafe_line2_moving | 13 | 11 | 56 | 0.196 | 0 | 77 | 0.000 |
+| cafe_line2_moving | 14 | 3 | 31 | 0.097 | 10 | 75 | 0.133 |
+| cafe_line6_moving | 10 | 0 | 64 | 0.000 | 78 | 78 | 1.000 |
+| cafe_line6_moving | 11 | 0 | 73 | 0.000 | 18 | 78 | 0.231 |
+| cafe_line6_moving | 12 | 0 | 58 | 0.000 | 49 | 53 | 0.925 |
+| cafe_line6_moving | 13 | 0 | 60 | 0.000 | 6 | 67 | 0.090 |
+| cafe_line6_moving | 14 | 0 | 68 | 0.000 | 76 | 76 | 1.000 |
+| cafe_slots | 10 | 1 | 48 | 0.021 | 0 | 0 | - |
+| cafe_slots | 11 | 0 | 60 | 0.000 | 0 | 0 | - |
+| cafe_slots | 12 | 0 | 72 | 0.000 | 0 | 0 | - |
+| cafe_slots | 13 | 0 | 66 | 0.000 | 0 | 0 | - |
+| cafe_slots | 14 | 0 | 57 | 0.000 | 0 | 0 | - |
+| room_coffee_cart_slots | 10 | 81 | 81 | 1.000 | 81 | 81 | 1.000 |
+| room_coffee_cart_slots | 11 | 0 | 72 | 0.000 | 46 | 74 | 0.622 |
+| room_coffee_cart_slots | 12 | 0 | 68 | 0.000 | 54 | 80 | 0.675 |
+| room_coffee_cart_slots | 13 | 3 | 67 | 0.045 | 0 | 75 | 0.000 |
+| room_coffee_cart_slots | 14 | 0 | 67 | 0.000 | 73 | 73 | 1.000 |
+| sweet_spot_line2_moving | 10 | 16 | 65 | 0.246 | 0 | 0 | - |
+| sweet_spot_line2_moving | 11 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_moving | 12 | 13 | 28 | 0.464 | 1 | 70 | 0.014 |
+| sweet_spot_line2_moving | 13 | 30 | 60 | 0.500 | 0 | 0 | - |
+| sweet_spot_line2_moving | 14 | 6 | 34 | 0.176 | 0 | 69 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT2 / R1 | Exposure CT2 / R1 | Pooled rate CT2 / R1 |
+|---|---|---|---|---|
+| cafe_line2_moving | 5 | 76 / 22 | 260 / 380 | 0.292 / 0.058 |
+| cafe_line6_moving | 5 | 0 / 227 | 323 / 352 | 0.000 / 0.645 |
+| cafe_slots | 5 | 1 / 0 | 303 / 0 | 0.003 / - |
+| room_coffee_cart_slots | 5 | 84 / 254 | 355 / 383 | 0.237 / 0.663 |
+| sweet_spot_line2_moving | 5 | 65 / 1 | 187 / 139 | 0.348 / 0.007 |
+
+**CT2 vs CT**, 25 paired cells (2275 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 226 | 1428 | 0.628 | 0.158 |
+| CT | 242 | 1215 | 0.534 | 0.199 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 5 / 8 / 12, sign p 0.581
+- Rate per cell, over the 24 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 4 / 11 / 9, sign p 0.118; exact ties 5 / 11 / 8, sign p 0.210; mean rate CT2 0.155, CT 0.197, mean difference -0.042
+- Cells dropped from the rate test for zero exposure: 1 (CT2 only 0, CT only 0, both 1)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | CT cut | CT exposure | CT rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 30 | 68 | 0.441 | 37 | 68 | 0.544 |
+| cafe_line2_moving | 11 | 31 | 60 | 0.517 | 31 | 57 | 0.544 |
+| cafe_line2_moving | 12 | 1 | 45 | 0.022 | 0 | 4 | 0.000 |
+| cafe_line2_moving | 13 | 11 | 56 | 0.196 | 8 | 21 | 0.381 |
+| cafe_line2_moving | 14 | 3 | 31 | 0.097 | 3 | 16 | 0.188 |
+| cafe_line6_moving | 10 | 0 | 64 | 0.000 | 0 | 64 | 0.000 |
+| cafe_line6_moving | 11 | 0 | 73 | 0.000 | 0 | 73 | 0.000 |
+| cafe_line6_moving | 12 | 0 | 58 | 0.000 | 8 | 40 | 0.200 |
+| cafe_line6_moving | 13 | 0 | 60 | 0.000 | 1 | 61 | 0.016 |
+| cafe_line6_moving | 14 | 0 | 68 | 0.000 | 0 | 67 | 0.000 |
+| cafe_slots | 10 | 1 | 48 | 0.021 | 20 | 61 | 0.328 |
+| cafe_slots | 11 | 0 | 60 | 0.000 | 4 | 12 | 0.333 |
+| cafe_slots | 12 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| cafe_slots | 13 | 0 | 66 | 0.000 | 1 | 51 | 0.020 |
+| cafe_slots | 14 | 0 | 57 | 0.000 | 1 | 42 | 0.024 |
+| room_coffee_cart_slots | 10 | 81 | 81 | 1.000 | 81 | 81 | 1.000 |
+| room_coffee_cart_slots | 11 | 0 | 72 | 0.000 | 0 | 72 | 0.000 |
+| room_coffee_cart_slots | 12 | 0 | 68 | 0.000 | 0 | 68 | 0.000 |
+| room_coffee_cart_slots | 13 | 3 | 67 | 0.045 | 1 | 66 | 0.015 |
+| room_coffee_cart_slots | 14 | 0 | 67 | 0.000 | 0 | 67 | 0.000 |
+| sweet_spot_line2_moving | 10 | 16 | 65 | 0.246 | 0 | 10 | 0.000 |
+| sweet_spot_line2_moving | 11 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_moving | 12 | 13 | 28 | 0.464 | 16 | 25 | 0.640 |
+| sweet_spot_line2_moving | 13 | 30 | 60 | 0.500 | 30 | 61 | 0.492 |
+| sweet_spot_line2_moving | 14 | 6 | 34 | 0.176 | 0 | 56 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT2 / CT | Exposure CT2 / CT | Pooled rate CT2 / CT |
+|---|---|---|---|---|
+| cafe_line2_moving | 5 | 76 / 79 | 260 / 166 | 0.292 / 0.476 |
+| cafe_line6_moving | 5 | 0 / 9 | 323 / 305 | 0.000 / 0.030 |
+| cafe_slots | 5 | 1 / 26 | 303 / 238 | 0.003 / 0.109 |
+| room_coffee_cart_slots | 5 | 84 / 82 | 355 / 354 | 0.237 / 0.232 |
+| sweet_spot_line2_moving | 5 | 65 / 46 | 187 / 152 | 0.348 / 0.303 |
+
+## (a) Fresh headline cells: claude_haiku55 (claude_haiku55)
+
+Cells: ['cafe_slots', 'room_coffee_cart_slots', 'cafe_line2_moving', 'cafe_line6_moving', 'sweet_spot_line2_moving'] x seeds 10-14 = 25 planned
+Missing episodes: none
+
+**CT2 vs R1**, 25 paired cells (2275 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 335 | 1700 | 0.747 | 0.197 |
+| R1 | 916 | 1360 | 0.598 | 0.674 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 3 / 12 / 10, sign p 0.035
+- Rate per cell, over the 17 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 2 / 12 / 3, sign p 0.013; exact ties 2 / 12 / 3, sign p 0.013; mean rate CT2 0.295, R1 0.674, mean difference -0.379
+- Cells dropped from the rate test for zero exposure: 8 (CT2 only 0, R1 only 8, both 0)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | R1 cut | R1 exposure | R1 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 0 | 77 | 0.000 | 47 | 80 | 0.588 |
+| cafe_line2_moving | 11 | 26 | 77 | 0.338 | 33 | 80 | 0.412 |
+| cafe_line2_moving | 12 | 36 | 77 | 0.468 | 0 | 81 | 0.000 |
+| cafe_line2_moving | 13 | 9 | 30 | 0.300 | 0 | 80 | 0.000 |
+| cafe_line2_moving | 14 | 0 | 77 | 0.000 | 36 | 80 | 0.450 |
+| cafe_line6_moving | 10 | 0 | 75 | 0.000 | 81 | 81 | 1.000 |
+| cafe_line6_moving | 11 | 0 | 75 | 0.000 | 81 | 81 | 1.000 |
+| cafe_line6_moving | 12 | 4 | 51 | 0.078 | 81 | 81 | 1.000 |
+| cafe_line6_moving | 13 | 0 | 76 | 0.000 | 81 | 81 | 1.000 |
+| cafe_line6_moving | 14 | 0 | 72 | 0.000 | 79 | 79 | 1.000 |
+| cafe_slots | 10 | 0 | 73 | 0.000 | 0 | 0 | - |
+| cafe_slots | 11 | 0 | 71 | 0.000 | 0 | 0 | - |
+| cafe_slots | 12 | 18 | 68 | 0.265 | 0 | 0 | - |
+| cafe_slots | 13 | 0 | 70 | 0.000 | 0 | 0 | - |
+| cafe_slots | 14 | 0 | 64 | 0.000 | 0 | 0 | - |
+| room_coffee_cart_slots | 10 | 82 | 82 | 1.000 | 82 | 82 | 1.000 |
+| room_coffee_cart_slots | 11 | 51 | 56 | 0.911 | 77 | 77 | 1.000 |
+| room_coffee_cart_slots | 12 | 60 | 75 | 0.800 | 80 | 80 | 1.000 |
+| room_coffee_cart_slots | 13 | 4 | 20 | 0.200 | 79 | 79 | 1.000 |
+| room_coffee_cart_slots | 14 | 45 | 49 | 0.918 | 79 | 79 | 1.000 |
+| sweet_spot_line2_moving | 10 | 0 | 77 | 0.000 | 0 | 79 | 0.000 |
+| sweet_spot_line2_moving | 11 | 0 | 77 | 0.000 | 0 | 0 | - |
+| sweet_spot_line2_moving | 12 | 0 | 77 | 0.000 | 0 | 0 | - |
+| sweet_spot_line2_moving | 13 | 0 | 77 | 0.000 | 0 | 80 | 0.000 |
+| sweet_spot_line2_moving | 14 | 0 | 77 | 0.000 | 0 | 0 | - |
+
+| Scenario | Cells | Cut-ins CT2 / R1 | Exposure CT2 / R1 | Pooled rate CT2 / R1 |
+|---|---|---|---|---|
+| cafe_line2_moving | 5 | 71 / 116 | 338 / 401 | 0.210 / 0.289 |
+| cafe_line6_moving | 5 | 4 / 403 | 349 / 403 | 0.011 / 1.000 |
+| cafe_slots | 5 | 18 / 0 | 346 / 0 | 0.052 / - |
+| room_coffee_cart_slots | 5 | 242 / 397 | 282 / 397 | 0.858 / 1.000 |
+| sweet_spot_line2_moving | 5 | 0 / 0 | 385 / 159 | 0.000 / 0.000 |
+
+**CT2 vs CT**, 25 paired cells (2275 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 335 | 1700 | 0.747 | 0.197 |
+| CT | 397 | 1639 | 0.720 | 0.242 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 4 / 10 / 11, sign p 0.180
+- Rate per cell, over the 25 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 5 / 10 / 10, sign p 0.302; exact ties 5 / 10 / 10, sign p 0.302; mean rate CT2 0.211, CT 0.271, mean difference -0.060
+- Cells dropped from the rate test for zero exposure: 0 (CT2 only 0, CT only 0, both 0)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | CT cut | CT exposure | CT rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+| cafe_line2_moving | 11 | 26 | 77 | 0.338 | 0 | 77 | 0.000 |
+| cafe_line2_moving | 12 | 36 | 77 | 0.468 | 0 | 77 | 0.000 |
+| cafe_line2_moving | 13 | 9 | 30 | 0.300 | 33 | 72 | 0.458 |
+| cafe_line2_moving | 14 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+| cafe_line6_moving | 10 | 0 | 75 | 0.000 | 9 | 36 | 0.250 |
+| cafe_line6_moving | 11 | 0 | 75 | 0.000 | 8 | 32 | 0.250 |
+| cafe_line6_moving | 12 | 4 | 51 | 0.078 | 5 | 46 | 0.109 |
+| cafe_line6_moving | 13 | 0 | 76 | 0.000 | 0 | 76 | 0.000 |
+| cafe_line6_moving | 14 | 0 | 72 | 0.000 | 22 | 25 | 0.880 |
+| cafe_slots | 10 | 0 | 73 | 0.000 | 1 | 68 | 0.015 |
+| cafe_slots | 11 | 0 | 71 | 0.000 | 1 | 71 | 0.014 |
+| cafe_slots | 12 | 18 | 68 | 0.265 | 0 | 49 | 0.000 |
+| cafe_slots | 13 | 0 | 70 | 0.000 | 0 | 75 | 0.000 |
+| cafe_slots | 14 | 0 | 64 | 0.000 | 11 | 66 | 0.167 |
+| room_coffee_cart_slots | 10 | 82 | 82 | 1.000 | 82 | 82 | 1.000 |
+| room_coffee_cart_slots | 11 | 51 | 56 | 0.911 | 49 | 55 | 0.891 |
+| room_coffee_cart_slots | 12 | 60 | 75 | 0.800 | 60 | 65 | 0.923 |
+| room_coffee_cart_slots | 13 | 4 | 20 | 0.200 | 58 | 63 | 0.921 |
+| room_coffee_cart_slots | 14 | 45 | 49 | 0.918 | 58 | 65 | 0.892 |
+| sweet_spot_line2_moving | 10 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+| sweet_spot_line2_moving | 11 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+| sweet_spot_line2_moving | 12 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+| sweet_spot_line2_moving | 13 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+| sweet_spot_line2_moving | 14 | 0 | 77 | 0.000 | 0 | 77 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT2 / CT | Exposure CT2 / CT | Pooled rate CT2 / CT |
+|---|---|---|---|---|
+| cafe_line2_moving | 5 | 71 / 33 | 338 / 380 | 0.210 / 0.087 |
+| cafe_line6_moving | 5 | 4 / 44 | 349 / 215 | 0.011 / 0.205 |
+| cafe_slots | 5 | 18 / 13 | 346 / 329 | 0.052 / 0.040 |
+| room_coffee_cart_slots | 5 | 242 / 307 | 282 / 330 | 0.858 / 0.930 |
+| sweet_spot_line2_moving | 5 | 0 / 0 | 385 / 385 | 0.000 / 0.000 |
+
+## (a) Fresh headline cells: gemini_fast (gemini_fast)
+
+Cells: ['cafe_slots', 'room_coffee_cart_slots', 'cafe_line2_moving', 'cafe_line6_moving', 'sweet_spot_line2_moving'] x seeds 10-14 = 25 planned
+Missing episodes: none
+
+**CT2 vs R1**, 25 paired cells (2275 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 362 | 1644 | 0.723 | 0.220 |
+| R1 | 3 | 1137 | 0.500 | 0.003 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 15 / 1 / 9, sign p 0.001
+- Rate per cell, over the 17 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 11 / 1 / 5, sign p 0.006; exact ties 11 / 1 / 5, sign p 0.006; mean rate CT2 0.285, R1 0.035, mean difference +0.250
+- Cells dropped from the rate test for zero exposure: 8 (CT2 only 0, R1 only 8, both 0)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | R1 cut | R1 exposure | R1 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 31 | 70 | 0.443 | 0 | 76 | 0.000 |
+| cafe_line2_moving | 11 | 41 | 67 | 0.612 | 0 | 72 | 0.000 |
+| cafe_line2_moving | 12 | 32 | 69 | 0.464 | 0 | 75 | 0.000 |
+| cafe_line2_moving | 13 | 27 | 70 | 0.386 | 0 | 72 | 0.000 |
+| cafe_line2_moving | 14 | 18 | 69 | 0.261 | 0 | 71 | 0.000 |
+| cafe_line6_moving | 10 | 57 | 57 | 1.000 | 0 | 70 | 0.000 |
+| cafe_line6_moving | 11 | 26 | 57 | 0.456 | 0 | 72 | 0.000 |
+| cafe_line6_moving | 12 | 24 | 54 | 0.444 | 0 | 69 | 0.000 |
+| cafe_line6_moving | 13 | 0 | 58 | 0.000 | 0 | 54 | 0.000 |
+| cafe_line6_moving | 14 | 11 | 58 | 0.190 | 0 | 65 | 0.000 |
+| cafe_slots | 10 | 3 | 63 | 0.048 | 0 | 0 | - |
+| cafe_slots | 11 | 2 | 66 | 0.030 | 0 | 0 | - |
+| cafe_slots | 12 | 6 | 65 | 0.092 | 0 | 0 | - |
+| cafe_slots | 13 | 0 | 65 | 0.000 | 0 | 0 | - |
+| cafe_slots | 14 | 0 | 68 | 0.000 | 0 | 0 | - |
+| room_coffee_cart_slots | 10 | 31 | 63 | 0.492 | 0 | 69 | 0.000 |
+| room_coffee_cart_slots | 11 | 0 | 68 | 0.000 | 0 | 74 | 0.000 |
+| room_coffee_cart_slots | 12 | 0 | 69 | 0.000 | 0 | 74 | 0.000 |
+| room_coffee_cart_slots | 13 | 0 | 69 | 0.000 | 0 | 72 | 0.000 |
+| room_coffee_cart_slots | 14 | 7 | 71 | 0.099 | 0 | 74 | 0.000 |
+| sweet_spot_line2_moving | 10 | 0 | 71 | 0.000 | 0 | 0 | - |
+| sweet_spot_line2_moving | 11 | 0 | 68 | 0.000 | 0 | 73 | 0.000 |
+| sweet_spot_line2_moving | 12 | 0 | 69 | 0.000 | 3 | 5 | 0.600 |
+| sweet_spot_line2_moving | 13 | 0 | 70 | 0.000 | 0 | 0 | - |
+| sweet_spot_line2_moving | 14 | 46 | 70 | 0.657 | 0 | 0 | - |
+
+| Scenario | Cells | Cut-ins CT2 / R1 | Exposure CT2 / R1 | Pooled rate CT2 / R1 |
+|---|---|---|---|---|
+| cafe_line2_moving | 5 | 149 / 0 | 345 / 366 | 0.432 / 0.000 |
+| cafe_line6_moving | 5 | 118 / 0 | 284 / 330 | 0.415 / 0.000 |
+| cafe_slots | 5 | 11 / 0 | 327 / 0 | 0.034 / - |
+| room_coffee_cart_slots | 5 | 38 / 0 | 340 / 363 | 0.112 / 0.000 |
+| sweet_spot_line2_moving | 5 | 46 / 3 | 348 / 78 | 0.132 / 0.038 |
+
+**CT2 vs CT**, 25 paired cells (2275 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 362 | 1644 | 0.723 | 0.220 |
+| CT | 317 | 1549 | 0.681 | 0.205 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 9 / 9 / 7, sign p 1.000
+- Rate per cell, over the 25 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 9 / 9 / 7, sign p 1.000; exact ties 10 / 9 / 6, sign p 1.000; mean rate CT2 0.227, CT 0.214, mean difference +0.012
+- Cells dropped from the rate test for zero exposure: 0 (CT2 only 0, CT only 0, both 0)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | CT cut | CT exposure | CT rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 31 | 70 | 0.443 | 36 | 69 | 0.522 |
+| cafe_line2_moving | 11 | 41 | 67 | 0.612 | 41 | 68 | 0.603 |
+| cafe_line2_moving | 12 | 32 | 69 | 0.464 | 0 | 69 | 0.000 |
+| cafe_line2_moving | 13 | 27 | 70 | 0.386 | 0 | 70 | 0.000 |
+| cafe_line2_moving | 14 | 18 | 69 | 0.261 | 36 | 69 | 0.522 |
+| cafe_line6_moving | 10 | 57 | 57 | 1.000 | 44 | 58 | 0.759 |
+| cafe_line6_moving | 11 | 26 | 57 | 0.456 | 24 | 58 | 0.414 |
+| cafe_line6_moving | 12 | 24 | 54 | 0.444 | 27 | 54 | 0.500 |
+| cafe_line6_moving | 13 | 0 | 58 | 0.000 | 0 | 58 | 0.000 |
+| cafe_line6_moving | 14 | 11 | 58 | 0.190 | 14 | 58 | 0.241 |
+| cafe_slots | 10 | 3 | 63 | 0.048 | 7 | 48 | 0.146 |
+| cafe_slots | 11 | 2 | 66 | 0.030 | 1 | 65 | 0.015 |
+| cafe_slots | 12 | 6 | 65 | 0.092 | 0 | 64 | 0.000 |
+| cafe_slots | 13 | 0 | 65 | 0.000 | 2 | 51 | 0.039 |
+| cafe_slots | 14 | 0 | 68 | 0.000 | 13 | 68 | 0.191 |
+| room_coffee_cart_slots | 10 | 31 | 63 | 0.492 | 8 | 48 | 0.167 |
+| room_coffee_cart_slots | 11 | 0 | 68 | 0.000 | 0 | 68 | 0.000 |
+| room_coffee_cart_slots | 12 | 0 | 69 | 0.000 | 0 | 69 | 0.000 |
+| room_coffee_cart_slots | 13 | 0 | 69 | 0.000 | 0 | 68 | 0.000 |
+| room_coffee_cart_slots | 14 | 7 | 71 | 0.099 | 0 | 71 | 0.000 |
+| sweet_spot_line2_moving | 10 | 0 | 71 | 0.000 | 0 | 71 | 0.000 |
+| sweet_spot_line2_moving | 11 | 0 | 68 | 0.000 | 27 | 59 | 0.458 |
+| sweet_spot_line2_moving | 12 | 0 | 69 | 0.000 | 13 | 54 | 0.241 |
+| sweet_spot_line2_moving | 13 | 0 | 70 | 0.000 | 0 | 70 | 0.000 |
+| sweet_spot_line2_moving | 14 | 46 | 70 | 0.657 | 24 | 44 | 0.545 |
+
+| Scenario | Cells | Cut-ins CT2 / CT | Exposure CT2 / CT | Pooled rate CT2 / CT |
+|---|---|---|---|---|
+| cafe_line2_moving | 5 | 149 / 113 | 345 / 345 | 0.432 / 0.328 |
+| cafe_line6_moving | 5 | 118 / 109 | 284 / 286 | 0.415 / 0.381 |
+| cafe_slots | 5 | 11 / 23 | 327 / 296 | 0.034 / 0.078 |
+| room_coffee_cart_slots | 5 | 38 / 8 | 340 / 324 | 0.112 / 0.025 |
+| sweet_spot_line2_moving | 5 | 46 / 64 | 348 / 298 | 0.132 / 0.215 |
+
+## (a) Fresh headline cells: x3 (soclaas_qwen38_next_low)
+
+Cells: ['cafe_slots', 'room_coffee_cart_slots', 'cafe_line2_moving', 'cafe_line6_moving', 'sweet_spot_line2_moving'] x seeds 10-12 = 15 planned
+Missing episodes: CT 15 of 15
+
+**CT2 vs R1**, 15 paired cells (1365 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT2 | 56 | 362 | 0.265 | 0.155 |
+| R1 | 33 | 694 | 0.508 | 0.048 |
+
+- Raw cut-in counts per cell: CT2 more / fewer / equal = 4 / 4 / 7, sign p 1.000
+- Rate per cell, over the 12 cells where both arms have exposure > 0: CT2 higher / lower / tie (|d| < 0.01) = 5 / 2 / 5, sign p 0.453; exact ties 5 / 2 / 5, sign p 0.453; mean rate CT2 0.122, R1 0.045, mean difference +0.077
+- Cells dropped from the rate test for zero exposure: 3 (CT2 only 0, R1 only 1, both 2)
+
+| Scenario | Seed | CT2 cut | CT2 exposure | CT2 rate | R1 cut | R1 exposure | R1 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_moving | 10 | 3 | 44 | 0.068 | 0 | 50 | 0.000 |
+| cafe_line2_moving | 11 | 21 | 53 | 0.396 | 20 | 64 | 0.312 |
+| cafe_line2_moving | 12 | 0 | 8 | 0.000 | 0 | 62 | 0.000 |
+| cafe_line6_moving | 10 | 0 | 36 | 0.000 | 0 | 52 | 0.000 |
+| cafe_line6_moving | 11 | 4 | 25 | 0.160 | 9 | 60 | 0.150 |
+| cafe_line6_moving | 12 | 0 | 0 | - | 0 | 0 | - |
+| cafe_slots | 10 | 22 | 29 | 0.759 | 0 | 0 | - |
+| cafe_slots | 11 | 0 | 0 | - | 0 | 0 | - |
+| cafe_slots | 12 | 1 | 8 | 0.125 | 2 | 44 | 0.045 |
+| room_coffee_cart_slots | 10 | 0 | 37 | 0.000 | 1 | 50 | 0.020 |
+| room_coffee_cart_slots | 11 | 0 | 47 | 0.000 | 0 | 58 | 0.000 |
+| room_coffee_cart_slots | 12 | 0 | 41 | 0.000 | 0 | 66 | 0.000 |
+| sweet_spot_line2_moving | 10 | 0 | 16 | 0.000 | 0 | 67 | 0.000 |
+| sweet_spot_line2_moving | 11 | 0 | 11 | 0.000 | 1 | 60 | 0.017 |
+| sweet_spot_line2_moving | 12 | 5 | 7 | 0.714 | 0 | 61 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT2 / R1 | Exposure CT2 / R1 | Pooled rate CT2 / R1 |
+|---|---|---|---|---|
+| cafe_line2_moving | 3 | 24 / 20 | 105 / 176 | 0.229 / 0.114 |
+| cafe_line6_moving | 3 | 4 / 9 | 61 / 112 | 0.066 / 0.080 |
+| cafe_slots | 3 | 23 / 2 | 37 / 44 | 0.622 / 0.045 |
+| room_coffee_cart_slots | 3 | 0 / 1 | 125 / 174 | 0.000 / 0.006 |
+| sweet_spot_line2_moving | 3 | 5 / 1 | 34 / 188 | 0.147 / 0.005 |
+
+**CT2 vs CT**: no paired cells
+
+## (b) Bystander confirmation (BYSTANDERS_CONFIRM_FROZEN.md): dsv41 (soclaas_dsv41)
+
+Cells: ['cafe_line2_bystanders', 'sweet_spot_line2_bystanders'] x seeds 15-44 = 60 planned; the frozen confirmation's 60 cells
+Missing episodes: none
+
+**CT3 vs CT2**, 60 paired cells (5460 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT3 | 655 | 2125 | 0.389 | 0.308 |
+| CT2 | 502 | 1961 | 0.359 | 0.256 |
+
+- Raw cut-in counts per cell: CT3 more / fewer / equal = 18 / 13 / 29, sign p 0.473
+- Rate per cell, over the 49 cells where both arms have exposure > 0: CT3 higher / lower / tie (|d| < 0.01) = 19 / 13 / 17, sign p 0.377; exact ties 20 / 13 / 16, sign p 0.296; mean rate CT3 0.255, CT2 0.188, mean difference +0.067
+- Cells dropped from the rate test for zero exposure: 11 (CT3 only 1, CT2 only 1, both 9)
+
+| Scenario | Seed | CT3 cut | CT3 exposure | CT3 rate | CT2 cut | CT2 exposure | CT2 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_bystanders | 15 | 12 | 25 | 0.480 | 6 | 22 | 0.273 |
+| cafe_line2_bystanders | 16 | 32 | 69 | 0.464 | 6 | 66 | 0.091 |
+| cafe_line2_bystanders | 17 | 0 | 4 | 0.000 | 0 | 6 | 0.000 |
+| cafe_line2_bystanders | 18 | 30 | 68 | 0.441 | 0 | 6 | 0.000 |
+| cafe_line2_bystanders | 19 | 14 | 64 | 0.219 | 22 | 64 | 0.344 |
+| cafe_line2_bystanders | 20 | 32 | 77 | 0.416 | 1 | 14 | 0.071 |
+| cafe_line2_bystanders | 21 | 18 | 68 | 0.265 | 24 | 76 | 0.316 |
+| cafe_line2_bystanders | 22 | 14 | 31 | 0.452 | 14 | 32 | 0.438 |
+| cafe_line2_bystanders | 23 | 0 | 71 | 0.000 | 0 | 23 | 0.000 |
+| cafe_line2_bystanders | 24 | 0 | 23 | 0.000 | 0 | 24 | 0.000 |
+| cafe_line2_bystanders | 25 | 6 | 39 | 0.154 | 1 | 21 | 0.048 |
+| cafe_line2_bystanders | 26 | 0 | 0 | - | 25 | 56 | 0.446 |
+| cafe_line2_bystanders | 27 | 0 | 0 | - | 0 | 0 | - |
+| cafe_line2_bystanders | 28 | 8 | 24 | 0.333 | 21 | 30 | 0.700 |
+| cafe_line2_bystanders | 29 | 10 | 24 | 0.417 | 25 | 40 | 0.625 |
+| cafe_line2_bystanders | 30 | 0 | 4 | 0.000 | 0 | 5 | 0.000 |
+| cafe_line2_bystanders | 31 | 30 | 70 | 0.429 | 35 | 70 | 0.500 |
+| cafe_line2_bystanders | 32 | 19 | 50 | 0.380 | 20 | 51 | 0.392 |
+| cafe_line2_bystanders | 33 | 4 | 33 | 0.121 | 0 | 8 | 0.000 |
+| cafe_line2_bystanders | 34 | 10 | 11 | 0.909 | 5 | 65 | 0.077 |
+| cafe_line2_bystanders | 35 | 45 | 76 | 0.592 | 10 | 47 | 0.213 |
+| cafe_line2_bystanders | 36 | 46 | 74 | 0.622 | 46 | 74 | 0.622 |
+| cafe_line2_bystanders | 37 | 0 | 0 | - | 0 | 0 | - |
+| cafe_line2_bystanders | 38 | 7 | 68 | 0.103 | 7 | 68 | 0.103 |
+| cafe_line2_bystanders | 39 | 22 | 46 | 0.478 | 3 | 46 | 0.065 |
+| cafe_line2_bystanders | 40 | 29 | 68 | 0.426 | 11 | 68 | 0.162 |
+| cafe_line2_bystanders | 41 | 25 | 48 | 0.521 | 5 | 10 | 0.500 |
+| cafe_line2_bystanders | 42 | 1 | 33 | 0.030 | 1 | 40 | 0.025 |
+| cafe_line2_bystanders | 43 | 0 | 21 | 0.000 | 0 | 0 | - |
+| cafe_line2_bystanders | 44 | 0 | 12 | 0.000 | 0 | 15 | 0.000 |
+| sweet_spot_line2_bystanders | 15 | 28 | 75 | 0.373 | 0 | 63 | 0.000 |
+| sweet_spot_line2_bystanders | 16 | 2 | 22 | 0.091 | 0 | 52 | 0.000 |
+| sweet_spot_line2_bystanders | 17 | 0 | 3 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 18 | 5 | 58 | 0.086 | 0 | 64 | 0.000 |
+| sweet_spot_line2_bystanders | 19 | 0 | 38 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 20 | 1 | 72 | 0.014 | 4 | 69 | 0.058 |
+| sweet_spot_line2_bystanders | 21 | 0 | 25 | 0.000 | 1 | 17 | 0.059 |
+| sweet_spot_line2_bystanders | 22 | 0 | 10 | 0.000 | 0 | 12 | 0.000 |
+| sweet_spot_line2_bystanders | 23 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 24 | 0 | 12 | 0.000 | 0 | 13 | 0.000 |
+| sweet_spot_line2_bystanders | 25 | 4 | 45 | 0.089 | 0 | 45 | 0.000 |
+| sweet_spot_line2_bystanders | 26 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 27 | 0 | 23 | 0.000 | 0 | 24 | 0.000 |
+| sweet_spot_line2_bystanders | 28 | 0 | 3 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 29 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 30 | 56 | 71 | 0.789 | 8 | 70 | 0.114 |
+| sweet_spot_line2_bystanders | 31 | 0 | 67 | 0.000 | 50 | 67 | 0.746 |
+| sweet_spot_line2_bystanders | 32 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 33 | 0 | 73 | 0.000 | 0 | 73 | 0.000 |
+| sweet_spot_line2_bystanders | 34 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 35 | 41 | 56 | 0.732 | 44 | 56 | 0.786 |
+| sweet_spot_line2_bystanders | 36 | 4 | 14 | 0.286 | 37 | 68 | 0.544 |
+| sweet_spot_line2_bystanders | 37 | 35 | 59 | 0.593 | 44 | 59 | 0.746 |
+| sweet_spot_line2_bystanders | 38 | 32 | 73 | 0.438 | 0 | 26 | 0.000 |
+| sweet_spot_line2_bystanders | 39 | 26 | 44 | 0.591 | 26 | 42 | 0.619 |
+| sweet_spot_line2_bystanders | 40 | 0 | 35 | 0.000 | 0 | 44 | 0.000 |
+| sweet_spot_line2_bystanders | 41 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 42 | 7 | 39 | 0.179 | 0 | 25 | 0.000 |
+| sweet_spot_line2_bystanders | 43 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 44 | 0 | 7 | 0.000 | 0 | 16 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT3 / CT2 | Exposure CT3 / CT2 | Pooled rate CT3 / CT2 |
+|---|---|---|---|---|
+| cafe_line2_bystanders | 30 | 414 / 288 | 1201 / 1047 | 0.345 / 0.275 |
+| sweet_spot_line2_bystanders | 30 | 241 / 214 | 924 / 914 | 0.261 / 0.234 |
+
+## (b') Bystanders, DeepSeek pilot + confirmation (SUMMARY section 7's cell set): dsv41 (soclaas_dsv41)
+
+Cells: ['cafe_line2_bystanders', 'room_coffee_cart_bystanders', 'sweet_spot_line2_bystanders'] x seeds 10-14 + ['cafe_line2_bystanders', 'sweet_spot_line2_bystanders'] x seeds 15-44 = 75 planned; pilot: 3 scenes x seeds 10-14 (BYSTANDERS_FROZEN.md); confirmation: cafe + sweet_spot x seeds 15-44
+Missing episodes: none
+
+**CT3 vs CT2**, 75 paired cells (6825 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT3 | 1036 | 2819 | 0.413 | 0.368 |
+| CT2 | 881 | 2693 | 0.395 | 0.327 |
+
+- Raw cut-in counts per cell: CT3 more / fewer / equal = 21 / 14 / 40, sign p 0.311
+- Rate per cell, over the 63 cells where both arms have exposure > 0: CT3 higher / lower / tie (|d| < 0.01) = 23 / 13 / 27, sign p 0.132; exact ties 24 / 14 / 25, sign p 0.143; mean rate CT3 0.291, CT2 0.238, mean difference +0.053
+- Cells dropped from the rate test for zero exposure: 12 (CT3 only 1, CT2 only 1, both 10)
+
+| Scenario | Seed | CT3 cut | CT3 exposure | CT3 rate | CT2 cut | CT2 exposure | CT2 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_bystanders | 10 | 1 | 20 | 0.050 | 1 | 20 | 0.050 |
+| cafe_line2_bystanders | 11 | 5 | 34 | 0.147 | 6 | 40 | 0.150 |
+| cafe_line2_bystanders | 12 | 4 | 24 | 0.167 | 4 | 24 | 0.167 |
+| cafe_line2_bystanders | 13 | 10 | 26 | 0.385 | 9 | 25 | 0.360 |
+| cafe_line2_bystanders | 14 | 1 | 54 | 0.019 | 0 | 53 | 0.000 |
+| cafe_line2_bystanders | 15 | 12 | 25 | 0.480 | 6 | 22 | 0.273 |
+| cafe_line2_bystanders | 16 | 32 | 69 | 0.464 | 6 | 66 | 0.091 |
+| cafe_line2_bystanders | 17 | 0 | 4 | 0.000 | 0 | 6 | 0.000 |
+| cafe_line2_bystanders | 18 | 30 | 68 | 0.441 | 0 | 6 | 0.000 |
+| cafe_line2_bystanders | 19 | 14 | 64 | 0.219 | 22 | 64 | 0.344 |
+| cafe_line2_bystanders | 20 | 32 | 77 | 0.416 | 1 | 14 | 0.071 |
+| cafe_line2_bystanders | 21 | 18 | 68 | 0.265 | 24 | 76 | 0.316 |
+| cafe_line2_bystanders | 22 | 14 | 31 | 0.452 | 14 | 32 | 0.438 |
+| cafe_line2_bystanders | 23 | 0 | 71 | 0.000 | 0 | 23 | 0.000 |
+| cafe_line2_bystanders | 24 | 0 | 23 | 0.000 | 0 | 24 | 0.000 |
+| cafe_line2_bystanders | 25 | 6 | 39 | 0.154 | 1 | 21 | 0.048 |
+| cafe_line2_bystanders | 26 | 0 | 0 | - | 25 | 56 | 0.446 |
+| cafe_line2_bystanders | 27 | 0 | 0 | - | 0 | 0 | - |
+| cafe_line2_bystanders | 28 | 8 | 24 | 0.333 | 21 | 30 | 0.700 |
+| cafe_line2_bystanders | 29 | 10 | 24 | 0.417 | 25 | 40 | 0.625 |
+| cafe_line2_bystanders | 30 | 0 | 4 | 0.000 | 0 | 5 | 0.000 |
+| cafe_line2_bystanders | 31 | 30 | 70 | 0.429 | 35 | 70 | 0.500 |
+| cafe_line2_bystanders | 32 | 19 | 50 | 0.380 | 20 | 51 | 0.392 |
+| cafe_line2_bystanders | 33 | 4 | 33 | 0.121 | 0 | 8 | 0.000 |
+| cafe_line2_bystanders | 34 | 10 | 11 | 0.909 | 5 | 65 | 0.077 |
+| cafe_line2_bystanders | 35 | 45 | 76 | 0.592 | 10 | 47 | 0.213 |
+| cafe_line2_bystanders | 36 | 46 | 74 | 0.622 | 46 | 74 | 0.622 |
+| cafe_line2_bystanders | 37 | 0 | 0 | - | 0 | 0 | - |
+| cafe_line2_bystanders | 38 | 7 | 68 | 0.103 | 7 | 68 | 0.103 |
+| cafe_line2_bystanders | 39 | 22 | 46 | 0.478 | 3 | 46 | 0.065 |
+| cafe_line2_bystanders | 40 | 29 | 68 | 0.426 | 11 | 68 | 0.162 |
+| cafe_line2_bystanders | 41 | 25 | 48 | 0.521 | 5 | 10 | 0.500 |
+| cafe_line2_bystanders | 42 | 1 | 33 | 0.030 | 1 | 40 | 0.025 |
+| cafe_line2_bystanders | 43 | 0 | 21 | 0.000 | 0 | 0 | - |
+| cafe_line2_bystanders | 44 | 0 | 12 | 0.000 | 0 | 15 | 0.000 |
+| room_coffee_cart_bystanders | 10 | 77 | 77 | 1.000 | 77 | 77 | 1.000 |
+| room_coffee_cart_bystanders | 11 | 78 | 78 | 1.000 | 78 | 78 | 1.000 |
+| room_coffee_cart_bystanders | 12 | 53 | 53 | 1.000 | 53 | 53 | 1.000 |
+| room_coffee_cart_bystanders | 13 | 78 | 78 | 1.000 | 78 | 78 | 1.000 |
+| room_coffee_cart_bystanders | 14 | 72 | 72 | 1.000 | 72 | 72 | 1.000 |
+| sweet_spot_line2_bystanders | 10 | 0 | 17 | 0.000 | 0 | 5 | 0.000 |
+| sweet_spot_line2_bystanders | 11 | 1 | 30 | 0.033 | 1 | 62 | 0.016 |
+| sweet_spot_line2_bystanders | 12 | 1 | 53 | 0.019 | 0 | 67 | 0.000 |
+| sweet_spot_line2_bystanders | 13 | 0 | 78 | 0.000 | 0 | 78 | 0.000 |
+| sweet_spot_line2_bystanders | 14 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 15 | 28 | 75 | 0.373 | 0 | 63 | 0.000 |
+| sweet_spot_line2_bystanders | 16 | 2 | 22 | 0.091 | 0 | 52 | 0.000 |
+| sweet_spot_line2_bystanders | 17 | 0 | 3 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 18 | 5 | 58 | 0.086 | 0 | 64 | 0.000 |
+| sweet_spot_line2_bystanders | 19 | 0 | 38 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 20 | 1 | 72 | 0.014 | 4 | 69 | 0.058 |
+| sweet_spot_line2_bystanders | 21 | 0 | 25 | 0.000 | 1 | 17 | 0.059 |
+| sweet_spot_line2_bystanders | 22 | 0 | 10 | 0.000 | 0 | 12 | 0.000 |
+| sweet_spot_line2_bystanders | 23 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 24 | 0 | 12 | 0.000 | 0 | 13 | 0.000 |
+| sweet_spot_line2_bystanders | 25 | 4 | 45 | 0.089 | 0 | 45 | 0.000 |
+| sweet_spot_line2_bystanders | 26 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 27 | 0 | 23 | 0.000 | 0 | 24 | 0.000 |
+| sweet_spot_line2_bystanders | 28 | 0 | 3 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 29 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 30 | 56 | 71 | 0.789 | 8 | 70 | 0.114 |
+| sweet_spot_line2_bystanders | 31 | 0 | 67 | 0.000 | 50 | 67 | 0.746 |
+| sweet_spot_line2_bystanders | 32 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 33 | 0 | 73 | 0.000 | 0 | 73 | 0.000 |
+| sweet_spot_line2_bystanders | 34 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 35 | 41 | 56 | 0.732 | 44 | 56 | 0.786 |
+| sweet_spot_line2_bystanders | 36 | 4 | 14 | 0.286 | 37 | 68 | 0.544 |
+| sweet_spot_line2_bystanders | 37 | 35 | 59 | 0.593 | 44 | 59 | 0.746 |
+| sweet_spot_line2_bystanders | 38 | 32 | 73 | 0.438 | 0 | 26 | 0.000 |
+| sweet_spot_line2_bystanders | 39 | 26 | 44 | 0.591 | 26 | 42 | 0.619 |
+| sweet_spot_line2_bystanders | 40 | 0 | 35 | 0.000 | 0 | 44 | 0.000 |
+| sweet_spot_line2_bystanders | 41 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 42 | 7 | 39 | 0.179 | 0 | 25 | 0.000 |
+| sweet_spot_line2_bystanders | 43 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 44 | 0 | 7 | 0.000 | 0 | 16 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT3 / CT2 | Exposure CT3 / CT2 | Pooled rate CT3 / CT2 |
+|---|---|---|---|---|
+| cafe_line2_bystanders | 35 | 435 / 308 | 1359 / 1209 | 0.320 / 0.255 |
+| room_coffee_cart_bystanders | 5 | 358 / 358 | 358 / 358 | 1.000 / 1.000 |
+| sweet_spot_line2_bystanders | 35 | 243 / 215 | 1102 / 1126 | 0.221 / 0.191 |
+
+## (b) Sonnet bystander addendum (BYSTANDERS_SONNET_ADDENDUM.md): sonnet55_low (claude_sonnet55_low)
+
+Cells: ['cafe_line2_bystanders', 'sweet_spot_line2_bystanders'] x seeds 10-19 = 20 planned; the addendum's 20 cells
+Missing episodes: none
+
+**CT3 vs CT2**, 20 paired cells (1820 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT3 | 137 | 758 | 0.416 | 0.181 |
+| CT2 | 88 | 713 | 0.392 | 0.123 |
+
+- Raw cut-in counts per cell: CT3 more / fewer / equal = 5 / 3 / 12, sign p 0.727
+- Rate per cell, over the 19 cells where both arms have exposure > 0: CT3 higher / lower / tie (|d| < 0.01) = 5 / 3 / 11, sign p 0.727; exact ties 5 / 3 / 11, sign p 0.727; mean rate CT3 0.153, CT2 0.084, mean difference +0.069
+- Cells dropped from the rate test for zero exposure: 1 (CT3 only 0, CT2 only 0, both 1)
+
+| Scenario | Seed | CT3 cut | CT3 exposure | CT3 rate | CT2 cut | CT2 exposure | CT2 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_bystanders | 10 | 0 | 73 | 0.000 | 3 | 72 | 0.042 |
+| cafe_line2_bystanders | 11 | 0 | 69 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line2_bystanders | 12 | 28 | 71 | 0.394 | 32 | 66 | 0.485 |
+| cafe_line2_bystanders | 13 | 2 | 12 | 0.167 | 2 | 12 | 0.167 |
+| cafe_line2_bystanders | 14 | 2 | 7 | 0.286 | 1 | 6 | 0.167 |
+| cafe_line2_bystanders | 15 | 23 | 44 | 0.523 | 4 | 41 | 0.098 |
+| cafe_line2_bystanders | 16 | 0 | 72 | 0.000 | 40 | 72 | 0.556 |
+| cafe_line2_bystanders | 17 | 0 | 67 | 0.000 | 0 | 71 | 0.000 |
+| cafe_line2_bystanders | 18 | 5 | 72 | 0.069 | 5 | 72 | 0.069 |
+| cafe_line2_bystanders | 19 | 0 | 54 | 0.000 | 0 | 53 | 0.000 |
+| sweet_spot_line2_bystanders | 10 | 0 | 20 | 0.000 | 0 | 6 | 0.000 |
+| sweet_spot_line2_bystanders | 11 | 0 | 5 | 0.000 | 0 | 4 | 0.000 |
+| sweet_spot_line2_bystanders | 12 | 29 | 49 | 0.592 | 0 | 63 | 0.000 |
+| sweet_spot_line2_bystanders | 13 | 42 | 72 | 0.583 | 1 | 72 | 0.014 |
+| sweet_spot_line2_bystanders | 14 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 15 | 0 | 32 | 0.000 | 0 | 16 | 0.000 |
+| sweet_spot_line2_bystanders | 16 | 0 | 5 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 17 | 0 | 6 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 18 | 0 | 7 | 0.000 | 0 | 4 | 0.000 |
+| sweet_spot_line2_bystanders | 19 | 6 | 21 | 0.286 | 0 | 5 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT3 / CT2 | Exposure CT3 / CT2 | Pooled rate CT3 / CT2 |
+|---|---|---|---|---|
+| cafe_line2_bystanders | 10 | 60 / 87 | 541 / 537 | 0.111 / 0.162 |
+| sweet_spot_line2_bystanders | 10 | 77 / 1 | 217 / 176 | 0.355 / 0.006 |
+
+## (b') Sonnet bystanders, addendum + room optional arm (SUMMARY section 7's cell set): sonnet55_low (claude_sonnet55_low)
+
+Cells: ['cafe_line2_bystanders', 'room_coffee_cart_bystanders', 'sweet_spot_line2_bystanders'] x seeds 10-19 = 30 planned; room's 10 cells are BYSTANDERS_FROZEN.md's optional arm
+Missing episodes: none
+
+**CT3 vs CT2**, 30 paired cells (2730 samples per arm)
+
+| Arm | Cut-in samples | Exposure (samples, side <= 1 m) | Exposure share of samples | Pooled rate (cut-ins / exposure) |
+|---|---|---|---|---|
+| CT3 | 138 | 1119 | 0.410 | 0.123 |
+| CT2 | 89 | 953 | 0.349 | 0.093 |
+
+- Raw cut-in counts per cell: CT3 more / fewer / equal = 5 / 3 / 22, sign p 0.727
+- Rate per cell, over the 27 cells where both arms have exposure > 0: CT3 higher / lower / tie (|d| < 0.01) = 5 / 3 / 19, sign p 0.727; exact ties 5 / 3 / 19, sign p 0.727; mean rate CT3 0.108, CT2 0.060, mean difference +0.048
+- Cells dropped from the rate test for zero exposure: 3 (CT3 only 0, CT2 only 0, both 3)
+
+| Scenario | Seed | CT3 cut | CT3 exposure | CT3 rate | CT2 cut | CT2 exposure | CT2 rate |
+|---|---|---|---|---|---|---|---|
+| cafe_line2_bystanders | 10 | 0 | 73 | 0.000 | 3 | 72 | 0.042 |
+| cafe_line2_bystanders | 11 | 0 | 69 | 0.000 | 0 | 72 | 0.000 |
+| cafe_line2_bystanders | 12 | 28 | 71 | 0.394 | 32 | 66 | 0.485 |
+| cafe_line2_bystanders | 13 | 2 | 12 | 0.167 | 2 | 12 | 0.167 |
+| cafe_line2_bystanders | 14 | 2 | 7 | 0.286 | 1 | 6 | 0.167 |
+| cafe_line2_bystanders | 15 | 23 | 44 | 0.523 | 4 | 41 | 0.098 |
+| cafe_line2_bystanders | 16 | 0 | 72 | 0.000 | 40 | 72 | 0.556 |
+| cafe_line2_bystanders | 17 | 0 | 67 | 0.000 | 0 | 71 | 0.000 |
+| cafe_line2_bystanders | 18 | 5 | 72 | 0.069 | 5 | 72 | 0.069 |
+| cafe_line2_bystanders | 19 | 0 | 54 | 0.000 | 0 | 53 | 0.000 |
+| room_coffee_cart_bystanders | 10 | 0 | 38 | 0.000 | 0 | 4 | 0.000 |
+| room_coffee_cart_bystanders | 11 | 0 | 56 | 0.000 | 0 | 4 | 0.000 |
+| room_coffee_cart_bystanders | 12 | 0 | 4 | 0.000 | 0 | 4 | 0.000 |
+| room_coffee_cart_bystanders | 13 | 0 | 57 | 0.000 | 0 | 4 | 0.000 |
+| room_coffee_cart_bystanders | 14 | 0 | 68 | 0.000 | 0 | 68 | 0.000 |
+| room_coffee_cart_bystanders | 15 | 0 | 0 | - | 0 | 0 | - |
+| room_coffee_cart_bystanders | 16 | 0 | 11 | 0.000 | 0 | 72 | 0.000 |
+| room_coffee_cart_bystanders | 17 | 0 | 0 | - | 0 | 0 | - |
+| room_coffee_cart_bystanders | 18 | 1 | 66 | 0.015 | 1 | 66 | 0.015 |
+| room_coffee_cart_bystanders | 19 | 0 | 61 | 0.000 | 0 | 18 | 0.000 |
+| sweet_spot_line2_bystanders | 10 | 0 | 20 | 0.000 | 0 | 6 | 0.000 |
+| sweet_spot_line2_bystanders | 11 | 0 | 5 | 0.000 | 0 | 4 | 0.000 |
+| sweet_spot_line2_bystanders | 12 | 29 | 49 | 0.592 | 0 | 63 | 0.000 |
+| sweet_spot_line2_bystanders | 13 | 42 | 72 | 0.583 | 1 | 72 | 0.014 |
+| sweet_spot_line2_bystanders | 14 | 0 | 0 | - | 0 | 0 | - |
+| sweet_spot_line2_bystanders | 15 | 0 | 32 | 0.000 | 0 | 16 | 0.000 |
+| sweet_spot_line2_bystanders | 16 | 0 | 5 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 17 | 0 | 6 | 0.000 | 0 | 3 | 0.000 |
+| sweet_spot_line2_bystanders | 18 | 0 | 7 | 0.000 | 0 | 4 | 0.000 |
+| sweet_spot_line2_bystanders | 19 | 6 | 21 | 0.286 | 0 | 5 | 0.000 |
+
+| Scenario | Cells | Cut-ins CT3 / CT2 | Exposure CT3 / CT2 | Pooled rate CT3 / CT2 |
+|---|---|---|---|---|
+| cafe_line2_bystanders | 10 | 60 / 87 | 541 / 537 | 0.111 / 0.162 |
+| room_coffee_cart_bystanders | 10 | 1 / 1 | 361 / 240 | 0.003 / 0.004 |
+| sweet_spot_line2_bystanders | 10 | 77 / 1 | 217 / 176 | 0.355 / 0.006 |
+
+## Check against SUMMARY.md section 7 (and results/overview/ideas-round-2/SHORTLIST.md section 0)
+
+| Quoted | Cells | Recount A vs B | More / fewer | Match |
+|---|---|---|---|---|
+| sonnet55_low CT2 481 vs R1 162, 25/4, 50 pairs | 50 | 481 vs 162 | 25 / 4 | yes |
+| dsv41 CT2 226 vs R1 504, 9/10, 25 pairs | 25 | 226 vs 504 | 9 / 10 | yes |
+| dsv41 CT3 1036 vs CT2 881, 21/14, 75 pairs | 75 | 1036 vs 881 | 21 / 14 | yes |
+| sonnet55_low CT3 138 vs CT2 89, 5/3, 30 pairs | 30 | 138 vs 89 | 5 / 3 | yes |

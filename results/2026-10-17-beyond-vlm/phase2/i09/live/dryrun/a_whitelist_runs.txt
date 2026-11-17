@@ -1,3 +1,0 @@
-results/2026-10-17-beyond-vlm/phase2/i09/live/dryrun/a_mock/20261018-013321_s24_i09_real_glm53_con_mock=.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/real/scenes
-results/2026-10-17-beyond-vlm/phase2/i09/live/dryrun/a_mock/20261018-013339_s24_i09_staffed_glm53_con_mock=.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/staffed/scenes
-results/2026-10-17-beyond-vlm/phase2/i09/live/dryrun/a_mock/20261018-013347_s24_i09_plain_glm53_con_mock=.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/plain/scenes

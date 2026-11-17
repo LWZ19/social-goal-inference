@@ -1,0 +1,176 @@
+I09 live check: offline analysis of FROZEN.md sections 5-6 (arm D-live)
+generated 2026-10-18T06:20:41+0800; analyse.py sha256 ab66ec3072eac9eaf1e945b58073de6d8a3be4c75609d4ec21187ca098cc7339 (ANALYSE.sha256: 45b83a6e70577acb3d33a3ee2f61f8c14c41cd8ee71b5f471f9aa2307082566e; match: False)
+runs folder: results/still-scenes/people-finder/early-detector/phase2/live/dryrun/c_cap/c6_main_full
+code: harness docs/model_notes/tools/research_harness.py; sgi src/sgi/__init__.py
+
+== Reading [PRE-REGISTERED (FROZEN 6): the reading]
+  successes at t0: GLM 0 of 4, DeepSeek - of - (the rule is on 84 per model)
+  rule: consistent with A2 if GLM >= 66 and DeepSeek >= 68; contradicts A2 if GLM <= 63 and DeepSeek <= 64; mixed otherwise
+  READING: not applicable
+  not applicable because:
+    - s24_i09_staffed_glm53_con: missing
+    - s24_i09_plain_glm53_con: missing
+    - s24_i09_real_dsv41_con: missing
+    - s24_i09_staffed_dsv41_con: missing
+    - s24_i09_plain_dsv41_con: missing
+    - glm53: 84 records: 4 records
+    - glm53 real: driver sha256 in config.yaml = BUILD.sha256 driver line now: config e6e73181d47cfeb1d22ec9fcc91bcdbb6ec625e32dc002be4a877e75d2cf9470, BUILD e5e79093c03bc2c2f226175f688d02ad2d542fbccd51c7f761de8a10089887bf
+    - glm53 real: 28 records, the recorded t0 keys once each: 4 records, 4 distinct, 0 not recorded, 24 recorded but missing
+    - glm53 real: upstream answers equal the recorded t0 ones (compared again here): 0 of 4 equal; differ: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+    - glm53 real: check file upstream all_equal for every record: check_glm53_live_20261018-013159.json: 4 entries, 0 all_equal; false: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+    - glm53 real: check file driver sha256 = BUILD.sha256 driver line now: e6e73181d47cfeb1d22ec9fcc91bcdbb6ec625e32dc002be4a877e75d2cf9470
+    - glm53 staffed: folder present: no folder taken
+    - glm53 plain: folder present: no folder taken
+    - dsv41: 84 records: 0 records
+    - dsv41 real: folder present: no folder taken
+    - dsv41 staffed: folder present: no folder taken
+    - dsv41 plain: folder present: no folder taken
+    - ledger: only constraints requests sent (no people, plan, locate or context send): by model and stage {'glm53 constraints': 4, 'glm53 context': 4, 'glm53 plan': 4}
+
+== 0. Inputs: the folders taken
+  real glm53: 20261018-013159_s24_i09_real_glm53_con [latest complete]
+  check files: check_glm53_live_20261018-013159.json
+  count-only reports: none
+
+== 1. Validity (FROZEN 2, 6, 7; a failed gating check makes the reading not applicable)
+  [PASS] glm53: at most one re-run (FROZEN 7: two live check files at most): 1 live check file(s): check_glm53_live_20261018-013159.json
+  [PASS] glm53: no live invocation stopped (cap, quota, back end, upstream miss, people call, ledger; REQUEST: no re-run after exit 2 or 3)
+  [PASS] (reported, not gating) glm53: no folder left by an invocation stopped from outside (incomplete, no stopped_by, no vlm_error; REQUEST: no re-run after it)
+  [FAIL] glm53: 84 records: 4 records
+  [PASS] glm53 real: folder complete (incomplete: false, no stopped_by): 20261018-013159_s24_i09_real_glm53_con: incomplete False, stopped_by None, vlm_errors 0
+  [PASS] glm53 real: mode live: mode live
+  [PASS] glm53 real: baseline run is the recorded C run: 20261011-160500_s19_real_glm53_con (expected 20261011-160500_s19_real_glm53_con)
+  [PASS] glm53 real: trial 0: trial 0
+  [FAIL] glm53 real: driver sha256 in config.yaml = BUILD.sha256 driver line now: config e6e73181d47cfeb1d22ec9fcc91bcdbb6ec625e32dc002be4a877e75d2cf9470, BUILD e5e79093c03bc2c2f226175f688d02ad2d542fbccd51c7f761de8a10089887bf
+  [PASS] glm53 real: FROZEN sha256 in config.yaml = FROZEN.md now: config 7e1d321237f323dcb6747288ac9680138bfeeadff305de3990f6743f06898b84
+  [PASS] glm53 real: config.yaml people_source is the frozen detector file: tag detector_i09_a1_frozen, sha256 ffa595453c94b444c8dd030d053d37ac103441a7e74f07e3f172836b3d0c24b3
+  [FAIL] glm53 real: 28 records, the recorded t0 keys once each: 4 records, 4 distinct, 0 not recorded, 24 recorded but missing
+  [PASS] glm53 real: every record at trial 0
+  [PASS] glm53 real: every record's situation is the recorded one: 0 differ
+  [PASS] glm53 real: every record's config.people_source = detector_i09_a1_frozen: 0 record(s) without it
+  [PASS] glm53 real: no people call in any record: 0 record(s) with one
+  [PASS] glm53 real: no vlm_error record: 0 vlm_error record(s)
+  [FAIL] glm53 real: upstream answers equal the recorded t0 ones (compared again here): 0 of 4 equal; differ: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+  [FAIL] glm53 real: check file upstream all_equal for every record: check_glm53_live_20261018-013159.json: 4 entries, 0 all_equal; false: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+  [PASS] glm53 real: check file: no people stage, no refused upstream request, not stopped: cache {'constraints': {'sent': 4}, 'context': {'sent': 4}, 'plan': {'sent': 4}}; stopped_by None
+  [FAIL] glm53 real: check file driver sha256 = BUILD.sha256 driver line now: e6e73181d47cfeb1d22ec9fcc91bcdbb6ec625e32dc002be4a877e75d2cf9470
+  [FAIL] glm53 staffed: folder present: no folder taken
+  [FAIL] glm53 plain: folder present: no folder taken
+  [PASS] dsv41: at most one re-run (FROZEN 7: two live check files at most): 0 live check file(s): none
+  [PASS] dsv41: no live invocation stopped (cap, quota, back end, upstream miss, people call, ledger; REQUEST: no re-run after exit 2 or 3)
+  [PASS] (reported, not gating) dsv41: no folder left by an invocation stopped from outside (incomplete, no stopped_by, no vlm_error; REQUEST: no re-run after it)
+  [FAIL] dsv41: 84 records: 0 records
+  [FAIL] dsv41 real: folder present: no folder taken
+  [FAIL] dsv41 staffed: folder present: no folder taken
+  [FAIL] dsv41 plain: folder present: no folder taken
+  [PASS] ledger: no refused line (no cap stop): 0 refused line(s)
+  [PASS] ledger: sent within the caps (120 in all, 60 per model): 12 in all; {'glm53': 12}
+  [FAIL] ledger: only constraints requests sent (no people, plan, locate or context send): by model and stage {'glm53 constraints': 4, 'glm53 context': 4, 'glm53 plan': 4}
+  [PASS] (reported, not gating) ledger.lock on disk (kept by design since driver 41940c3c; information only): present: False
+  [FAIL] (reported, not gating) glm53: count-only report present: none found
+  [FAIL] (reported, not gating) dsv41: count-only report present: none found
+  [PASS] (reported, not gating) BUILD.sha256's driver line = driver.py now: BUILD e5e79093c03bc2c2f226175f688d02ad2d542fbccd51c7f761de8a10089887bf, driver.py e5e79093c03bc2c2f226175f688d02ad2d542fbccd51c7f761de8a10089887bf
+  ledger: events {'sent': 12, 'answered': 12}; sent 12 in all; per model {'glm53': 12}; by model and stage {'glm53 constraints': 4, 'glm53 context': 4, 'glm53 plan': 4}; refused lines 0; error lines 0
+  BUILD.sha256 driver line e5e79093c03bc2c2f226175f688d02ad2d542fbccd51c7f761de8a10089887bf; driver.py now e5e79093c03bc2c2f226175f688d02ad2d542fbccd51c7f761de8a10089887bf
+
+== 2. Baselines derived again (asserted equal to FROZEN 2, 4 and 6; the analysis stops otherwise)
+  model     C t0 (lines)  D replay t0  I01 P t0  C t0/t1/t2    D t0/t1/t2    C goal steps (real, staffed, plain)  vs FROZEN
+  --------  ------------  -----------  --------  ------------  ------------  -----------------------------------  ---------
+  GLM       64 (14)       69 (19)      69 (19)   64 / 65 / 57  69 / 68 / 65  48 (17, 16, 15)                      equal    
+  DeepSeek  65 (25)       71 (28)      70 (27)   65 / 60 / 57  71 / 65 / 63  54 (18, 20, 16)                      equal    
+  model     baseline  no_one (of 36)  waiting_line (of 30)  conversation_group (of 18)
+  --------  --------  --------------  --------------------  --------------------------
+  GLM       C         32              14                    18                        
+  GLM       D         32              19                    18                        
+  GLM       P         32              19                    18                        
+  DeepSeek  C         28              25                    12                        
+  DeepSeek  D         28              28                    15                        
+  DeepSeek  P         28              27                    15                        
+  sources: recorded C = score.success of the records (harness); D = column D of a2/rows_old_*; P = column P of i01_repairs/rows_old_* (equal to A2's P column record by record, asserted)
+
+####################################################################################################
+# GLM (glm53)
+####################################################################################################
+
+== M1. Successes over the t0 records [PRE-REGISTERED (FROZEN 5.1): successes; the reading's input]
+  D-live 0 of 4; vlm_error records 0 (counted as failures); status {'ok': 4}
+  baselines on the same records: C 4, D replay 4, I01 P 4 (n 4)
+  per arm [DESCRIPTIVE, added by this analysis (not in FROZEN)]:
+  arm      n  D-live  C  D replay  I01 P
+  -------  -  ------  -  --------  -----
+  real     4  0       4  4         4    
+  staffed  0  0       0  0         0    
+  plain    0  0       0  0         0    
+
+== M2. Line successes and by situation [PRE-REGISTERED measure (FROZEN 5.2); no role in the reading]
+  situation           n  D-live  C  D replay  I01 P
+  ------------------  -  ------  -  --------  -----
+  no_one              0  0       0  0         0    
+  waiting_line        2  0       2  2         2    
+  conversation_group  2  0       2  2         2    
+
+== M3. Flips and breaks, record level [PRE-REGISTERED measure (FROZEN 5.3); no role in the reading; P is secondary]
+  against  n  flips  breaks  net  flip scenes  flip layouts  break scenes  break layouts
+  -------  -  -----  ------  ---  -----------  ------------  ------------  -------------
+  C        4  0      4       -4   0            0             2             2            
+  D        4  0      4       -4   0            0             2             2            
+  P        4  0      4       -4   0            0             2             2            
+  against C: flips by situation {}, breaks by situation {'waiting_line': 2, 'conversation_group': 2}; net by layout {'eval_08_waiting_line_4': -2, 'eval_11_conversation_group_3': -2}
+    breaks: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+  against D: flips by situation {}, breaks by situation {'waiting_line': 2, 'conversation_group': 2}; net by layout {'eval_08_waiting_line_4': -2, 'eval_11_conversation_group_3': -2}
+    breaks: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+  against P: flips by situation {}, breaks by situation {'waiting_line': 2, 'conversation_group': 2}; net by layout {'eval_08_waiting_line_4': -2, 'eval_11_conversation_group_3': -2}
+    breaks: real_eval_08_waiting_line_4 e0, real_eval_08_waiting_line_4 e1, real_eval_11_conversation_group_3 e0, real_eval_11_conversation_group_3 e1
+
+  goal steps: D-live 4 (4 with a constraints answer); recorded C 4 (4); in both 4
+
+== M4. Constraint usability, goal steps with a constraints answer [PRE-REGISTERED measure (FROZEN 5.4); no role in the reading]
+  arm         steps  constraints  used  unusable  superseded  cut  no_usable steps  c_unusable sum  mean   excl_broken sum  mean   per step mean  median
+  ----------  -----  -----------  ----  --------  ----------  ---  ---------------  --------------  -----  ---------------  -----  -------------  ------
+  D-live      4      4            0     4         0           0    4                4               1.000  0                0.000  1.000          1.000 
+  recorded C  4      21           19    2         0           0    0                2               0.500  0                0.000  5.250          5.500 
+
+== M5. Numbers named that exist in the list shown [PRE-REGISTERED measure (FROZEN 5.5); no role in the reading]
+  arm                      steps  numbers named  in list  share  steps naming one not in list  share  lists not 1..N
+  -----------------------  -----  -------------  -------  -----  ----------------------------  -----  --------------
+  D-live (detector list)   4      4              0        0.000  4                             1.000  0             
+  recorded C (VLM's list)  4      36             36       1.000  0                             0.000  0             
+  distinct per goal step [DESCRIPTIVE, added by this analysis (not in FROZEN)]: D-live 0 of 4; C 18 of 18
+
+== M6. Latency of the goal step, ms [DESCRIPTIVE (FROZEN 5.6 calls the latency descriptive)]
+  D-live = latency_total_s of its constraints call + timings_s.geometry; recorded C = latency_total_s of its people call + its constraints call + timings_s.geometry
+  set             what                                  n  median     p90      
+  --------------  ------------------------------------  -  ---------  ---------
+  all goal steps  D-live                                4  220.200    270.500  
+  all goal steps  recorded C                            4  7356.300   8020.000 
+  all goal steps  D-live + 55.6 ms detector (A1)        4  275.800    326.100  
+  all goal steps  D-live + 61.9 ms detector (verifier)  4  282.100    332.400  
+  paired          D-live                                4  220.200    270.500  
+  paired          recorded C                            4  7356.300   8020.000 
+  paired          D-live - C (per step)                 4  -7094.500  -6748.600
+  paired          D-live + 55.6 ms - C                  4  -7038.900  -6693.000
+  calls alone     D-live constraints call               4  15.600     16.100   
+  calls alone     C people + constraints calls          4  7231.400   7905.100 
+  calls alone     paired D-live - C                     4  -7215.900  -6860.800
+  Recorded latencies are those of the calls first made on 11-13 Oct (a cached call carries the latency of the call stored); D-live's are new; the gateway's load differs; the detector time is a constant, not measured live.
+
+== M7. Extras [DESCRIPTIVE extras (FROZEN 5.7)]
+  people in the numbered list per goal step: D-live (detector) n 4, mean 5.500, median 5.500, range 5-6; recorded C (VLM) n 4, mean 5.000, median 5.000, range 5-5
+  frozen detector people per scene (check files): 2 scenes, 11 people, mean 5.500; DetectorPeople asked 4 time(s) (one per goal step)
+  record measure (goal steps)  D-live n  mean   sum    C n  mean   sum  
+  ---------------------------  --------  -----  -----  ---  -----  -----
+  people_found_share           4         1.000  4.000  4    0.900  3.600
+  people_unmatched             4         0.500  2      4    0.500  2    
+  members_precision            0         -      0      2    0.675  1.350
+  members_recall               2         0.000  0.000  2    0.750  1.500
+  D-live calls in the records  calls  cached  fresh  attempts (fresh)  validation retries (fresh)  transient retries (fresh)  retries carried by cached  status
+  ---------------------------  -----  ------  -----  ----------------  --------------------------  -------------------------  -------------------------  ------
+  constraints                  4      0       4      4                 0                           0                          0                          ok 4  
+  context                      4      0       4      4                 0                           0                          0                          ok 4  
+  plan                         4      0       4      4                 0                           0                          0                          ok 4  
+  calls made: ledger sent 12 for glm53; attempts of the fresh calls in the records taken 12 (equal when one invocation made every folder taken)
+  recorded C goal steps, retries as recorded: {'people_validation_retries': 0, 'people_transient_retries': 0, 'constraints_validation_retries': 0, 'constraints_transient_retries': 0}
+
+####################################################################################################
+# DeepSeek (dsv41): NO LIVE RECORDS
+####################################################################################################

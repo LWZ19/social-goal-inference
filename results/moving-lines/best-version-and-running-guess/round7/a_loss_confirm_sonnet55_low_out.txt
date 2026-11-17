@@ -1,0 +1,110 @@
+# Round 7, DESCRIPTIVE: where strict time in line is lost (results/moving-lines/test-layouts/confirm_selection.json, results/data/moving/runs_confirm4/sonnet55_low)
+
+### CT3F: 71 episodes with a window, 4465 window seconds
+
+- strict share, mean over episodes: 0.246
+- lost before the first strict second (arrival), mean: 0.327; lost after it (keeping): 0.428
+- window seconds with nobody ahead (the robot first; the sim never serves it): 0.160, strict there 0.007; with someone ahead: strict 0.292
+
+| primary reason | moving | arrived | share of all window seconds |
+|---|---|---|---|
+| ahead of last | 529 | 366 | 0.200 |
+| off axis | 516 | 93 | 0.136 |
+| too far | 577 | 182 | 0.170 |
+| too close | 22 | 14 | 0.008 |
+| heading | 263 | 10 | 0.061 |
+| crowded | 43 | 55 | 0.022 |
+| far from slot 0 | 448 | 247 | 0.156 |
+
+Goals at 8341 re-solves in the window:
+
+| | re-solves | goal right | robot there | there, goal right | there, goal wrong |
+|---|---|---|---|---|---|
+| all | 8341 | 0.392 | 0.246 | 0.600 | 0.018 |
+| someone ahead, right last | 3798 | 0.810 | 0.506 | 0.615 | 0.039 |
+| someone ahead, wrong last | 3236 | 0.053 | 0.037 | 0.345 | 0.020 |
+| nobody ahead | 1307 | 0.015 | 0.008 | 0.450 | 0.001 |
+
+Right last, someone ahead: goal along error from the ideal place (+ = farther back) median +0.16 m, quartiles +0.15 / +0.18; |error| > 0.35 m 0.137; goal side > 0.6 m 0.128
+
+### CT4PJ: 71 episodes with a window, 4465 window seconds
+
+- strict share, mean over episodes: 0.174
+- lost before the first strict second (arrival), mean: 0.452; lost after it (keeping): 0.375
+- window seconds with nobody ahead (the robot first; the sim never serves it): 0.105, strict there 0.000; with someone ahead: strict 0.198
+
+| primary reason | moving | arrived | share of all window seconds |
+|---|---|---|---|
+| ahead of last | 378 | 202 | 0.130 |
+| off axis | 1174 | 173 | 0.302 |
+| too far | 788 | 132 | 0.206 |
+| too close | 17 | 2 | 0.004 |
+| heading | 262 | 10 | 0.061 |
+| crowded | 29 | 41 | 0.016 |
+| far from slot 0 | 300 | 165 | 0.104 |
+
+Goals at 8338 re-solves in the window:
+
+| | re-solves | goal right | robot there | there, goal right | there, goal wrong |
+|---|---|---|---|---|---|
+| all | 8338 | 0.320 | 0.177 | 0.494 | 0.028 |
+| someone ahead, right last | 3825 | 0.651 | 0.348 | 0.503 | 0.060 |
+| someone ahead, wrong last | 3652 | 0.048 | 0.039 | 0.362 | 0.022 |
+| nobody ahead | 861 | 0.000 | 0.000 | - | 0.000 |
+
+Right last, someone ahead: goal along error from the ideal place (+ = farther back) median +0.16 m, quartiles -0.02 / +0.18; |error| > 0.35 m 0.265; goal side > 0.6 m 0.255
+
+### CT4P: 71 episodes with a window, 4465 window seconds
+
+- strict share, mean over episodes: 0.124
+- lost before the first strict second (arrival), mean: 0.464; lost after it (keeping): 0.412
+- window seconds with nobody ahead (the robot first; the sim never serves it): 0.080, strict there 0.011; with someone ahead: strict 0.135
+
+| primary reason | moving | arrived | share of all window seconds |
+|---|---|---|---|
+| ahead of last | 537 | 128 | 0.149 |
+| off axis | 1351 | 175 | 0.342 |
+| too far | 891 | 138 | 0.230 |
+| too close | 14 | 0 | 0.003 |
+| heading | 316 | 6 | 0.072 |
+| crowded | 1 | 0 | 0.000 |
+| far from slot 0 | 201 | 148 | 0.078 |
+
+Goals at 8333 re-solves in the window:
+
+| | re-solves | goal right | robot there | there, goal right | there, goal wrong |
+|---|---|---|---|---|---|
+| all | 8333 | 0.280 | 0.125 | 0.373 | 0.029 |
+| someone ahead, right last | 3558 | 0.603 | 0.251 | 0.378 | 0.057 |
+| someone ahead, wrong last | 4124 | 0.046 | 0.035 | 0.319 | 0.021 |
+| nobody ahead | 651 | 0.000 | 0.012 | - | 0.012 |
+
+Right last, someone ahead: goal along error from the ideal place (+ = farther back) median +0.15 m, quartiles -0.07 / +0.25; |error| > 0.35 m 0.351; goal side > 0.6 m 0.327
+
+### CT4: 71 episodes with a window, 4467 window seconds
+
+- strict share, mean over episodes: 0.131
+- lost before the first strict second (arrival), mean: 0.438; lost after it (keeping): 0.432
+- window seconds with nobody ahead (the robot first; the sim never serves it): 0.074, strict there 0.003; with someone ahead: strict 0.141
+
+| primary reason | moving | arrived | share of all window seconds |
+|---|---|---|---|
+| ahead of last | 480 | 70 | 0.123 |
+| off axis | 1402 | 208 | 0.360 |
+| too far | 891 | 232 | 0.251 |
+| too close | 3 | 0 | 0.001 |
+| heading | 260 | 8 | 0.060 |
+| crowded | 2 | 0 | 0.000 |
+| far from slot 0 | 198 | 129 | 0.073 |
+| other | 1 | 0 | 0.000 |
+
+Goals at 8344 re-solves in the window:
+
+| | re-solves | goal right | robot there | there, goal right | there, goal wrong |
+|---|---|---|---|---|---|
+| all | 8344 | 0.307 | 0.129 | 0.370 | 0.023 |
+| someone ahead, right last | 3844 | 0.620 | 0.250 | 0.378 | 0.042 |
+| someone ahead, wrong last | 3900 | 0.045 | 0.029 | 0.266 | 0.018 |
+| nobody ahead | 600 | 0.000 | 0.003 | - | 0.003 |
+
+Right last, someone ahead: goal along error from the ideal place (+ = farther back) median +0.16 m, quartiles +0.02 / +0.33; |error| > 0.35 m 0.331; goal side > 0.6 m 0.290

@@ -1,0 +1,17 @@
+# PH-C (post hoc): the goal or the getting there, results/data/moving/runs_pilot3/dsv41
+
+Samples from the first service on, with someone ahead (sim) and a re-solve with a pose.
+
+| Arm | samples | strict in line | goal in line | robot in line given goal in line | robot in line given goal not in line |
+|---|---|---|---|---|---|
+| CT3F | 1423 | 0.222 | 0.291 | 0.720 | 0.018 |
+| CT4 | 1631 | 0.074 | 0.156 | 0.354 | 0.022 |
+| W0 | 1631 | 0.076 | 0.142 | 0.379 | 0.026 |
+| CT5 | 1632 | 0.039 | 0.078 | 0.383 | 0.010 |
+
+Why the goal is not in line (first failing condition, share of samples)
+
+- CT3F: side 0.472, gap far 0.128, ahead of the last 0.065, nearest 0.025, heading 0.013, gap near 0.008
+- CT4: side 0.679, gap far 0.121, ahead of the last 0.035, heading 0.006, gap near 0.003, nearest 0.001
+- W0: side 0.693, gap far 0.113, ahead of the last 0.035, heading 0.015, nearest 0.001
+- CT5: side 0.776, gap far 0.118, ahead of the last 0.017, heading 0.010

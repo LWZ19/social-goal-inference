@@ -1,5 +1,0 @@
-race1: exits 0 2; fake 4 0; ledger sent 4; refused lines: 1
-race2: exits 0 2; fake 4 0; ledger sent 4; refused lines: 1
-race3: exits 2 0; fake 0 4; ledger sent 4; refused lines: 1
-corrupt: exit 2; fake 0; error: json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 32 (char 31); check files 0; run folders 0
-done

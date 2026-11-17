@@ -1,9 +1,0 @@
-# Round 6 part B, EXPLORATORY: committing in the wrong place, and a frozen predecessor (sweep/pilot_selection.json)
-
-## runs_pilot3/dsv41
-
-| choice | joined re-solves | sim says not in line | episodes with any | right last, sim agrees | right last, all joined | switches per minute joined |
-|---|---|---|---|---|---|---|
-| CT3F | 1825 | 0.367 | 14/24 | 0.595 | 0.441 | 4.46 |
-| CT4PJ | 1577 | 0.421 | 14/24 | 0.716 | 0.536 | 8.89 |
-| frozen | 1577 | 0.421 | (CT4PJ's) | 0.558 | 0.389 | 0.65 |

@@ -1,0 +1,188 @@
+I46 statistics re-run (research_harness only). Definitions in the module docstring of stats.py.
+==============================================================================================================
+PART 1. Old wording, C (con) vs E (fsc), the judge clus.py subsets
+-- qwen: runs 20261011-160334_s19_real_qwen38_low_con, 20261010-202647_s16b_real_qwen38_low_fsc, 20261011-160344_s19_staffed_qwen38_low_con, 20261010-202635_s16b_staffed_qwen38_low_fsc, 20261011-160527_s19_plain_qwen38_low_con, 20261010-202550_s16b_plain_qwen38_low_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=234 E=214 (C-E = +20 of 252)
+  layouts C>E: 6, C<E: 0, tied: 8; non-tied = 6
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.03125 (= 2/64 over non-tied), one-sided (C>E) p = 0.015625; smallest possible with 6 non-tied: two-sided 0.03125, one-sided 0.015625
+  sign test on layouts: two-sided 0.03125, one-sided 0.015625
+  layout mean diff = +0.0794 (x252 = +20.0 records), sd 0.1208, t(df=13) 95% CI [+0.0096, +0.1491] = [+2.4, +37.6] records, t = 2.46, two-sided t p = 0.028725
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0238, +0.1430] = [+6.0, +36.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.080, E 0.114
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+3, eval_07_waiting_line_2[waiting_line]:+6, eval_08_waiting_line_4[waiting_line]:+1, eval_09_waiting_line_6[waiting_line]:+6, eval_10_conversation_group_2[conversation_group]:+2, eval_11_conversation_group_3[conversation_group]:+0, eval_12_conversation_group_4[conversation_group]:+2, eval_13_waiting_line_3[waiting_line]:+0
+-- glm: runs 20261011-160500_s19_real_glm53_con, 20261010-204211_s16b_real_glm53_fsc, 20261011-160352_s19_staffed_glm53_con, 20261010-204058_s16b_staffed_glm53_fsc, 20261011-160452_s19_plain_glm53_con, 20261010-204052_s16b_plain_glm53_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=186 E=145 (C-E = +41 of 252)
+  layouts C>E: 9, C<E: 1, tied: 4; non-tied = 10
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 8/1024 over non-tied), one-sided (C>E) p = 0.0039062; smallest possible with 10 non-tied: two-sided 0.0019531, one-sided 0.00097656
+  sign test on layouts: two-sided 0.021484, one-sided 0.010742
+  layout mean diff = +0.1627 (x252 = +41.0 records), sd 0.2061, t(df=13) 95% CI [+0.0437, +0.2817] = [+11.0, +71.0] records, t = 2.95, two-sided t p = 0.011194
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0675, +0.2738] = [+17.0, +69.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.317, E 0.486
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+1, eval_02_no_one_place[no_one]:+1, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+2, eval_07_waiting_line_2[waiting_line]:+12, eval_08_waiting_line_4[waiting_line]:-1, eval_09_waiting_line_6[waiting_line]:+4, eval_10_conversation_group_2[conversation_group]:+7, eval_11_conversation_group_3[conversation_group]:+5, eval_12_conversation_group_4[conversation_group]:+3, eval_13_waiting_line_3[waiting_line]:+7
+-- ds: runs 20261013-191337_s20_real_dsv41_con, 20261013-192254_s20_real_dsv41_fsc, 20261013-191345_s20_staffed_dsv41_con, 20261013-192322_s20_staffed_dsv41_fsc, 20261013-191402_s20_plain_dsv41_con, 20261013-192208_s20_plain_dsv41_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=182 E=120 (C-E = +62 of 252)
+  layouts C>E: 11, C<E: 0, tied: 3; non-tied = 11
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.00097656 (= 2/2048 over non-tied), one-sided (C>E) p = 0.00048828; smallest possible with 11 non-tied: two-sided 0.00097656, one-sided 0.00048828
+  sign test on layouts: two-sided 0.00097656, one-sided 0.00048828
+  layout mean diff = +0.2460 (x252 = +62.0 records), sd 0.2404, t(df=13) 95% CI [+0.1072, +0.3848] = [+27.0, +97.0] records, t = 3.83, two-sided t p = 0.0020881
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.1310, +0.3730] = [+33.0, +94.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.168, E 0.331
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+1, eval_01_no_one_place[no_one]:+2, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+2, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+10, eval_07_waiting_line_2[waiting_line]:+10, eval_08_waiting_line_4[waiting_line]:+4, eval_09_waiting_line_6[waiting_line]:+12, eval_10_conversation_group_2[conversation_group]:+3, eval_11_conversation_group_3[conversation_group]:+2, eval_12_conversation_group_4[conversation_group]:+6, eval_13_waiting_line_3[waiting_line]:+10
+
+S3. Layouts per situation (old-wording subsets; the same 14 layouts in every run)
+  conversation_group: 3 layouts -> smallest exact sign-flip p (all 3 non-tied, all one sign): two-sided 0.25, one-sided 0.125  [eval_10_conversation_group_2, eval_11_conversation_group_3, eval_12_conversation_group_4]
+  no_one: 6 layouts -> smallest exact sign-flip p (all 6 non-tied, all one sign): two-sided 0.03125, one-sided 0.015625  [eval_00_no_one_place, eval_01_no_one_place, eval_02_no_one_place, eval_03_no_one_deep_place, eval_04_no_one_object, eval_05_no_one_person]
+  waiting_line: 5 layouts -> smallest exact sign-flip p (all 5 non-tied, all one sign): two-sided 0.0625, one-sided 0.03125  [eval_06_waiting_line_1, eval_07_waiting_line_2, eval_08_waiting_line_4, eval_09_waiting_line_6, eval_13_waiting_line_3]
+  Per-situation C vs E within each model (descriptive):
+   qwen: conversation_group: diffs [2, 0, 2] p2=0.5 p1=0.25; no_one: diffs [0, 0, 0, 0, 0, 0] p2=1 p1=1; waiting_line: diffs [3, 6, 1, 6, 0] p2=0.125 p1=0.0625
+   glm: conversation_group: diffs [7, 5, 3] p2=0.25 p1=0.125; no_one: diffs [0, 1, 1, 0, 0, 0] p2=0.5 p1=0.25; waiting_line: diffs [2, 12, -1, 4, 7] p2=0.125 p1=0.0625
+   ds: conversation_group: diffs [3, 2, 6] p2=0.25 p1=0.125; no_one: diffs [1, 2, 0, 2, 0, 0] p2=0.25 p1=0.125; waiting_line: diffs [10, 10, 4, 12, 10] p2=0.0625 p1=0.03125
+
+S4. Power at n fresh layouts. Design A (this re-run): draw n layouts with replacement from the 14 observed per-layout differences (integer sums over 18 pairs), exact sign-flip test, alpha 0.05, 10,000 draws, numpy default_rng(seed 0); reject when p <= 0.05.
+  qwen: n=8: two-sided 0.072, one-sided 0.226 | n=14: two-sided 0.603, one-sided 0.792 | n=20: two-sided 0.924, one-sided 0.970 | n=30: two-sided 0.998, one-sided 1.000
+  glm: n=8: two-sided 0.373, one-sided 0.637 | n=14: two-sided 0.919, one-sided 0.972 | n=20: two-sided 0.994, one-sided 0.999 | n=30: two-sided 1.000, one-sided 1.000
+  ds: n=8: two-sided 0.767, one-sided 0.933 | n=14: two-sided 0.999, one-sided 1.000 | n=20: two-sided 1.000, one-sided 1.000 | n=30: two-sided 1.000, one-sided 1.000
+  Design B (the judge clus.py loop replayed exactly: random.seed(0), B=300 resamples, 400 MC flips, two-sided, p_MC < 0.05):
+  qwen: n=8: 0.09 | n=14: 0.62 | n=20: 0.91 | n=30: 1.0
+  glm: n=8: 0.38 | n=14: 0.91 | n=20: 1.0 | n=30: 1.0
+  ds: n=8: 0.77 | n=14: 1.0 | n=20: 1.0 | n=30: 1.0
+
+==============================================================================================================
+PART 2 (NEW rows). New wording: C (con) vs E (fsc) and C vs R (cot); Qwen s21, others s23
+-- qwen38_low C vs E: runs 20261017-022122_s21_real_qwen38_low_con, 20261017-020507_s21_real_qwen38_low_fsc, 20261017-021937_s21_staffed_qwen38_low_con, 20261017-020339_s21_staffed_qwen38_low_fsc, 20261017-021852_s21_plain_qwen38_low_con, 20261017-020401_s21_plain_qwen38_low_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=228 E=196 (C-E = +32 of 252)
+  layouts C>E: 8, C<E: 0, tied: 6; non-tied = 8
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 2/256 over non-tied), one-sided (C>E) p = 0.0039062; smallest possible with 8 non-tied: two-sided 0.0078125, one-sided 0.0039062
+  sign test on layouts: two-sided 0.0078125, one-sided 0.0039062
+  layout mean diff = +0.1270 (x252 = +32.0 records), sd 0.1622, t(df=13) 95% CI [+0.0333, +0.2207] = [+8.4, +55.6] records, t = 2.93, two-sided t p = 0.011743
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0516, +0.2143] = [+13.0, +54.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.122, E 0.119
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+9, eval_07_waiting_line_2[waiting_line]:+3, eval_08_waiting_line_4[waiting_line]:+4, eval_09_waiting_line_6[waiting_line]:+6, eval_10_conversation_group_2[conversation_group]:+6, eval_11_conversation_group_3[conversation_group]:+1, eval_12_conversation_group_4[conversation_group]:+1, eval_13_waiting_line_3[waiting_line]:+2
+-- qwen38_low C vs R: runs 20261017-022122_s21_real_qwen38_low_con, 20261017-012658_s21_real_qwen38_low_cot, 20261017-021937_s21_staffed_qwen38_low_con, 20261017-012700_s21_staffed_qwen38_low_cot, 20261017-021852_s21_plain_qwen38_low_con, 20261017-012701_s21_plain_qwen38_low_cot
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=228 R=179 (C-R = +49 of 252)
+  layouts C>R: 7, C<R: 0, tied: 7; non-tied = 7
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.015625 (= 2/128 over non-tied), one-sided (C>R) p = 0.0078125; smallest possible with 7 non-tied: two-sided 0.015625, one-sided 0.0078125
+  sign test on layouts: two-sided 0.015625, one-sided 0.0078125
+  layout mean diff = +0.1944 (x252 = +49.0 records), sd 0.2548, t(df=13) 95% CI [+0.0473, +0.3416] = [+11.9, +86.1] records, t = 2.86, two-sided t p = 0.013523
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0794, +0.3333] = [+20.0, +84.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.122, R 0.264
+  per layout (situation: C-R summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+15, eval_07_waiting_line_2[waiting_line]:+5, eval_08_waiting_line_4[waiting_line]:+10, eval_09_waiting_line_6[waiting_line]:+5, eval_10_conversation_group_2[conversation_group]:+5, eval_11_conversation_group_3[conversation_group]:+0, eval_12_conversation_group_4[conversation_group]:+3, eval_13_waiting_line_3[waiting_line]:+6
+-- glm53 C vs E: runs 20261017-125813_s23_real_glm53_con, 20261017-125125_s23_real_glm53_fsc, 20261017-125552_s23_staffed_glm53_con, 20261017-124859_s23_staffed_glm53_fsc, 20261017-125556_s23_plain_glm53_con, 20261017-124913_s23_plain_glm53_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=170 E=123 (C-E = +47 of 252)
+  layouts C>E: 8, C<E: 0, tied: 6; non-tied = 8
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 2/256 over non-tied), one-sided (C>E) p = 0.0039062; smallest possible with 8 non-tied: two-sided 0.0078125, one-sided 0.0039062
+  sign test on layouts: two-sided 0.0078125, one-sided 0.0039062
+  layout mean diff = +0.1865 (x252 = +47.0 records), sd 0.2040, t(df=13) 95% CI [+0.0687, +0.3043] = [+17.3, +76.7] records, t = 3.42, two-sided t p = 0.0045502
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0913, +0.2976] = [+23.0, +75.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.261, E 0.413
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+2, eval_07_waiting_line_2[waiting_line]:+12, eval_08_waiting_line_4[waiting_line]:+5, eval_09_waiting_line_6[waiting_line]:+6, eval_10_conversation_group_2[conversation_group]:+6, eval_11_conversation_group_3[conversation_group]:+6, eval_12_conversation_group_4[conversation_group]:+6, eval_13_waiting_line_3[waiting_line]:+4
+-- glm53 C vs R: runs 20261017-125813_s23_real_glm53_con, 20261017-123106_s23_real_glm53_cot, 20261017-125552_s23_staffed_glm53_con, 20261017-123059_s23_staffed_glm53_cot, 20261017-125556_s23_plain_glm53_con, 20261017-123108_s23_plain_glm53_cot
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=170 R=132 (C-R = +38 of 252)
+  layouts C>R: 7, C<R: 0, tied: 7; non-tied = 7
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.015625 (= 2/128 over non-tied), one-sided (C>R) p = 0.0078125; smallest possible with 7 non-tied: two-sided 0.015625, one-sided 0.0078125
+  sign test on layouts: two-sided 0.015625, one-sided 0.0078125
+  layout mean diff = +0.1508 (x252 = +38.0 records), sd 0.2049, t(df=13) 95% CI [+0.0325, +0.2691] = [+8.2, +67.8] records, t = 2.75, two-sided t p = 0.016429
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0556, +0.2619] = [+14.0, +66.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.261, R 0.350
+  per layout (situation: C-R summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+2, eval_07_waiting_line_2[waiting_line]:+11, eval_08_waiting_line_4[waiting_line]:+9, eval_09_waiting_line_6[waiting_line]:+0, eval_10_conversation_group_2[conversation_group]:+5, eval_11_conversation_group_3[conversation_group]:+3, eval_12_conversation_group_4[conversation_group]:+6, eval_13_waiting_line_3[waiting_line]:+2
+-- dsv41 C vs E: runs 20261017-124936_s23_real_dsv41_con, 20261017-124447_s23_real_dsv41_fsc, 20261017-124931_s23_staffed_dsv41_con, 20261017-124447_s23_staffed_dsv41_fsc, 20261017-124904_s23_plain_dsv41_con, 20261017-124429_s23_plain_dsv41_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=185 E=126 (C-E = +59 of 252)
+  layouts C>E: 8, C<E: 0, tied: 6; non-tied = 8
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 2/256 over non-tied), one-sided (C>E) p = 0.0039062; smallest possible with 8 non-tied: two-sided 0.0078125, one-sided 0.0039062
+  sign test on layouts: two-sided 0.0078125, one-sided 0.0039062
+  layout mean diff = +0.2341 (x252 = +59.0 records), sd 0.2653, t(df=13) 95% CI [+0.0810, +0.3873] = [+20.4, +97.6] records, t = 3.30, two-sided t p = 0.0057194
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.1071, +0.3690] = [+27.0, +93.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.125, E 0.321
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+1, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+13, eval_07_waiting_line_2[waiting_line]:+10, eval_08_waiting_line_4[waiting_line]:+5, eval_09_waiting_line_6[waiting_line]:+11, eval_10_conversation_group_2[conversation_group]:+7, eval_11_conversation_group_3[conversation_group]:+0, eval_12_conversation_group_4[conversation_group]:+4, eval_13_waiting_line_3[waiting_line]:+8
+-- dsv41 C vs R: runs 20261017-124936_s23_real_dsv41_con, 20261017-123103_s23_real_dsv41_cot, 20261017-124931_s23_staffed_dsv41_con, 20261017-123107_s23_staffed_dsv41_cot, 20261017-124904_s23_plain_dsv41_con, 20261017-123108_s23_plain_dsv41_cot
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=185 R=120 (C-R = +65 of 252)
+  layouts C>R: 9, C<R: 2, tied: 3; non-tied = 11
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 16/2048 over non-tied), one-sided (C>R) p = 0.0039062; smallest possible with 11 non-tied: two-sided 0.00097656, one-sided 0.00048828
+  sign test on layouts: two-sided 0.06543, one-sided 0.032715
+  layout mean diff = +0.2579 (x252 = +65.0 records), sd 0.2928, t(df=13) 95% CI [+0.0889, +0.4270] = [+22.4, +107.6] records, t = 3.30, two-sided t p = 0.0057962
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.1151, +0.4048] = [+29.0, +102.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.125, R 0.390
+  per layout (situation: C-R summed over its pairs): eval_00_no_one_place[no_one]:-1, eval_01_no_one_place[no_one]:+1, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+2, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+13, eval_07_waiting_line_2[waiting_line]:+9, eval_08_waiting_line_4[waiting_line]:+11, eval_09_waiting_line_6[waiting_line]:+12, eval_10_conversation_group_2[conversation_group]:+4, eval_11_conversation_group_3[conversation_group]:-1, eval_12_conversation_group_4[conversation_group]:+5, eval_13_waiting_line_3[waiting_line]:+10
+-- haiku55 C vs E: runs 20261017-130036_s23_real_haiku55_con, 20261017-125406_s23_real_haiku55_fsc, 20261017-130055_s23_staffed_haiku55_con, 20261017-125429_s23_staffed_haiku55_fsc, 20261017-130031_s23_plain_haiku55_con, 20261017-125403_s23_plain_haiku55_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=240 E=148 (C-E = +92 of 252)
+  layouts C>E: 9, C<E: 0, tied: 5; non-tied = 9
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0039062 (= 2/512 over non-tied), one-sided (C>E) p = 0.0019531; smallest possible with 9 non-tied: two-sided 0.0039062, one-sided 0.0019531
+  sign test on layouts: two-sided 0.0039062, one-sided 0.0019531
+  layout mean diff = +0.3651 (x252 = +92.0 records), sd 0.3703, t(df=13) 95% CI [+0.1513, +0.5789] = [+38.1, +145.9] records, t = 3.69, two-sided t p = 0.002725
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.1865, +0.5556] = [+47.0, +140.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.265, E 0.678
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+2, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+10, eval_07_waiting_line_2[waiting_line]:+16, eval_08_waiting_line_4[waiting_line]:+9, eval_09_waiting_line_6[waiting_line]:+18, eval_10_conversation_group_2[conversation_group]:+10, eval_11_conversation_group_3[conversation_group]:+5, eval_12_conversation_group_4[conversation_group]:+6, eval_13_waiting_line_3[waiting_line]:+16
+-- haiku55 C vs R: runs 20261017-130036_s23_real_haiku55_con, 20261017-123103_s23_real_haiku55_cot, 20261017-130055_s23_staffed_haiku55_con, 20261017-123104_s23_staffed_haiku55_cot, 20261017-130031_s23_plain_haiku55_con, 20261017-123107_s23_plain_haiku55_cot
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=240 R=151 (C-R = +89 of 252)
+  layouts C>R: 9, C<R: 0, tied: 5; non-tied = 9
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0039062 (= 2/512 over non-tied), one-sided (C>R) p = 0.0019531; smallest possible with 9 non-tied: two-sided 0.0039062, one-sided 0.0019531
+  sign test on layouts: two-sided 0.0039062, one-sided 0.0019531
+  layout mean diff = +0.3532 (x252 = +89.0 records), sd 0.3890, t(df=13) 95% CI [+0.1286, +0.5778] = [+32.4, +145.6] records, t = 3.40, two-sided t p = 0.0047655
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.1706, +0.5516] = [+43.0, +139.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.265, R 0.747
+  per layout (situation: C-R summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+2, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+10, eval_07_waiting_line_2[waiting_line]:+16, eval_08_waiting_line_4[waiting_line]:+12, eval_09_waiting_line_6[waiting_line]:+18, eval_10_conversation_group_2[conversation_group]:+7, eval_11_conversation_group_3[conversation_group]:+1, eval_12_conversation_group_4[conversation_group]:+6, eval_13_waiting_line_3[waiting_line]:+17
+-- sonnet55_low C vs E: runs 20261017-130300_s23_real_sonnet55_low_con, 20261017-125647_s23_real_sonnet55_low_fsc, 20261017-132708_s23_staffed_sonnet55_low_con, 20261017-132258_s23_staffed_sonnet55_low_fsc, 20261017-132708_s23_plain_sonnet55_low_con, 20261017-132301_s23_plain_sonnet55_low_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=242 E=178 (C-E = +64 of 252)
+  layouts C>E: 7, C<E: 0, tied: 7; non-tied = 7
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.015625 (= 2/128 over non-tied), one-sided (C>E) p = 0.0078125; smallest possible with 7 non-tied: two-sided 0.015625, one-sided 0.0078125
+  sign test on layouts: two-sided 0.015625, one-sided 0.0078125
+  layout mean diff = +0.2540 (x252 = +64.0 records), sd 0.3409, t(df=13) 95% CI [+0.0572, +0.4508] = [+14.4, +113.6] records, t = 2.79, two-sided t p = 0.015388
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0913, +0.4365] = [+23.0, +110.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.244, E 0.544
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+13, eval_07_waiting_line_2[waiting_line]:+12, eval_08_waiting_line_4[waiting_line]:+13, eval_09_waiting_line_6[waiting_line]:+16, eval_10_conversation_group_2[conversation_group]:+2, eval_11_conversation_group_3[conversation_group]:+2, eval_12_conversation_group_4[conversation_group]:+0, eval_13_waiting_line_3[waiting_line]:+6
+-- sonnet55_low C vs R: runs 20261017-130300_s23_real_sonnet55_low_con, 20261017-123109_s23_real_sonnet55_low_cot, 20261017-132708_s23_staffed_sonnet55_low_con, 20261017-130912_s23_staffed_sonnet55_low_cot, 20261017-132708_s23_plain_sonnet55_low_con, 20261017-130918_s23_plain_sonnet55_low_cot
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=242 R=178 (C-R = +64 of 252)
+  layouts C>R: 7, C<R: 0, tied: 7; non-tied = 7
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.015625 (= 2/128 over non-tied), one-sided (C>R) p = 0.0078125; smallest possible with 7 non-tied: two-sided 0.015625, one-sided 0.0078125
+  sign test on layouts: two-sided 0.015625, one-sided 0.0078125
+  layout mean diff = +0.2540 (x252 = +64.0 records), sd 0.3847, t(df=13) 95% CI [+0.0318, +0.4761] = [+8.0, +120.0] records, t = 2.47, two-sided t p = 0.028136
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0754, +0.4683] = [+19.0, +118.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.244, R 0.718
+  per layout (situation: C-R summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+17, eval_07_waiting_line_2[waiting_line]:+16, eval_08_waiting_line_4[waiting_line]:+8, eval_09_waiting_line_6[waiting_line]:+17, eval_10_conversation_group_2[conversation_group]:+1, eval_11_conversation_group_3[conversation_group]:+1, eval_12_conversation_group_4[conversation_group]:+0, eval_13_waiting_line_3[waiting_line]:+4
+-- gemini38_low C vs E: runs 20261017-125226_s23_real_gemini38_low_con, 20261017-124739_s23_real_gemini38_low_fsc, 20261017-125459_s23_staffed_gemini38_low_con, 20261017-124910_s23_staffed_gemini38_low_fsc, 20261017-125351_s23_plain_gemini38_low_con, 20261017-124809_s23_plain_gemini38_low_fsc
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=214 E=173 (C-E = +41 of 252)
+  layouts C>E: 8, C<E: 0, tied: 6; non-tied = 8
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 2/256 over non-tied), one-sided (C>E) p = 0.0039062; smallest possible with 8 non-tied: two-sided 0.0078125, one-sided 0.0039062
+  sign test on layouts: two-sided 0.0078125, one-sided 0.0039062
+  layout mean diff = +0.1627 (x252 = +41.0 records), sd 0.2061, t(df=13) 95% CI [+0.0437, +0.2817] = [+11.0, +71.0] records, t = 2.95, two-sided t p = 0.011194
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0714, +0.2778] = [+18.0, +70.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.258, E 0.389
+  per layout (situation: C-E summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+6, eval_07_waiting_line_2[waiting_line]:+6, eval_08_waiting_line_4[waiting_line]:+4, eval_09_waiting_line_6[waiting_line]:+1, eval_10_conversation_group_2[conversation_group]:+4, eval_11_conversation_group_3[conversation_group]:+3, eval_12_conversation_group_4[conversation_group]:+13, eval_13_waiting_line_3[waiting_line]:+4
+-- gemini38_low C vs R: runs 20261017-125226_s23_real_gemini38_low_con, 20261017-123104_s23_real_gemini38_low_cot, 20261017-125459_s23_staffed_gemini38_low_con, 20261017-123104_s23_staffed_gemini38_low_cot, 20261017-125351_s23_plain_gemini38_low_con, 20261017-123105_s23_plain_gemini38_low_cot
+  pairs n=252 layouts L=14 (pairs per layout: [18]); C=214 R=164 (C-R = +50 of 252)
+  layouts C>R: 8, C<R: 0, tied: 6; non-tied = 8
+  exact sign-flip, statistic = sum of layout mean diffs (2^14 patterns): two-sided p = 0.0078125 (= 2/256 over non-tied), one-sided (C>R) p = 0.0039062; smallest possible with 8 non-tied: two-sided 0.0078125, one-sided 0.0039062
+  sign test on layouts: two-sided 0.0078125, one-sided 0.0039062
+  layout mean diff = +0.1984 (x252 = +50.0 records), sd 0.2303, t(df=13) 95% CI [+0.0654, +0.3314] = [+16.5, +83.5] records, t = 3.22, two-sided t p = 0.0066612
+  percentile bootstrap of the layout mean (10,000, seed 1): [+0.0913, +0.3254] = [+23.0, +82.0] records
+  ICC(1) by layout (judge's one-way ANOVA): C 0.258, R 0.401
+  per layout (situation: C-R summed over its pairs): eval_00_no_one_place[no_one]:+0, eval_01_no_one_place[no_one]:+0, eval_02_no_one_place[no_one]:+0, eval_03_no_one_deep_place[no_one]:+0, eval_04_no_one_object[no_one]:+0, eval_05_no_one_person[no_one]:+0, eval_06_waiting_line_1[waiting_line]:+4, eval_07_waiting_line_2[waiting_line]:+6, eval_08_waiting_line_4[waiting_line]:+4, eval_09_waiting_line_6[waiting_line]:+7, eval_10_conversation_group_2[conversation_group]:+4, eval_11_conversation_group_3[conversation_group]:+8, eval_12_conversation_group_4[conversation_group]:+14, eval_13_waiting_line_3[waiting_line]:+3
+
+Totals of 252 (R / E / C) per model at the new wording:
+  qwen38_low: 179 / 196 / 228
+  glm53: 132 / 123 / 170
+  dsv41: 120 / 126 / 185
+  haiku55: 151 / 148 / 240
+  sonnet55_low: 178 / 178 / 242
+  gemini38_low: 164 / 173 / 214
+
+Summary of layout-clustered exact sign-flip p (new wording):
+  model          cmp      C-X    +/-/0     p two     p one    t 95% CI (records of 252)
+  qwen38_low     C vs E    +32  8/0/6  0.0078125 0.0039062   [+8.4, +55.6]
+  qwen38_low     C vs R    +49  7/0/7   0.015625 0.0078125   [+11.9, +86.1]
+  glm53          C vs E    +47  8/0/6  0.0078125 0.0039062   [+17.3, +76.7]
+  glm53          C vs R    +38  7/0/7   0.015625 0.0078125   [+8.2, +67.8]
+  dsv41          C vs E    +59  8/0/6  0.0078125 0.0039062   [+20.4, +97.6]
+  dsv41          C vs R    +65  9/2/3  0.0078125 0.0039062   [+22.4, +107.6]
+  haiku55        C vs E    +92  9/0/5  0.0039062 0.0019531   [+38.1, +145.9]
+  haiku55        C vs R    +89  9/0/5  0.0039062 0.0019531   [+32.4, +145.6]
+  sonnet55_low   C vs E    +64  7/0/7   0.015625 0.0078125   [+14.4, +113.6]
+  sonnet55_low   C vs R    +64  7/0/7   0.015625 0.0078125   [+8.0, +120.0]
+  gemini38_low   C vs E    +41  8/0/6  0.0078125 0.0039062   [+11.0, +71.0]
+  gemini38_low   C vs R    +50  8/0/6  0.0078125 0.0039062   [+16.5, +83.5]
+  largest two-sided p over the 12: 0.015625; largest one-sided p: 0.0078125
+  C below E in 0 of 84 model x layout cells (successes summed over 18 pairs), tied in 36: []
+  C below R in 2 of 84 model x layout cells (successes summed over 18 pairs), tied in 35: [('dsv41', 'eval_00_no_one_place', 16, 17), ('dsv41', 'eval_11_conversation_group_3', 11, 12)]
+
+Old-wording C below E cells (for comparison):
+  1 of 42: [('glm', 'eval_08_waiting_line_4', 12, 13)]

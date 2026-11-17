@@ -287,7 +287,7 @@ def _tracks(body: dict, key: str) -> list[Track]:
 
 _IN_TURN_M = 0.3                                   # a place this near the place in turn is it
 _HOLD_BACK_M = 0.05                                # hold_place: a place farther back down the line than this is not taken
-_VARIANT_OPTIONS = {"readmit", "line_span_m", "vacate_after_s", "path_memory",     # re-solving v2 (CT2)
+_VARIANT_OPTIONS = {"readmit", "line_span_m", "vacate_after_s", "vacate_rejoined", "path_memory",  # CT2
                     "co_motion_s", "co_motion_follow", "co_motion_rejoin",                            # and CT3
                     "group_follow", "anchor_rederive",                       # ideas round 2: CT3F, the bolt-on
                     "hold_place",                                            # and CT3FL: the place held in line

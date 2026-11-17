@@ -1,0 +1,156 @@
+# The development scenes of the research track (step 0, frozen 17 October 2026), as SCENES_DIR/SCENE_ID from the
+# repository root, built from folder names alone: the scenes of the scenes folders the runs of
+# research_runs.txt use (82 lines), and every worked-example scene of the examples folders their config.yaml
+# records (29 lines, at the end; a scene of a folder named `examples` is a worked example): 111 lines in all.
+#
+# The 82 lines are 68 scenes: data/dev_scenes/placeholder_first14, the scenes folder the s19_ph and s20_ph runs record, is a
+# folder of 14 links to data/placeholder/eval/eval_00 to eval_13 (the first 14 placeholder scenes, as its name
+# says), so each of those 14 scenes is listed twice, once under each folder. A run is replayed
+# against the folder its config.yaml records, so both stay; a scene-level pass over the list takes each scene once
+# with research_harness.distinct_scenes(), which resolves the links (the summary checks that the 68 and the 29 are
+# also distinct by content). data/placeholder/eval also holds eval_14_audience_3, eval_15_audience_5,
+# eval_20_no_one_lift and eval_21_no_one_screen, byte for byte the scenes of data/dev_scenes/dev_new/seed0/scenes; no listed
+# run was evaluated on them there, so they are listed under dev_new/seed0 alone.
+#
+# The held-out placeholder scenes eval_16 to eval_19 (group_photo, lift_wait) are left out; eval_20_no_one_lift and
+# eval_21_no_one_screen are development scenes and are kept. By its name no worked example is of a held-out
+# situation, and research_harness.example() leaves out the truth of any episode of one.
+# research_harness.py refuses to open a scene that is not on this list.
+
+# data/placeholder/eval: 14 scenes (the s8, s10 and s16b_ph runs).
+data/placeholder/eval/eval_00_no_one_place
+data/placeholder/eval/eval_01_no_one_place
+data/placeholder/eval/eval_02_no_one_place
+data/placeholder/eval/eval_03_no_one_deep_place
+data/placeholder/eval/eval_04_no_one_object
+data/placeholder/eval/eval_05_no_one_person
+data/placeholder/eval/eval_06_waiting_line_1
+data/placeholder/eval/eval_07_waiting_line_2
+data/placeholder/eval/eval_08_waiting_line_4
+data/placeholder/eval/eval_09_waiting_line_6
+data/placeholder/eval/eval_10_conversation_group_2
+data/placeholder/eval/eval_11_conversation_group_3
+data/placeholder/eval/eval_12_conversation_group_4
+data/placeholder/eval/eval_13_waiting_line_3
+
+# data/dev_scenes/realistic_final/real/scenes: 14 scenes.
+data/dev_scenes/realistic_final/real/scenes/real_eval_00_no_one_place
+data/dev_scenes/realistic_final/real/scenes/real_eval_01_no_one_place
+data/dev_scenes/realistic_final/real/scenes/real_eval_02_no_one_place
+data/dev_scenes/realistic_final/real/scenes/real_eval_03_no_one_deep_place
+data/dev_scenes/realistic_final/real/scenes/real_eval_04_no_one_object
+data/dev_scenes/realistic_final/real/scenes/real_eval_05_no_one_person
+data/dev_scenes/realistic_final/real/scenes/real_eval_06_waiting_line_1
+data/dev_scenes/realistic_final/real/scenes/real_eval_07_waiting_line_2
+data/dev_scenes/realistic_final/real/scenes/real_eval_08_waiting_line_4
+data/dev_scenes/realistic_final/real/scenes/real_eval_09_waiting_line_6
+data/dev_scenes/realistic_final/real/scenes/real_eval_10_conversation_group_2
+data/dev_scenes/realistic_final/real/scenes/real_eval_11_conversation_group_3
+data/dev_scenes/realistic_final/real/scenes/real_eval_12_conversation_group_4
+data/dev_scenes/realistic_final/real/scenes/real_eval_13_waiting_line_3
+
+# data/dev_scenes/realistic_final/staffed/scenes: 14 scenes.
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_00_no_one_place
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_01_no_one_place
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_02_no_one_place
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_03_no_one_deep_place
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_04_no_one_object
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_05_no_one_person
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_06_waiting_line_1
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_07_waiting_line_2
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_08_waiting_line_4
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_09_waiting_line_6
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_10_conversation_group_2
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_11_conversation_group_3
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_12_conversation_group_4
+data/dev_scenes/realistic_final/staffed/scenes/staffed_eval_13_waiting_line_3
+
+# data/dev_scenes/realistic_final/plain/scenes: 14 scenes.
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_00_no_one_place
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_01_no_one_place
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_02_no_one_place
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_03_no_one_deep_place
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_04_no_one_object
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_05_no_one_person
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_06_waiting_line_1
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_07_waiting_line_2
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_08_waiting_line_4
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_09_waiting_line_6
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_10_conversation_group_2
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_11_conversation_group_3
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_12_conversation_group_4
+data/dev_scenes/realistic_final/plain/scenes/plain_eval_13_waiting_line_3
+
+# data/dev_scenes/placeholder_first14: 14 links, to
+# data/placeholder/eval/eval_00 to eval_13 above, the very same scenes (the s19_ph and s20_ph runs).
+data/dev_scenes/placeholder_first14/eval_00_no_one_place
+data/dev_scenes/placeholder_first14/eval_01_no_one_place
+data/dev_scenes/placeholder_first14/eval_02_no_one_place
+data/dev_scenes/placeholder_first14/eval_03_no_one_deep_place
+data/dev_scenes/placeholder_first14/eval_04_no_one_object
+data/dev_scenes/placeholder_first14/eval_05_no_one_person
+data/dev_scenes/placeholder_first14/eval_06_waiting_line_1
+data/dev_scenes/placeholder_first14/eval_07_waiting_line_2
+data/dev_scenes/placeholder_first14/eval_08_waiting_line_4
+data/dev_scenes/placeholder_first14/eval_09_waiting_line_6
+data/dev_scenes/placeholder_first14/eval_10_conversation_group_2
+data/dev_scenes/placeholder_first14/eval_11_conversation_group_3
+data/dev_scenes/placeholder_first14/eval_12_conversation_group_4
+data/dev_scenes/placeholder_first14/eval_13_waiting_line_3
+
+# data/dev_scenes/dev_new/seed0/scenes: 4 scenes.
+data/dev_scenes/dev_new/seed0/scenes/eval_14_audience_3
+data/dev_scenes/dev_new/seed0/scenes/eval_15_audience_5
+data/dev_scenes/dev_new/seed0/scenes/eval_20_no_one_lift
+data/dev_scenes/dev_new/seed0/scenes/eval_21_no_one_screen
+
+# data/dev_scenes/dev_new/seed1/scenes: 4 scenes.
+data/dev_scenes/dev_new/seed1/scenes/eval_14_audience_3
+data/dev_scenes/dev_new/seed1/scenes/eval_15_audience_5
+data/dev_scenes/dev_new/seed1/scenes/eval_20_no_one_lift
+data/dev_scenes/dev_new/seed1/scenes/eval_21_no_one_screen
+
+# data/dev_scenes/dev_new/seed2/scenes: 4 scenes.
+data/dev_scenes/dev_new/seed2/scenes/eval_14_audience_3
+data/dev_scenes/dev_new/seed2/scenes/eval_15_audience_5
+data/dev_scenes/dev_new/seed2/scenes/eval_20_no_one_lift
+data/dev_scenes/dev_new/seed2/scenes/eval_21_no_one_screen
+
+# The worked-example scenes: the examples folders the fsc runs record as run.examples_dir.
+
+# data/placeholder/examples: 8 scenes.
+data/placeholder/examples/examples_00_no_one_place
+data/placeholder/examples/examples_01_no_one_place
+data/placeholder/examples/examples_02_waiting_line_2
+data/placeholder/examples/examples_03_waiting_line_3
+data/placeholder/examples/examples_04_conversation_group_2
+data/placeholder/examples/examples_05_conversation_group_3
+data/placeholder/examples/examples_06_no_one_person
+data/placeholder/examples/examples_07_audience_4
+
+# data/dev_scenes/realistic_final/real/examples: 7 scenes.
+data/dev_scenes/realistic_final/real/examples/real_examples_00_no_one_place
+data/dev_scenes/realistic_final/real/examples/real_examples_01_no_one_place
+data/dev_scenes/realistic_final/real/examples/real_examples_02_waiting_line_2
+data/dev_scenes/realistic_final/real/examples/real_examples_03_waiting_line_3
+data/dev_scenes/realistic_final/real/examples/real_examples_04_conversation_group_2
+data/dev_scenes/realistic_final/real/examples/real_examples_05_conversation_group_3
+data/dev_scenes/realistic_final/real/examples/real_examples_06_no_one_person
+
+# data/dev_scenes/realistic_final/staffed/examples: 7 scenes.
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_00_no_one_place
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_01_no_one_place
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_02_waiting_line_2
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_03_waiting_line_3
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_04_conversation_group_2
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_05_conversation_group_3
+data/dev_scenes/realistic_final/staffed/examples/staffed_examples_06_no_one_person
+
+# data/dev_scenes/realistic_final/plain/examples: 7 scenes.
+data/dev_scenes/realistic_final/plain/examples/plain_examples_00_no_one_place
+data/dev_scenes/realistic_final/plain/examples/plain_examples_01_no_one_place
+data/dev_scenes/realistic_final/plain/examples/plain_examples_02_waiting_line_2
+data/dev_scenes/realistic_final/plain/examples/plain_examples_03_waiting_line_3
+data/dev_scenes/realistic_final/plain/examples/plain_examples_04_conversation_group_2
+data/dev_scenes/realistic_final/plain/examples/plain_examples_05_conversation_group_3
+data/dev_scenes/realistic_final/plain/examples/plain_examples_06_no_one_person

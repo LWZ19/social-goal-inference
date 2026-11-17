@@ -1,0 +1,16 @@
+## CT4
+
+- waiter: n 8758, mean P 0.80, share P >= 0.5 0.84, share 0.2 <= P < 0.5 0.11
+- bystander: n 10590, mean P 0.17, share P >= 0.5 0.14, share 0.2 <= P < 0.5 0.10
+- walker: n 8593, mean P 0.27, share P >= 0.5 0.22, share 0.2 <= P < 0.5 0.18
+- bystander at P >= 0.5 (1523 ticks): side from axis median 1.29 m; along minus true tail median 0.74 m (share behind the tail 0.83); speed median 0.00 m/s, share moving > 0.3 m/s 0.01
+- walker at P >= 0.5 (1892 ticks): side from axis median 1.12 m; along minus true tail median -0.07 m (share behind the tail 0.46); speed median 0.18 m/s, share moving > 0.3 m/s 0.45
+
+## W0
+
+- waiter: n 8769, mean P 0.78, share P >= 0.5 0.81, share 0.2 <= P < 0.5 0.12
+- bystander: n 10602, mean P 0.16, share P >= 0.5 0.14, share 0.2 <= P < 0.5 0.10
+- walker: n 8603, mean P 0.28, share P >= 0.5 0.23, share 0.2 <= P < 0.5 0.17
+- bystander at P >= 0.5 (1443 ticks): side from axis median 1.26 m; along minus true tail median 0.71 m (share behind the tail 0.81); speed median 0.00 m/s, share moving > 0.3 m/s 0.01
+- walker at P >= 0.5 (1969 ticks): side from axis median 1.10 m; along minus true tail median -0.10 m (share behind the tail 0.44); speed median 0.25 m/s, share moving > 0.3 m/s 0.48
+

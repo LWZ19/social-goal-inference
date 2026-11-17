@@ -438,6 +438,29 @@ def test_v2_takes_the_place_of_the_last_who_left_once_they_have_been_gone_5_s():
     assert r.vacated_pose is not None and r.vacated_pose[:2] == pytest.approx((1.0, 0.0), abs=0.01)
 
 
+def _last_served_comes_back(options, back_at):
+    r = _joined_behind(options)
+    r.inputs(tracks((0.0, 3.0), (1.0, 0.0)), robot_xy=(2.7, 0.0), t=20.0)          # 1 served; 2 stepped up, still
+    for t in (20.5, 21.0, 21.5):
+        r.inputs(tracks((0.0, 3.5), (1.0, 0.0)), robot_xy=(2.0, 0.0), t=t)
+    r.inputs(tracks((0.0, 4.0), (1.0, 2.5)), robot_xy=(2.0, 0.0), t=30.0)          # 2 served too, walks off
+    r.inputs(tracks((0.0, 4.0), back_at), robot_xy=(2.0, 0.0), t=35.5)             # and is back on the line
+    return r
+
+
+def test_v2_does_not_take_the_place_of_one_who_came_back_to_the_line():
+    assert _last_served_comes_back(V2, (3.5, 0.0)).vacated_pose is None
+
+
+def test_vacate_rejoined_takes_the_place_when_the_last_who_left_rejoined_behind_the_robot():
+    r = _last_served_comes_back({**V2, "vacate_rejoined": True}, (3.5, 0.0))       # back, but behind the robot
+    assert r.vacated_pose is not None and r.vacated_pose[:2] == pytest.approx((1.0, 0.0), abs=0.01)
+
+
+def test_vacate_rejoined_still_waits_for_one_who_came_back_ahead_of_the_robot():
+    assert _last_served_comes_back({**V2, "vacate_rejoined": True}, (1.2, 0.0)).vacated_pose is None
+
+
 def test_v2_does_not_vacate_before_the_robot_has_joined():
     r = resolver(people=[person(1, 1.0, 0.0)], constraints=[after(1)], at_answer=tracks((1.0, 0.0)), options=V2)
     r.inputs(tracks((1.0, 0.0)), robot_xy=(6.0, 0.0), t=3.0)

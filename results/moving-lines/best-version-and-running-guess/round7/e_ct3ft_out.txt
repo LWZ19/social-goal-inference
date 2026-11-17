@@ -1,0 +1,45 @@
+# Round 7 part D, DESCRIPTIVE: CT3FT by ROUND7_D.md (results/moving-lines/test-layouts/confirm_selection.json; results/data/moving/runs_ceiling4/dsv41; results/data/moving/runs_confirm4/dsv41)
+
+## Band top 1.2 m (the decision)
+
+| arm | episodes | strict mean | front part | behind part | strict at the front (pooled s) | / OW |
+|---|---|---|---|---|---|---|
+| CT3FT | 66 | 0.261 | 0.044 | 0.217 | 0.245 (795) | 0.41 |
+| CT3F | 66 | 0.208 | 0.018 | 0.191 | 0.124 (719) | 0.33 |
+| CT4OT | 66 | 0.330 | 0.083 | 0.246 | 0.422 (900) | 0.52 |
+| CT4PJT | 66 | 0.207 | 0.017 | 0.190 | 0.113 (744) | 0.32 |
+| OW | 66 | 0.640 | 0.333 | 0.307 | 0.779 (1973) | 1.00 |
+
+| gap (a - b) | n | mean | front part | behind part | wins/losses/ties | sign p | 95% lower bound |
+|---|---|---|---|---|---|---|---|
+| G1 target for the best arm (CT3FT - CT3F) | 66 | +0.053 | +0.026 | +0.027 | 27/23/16 | 0.672 | +0.013 |
+| G2 who once the target is right (CT4OT - CT3FT) | 66 | +0.068 | +0.039 | +0.029 | 36/17/13 | 0.013 | +0.018 |
+| check: CT4OT - CT3F (CT4OT - CT3F) | 66 | +0.121 | +0.066 | +0.055 | 39/20/7 | 0.018 | +0.064 |
+| reported: CT3FT - CT4PJT (CT3FT - CT4PJT) | 66 | +0.055 | +0.027 | +0.028 | 33/20/13 | 0.098 | +0.017 |
+
+Reading (ROUND7_D.md):
+- outcome B: lead 1 first; lead 2 second, only after lead 1
+- G1 front part +0.026 of +0.053: the gain is not mostly at the front
+
+## Band top 1.5 m (reported beside it)
+
+| arm | episodes | strict mean | front part | behind part | strict at the front (pooled s) | / OW |
+|---|---|---|---|---|---|---|
+| CT3FT | 66 | 0.289 | 0.044 | 0.245 | 0.245 (795) | 0.44 |
+| CT3F | 66 | 0.241 | 0.018 | 0.224 | 0.124 (719) | 0.37 |
+| CT4OT | 66 | 0.372 | 0.083 | 0.288 | 0.422 (900) | 0.57 |
+| CT4PJT | 66 | 0.238 | 0.017 | 0.221 | 0.113 (744) | 0.37 |
+| OW | 66 | 0.652 | 0.333 | 0.319 | 0.779 (1973) | 1.00 |
+
+| gap (a - b) | n | mean | front part | behind part | wins/losses/ties | sign p | 95% lower bound |
+|---|---|---|---|---|---|---|---|
+| G1 target for the best arm (CT3FT - CT3F) | 66 | +0.048 | +0.026 | +0.022 | 31/20/15 | 0.161 | +0.008 |
+| G2 who once the target is right (CT4OT - CT3FT) | 66 | +0.082 | +0.039 | +0.043 | 36/22/8 | 0.087 | +0.033 |
+| check: CT4OT - CT3F (CT4OT - CT3F) | 66 | +0.131 | +0.066 | +0.065 | 39/18/9 | 0.008 | +0.072 |
+| reported: CT3FT - CT4PJT (CT3FT - CT4PJT) | 66 | +0.052 | +0.027 | +0.025 | 32/24/10 | 0.350 | +0.013 |
+
+Reading (ROUND7_D.md):
+- outcome C: target alone does not lift CT3F testably; who and target together go to the project as one question
+- G1 front part +0.026 of +0.048: the gain is at the front
+
+The outcome differs between band tops ({1.2: 'B', 1.5: 'C'}): both go to the project.

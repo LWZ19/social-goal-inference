@@ -1,0 +1,7 @@
+# Port checks (totals only): results/data/moving/runs_confirm4/dsv41
+
+- episodes: CT4P 66 (left out {'answer without people or target': 6}), CT4PJ 66 (left out {'answer without people or target': 6})
+- CT4P direction: 6807/6808 path re-solves match (0.9999); fallbacks 2842, of which with a path in the rebuild 0 -> PASS
+- CT4PJ behind: 4827/4857 joined re-solves match (0.9938); boundary 25, differs by more 5; last is a behind id 0 -> PASS
+
+Verdict: both PASS: scoring may go ahead

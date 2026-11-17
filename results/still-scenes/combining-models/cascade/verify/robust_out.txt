@@ -1,0 +1,4 @@
+dis1 partner t+1 (judge): AUROC fail 0.752 gain 0.728; @0.3: succ/prov-lat/record-lat (207, 24.5, 26.3); @0.4: succ/prov-lat/record-lat (212, 29.1, 30.9); @0.5: succ/prov-lat/record-lat (218, 32.9, 34.7); @0.6: succ/prov-lat/record-lat (219, 37.8, 39.6)
+dis1 partner t+2 (alternative): AUROC fail 0.661 gain 0.663; @0.3: succ/prov-lat/record-lat (205, 25.0, 26.8); @0.4: succ/prov-lat/record-lat (209, 29.1, 30.9); @0.5: succ/prov-lat/record-lat (215, 33.4, 35.2); @0.6: succ/prov-lat/record-lat (215, 38.4, 40.2)
+dis (3 samples): @0: (186, 9.8, 11.6); @0.3: (205, 25.5, 27.3); @0.4: (209, 30.5, 32.3); @0.5: (216, 33.9, 35.7); @0.6: (219, 38.5, 40.3)
+dis value at cutoff 1.9455 records with that value 2 inside top-70 1

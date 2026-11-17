@@ -1,0 +1,15 @@
+E (fsc) failures with the right target at groups; near = distance to region <= 0.3 m (0 inside); on a body (judge) = min_body_gap_m < 0.3; overlap = min_body_gap_m < 0; fixed = success after the depth-only snap (snapD) / with C's people (snapP)
+fsc qwen38_low    n   8 near   7 near&on-body   4 near&overlap   4; of near&on-body fixed snapD 4, snapP 4
+fsc glm53         n  19 near  16 near&on-body  16 near&overlap  14; of near&on-body fixed snapD 12, snapP 13
+fsc dsv41         n  21 near  15 near&on-body  13 near&overlap  13; of near&on-body fixed snapD 11, snapP 11
+fsc haiku55       n  21 near  21 near&on-body  12 near&overlap  12; of near&on-body fixed snapD 12, snapP 12
+fsc sonnet55_low  n   4 near   4 near&on-body   4 near&overlap   2; of near&on-body fixed snapD 3, snapP 3
+fsc gemini38_low  n  20 near  20 near&on-body  18 near&overlap  16; of near&on-body fixed snapD 12, snapP 16
+fsc pooled        n  93 near  83 near&on-body  67 near&overlap  61; of near&on-body fixed snapD 54, snapP 59
+cot qwen38_low    n   8 near   6 near&on-body   4 near&overlap   3; of near&on-body fixed snapD 4, snapP 4
+cot glm53         n  15 near  12 near&on-body  10 near&overlap   9; of near&on-body fixed snapD 8, snapP 8
+cot dsv41         n  18 near   7 near&on-body   5 near&overlap   5; of near&on-body fixed snapD 1, snapP 3
+cot haiku55       n  14 near  11 near&on-body   9 near&overlap   8; of near&on-body fixed snapD 8, snapP 8
+cot sonnet55_low  n   2 near   2 near&on-body   2 near&overlap   1; of near&on-body fixed snapD 1, snapP 1
+cot gemini38_low  n  26 near  26 near&on-body  22 near&overlap  22; of near&on-body fixed snapD 19, snapP 22
+cot pooled        n  83 near  64 near&on-body  52 near&overlap  48; of near&on-body fixed snapD 41, snapP 46

@@ -1,0 +1,54 @@
+# Round 3 pilot follow-ups: results/data/moving/runs_pilot3/dsv41, 96 episodes
+
+## X1: CT5 minus CT3F, strict share from the first service, by restless ("ours" layouts)
+
+- CT5 - CT3F, restless (n 8): mean d -0.210; CT5 better 0, worse 5, tied 3; sign p 0.062
+- CT5 - CT3F, not restless (n 8): mean d -0.100; CT5 better 0, worse 4, tied 4; sign p 0.125
+- W0 - CT3F, restless (n 8): mean d -0.156; W0 better 0, worse 5, tied 3; sign p 0.062
+- W0 - CT3F, not restless (n 8): mean d -0.061; W0 better 0, worse 4, tied 4; sign p 0.125
+- CT4 - CT3F, restless (n 8): mean d -0.175; CT4 better 0, worse 5, tied 3; sign p 0.062
+- CT4 - CT3F, not restless (n 8): mean d -0.061; CT4 better 1, worse 4, tied 3; sign p 0.375
+
+## X2: samples from the first service on that are not strictly in line, by the goal's last
+
+| Arm | samples | strict in line | (a) cut | (b) not waiting | (c) waiter off axis | (d) other |
+|---|---|---|---|---|---|---|
+| CT3F | 1663 | 0.191 | 0.226 | 0.228 | 0.011 | 0.535 |
+| CT4 | 1663 | 0.072 | 0.227 | 0.354 | 0.056 | 0.364 |
+| W0 | 1662 | 0.075 | 0.246 | 0.385 | 0.042 | 0.327 |
+| CT5 | 1662 | 0.039 | 0.175 | 0.494 | 0.093 | 0.238 |
+
+(a)-(d) are shares of the samples not strictly in line.
+
+Cross-tab, waiting lasts on samples not strictly in line (counts): kind × on / off the axis
+
+- CT3F: right 364 on / 10 off; nearer front 304 on / 0 off; behind robot 198 on / 5 off
+- CT4: right 450 on / 77 off; nearer front 350 on / 0 off; behind robot 91 on / 9 off
+- W0: right 385 on / 58 off; nearer front 378 on / 0 off; behind robot 94 on / 7 off
+- CT5: right 291 on / 141 off; nearer front 279 on / 0 off; behind robot 90 on / 7 off
+
+(d) split by the first failing sim condition (counts)
+
+- CT3F: gap 252, nobody ahead 216, no last: behind the last 86, heading 64, behind the last 36, side > 0.6 29, nearest 21, no last: gap 12, no last: heading 4
+- CT4: gap 382, heading 65, side > 0.6 34, behind the last 31, nobody ahead 25, no last: behind the last 10, no last: heading 7, nearest 3, no last: gap 2, no last: side > 0.6 1, ? 1
+- W0: gap 315, heading 79, side > 0.6 31, behind the last 31, nobody ahead 23, no last: behind the last 16, no last: heading 6, no last: gap 2
+- CT5: gap 280, heading 38, side > 0.6 27, nobody ahead 25, behind the last 11
+
+## PH-A (post hoc): why the goal jumps, over re-solve pairs whose pose moved more than 0.3 m
+
+| Arm | jumps | (1) last changed | (2) same last, it moved > 0.15 m | (3) same last, roster or exempt changed | (4) other people moved |
+|---|---|---|---|---|---|
+| CT3F | 310 | 0.381 | 0.316 | 0.029 | 0.274 |
+| CT4 | 694 | 0.513 | 0.293 | 0.004 | 0.190 |
+| W0 | 588 | 0.376 | 0.425 | 0.009 | 0.190 |
+| CT5 | 652 | 0.261 | 0.587 | 0.012 | 0.140 |
+
+## PH-B (post hoc): ticks where the solver's last is a bystander or walker (not in the sim's queue)
+
+| Arm | ticks with someone ahead | last not waiting | its side from the axis (median m) | its along minus the true last's (median m) | run behind the same one (median s) | bystander / walker |
+|---|---|---|---|---|---|---|
+| CT3F | 3093 | 0.227 | 0.57 | 0.69 | 2.10 | 438 / 264 |
+| CT4 | 3474 | 0.343 | 1.17 | 0.70 | 1.57 | 493 / 700 |
+| W0 | 3477 | 0.372 | 1.15 | 0.70 | 2.50 | 471 / 823 |
+| CT5 | 3478 | 0.487 | 1.54 | 0.84 | 3.50 | 638 / 1055 |
+

@@ -1,0 +1,42 @@
+I06 build: the builder's readings of points FROZEN.md leaves open (none changes a rule the note fixes)
+
+Written by the build agent on 18 Oct 2026, during the build (before any scoring). FROZEN.md sha256
+a83c0ffe0cf5fafd9f007fee478d5899c9f858d2eb77629f01885cbeccef693e (verified with sha256sum -c before starting).
+
+1. Draw order inside one attempt (the note fixes the stream, not the order): shirts first (recipes._shirts, once per
+   attempt, k = number of people the family adds, taken = the base figures' colours); then the family's draws:
+   - A: the facing sign s (recipes._sign), then up to 200 recipes._person calls (each draws the +-0.05 m, +-0.15 rad
+     jitter) until c1, c2, c3, c5, c6 pass;
+   - B: per draw, bearing theta ~ U(-pi, pi), turn psi ~ U(0, 2pi/3), then for each of the 3 people a yaw ~ U(-pi, pi)
+     and the _person jitter; C: the same without the yaw draws (each faces the circle's centre);
+   - D: per person and draw, one band sample (see 3), a yaw ~ U(-pi, pi), the _person jitter;
+   - E: the yaw ~ U(-pi, pi) once per attempt, then up to 200 _person calls.
+2. B and C bisection: done before the jitter, as the note orders ("bisect ..., then apply the jitter and checks").
+   The root taken is the outermost one along the bearing (the smallest distance beyond which the nearest corner-member
+   distance stays at or above the gap), found by a 0.02 m scan from the centroid out to 30 m and bisection to 1e-10 m.
+   With one cluster or group per variant, "20 restarts x 200 draws" is 4,000 draws of that one unit.
+3. D: one "position draw" is one uniform sample of the band [1.2, 2.5] m (distance to the nearest member), made by
+   rejection inside the members' bounding box grown by 2.5 m (at most 10,000 tries). The band shapes the draw and is
+   applied before the jitter; the spacing rule (>= 1.2 m from every person) and c1-c8 are applied to the jittered
+   person. People are placed one after another; a person with no spot in 200 draws restarts the whole set (20 times).
+4. B and C spacing (>= 1.2 m from every other non-member already in the scene) and every pre-check are applied to the
+   jittered people.
+5. c5 samples each line of sight every 0.05 m from the robot's ground position, as recipes._in_clear_view does
+   (recipes._sight_line). For c5(b), "present" is the base's people plus the people of the variant placed earlier in
+   the same attempt (D places one after another; B and C place one unit, whose members are covered by each other's
+   c5(a)).
+6. c6 uses the exact distance from the person's centre to each target's camera-to-anchor ground segment (camera ground
+   position = the translation of T_world_camera).
+7. c7 applies to targets with a footprint (places and the screen). A person target has none; c5(b) keeps the target
+   person's line of sight clear.
+8. c4, c6, c7 measure from the camera's ground position; c3 and c5 from the robot's centre, as the note writes.
+9. The base scenes written as level 0 (scenes/seed<N>/eval_..) have regions and no tour, as the note says ("No tour is
+   built"). Their rgb.png and depth.npy are byte-identical to the package's writer's, and their scene.json equals the
+   package's apart from the tour entries and the targets' tour_frames (results/still-scenes/crowds/build/byte_identity.txt).
+10. Person tables: "relevant" is sgi.gt.derive's relevant_people of each episode (e0 and e1 recorded separately);
+    "visible fraction" = samples seen of 9 (derive._sample_seen at the 9 heights); the pixel share
+    (generate._share_shown on that person's figure alone) is recorded for every relevant person in the bases and E
+    variants (and the E person), and for every person under 9 of 9 in any variant.
+11. Output places: the build task puts logs, the manifest and the checks under results/still-scenes/crowds/build The note's names are kept:
+    results/still-scenes/crowds/build/manifest.jsonl (and results/still-scenes/crowds/build/manifest.json, as the task asks), results/still-scenes/crowds/build/labels.txt, results/still-scenes/crowds/builder/base_check.txt (a copy
+    in results/still-scenes/crowds/build/base_check.txt), scenes/seed<N>/. Logs are in build/logs/.

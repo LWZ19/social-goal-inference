@@ -1,0 +1,105 @@
+# The recorded runs that hold solver steps of the constraint method, as of 10 October 2026: 90 runs, 4344 records,
+# 2295 solver steps, none of a held-out situation. Each line is RUN_DIR=SCENES_DIR, from the repository root; the
+# scenes folder is the one the run's config.yaml records. The runs and the scenes are local and not in git.
+#
+#     .venv/bin/python results/still-scenes/analysis-scripts/harness/replay_solver.py --gate \
+#         --accepted results/still-scenes/analysis-scripts/harness/replay_accepted.txt @results/still-scenes/analysis-scripts/harness/replay_runs.txt
+#
+# is the regression gate for a change to the solver: per situation and in all, the successes as recorded and as
+# replayed, how many records gained and lost theirs, and every record that lost it.
+
+# The six runs on the development scenes of people who watch a thing that stands free (10 October 2026).
+runs/20261010-210914_s17_seed0_qwen38_low_con=data/dev_scenes/dev_new/seed0/scenes
+runs/20261010-210904_s17_seed1_qwen38_low_con=data/dev_scenes/dev_new/seed1/scenes
+runs/20261010-210900_s17_seed2_qwen38_low_con=data/dev_scenes/dev_new/seed2/scenes
+runs/20261010-205731_s17_seed0_glm53_con=data/dev_scenes/dev_new/seed0/scenes
+runs/20261010-205729_s17_seed1_glm53_con=data/dev_scenes/dev_new/seed1/scenes
+runs/20261010-210124_s17_seed2_glm53_con=data/dev_scenes/dev_new/seed2/scenes
+
+# The eight main runs of 10 October 2026, under the reworded context prompt.
+runs/20261010-190638_s15_newcomer_real_qwen38_low=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-190641_s15_newcomer_staffed_qwen38_low=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-190642_s15_newcomer_plain_qwen38_low=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-190642_s15_newcomer_ph_qwen38_low=data/placeholder/eval
+runs/20261010-192650_s15_newcomer_real_glm53=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-192824_s15_newcomer_staffed_glm53=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-192825_s15_newcomer_plain_glm53=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-192649_s15_newcomer_ph_glm53=data/placeholder/eval
+
+# Every other recorded run that holds solver steps.
+runs/20261010-003518_s8_none_qwen38=data/placeholder/eval
+runs/20261010-003520_s8_none_qwen36_35=data/placeholder/eval
+runs/20261010-003601_s8_conorc_qwen38=data/placeholder/eval
+runs/20261010-003604_s8_conorc_qwen36_35=data/placeholder/eval
+runs/20261010-003923_s8_convlm_qwen36_35=data/placeholder/eval
+runs/20261010-004041_s8_convlm_qwen38=data/placeholder/eval
+runs/20261010-004334_s8_none_glm53=data/placeholder/eval
+runs/20261010-004411_s8_conorc_glm53=data/placeholder/eval
+runs/20261010-004700_s8_none_qwen3vl=data/placeholder/eval
+runs/20261010-004740_s8_conorc_qwen3vl=data/placeholder/eval
+runs/20261010-004747_s8_convlm_glm53=data/placeholder/eval
+runs/20261010-005140_s8_none_ornith15=data/placeholder/eval
+runs/20261010-005218_s8_conorc_ornith15=data/placeholder/eval
+runs/20261010-005514_s8_convlm_ornith15=data/placeholder/eval
+runs/20261010-005734_s8_convlm_qwen3vl=data/placeholder/eval
+runs/20261010-104231_s9_con_plain_qwen38=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-104232_s9_con_plain_qwen36_35=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-104433_s9_con_plain_qwen3vl=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-104453_s9_con_plain_ornith15=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-104636_s9_con_staffed_qwen36_35=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-104846_s9_con_plain_glm53=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-104848_s9_con_staffed_qwen38=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-105049_s9_con_real_qwen36_35=data/dev_scenes/realistic_firstpass/real
+runs/20261010-105128_s9_con_staffed_qwen3vl=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-105305_s9_con_real_qwen38=data/dev_scenes/realistic_firstpass/real
+runs/20261010-105550_s9_con_staffed_ornith15=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-105558_s9_con_staffed_glm53=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-105750_s9_con_real_ornith15=data/dev_scenes/realistic_firstpass/real
+runs/20261010-105845_s9_con_real_glm53=data/dev_scenes/realistic_firstpass/real
+runs/20261010-110003_s9_con_real_qwen3vl=data/dev_scenes/realistic_firstpass/real
+runs/20261010-114753_s10_qwen38_medium_con=data/placeholder/eval
+runs/20261010-115145_s10_qwen38_low_con=data/placeholder/eval
+runs/20261010-120459_s10_glm53_low_con=data/placeholder/eval
+runs/20261010-121108_s10_qwen38_low_con=data/placeholder/eval
+runs/20261010-121526_s10_qwen38_none_con=data/placeholder/eval
+runs/20261010-122223_s10_glm53_none_con=data/placeholder/eval
+runs/20261010-122520_s11_ctxcot_ph_qwen38=data/placeholder/eval
+runs/20261010-122521_s11_ctxcot_ph_glm53=data/placeholder/eval
+runs/20261010-123538_s11_ctxcot_plain_glm53=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-123602_s11_ctxcot_plain_qwen38=data/dev_scenes/realistic_firstpass/plain
+runs/20261010-124208_s11_ctxcot_staffed_glm53=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-124241_s11_ctxcot_staffed_qwen38=data/dev_scenes/realistic_firstpass/staffed
+runs/20261010-132143_s12_qwen38_low_con=data/placeholder/eval
+runs/20261010-132145_s12_qwen38_medium_con=data/placeholder/eval
+runs/20261010-160831_s13_real_glm53_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-162717_s13_staffed_glm53_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-163841_s13_staffed_qwen38_low_con=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-163918_s13_real_qwen38_low_con=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-171418_s13_plain_qwen38_low_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-171643_s13_plain_glm53_con=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-180757_s14_purpose_real_qwen38_low=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-180759_s14_purpose_real_glm53=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-180800_s14_newcomer_real_qwen38_low=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-181005_s14_purpose_staffed_glm53=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-181238_s14_purpose_plain_glm53=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-181442_s14_purpose_ph_glm53=data/placeholder/eval
+runs/20261010-181616_s14_minimal_real_qwen38_low=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-181931_s14_purpose_staffed_qwen38_low=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-182052_s14_newcomer_staffed_qwen38_low=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-182953_s14_minimal_staffed_qwen38_low=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-183318_s14_newcomer_plain_qwen38_low=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-183327_s14_purpose_plain_qwen38_low=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-184150_s14_minimal_plain_qwen38_low=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-184628_s14_newcomer_ph_qwen38_low=data/placeholder/eval
+runs/20261010-184704_s14_purpose_ph_qwen38_low=data/placeholder/eval
+runs/20261010-185210_s14_minimal_ph_qwen38_low=data/placeholder/eval
+runs/20261010-185645_s14_minimal_real_glm53=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-185707_s14_newcomer_real_glm53=data/dev_scenes/realistic_final/real/scenes
+runs/20261010-185903_s14_minimal_staffed_glm53=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-185925_s14_newcomer_staffed_glm53=data/dev_scenes/realistic_final/staffed/scenes
+runs/20261010-190151_s14_minimal_plain_glm53=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-190155_s14_newcomer_plain_glm53=data/dev_scenes/realistic_final/plain/scenes
+runs/20261010-190355_s14_minimal_ph_glm53=data/placeholder/eval
+runs/20261010-190401_s14_newcomer_ph_glm53=data/placeholder/eval
+runs/20261010-204908_s11_ctxcot_real_glm53=data/dev_scenes/realistic_firstpass/real
+runs/20261010-204910_s11_ctxcot_real_qwen38=data/dev_scenes/realistic_firstpass/real

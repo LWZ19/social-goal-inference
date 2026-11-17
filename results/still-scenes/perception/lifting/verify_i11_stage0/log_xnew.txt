@@ -1,0 +1,28 @@
+results/still-scenes/perception/lifting/FROZEN.md OK
+src/sgi/evaluate.py OK
+src/sgi/geometry.py OK
+src/sgi/stages/goal.py OK
+docs/model_notes/tools/research_harness.py OK
+docs/model_notes/tools/replay_solver.py OK
+results/still-scenes/perception/lifting-rerun/lifting.py OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py OK
+xnew: 18 runs
+  20261017-022122_s21_real_qwen38_low_con: 84 records, 8 s, tally {'allowed': 84}
+  20261017-021937_s21_staffed_qwen38_low_con: 84 records, 16 s, tally {'allowed': 84}
+  20261017-021852_s21_plain_qwen38_low_con: 84 records, 24 s, tally {'allowed': 84}
+  20261017-125813_s23_real_glm53_con: 84 records, 32 s, tally {'allowed': 84}
+  20261017-125552_s23_staffed_glm53_con: 84 records, 39 s, tally {'allowed': 84}
+  20261017-125556_s23_plain_glm53_con: 84 records, 47 s, tally {'allowed': 84}
+  20261017-124936_s23_real_dsv41_con: 84 records, 54 s, tally {'allowed': 84}
+  20261017-124931_s23_staffed_dsv41_con: 84 records, 62 s, tally {'allowed': 84}
+  20261017-124904_s23_plain_dsv41_con: 84 records, 69 s, tally {'allowed': 84}
+  20261017-130036_s23_real_haiku55_con: 84 records, 76 s, tally {'allowed': 84}
+  20261017-130055_s23_staffed_haiku55_con: 84 records, 84 s, tally {'allowed': 84}
+  20261017-130031_s23_plain_haiku55_con: 84 records, 90 s, tally {'allowed': 84}
+  20261017-130300_s23_real_sonnet55_low_con: 84 records, 98 s, tally {'allowed': 84}
+  20261017-132708_s23_staffed_sonnet55_low_con: 84 records, 105 s, tally {'allowed': 84}
+  20261017-132708_s23_plain_sonnet55_low_con: 84 records, 112 s, tally {'allowed': 84}
+  20261017-125226_s23_real_gemini38_low_con: 84 records, 120 s, tally {'allowed': 84}
+  20261017-125459_s23_staffed_gemini38_low_con: 84 records, 127 s, tally {'allowed': 84}
+  20261017-125351_s23_plain_gemini38_low_con: 84 records, 134 s, tally {'allowed': 84}
+done 1512 rows in 134 s

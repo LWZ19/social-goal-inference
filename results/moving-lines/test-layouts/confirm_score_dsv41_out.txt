@@ -1,0 +1,33 @@
+# CONFIRM_CT4PJ.md scored: DeepSeek V4.1 Flash (primary) (results/data/moving/runs_confirm4/dsv41, results/moving-lines/test-layouts/confirm_selection.json)
+
+- layouts 72; episodes: CT3F 72, CT4 72, CT4P 72, CT4PJ 72
+- strict share in line from the first service, mean over layouts with a value: CT3F 0.208 (n 66), CT4 0.119 (n 66), CT4P 0.107 (n 66), CT4PJ 0.159 (n 66)
+
+## H1: CT4PJ > CT4P (sign test, ties |d| < 0.01, two-sided p <= 0.05 with wins > losses)
+
+- 27/16/23 (wins / losses / ties), p 0.1263, mean d +0.052, n 66 -> FAIL
+- dropped from H1: {'no strict value for CT4PJ': 6}
+
+## H2: CT4PJ not worse than CT3F by more than 0.05 (one-sided 95% paired t lower bound of mean d)
+
+- mean d -0.049, lower bound -0.080, n 66 -> would fail; NOT claimed, H1 failed
+- dropped from H2: {'no strict value for CT4PJ': 6}
+- layouts where both arms are 0 enter with d = 0: 11
+
+## Reported, not claimed
+
+- CT4PJ vs CT3F sign test: CT4PJ better 17, worse 34, tied 15; p 0.024
+- H2 sensitivity, paired bootstrap of mean d (10,000, seed 2000): 5th percentile -0.079
+- by stratum (H1 sign test; H2 mean d and lower bound):
+  - chain: H1 5/1/6 p 0.219; H2 mean d -0.016, lower bound -0.114 (n 12)
+  - easy: H1 2/2/2 p 1.000; H2 mean d -0.083, lower bound -0.175 (n 6)
+  - mixed: H1 3/3/0 p 1.000; H2 mean d -0.009, lower bound -0.109 (n 6)
+  - ours: H1 17/10/15 p 0.248; H2 mean d -0.060, lower bound -0.097 (n 42)
+- per arm:
+  - CT3F: right last 0.450; cut-in samples 4.46; joined share after the first service 0.516; median time joined before leaving 23.9 s (n 17)
+  - CT4: right last 0.427; cut-in samples 2.25; joined share after the first service 0.447; median time joined before leaving 17.1 s (n 43)
+  - CT4P: right last 0.431; cut-in samples 3.22; joined share after the first service 0.422; median time joined before leaving 19.4 s (n 40)
+  - CT4PJ: right last 0.470; cut-in samples 3.72; joined share after the first service 0.474; median time joined before leaving 23.7 s (n 26)
+- CT4PJ's own join test: fired in 48 of 72 episodes; re-solves joined 0.503
+
+Fixed-sequence verdict: H1 fails (H2 not claimed)

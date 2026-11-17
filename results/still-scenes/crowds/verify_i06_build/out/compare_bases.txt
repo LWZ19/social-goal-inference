@@ -1,0 +1,88 @@
+1. My reproduced bases (package only, regions + tour) vs the build's level-0 bases (scenes/seed<N>/):
+  seed 0: mine 10 bases, build 10 bases, same names: True
+    rejected layouts on the way (all 16 rows drawn): 0
+    eval_06_waiting_line_1: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_07_waiting_line_2: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_08_waiting_line_4: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_09_waiting_line_6: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_10_conversation_group_2: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_11_conversation_group_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_12_conversation_group_4: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_13_waiting_line_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_14_audience_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_15_audience_5: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+  seed 1: mine 10 bases, build 10 bases, same names: True
+    rejected layouts on the way (all 16 rows drawn): 0
+    eval_06_waiting_line_1: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_07_waiting_line_2: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_08_waiting_line_4: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_09_waiting_line_6: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_10_conversation_group_2: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_11_conversation_group_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_12_conversation_group_4: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_13_waiting_line_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_14_audience_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_15_audience_5: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+  seed 2: mine 10 bases, build 10 bases, same names: True
+    rejected layouts on the way (all 16 rows drawn): 0
+    eval_06_waiting_line_1: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_07_waiting_line_2: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_08_waiting_line_4: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_09_waiting_line_6: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_10_conversation_group_2: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_11_conversation_group_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_12_conversation_group_4: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_13_waiting_line_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_14_audience_3: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+    eval_15_audience_5: rgb/depth bytes equal True; scene.json equal apart from tour True; extra files in build none
+
+2. My reproduced bases vs whitelisted development scenes (harness: distinct_scenes, fingerprint, scene):
+  seed 0 eval_06_waiting_line_1: fingerprint IDENTICAL (705ebe4a8188 vs 705ebe4a8188; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_07_waiting_line_2: fingerprint IDENTICAL (152b1bc8e41f vs 152b1bc8e41f; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_08_waiting_line_4: fingerprint IDENTICAL (799741f18ea6 vs 799741f18ea6; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_09_waiting_line_6: fingerprint IDENTICAL (0fe9a63ce70d vs 0fe9a63ce70d; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_10_conversation_group_2: fingerprint IDENTICAL (2fff73cd91a1 vs 2fff73cd91a1; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_11_conversation_group_3: fingerprint IDENTICAL (0c59b91c9334 vs 0c59b91c9334; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_12_conversation_group_4: fingerprint IDENTICAL (01532e9cf022 vs 01532e9cf022; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_13_waiting_line_3: fingerprint IDENTICAL (5d7787a7f5d3 vs 5d7787a7f5d3; placeholder/eval); fields equal True; arrays equal True
+  seed 0 eval_14_audience_3: fingerprint IDENTICAL (9d498d553d11 vs 9d498d553d11; seed0/scenes); fields equal True; arrays equal True
+  seed 0 eval_15_audience_5: fingerprint IDENTICAL (adfb42fa7662 vs adfb42fa7662; seed0/scenes); fields equal True; arrays equal True
+  seed 1 eval_06_waiting_line_1: no whitelisted placeholder copy
+  seed 1 eval_07_waiting_line_2: no whitelisted placeholder copy
+  seed 1 eval_08_waiting_line_4: no whitelisted placeholder copy
+  seed 1 eval_09_waiting_line_6: no whitelisted placeholder copy
+  seed 1 eval_10_conversation_group_2: no whitelisted placeholder copy
+  seed 1 eval_11_conversation_group_3: no whitelisted placeholder copy
+  seed 1 eval_12_conversation_group_4: no whitelisted placeholder copy
+  seed 1 eval_13_waiting_line_3: no whitelisted placeholder copy
+  seed 1 eval_14_audience_3: fingerprint IDENTICAL (b5ac59455e27 vs b5ac59455e27; seed1/scenes); fields equal True; arrays equal True
+  seed 1 eval_15_audience_5: fingerprint IDENTICAL (894cd1e61bbd vs 894cd1e61bbd; seed1/scenes); fields equal True; arrays equal True
+  seed 2 eval_06_waiting_line_1: no whitelisted placeholder copy
+  seed 2 eval_07_waiting_line_2: no whitelisted placeholder copy
+  seed 2 eval_08_waiting_line_4: no whitelisted placeholder copy
+  seed 2 eval_09_waiting_line_6: no whitelisted placeholder copy
+  seed 2 eval_10_conversation_group_2: no whitelisted placeholder copy
+  seed 2 eval_11_conversation_group_3: no whitelisted placeholder copy
+  seed 2 eval_12_conversation_group_4: no whitelisted placeholder copy
+  seed 2 eval_13_waiting_line_3: no whitelisted placeholder copy
+  seed 2 eval_14_audience_3: fingerprint IDENTICAL (917cff0eb39f vs 917cff0eb39f; seed2/scenes); fields equal True; arrays equal True
+  seed 2 eval_15_audience_5: fingerprint IDENTICAL (7a176abc04db vs 7a176abc04db; seed2/scenes); fields equal True; arrays equal True
+  whitelisted bases checked: 14
+  sanity: seeds 1-2 eval_06..13 differ from seed 0's whitelisted copies: 16/16
+
+3. The build's byte-identity folders (results/still-scenes/crowds/build/byte_identity), re-hashed here:
+  seed 0: package ['eval_00_no_one_place', 'eval_01_no_one_place', 'eval_02_no_one_place', 'eval_03_no_one_deep_place', 'eval_04_no_one_object', 'eval_05_no_one_person', 'eval_06_waiting_line_1', 'eval_07_waiting_line_2']; builder same folders True
+    eval_00_no_one_place: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
+    eval_01_no_one_place: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
+    eval_02_no_one_place: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
+    eval_03_no_one_deep_place: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
+    eval_04_no_one_object: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
+    eval_05_no_one_person: package == builder (every file sha256) True; package == my reproduction (fingerprint) None
+    eval_06_waiting_line_1: package == builder (every file sha256) True; package == my reproduction (fingerprint) True
+    eval_07_waiting_line_2: package == builder (every file sha256) True; package == my reproduction (fingerprint) True
+  seed 1: package ['eval_14_audience_3', 'eval_15_audience_5']; builder same folders True
+    eval_14_audience_3: package == builder (every file sha256) True; package == my reproduction (fingerprint) True
+    eval_15_audience_5: package == builder (every file sha256) True; package == my reproduction (fingerprint) True
+  variants built inside the builder run: ['i06_s0_A6_eval_06_waiting_line_1', 'i06_s0_D2_eval_06_waiting_line_1']
+
+RESULT: PASS

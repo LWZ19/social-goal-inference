@@ -1,0 +1,685 @@
+I11 STAGE 0 (phase 1b) TABLES
+FROZEN.md sha256 11f7b32746c7fc0be414883b430d59ddef98d2388fd89e082e40361b637a9165
+
+##############################################################################################################
+S0 (s0_fit.txt)
+##############################################################################################################
+FROZEN.md sha256 11f7b32746c7fc0be414883b430d59ddef98d2388fd89e082e40361b637a9165 OK
+src/sgi/evaluate.py sha256 OK
+src/sgi/geometry.py sha256 OK
+src/sgi/stages/goal.py sha256 OK
+docs/model_notes/tools/research_harness.py sha256 OK
+docs/model_notes/tools/replay_solver.py sha256 OK
+results/still-scenes/perception/lifting-rerun/lifting.py sha256 OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py sha256 OK
+S0.1 unit checks on synthetic depth (camera 640x480, f 554.3 px, 1.5 m high, pitched 10 deg down)
+  (a) wall 20.0 m wide, box 0.5 m in front: components >=25 px 2, box object, wall structure (extent 6.56 m), expect wall structure -> PASS
+  (d) component lift vs lifting.lift_at_depth on a one-component window: window one component True, |diff| 0.0e+00 m, vs sgi.geometry.lift 0.0e+00 m -> PASS
+  (e) point on the wall 6 px beside the box: s=structure T1=True V1 -> box; point on the box: s=object T1=False V1 moves=False -> PASS
+  (a) wall  3.0 m wide, box 0.5 m in front: components >=25 px 2, box object, wall object (extent 2.91 m), expect wall object -> PASS
+  (a') informational, a 1.0 m box (top face visible at about 84 deg incidence at 5 m): components >=25 px 4 [(80, 'object'), (82, 'object'), (8278, 'object'), (163864, 'structure')]: the top's far rows split into 1-row strips (the predicted known cost)
+  (b) floor plane only: valid 205440 px, floor 205440 px, components 0 -> PASS
+  (c) plane at 80 deg incidence through 4 m on the optical axis (patch u 300-330, v 150-300): G1 components 1 (expect 1; predicted limit acos(Z/(f g)) = 85.9 deg at 4 m) -> PASS
+  (c) plane at 88 deg incidence through 4 m on the optical axis (patch u 300-330, v 150-300): G1 components 19 (expect more than 1; predicted limit acos(Z/(f g)) = 85.9 deg at 4 m) -> PASS
+  (f) label_components vs breadth-first search on 5 random 60x80 graphs: PASS
+  unit checks: ALL PASS
+
+S0.2 fit checks on the worked-example scenes of H.examples(): 29 scenes (FROZEN.md says 28; the harness lists 29, all used; see DEVIATIONS.md D1)
+  largest target footprint or obstacle diagonal over these 29 scenes: 2.259 m (examples_07_audience_4 obstacle); FROZEN.md used 2.26 m -> L_S = 2 x 2.26 + 0.10 = 4.62 -> 4.6 m (unchanged, frozen)
+
+  components per image (median [min-max]):
+    G1 comps          11 [4-30]
+    G1 frags           4 [0-22]
+    G1 objects         5 [2-12]
+    G1 structure       1 [1-1]
+    G1 images with no structure component: 0 of 29
+    G2 comps           7 [2-21]
+    G2 frags           3 [0-18]
+    G2 objects         3 [1-10]
+    G2 structure       1 [1-1]
+    G2 images with no structure component: 0 of 29
+
+  walls and ceiling: non-floor pixels within 0.3 m of the bounding polygon (or outside it) or above 2.85 m;
+  share labelled structure (pooled pixels; per-image median):
+    G1: structure 3582254/3596486 (99.6%), object 14096/3596486 (0.4%), fragment 136/3596486 (0.0%); per-image median 1.00; images under 0.5: 0 []
+    G2: structure 3593287/3596486 (99.9%), object 3069/3596486 (0.1%), fragment 130/3596486 (0.0%); per-image median 1.00; images under 0.5: 0 []
+
+  ground-truth pixels (non-floor, at most 2.85 m) by label:
+    G1 person   n= 317042 object 316632/317042 (99.9%)  structure 0/317042 (0.0%)  fragment 410/317042 (0.1%)
+    G1 target   n= 764214 object 763881/764214 (100.0%)  structure 0/764214 (0.0%)  fragment 333/764214 (0.0%)
+    G1 obstacle n=1706983 object 775657/1706983 (45.4%)  structure 931025/1706983 (54.5%)  fragment 301/1706983 (0.0%)
+    G2 person   n= 317042 object 316763/317042 (99.9%)  structure 0/317042 (0.0%)  fragment 279/317042 (0.1%)
+    G2 target   n= 764214 object 764097/764214 (100.0%)  structure 0/764214 (0.0%)  fragment 117/764214 (0.0%)
+    G2 obstacle n=1706983 object 756960/1706983 (44.3%)  structure 949914/1706983 (55.6%)  fragment 109/1706983 (0.0%)
+  obstacles by their gap to the bounding wall (vertex distance), G1: mostly (> 0.5 of pixels) structure
+    gap 0.00-0.10 m: n=74, mostly structure 66, mostly object 8
+    gap 0.10-0.30 m: n=0, mostly structure 0, mostly object 0
+    gap 0.30-inf m: n=41, mostly structure 0, mostly object 41
+    (an obstacle touching the wall joins the wall component by construction; no free-standing obstacle is
+    structure, no target pixel and no person pixel is structure: no section-4 definition fails visibly, so no
+    addendum is written; FROZEN.md section 10 step 3)
+
+  M4 on the fit scenes' true targets (distinct scene x target; n = 29):
+  join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+  G1   person    12     0   0.99  12/12    12/12        0     0     0      0  0.99   1.00
+  G1   place     17     0   0.62  17/17     6/17        0     8     0      0  0.62   1.00
+  G1   ALL       29     0   0.91  29/29    18/29        0     8     0      0  0.99   1.00
+  G2   person    12     0   1.00  12/12    12/12        0     0     0      0  1.00   1.00
+  G2   place     17     0   0.78  17/17     9/17        0     8     0      0  0.78   1.00
+  G2   ALL       29     0   0.99  29/29    21/29        0     8     0      0  0.99   1.00
+
+  every visible ground-truth person (not only targets): absorbed into structure / merged / merged with
+  another body / split:
+    G1: n=56, absorbed into structure 0/56 (0.0%), merged 8, merged with another body 11, split 0, median IoU 0.98
+    G2: n=56, absorbed into structure 0/56 (0.0%), merged 8, merged with another body 11, split 0, median IoU 0.99
+
+  triggers at the oracle target of each fit episode (n = 58 episodes with an oracle target, of 58): how often a perfect point is flagged or moved
+    surface s: {'object': 58}
+    oracle target right before: 58 of 58
+    T1 flags 0/58 (0.0%); T2 flags 6/58 (10.3%)
+      person n=24 T1 0  T2 6  s {'object': 24}
+      place  n=34 T1 0  T2 0  s {'object': 34}
+    V1: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0
+    V2: moves 58/58 (100.0%), breaks (right -> wrong) 0, fixes 0
+    V3: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0
+    V4: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0
+
+##############################################################################################################
+Reproduction of results/still-scenes/overview/rerun-files/lifting (repro_lifting/diff.txt)
+##############################################################################################################
+lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL
+frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL
+lifting_records.tsv: 130 lines original, 130 reproduced, IDENTICAL
+
+==============================================================================================================
+I11 STAGE 0 (phase 1b): PRIMARY RUNS (old wording, realistic arms, con)
+==============================================================================================================
+runs: 20261011-160334_s19_real_qwen38_low_con, 20261011-160344_s19_staffed_qwen38_low_con, 20261011-160527_s19_plain_qwen38_low_con, 20261011-160500_s19_real_glm53_con, 20261011-160352_s19_staffed_glm53_con, 20261011-160452_s19_plain_glm53_con, 20261013-191337_s20_real_dsv41_con, 20261013-191345_s20_staffed_dsv41_con, 20261013-191402_s20_plain_dsv41_con
+records: 756 (allowed); per-run tallies: s19_real_qwen38_low_con {'allowed': 84}; s19_staffed_qwen38_low_con {'allowed': 84}; s19_plain_qwen38_low_con {'allowed': 84}; s19_real_glm53_con {'allowed': 84}; s19_staffed_glm53_con {'allowed': 84}; s19_plain_glm53_con {'allowed': 84}; s20_real_dsv41_con {'allowed': 84}; s20_staffed_dsv41_con {'allowed': 84}; s20_plain_dsv41_con {'allowed': 84}
+
+A. Data and reproduction checks
+                                qwen38_low       glm53       dsv41    all
+  records                              252         252         252    756
+  with a point                         252         248         252    752
+  wrong target                           7          28          22     57
+  wrong target with a point              7          24          22     53
+  right target with a point            245         224         230    699
+  expected (FROZEN.md section 1) vs got: records (252, 252, 252) -> (252, 252, 252) OK; point (252, 248, 252) -> (252, 248, 252) OK; wrong (7, 28, 22) -> (7, 28, 22) OK; wpt (7, 24, 22) -> (7, 24, 22) OK; rpt (245, 224, 230) -> (245, 224, 230) OK
+  GLM + DeepSeek wrong with a point 46 (expect 46); right with a point 454 (expect 454); all three wrong 53 (53), right 699 (699)
+  lift reproduction: max |H.target_at(pixel) - recorded world| over 752 records = 0.0e+00 m (asserted <= 1e-9)
+  recorded target_correct vs match_target now: disagreements 0 of 752 (asserted 0)
+  section 9: vectorised match mask vs match_target on sampled pixels of the 53 wrong-target records: 0 mismatches of 31800
+  targets per episode: {1: 756}
+  per-record agreement with rerun/lifting/lifting_records.tsv on the 57 wrong-target records: {'matched': 57, 'class same': 53, 'surface same': 53, 'oracle fix same': 53, 'oracle success same': 26, 'no point both': 4}; 0 unmatched []
+  reproduction of results/still-scenes/overview/rerun-files/lifting itself (repro_lifting/diff.txt): lifting_out.txt: 151 lines original, 151 reproduced, IDENTICAL; frontsnap_out.txt: 8 lines original, 8 reproduced, IDENTICAL; lifting_records.tsv: 130 lines original, 130 reproduced, IDENTICAL
+  front-surface snap (reference row), replayed per record with frontsnap.front_snap, in frontsnap.py's format:
+    qwen38_low  {'right->right': 227, 'right->right (moved)': 5, 'right->wrong (moved)': 13, 'wrong->right (moved)': 1, 'wrong->wrong': 6}
+    glm53       {'right->right': 205, 'right->right (moved)': 4, 'right->wrong (moved)': 15, 'wrong->right (moved)': 4, 'wrong->wrong': 13, 'wrong->wrong (moved)': 7}
+    dsv41       {'right->right': 211, 'right->right (moved)': 10, 'right->wrong (moved)': 9, 'wrong->right (moved)': 3, 'wrong->wrong': 14, 'wrong->wrong (moved)': 5}
+    person  {'right->right': 165, 'right->wrong (moved)': 36, 'wrong->right (moved)': 3, 'wrong->wrong': 9, 'wrong->wrong (moved)': 3}
+    parcel  {'right->right': 39, 'wrong->wrong': 10, 'wrong->wrong (moved)': 5}
+    place   {'right->right': 439, 'right->right (moved)': 19, 'right->wrong (moved)': 1, 'wrong->right (moved)': 5, 'wrong->wrong': 14, 'wrong->wrong (moved)': 4}
+    total fixes 8, breaks 37, correct records moved but still right 19  -> reference check (8 fixes, 37 breaks of 752): REPRODUCED
+    front-snap target rebuilt with H.target_at(world=...): max world error 0.0e+00 m
+
+B. Error classes of the wrong targets with a point (lifting.py rules and precedence; FROZEN.md section 2)
+  model         n choice error occluder cap background l   floor slip near-depth m  lift classes
+  qwen38_low    7            1            5            1            0            0    6 [layouts 3, model x layout 3]
+  glm53        24           18            1            5            0            0    6 [layouts 8, model x layout 8]
+  dsv41        22            8            8            6            0            0   14 [layouts 8, model x layout 8]
+  GLM+DS       46           26            9           11            0            0   20 [layouts 11, model x layout 16]
+  all          53           27           14           12            0            0   26 [layouts 11, model x layout 19]
+  by kind (all three models):
+    person  n=15 {'background leak': 6, 'occluder capture': 9}
+    parcel  n=15 {'choice error': 9, 'occluder capture': 5, 'background leak': 1}
+    place   n=23 {'background leak': 5, 'choice error': 18}
+  by kind (GLM + DeepSeek):
+    person  n=10 {'background leak': 6, 'occluder capture': 4}
+    parcel  n=15 {'choice error': 9, 'occluder capture': 5, 'background leak': 1}
+    place   n=21 {'background leak': 4, 'choice error': 17}
+  descriptive cross-tab, class x lifting.surface() of the recorded lift (all 53):
+    choice error     n=27 {'obstacle': 6, 'floor': 11, 'person': 7, 'wall base (floor)': 1, 'wall': 2}
+    occluder capture n=14 {'obstacle': 5, 'person': 9}
+    background leak  n=12 {'wall': 6, 'floor': 5, 'wall base (floor)': 1}
+  lift classes among the 46: 20/46 (43.5%) [layouts 6, model x layout 8]; over 50 (4 GLM no-point records as non-lift): 20/50 (40.0%)
+  choice errors among the 46 (Stage 1 gate, >= 30%): 26/46 (56.5%); near-depth misses 0
+
+C. Fixes (FROZEN.md sections 3-6). fixes = wrong -> right; breaks = right -> wrong (match_target).
+   46 = GLM+DeepSeek wrong with a point; 454 = their right with a point; 53 / 699 = all three models.
+  fix     mv R/W (GD)  fix/46  brk/454  fix/53  brk/699 succ|fix46  net GD (+/-)  net all (+/-)  gain  share share3 shareNet
+  oracle   453/20          20        0      26        0   16/20      +16 (17/1)   +21 (23/2)    20   1.00   1.00     1.00
+  V1         5/15           9        0       9        0    7/9        +8 (8/0)    +8 (8/0)     9   0.45   0.35     0.50
+  V2       450/35           9        1       9        2    7/9        +6 (8/2)    +4 (8/4)     8   0.40   0.27     0.38
+  V3         9/18          10        0      14        0    7/10       +8 (8/0)   +11 (12/1)    10   0.50   0.54     0.50
+  V4         5/15           9        0       9        0    7/9        +8 (8/0)    +8 (8/0)     9   0.45   0.35     0.50
+  front     38/19           7       24       8       37    6/7       -16 (7/23)   -26 (9/35)   -17  -0.85  -1.12    -1.00
+  replays not computed: {'oracle': 0, 'V1': 0, 'V2': 0, 'V3': 0, 'V4': 0, 'front': 0} (0 = every moved record was replayed)
+  share = (fix/46 - brk/454) / oracle's; share3 = (fix/53 - brk/699) / oracle's; shareNet = net GD successes / oracle's (secondary)
+    oracle: losses 2 (right->right moved 2, breaks 0); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+    V2: losses 4 (right->right moved 2, breaks 2); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+    V3: losses 1 (right->right moved 1, breaks 0); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+    front: losses 35 (right->right moved 0, breaks 35); of the losses, replay with the recorded target does not reproduce the recorded success in 0
+
+  per model (fix/wrong-with-point, break/right-with-point, moves on right/wrong):
+    oracle qwen38_low 6/7 brk 0/245 mv 245/6 | glm53 6/24 brk 0/224 mv 224/6 | dsv41 14/22 brk 0/230 mv 229/14
+    V1     qwen38_low 0/7 brk 0/245 mv 0/0 | glm53 5/24 brk 0/224 mv 0/9 | dsv41 4/22 brk 0/230 mv 5/6
+    V2     qwen38_low 0/7 brk 1/245 mv 245/7 | glm53 5/24 brk 0/224 mv 224/18 | dsv41 4/22 brk 1/230 mv 226/17
+    V3     qwen38_low 4/7 brk 0/245 mv 2/4 | glm53 5/24 brk 0/224 mv 0/10 | dsv41 5/22 brk 0/230 mv 9/8
+    V4     qwen38_low 0/7 brk 0/245 mv 0/0 | glm53 5/24 brk 0/224 mv 0/9 | dsv41 4/22 brk 0/230 mv 5/6
+    front  qwen38_low 1/7 brk 13/245 mv 18/1 | glm53 4/24 brk 15/224 mv 19/11 | dsv41 3/22 brk 9/230 mv 19/8
+
+  M1 fixes by error class (GLM+DS 46 | all 53):
+    fix        choice error   occluder captu   background lea       floor slip   near-depth mis
+    n           26 |    27       9 |    14      11 |    12       0 |     0       0 |     0
+    oracle       0 |     0       9 |    14      11 |    12       0 |     0       0 |     0
+    V1           0 |     0       0 |     0       9 |     9       0 |     0       0 |     0
+    V2           0 |     0       0 |     0       9 |     9       0 |     0       0 |     0
+    V3           0 |     0       1 |     5       9 |     9       0 |     0       0 |     0
+    V4           0 |     0       0 |     0       9 |     9       0 |     0       0 |     0
+    front        0 |     0       0 |     0       7 |     8       0 |     0       0 |     0
+  M1 fixes by kind (GLM+DS 46 | all 53):
+    n       person  10|15   parcel  15|15    place  21|23 
+    oracle          10|15            6|6             4|5  
+    V1               5|5             0|0             4|4  
+    V2               5|5             0|0             4|4  
+    V3               6|10            0|0             4|4  
+    V4               5|5             0|0             4|4  
+    front            3|3             0|0             4|5  
+  M2 breaks by kind (GLM+DS 454 | all 699):
+    n       person 134|201  parcel  21|39    place 299|459
+    oracle           0|0             0|0             0|0  
+    V1               0|0             0|0             0|0  
+    V2               1|2             0|0             0|0  
+    V3               0|0             0|0             0|0  
+    V4               0|0             0|0             0|0  
+    front           23|36            0|0             1|1  
+  clustering of the key counts:
+    oracle fixes/46 [layouts 6, model x layout 8]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    V1     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    V2     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 1, model x layout 1]; breaks/699 [layouts 1, model x layout 2]
+    V3     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    V4     fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 0, model x layout 0]; breaks/699 [layouts 0, model x layout 0]
+    front  fixes/46 [layouts 4, model x layout 5]; breaks/454 [layouts 2, model x layout 3]; breaks/699 [layouts 2, model x layout 4]
+  V1-V4 moves on right-target records by what s (the lift surface) was (all 699):
+    V1: moved 5 {'floor': 5}; surface classes over all 699 {'object': 689, 'floor': 9, 'fragment': 1}
+    V2: moved 695 {'object': 689, 'floor': 5, 'fragment': 1}; surface classes over all 699 {'object': 689, 'floor': 9, 'fragment': 1}
+    V3: moved 11 {'floor': 5, 'object': 6}; surface classes over all 699 {'object': 689, 'floor': 9, 'fragment': 1}
+    V4: moved 5 {'floor': 5}; surface classes over all 699 {'object': 690, 'floor': 9}
+  V1 on the 53 wrong targets, by class: lift surface s and outcome
+    choice error     n=27 s {'object': 11, 'floor': 12, 'structure': 4}; V1 moved 5, fixed 0; V3 moved 7, fixed 0
+    occluder capture n=14 s {'object': 14}; V1 moved 0, fixed 0; V3 moved 5, fixed 5
+    background leak  n=12 s {'structure': 4, 'floor': 6, 'object': 2}; V1 moved 10, fixed 9; V3 moved 10, fixed 9
+  replay paths used (moved records, all fixes): {'standard': 639, 'solver': 971}
+
+D. I11 Stage 0 criteria (REPORT.md I11 "First probe", verbatim in FROZEN.md section 7)
+  S1 lift classes >= 40% of 46 (>= 19): 20/46 (43.5%) -> MET (over 50: 20/50 (40.0%))
+  S2 oracle fixes >= 15 of 46 and breaks <= 2 of 454: fixes 20/46, breaks 0/454 -> MET
+  S3 >= 8 of the oracle's fixed records among the 46 become full successes: 16/20 -> MET
+  S4 V1 reaches >= 70% of the oracle gain: V1 gain 9 (fixes 9 - breaks 0) / oracle gain 20 (fixes 20 - breaks 0) = 0.45 -> NOT MET
+  Kill: lift classes < 20% of 46 (<= 9): 20 -> no; oracle fixes < 6: 20 -> no; oracle breaks > 5 of 454: 0 -> no
+  VERDICT (I11 Stage 0): NEITHER
+  V1 as a zero-call rule: fixes 9/46 (kill if < 6), breaks 0/454 (kill if > 5) -> V1 not killed; S4 not met
+  V2 (no verdict): fixes 9/46, breaks 1/454, share 0.40; against the bars: share >= 0.70 no, fixes < 6 no, breaks > 5 no
+  V3 (no verdict): fixes 10/46, breaks 0/454, share 0.50; against the bars: share >= 0.70 no, fixes < 6 no, breaks > 5 no
+  V4 (no verdict): fixes 9/46, breaks 0/454, share 0.45; against the bars: share >= 0.70 no, fixes < 6 no, breaks > 5 no
+  front-snap reference: fixes 7/46, breaks 24/454, share -0.85
+
+E. I33 Stage B trigger (FROZEN.md section 8). T1: lift on floor or structure, or the 5x5 window holds >= 2
+   labels (floor, structure, object components; fragments ignored). T2: T1 or another object within 15 px.
+  person wrong targets: n=15 ({'dsv41': 8, 'glm53': 2, 'qwen38_low': 5}) [layouts 3, model x layout 5]
+    T1 catches 11/15; T2 catches 15/15
+    T1 by class: {'occluder capture': '5/9', 'background leak': '6/6'}
+  D1 (decisive) right-target person records: n=201; T1 false triggers 12/201 (6.0%); T2 103/201 (51.2%)  [layouts 3, model x layout 5]
+  D2 all right-target records with a point: n=699; T1 45/699 (6.4%); T2 188/699 (26.9%)
+    right person  n=201 T1 12/201 (6.0%)  T2 103/201 (51.2%)
+    right parcel  n= 39 T1 0/39 (0.0%)  T2 0/39 (0.0%)
+    right place   n=459 T1 33/459 (7.2%)  T2 85/459 (18.5%)
+  I33 Stage B: success needs T1 >= 12/15 and <= 10% of D1 (20.1); kill if < 10/15 -> NEITHER (T1 11/15, D1 12/201 (6.0%))
+  T1 / T2 on all 53 wrong targets, by class:
+    choice error     n=27 T1 20  T2 24
+    occluder capture n=14 T1  8  T2 12
+    background leak  n=12 T1 12  T2 12
+  T1 flags 85/752 (11.3%) of all records with a point (the share of goal steps that would carry the verification call); of the flagged, wrong targets 40/85 (47.1%)
+  T2 flags 236/752 (31.4%); of the flagged, wrong targets 48/236 (20.3%)
+  (post hoc, not judged) T1 under G2 components: person wrong 11/15, D1 12/201 (6.0%)
+
+F. M4 component recovery (FROZEN.md section 6)
+  primary scenes (realistic): distinct (scene folder, scene, true target) n = 42
+    join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+    G1   person    12     0   0.98  12/12    12/12        0     0     0      0  0.99   0.99
+    G1   parcel     3     0   0.31   0/3      0/3         3     0     0      0  1.00   0.31
+    G1   place     27     0   0.87  27/27    18/27        0    14     0      0  0.87   1.00
+    G1   ALL       42     0   0.93  39/42    30/42        3    14     0      0  0.96   1.00
+    G2   person    12     0   0.99  12/12    12/12        0     0     0      0  1.00   0.99
+    G2   parcel     3     0   0.31   0/3      0/3         3     0     0      0  1.00   0.31
+    G2   place     27     0   0.87  27/27    18/27        0    14     0      0  0.87   1.00
+    G2   ALL       42     0   0.96  39/42    30/42        3    14     0      0  0.98   1.00
+  true targets of the 53 wrong-target records, by error class (G1 | G2):
+    G1 choice error     n=27 med IoU 0.65, IoU>=.5 18, merged 9, merged w/ body 9, split 0, structure 0
+    G2 choice error     n=27 med IoU 0.65, IoU>=.5 18, merged 9, merged w/ body 9, split 0, structure 0
+    G1 occluder capture n=14 med IoU 1.00, IoU>=.5 9, merged 5, merged w/ body 0, split 0, structure 0
+    G2 occluder capture n=14 med IoU 1.00, IoU>=.5 9, merged 5, merged w/ body 0, split 0, structure 0
+    G1 background leak  n=12 med IoU 1.00, IoU>=.5 11, merged 1, merged w/ body 1, split 0, structure 0
+    G2 background leak  n=12 med IoU 1.00, IoU>=.5 11, merged 1, merged w/ body 1, split 0, structure 0
+  fresh seeds 100-109: 260 fresh scenes from 10 seeds; 
+  fresh seeds: n = 260
+    join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+    G1   person    70     0   1.00  70/70    70/70        0     0     0      0  1.00   1.00
+    G1   parcel    10     0   0.31   0/10     0/10       10     0     0      0  1.00   0.31
+    G1   place    180     0   0.90 174/180  103/180       0     0     6      0  0.90   1.00
+    G1   ALL      260     0   0.96 244/260  173/260      10     0     6      0  0.97   1.00
+    G2   person    70     0   1.00  70/70    70/70        0     0     0      0  1.00   1.00
+    G2   parcel    10     0   0.31   0/10     0/10       10     0     0      0  1.00   0.31
+    G2   place    180     0   0.99 176/180  157/180       0     0     4      0  0.99   1.00
+    G2   ALL      260     0   1.00 246/260  227/260      10     0     4      0  1.00   1.00
+
+Predictions written in FROZEN.md section 12 (before scoring) against the outcomes:
+  V1 'at most about 11 of 46, share at most about 0.55; S4 likely fails': V1 9/46, share 0.45; S4 not met
+  V3 'may add up to about 5 occluder captures': V3 fixes occluder captures 1 of the 46 and 5 of the 53; V3 breaks 0/454, 0/699
+  T1 'about 11 of 15 (all 6 background leaks and 5 straddling occluder captures)': T1 11/15 (background leaks 6/6, occluder captures 5/9)
+
+G. The 53 wrong targets, one row each (R = right after the fix)
+  model      arm     scene                                ep  t kind   class               dB s         T1 T2 orc V1 V2 V3 V4 frt  orcS
+  dsv41      plain   plain_eval_04_no_one_object          e1  0 parcel occluder capture   8.1 object    T  T    R   .   m   .   .   .  T
+  dsv41      plain   plain_eval_04_no_one_object          e1  1 parcel choice error      63.9 floor     T  T    .   .   .   .   .   .  -
+  dsv41      plain   plain_eval_04_no_one_object          e1  2 parcel occluder capture   8.1 object    T  T    R   .   m   .   .   .  T
+  dsv41      real    real_eval_04_no_one_object           e1  1 parcel occluder capture   9.6 object    T  T    R   .   m   .   .   .  T
+  dsv41      real    real_eval_04_no_one_object           e1  2 parcel occluder capture   4.0 object    .  .    R   .   m   .   .   .  T
+  dsv41      staffed staffed_eval_04_no_one_object        e1  0 parcel background leak   13.3 floor     T  T    R   m   m   m   m   m  T
+  dsv41      staffed staffed_eval_04_no_one_object        e1  1 parcel choice error      22.5 floor     T  T    .   m   m   m   m   m  -
+  glm53      plain   plain_eval_04_no_one_object          e1  0 parcel choice error      31.9 object    .  T    .   .   m   .   .   .  -
+  glm53      plain   plain_eval_04_no_one_object          e1  1 parcel choice error      34.3 object    T  T    .   .   m   m   .   .  -
+  glm53      plain   plain_eval_04_no_one_object          e1  2 parcel choice error      15.3 object    T  T    .   .   m   .   .   .  -
+  glm53      real    real_eval_04_no_one_object           e1  0 parcel occluder capture   3.3 object    .  .    R   .   m   .   .   .  T
+  glm53      real    real_eval_04_no_one_object           e1  1 parcel choice error      16.1 object    T  T    .   .   m   .   .   .  -
+  glm53      staffed staffed_eval_04_no_one_object        e1  0 parcel choice error      25.9 floor     T  T    .   m   m   m   m   m  -
+  glm53      staffed staffed_eval_04_no_one_object        e1  1 parcel choice error      28.4 floor     T  T    .   .   .   .   .   m  -
+  glm53      staffed staffed_eval_04_no_one_object        e1  2 parcel choice error      50.3 floor     T  T    .   m   m   m   m   m  -
+  dsv41      plain   plain_eval_10_conversation_group_2   e0  2 person background leak    7.7 floor     T  T    R   R   R   R   R   m  F
+  dsv41      plain   plain_eval_11_conversation_group_3   e0  1 person background leak    1.4 object    T  T    R   .   m   .   .   R  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e0  1 person occluder capture   9.7 object    .  T    R   .   m   .   .   .  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e0  2 person background leak   11.2 floor     T  T    R   R   R   R   R   m  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e1  1 person occluder capture  13.9 object    .  T    R   .   m   .   .   .  T
+  dsv41      plain   plain_eval_12_conversation_group_4   e1  2 person occluder capture  13.3 object    .  T    R   .   m   .   .   .  F
+  dsv41      real    real_eval_12_conversation_group_4    e0  1 person occluder capture   1.3 object    T  T    R   .   m   R   .   .  F
+  dsv41      real    real_eval_12_conversation_group_4    e1  2 person background leak    1.0 floor     T  T    R   R   R   R   R   R  T
+  glm53      plain   plain_eval_12_conversation_group_4   e0  2 person background leak    4.5 floor     T  T    R   R   R   R   R   m  T
+  glm53      real    real_eval_12_conversation_group_4    e1  2 person background leak    1.6 structure T  T    R   R   R   R   R   R  T
+  qwen38_low plain   plain_eval_12_conversation_group_4   e1  0 person occluder capture   6.9 object    .  T    R   .   m   .   .   .  T
+  qwen38_low plain   plain_eval_12_conversation_group_4   e1  1 person occluder capture   1.5 object    T  T    R   .   m   R   .   .  T
+  qwen38_low real    real_eval_12_conversation_group_4    e1  1 person occluder capture   2.7 object    T  T    R   .   m   R   .   .  T
+  qwen38_low staffed staffed_eval_12_conversation_group_4 e0  2 person occluder capture   1.8 object    T  T    R   .   m   R   .   .  T
+  qwen38_low staffed staffed_eval_12_conversation_group_4 e1  0 person occluder capture   2.2 object    T  T    R   .   m   R   .   .  T
+  dsv41      plain   plain_eval_13_waiting_line_3         e0  1 place  background leak    1.5 floor     T  T    R   R   R   R   R   R  T
+  dsv41      real    real_eval_01_no_one_place            e1  1 place  choice error      97.3 floor     T  T    .   .   .   .   .   m  -
+  dsv41      real    real_eval_06_waiting_line_1          e1  2 place  choice error      73.3 object    T  T    .   .   m   m   .   .  -
+  dsv41      staffed staffed_eval_06_waiting_line_1       e1  1 place  choice error      76.5 object    .  T    .   .   m   .   .   .  -
+  dsv41      staffed staffed_eval_09_waiting_line_6       e0  0 place  choice error     122.4 floor     T  T    .   .   .   .   .   .  -
+  dsv41      staffed staffed_eval_09_waiting_line_6       e1  1 place  choice error      79.0 floor     T  T    .   .   .   .   .   .  -
+  dsv41      staffed staffed_eval_13_waiting_line_3       e0  1 place  choice error      27.6 floor     T  T    .   .   .   .   .   .  -
+  glm53      plain   plain_eval_06_waiting_line_1         e1  0 place  background leak    8.6 structure T  T    R   R   R   R   R   R  F
+  glm53      plain   plain_eval_06_waiting_line_1         e1  1 place  choice error      85.2 object    .  .    .   .   m   .   .   .  -
+  glm53      plain   plain_eval_08_waiting_line_4         e1  0 place  choice error     237.8 object    .  T    .   .   m   .   .   .  -
+  glm53      plain   plain_eval_09_waiting_line_6         e1  0 place  choice error     140.5 floor     T  T    .   .   .   .   .   m  -
+  glm53      real    real_eval_00_no_one_place            e1  1 place  choice error      44.9 structure T  T    .   .   .   .   .   .  -
+  glm53      real    real_eval_06_waiting_line_1          e0  1 place  background leak    7.7 structure T  T    R   R   R   R   R   R  T
+  glm53      real    real_eval_06_waiting_line_1          e0  2 place  choice error      15.5 structure T  T    .   .   .   .   .   .  -
+  glm53      real    real_eval_06_waiting_line_1          e1  1 place  background leak    4.4 structure T  T    R   R   R   R   R   R  T
+  glm53      real    real_eval_06_waiting_line_1          e1  2 place  choice error      77.5 object    .  .    .   .   m   .   .   .  -
+  glm53      real    real_eval_07_waiting_line_2          e0  0 place  choice error     129.9 floor     T  T    .   m   m   m   m   m  -
+  glm53      real    real_eval_07_waiting_line_2          e1  0 place  choice error     122.6 structure T  T    .   .   .   .   .   .  -
+  glm53      real    real_eval_13_waiting_line_3          e0  0 place  choice error     111.9 floor     T  T    .   m   m   m   m   m  -
+  glm53      real    real_eval_13_waiting_line_3          e1  0 place  choice error     144.6 object    .  T    .   .   m   .   .   .  -
+  glm53      staffed staffed_eval_13_waiting_line_3       e0  2 place  choice error     279.0 structure T  T    .   .   .   .   .   .  -
+  qwen38_low staffed staffed_eval_06_waiting_line_1       e1  0 place  choice error      83.9 object    .  .    .   .   m   .   .   .  -
+  qwen38_low staffed staffed_eval_09_waiting_line_6       e1  1 place  background leak    2.5 object    T  T    R   .   m   .   .   R  T
+  (R right after; m moved but still wrong; . not moved)
+
+  right-target records broken by V1 (all 699):
+  right-target records broken by the oracle (all 699):
+
+==============================================================================================================
+X-new (new wording, realistic arms, con): the blind replication
+==============================================================================================================
+runs (18): 20261017-022122_s21_real_qwen38_low_con, 20261017-021937_s21_staffed_qwen38_low_con, 20261017-021852_s21_plain_qwen38_low_con, 20261017-125813_s23_real_glm53_con, 20261017-125552_s23_staffed_glm53_con, 20261017-125556_s23_plain_glm53_con, 20261017-124936_s23_real_dsv41_con, 20261017-124931_s23_staffed_dsv41_con, 20261017-124904_s23_plain_dsv41_con, 20261017-130036_s23_real_haiku55_con, 20261017-130055_s23_staffed_haiku55_con, 20261017-130031_s23_plain_haiku55_con, 20261017-130300_s23_real_sonnet55_low_con, 20261017-132708_s23_staffed_sonnet55_low_con, 20261017-132708_s23_plain_sonnet55_low_con, 20261017-125226_s23_real_gemini38_low_con, 20261017-125459_s23_staffed_gemini38_low_con, 20261017-125351_s23_plain_gemini38_low_con
+records allowed 1512; skipped by the harness 0
+records with a target but no pixel: 0 (runs []); lift not reproduced (skipped): 0; recorded target_correct vs match_target now disagree: 0
+records in episodes with several targets: 0
+section 9 vectorised mask check on single-target wrong records: 0 mismatches of 66600 sampled pixels
+
+                                qwen38_low       dsv41 gemini38_low       glm53     haiku55 sonnet55_low    all
+  records                              252         252         252         252         252         252   1512
+  with a point                         252         252         252         252         252         252   1512
+  wrong target                          12          24          34          33           1           7    111
+  wrong target with a point             12          24          34          33           1           7    111
+  right target with a point            240         228         218         219         251         245   1401
+
+per model (pooled over that model's runs in this set; never pooled with the primary):
+  qwen38_low [plain, real, staffed]: with a point 252, wrong 12, right 240; classes {'background leak': 4, 'occluder capture': 8}; lift classes 12/12 [layouts 3, model x layout 3]
+    wrong by kind {'place': 4, 'person': 8}
+    oracle fixes  12/12  breaks   0/240  moves R/W  239/12  fixed->success 12/12  net +12 (12/0)  fixes by class {'background leak': 4, 'occluder capture': 8}
+    V1     fixes   1/12  breaks   0/240  moves R/W    1/1   fixed->success 1/1  net +1 (1/0)  fixes by class {'background leak': 1}
+    V2     fixes   1/12  breaks   1/240  moves R/W  239/12  fixed->success 1/1  net +0 (1/1)  fixes by class {'background leak': 1}
+    V3     fixes   5/12  breaks   0/240  moves R/W    3/5   fixed->success 5/5  net +5 (5/0)  fixes by class {'occluder capture': 4, 'background leak': 1}
+    V4     fixes   1/12  breaks   0/240  moves R/W    1/1   fixed->success 1/1  net +1 (1/0)  fixes by class {'background leak': 1}
+    front  fixes   4/12  breaks  10/240  moves R/W   16/4   fixed->success 4/4  net -2 (8/10)  fixes by class {'background leak': 4}
+    I33: person wrong targets 8 [layouts 1, model x layout 1]: T1 catches 4, T2 8; D1 n=64 T1 false 6/64 (9.4%); D2 n=240 T1 13/240 (5.4%); T1 on all wrong 8/12
+  dsv41 [plain, real, staffed]: with a point 252, wrong 24, right 228; classes {'occluder capture': 11, 'near-depth miss': 1, 'background leak': 7, 'choice error': 5}; lift classes 18/24 [layouts 9, model x layout 9]
+    wrong by kind {'parcel': 7, 'place': 7, 'person': 10}
+    oracle fixes  19/24  breaks   0/228  moves R/W  228/19  fixed->success 17/19  net +18 (18/0)  fixes by class {'occluder capture': 11, 'near-depth miss': 1, 'background leak': 7}
+    V1     fixes   5/24  breaks   0/228  moves R/W    4/6   fixed->success 3/5  net +4 (4/0)  fixes by class {'background leak': 5}
+    V2     fixes   5/24  breaks   0/228  moves R/W  227/21  fixed->success 3/5  net +4 (4/0)  fixes by class {'background leak': 5}
+    V3     fixes   6/24  breaks   0/228  moves R/W    8/7   fixed->success 4/6  net +5 (5/0)  fixes by class {'background leak': 5, 'occluder capture': 1}
+    V4     fixes   5/24  breaks   0/228  moves R/W    4/6   fixed->success 3/5  net +4 (4/0)  fixes by class {'background leak': 5}
+    front  fixes   6/24  breaks   7/228  moves R/W   13/9   fixed->success 4/6  net -2 (5/7)  fixes by class {'background leak': 6}
+    I33: person wrong targets 10 [layouts 2, model x layout 2]: T1 catches 5, T2 10; D1 n=62 T1 false 2/62 (3.2%); D2 n=228 T1 16/228 (7.0%); T1 on all wrong 15/24
+  gemini38_low [plain, real, staffed]: with a point 252, wrong 34, right 218; classes {'choice error': 34}; lift classes 0/34 [layouts 5, model x layout 5]
+    wrong by kind {'place': 34}
+    oracle fixes   0/34  breaks   0/218  moves R/W  218/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V1     fixes   0/34  breaks   0/218  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/34  breaks   0/218  moves R/W  218/34  fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   0/34  breaks   0/218  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/34  breaks   0/218  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/34  breaks  18/218  moves R/W   18/0   fixed->success 0/0  net -18 (0/18)  fixes by class {}
+    I33: person wrong targets 0 [layouts 0, model x layout 0]: T1 catches 0, T2 0; D1 n=72 T1 false 14/72 (19.4%); D2 n=218 T1 14/218 (6.4%); T1 on all wrong 0/34
+  glm53 [plain, real, staffed]: with a point 252, wrong 33, right 219; classes {'choice error': 16, 'background leak': 12, 'near-depth miss': 1, 'occluder capture': 4}; lift classes 16/33 [layouts 10, model x layout 10]
+    wrong by kind {'place': 20, 'parcel': 8, 'person': 5}
+    oracle fixes  17/33  breaks   0/219  moves R/W  219/17  fixed->success 9/17  net +9 (9/0)  fixes by class {'background leak': 12, 'near-depth miss': 1, 'occluder capture': 4}
+    V1     fixes  12/33  breaks   0/219  moves R/W    0/15  fixed->success 4/12  net +4 (4/0)  fixes by class {'background leak': 12}
+    V2     fixes  12/33  breaks   0/219  moves R/W  219/28  fixed->success 4/12  net +4 (4/0)  fixes by class {'background leak': 12}
+    V3     fixes  12/33  breaks   1/219  moves R/W    3/15  fixed->success 4/12  net +4 (4/0)  fixes by class {'background leak': 12}
+    V4     fixes  12/33  breaks   0/219  moves R/W    0/15  fixed->success 4/12  net +4 (4/0)  fixes by class {'background leak': 12}
+    front  fixes  12/33  breaks  13/219  moves R/W   18/17  fixed->success 4/12  net -8 (5/13)  fixes by class {'background leak': 12}
+    I33: person wrong targets 5 [layouts 2, model x layout 2]: T1 catches 3, T2 4; D1 n=67 T1 false 2/67 (3.0%); D2 n=219 T1 11/219 (5.0%); T1 on all wrong 22/33
+  haiku55 [plain, real, staffed]: with a point 252, wrong 1, right 251; classes {'occluder capture': 1}; lift classes 1/1 [layouts 1, model x layout 1]
+    wrong by kind {'person': 1}
+    oracle fixes   1/1   breaks   0/251  moves R/W  251/1   fixed->success 1/1  net +1 (1/0)  fixes by class {'occluder capture': 1}
+    V1     fixes   0/1   breaks   0/251  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/1   breaks   0/251  moves R/W  251/1   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   1/1   breaks   0/251  moves R/W    0/1   fixed->success 1/1  net +1 (1/0)  fixes by class {'occluder capture': 1}
+    V4     fixes   0/1   breaks   0/251  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/1   breaks  11/251  moves R/W   11/0   fixed->success 0/0  net -11 (0/11)  fixes by class {}
+    I33: person wrong targets 1 [layouts 1, model x layout 1]: T1 catches 1, T2 1; D1 n=71 T1 false 0/71 (0.0%); D2 n=251 T1 0/251 (0.0%); T1 on all wrong 1/1
+  sonnet55_low [plain, real, staffed]: with a point 252, wrong 7, right 245; classes {'occluder capture': 7}; lift classes 7/7 [layouts 1, model x layout 1]
+    wrong by kind {'person': 7}
+    oracle fixes   7/7   breaks   0/245  moves R/W  245/7   fixed->success 7/7  net +7 (7/0)  fixes by class {'occluder capture': 7}
+    V1     fixes   0/7   breaks   0/245  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/7   breaks   3/245  moves R/W  245/7   fixed->success 0/0  net -3 (0/3)  fixes by class {}
+    V3     fixes   7/7   breaks   0/245  moves R/W    0/7   fixed->success 7/7  net +7 (7/0)  fixes by class {'occluder capture': 7}
+    V4     fixes   0/7   breaks   0/245  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/7   breaks  11/245  moves R/W   11/0   fixed->success 0/0  net -11 (0/11)  fixes by class {}
+    I33: person wrong targets 7 [layouts 1, model x layout 1]: T1 catches 7, T2 7; D1 n=65 T1 false 8/65 (12.3%); D2 n=245 T1 8/245 (3.3%); T1 on all wrong 7/7
+
+per run (fixes/wrong, breaks/right) for the oracle and V1, and T1 on person wrong targets:
+  20261017-022122_s21_real_qwen38_low_con          pts  84 wrong   5 | oracle  5/5   brk  0 | V1  1 brk  0 | V2  1 brk  0 | V3  3 brk  0 | V4  1 brk  0 | front  1 brk  2 | T1 person 2/4
+  20261017-021937_s21_staffed_qwen38_low_con       pts  84 wrong   4 | oracle  4/4   brk  0 | V1  0 brk  0 | V2  0 brk  1 | V3  0 brk  0 | V4  0 brk  0 | front  2 brk  4 | T1 person 0/2
+  20261017-021852_s21_plain_qwen38_low_con         pts  84 wrong   3 | oracle  3/3   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  2 brk  0 | V4  0 brk  0 | front  1 brk  4 | T1 person 2/2
+  20261017-125813_s23_real_glm53_con               pts  84 wrong  14 | oracle  5/14  brk  0 | V1  3 brk  0 | V2  3 brk  0 | V3  3 brk  0 | V4  3 brk  0 | front  3 brk  4 | T1 person 2/3
+  20261017-125552_s23_staffed_glm53_con            pts  84 wrong   9 | oracle  6/9   brk  0 | V1  3 brk  0 | V2  3 brk  0 | V3  3 brk  0 | V4  3 brk  0 | front  3 brk  5 | T1 person 0/1
+  20261017-125556_s23_plain_glm53_con              pts  84 wrong  10 | oracle  6/10  brk  0 | V1  6 brk  0 | V2  6 brk  0 | V3  6 brk  1 | V4  6 brk  0 | front  6 brk  4 | T1 person 1/1
+  20261017-124936_s23_real_dsv41_con               pts  84 wrong  11 | oracle  7/11  brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  0 | V4  2 brk  0 | front  2 brk  1 | T1 person 3/6
+  20261017-124931_s23_staffed_dsv41_con            pts  84 wrong   6 | oracle  5/6   brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  0 | V4  2 brk  0 | front  2 brk  3 | T1 person 1/2
+  20261017-124904_s23_plain_dsv41_con              pts  84 wrong   7 | oracle  7/7   brk  0 | V1  1 brk  0 | V2  1 brk  0 | V3  2 brk  0 | V4  1 brk  0 | front  2 brk  3 | T1 person 1/2
+  20261017-130036_s23_real_haiku55_con             pts  84 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  2 | T1 person 0/0
+  20261017-130055_s23_staffed_haiku55_con          pts  84 wrong   1 | oracle  1/1   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  1 brk  0 | V4  0 brk  0 | front  0 brk  3 | T1 person 1/1
+  20261017-130031_s23_plain_haiku55_con            pts  84 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  6 | T1 person 0/0
+  20261017-130300_s23_real_sonnet55_low_con        pts  84 wrong   3 | oracle  3/3   brk  0 | V1  0 brk  0 | V2  0 brk  1 | V3  3 brk  0 | V4  0 brk  0 | front  0 brk  3 | T1 person 3/3
+  20261017-132708_s23_staffed_sonnet55_low_con     pts  84 wrong   3 | oracle  3/3   brk  0 | V1  0 brk  0 | V2  0 brk  1 | V3  3 brk  0 | V4  0 brk  0 | front  0 brk  3 | T1 person 3/3
+  20261017-132708_s23_plain_sonnet55_low_con       pts  84 wrong   1 | oracle  1/1   brk  0 | V1  0 brk  0 | V2  0 brk  1 | V3  1 brk  0 | V4  0 brk  0 | front  0 brk  5 | T1 person 1/1
+  20261017-125226_s23_real_gemini38_low_con        pts  84 wrong  11 | oracle  0/11  brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  6 | T1 person 0/0
+  20261017-125459_s23_staffed_gemini38_low_con     pts  84 wrong  14 | oracle  0/14  brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  6 | T1 person 0/0
+  20261017-125351_s23_plain_gemini38_low_con       pts  84 wrong   9 | oracle  0/9   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  6 | T1 person 0/0
+
+(post hoc summary, pooled over the X-new models only, never with the primary) person wrong targets n=31 [layouts 3, model x layout 7]: T1 20/31 (64.5%), T2 30/31 (96.8%); by class {'choice error': '3/4', 'occluder capture': '13/23', 'background leak': '4/4'}; D1 n=401 T1 false 32/401 (8.0%); D2 n=1401 T1 62/1401 (4.4%); excluding Gemini (no person wrong targets) D1 18/329 (5.5%)
+
+X-new person wrong targets, one row each (the blind I33 test):
+  dsv41        plain   plain_eval_12_conversation_group_4   e0 t0 occluder capture s=object    T1=. T2=T oracle R V1 .
+  dsv41        plain   plain_eval_12_conversation_group_4   e1 t1 occluder capture s=object    T1=T T2=T oracle R V1 .
+  dsv41        real    real_eval_11_conversation_group_3    e0 t1 background leak  s=structure T1=T T2=T oracle R V1 R
+  dsv41        real    real_eval_12_conversation_group_4    e0 t0 occluder capture s=object    T1=. T2=T oracle R V1 .
+  dsv41        real    real_eval_12_conversation_group_4    e0 t1 choice error     s=structure T1=T T2=T oracle . V1 .
+  dsv41        real    real_eval_12_conversation_group_4    e0 t2 occluder capture s=object    T1=. T2=T oracle R V1 .
+  dsv41        real    real_eval_12_conversation_group_4    e1 t1 occluder capture s=object    T1=. T2=T oracle R V1 .
+  dsv41        real    real_eval_12_conversation_group_4    e1 t2 choice error     s=floor     T1=T T2=T oracle . V1 .
+  dsv41        staffed staffed_eval_12_conversation_group_4 e0 t0 occluder capture s=object    T1=. T2=T oracle R V1 .
+  dsv41        staffed staffed_eval_12_conversation_group_4 e1 t1 background leak  s=floor     T1=T T2=T oracle R V1 R
+  glm53        plain   plain_eval_12_conversation_group_4   e0 t0 background leak  s=structure T1=T T2=T oracle R V1 R
+  glm53        real    real_eval_10_conversation_group_2    e0 t2 choice error     s=object    T1=T T2=T oracle . V1 .
+  glm53        real    real_eval_10_conversation_group_2    e1 t0 choice error     s=object    T1=. T2=. oracle . V1 .
+  glm53        real    real_eval_12_conversation_group_4    e0 t1 background leak  s=floor     T1=T T2=T oracle R V1 R
+  glm53        staffed staffed_eval_12_conversation_group_4 e1 t0 occluder capture s=object    T1=. T2=T oracle R V1 .
+  haiku55      staffed staffed_eval_12_conversation_group_4 e0 t2 occluder capture s=object    T1=T T2=T oracle R V1 .
+  qwen38_low   plain   plain_eval_12_conversation_group_4   e0 t0 occluder capture s=object    T1=T T2=T oracle R V1 .
+  qwen38_low   plain   plain_eval_12_conversation_group_4   e1 t2 occluder capture s=object    T1=T T2=T oracle R V1 .
+  qwen38_low   real    real_eval_12_conversation_group_4    e0 t1 occluder capture s=object    T1=T T2=T oracle R V1 .
+  qwen38_low   real    real_eval_12_conversation_group_4    e1 t0 occluder capture s=object    T1=. T2=T oracle R V1 .
+  qwen38_low   real    real_eval_12_conversation_group_4    e1 t1 occluder capture s=object    T1=T T2=T oracle R V1 .
+  qwen38_low   real    real_eval_12_conversation_group_4    e1 t2 occluder capture s=object    T1=. T2=T oracle R V1 .
+  qwen38_low   staffed staffed_eval_12_conversation_group_4 e1 t0 occluder capture s=object    T1=. T2=T oracle R V1 .
+  qwen38_low   staffed staffed_eval_12_conversation_group_4 e1 t1 occluder capture s=object    T1=. T2=T oracle R V1 .
+  sonnet55_low plain   plain_eval_12_conversation_group_4   e1 t1 occluder capture s=object    T1=T T2=T oracle R V1 .
+  sonnet55_low real    real_eval_12_conversation_group_4    e0 t2 occluder capture s=object    T1=T T2=T oracle R V1 .
+  sonnet55_low real    real_eval_12_conversation_group_4    e1 t0 occluder capture s=object    T1=T T2=T oracle R V1 .
+  sonnet55_low real    real_eval_12_conversation_group_4    e1 t2 occluder capture s=object    T1=T T2=T oracle R V1 .
+  sonnet55_low staffed staffed_eval_12_conversation_group_4 e0 t0 occluder capture s=object    T1=T T2=T oracle R V1 .
+  sonnet55_low staffed staffed_eval_12_conversation_group_4 e1 t0 occluder capture s=object    T1=T T2=T oracle R V1 .
+  sonnet55_low staffed staffed_eval_12_conversation_group_4 e1 t2 occluder capture s=object    T1=T T2=T oracle R V1 .
+==============================================================================================================
+X-ph (placeholder ph and dev_seed0-2 arms, con)
+==============================================================================================================
+runs (12): 20261011-160610_s19_ph_qwen38_low_con, 20261011-160326_s19_dev_seed0_qwen38_low_con, 20261011-160315_s19_dev_seed1_qwen38_low_con, 20261011-160306_s19_dev_seed2_qwen38_low_con, 20261011-160439_s19_ph_glm53_con, 20261011-160611_s19_dev_seed0_glm53_con, 20261011-160558_s19_dev_seed1_glm53_con, 20261011-160545_s19_dev_seed2_glm53_con, 20261013-190939_s20_ph_dsv41_con, 20261013-190610_s20_dev_seed0_dsv41_con, 20261013-190617_s20_dev_seed1_dsv41_con, 20261013-191026_s20_dev_seed2_dsv41_con
+records allowed 468; skipped by the harness 0
+records with a target but no pixel: 0 (runs []); lift not reproduced (skipped): 0; recorded target_correct vs match_target now disagree: 0
+records in episodes with several targets: 0
+section 9 vectorised mask check on single-target wrong records: 0 mismatches of 10200 sampled pixels
+
+                                qwen38_low       glm53       dsv41    all
+  records                              156         156         156    468
+  with a point                         156         156         156    468
+  wrong target                           0          10           7     17
+  wrong target with a point              0          10           7     17
+  right target with a point            156         146         149    451
+
+per model (pooled over that model's runs in this set; never pooled with the primary):
+  qwen38_low [dev_seed0, dev_seed1, dev_seed2, ph]: with a point 156, wrong 0, right 156; classes {}; lift classes 0/0 [layouts 0, model x layout 0]
+    wrong by kind {}
+    oracle fixes   0/0   breaks   0/156  moves R/W  156/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V1     fixes   0/0   breaks   0/156  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/0   breaks   0/156  moves R/W  156/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   0/0   breaks   0/156  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/0   breaks   0/156  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/0   breaks   2/156  moves R/W    5/0   fixed->success 0/0  net -2 (0/2)  fixes by class {}
+    I33: person wrong targets 0 [layouts 0, model x layout 0]: T1 catches 0, T2 0; D1 n=24 T1 false 0/24 (0.0%); D2 n=156 T1 0/156 (0.0%); T1 on all wrong 0/0
+  glm53 [dev_seed0, dev_seed1, dev_seed2, ph]: with a point 156, wrong 10, right 146; classes {'occluder capture': 2, 'choice error': 5, 'near-depth miss': 1, 'background leak': 2}; lift classes 4/10 [layouts 5, model x layout 5]
+    wrong by kind {'place': 6, 'parcel': 3, 'person': 1}
+    oracle fixes   5/10  breaks   0/146  moves R/W  146/5   fixed->success 5/5  net +6 (6/0)  fixes by class {'occluder capture': 2, 'near-depth miss': 1, 'background leak': 2}
+    V1     fixes   2/10  breaks   0/146  moves R/W    0/3   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    V2     fixes   2/10  breaks   0/146  moves R/W  146/7   fixed->success 2/2  net +3 (3/0)  fixes by class {'background leak': 2}
+    V3     fixes   2/10  breaks   0/146  moves R/W    0/3   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    V4     fixes   2/10  breaks   0/146  moves R/W    0/3   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    front  fixes   2/10  breaks   1/146  moves R/W    1/3   fixed->success 2/2  net +1 (2/1)  fixes by class {'background leak': 2}
+    I33: person wrong targets 1 [layouts 1, model x layout 1]: T1 catches 0, T2 0; D1 n=23 T1 false 0/23 (0.0%); D2 n=146 T1 2/146 (1.4%); T1 on all wrong 6/10
+  dsv41 [dev_seed0, dev_seed1, dev_seed2, ph]: with a point 156, wrong 7, right 149; classes {'choice error': 5, 'occluder capture': 1, 'background leak': 1}; lift classes 2/7 [layouts 5, model x layout 5]
+    wrong by kind {'parcel': 2, 'person': 1, 'place': 4}
+    oracle fixes   2/7   breaks   0/149  moves R/W  149/2   fixed->success 2/2  net +3 (3/0)  fixes by class {'occluder capture': 1, 'background leak': 1}
+    V1     fixes   0/7   breaks   0/149  moves R/W    3/3   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   1/7   breaks   0/149  moves R/W  148/6   fixed->success 1/1  net +2 (2/0)  fixes by class {'background leak': 1}
+    V3     fixes   0/7   breaks   0/149  moves R/W    4/3   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/7   breaks   0/149  moves R/W    3/3   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   1/7   breaks   3/149  moves R/W    3/4   fixed->success 1/1  net -2 (1/3)  fixes by class {'background leak': 1}
+    I33: person wrong targets 1 [layouts 1, model x layout 1]: T1 catches 1, T2 1; D1 n=23 T1 false 2/23 (8.7%); D2 n=149 T1 8/149 (5.4%); T1 on all wrong 5/7
+
+per run (fixes/wrong, breaks/right) for the oracle and V1, and T1 on person wrong targets:
+  20261011-160610_s19_ph_qwen38_low_con            pts  84 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  2 | T1 person 0/0
+  20261011-160326_s19_dev_seed0_qwen38_low_con     pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261011-160315_s19_dev_seed1_qwen38_low_con     pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261011-160306_s19_dev_seed2_qwen38_low_con     pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261011-160439_s19_ph_glm53_con                 pts  84 wrong   8 | oracle  3/8   brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  0 | V4  2 brk  0 | front  2 brk  1 | T1 person 0/1
+  20261011-160611_s19_dev_seed0_glm53_con          pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261011-160558_s19_dev_seed1_glm53_con          pts  24 wrong   1 | oracle  1/1   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261011-160545_s19_dev_seed2_glm53_con          pts  24 wrong   1 | oracle  1/1   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261013-190939_s20_ph_dsv41_con                 pts  84 wrong   7 | oracle  2/7   brk  0 | V1  0 brk  0 | V2  1 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  1 brk  3 | T1 person 1/1
+  20261013-190610_s20_dev_seed0_dsv41_con          pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261013-190617_s20_dev_seed1_dsv41_con          pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261013-191026_s20_dev_seed2_dsv41_con          pts  24 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+
+M4 on X-ph scenes: distinct (scene folder, scene, true target) n = 26
+    join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+    G1   person     4     0   1.00   4/4      4/4         0     0     0      0  1.00   1.00
+    G1   parcel     1     0   0.31   0/1      0/1         1     0     0      0  1.00   0.31
+    G1   place     21     0   0.64  21/21    10/21        0     0     0      0  0.64   1.00
+    G1   ALL       26     0   0.91  25/26    14/26        1     0     0      0  0.94   1.00
+    G2   person     4     0   1.00   4/4      4/4         0     0     0      0  1.00   1.00
+    G2   parcel     1     0   0.31   0/1      0/1         1     0     0      0  1.00   0.31
+    G2   place     21     0   0.99  21/21    19/21        0     0     0      0  0.99   1.00
+    G2   ALL       26     0   0.99  25/26    23/26        1     0     0      0  1.00   1.00
+==============================================================================================================
+X-ph2 (s10 con, s8 convlm and conorc; placeholder eval scenes)
+==============================================================================================================
+runs (15): 20261010-122223_s10_glm53_none_con, 20261010-120459_s10_glm53_low_con, 20261010-121526_s10_qwen38_none_con, 20261010-121108_s10_qwen38_low_con, 20261010-114753_s10_qwen38_medium_con, 20261010-004747_s8_convlm_glm53, 20261010-005514_s8_convlm_ornith15, 20261010-003923_s8_convlm_qwen36_35, 20261010-004041_s8_convlm_qwen38, 20261010-005734_s8_convlm_qwen3vl, 20261010-004411_s8_conorc_glm53, 20261010-005218_s8_conorc_ornith15, 20261010-003604_s8_conorc_qwen36_35, 20261010-003601_s8_conorc_qwen38, 20261010-004740_s8_conorc_qwen3vl
+records allowed 980; skipped by the harness 0
+records with a target but no pixel: 0 (runs []); lift not reproduced (skipped): 0; recorded target_correct vs match_target now disagree: 0
+records in episodes with several targets: 0
+repeated draws across runs (same model, scene, episode, trial and pixel): 476 extra copies in 420 keys
+section 9 vectorised mask check on single-target wrong records: 0 mismatches of 37800 sampled pixels
+
+                                    qwen38   qwen36_35       glm53     qwen3vl    ornith15 qwen38_medium   glm53_low  qwen38_low    all
+  records                              196         168         196         168         168          28          28          28    980
+  with a point                         196         168         196         168         168          28          28          28    980
+  wrong target                          13           2          19          12          14           0           3           0     63
+  wrong target with a point             13           2          19          12          14           0           3           0     63
+  right target with a point            183         166         177         156         154          28          25          28    917
+
+per model (pooled over that model's runs in this set; never pooled with the primary):
+  qwen38 [ph]: with a point 196, wrong 13, right 183; classes {'choice error': 6, 'near-depth miss': 2, 'background leak': 5}; lift classes 5/13 [layouts 5, model x layout 5]
+    wrong by kind {'place': 6, 'parcel': 2, 'person': 5}
+    oracle fixes   7/13  breaks   0/183  moves R/W  183/7   fixed->success 7/7  net +7 (7/0)  fixes by class {'near-depth miss': 2, 'background leak': 5}
+    V1     fixes   2/13  breaks   0/183  moves R/W    0/2   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    V2     fixes   2/13  breaks   0/183  moves R/W  183/10  fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    V3     fixes   2/13  breaks   3/183  moves R/W    3/2   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    V4     fixes   2/13  breaks   0/183  moves R/W    0/2   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    front  fixes   5/13  breaks   7/183  moves R/W   15/5   fixed->success 5/5  net -2 (5/7)  fixes by class {'background leak': 5}
+    I33: person wrong targets 5 [layouts 2, model x layout 2]: T1 catches 2, T2 2; D1 n=51 T1 false 0/51 (0.0%); D2 n=183 T1 8/183 (4.4%); T1 on all wrong 8/13
+  qwen36_35 [ph]: with a point 168, wrong 2, right 166; classes {'background leak': 2}; lift classes 2/2 [layouts 1, model x layout 1]
+    wrong by kind {'place': 2}
+    oracle fixes   2/2   breaks   0/166  moves R/W  166/2   fixed->success 2/2  net +0 (2/2)  fixes by class {'background leak': 2}
+    V1     fixes   2/2   breaks   0/166  moves R/W    0/2   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    V2     fixes   2/2   breaks   0/166  moves R/W  166/2   fixed->success 2/2  net +0 (2/2)  fixes by class {'background leak': 2}
+    V3     fixes   2/2   breaks   4/166  moves R/W    4/2   fixed->success 2/2  net -2 (2/4)  fixes by class {'background leak': 2}
+    V4     fixes   2/2   breaks   0/166  moves R/W    0/2   fixed->success 2/2  net +2 (2/0)  fixes by class {'background leak': 2}
+    front  fixes   2/2   breaks  10/166  moves R/W   18/2   fixed->success 2/2  net -7 (2/9)  fixes by class {'background leak': 2}
+    I33: person wrong targets 0 [layouts 0, model x layout 0]: T1 catches 0, T2 0; D1 n=48 T1 false 0/48 (0.0%); D2 n=166 T1 4/166 (2.4%); T1 on all wrong 2/2
+  glm53 [ph]: with a point 196, wrong 19, right 177; classes {'choice error': 13, 'near-depth miss': 2, 'background leak': 4}; lift classes 4/19 [layouts 4, model x layout 4]
+    wrong by kind {'parcel': 8, 'place': 9, 'person': 2}
+    oracle fixes   6/19  breaks   0/177  moves R/W  177/6   fixed->success 4/6  net +6 (6/0)  fixes by class {'near-depth miss': 2, 'background leak': 4}
+    V1     fixes   4/19  breaks   0/177  moves R/W    0/7   fixed->success 2/4  net +2 (2/0)  fixes by class {'background leak': 4}
+    V2     fixes   4/19  breaks   0/177  moves R/W  177/11  fixed->success 2/4  net +4 (4/0)  fixes by class {'background leak': 4}
+    V3     fixes   4/19  breaks   0/177  moves R/W    0/7   fixed->success 2/4  net +2 (2/0)  fixes by class {'background leak': 4}
+    V4     fixes   4/19  breaks   0/177  moves R/W    0/7   fixed->success 2/4  net +2 (2/0)  fixes by class {'background leak': 4}
+    front  fixes   4/19  breaks   2/177  moves R/W    2/7   fixed->success 2/4  net +0 (2/2)  fixes by class {'background leak': 4}
+    I33: person wrong targets 2 [layouts 1, model x layout 1]: T1 catches 0, T2 0; D1 n=54 T1 false 0/54 (0.0%); D2 n=177 T1 6/177 (3.4%); T1 on all wrong 15/19
+  qwen3vl [ph]: with a point 168, wrong 12, right 156; classes {'choice error': 8, 'background leak': 4}; lift classes 4/12 [layouts 2, model x layout 2]
+    wrong by kind {'parcel': 10, 'person': 2}
+    oracle fixes   4/12  breaks   0/156  moves R/W  156/4   fixed->success 4/4  net +4 (4/0)  fixes by class {'background leak': 4}
+    V1     fixes   4/12  breaks   0/156  moves R/W    0/6   fixed->success 4/4  net +4 (4/0)  fixes by class {'background leak': 4}
+    V2     fixes   4/12  breaks   0/156  moves R/W  156/6   fixed->success 4/4  net +4 (4/0)  fixes by class {'background leak': 4}
+    V3     fixes   4/12  breaks   6/156  moves R/W    6/6   fixed->success 4/4  net -1 (4/5)  fixes by class {'background leak': 4}
+    V4     fixes   4/12  breaks   0/156  moves R/W    0/6   fixed->success 4/4  net +4 (4/0)  fixes by class {'background leak': 4}
+    front  fixes   4/12  breaks   6/156  moves R/W   18/6   fixed->success 4/4  net -2 (4/6)  fixes by class {'background leak': 4}
+    I33: person wrong targets 2 [layouts 1, model x layout 1]: T1 catches 2, T2 2; D1 n=46 T1 false 0/46 (0.0%); D2 n=156 T1 6/156 (3.8%); T1 on all wrong 12/12
+  ornith15 [ph]: with a point 168, wrong 14, right 154; classes {'choice error': 10, 'background leak': 4}; lift classes 4/14 [layouts 4, model x layout 4]
+    wrong by kind {'place': 14}
+    oracle fixes   4/14  breaks   0/154  moves R/W  154/4   fixed->success 3/4  net +3 (3/0)  fixes by class {'background leak': 4}
+    V1     fixes   0/14  breaks   0/154  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/14  breaks   0/154  moves R/W  154/14  fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   0/14  breaks   0/154  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/14  breaks   0/154  moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   4/14  breaks  10/154  moves R/W   14/4   fixed->success 3/4  net -5 (5/10)  fixes by class {'background leak': 4}
+    I33: person wrong targets 0 [layouts 0, model x layout 0]: T1 catches 0, T2 0; D1 n=48 T1 false 0/48 (0.0%); D2 n=154 T1 2/154 (1.3%); T1 on all wrong 0/14
+  qwen38_medium [ph]: with a point 28, wrong 0, right 28; classes {}; lift classes 0/0 [layouts 0, model x layout 0]
+    wrong by kind {}
+    oracle fixes   0/0   breaks   0/28   moves R/W   28/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V1     fixes   0/0   breaks   0/28   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/0   breaks   0/28   moves R/W   28/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   0/0   breaks   0/28   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/0   breaks   0/28   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/0   breaks   1/28   moves R/W    2/0   fixed->success 0/0  net -1 (0/1)  fixes by class {}
+    I33: person wrong targets 0 [layouts 0, model x layout 0]: T1 catches 0, T2 0; D1 n=8 T1 false 0/8 (0.0%); D2 n=28 T1 0/28 (0.0%); T1 on all wrong 0/0
+  glm53_low [ph]: with a point 28, wrong 3, right 25; classes {'choice error': 3}; lift classes 0/3 [layouts 3, model x layout 3]
+    wrong by kind {'place': 1, 'parcel': 1, 'person': 1}
+    oracle fixes   0/3   breaks   0/25   moves R/W   25/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V1     fixes   0/3   breaks   0/25   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/3   breaks   0/25   moves R/W   25/2   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   0/3   breaks   0/25   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/3   breaks   0/25   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/3   breaks   0/25   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    I33: person wrong targets 1 [layouts 1, model x layout 1]: T1 catches 0, T2 0; D1 n=7 T1 false 0/7 (0.0%); D2 n=25 T1 0/25 (0.0%); T1 on all wrong 2/3
+  qwen38_low [ph]: with a point 28, wrong 0, right 28; classes {}; lift classes 0/0 [layouts 0, model x layout 0]
+    wrong by kind {}
+    oracle fixes   0/0   breaks   0/28   moves R/W   28/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V1     fixes   0/0   breaks   0/28   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V2     fixes   0/0   breaks   0/28   moves R/W   28/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V3     fixes   0/0   breaks   0/28   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    V4     fixes   0/0   breaks   0/28   moves R/W    0/0   fixed->success 0/0  net +0 (0/0)  fixes by class {}
+    front  fixes   0/0   breaks   1/28   moves R/W    2/0   fixed->success 0/0  net -1 (0/1)  fixes by class {}
+    I33: person wrong targets 0 [layouts 0, model x layout 0]: T1 catches 0, T2 0; D1 n=8 T1 false 0/8 (0.0%); D2 n=28 T1 0/28 (0.0%); T1 on all wrong 0/0
+
+per run (fixes/wrong, breaks/right) for the oracle and V1, and T1 on person wrong targets:
+  20261010-122223_s10_glm53_none_con               pts  28 wrong   3 | oracle  0/3   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/0
+  20261010-120459_s10_glm53_low_con                pts  28 wrong   3 | oracle  0/3   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  0 | T1 person 0/1
+  20261010-121526_s10_qwen38_none_con              pts  28 wrong   3 | oracle  1/3   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  1 | V4  0 brk  0 | front  1 brk  1 | T1 person 0/1
+  20261010-121108_s10_qwen38_low_con               pts  28 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  1 | T1 person 0/0
+  20261010-114753_s10_qwen38_medium_con            pts  28 wrong   0 | oracle  0/0   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  0 brk  1 | T1 person 0/0
+  20261010-004747_s8_convlm_glm53                  pts  84 wrong   8 | oracle  3/8   brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  0 | V4  2 brk  0 | front  2 brk  1 | T1 person 0/1
+  20261010-005514_s8_convlm_ornith15               pts  84 wrong   7 | oracle  2/7   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  2 brk  5 | T1 person 0/0
+  20261010-003923_s8_convlm_qwen36_35              pts  84 wrong   1 | oracle  1/1   brk  0 | V1  1 brk  0 | V2  1 brk  0 | V3  1 brk  2 | V4  1 brk  0 | front  1 brk  5 | T1 person 0/0
+  20261010-004041_s8_convlm_qwen38                 pts  84 wrong   5 | oracle  3/5   brk  0 | V1  1 brk  0 | V2  1 brk  0 | V3  1 brk  1 | V4  1 brk  0 | front  2 brk  3 | T1 person 1/2
+  20261010-005734_s8_convlm_qwen3vl                pts  84 wrong   6 | oracle  2/6   brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  3 | V4  2 brk  0 | front  2 brk  3 | T1 person 1/1
+  20261010-004411_s8_conorc_glm53                  pts  84 wrong   8 | oracle  3/8   brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  0 | V4  2 brk  0 | front  2 brk  1 | T1 person 0/1
+  20261010-005218_s8_conorc_ornith15               pts  84 wrong   7 | oracle  2/7   brk  0 | V1  0 brk  0 | V2  0 brk  0 | V3  0 brk  0 | V4  0 brk  0 | front  2 brk  5 | T1 person 0/0
+  20261010-003604_s8_conorc_qwen36_35              pts  84 wrong   1 | oracle  1/1   brk  0 | V1  1 brk  0 | V2  1 brk  0 | V3  1 brk  2 | V4  1 brk  0 | front  1 brk  5 | T1 person 0/0
+  20261010-003601_s8_conorc_qwen38                 pts  84 wrong   5 | oracle  3/5   brk  0 | V1  1 brk  0 | V2  1 brk  0 | V3  1 brk  1 | V4  1 brk  0 | front  2 brk  3 | T1 person 1/2
+  20261010-004740_s8_conorc_qwen3vl                pts  84 wrong   6 | oracle  2/6   brk  0 | V1  2 brk  0 | V2  2 brk  0 | V3  2 brk  3 | V4  2 brk  0 | front  2 brk  3 | T1 person 1/1
+
+##############################################################################################################
+Verification (verify_out.txt; same agent, separate code: DEVIATIONS.md D5)
+##############################################################################################################
+verify_indep.py: separate-code recomputation on the 9 primary runs (same agent; DEVIATIONS.md D5)
+  n46: 46
+  n454: 454
+  n53: 53
+  n699: 699
+  lift46: 20
+  choice46: 26
+  cls53: {'choice': 27, 'occluder': 14, 'background': 12}
+  orc_fix46: 20
+  orc_brk454: 0
+  orc_brk699: 0
+  orc_fix53: 26
+  orc_succ46: 16
+  v1_fix46: 9
+  v1_brk454: 0
+  v1_share: 0.45
+  t1_catch: 11
+  n15: 15
+  t1_d1: 12
+  nd1: 201
+  t1_d2: 45
+comparison with run_eval.py / report.py (summary.json):
+  lift46       verifier       20  main       20  AGREE
+  choice46     verifier       26  main       26  AGREE
+  orc_fix46    verifier       20  main       20  AGREE
+  orc_brk454   verifier        0  main        0  AGREE
+  orc_brk699   verifier        0  main        0  AGREE
+  orc_fix53    verifier       26  main       26  AGREE
+  orc_succ46   verifier       16  main       16  AGREE
+  v1_fix46     verifier        9  main        9  AGREE
+  v1_brk454    verifier        0  main        0  AGREE
+  v1_share     verifier     0.45  main     0.45  AGREE
+  t1_catch     verifier       11  main       11  AGREE
+  n15          verifier       15  main       15  AGREE
+  t1_d1        verifier       12  main       12  AGREE
+  nd1          verifier      201  main      201  AGREE
+  t1_d2        verifier       45  main       45  AGREE
+  ALL AGREE
+

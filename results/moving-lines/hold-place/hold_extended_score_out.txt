@@ -1,0 +1,44 @@
+## Claude Sonnet 5.5, 64 unseen layouts: 64 paired layouts (updated simulator)
+- strict share: CT3FL 0.467 vs CT3F 0.248 (mean +0.219; 49/8/7, sign p 0.0000)
+- primary share: CT3FL 0.535 vs CT3F 0.358 (mean +0.177; 45/8/11, sign p 0.0000)
+- cut-in seconds: CT3FL 138 vs CT3F 492
+## Claude Sonnet 5.5, 8 tuning layouts: 8 paired layouts (updated simulator)
+- strict share: CT3FL 0.349 vs CT3F 0.306 (mean +0.043; 4/4/0, sign p 1.0000)
+- primary share: CT3FL 0.374 vs CT3F 0.359 (mean +0.015; 4/4/0, sign p 1.0000)
+- cut-in seconds: CT3FL 41 vs CT3F 22
+## Claude Sonnet 5.5: CT3F, updated simulator against the old one, 72 layouts
+- strict share: updated 0.254 vs old 0.204 (mean +0.051; 42/23/7, sign p 0.0248)
+
+## DeepSeek V4.1, 64 unseen layouts: 64 paired layouts (updated simulator)
+- strict share: CT3FL 0.306 vs CT3F 0.208 (mean +0.098; 35/12/17, sign p 0.0011)
+- primary share: CT3FL 0.350 vs CT3F 0.264 (mean +0.086; 38/10/16, sign p 0.0001)
+- cut-in seconds: CT3FL 209 vs CT3F 324
+## DeepSeek V4.1, 8 tuning layouts: 8 paired layouts (updated simulator)
+- strict share: CT3FL 0.297 vs CT3F 0.133 (mean +0.163; 5/2/1, sign p 0.4531)
+- primary share: CT3FL 0.332 vs CT3F 0.187 (mean +0.146; 5/2/1, sign p 0.4531)
+- cut-in seconds: CT3FL 10 vs CT3F 25
+## DeepSeek V4.1: CT3F, updated simulator against the old one, 72 layouts
+- strict share: updated 0.199 vs old 0.163 (mean +0.037; 32/20/20, sign p 0.1263)
+
+## Claude Haiku 5.5, 64 unseen layouts: 64 paired layouts (updated simulator)
+- strict share: CT3FL 0.276 vs CT3F 0.197 (mean +0.079; 32/11/21, sign p 0.0019)
+- primary share: CT3FL 0.335 vs CT3F 0.293 (mean +0.042; 30/14/20, sign p 0.0226)
+- cut-in seconds: CT3FL 249 vs CT3F 245
+## Claude Haiku 5.5, 8 tuning layouts: 8 paired layouts (updated simulator)
+- strict share: CT3FL 0.310 vs CT3F 0.253 (mean +0.058; 4/3/1, sign p 1.0000)
+- primary share: CT3FL 0.365 vs CT3F 0.335 (mean +0.030; 3/4/1, sign p 1.0000)
+- cut-in seconds: CT3FL 19 vs CT3F 37
+## Claude Haiku 5.5: CT3F, updated simulator against the old one, 72 layouts
+- strict share: updated 0.203 vs old 0.152 (mean +0.052; 32/18/22, sign p 0.0649)
+
+## Gemini 3.8 Flash, 64 unseen layouts: 64 paired layouts (updated simulator)
+- strict share: CT3FL 0.367 vs CT3F 0.205 (mean +0.162; 42/11/11, sign p 0.0000)
+- primary share: CT3FL 0.415 vs CT3F 0.288 (mean +0.127; 40/12/12, sign p 0.0001)
+- cut-in seconds: CT3FL 412 vs CT3F 698
+## Gemini 3.8 Flash, 8 tuning layouts: 8 paired layouts (updated simulator)
+- strict share: CT3FL 0.356 vs CT3F 0.245 (mean +0.111; 6/2/0, sign p 0.2891)
+- primary share: CT3FL 0.418 vs CT3F 0.338 (mean +0.080; 6/2/0, sign p 0.2891)
+- cut-in seconds: CT3FL 64 vs CT3F 27
+## Gemini 3.8 Flash: CT3F, updated simulator against the old one, 72 layouts
+- strict share: updated 0.210 vs old 0.177 (mean +0.033; 34/25/13, sign p 0.2976)
+

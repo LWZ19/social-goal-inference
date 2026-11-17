@@ -1,0 +1,172 @@
+153 listed runs of research_runs.txt, from the repository root
+run                                               records  allowed  skipped   solver     same    moved   ok rec   ok now mismatch
+20261010-004334_s8_none_glm53                          84       84        0       43       43        0       40       40        0
+20261010-005140_s8_none_ornith15                       84       84        0       42       42        0       39       39        0
+20261010-003520_s8_none_qwen36_35                      84       84        0       44       43        1       45       45        0
+20261010-003518_s8_none_qwen38                         84       84        0       42       40        2       43       43        0
+20261010-004700_s8_none_qwen3vl                        84       84        0       42       41        1       39       39        0
+20261010-004747_s8_convlm_glm53                        84       84        0       43       43        0       54       54        0
+20261010-005514_s8_convlm_ornith15                     84       84        0       42       42        0       61       61        0
+20261010-003923_s8_convlm_qwen36_35                    84       84        0       44       44        0       69       69        0
+20261010-004041_s8_convlm_qwen38                       84       84        0       42       42        0       65       65        0
+20261010-005734_s8_convlm_qwen3vl                      84       84        0       42       41        1       54       54        0
+20261010-004411_s8_conorc_glm53                        84       84        0       43       43        0       59       59        0
+20261010-005218_s8_conorc_ornith15                     84       84        0       42       42        0       63       63        0
+20261010-003604_s8_conorc_qwen36_35                    84       84        0       44       44        0       71       71        0
+20261010-003601_s8_conorc_qwen38                       84       84        0       42       42        0       67       67        0
+20261010-004740_s8_conorc_qwen3vl                      84       84        0       42       41        1       65       65        0
+20261010-121744_s10_glm53_none_cot                     28       28        0        0        0        0       14       14        0
+20261010-122014_s10_glm53_none_fsc                     28       28        0        0        0        0       13       13        0
+20261010-122223_s10_glm53_none_con                     28       28        0       13       13        0       17       17        0
+20261010-120006_s10_glm53_low_cot                      28       28        0        0        0        0       12       12        0
+20261010-120334_s10_glm53_low_fsc                      28       28        0        0        0        0       15       15        0
+20261010-120459_s10_glm53_low_con                      28       28        0       16       15        1       16       16        0
+20261010-121111_s10_qwen38_none_cot                    28       28        0        0        0        0       12       12        0
+20261010-121342_s10_qwen38_none_fsc                    28       28        0        0        0        0       14       14        0
+20261010-121526_s10_qwen38_none_con                    28       28        0       13       13        0       21       21        0
+20261010-113310_s10_qwen38_low_cot                     28       28        0        0        0        0       22       22        0
+20261010-114653_s10_qwen38_low_fsc                     28       28        0        0        0        0       24       24        0
+20261010-121108_s10_qwen38_low_con                     28       28        0       15       15        0       27       27        0
+20261010-113304_s10_qwen38_medium_cot                  28       28        0        0        0        0       21       21        0
+20261010-114330_s10_qwen38_medium_fsc                  28       28        0        0        0        0       22       22        0
+20261010-114753_s10_qwen38_medium_con                  28       28        0       15       15        0       26       26        0
+20261010-201358_s16b_real_qwen38_low_cot               84       84        0        0        0        0       62       62        0
+20261010-202647_s16b_real_qwen38_low_fsc               84       84        0        0        0        0       75       75        0
+20261010-203755_s16b_real_glm53_cot                    84       84        0        0        0        0       44       44        0
+20261010-204211_s16b_real_glm53_fsc                    84       84        0        0        0        0       51       51        0
+20261010-201359_s16b_staffed_qwen38_low_cot            84       84        0        0        0        0       54       54        0
+20261010-202635_s16b_staffed_qwen38_low_fsc            84       84        0        0        0        0       67       67        0
+20261010-203708_s16b_staffed_glm53_cot                 84       84        0        0        0        0       43       43        0
+20261010-204058_s16b_staffed_glm53_fsc                 84       84        0        0        0        0       49       49        0
+20261010-201401_s16b_plain_qwen38_low_cot              84       84        0        0        0        0       59       59        0
+20261010-202550_s16b_plain_qwen38_low_fsc              84       84        0        0        0        0       72       72        0
+20261010-203707_s16b_plain_glm53_cot                   84       84        0        0        0        0       42       42        0
+20261010-204052_s16b_plain_glm53_fsc                   84       84        0        0        0        0       45       45        0
+20261010-201401_s16b_ph_qwen38_low_cot                 84       84        0        0        0        0       55       55        0
+20261010-202545_s16b_ph_qwen38_low_fsc                 84       84        0        0        0        0       67       67        0
+20261010-203754_s16b_ph_glm53_cot                      84       84        0        0        0        0       45       45        0
+20261010-204126_s16b_ph_glm53_fsc                      84       84        0        0        0        0       44       44        0
+20261010-205408_s17_seed0_qwen38_low_cot               24       24        0        0        0        0       19       19        0
+20261010-210542_s17_seed0_qwen38_low_fsc3              24       24        0        0        0        0       20       20        0
+20261010-205413_s17_seed0_glm53_cot                    24       24        0        0        0        0       12       12        0
+20261010-210545_s17_seed0_glm53_fsc3                   24       24        0        0        0        0       13       13        0
+20261010-205410_s17_seed1_qwen38_low_cot               24       24        0        0        0        0       19       19        0
+20261010-210547_s17_seed1_qwen38_low_fsc3              24       24        0        0        0        0       22       22        0
+20261010-205413_s17_seed1_glm53_cot                    24       24        0        0        0        0       14       14        0
+20261010-210549_s17_seed1_glm53_fsc3                   24       24        0        0        0        0       14       14        0
+20261010-205411_s17_seed2_qwen38_low_cot               24       24        0        0        0        0       16       16        0
+20261010-210549_s17_seed2_qwen38_low_fsc3              24       24        0        0        0        0       19       19        0
+20261010-205901_s17_seed2_glm53_cot                    24       24        0        0        0        0       13       13        0
+20261010-210550_s17_seed2_glm53_fsc3                   24       24        0        0        0        0       13       13        0
+20261011-160334_s19_real_qwen38_low_con                84       84        0       48       48        0       81       81        0
+20261011-160500_s19_real_glm53_con                     84       84        0       50       50        0       61       61        0
+20261011-160344_s19_staffed_qwen38_low_con             84       84        0       47       47        0       76       76        0
+20261011-160352_s19_staffed_glm53_con                  84       84        0       46       46        0       63       63        0
+20261011-160527_s19_plain_qwen38_low_con               84       84        0       48       48        0       77       77        0
+20261011-160452_s19_plain_glm53_con                    84       84        0       45       45        0       62       62        0
+20261011-160610_s19_ph_qwen38_low_con                  84       84        0       48       48        0       79       79        0
+20261011-160439_s19_ph_glm53_con                       84       84        0       48       48        0       55       55        0
+20261011-160326_s19_dev_seed0_qwen38_low_con           24       24        0       12       12        0       22       22        0
+20261011-160611_s19_dev_seed0_glm53_con                24       24        0       12       12        0       18       18        0
+20261011-160315_s19_dev_seed1_qwen38_low_con           24       24        0       12       12        0       23       23        0
+20261011-160558_s19_dev_seed1_glm53_con                24       24        0       12       12        0       21       21        0
+20261011-160306_s19_dev_seed2_qwen38_low_con           24       24        0       12       12        0       23       23        0
+20261011-160545_s19_dev_seed2_glm53_con                24       24        0       12       12        0       19       19        0
+20261013-200416_s20_real_dsv41_cot                     84       84        0        0        0        0       41       41        0
+20261013-192254_s20_real_dsv41_fsc                     84       84        0        0        0        0       43       43        0
+20261013-191337_s20_real_dsv41_con                     84       84        0       53       53        0       61       61        0
+20261013-200416_s20_staffed_dsv41_cot                  84       84        0        0        0        0       37       37        0
+20261013-192322_s20_staffed_dsv41_fsc                  84       84        0        0        0        0       37       37        0
+20261013-191345_s20_staffed_dsv41_con                  84       84        0       56       56        0       59       59        0
+20261013-200418_s20_plain_dsv41_cot                    84       84        0        0        0        0       35       35        0
+20261013-192208_s20_plain_dsv41_fsc                    84       84        0        0        0        0       40       40        0
+20261013-191402_s20_plain_dsv41_con                    84       84        0       48       48        0       62       62        0
+20261013-190613_s20_ph_dsv41_cot                       84       84        0        0        0        0       33       33        0
+20261013-191716_s20_ph_dsv41_fsc                       84       84        0        0        0        0       46       46        0
+20261013-190939_s20_ph_dsv41_con                       84       84        0       44       44        0       58       58        0
+20261013-190547_s20_dev_seed0_dsv41_cot                24       24        0        0        0        0       12       12        0
+20261013-190707_s20_dev_seed0_dsv41_fsc                24       24        0        0        0        0       12       12        0
+20261013-190610_s20_dev_seed0_dsv41_con                24       24        0       12       12        0       17       17        0
+20261013-190550_s20_dev_seed1_dsv41_cot                24       24        0        0        0        0       12       12        0
+20261013-190709_s20_dev_seed1_dsv41_fsc                24       24        0        0        0        0       14       14        0
+20261013-190617_s20_dev_seed1_dsv41_con                24       24        0       12       12        0       21       21        0
+20261013-200348_s20_dev_seed2_dsv41_cot                24       24        0        0        0        0       15       15        0
+20261013-191252_s20_dev_seed2_dsv41_fsc                24       24        0        0        0        0       18       18        0
+20261013-191026_s20_dev_seed2_dsv41_con                24       24        0       12       12        0       20       20        0
+20261017-012658_s21_real_qwen38_low_cot                84       84        0        0        0        0       62       62        0
+20261017-020507_s21_real_qwen38_low_fsc                84       84        0        0        0        0       65       65        0
+20261017-022122_s21_real_qwen38_low_con                84       84        0       48       48        0       79       79        0
+20261017-012700_s21_staffed_qwen38_low_cot             84       84        0        0        0        0       61       61        0
+20261017-020339_s21_staffed_qwen38_low_fsc             84       84        0        0        0        0       68       68        0
+20261017-021937_s21_staffed_qwen38_low_con             84       84        0       48       48        0       76       76        0
+20261017-012701_s21_plain_qwen38_low_cot               84       84        0        0        0        0       56       56        0
+20261017-020401_s21_plain_qwen38_low_fsc               84       84        0        0        0        0       63       63        0
+20261017-021852_s21_plain_qwen38_low_con               84       84        0       48       48        0       73       73        0
+20261017-114056_s22_real_qwen38_low_cot               168      168        0        0        0        0      124      124        0
+20261017-121440_s22_real_qwen38_low_fsc               168      168        0        0        0        0      145      145        0
+20261017-114058_s22_staffed_qwen38_low_cot            168      168        0        0        0        0      114      114        0
+20261017-121408_s22_staffed_qwen38_low_fsc            168      168        0        0        0        0      131      131        0
+20261017-114059_s22_plain_qwen38_low_cot              168      168        0        0        0        0      125      125        0
+20261017-121157_s22_plain_qwen38_low_fsc              168      168        0        0        0        0      142      142        0
+20261017-123106_s23_real_glm53_cot                     84       84        0        0        0        0       44       44        0
+20261017-125125_s23_real_glm53_fsc                     84       84        0        0        0        0       39       39        0
+20261017-125813_s23_real_glm53_con                     84       84        0       47       47        0       55       55        0
+20261017-123103_s23_real_dsv41_cot                     84       84        0        0        0        0       36       36        0
+20261017-124447_s23_real_dsv41_fsc                     84       84        0        0        0        0       38       38        0
+20261017-124936_s23_real_dsv41_con                     84       84        0       51       51        0       57       57        0
+20261017-123103_s23_real_haiku55_cot                   84       84        0        0        0        0       50       50        0
+20261017-125406_s23_real_haiku55_fsc                   84       84        0        0        0        0       48       48        0
+20261017-130036_s23_real_haiku55_con                   84       84        0       49       49        0       80       80        0
+20261017-123109_s23_real_sonnet55_low_cot              84       84        0        0        0        0       61       61        0
+20261017-125647_s23_real_sonnet55_low_fsc              84       84        0        0        0        0       61       61        0
+20261017-130300_s23_real_sonnet55_low_con              84       84        0       48       48        0       81       81        0
+20261017-123104_s23_real_gemini38_low_cot              84       84        0        0        0        0       51       51        0
+20261017-124739_s23_real_gemini38_low_fsc              84       84        0        0        0        0       60       60        0
+20261017-125226_s23_real_gemini38_low_con              84       84        0       45       45        0       72       72        0
+20261017-123059_s23_staffed_glm53_cot                  84       84        0        0        0        0       47       47        0
+20261017-124859_s23_staffed_glm53_fsc                  84       84        0        0        0        0       42       42        0
+20261017-125552_s23_staffed_glm53_con                  84       84        0       47       47        0       56       56        0
+20261017-123107_s23_staffed_dsv41_cot                  84       84        0        0        0        0       42       42        0
+20261017-124447_s23_staffed_dsv41_fsc                  84       84        0        0        0        0       43       43        0
+20261017-124931_s23_staffed_dsv41_con                  84       84        0       52       52        0       63       63        0
+20261017-123104_s23_staffed_haiku55_cot                84       84        0        0        0        0       51       51        0
+20261017-125429_s23_staffed_haiku55_fsc                84       84        0        0        0        0       47       47        0
+20261017-130055_s23_staffed_haiku55_con                84       84        0       49       49        0       79       79        0
+20261017-130912_s23_staffed_sonnet55_low_cot           84       84        0        0        0        0       58       58        0
+20261017-132258_s23_staffed_sonnet55_low_fsc           84       84        0        0        0        0       60       60        0
+20261017-132708_s23_staffed_sonnet55_low_con           84       84        0       48       48        0       80       80        0
+20261017-123104_s23_staffed_gemini38_low_cot           84       84        0        0        0        0       54       54        0
+20261017-124910_s23_staffed_gemini38_low_fsc           84       84        0        0        0        0       53       53        0
+20261017-125459_s23_staffed_gemini38_low_con           84       84        0       44       44        0       67       67        0
+20261017-123108_s23_plain_glm53_cot                    84       84        0        0        0        0       41       41        0
+20261017-124913_s23_plain_glm53_fsc                    84       84        0        0        0        0       42       42        0
+20261017-125556_s23_plain_glm53_con                    84       84        0       47       47        0       59       59        0
+20261017-123108_s23_plain_dsv41_cot                    84       84        0        0        0        0       42       42        0
+20261017-124429_s23_plain_dsv41_fsc                    84       84        0        0        0        0       45       45        0
+20261017-124904_s23_plain_dsv41_con                    84       84        0       48       48        0       65       65        0
+20261017-123107_s23_plain_haiku55_cot                  84       84        0        0        0        0       50       50        0
+20261017-125403_s23_plain_haiku55_fsc                  84       84        0        0        0        0       53       53        0
+20261017-130031_s23_plain_haiku55_con                  84       84        0       48       48        0       81       81        0
+20261017-130918_s23_plain_sonnet55_low_cot             84       84        0        0        0        0       59       59        0
+20261017-132301_s23_plain_sonnet55_low_fsc             84       84        0        0        0        0       57       57        0
+20261017-132708_s23_plain_sonnet55_low_con             84       84        0       47       47        0       81       81        0
+20261017-123105_s23_plain_gemini38_low_cot             84       84        0        0        0        0       59       59        0
+20261017-124809_s23_plain_gemini38_low_fsc             84       84        0        0        0        0       60       60        0
+20261017-125351_s23_plain_gemini38_low_con             84       84        0       46       46        0       75       75        0
+all                                                 10896    10896        0     2260     2253        7     7479     7479        0
+  allowed: 10896
+worked examples: 47 of the 153 runs showed them, 11 distinct episodes of 10 scenes, every one on research_scenes.txt (29 example scenes listed)
+  every listed example scene loads; no shown episode(s) without a development truth
+scenes: 82 listed for the runs, 68 distinct with links resolved (14 listed more than once); 29 worked-example scenes
+  by content: every one of the 97 distinct
+rescore self-check: no record(s) whose recorded pose scored now differs from the recorded success, of 10896
+score_pose against rescore: agree on every record with a pose
+reproduction gate: PASS: 2253 of 2260 solver places given again by the solver of src; 7 moved, 7 of them named in research_moved.txt
+  20261010-003520_s8_none_qwen36_35 eval_08_waiting_line_4 e1 trial 1 (waiting_line): moved 2.084 m; known: 2.084 m: the seen-side rules of 3e67185 came after the run
+  20261010-003518_s8_none_qwen38 eval_08_waiting_line_4 e1 trial 1 (waiting_line): moved 2.084 m; known: 2.084 m: the seen-side rules of 3e67185 came after the run
+  20261010-003518_s8_none_qwen38 eval_09_waiting_line_6 e1 trial 2 (waiting_line): moved 1.861 m; known: 1.861 m: the seen-side rules of 3e67185 came after the run
+  20261010-004700_s8_none_qwen3vl eval_13_waiting_line_3 e0 trial 1 (waiting_line): moved 2.215 m; known: 2.215 m: the seen-side rules of 3e67185 came after the run
+  20261010-005734_s8_convlm_qwen3vl eval_11_conversation_group_3 e1 trial 0 (conversation_group): moved 5.905 m; known: 5.905 m: the seen-side rules of 3e67185 came after the run
+  20261010-004740_s8_conorc_qwen3vl eval_11_conversation_group_3 e1 trial 0 (conversation_group): moved 5.278 m; known: 5.278 m: the seen-side rules of 3e67185 came after the run
+  20261010-120459_s10_glm53_low_con eval_01_no_one_place e1 trial 0 (no_one): moved 1.589 m; known: 1.589 m: the seen-side rules of 3e67185 came after the run
+2606.6 s

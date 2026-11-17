@@ -1,0 +1,290 @@
+C5 gate 2: independent verifier tables (results/still-scenes/learned-models/flow-model-gates/verify/kde_v.py). Agreement with the project reference rules only.
+folds available: ['DEV', 'LOSO_audience', 'LOSO_conversation_group', 'LOSO_waiting_line', 'LOSeed_100', 'LOSeed_101', 'LOSeed_102', 'LOSeed_103', 'LOSeed_104', 'LOSeed_105', 'LOSeed_106', 'LOSeed_107', 'LOSeed_108', 'LOSeed_109']; rows 956
+
+== Inner-CV choices (verifier) ==
+DEV                        mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 25659 theirs 25659; h 0.2146; band mine [0.7362, 4.0227] (each-cell-once [0.7362, 4.0226]) theirs [0.7362, 4.0226]; inner top-2 ratio [(('FS3', 0.5), -5.7124), (('FS1', 0.5), -5.7509)]
+LOSO_audience              mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 22659 theirs 22659; h 0.2168; band mine [0.7149, 3.1876] (each-cell-once [0.7149, 3.1875]) theirs [0.7149, 3.1875]; inner top-2 ratio [(('FS3', 0.5), -5.6434), (('FS1', 0.5), -5.6809)]
+LOSO_conversation_group    mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 20659 theirs 20659; h 0.2185; band mine [0.8212, 4.2021] (each-cell-once [0.8212, 4.2021]) theirs [0.8212, 4.2021]; inner top-2 ratio [(('FS3', 0.5), -5.4787), (('FS1', 0.5), -5.483)]
+LOSO_waiting_line          mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 18659 theirs 18659; h 0.2203; band mine [0.7112, 3.8961] (each-cell-once [0.7112, 3.8961]) theirs [0.7112, 3.8961]; inner top-2 ratio [(('FS3', 0.5), -5.7617), (('FS1', 0.5), -5.8162)]
+LOSeed_100                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23093 theirs 23093; h 0.2164; band mine [0.7358, 4.0225] (each-cell-once [0.7358, 4.0225]) theirs [0.7358, 4.0225]; inner top-2 ratio [(('FS3', 0.5), -5.7147), (('FS1', 0.5), -5.7553)]
+LOSeed_101                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23092 theirs 23092; h 0.2164; band mine [0.7361, 4.0267] (each-cell-once [0.7361, 4.0267]) theirs [0.7361, 4.0267]; inner top-2 ratio [(('FS3', 0.5), -5.7242), (('FS1', 0.5), -5.7636)]
+LOSeed_102                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23094 theirs 23094; h 0.2164; band mine [0.7364, 4.0191] (each-cell-once [0.7364, 4.0190]) theirs [0.7364, 4.0190]; inner top-2 ratio [(('FS3', 0.5), -5.7158), (('FS1', 0.5), -5.7525)]
+LOSeed_103                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23092 theirs 23092; h 0.2164; band mine [0.7357, 4.0167] (each-cell-once [0.7357, 4.0166]) theirs [0.7357, 4.0166]; inner top-2 ratio [(('FS3', 0.5), -5.7131), (('FS1', 0.5), -5.7522)]
+LOSeed_104                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23095 theirs 23095; h 0.2164; band mine [0.7360, 4.0262] (each-cell-once [0.7360, 4.0262]) theirs [0.7360, 4.0262]; inner top-2 ratio [(('FS3', 0.5), -5.712), (('FS1', 0.5), -5.7526)]
+LOSeed_105                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23095 theirs 23095; h 0.2164; band mine [0.7364, 4.0228] (each-cell-once [0.7364, 4.0227]) theirs [0.7364, 4.0227]; inner top-2 ratio [(('FS3', 0.5), -5.7229), (('FS1', 0.5), -5.7619)]
+LOSeed_106                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23093 theirs 23093; h 0.2164; band mine [0.7363, 4.0244] (each-cell-once [0.7363, 4.0243]) theirs [0.7363, 4.0243]; inner top-2 ratio [(('FS3', 0.5), -5.7158), (('FS1', 0.5), -5.7538)]
+LOSeed_107                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23094 theirs 23094; h 0.2164; band mine [0.7363, 4.0255] (each-cell-once [0.7363, 4.0254]) theirs [0.7363, 4.0254]; inner top-2 ratio [(('FS3', 0.5), -5.7174), (('FS1', 0.5), -5.7547)]
+LOSeed_108                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23092 theirs 23092; h 0.2164; band mine [0.7363, 4.0130] (each-cell-once [0.7363, 4.0130]) theirs [0.7363, 4.0130]; inner top-2 ratio [(('FS3', 0.5), -5.7251), (('FS1', 0.5), -5.7613)]
+LOSeed_109                 mine {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  theirs {'ratio': ('FS3', 0.5), 'plain': ('FS3', 0.5), 'ratio1d': ('F1D', 0.5)}  same True; n_r mine 23091 theirs 23091; h 0.2164; band mine [0.7366, 4.0236] (each-cell-once [0.7366, 4.0236]) theirs [0.7366, 4.0236]; inner top-2 ratio [(('FS3', 0.5), -5.7111), (('FS1', 0.5), -5.7506)]
+
+== PRIMARY: leave one people situation out ==
+LOSO_waiting_line: n = 140 episodes, 70 scenes
+  ratio    S    -6.241  M   0.395  lift   16.54
+  plain    S    -9.297  M   0.320  lift   12.53
+  ratio1d  S    -9.323  M   0.036  lift    1.36
+  band     S    -9.084  M   0.038  lift    1.58
+  bandu    S    -9.084  M   0.038  lift    1.58
+  uniform  S    -8.953  M   0.023  lift    1.00
+  Delta = S_ratio - S_band = +2.843 (with the each-cell-once band: +2.843)  boot95 +2.831 to +2.855; seeds Delta>0 10/10
+  S_plain - S_band = -0.213
+  S_ratio1d - S_band = -0.239
+  S_ratio - S_uniform = +2.712
+  S_band - S_uniform = -0.131
+  band covers 0.859 of region cells; per-episode Delta median +2.249, positive in 140 of 140
+LOSO_conversation_group: n = 100 episodes, 50 scenes
+  ratio    S    -9.929  M   0.712  lift   13.89
+  plain    S   -10.780  M   0.749  lift   15.06
+  ratio1d  S    -7.760  M   0.433  lift    8.45
+  band     S    -9.157  M   0.111  lift    2.14
+  bandu    S    -9.157  M   0.111  lift    2.14
+  uniform  S    -9.262  M   0.059  lift    1.00
+  Delta = S_ratio - S_band = -0.771 (with the each-cell-once band: -0.771)  boot95 -0.792 to -0.752; seeds Delta>0 0/10
+  S_plain - S_band = -1.623
+  S_ratio1d - S_band = +1.397
+  S_ratio - S_uniform = -0.667
+  S_band - S_uniform = +0.105
+  band covers 0.862 of region cells; per-episode Delta median -0.698, positive in 0 of 100
+LOSO_audience: n = 60 episodes, 30 scenes
+  ratio    S    -8.238  M   0.674  lift   17.36
+  plain    S   -12.703  M   0.004  lift    0.11
+  ratio1d  S   -10.317  M   0.014  lift    0.34
+  band     S   -12.025  M   0.039  lift    1.00
+  bandu    S   -12.025  M   0.039  lift    1.00
+  uniform  S    -9.106  M   0.040  lift    1.00
+  Delta = S_ratio - S_band = +3.787 (with the each-cell-once band: +3.787)  boot95 +3.426 to +4.173; seeds Delta>0 10/10
+  S_plain - S_band = -0.678
+  S_ratio1d - S_band = +1.707
+  S_ratio - S_uniform = +0.868
+  S_band - S_uniform = -2.919
+  band covers 0.289 of region cells; per-episode Delta median +3.879, positive in 60 of 60
+Gate 2: 2 of 3 folds with Delta >= 0.10 -> MET
+
+== CEILING (seed folds available: ['LOSeed_100', 'LOSeed_101', 'LOSeed_102', 'LOSeed_103', 'LOSeed_104', 'LOSeed_105', 'LOSeed_106', 'LOSeed_107', 'LOSeed_108', 'LOSeed_109']) ==
+ceiling no_one: n = 220 episodes, 110 scenes
+  ratio    S    -5.260  M   0.689  lift   42.65
+  plain    S    -5.303  M   0.666  lift   41.66
+  ratio1d  S    -6.785  M   0.178  lift    9.60
+  band     S    -8.734  M   0.034  lift    1.69
+  bandu    S    -8.734  M   0.034  lift    1.69
+  uniform  S    -8.893  M   0.021  lift    1.00
+  Delta = S_ratio - S_band = +3.474 (with the each-cell-once band: +3.474)  boot95 +3.461 to +3.485; seeds Delta>0 10/10
+  S_plain - S_band = +3.432
+  S_ratio1d - S_band = +1.949
+  S_ratio - S_uniform = +3.633
+  S_band - S_uniform = +0.159
+  band covers 0.916 of region cells; per-episode Delta median +3.498, positive in 220 of 220
+ceiling waiting_line: n = 140 episodes, 70 scenes
+  ratio    S    -5.601  M   0.717  lift   31.36
+  plain    S    -5.780  M   0.653  lift   28.40
+  ratio1d  S    -8.777  M   0.038  lift    1.51
+  band     S    -9.060  M   0.037  lift    1.54
+  bandu    S    -9.060  M   0.037  lift    1.54
+  uniform  S    -8.953  M   0.023  lift    1.00
+  Delta = S_ratio - S_band = +3.459 (with the each-cell-once band: +3.459)  boot95 +3.447 to +3.473; seeds Delta>0 10/10
+  S_plain - S_band = +3.280
+  S_ratio1d - S_band = +0.283
+  S_ratio - S_uniform = +3.352
+  S_band - S_uniform = -0.107
+  band covers 0.871 of region cells; per-episode Delta median +2.782, positive in 140 of 140
+ceiling conversation_group: n = 100 episodes, 50 scenes
+  ratio    S    -6.656  M   0.785  lift   15.68
+  plain    S    -6.868  M   0.765  lift   15.32
+  ratio1d  S    -7.610  M   0.440  lift    8.62
+  band     S    -8.823  M   0.125  lift    2.42
+  bandu    S    -8.823  M   0.125  lift    2.42
+  uniform  S    -9.262  M   0.059  lift    1.00
+  Delta = S_ratio - S_band = +2.167 (with the each-cell-once band: +2.167)  boot95 +2.147 to +2.188; seeds Delta>0 10/10
+  S_plain - S_band = +1.955
+  S_ratio1d - S_band = +1.213
+  S_ratio - S_uniform = +2.607
+  S_band - S_uniform = +0.439
+  band covers 0.913 of region cells; per-episode Delta median +2.158, positive in 100 of 100
+ceiling audience: n = 60 episodes, 30 scenes
+  ratio    S    -6.256  M   0.721  lift   18.42
+  plain    S    -6.640  M   0.625  lift   16.01
+  ratio1d  S    -9.508  M   0.027  lift    0.68
+  band     S    -9.181  M   0.074  lift    1.86
+  bandu    S    -9.181  M   0.074  lift    1.86
+  uniform  S    -9.106  M   0.040  lift    1.00
+  Delta = S_ratio - S_band = +2.925 (with the each-cell-once band: +2.925)  boot95 +2.787 to +3.083; seeds Delta>0 10/10
+  S_plain - S_band = +2.541
+  S_ratio1d - S_band = -0.328
+  S_ratio - S_uniform = +2.850
+  S_band - S_uniform = -0.075
+  band covers 0.839 of region cells; per-episode Delta median +2.913, positive in 60 of 60
+ceiling all: n = 520 episodes, 260 scenes
+  ratio    S    -5.735  M   0.719  lift   31.63
+  plain    S    -5.887  M   0.677  lift   30.06
+  ratio1d  S    -7.794  M   0.173  lift    6.20
+  band     S    -8.890  M   0.057  lift    1.81
+  bandu    S    -8.890  M   0.057  lift    1.81
+  uniform  S    -9.005  M   0.031  lift    1.00
+  Delta = S_ratio - S_band = +3.155 (with the each-cell-once band: +3.155)  boot95 +3.137 to +3.176; seeds Delta>0 10/10
+  S_plain - S_band = +3.004
+  S_ratio1d - S_band = +1.096
+  S_ratio - S_uniform = +3.269
+  S_band - S_uniform = +0.114
+  band covers 0.894 of region cells; per-episode Delta median +2.832, positive in 520 of 520
+  transfer gap S_ratio waiting_line: +0.640
+  transfer gap S_ratio conversation_group: +3.273
+  transfer gap S_ratio audience: +1.982
+
+== DEV transfer ==
+realistic/no_one: n = 36 episodes, 18 scenes
+  ratio    S    -7.883  M   0.509  lift   27.71
+  plain    S    -7.773  M   0.658  lift   39.99
+  ratio1d  S    -6.813  M   0.202  lift    9.56
+  band     S    -8.688  M   0.041  lift    1.74
+  bandu    S    -8.688  M   0.041  lift    1.74
+  uniform  S    -8.904  M   0.026  lift    1.00
+  Delta = S_ratio - S_band = +0.805 (with the each-cell-once band: +0.805)
+  S_plain - S_band = +0.915
+  S_ratio1d - S_band = +1.875
+  S_ratio - S_uniform = +1.021
+  S_band - S_uniform = +0.216
+  band covers 0.925 of region cells; per-episode Delta median +1.823, positive in 20 of 36
+realistic/waiting_line: n = 30 episodes, 15 scenes
+  ratio    S    -5.776  M   0.607  lift   26.92
+  plain    S    -5.829  M   0.641  lift   28.27
+  ratio1d  S    -8.814  M   0.042  lift    1.60
+  band     S    -9.342  M   0.035  lift    1.46
+  bandu    S    -9.342  M   0.035  lift    1.46
+  uniform  S    -8.973  M   0.023  lift    1.00
+  Delta = S_ratio - S_band = +3.565 (with the each-cell-once band: +3.565)
+  S_plain - S_band = +3.513
+  S_ratio1d - S_band = +0.528
+  S_ratio - S_uniform = +3.197
+  S_band - S_uniform = -0.368
+  band covers 0.820 of region cells; per-episode Delta median +2.767, positive in 30 of 30
+realistic/conversation_group: n = 18 episodes, 9 scenes
+  ratio    S    -6.686  M   0.776  lift   21.54
+  plain    S    -6.943  M   0.762  lift   21.22
+  ratio1d  S    -7.703  M   0.421  lift   11.66
+  band     S    -8.917  M   0.120  lift    3.27
+  bandu    S    -8.916  M   0.120  lift    3.27
+  uniform  S    -9.686  M   0.037  lift    1.00
+  Delta = S_ratio - S_band = +2.231 (with the each-cell-once band: +2.231)
+  S_plain - S_band = +1.974
+  S_ratio1d - S_band = +1.213
+  S_ratio - S_uniform = +3.001
+  S_band - S_uniform = +0.770
+  band covers 0.916 of region cells; per-episode Delta median +2.162, positive in 18 of 18
+realistic/all: n = 84 episodes, 42 scenes
+  ratio    S    -6.874  M   0.601  lift   26.11
+  plain    S    -6.901  M   0.674  lift   31.78
+  ratio1d  S    -7.718  M   0.192  lift    7.17
+  band     S    -8.970  M   0.056  lift    1.97
+  bandu    S    -8.970  M   0.056  lift    1.97
+  uniform  S    -9.096  M   0.027  lift    1.00
+  Delta = S_ratio - S_band = +2.096 (with the each-cell-once band: +2.096)
+  S_plain - S_band = +2.070
+  S_ratio1d - S_band = +1.252
+  S_ratio - S_uniform = +2.222
+  S_band - S_uniform = +0.126
+  band covers 0.885 of region cells; per-episode Delta median +2.399, positive in 68 of 84
+placeholder/no_one: n = 24 episodes, 12 scenes
+  ratio    S    -5.294  M   0.685  lift   42.85
+  plain    S    -5.337  M   0.661  lift   41.69
+  ratio1d  S    -6.783  M   0.183  lift   10.19
+  band     S    -8.694  M   0.034  lift    1.73
+  bandu    S    -8.694  M   0.034  lift    1.73
+  uniform  S    -8.936  M   0.021  lift    1.00
+  Delta = S_ratio - S_band = +3.400 (with the each-cell-once band: +3.400)
+  S_plain - S_band = +3.357
+  S_ratio1d - S_band = +1.911
+  S_ratio - S_uniform = +3.642
+  S_band - S_uniform = +0.242
+  band covers 0.930 of region cells; per-episode Delta median +3.486, positive in 24 of 24
+placeholder/waiting_line: n = 10 episodes, 5 scenes
+  ratio    S    -5.587  M   0.721  lift   32.16
+  plain    S    -5.800  M   0.658  lift   29.06
+  ratio1d  S    -8.792  M   0.042  lift    1.62
+  band     S    -9.338  M   0.035  lift    1.46
+  bandu    S    -9.338  M   0.035  lift    1.46
+  uniform  S    -8.971  M   0.023  lift    1.00
+  Delta = S_ratio - S_band = +3.751 (with the each-cell-once band: +3.751)
+  S_plain - S_band = +3.538
+  S_ratio1d - S_band = +0.547
+  S_ratio - S_uniform = +3.384
+  S_band - S_uniform = -0.367
+  band covers 0.820 of region cells; per-episode Delta median +2.799, positive in 10 of 10
+placeholder/conversation_group: n = 6 episodes, 3 scenes
+  ratio    S    -6.686  M   0.776  lift   21.54
+  plain    S    -6.943  M   0.762  lift   21.22
+  ratio1d  S    -7.703  M   0.421  lift   11.65
+  band     S    -8.917  M   0.120  lift    3.27
+  bandu    S    -8.916  M   0.120  lift    3.27
+  uniform  S    -9.686  M   0.037  lift    1.00
+  Delta = S_ratio - S_band = +2.231 (with the each-cell-once band: +2.231)
+  S_plain - S_band = +1.974
+  S_ratio1d - S_band = +1.213
+  S_ratio - S_uniform = +3.000
+  S_band - S_uniform = +0.770
+  band covers 0.916 of region cells; per-episode Delta median +2.162, positive in 6 of 6
+placeholder/audience: n = 12 episodes, 6 scenes
+  ratio    S    -6.225  M   0.722  lift   19.30
+  plain    S    -6.497  M   0.661  lift   17.62
+  ratio1d  S    -9.554  M   0.026  lift    0.66
+  band     S    -9.027  M   0.075  lift    1.98
+  bandu    S    -9.027  M   0.075  lift    1.98
+  uniform  S    -9.131  M   0.039  lift    1.00
+  Delta = S_ratio - S_band = +2.802 (with the each-cell-once band: +2.802)
+  S_plain - S_band = +2.531
+  S_ratio1d - S_band = -0.526
+  S_ratio - S_uniform = +2.906
+  S_band - S_uniform = +0.103
+  band covers 0.868 of region cells; per-episode Delta median +2.818, positive in 12 of 12
+placeholder/all: n = 52 episodes, 26 scenes
+  ratio    S    -5.726  M   0.711  lift   32.90
+  plain    S    -5.879  M   0.672  lift   31.34
+  ratio1d  S    -7.915  M   0.147  lift    6.51
+  band     S    -8.920  M   0.054  lift    1.92
+  bandu    S    -8.920  M   0.054  lift    1.92
+  uniform  S    -9.074  M   0.027  lift    1.00
+  Delta = S_ratio - S_band = +3.195 (with the each-cell-once band: +3.195)
+  S_plain - S_band = +3.041
+  S_ratio1d - S_band = +1.006
+  S_ratio - S_uniform = +3.348
+  S_band - S_uniform = +0.154
+  band covers 0.893 of region cells; per-episode Delta median +3.120, positive in 52 of 52
+  post hoc, by source (Delta, n episodes):
+    ph_devnew   audience             n  12  Delta +2.802
+    ph_devnew   no_one               n  12  Delta +3.476
+    ph_first14  conversation_group   n   6  Delta +2.231
+    ph_first14  no_one               n  12  Delta +3.325
+    ph_first14  waiting_line         n  10  Delta +3.751
+    plain       conversation_group   n   6  Delta +2.231
+    plain       no_one               n  12  Delta +3.326
+    plain       waiting_line         n  10  Delta +3.755
+    real        conversation_group   n   6  Delta +2.231
+    real        no_one               n  12  Delta -0.456
+    real        waiting_line         n  10  Delta +3.466
+    staffed     conversation_group   n   6  Delta +2.231
+    staffed     no_one               n  12  Delta -0.455
+    staffed     waiting_line         n  10  Delta +3.475
+
+== Per-episode comparison with the compute agent (mine - theirs, S in nats/region cell); unmatched 0 ==
+  DEV   N         n  136  mean diff +0.0000  max |diff| 0.0000
+  DEV   band      n  136  mean diff -0.0000  max |diff| 0.0002
+  DEV   bandu     n  136  mean diff +0.0000  max |diff| 0.0000
+  DEV   n_region  n  136  mean diff +0.0000  max |diff| 0.0000
+  DEV   plain     n  136  mean diff +0.0010  max |diff| 0.0275
+  DEV   ratio     n  136  mean diff -0.0075  max |diff| 0.0460
+  DEV   ratio1d   n  136  mean diff -0.0001  max |diff| 0.0222
+  DEV   uniform   n  136  mean diff +0.0000  max |diff| 0.0000
+  LOSO  N         n  300  mean diff +0.0000  max |diff| 0.0000
+  LOSO  band      n  300  mean diff -0.0000  max |diff| 0.0002
+  LOSO  bandu     n  300  mean diff +0.0000  max |diff| 0.0000
+  LOSO  n_region  n  300  mean diff +0.0000  max |diff| 0.0000
+  LOSO  plain     n  300  mean diff +0.0208  max |diff| 0.1394
+  LOSO  ratio     n  300  mean diff +0.3524  max |diff| 3.0276
+  LOSO  ratio1d   n  300  mean diff -0.0004  max |diff| 0.0480
+  LOSO  uniform   n  300  mean diff +0.0000  max |diff| 0.0000
+  LOSe  N         n  520  mean diff +0.0000  max |diff| 0.0000
+  LOSe  band      n  520  mean diff -0.0000  max |diff| 0.0005
+  LOSe  bandu     n  520  mean diff +0.0000  max |diff| 0.0000
+  LOSe  n_region  n  520  mean diff +0.0000  max |diff| 0.0000
+  LOSe  plain     n  520  mean diff +0.0001  max |diff| 0.0824
+  LOSe  ratio     n  520  mean diff +0.0071  max |diff| 0.3263
+  LOSe  ratio1d   n  520  mean diff +0.0006  max |diff| 0.0305
+  LOSe  uniform   n  520  mean diff +0.0000  max |diff| 0.0000

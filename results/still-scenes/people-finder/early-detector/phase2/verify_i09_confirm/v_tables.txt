@@ -1,0 +1,30 @@
+v_score 2026-10-18T05:00:18+0800; 182 test images; 560 detector people
+people: verifier re-implementation vs phase1c P.run_image (F5): scenes/people differing beyond 1e-9: 0 (max |diff| 4.44e-16); vs compute agent's rows.jsonl det_people: 0 (max |diff| 4.44e-16)
+C3 (verifier's scorer): 182/182 scenes with recall 1, 0 false, all within 45 deg
+person rows: verifier 520, compute 520; keys equal True; field differences none
+scene rows: field differences vs compute rows.jsonl none
+
+== Criteria, pooled test set (verifier), point estimates ==
+S1: 0.9808 (510/520) Wilson [0.965, 0.990]; layout boot [0.9682, 0.9919]; seed boot [0.9711, 0.9903]; met; compute flag True; flags and both intervals equal to compute: True
+S2: 0.9952 (207/208) Wilson [0.973, 0.999]; layout boot [0.9840, 1.0000]; seed boot [0.9856, 1.0000]; met; compute flag True; flags and both intervals equal to compute: True
+S3: 0.2418 (44/182); layout boot [0.1758, 0.3132]; seed boot [0.1978, 0.2802]; NOT met; compute flag False; flags and both intervals equal to compute: True
+S4: 0.0612 (n 510); layout boot [0.0577, 0.0651]; seed boot [0.0587, 0.0643]; met; compute flag True; flags and both intervals equal to compute: True
+S5: 10.3017 (n 287); layout boot [8.5285, 14.1700]; seed boot [8.8091, 13.0355]; met; compute flag True; flags and both intervals equal to compute: True
+S6: 0.9686 (278/287) Wilson [0.941, 0.983]; layout boot [0.9463, 0.9867]; seed boot [0.9410, 0.9896]; met; compute flag True; flags and both intervals equal to compute: True
+S7: 1.0000 (223/223) Wilson [0.983, 1.000]; layout boot [1.0000, 1.0000]; seed boot [1.0000, 1.0000]; met; compute flag True; flags and both intervals equal to compute: True
+K1: 0.9808 (510/520) Wilson [0.965, 0.990]; layout boot [0.9682, 0.9919]; seed boot [0.9711, 0.9903]; no fire; compute flag False; flags and both intervals equal to compute: True
+K2: 0.2418 (44/182); layout boot [0.1758, 0.3132]; seed boot [0.1978, 0.2802]; no fire; compute flag False; flags and both intervals equal to compute: True
+K3: 0.9686 (494/510) Wilson [0.950, 0.981]; layout boot [0.9528, 0.9820]; seed boot [0.9541, 0.9821]; no fire; compute flag False; flags and both intervals equal to compute: True
+VERDICT (verifier): neither; compute: neither
+measures equal to compute summary.json: {'visible': True, 'matched': True, 'false': True, 'exempt': True, 'near_hidden': True, 'by_role': True, 'xy_median': True, 'np': True, 'np_median': True, 'pf': True, 'all': True, 'coverage': True, 'merged_pairs': True, 'neighbour_pairs': True}
+
+by role: {'line': [207, 208], 'group': [117, 117], 'staff': [69, 78], 'other': [117, 117]}; staff Wilson (0.7950298680151837, 0.9380948937446667)
+by view: {"frontal": {"n": 95, "w45": 95, "median_u": 3.151219393586205, "fb": 95, "unknown": 0}, "oblique": {"n": 115, "w45": 107, "median_u": 19.188502187060234, "fb": 110, "unknown": 5}, "profile": {"n": 223, "w45": 216, "median_u": 5.844272770228581, "fb": 223, "unknown": 0}, "back": {"n": 77, "w45": 76, "median_u": 8.272898165485001, "fb": 77, "unknown": 0}}
+by view equal to compute: True; coverage [505, 510]; unknown by view {'frontal': 0, 'oblique': 5, 'profile': 0, 'back': 0}
+visible staff 78, of whom lower body hidden 70; hidden people 194; neighbour pairs 143, merged 1
+misses 10: 200 eval_07 s0 staff lower_hidden=True view=oblique best_raw_box=0.89; 200 eval_09 s0 staff lower_hidden=True view=oblique best_raw_box=0.681; 201 eval_02 s0 staff lower_hidden=True view=oblique best_raw_box=None; 201 eval_13 s0 staff lower_hidden=True view=oblique best_raw_box=0.772; 202 eval_13 s0 staff lower_hidden=True view=oblique best_raw_box=0.834; 204 eval_07 s0 staff lower_hidden=True view=oblique best_raw_box=0.803; 205 eval_08 p2 line lower_hidden=False view=profile best_raw_box=0.936; 206 eval_07 s0 staff lower_hidden=True view=oblique best_raw_box=0.876; 208 eval_13 s0 staff lower_hidden=True view=oblique best_raw_box=0.893; 209 eval_07 s0 staff lower_hidden=True view=oblique best_raw_box=0.67
+false people 44 (near a hidden person 9); scores 0.25-0.89; by row {'eval_01': 4, 'eval_02': 1, 'eval_05': 5, 'eval_06': 5, 'eval_07': 7, 'eval_08': 6, 'eval_09': 5, 'eval_10': 1, 'eval_11': 3, 'eval_13': 7}
+batch 200-209: images 140, recall 392/402, line [159, 160], false 35/140 = 0.250, xy 0.0616, np [212, 219] median 9.78, pf [173, 173], all [378, 392]
+batch 210-219: images 42, recall 118/118, line [48, 48], false 9/42 = 0.214, xy 0.0608, np [66, 68] median 12.15, pf [50, 50], all [116, 118]
+runtime (compute pass) median 215.1 ms, p90 (nearest rank) 401.8 ms; n 182
+elapsed 29 s

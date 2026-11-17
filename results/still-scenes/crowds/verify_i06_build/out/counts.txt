@@ -1,0 +1,102 @@
+manifest.jsonl: 300 entries: 270 variants, 30 bases
+manifest.json entries equal manifest.jsonl: True; its counts: kept 199, planned 270
+planned set from FROZEN (A on lines 6,7,8,9,13 x 6 levels; B, C 1; D 2, 5; E 1, 2; rows 6-15; seeds 0-2): 270; manifest set equal: True; duplicates: 0
+every variant stream == [seed, 2, family code, row, level]: True; distinct: True
+base streams: Counter({(True, 'default_rng(seed)'): 24, (False, 'default_rng([seed, 1])'): 6})
+seeds in manifest: [0, 1, 2]
+
+Recount by family/level: planned, kept, kept on attempt 1, no_spot, scene-check rejected (reasons):
+  A1: 15 planned, 12 kept, 12 first-attempt, 0 no_spot, 3 scene-check rejected {'check_8': 18} (attempts [6, 6, 6])
+  A2: 15 planned, 12 kept, 12 first-attempt, 0 no_spot, 3 scene-check rejected {'check_8': 18} (attempts [6, 6, 6])
+  A3: 15 planned, 15 kept, 15 first-attempt, 0 no_spot, 0 scene-check rejected  (attempts )
+  A4: 15 planned, 15 kept, 15 first-attempt, 0 no_spot, 0 scene-check rejected  (attempts )
+  A5: 15 planned, 15 kept, 15 first-attempt, 0 no_spot, 0 scene-check rejected  (attempts )
+  A6: 15 planned, 15 kept, 15 first-attempt, 0 no_spot, 0 scene-check rejected  (attempts )
+  B1: 30 planned, 21 kept, 21 first-attempt, 9 no_spot, 0 scene-check rejected  (attempts )
+  C1: 30 planned, 20 kept, 20 first-attempt, 10 no_spot, 0 scene-check rejected  (attempts )
+  D2: 30 planned, 29 kept, 29 first-attempt, 1 no_spot, 0 scene-check rejected  (attempts )
+  D5: 30 planned, 8 kept, 8 first-attempt, 22 no_spot, 0 scene-check rejected  (attempts )
+  E1: 30 planned, 21 kept, 21 first-attempt, 9 no_spot, 0 scene-check rejected  (attempts )
+  E2: 30 planned, 16 kept, 16 first-attempt, 14 no_spot, 0 scene-check rejected  (attempts )
+  total: {'planned': 270, 'kept': 199, 'first': 199, 'no_spot': 65, 'scene_check': 6}; pass rate 199/270 = 73.70%; rejected 71 = 26.30%
+  attempts outcome counter: {'accepted': 199, 'no_spot': 65, 'check_8': 36}
+  entries whose accepted flag / reason disagree: none
+  by family: A 84/90; B 21/30; C 20/30; D 37/60; E 37/60
+
+Kept/planned by base row and family-level (seeds pooled):
+  eval_06 waiting_line A1 3/3  A2 3/3  A3 3/3  A4 3/3  A5 3/3  A6 3/3  B1 3/3  C1 3/3  D2 3/3  D5 0/3  E1 3/3  E2 3/3
+  eval_07 waiting_line A1 3/3  A2 3/3  A3 3/3  A4 3/3  A5 3/3  A6 3/3  B1 3/3  C1 3/3  D2 3/3  D5 0/3  E1 3/3  E2 3/3
+  eval_08 waiting_line A1 3/3  A2 3/3  A3 3/3  A4 3/3  A5 3/3  A6 3/3  B1 3/3  C1 3/3  D2 3/3  D5 0/3  E1 3/3  E2 3/3
+  eval_09 waiting_line A1 0/3  A2 0/3  A3 3/3  A4 3/3  A5 3/3  A6 3/3  B1 0/3  C1 0/3  D2 3/3  D5 0/3  E1 3/3  E2 3/3
+  eval_10 conversation A1 -  A2 -  A3 -  A4 -  A5 -  A6 -  B1 2/3  C1 2/3  D2 3/3  D5 3/3  E1 0/3  E2 0/3
+  eval_11 conversation A1 -  A2 -  A3 -  A4 -  A5 -  A6 -  B1 3/3  C1 3/3  D2 3/3  D5 3/3  E1 3/3  E2 0/3
+  eval_12 conversation A1 -  A2 -  A3 -  A4 -  A5 -  A6 -  B1 2/3  C1 2/3  D2 3/3  D5 2/3  E1 3/3  E2 1/3
+  eval_13 waiting_line A1 3/3  A2 3/3  A3 3/3  A4 3/3  A5 3/3  A6 3/3  B1 3/3  C1 3/3  D2 3/3  D5 0/3  E1 3/3  E2 3/3
+  eval_14 audience     A1 -  A2 -  A3 -  A4 -  A5 -  A6 -  B1 2/3  C1 1/3  D2 3/3  D5 0/3  E1 0/3  E2 0/3
+  eval_15 audience     A1 -  A2 -  A3 -  A4 -  A5 -  A6 -  B1 0/3  C1 0/3  D2 2/3  D5 0/3  E1 0/3  E2 0/3
+
+Scene folders on disk vs manifest:
+  seed 0: 78 folders; equal to the kept variants + bases of the manifest: True
+  seed 1: 75 folders; equal to the kept variants + bases of the manifest: True
+  seed 2: 76 folders; equal to the kept variants + bases of the manifest: True
+  sha256 of every file of the 229 kept folders vs manifest: 687 files, 0 folders differ
+
+Held-out rows, scenes and situations:
+  scene ids matching eval_16..21: none
+  row recipes: ['audience', 'conversation_group', 'waiting_line']
+  situations in the 229 kept scene.json (episodes): {'waiting_line': 336, 'conversation_group': 94, 'audience': 28}; dev situations ['no_one', 'waiting_line', 'conversation_group', 'audience']; held-out ['group_photo', 'lift_wait']; any held-out: False
+
+Text search of the build's own files (builder/, build/*.txt|*.jsonl|*.json|logs, precheck/, DEVIATIONS.md):
+  held-out names: 6 hit(s)
+      results/still-scenes/crowds/builder/byte_identity.py: ...s, rows eval_14..eval_15; nothing more is drawn (eval_16 is group_photo)     more = np.random.default_rng([1, G...
+      results/still-scenes/crowds/builder/crowd.py: ...          # eval_14, eval_15: drawing stops before eval_16 (group_photo) HELD_OUT_RECIPES = ("group_photo", "li...
+      results/still-scenes/crowds/builder/crowd.py: ...ing stops before eval_16 (group_photo) HELD_OUT_RECIPES = ("group_photo", "lift_wait") FAMILY_CODE = {"A": 1, "...
+      results/still-scenes/crowds/builder/crowd.py: ...e eval_16 (group_photo) HELD_OUT_RECIPES = ("group_photo", "lift_wait") FAMILY_CODE = {"A": 1, "B": 2, "C": 3...
+      results/still-scenes/crowds/builder/crowd.py: ...ows eval_14 and eval_15, then drawing stops, before the     group_photo row eval_16. Folders are written under ...
+      results/still-scenes/crowds/builder/crowd.py: ...r)         # nothing further is drawn from `more`: eval_16 (group_photo) and every later row are never instanti...
+  eval_16..21: 11 hit(s)
+      results/still-scenes/crowds/builder/byte_identity.py: ...al_14..15 (stream default_rng([1, 1]); drawing stops before eval_16). The builder run also loads crowd.py a...
+      results/still-scenes/crowds/builder/byte_identity.py: ... second pass, rows eval_14..eval_15; nothing more is drawn (eval_16 is group_photo)     more = np.random.de...
+      results/still-scenes/crowds/builder/crowd.py: ...                   # eval_14, eval_15: drawing stops before eval_16 (group_photo) HELD_OUT_RECIPES = ("grou...
+      results/still-scenes/crowds/builder/crowd.py: ...eval_15, then drawing stops, before the     group_photo row eval_16. Folders are written under a new tempor...
+      results/still-scenes/crowds/builder/crowd.py: ...ree(folder)         # nothing further is drawn from `more`: eval_16 (group_photo) and every later row are n...
+      precheck/format_check.log: ...0/scenes: 4 scenes: eval_14_audience_3, eval_15_audience_5, eval_20_no_one_lift, eval_21_no_one_screen /hom...
+      precheck/format_check.log: ...val_14_audience_3, eval_15_audience_5, eval_20_no_one_lift, eval_21_no_one_screen ~/Desktop/cs...
+      precheck/format_check.log: ...1/scenes: 4 scenes: eval_14_audience_3, eval_15_audience_5, eval_20_no_one_lift, eval_21_no_one_screen /hom...
+      precheck/format_check.log: ...val_14_audience_3, eval_15_audience_5, eval_20_no_one_lift, eval_21_no_one_screen ~/Desktop/cs...
+      precheck/format_check.log: ...2/scenes: 4 scenes: eval_14_audience_3, eval_15_audience_5, eval_20_no_one_lift, eval_21_no_one_screen /hom...
+      precheck/format_check.log: ...val_14_audience_3, eval_15_audience_5, eval_20_no_one_lift, eval_21_no_one_screen ~/Desktop/cs...
+  seed 3-219 in a seed position: 0 hit(s)
+  s18 run: 0 hit(s)
+
+Timeline (file modification times, local):
+  FROZEN.md 2026-10-18T01:34:19; sha256 a83c0ffe0cf5fafd9f007fee478d5899c9f858d2eb77629f01885cbeccef693e; FROZEN.sha256 says a83c0ffe0cf5fafd9f007fee478d5899c9f858d2eb77629f01885cbeccef693e
+  DEVIATIONS.md 2026-10-18T01:54:04; sha256 a54a7d2ed6ba99af80837b5110161c5a1fecfc77f6c4626baeeca7e2a405e70c; DEVIATIONS.sha256 says a54a7d2ed6ba99af80837b5110161c5a1fecfc77f6c4626baeeca7e2a405e70c
+  first file under scenes/: 2026-10-18T01:45:21 (results/still-scenes/crowds/scenes/seed0/eval_06_waiting_line_1/scene.json)
+  first variant file under scenes/: 2026-10-18T01:51:59 (results/still-scenes/crowds/scenes/seed0/i06_s0_A1_eval_06_waiting_line_1/scene.json)
+  first file under results/still-scenes/crowds/build/byte_identity: 2026-10-18T01:48:02 (results/still-scenes/crowds/build/byte_identity/package/seed0/eval/eval_00_no_one_place/scene.json)
+  results/still-scenes/crowds/build/base_check.txt: 2026-10-18T01:49:55
+  results/still-scenes/crowds/build/self_test.txt: 2026-10-18T01:49:57
+  results/still-scenes/crowds/build/byte_identity.txt: 2026-10-18T01:54:11
+  results/still-scenes/crowds/build/readings.txt: 2026-10-18T01:53:45
+  results/still-scenes/crowds/build/labels.txt: 2026-10-18T02:22:41
+  results/still-scenes/crowds/builder/crowd.py last modified: 2026-10-18T01:51:41
+  first label-check (full-oracle scoring) log line: 2026-10-18T02:06:25+08:00 free -m availa
+  precheck files (before FROZEN, disclosed in its section 0): [('format_check.py', '2026-10-18T01:23:12'), ('depth_check.log', '2026-10-18T01:24:34'), ('format_check.log', '2026-10-18T01:23:43'), ('depth_check.py', '2026-10-18T01:24:05')]
+  scene or byte-identity files older than FROZEN.md: 0
+
+Descriptive numbers recomputed from the stored scene.json files (all kept variants):
+  A1: n 12 people; nearest member min 1.86 median 1.92 max 1.94 m
+  A2: n 12 people; nearest member min 1.55 median 1.60 max 1.64 m
+  A3: n 15 people; nearest member min 1.26 median 1.31 max 1.35 m
+  A4: n 15 people; nearest member min 0.96 median 0.98 max 1.05 m
+  A5: n 15 people; nearest member min 0.74 median 0.80 max 0.85 m
+  A6: n 15 people; nearest member min 0.56 median 0.59 max 0.64 m
+  B1: n 63 people; nearest member min 1.16 median 1.89 max 2.44 m
+  C1: n 60 people; nearest member min 1.45 median 2.16 max 2.72 m
+  D2: n 58 people; nearest member min 1.21 median 1.87 max 2.51 m
+  D5: n 40 people; nearest member min 1.25 median 1.99 max 2.52 m
+  E1: n 21 people; nearest member min 1.17 median 1.42 max 1.58 m
+  E2: n 16 people; nearest member min 1.71 median 2.92 max 3.96 m
+  representative point moved (e0 region 0, variant vs build's base): 102 of 199; max 1.645 m
+  people per kept variant: min 2 max 12

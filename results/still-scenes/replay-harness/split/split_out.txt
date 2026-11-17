@@ -1,0 +1,288 @@
+I01 deliverable (3): target finding vs placement given the right target.
+
+Reads runs only through research_harness. No model call, nothing tuned. Prints every table and saves it to
+split_out.txt beside this file.
+
+Definitions (all from the recorded score of each record; a rescore check is printed at the end):
+  found      = score.target_correct (a not-ok result counts as not found, as the scorer has it)
+  succ|found = score.success among records with score.target_correct (success implies target_correct)
+  failure split, hierarchical, of every failed record:
+    wrong_tgt   target_correct False      (of which `notok`: result.status != "ok")
+    out_region  right target, in_region False
+    unreach     right target, in region, reachable False
+    heading     right target, in region, reachable, heading_ok False
+  overlap: right-target failures that are both out of region and unreachable are counted under out_region and also
+  reported in the column `out&unr`.
+Realistic arms pooled: real, staffed, plain (84 records each per run, 252 per model x method).
+
+
+==========================================================================================================================
+TABLE 1. New wording: Qwen s21, others s23; realistic arms pooled (real+staffed+plain), 3 trials
+==========================================================================================================================
+model         M situation             n  succ found found%  s|found   s|f% | wrong (notok) out_reg unreach heading out&unr
+Qwen          R no_one              108    97   107  99.1%  97/107   90.7% |     1       0       9       1       0       0
+Qwen          R waiting_line         90    44    87  96.7%  44/87    50.6% |     3       0      39       4       0      12
+Qwen          R conversation_group   54    38    46  85.2%  38/46    82.6% |     8       0       6       2       0       2
+Qwen          R people(line+group)  144    82   133  92.4%  82/133   61.7% |    11       0      45       6       0      14
+Qwen          R POOLED              252   179   240  95.2% 179/240   74.6% |    12       0      54       7       0      14
+--------------------------------------------------------------------------------------------------------------------------
+Qwen          E no_one              108    97   107  99.1%  97/107   90.7% |     1       0       9       1       0       0
+Qwen          E waiting_line         90    61    87  96.7%  61/87    70.1% |     3       0      21       5       0       7
+Qwen          E conversation_group   54    38    46  85.2%  38/46    82.6% |     8       0       6       2       0       2
+Qwen          E people(line+group)  144    99   133  92.4%  99/133   74.4% |    11       0      27       7       0       9
+Qwen          E POOLED              252   196   240  95.2% 196/240   81.7% |    12       0      36       8       0       9
+--------------------------------------------------------------------------------------------------------------------------
+Qwen          C no_one              108    97   107  99.1%  97/107   90.7% |     1       0       9       1       0       0
+Qwen          C waiting_line         90    85    87  96.7%  85/87    97.7% |     3       0       2       0       0       0
+Qwen          C conversation_group   54    46    46  85.2%  46/46   100.0% |     8       0       0       0       0       0
+Qwen          C people(line+group)  144   131   133  92.4% 131/133   98.5% |    11       0       2       0       0       0
+Qwen          C POOLED              252   228   240  95.2% 228/240   95.0% |    12       0      11       1       0       0
+--------------------------------------------------------------------------------------------------------------------------
+GLM           R no_one              108    83    98  90.7%  83/98    84.7% |    10       0      15       0       0       0
+GLM           R waiting_line         90    15    72  80.0%  15/72    20.8% |    18       0      57       0       0       9
+GLM           R conversation_group   54    34    49  90.7%  34/49    69.4% |     5       0      12       3       0       8
+GLM           R people(line+group)  144    49   121  84.0%  49/121   40.5% |    23       0      69       3       0      17
+GLM           R POOLED              252   132   219  86.9% 132/219   60.3% |    33       0      84       3       0      17
+--------------------------------------------------------------------------------------------------------------------------
+GLM           E no_one              108    83    98  90.7%  83/98    84.7% |    10       0      15       0       0       0
+GLM           E waiting_line         90    10    72  80.0%  10/72    13.9% |    18       0      62       0       0      13
+GLM           E conversation_group   54    30    49  90.7%  30/49    61.2% |     5       0      14       5       0      12
+GLM           E people(line+group)  144    40   121  84.0%  40/121   33.1% |    23       0      76       5       0      25
+GLM           E POOLED              252   123   219  86.9% 123/219   56.2% |    33       0      91       5       0      25
+--------------------------------------------------------------------------------------------------------------------------
+GLM           C no_one              108    83    98  90.7%  83/98    84.7% |    10       0      15       0       0       0
+GLM           C waiting_line         90    39    72  80.0%  39/72    54.2% |    18       0      32       1       0       3
+GLM           C conversation_group   54    48    49  90.7%  48/49    98.0% |     5       0       1       0       0       0
+GLM           C people(line+group)  144    87   121  84.0%  87/121   71.9% |    23       0      33       1       0       3
+GLM           C POOLED              252   170   219  86.9% 170/219   77.6% |    33       0      48       1       0       3
+--------------------------------------------------------------------------------------------------------------------------
+DeepSeek      R no_one              108    81    99  91.7%  81/99    81.8% |     9       0      18       0       0       2
+DeepSeek      R waiting_line         90    13    85  94.4%  13/85    15.3% |     5       0      71       1       0      28
+DeepSeek      R conversation_group   54    26    44  81.5%  26/44    59.1% |    10       0      18       0       0      11
+DeepSeek      R people(line+group)  144    39   129  89.6%  39/129   30.2% |    15       0      89       1       0      39
+DeepSeek      R POOLED              252   120   228  90.5% 120/228   52.6% |    24       0     107       1       0      41
+--------------------------------------------------------------------------------------------------------------------------
+DeepSeek      E no_one              108    82    99  91.7%  82/99    82.8% |     9       0      17       0       0       0
+DeepSeek      E waiting_line         90    21    85  94.4%  21/85    24.7% |     5       0      63       1       0      32
+DeepSeek      E conversation_group   54    23    44  81.5%  23/44    52.3% |    10       0      19       2       0      13
+DeepSeek      E people(line+group)  144    44   129  89.6%  44/129   34.1% |    15       0      82       3       0      45
+DeepSeek      E POOLED              252   126   228  90.5% 126/228   55.3% |    24       0      99       3       0      45
+--------------------------------------------------------------------------------------------------------------------------
+DeepSeek      C no_one              108    83    99  91.7%  83/99    83.8% |     9       0      16       0       0       0
+DeepSeek      C waiting_line         90    68    85  94.4%  68/85    80.0% |     5       0      14       3       0       0
+DeepSeek      C conversation_group   54    34    44  81.5%  34/44    77.3% |    10       0       9       0       1       1
+DeepSeek      C people(line+group)  144   102   129  89.6% 102/129   79.1% |    15       0      23       3       1       1
+DeepSeek      C POOLED              252   185   228  90.5% 185/228   81.1% |    24       0      39       3       1       1
+--------------------------------------------------------------------------------------------------------------------------
+Haiku         R no_one              108   106   108 100.0% 106/108   98.1% |     0       0       2       0       0       2
+Haiku         R waiting_line         90     6    90 100.0%   6/90     6.7% |     0       0      84       0       0      32
+Haiku         R conversation_group   54    39    53  98.1%  39/53    73.6% |     1       0      14       0       0       8
+Haiku         R people(line+group)  144    45   143  99.3%  45/143   31.5% |     1       0      98       0       0      40
+Haiku         R POOLED              252   151   251  99.6% 151/251   60.2% |     1       0     100       0       0      42
+--------------------------------------------------------------------------------------------------------------------------
+Haiku         E no_one              108   106   108 100.0% 106/108   98.1% |     0       0       2       0       0       1
+Haiku         E waiting_line         90    10    90 100.0%  10/90    11.1% |     0       0      80       0       0      52
+Haiku         E conversation_group   54    32    53  98.1%  32/53    60.4% |     1       0      19       2       0      10
+Haiku         E people(line+group)  144    42   143  99.3%  42/143   29.4% |     1       0      99       2       0      62
+Haiku         E POOLED              252   148   251  99.6% 148/251   59.0% |     1       0     101       2       0      63
+--------------------------------------------------------------------------------------------------------------------------
+Haiku         C no_one              108   108   108 100.0% 108/108  100.0% |     0       0       0       0       0       0
+Haiku         C waiting_line         90    79    90 100.0%  79/90    87.8% |     0       0      11       0       0       0
+Haiku         C conversation_group   54    53    53  98.1%  53/53   100.0% |     1       0       0       0       0       0
+Haiku         C people(line+group)  144   132   143  99.3% 132/143   92.3% |     1       0      11       0       0       0
+Haiku         C POOLED              252   240   251  99.6% 240/251   95.6% |     1       0      11       0       0       0
+--------------------------------------------------------------------------------------------------------------------------
+Sonnet        R no_one              108   108   108 100.0% 108/108  100.0% |     0       0       0       0       0       0
+Sonnet        R waiting_line         90    25    90 100.0%  25/90    27.8% |     0       0      65       0       0       0
+Sonnet        R conversation_group   54    45    47  87.0%  45/47    95.7% |     7       0       1       1       0       1
+Sonnet        R people(line+group)  144    70   137  95.1%  70/137   51.1% |     7       0      66       1       0       1
+Sonnet        R POOLED              252   178   245  97.2% 178/245   72.7% |     7       0      66       1       0       1
+--------------------------------------------------------------------------------------------------------------------------
+Sonnet        E no_one              108   108   108 100.0% 108/108  100.0% |     0       0       0       0       0       0
+Sonnet        E waiting_line         90    27    90 100.0%  27/90    30.0% |     0       0      63       0       0       1
+Sonnet        E conversation_group   54    43    47  87.0%  43/47    91.5% |     7       0       2       2       0       2
+Sonnet        E people(line+group)  144    70   137  95.1%  70/137   51.1% |     7       0      65       2       0       3
+Sonnet        E POOLED              252   178   245  97.2% 178/245   72.7% |     7       0      65       2       0       3
+--------------------------------------------------------------------------------------------------------------------------
+Sonnet        C no_one              108   108   108 100.0% 108/108  100.0% |     0       0       0       0       0       0
+Sonnet        C waiting_line         90    87    90 100.0%  87/90    96.7% |     0       0       3       0       0       0
+Sonnet        C conversation_group   54    47    47  87.0%  47/47   100.0% |     7       0       0       0       0       0
+Sonnet        C people(line+group)  144   134   137  95.1% 134/137   97.8% |     7       0       3       0       0       0
+Sonnet        C POOLED              252   242   245  97.2% 242/245   98.8% |     7       0       3       0       0       0
+--------------------------------------------------------------------------------------------------------------------------
+Gemini        R no_one              108   104   108 100.0% 104/108   96.3% |     0       0       4       0       0       0
+Gemini        R waiting_line         90    32    56  62.2%  32/56    57.1% |    34       0      13      11       0       7
+Gemini        R conversation_group   54    28    54 100.0%  28/54    51.9% |     0       0      23       3       0      19
+Gemini        R people(line+group)  144    60   110  76.4%  60/110   54.5% |    34       0      36      14       0      26
+Gemini        R POOLED              252   164   218  86.5% 164/218   75.2% |    34       0      40      14       0      26
+--------------------------------------------------------------------------------------------------------------------------
+Gemini        E no_one              108   104   108 100.0% 104/108   96.3% |     0       0       4       0       0       0
+Gemini        E waiting_line         90    35    56  62.2%  35/56    62.5% |    34       0      12       9       0       7
+Gemini        E conversation_group   54    34    54 100.0%  34/54    63.0% |     0       0      19       1       0      15
+Gemini        E people(line+group)  144    69   110  76.4%  69/110   62.7% |    34       0      31      10       0      22
+Gemini        E POOLED              252   173   218  86.5% 173/218   79.4% |    34       0      35      10       0      22
+--------------------------------------------------------------------------------------------------------------------------
+Gemini        C no_one              108   104   108 100.0% 104/108   96.3% |     0       0       4       0       0       0
+Gemini        C waiting_line         90    56    56  62.2%  56/56   100.0% |    34       0       0       0       0       0
+Gemini        C conversation_group   54    54    54 100.0%  54/54   100.0% |     0       0       0       0       0       0
+Gemini        C people(line+group)  144   110   110  76.4% 110/110  100.0% |    34       0       0       0       0       0
+Gemini        C POOLED              252   214   218  86.5% 214/218   98.2% |    34       0       4       0       0       0
+--------------------------------------------------------------------------------------------------------------------------
+
+==========================================================================================================================
+TABLE 2. Old wording: Qwen/GLM s16b (R,E) + s19 (C); DeepSeek s20; realistic arms pooled, 3 trials
+==========================================================================================================================
+model         M situation             n  succ found found%  s|found   s|f% | wrong (notok) out_reg unreach heading out&unr
+Qwen          R no_one              108   100   108 100.0% 100/108   92.6% |     0       0       8       0       0       0
+Qwen          R waiting_line         90    36    88  97.8%  36/88    40.9% |     2       0      49       3       0      13
+Qwen          R conversation_group   54    39    49  90.7%  39/49    79.6% |     5       0       6       4       0       3
+Qwen          R people(line+group)  144    75   137  95.1%  75/137   54.7% |     7       0      55       7       0      16
+Qwen          R POOLED              252   175   245  97.2% 175/245   71.4% |     7       0      63       7       0      16
+--------------------------------------------------------------------------------------------------------------------------
+Qwen          E no_one              108   100   108 100.0% 100/108   92.6% |     0       0       8       0       0       0
+Qwen          E waiting_line         90    70    88  97.8%  70/88    79.5% |     2       0      17       1       0       5
+Qwen          E conversation_group   54    44    49  90.7%  44/49    89.8% |     5       0       2       3       0       1
+Qwen          E people(line+group)  144   114   137  95.1% 114/137   83.2% |     7       0      19       4       0       6
+Qwen          E POOLED              252   214   245  97.2% 214/245   87.3% |     7       0      27       4       0       6
+--------------------------------------------------------------------------------------------------------------------------
+Qwen          C no_one              108   100   108 100.0% 100/108   92.6% |     0       0       8       0       0       0
+Qwen          C waiting_line         90    86    88  97.8%  86/88    97.7% |     2       0       2       0       0       0
+Qwen          C conversation_group   54    48    49  90.7%  48/49    98.0% |     5       0       1       0       0       0
+Qwen          C people(line+group)  144   134   137  95.1% 134/137   97.8% |     7       0       3       0       0       0
+Qwen          C POOLED              252   234   245  97.2% 234/245   95.5% |     7       0      11       0       0       0
+--------------------------------------------------------------------------------------------------------------------------
+GLM           R no_one              108    90    99  91.7%  90/99    90.9% |     9       0       9       0       0       0
+GLM           R waiting_line         90    13    73  81.1%  13/73    17.8% |    17       4      58       1       1       9
+GLM           R conversation_group   54    26    52  96.3%  26/52    50.0% |     2       0      20       6       0      11
+GLM           R people(line+group)  144    39   125  86.8%  39/125   31.2% |    19       4      78       7       1      20
+GLM           R POOLED              252   129   224  88.9% 129/224   57.6% |    28       4      87       7       1      20
+--------------------------------------------------------------------------------------------------------------------------
+GLM           E no_one              108    91    99  91.7%  91/99    91.9% |     9       0       8       0       0       1
+GLM           E waiting_line         90    18    73  81.1%  18/73    24.7% |    17       4      54       1       0      14
+GLM           E conversation_group   54    36    52  96.3%  36/52    69.2% |     2       0      16       0       0      12
+GLM           E people(line+group)  144    54   125  86.8%  54/125   43.2% |    19       4      70       1       0      26
+GLM           E POOLED              252   145   224  88.9% 145/224   64.7% |    28       4      78       1       0      27
+--------------------------------------------------------------------------------------------------------------------------
+GLM           C no_one              108    93    99  91.7%  93/99    93.9% |     9       0       6       0       0       0
+GLM           C waiting_line         90    42    73  81.1%  42/73    57.5% |    17       4      31       0       0       4
+GLM           C conversation_group   54    51    52  96.3%  51/52    98.1% |     2       0       1       0       0       0
+GLM           C people(line+group)  144    93   125  86.8%  93/125   74.4% |    19       4      32       0       0       4
+GLM           C POOLED              252   186   224  88.9% 186/224   83.0% |    28       4      38       0       0       4
+--------------------------------------------------------------------------------------------------------------------------
+DeepSeek      R no_one              108    80   100  92.6%  80/100   80.0% |     8       0      20       0       0       2
+DeepSeek      R waiting_line         90    12    84  93.3%  12/84    14.3% |     6       0      71       1       0      25
+DeepSeek      R conversation_group   54    21    46  85.2%  21/46    45.7% |     8       0      24       1       0      10
+DeepSeek      R people(line+group)  144    33   130  90.3%  33/130   25.4% |    14       0      95       2       0      35
+DeepSeek      R POOLED              252   113   230  91.3% 113/230   49.1% |    22       0     115       2       0      37
+--------------------------------------------------------------------------------------------------------------------------
+DeepSeek      E no_one              108    75   100  92.6%  75/100   75.0% |     8       0      25       0       0       2
+DeepSeek      E waiting_line         90    22    84  93.3%  22/84    26.2% |     6       0      62       0       0      28
+DeepSeek      E conversation_group   54    23    46  85.2%  23/46    50.0% |     8       0      21       2       0      15
+DeepSeek      E people(line+group)  144    45   130  90.3%  45/130   34.6% |    14       0      83       2       0      43
+DeepSeek      E POOLED              252   120   230  91.3% 120/230   52.2% |    22       0     108       2       0      45
+--------------------------------------------------------------------------------------------------------------------------
+DeepSeek      C no_one              108    80   100  92.6%  80/100   80.0% |     8       0      20       0       0       0
+DeepSeek      C waiting_line         90    68    84  93.3%  68/84    81.0% |     6       0      13       2       1       0
+DeepSeek      C conversation_group   54    34    46  85.2%  34/46    73.9% |     8       0      11       0       1       1
+DeepSeek      C people(line+group)  144   102   130  90.3% 102/130   78.5% |    14       0      24       2       2       1
+DeepSeek      C POOLED              252   182   230  91.3% 182/230   79.1% |    22       0      44       2       2       1
+--------------------------------------------------------------------------------------------------------------------------
+
+==========================================================================================================================
+TABLE 3. Qwen pools: R,E = s16b + s22 trials 3-5 + s21 (9 draws, 756 records); C = s19 + s21 (6 draws, 504); s22 t3-5 alone shown
+==========================================================================================================================
+model         M situation             n  succ found found%  s|found   s|f% | wrong (notok) out_reg unreach heading out&unr
+Qwen 9-draw   R no_one              324   294   323  99.7% 294/323   91.0% |     1       0      28       1       0       0
+Qwen 9-draw   R waiting_line        270   130   261  96.7% 130/261   49.8% |     9       0     119      12       0      35
+Qwen 9-draw   R conversation_group  162   118   144  88.9% 118/144   81.9% |    18       0      20       6       0       9
+Qwen 9-draw   R people(line+group)  432   248   405  93.8% 248/405   61.2% |    27       0     139      18       0      44
+Qwen 9-draw   R POOLED              756   542   728  96.3% 542/728   74.5% |    28       0     167      19       0      44
+--------------------------------------------------------------------------------------------------------------------------
+Qwen s22 t3-5 R no_one              108    97   108 100.0%  97/108   89.8% |     0       0      11       0       0       0
+Qwen s22 t3-5 R waiting_line         90    50    86  95.6%  50/86    58.1% |     4       0      31       5       0      10
+Qwen s22 t3-5 R conversation_group   54    41    49  90.7%  41/49    83.7% |     5       0       8       0       0       4
+Qwen s22 t3-5 R people(line+group)  144    91   135  93.8%  91/135   67.4% |     9       0      39       5       0      14
+Qwen s22 t3-5 R POOLED              252   188   243  96.4% 188/243   77.4% |     9       0      50       5       0      14
+--------------------------------------------------------------------------------------------------------------------------
+Qwen 9-draw   E no_one              324   294   323  99.7% 294/323   91.0% |     1       0      28       1       0       0
+Qwen 9-draw   E waiting_line        270   195   261  96.7% 195/261   74.7% |     9       0      59       7       0      19
+Qwen 9-draw   E conversation_group  162   125   144  88.9% 125/144   86.8% |    18       0      13       6       0       5
+Qwen 9-draw   E people(line+group)  432   320   405  93.8% 320/405   79.0% |    27       0      72      13       0      24
+Qwen 9-draw   E POOLED              756   614   728  96.3% 614/728   84.3% |    28       0     100      14       0      24
+--------------------------------------------------------------------------------------------------------------------------
+Qwen s22 t3-5 E no_one              108    97   108 100.0%  97/108   89.8% |     0       0      11       0       0       0
+Qwen s22 t3-5 E waiting_line         90    64    86  95.6%  64/86    74.4% |     4       0      21       1       0       7
+Qwen s22 t3-5 E conversation_group   54    43    49  90.7%  43/49    87.8% |     5       0       5       1       0       2
+Qwen s22 t3-5 E people(line+group)  144   107   135  93.8% 107/135   79.3% |     9       0      26       2       0       9
+Qwen s22 t3-5 E POOLED              252   204   243  96.4% 204/243   84.0% |     9       0      37       2       0       9
+--------------------------------------------------------------------------------------------------------------------------
+Qwen 6-draw   C no_one              216   197   215  99.5% 197/215   91.6% |     1       0      17       1       0       0
+Qwen 6-draw   C waiting_line        180   171   175  97.2% 171/175   97.7% |     5       0       4       0       0       0
+Qwen 6-draw   C conversation_group  108    94    95  88.0%  94/95    98.9% |    13       0       1       0       0       0
+Qwen 6-draw   C people(line+group)  288   265   270  93.8% 265/270   98.1% |    18       0       5       0       0       0
+Qwen 6-draw   C POOLED              504   462   485  96.2% 462/485   95.3% |    19       0      22       1       0       0
+--------------------------------------------------------------------------------------------------------------------------
+s22 trials 0-2 against s16b (should all be identical cache copies): {('cot', 'same score+pose'): 252, ('cot', 's22 trials 3-5 records'): 252, ('fsc', 'same score+pose'): 252, ('fsc', 's22 trials 3-5 records'): 252}
+
+====================================================================================================
+CLAIM CHECKS
+====================================================================================================
+Totals of 252 (R / E / C), new wording:
+  Qwen      179 / 196 / 228   (n = 252/252/252)
+  GLM       132 / 123 / 170   (n = 252/252/252)
+  DeepSeek  120 / 126 / 185   (n = 252/252/252)
+  Haiku     151 / 148 / 240   (n = 252/252/252)
+  Sonnet    178 / 178 / 242   (n = 252/252/252)
+  Gemini    164 / 173 / 214   (n = 252/252/252)
+R at waiting_line, success given the right target (new wording):
+  Gemini    32/56 =  57.1%   (found 56/90)
+  Qwen      44/87 =  50.6%   (found 87/90)
+  Sonnet    25/90 =  27.8%   (found 90/90)
+  GLM       15/72 =  20.8%   (found 72/90)
+  DeepSeek  13/85 =  15.3%   (found 85/90)
+  Haiku     6/90 =   6.7%   (found 90/90)
+C at people scenes (waiting_line + conversation_group, of 144), new wording:
+  Qwen      people 131/144  no_one succ 97/108 found 107/108 succ|found 97/107  total 228/252
+  GLM       people 87/144  no_one succ 83/108 found 98/108 succ|found 83/98  total 170/252
+  DeepSeek  people 102/144  no_one succ 83/108 found 99/108 succ|found 83/99  total 185/252
+  Haiku     people 132/144  no_one succ 108/108 found 108/108 succ|found 108/108  total 240/252
+  Sonnet    people 134/144  no_one succ 108/108 found 108/108 succ|found 108/108  total 242/252
+  Gemini    people 110/144  no_one succ 104/108 found 108/108 succ|found 104/108  total 214/252
+Gap decomposition of C totals vs Sonnet (gap = people-scene gap + no_one gap; no_one gap split into records lost to wrong target vs lost with right target):
+  Qwen      total  -14 = people   -3 + no_one  -11 (wrong-target   -1, placement  -10)
+  GLM       total  -72 = people  -47 + no_one  -25 (wrong-target  -10, placement  -15)
+  DeepSeek  total  -57 = people  -32 + no_one  -25 (wrong-target   -9, placement  -16)
+  Haiku     total   -2 = people   -2 + no_one   +0 (wrong-target   +0, placement   +0)
+  Sonnet    total   +0 = people   +0 + no_one   +0 (wrong-target   +0, placement   +0)
+  Gemini    total  -28 = people  -24 + no_one   -4 (wrong-target   +0, placement   -4)
+Same decomposition, all situations, wrong-target vs placement failures (C, vs Sonnet):
+  Qwen      no_one: wrong +1 place +10; waiting_line: wrong +3 place -1; conversation_group: wrong +1 place +0
+  GLM       no_one: wrong +10 place +15; waiting_line: wrong +18 place +30; conversation_group: wrong -2 place +1
+  DeepSeek  no_one: wrong +9 place +16; waiting_line: wrong +5 place +14; conversation_group: wrong +3 place +10
+  Haiku     no_one: wrong +0 place +0; waiting_line: wrong +0 place +8; conversation_group: wrong -6 place +0
+  Sonnet    no_one: wrong +0 place +0; waiting_line: wrong +0 place +0; conversation_group: wrong +0 place +0
+  Gemini    no_one: wrong +0 place +4; waiting_line: wrong +34 place -3; conversation_group: wrong -7 place +0
+
+Failure split per model x method (new wording, pooled over situations; share of failures):
+  model     M  fails  wrong_tgt   out_region   unreach   heading   (notok, out&unr)
+  Qwen      R     73    12  16.4%    54  74.0%    7   9.6%    0   0.0%  (0, 14)
+  Qwen      E     56    12  21.4%    36  64.3%    8  14.3%    0   0.0%  (0, 9)
+  Qwen      C     24    12  50.0%    11  45.8%    1   4.2%    0   0.0%  (0, 0)
+  GLM       R    120    33  27.5%    84  70.0%    3   2.5%    0   0.0%  (0, 17)
+  GLM       E    129    33  25.6%    91  70.5%    5   3.9%    0   0.0%  (0, 25)
+  GLM       C     82    33  40.2%    48  58.5%    1   1.2%    0   0.0%  (0, 3)
+  DeepSeek  R    132    24  18.2%   107  81.1%    1   0.8%    0   0.0%  (0, 41)
+  DeepSeek  E    126    24  19.0%    99  78.6%    3   2.4%    0   0.0%  (0, 45)
+  DeepSeek  C     67    24  35.8%    39  58.2%    3   4.5%    1   1.5%  (0, 1)
+  Haiku     R    101     1   1.0%   100  99.0%    0   0.0%    0   0.0%  (0, 42)
+  Haiku     E    104     1   1.0%   101  97.1%    2   1.9%    0   0.0%  (0, 63)
+  Haiku     C     12     1   8.3%    11  91.7%    0   0.0%    0   0.0%  (0, 0)
+  Sonnet    R     74     7   9.5%    66  89.2%    1   1.4%    0   0.0%  (0, 1)
+  Sonnet    E     74     7   9.5%    65  87.8%    2   2.7%    0   0.0%  (0, 3)
+  Sonnet    C     10     7  70.0%     3  30.0%    0   0.0%    0   0.0%  (0, 0)
+  Gemini    R     88    34  38.6%    40  45.5%   14  15.9%    0   0.0%  (0, 26)
+  Gemini    E     79    34  43.0%    35  44.3%   10  12.7%    0   0.0%  (0, 22)
+  Gemini    C     38    34  89.5%     4  10.5%    0   0.0%    0   0.0%  (0, 0)
+
+Rescore check over 7308 distinct records (score_pose for ok records with a pose, rescore otherwise): mismatches none
+Runs used: 20261010-201358_s16b_real_qwen38_low_cot, 20261010-201359_s16b_staffed_qwen38_low_cot, 20261010-201401_s16b_plain_qwen38_low_cot, 20261010-202550_s16b_plain_qwen38_low_fsc, 20261010-202635_s16b_staffed_qwen38_low_fsc, 20261010-202647_s16b_real_qwen38_low_fsc, 20261010-203707_s16b_plain_glm53_cot, 20261010-203708_s16b_staffed_glm53_cot, 20261010-203755_s16b_real_glm53_cot, 20261010-204052_s16b_plain_glm53_fsc, 20261010-204058_s16b_staffed_glm53_fsc, 20261010-204211_s16b_real_glm53_fsc, 20261011-160334_s19_real_qwen38_low_con, 20261011-160344_s19_staffed_qwen38_low_con, 20261011-160352_s19_staffed_glm53_con, 20261011-160452_s19_plain_glm53_con, 20261011-160500_s19_real_glm53_con, 20261011-160527_s19_plain_qwen38_low_con, 20261013-191337_s20_real_dsv41_con, 20261013-191345_s20_staffed_dsv41_con, 20261013-191402_s20_plain_dsv41_con, 20261013-192208_s20_plain_dsv41_fsc, 20261013-192254_s20_real_dsv41_fsc, 20261013-192322_s20_staffed_dsv41_fsc, 20261013-200416_s20_real_dsv41_cot, 20261013-200416_s20_staffed_dsv41_cot, 20261013-200418_s20_plain_dsv41_cot, 20261017-012658_s21_real_qwen38_low_cot, 20261017-012700_s21_staffed_qwen38_low_cot, 20261017-012701_s21_plain_qwen38_low_cot, 20261017-020339_s21_staffed_qwen38_low_fsc, 20261017-020401_s21_plain_qwen38_low_fsc, 20261017-020507_s21_real_qwen38_low_fsc, 20261017-021852_s21_plain_qwen38_low_con, 20261017-021937_s21_staffed_qwen38_low_con, 20261017-022122_s21_real_qwen38_low_con, 20261017-114056_s22_real_qwen38_low_cot, 20261017-114058_s22_staffed_qwen38_low_cot, 20261017-114059_s22_plain_qwen38_low_cot, 20261017-121157_s22_plain_qwen38_low_fsc, 20261017-121408_s22_staffed_qwen38_low_fsc, 20261017-121440_s22_real_qwen38_low_fsc, 20261017-123059_s23_staffed_glm53_cot, 20261017-123103_s23_real_dsv41_cot, 20261017-123103_s23_real_haiku55_cot, 20261017-123104_s23_real_gemini38_low_cot, 20261017-123104_s23_staffed_gemini38_low_cot, 20261017-123104_s23_staffed_haiku55_cot, 20261017-123105_s23_plain_gemini38_low_cot, 20261017-123106_s23_real_glm53_cot, 20261017-123107_s23_plain_haiku55_cot, 20261017-123107_s23_staffed_dsv41_cot, 20261017-123108_s23_plain_dsv41_cot, 20261017-123108_s23_plain_glm53_cot, 20261017-123109_s23_real_sonnet55_low_cot, 20261017-124429_s23_plain_dsv41_fsc, 20261017-124447_s23_real_dsv41_fsc, 20261017-124447_s23_staffed_dsv41_fsc, 20261017-124739_s23_real_gemini38_low_fsc, 20261017-124809_s23_plain_gemini38_low_fsc, 20261017-124859_s23_staffed_glm53_fsc, 20261017-124904_s23_plain_dsv41_con, 20261017-124910_s23_staffed_gemini38_low_fsc, 20261017-124913_s23_plain_glm53_fsc, 20261017-124931_s23_staffed_dsv41_con, 20261017-124936_s23_real_dsv41_con, 20261017-125125_s23_real_glm53_fsc, 20261017-125226_s23_real_gemini38_low_con, 20261017-125351_s23_plain_gemini38_low_con, 20261017-125403_s23_plain_haiku55_fsc, 20261017-125406_s23_real_haiku55_fsc, 20261017-125429_s23_staffed_haiku55_fsc, 20261017-125459_s23_staffed_gemini38_low_con, 20261017-125552_s23_staffed_glm53_con, 20261017-125556_s23_plain_glm53_con, 20261017-125647_s23_real_sonnet55_low_fsc, 20261017-125813_s23_real_glm53_con, 20261017-130031_s23_plain_haiku55_con, 20261017-130036_s23_real_haiku55_con, 20261017-130055_s23_staffed_haiku55_con, 20261017-130300_s23_real_sonnet55_low_con, 20261017-130912_s23_staffed_sonnet55_low_cot, 20261017-130918_s23_plain_sonnet55_low_cot, 20261017-132258_s23_staffed_sonnet55_low_fsc, 20261017-132301_s23_plain_sonnet55_low_fsc, 20261017-132708_s23_plain_sonnet55_low_con, 20261017-132708_s23_staffed_sonnet55_low_con

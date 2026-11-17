@@ -1,0 +1,19 @@
+# Solver places of the runs on research_runs.txt that the solver of the code as it is does not give again, each with
+# why: the run's name, the scene, the episode and the trial, then # and the reason. research_harness.py and
+# replay_solver.py --expect-reproduced --known-moved THIS_FILE do not fail on them; any other moved place fails.
+#
+# Checked 17 October 2026, offline, with replay_solver.py --whitelist --expect-reproduced on the 44 listed runs that
+# hold solver steps, each at the code of its time (no config.yaml records a commit; the commit is the main
+# checkout's HEAD at the run's start, by its reflog, with uncommitted changes unknown): every one of the 1,544 places
+# is given again there (s8 at 89ceafe, the first commit that reads the placeholder scenes as they are now; s10 at
+# a3c3fd0; s19 at 31e7150; s20 at a233baa; s21 at f1a488a). Under the code as it is, these 7 move, and all 7 move
+# first at 3e67185 (10 October 2026 23:36, "Solver: the seen side of a target, and not standing ahead of people who
+# watch it"), the same distance as now: its parent and every earlier run commit give them again, and the two later
+# changes of the seen side (886dbf8, 143d976) move no other place of these runs. No success is gained or lost.
+s8_none_qwen36_35 eval_08_waiting_line_4 e1 1  # 2.084 m: the seen-side rules of 3e67185 came after the run
+s8_none_qwen38 eval_08_waiting_line_4 e1 1  # 2.084 m: the seen-side rules of 3e67185 came after the run
+s8_none_qwen38 eval_09_waiting_line_6 e1 2  # 1.861 m: the seen-side rules of 3e67185 came after the run
+s8_none_qwen3vl eval_13_waiting_line_3 e0 1  # 2.215 m: the seen-side rules of 3e67185 came after the run
+s8_convlm_qwen3vl eval_11_conversation_group_3 e1 0  # 5.905 m: the seen-side rules of 3e67185 came after the run
+s8_conorc_qwen3vl eval_11_conversation_group_3 e1 0  # 5.278 m: the seen-side rules of 3e67185 came after the run
+s10_glm53_low_con eval_01_no_one_place e1 0  # 1.589 m: the seen-side rules of 3e67185 came after the run

@@ -1,4 +1,0 @@
-t4a exit 2 ; lock left: none; ledger sent 0; ledger lines 0; fake 0; cache files 0; UpstreamMiss in stderr: 2
-t4b exit 0 ; lock left: none; ledger sent 28; fake 28; fake schema titles: {'ConstraintsWire': 28}
-t4c exit 2 ; lock left: none; ledger sent 4; fake 4; UpstreamMiss line: UpstreamMiss: the context answer of {'arm': 'real', 'scene': 'real_eval_02_no_one_place', 'episode': 'e0', 'trial': 0} is not in the cache: D-live sends only constraints calls (FROZEN.md section 7, the go-live rule); nothing was sent
-done

@@ -1,0 +1,24 @@
+v_manifest 2026-10-18T04:55:20+0800; FROZEN.md sha256 verified f55341c03cd5e1d38c91b7e0142ef10f0870ccb2b43c5bf4edfac07d1996e751
+14 row ids from G._EVAL equal FROZEN 1.2's table: 14
+names under results/still-scenes/scene-seeds/phase2/realistic checked: 2574; none banned, no links
+seed folders: [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212]
+seed200: complete True; problems []
+seed201: complete True; problems []
+seed202: complete True; problems []
+seed203: complete True; problems []
+seed204: complete True; problems []
+seed205: complete True; problems []
+seed206: complete True; problems []
+seed207: complete True; problems []
+seed208: complete True; problems []
+seed209: complete True; problems []
+seed210: complete True; problems []
+seed211: complete True; problems []
+seed212: complete True; problems []
+complete seeds [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212]; required 200-209 complete: True; layouts 182; situations per scene {'no_one': 78, 'waiting_line': 65, 'conversation_group': 39}
+attempt > 0: [(205, 'real_eval_10_conversation_group_2', 1)]
+compute manifest.json: 182 entries, seeds_complete [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212], required flag True; field differences vs verifier: 0 []; images list identical: True; left out [213, 214, 215, 216, 217, 218, 219]
+render commands 14 (['seed200_trial_run1', 'seed200_run1', 'seed201_run1', 'seed202_run1', 'seed203_run1', 'seed204_run1', 'seed205_run1', 'seed206_run1', 'seed207_run1', 'seed208_run1', 'seed209_run1', 'seed210_run1', 'seed211_run1', 'seed212_run1']); seeds commanded [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212]; sum of wall_s 10802.9 s; commands started at or after 3 h: []; every command --variant real with --only ids among the 14: True; stop event {'time': '2026-10-18T04:31:15+08:00', 'event': 'stop', 'reason': 'render wall time reached 3 h', 'render_wall_total_s': 10802.9, 'next_seed_not_started': 213}
+worktree data/: entries with mtime or ctime after (FROZEN.md time - 1 h): 0 []
+seed200-219 folders outside results/still-scenes/scene-seeds/phase2/realistic in the worktree: []
+results/still-scenes/scene-seeds/phase2/placeholder seeds (another step): 110-199 (90); any in 3-99: []; any in 200-219: []

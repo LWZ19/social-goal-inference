@@ -1,0 +1,79 @@
+FROZEN.md sha256 11f7b32746c7fc0be414883b430d59ddef98d2388fd89e082e40361b637a9165 OK
+src/sgi/evaluate.py sha256 OK
+src/sgi/geometry.py sha256 OK
+src/sgi/stages/goal.py sha256 OK
+docs/model_notes/tools/research_harness.py sha256 OK
+docs/model_notes/tools/replay_solver.py sha256 OK
+results/still-scenes/perception/lifting-rerun/lifting.py sha256 OK
+results/still-scenes/perception/lifting-rerun/frontsnap.py sha256 OK
+S0.1 unit checks on synthetic depth (camera 640x480, f 554.3 px, 1.5 m high, pitched 10 deg down)
+  (a) wall 20.0 m wide, box 0.5 m in front: components >=25 px 2, box object, wall structure (extent 6.56 m), expect wall structure -> PASS
+  (d) component lift vs lifting.lift_at_depth on a one-component window: window one component True, |diff| 0.0e+00 m, vs sgi.geometry.lift 0.0e+00 m -> PASS
+  (e) point on the wall 6 px beside the box: s=structure T1=True V1 -> box; point on the box: s=object T1=False V1 moves=False -> PASS
+  (a) wall  3.0 m wide, box 0.5 m in front: components >=25 px 2, box object, wall object (extent 2.91 m), expect wall object -> PASS
+  (a') informational, a 1.0 m box (top face visible at about 84 deg incidence at 5 m): components >=25 px 4 [(80, 'object'), (82, 'object'), (8278, 'object'), (163864, 'structure')]: the top's far rows split into 1-row strips (the predicted known cost)
+  (b) floor plane only: valid 205440 px, floor 205440 px, components 0 -> PASS
+  (c) plane at 80 deg incidence through 4 m on the optical axis (patch u 300-330, v 150-300): G1 components 1 (expect 1; predicted limit acos(Z/(f g)) = 85.9 deg at 4 m) -> PASS
+  (c) plane at 88 deg incidence through 4 m on the optical axis (patch u 300-330, v 150-300): G1 components 19 (expect more than 1; predicted limit acos(Z/(f g)) = 85.9 deg at 4 m) -> PASS
+  (f) label_components vs breadth-first search on 5 random 60x80 graphs: PASS
+  unit checks: ALL PASS
+
+S0.2 fit checks on the worked-example scenes of H.examples(): 29 scenes (FROZEN.md says 28; the harness lists 29, all used; see DEVIATIONS.md D1)
+  largest target footprint or obstacle diagonal over these 29 scenes: 2.259 m (examples_07_audience_4 obstacle); FROZEN.md used 2.26 m -> L_S = 2 x 2.26 + 0.10 = 4.62 -> 4.6 m (unchanged, frozen)
+
+  components per image (median [min-max]):
+    G1 comps          11 [4-30]
+    G1 frags           4 [0-22]
+    G1 objects         5 [2-12]
+    G1 structure       1 [1-1]
+    G1 images with no structure component: 0 of 29
+    G2 comps           7 [2-21]
+    G2 frags           3 [0-18]
+    G2 objects         3 [1-10]
+    G2 structure       1 [1-1]
+    G2 images with no structure component: 0 of 29
+
+  walls and ceiling: non-floor pixels within 0.3 m of the bounding polygon (or outside it) or above 2.85 m;
+  share labelled structure (pooled pixels; per-image median):
+    G1: structure 3582254/3596486 (99.6%), object 14096/3596486 (0.4%), fragment 136/3596486 (0.0%); per-image median 1.00; images under 0.5: 0 []
+    G2: structure 3593287/3596486 (99.9%), object 3069/3596486 (0.1%), fragment 130/3596486 (0.0%); per-image median 1.00; images under 0.5: 0 []
+
+  ground-truth pixels (non-floor, at most 2.85 m) by label:
+    G1 person   n= 317042 object 316632/317042 (99.9%)  structure 0/317042 (0.0%)  fragment 410/317042 (0.1%)
+    G1 target   n= 764214 object 763881/764214 (100.0%)  structure 0/764214 (0.0%)  fragment 333/764214 (0.0%)
+    G1 obstacle n=1706983 object 775657/1706983 (45.4%)  structure 931025/1706983 (54.5%)  fragment 301/1706983 (0.0%)
+    G2 person   n= 317042 object 316763/317042 (99.9%)  structure 0/317042 (0.0%)  fragment 279/317042 (0.1%)
+    G2 target   n= 764214 object 764097/764214 (100.0%)  structure 0/764214 (0.0%)  fragment 117/764214 (0.0%)
+    G2 obstacle n=1706983 object 756960/1706983 (44.3%)  structure 949914/1706983 (55.6%)  fragment 109/1706983 (0.0%)
+  obstacles by their gap to the bounding wall (vertex distance), G1: mostly (> 0.5 of pixels) structure
+    gap 0.00-0.10 m: n=74, mostly structure 66, mostly object 8
+    gap 0.10-0.30 m: n=0, mostly structure 0, mostly object 0
+    gap 0.30-inf m: n=41, mostly structure 0, mostly object 41
+    (an obstacle touching the wall joins the wall component by construction; no free-standing obstacle is
+    structure, no target pixel and no person pixel is structure: no section-4 definition fails visibly, so no
+    addendum is written; FROZEN.md section 10 step 3)
+
+  M4 on the fit scenes' true targets (distinct scene x target; n = 29):
+  join kind       n empty medIoU  IoU>=.5  IoU>=.7 merged mBody split struct  medCov medPur
+  G1   person    12     0   0.99  12/12    12/12        0     0     0      0  0.99   1.00
+  G1   place     17     0   0.62  17/17     6/17        0     8     0      0  0.62   1.00
+  G1   ALL       29     0   0.91  29/29    18/29        0     8     0      0  0.99   1.00
+  G2   person    12     0   1.00  12/12    12/12        0     0     0      0  1.00   1.00
+  G2   place     17     0   0.78  17/17     9/17        0     8     0      0  0.78   1.00
+  G2   ALL       29     0   0.99  29/29    21/29        0     8     0      0  0.99   1.00
+
+  every visible ground-truth person (not only targets): absorbed into structure / merged / merged with
+  another body / split:
+    G1: n=56, absorbed into structure 0/56 (0.0%), merged 8, merged with another body 11, split 0, median IoU 0.98
+    G2: n=56, absorbed into structure 0/56 (0.0%), merged 8, merged with another body 11, split 0, median IoU 0.99
+
+  triggers at the oracle target of each fit episode (n = 58 episodes with an oracle target, of 58): how often a perfect point is flagged or moved
+    surface s: {'object': 58}
+    oracle target right before: 58 of 58
+    T1 flags 0/58 (0.0%); T2 flags 6/58 (10.3%)
+      person n=24 T1 0  T2 6  s {'object': 24}
+      place  n=34 T1 0  T2 0  s {'object': 34}
+    V1: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0
+    V2: moves 58/58 (100.0%), breaks (right -> wrong) 0, fixes 0
+    V3: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0
+    V4: moves 0/58 (0.0%), breaks (right -> wrong) 0, fixes 0

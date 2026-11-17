@@ -1,3 +1,0 @@
-term0: pid 375553; before kill: lock file '375553 2026-10-18T06:01:17+0800'; sent 5
-term0: exit 130; lock file after: '375553 2026-10-18T06:01:17+0800'; ledger sent 5 answered 5 error 0; fake 5; check files 0; run folders 1; results lines 4; config incomplete: incomplete: true; stopped_by in config: 0; summary.csv: no; KeyboardInterrupt in log: 2; tmp files in cache: 0
-term0: next invocation pid 377208 exit 0; it wrote its pid into the lock file: yes; refused line: ; ledger sent now 9; fake y 4
