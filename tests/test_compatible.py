@@ -441,3 +441,58 @@ def test_a_missing_key_names_the_file_and_the_variable_of_the_entry(tmp_path, mo
         with pytest.raises(MissingKeyError) as err:
             factory.make_client(name, cfg)
         assert str(env) in str(err.value) and variable in str(err.value) and "key-of-another-provider" not in str(err.value)
+
+
+MISMATCH = ("Structured output processing only supports one backend per engine. The engine is already using "
+            "'guidance', but this request resolved to 'xgrammar'. Configure `structured_outputs_config.backend` "
+            "explicitly or use schemas supported by the initialized backend.")     # what the school gateway said
+
+
+def in_turn(*replies):
+    """A back end whose server gives these replies in turn, (status, body) each: no network."""
+    sent = []
+    def handler(request):
+        status, body = replies[min(len(sent), len(replies) - 1)]
+        sent.append(request)
+        return httpx2.Response(status, json=body)
+    http = httpx2.Client(transport=httpx2.MockTransport(handler))
+    return OpenAICompatibleBackend(KEY, BASE, client=openai.OpenAI(api_key=KEY, http_client=http)), sent
+
+
+def test_a_400_from_an_engine_set_to_another_structured_output_backend_is_asked_again():
+    # several engines serve one model name, each locked to a backend: the same request can land on one that takes it
+    backend, sent = in_turn((400, error(MISMATCH)), (400, error(MISMATCH)), (200, answer(GOOD)))
+    result = backend.call(ENTRY, None, PARTS, SCHEMA)
+    assert len(sent) == 3 and json.loads(result.text) == {"label": "desk"}
+
+
+def test_the_engine_mismatch_is_asked_at_most_ten_times_and_any_other_400_once():
+    backend, sent = in_turn((400, error(MISMATCH)))
+    with pytest.raises(BackendError) as err:
+        backend.call(ENTRY, None, PARTS, SCHEMA)
+    assert len(sent) == 10 and "one backend per engine" in str(err.value)
+    backend, sent = in_turn((400, error(REJECTED)), (200, answer(GOOD)))
+    with pytest.raises(BackendError):
+        backend.call(ENTRY, None, PARTS, SCHEMA)
+    assert len(sent) == 1
+
+
+def test_an_engine_on_guidance_is_sent_the_schema_in_a_form_that_backend_takes():
+    # the gateway's own advice: "use schemas supported by the initialized backend"; the form keeps every answer valid
+    seen = []
+    def handler(request):
+        body = json.loads(request.content)
+        seen.append(body["response_format"]["json_schema"]["schema"])
+        if len(seen) == 1:
+            return httpx2.Response(400, json=error(MISMATCH))           # MISMATCH says the engine uses guidance
+        return httpx2.Response(200, json=answer(GOOD))
+    http = httpx2.Client(transport=httpx2.MockTransport(handler))
+    backend = OpenAICompatibleBackend(KEY, BASE, client=openai.OpenAI(api_key=KEY, http_client=http))
+    schema = {"type": "object", "properties": {"label": {"type": "string"}, "n": {"type": "integer"},
+                                               "kind": {"type": "string", "enum": ["a", "b"]}}}
+    backend.call(ENTRY, None, PARTS, schema)
+    assert seen[0] == schema                                             # sent as given first
+    assert seen[1]["properties"]["n"]["multipleOf"] == 1                 # then in guidance's form
+    assert seen[1]["properties"]["label"]["pattern"] == "^[\\s\\S]*$"
+    assert "pattern" not in seen[1]["properties"]["kind"]                # an enum is left as it is
+    assert "multipleOf" not in schema["properties"]["n"]                 # the caller's schema is not changed

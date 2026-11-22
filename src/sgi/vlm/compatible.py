@@ -20,6 +20,8 @@ from sgi.vlm.base import (BackendError, BackendResult, ImagePart, Part, QuotaExc
 _SCHEMA_NAME = "answer"                            # a constant: nothing sent names a task
 _MAX_RETRY_AFTER_S = 120.0                         # a longer wait is left to VLMClient's backoff
 _LISTING = "the model listing"                     # what a failed list_models was asking for
+_ENGINE_MISMATCH = "only supports one backend per engine"   # a 400 from an engine set to another structured-output
+_MISMATCH_TRIES = 10                                         # backend: asked again, this many times in all
 _SHOWN_CHARS = 300                                 # of a reply that holds no answer: enough to tell what came back
 _USUAL_FIELDS = frozenset({"id", "object", "created", "owned_by"})      # of a listed model: every service gives them
 # Shell variables the SDK client turns into request headers, also on a copy of a client passed in: header lines of
@@ -68,15 +70,28 @@ class OpenAICompatibleBackend:
         return request
 
     def call(self, entry: ModelEntry, system: str | None, parts: Sequence[Part], json_schema: dict) -> BackendResult:
-        request = self.build_request(entry, system, parts, json_schema)
-        try:                                                     # errors are raised unchained: the SDK's exception
-            resp = self._client.chat.completions.create(**request)      # holds the key unstruck
-        except (openai.APIConnectionError, openai.APIStatusError) as exc:
-            raise self._error(exc, entry.model) from None
-        except json.JSONDecodeError as exc:                      # a 200 whose body is not the JSON it is sent as:
-            said = _shown(exc.doc, self._api_key)                # the SDK's own error holds that body whole
-            raise TransientError(f"{entry.model}: the reply is not JSON: {said}") from None
-        return _result(resp, entry.model, self._api_key)
+        """One answer. A 400 saying the engine is set to another structured-output backend is asked again, up to
+        _MISMATCH_TRIES times in all, with no wait: a gateway can serve one model name from several engines, each
+        locked to the backend of the first request it took. An engine on 'guidance' is sent the schema in a form
+        that backend takes (_for_guidance), any other the schema as given."""
+        plain = self.build_request(entry, system, parts, json_schema)
+        guided = self.build_request(entry, system, parts, _for_guidance(json_schema)) if json_schema else plain
+        request = plain
+        for attempt in range(1, _MISMATCH_TRIES + 1):
+            try:                                                 # errors are raised unchained: the SDK's exception
+                resp = self._client.chat.completions.create(**request)  # holds the key unstruck
+            except openai.APIStatusError as exc:
+                if exc.status_code == 400 and _ENGINE_MISMATCH in str(exc) and attempt < _MISMATCH_TRIES:
+                    # the gateway's advice: use a schema the engine's backend takes. Same answers are valid either way.
+                    request = guided if "using 'guidance'" in str(exc) else plain
+                    continue
+                raise self._error(exc, entry.model) from None
+            except openai.APIConnectionError as exc:
+                raise self._error(exc, entry.model) from None
+            except json.JSONDecodeError as exc:                  # a 200 whose body is not the JSON it is sent as:
+                said = _shown(exc.doc, self._api_key)            # the SDK's own error holds that body whole
+                raise TransientError(f"{entry.model}: the reply is not JSON: {said}") from None
+            return _result(resp, entry.model, self._api_key)
 
     def list_models(self) -> list[str]:
         """One line per model the gateway offers this key, sorted by id: one request.
@@ -200,3 +215,24 @@ def _retry_after(headers) -> float | None:
     except (TypeError, ValueError):                              # absent, or an HTTP date
         return None
     return seconds if 0.0 <= seconds <= _MAX_RETRY_AFTER_S else None
+
+
+_ANY_TEXT = "^[\\s\\S]*$"
+
+
+def _for_guidance(schema: dict) -> dict:
+    """The schema with keywords that make vLLM pick its 'guidance' backend and constrain nothing: multipleOf 1 on
+    every integer, a match-anything pattern on every free string (one with no enum, const, pattern or format)."""
+    def walk(node):
+        if isinstance(node, dict):
+            node = {k: walk(v) for k, v in node.items()}
+            if node.get("type") == "integer":
+                node.setdefault("multipleOf", 1)
+            if node.get("type") == "string" and not {"enum", "const", "pattern", "format"} & set(node):
+                node["pattern"] = _ANY_TEXT
+            return node
+        if isinstance(node, list):
+            return [walk(v) for v in node]
+        return node
+    return walk(schema)
+
