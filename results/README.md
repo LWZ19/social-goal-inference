@@ -1,7 +1,7 @@
 # Results
 
-This folder holds the scoring scripts and stored outputs behind every number in the project talk. Slide numbers below
-refer to that talk, and B1 to B10 are its backup slides.
+This folder holds the scoring scripts and stored outputs behind the numbers in the project presentation. Slide numbers
+below refer to that presentation, and B1 to B10 are its backup slides.
 
 - **Pointing:** the VLM marks the spot in the picture. In the outputs it is `R`, or `E` when it is shown worked examples.
 - **Our method:** the VLM names the people and the rules, and the solver in `src/sgi/solver.py` finds the spot. In the
@@ -30,7 +30,7 @@ refer to that talk, and B1 to B10 are its backup slides.
 | B4 | A small people finder saves 21 to 25% of the time on still scenes | [`e2_score.py`](still-scenes/people-finder/e2_score.py) | [`e2_score_six_out.txt`](still-scenes/people-finder/e2_score_six_out.txt) |
 | B7 | The solver is right on all 229 crowd scenes with the true people and rules | | [`tables.txt`](still-scenes/crowds/score/tables.txt) |
 | B6, B7 | Learned replacements for the solver: 67% and 57%, against the solver's 76% | | [soft density](still-scenes/learned-models/soft-density/tables.txt), [flow model](still-scenes/learned-models/flow-model-pilot/tables.txt) |
-| B6 | Picking from numbered marks helps GLM by 22 good spots and costs DeepSeek 27 | | [GLM](still-scenes/numbered-spots/runs/m2_glm53/m2_out.txt), [DeepSeek](still-scenes/numbered-spots/runs/m2_dsv41/m2_out.txt) |
+| B6 | Picking from numbered marks helps GLM by 22 good spots and costs DeepSeek 27 | | [GLM](still-scenes/numbered-spots/m2_glm53_out.txt), [DeepSeek](still-scenes/numbered-spots/m2_dsv41_out.txt) |
 
 The held-out and new situations (slide 15) and the crowd scenes use simpler renders of the layouts. The pictures on
 those slides are the same layouts redrawn in Blender. The 85.1% leaves out 20 GLM calls that failed. Counting them as
@@ -59,8 +59,18 @@ The stored outputs are exactly as the scripts printed them, so they keep the lab
 - `R1` decides once by pointing. `C1` decides once with our method. `Rq0` and `Cq` ask the VLM again during the run.
 - `CT2` asks once and tracks the people. `CT3F` adds a check that people move with the line. `CT3FL` adds the hold-place
   rule. `OW` is a robot given the ideal place.
-- "Frozen" or "bar" marks a scoring rule or pass mark fixed before the run. W/L/T is wins, losses and ties, paired by
-  layout, or by scene and seed.
+- "Frozen" or "bar" marks a scoring rule or pass mark fixed before the run. The planning notes themselves are not
+  included. W/L/T is wins, losses and ties, paired by layout, or by scene and seed.
+- Script names such as `i12`, `e4`, `x3` and `item6` are experiment numbers from the project.
+
+## Supporting material
+
+- [`moving-lines/roles-vs-marked-spot/`](moving-lines/roles-vs-marked-spot/): remembering who to stand behind against following the marked spot.
+- [`moving-lines/test-robots/`](moving-lines/test-robots/): test robots given the true serving spot, which show the largest loss is at the front of the line.
+- [`moving-lines/test-layouts/`](moving-lines/test-layouts/) and [`moving-lines/best-version-and-running-guess/`](moving-lines/best-version-and-running-guess/): the layouts of the final test and the code that breaks down where time is lost.
+- [`still-scenes/run-to-run-noise/`](still-scenes/run-to-run-noise/): the gap between methods against the noise between repeated runs.
+- [`still-scenes/analysis-scripts/harness/`](still-scenes/analysis-scripts/harness/): the tool that solves stored answers again, used by the replay analyses.
+- [`still-scenes/metrics-and-statistics/`](still-scenes/metrics-and-statistics/): earlier statistics that the layout tests compare with.
 
 ## Re-running a script
 

@@ -17,5 +17,5 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 
-# A local folder of service settings and keys. Never committed.
+# Local service settings. Never committed.
 soclaas/

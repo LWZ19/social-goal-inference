@@ -1,0 +1,14 @@
+M2 scored pairs: 252
+
+== soclaas_dsv41: 252 pairs
+  target right: A0 232, A2-both 241, A2-number 241, A2-point 237
+  both    gain  19  harm  10  (harm share of A0-right 0.043)
+  number  gain  19  harm  10  (harm share of A0-right 0.043)
+  point   gain  19  harm  14  (harm share of A0-right 0.060)
+  replayed success (recorded people and constraints): A0 195, A2-both 168, A2-number 163, A2-point 173  of 252
+  plan exact: A0 176, A2 179 of 251
+  answers with a mark: 247/252; person marks 93; centre-nearest 49; largest component 2; binding conflicts 14
+  number histogram: 1:43, 2:41, 3:41, 4:39, 5:31, 6:13, 7:24, 8:15
+  JUDGED (rule both): harm 10 <= 2% of 232 -> False; plan drop -3 <= 2% of 251 -> True; gain 19 vs harm 10
+
+VERDICT: a harm bar failed: stop before Gemini

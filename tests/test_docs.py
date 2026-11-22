@@ -72,7 +72,7 @@ def test_readme_says_how_to_switch_models_and_what_state_each_provider_is_in():
     assert {"Gemini", "SoCLaaS", "OpenAI", "Claude"} <= set(table)   # a row each, with its key variable and its state
     assert "`GEMINI_API_KEY`" in table["Gemini"] and "live calls" in table["Gemini"]
     assert "`SOCLAAS_API_KEY`" in table["SoCLaaS"] and "full runs on 2026-10-08" in table["SoCLaaS"]
-    assert "90 requests a minute" in table["SoCLaaS"] and "no spending cap" in table["SoCLaaS"] and "prices" in table["SoCLaaS"]
+    assert "prices" in table["SoCLaaS"]
     assert sum(name.startswith("soclaas_") for name in CFG.models) == 17 and "the seventeen `soclaas_*` entries" in table["SoCLaaS"]
     assert "`OPENAI_API_KEY`" in table["OpenAI"] and "never called" in table["OpenAI"]
     claude = [name for name, entry in CFG.models.items() if entry.provider == "anthropic"]
@@ -172,7 +172,7 @@ def test_env_example_names_every_key_variable_and_holds_no_value():
     assert {line[:-1] for line in lines} == {*fixed, *named}
     assert [name for name in sorted(fixed | named) if f"`{name}`" not in section("Setup")] == []   # and the README says to fill it in
     ignored = (REPO_ROOT / ".gitignore").read_text(encoding="utf-8").split()
-    assert ".env" in ignored and "soclaas/" in ignored                # the keys, and the saved internal pages
+    assert ".env" in ignored and "soclaas/" in ignored                # the keys, and local service settings
 
 def test_setup_names_each_shell_variable_a_gateway_entry_is_not_built_under():
     held = compatible._SHELL_HEADERS                      # the back end refuses each: the README says which, and the way out

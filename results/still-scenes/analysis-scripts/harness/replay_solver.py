@@ -46,7 +46,7 @@ after it.
     --accepted   a file of the records whose loss is known and stated, one a line: the run's name (its folder's,
                  or that without the time before it), the scene, the episode and the trial. An empty line and
                  what follows a # are passed over. Such a record is still printed as lost, and marked.
-                 replay_accepted.txt beside this file names those stated in the design (section 12, B6).
+                 replay_accepted.txt beside this file names them, with the reason.
     --rows       writes one row per record, with both places and both verdicts, as JSON.
     --whitelist  refuses, before anything is opened, every RUN_DIR that is not on research_runs.txt beside this file
                  (the runs of the research track beyond the VLM-only pipeline), a SCENES_DIR or recorded scenes folder

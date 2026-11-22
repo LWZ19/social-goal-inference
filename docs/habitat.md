@@ -2,7 +2,7 @@
 
 This page is for anyone who wants to watch the pipeline drive a robot: Boston Dynamics' Spot in a Habitat 3.0 flat where five people walk about and queue at the kitchen counter. Type a request such as "get me a cup from the kitchen counter". The robot's current RGB-D view goes to the pipeline with it, the people keep moving while the models answer, and Spot then walks to the goal pose that comes back.
 
-Nothing here is a measurement. The simulator is for seeing the pipeline at work and for collecting live observations. The numbers in [the results](../results/README.md) come from `python -m sgi.run` on scene folders.
+The demo on this page is not a measurement. It is for seeing the pipeline at work. In [the results](../results/README.md), the still-scene numbers come from `python -m sgi.run` on scene folders, and the moving-line numbers from `sgi_habitat.experiment`, launched by `results/moving-lines/design-and-scoring/run_moving.py`.
 
 ## Two environments
 
@@ -153,6 +153,8 @@ These are live observations of moving people. With ground truth written for them
 
 - `GET /health`: the goal method and the model entry of each stage;
 - `POST /goal`: a JSON body with `request`, `context`, `rgb_png` and `depth_npy` (base64 PNG and `.npy`), `camera` (fx, fy, cx, cy, width, height, `T_world_camera`) and `robot` (x, y, yaw). The answer holds `status`, the plan's `subtasks`, the `source` of the goal, `pose_world` and `pose_robot` as [x, y, θ], `target_world`, the `calls` made and `timings_s`. Its docstring, in [`src/sgi/serve.py`](../src/sgi/serve.py), describes each field.
+- `POST /plan`: the plan alone, so a robot can start towards the target while the rest of the answer is made;
+- `POST /resolve`: solves a stored `/goal` answer again on tracked people and a new observation, with no model call. The moving-line experiments use it.
 
 Any simulator or robot can use it, not only this one.
 
@@ -233,13 +235,13 @@ sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/sweet_spot_cafe.y
 
 `--floor-y` is the floor's height in the file, `--region` the room in the pipeline's x and y, and `--counter` a counter's footprint. The ceiling is dropped, so the follow camera can look in from above. `--style colours` guesses a colour for each kind of surface instead (wood floor, stone counter tops, wall paint, and so on). Stages loaded from a file get soft light from above and from all four sides, and a light grey background where no ceiling is hit. With Habitat's default lighting, the faces turned away from its one light would be dark.
 
-In the clay café, Claude Haiku names "the coffee counter at the back of the room" and finds it. In the two runs so far it judged that the people queueing at the counter's other end did not matter, and stopped at the end of the counter nearest the robot, beside the line rather than behind it.
+In the clay café, Claude Haiku names "the coffee counter at the back of the room" and finds it. In the two recorded runs it judged that the people queueing at the counter's other end did not matter, and stopped at the end of the counter nearest the robot, beside the line rather than behind it.
 
 The realistic layouts in `src/sgi/synth/realistic/` are built in Blender 4.5 (`BLENDER_SERIES` in `blender.py`), so with Blender installed they could be exported in the same way. No exporter for them is written yet.
 
 ## Known limits
 
-- **Two scenes so far.** ReplicaCAD's flat has a kitchen counter, a fridge and a TV, and the café has a coffee counter. A ticket desk, a lift or a screen with an audience would each be a scene and a scenario of their own.
+- **A fixed set of scenes.** The scenarios in `sim/scenarios/` use the environments listed in [`sim/README.md`](../sim/README.md). A ticket desk, a lift or a screen with an audience would each be a scene and a scenario of their own.
 - **Spot's base glides.** The base moves kinematically along its path, as in Habitat 3.0's social navigation task, and the legs play a trot over it; the feet are not planted, so they can slide.
 - **People only yield.** A walker waits up to 2 s for someone within 0.7 m ahead and then walks on, so two people can pass through each other, or walk into Spot's way. Spot plans round them (above), but people do not plan round Spot.
 - **The local planner sees people as round.** It knows where each person is, not where they are heading, so someone walking towards Spot can come nearer than the 0.8 m it plans for before the next plan, half a second later.

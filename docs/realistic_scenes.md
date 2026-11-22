@@ -26,7 +26,7 @@ Each comparison isolates one change:
 
 ## Get a set
 
-Rendered sets are never committed. Each one is a single archive attached to a release of the private repository, with a manifest in the repository that lists the path, size and SHA-256 of every file. To get the `real` set:
+Rendered sets are never committed. Each one is a single archive attached to a release of this repository, with a manifest in the repository that lists the path, size and SHA-256 of every file. To get the `real` set:
 
 ```bash
 gh release download scenes-realistic-v1 --pattern real.tar.gz
@@ -34,7 +34,7 @@ gh release download scenes-realistic-v1 --pattern real.tar.gz
 .venv/bin/python -m sgi.synth.realistic.package verify --set data/realistic --variant real
 ```
 
-The three final sets are on the release `scenes-realistic-v1` of the repository: `real.tar.gz` into `data/realistic`, `staffed.tar.gz` into `data/realistic_staffed` (`--variant staffed`) and `plain.tar.gz` into `data/realistic_plain` (`--variant plain`). The repository is private, so the archive is downloaded with the GitHub command line tool, signed in to an account that can read it, and handed to `fetch` as a file.
+The three final sets are on the release `scenes-realistic-v1` of the repository: `real.tar.gz` into `data/realistic`, `staffed.tar.gz` into `data/realistic_staffed` (`--variant staffed`) and `plain.tar.gz` into `data/realistic_plain` (`--variant plain`). The archive is downloaded with the GitHub command line tool and handed to `fetch` as a file.
 
 `--variant` names the manifest, `assets/realistic/sets/real.json`. `fetch` checks the archive against it, unpacks into a temporary folder beside `--into`, verifies every file there, and only then moves the set into place. It refuses an existing `--into` unless you add `--force`. An archive at a public `https` address can be given with `--url` instead of `--archive`. `verify` exits with 1 and lists each file that is missing, changed or unexpected when the set is not the one the manifest names.
 
@@ -54,6 +54,7 @@ Rendering needs Blender 4.5 LTS and the assets. The test suite does not: the tes
 ```
 
 `blender` puts Blender into `.tools/`; to use another binary of the 4.5 series, set `SGI_BLENDER` to it. `fetch` downloads every asset into `assets/realistic/_cache/` and checks its size and SHA-256. That is about 3.3 GB and none of it is committed. `prepare` has Blender normalise the models and bake each avatar in each pose into a still mesh, and writes a stamp; the generator runs only when the stamp covers the whole manifest. `verify` says what is missing or wrong. `--only ID ...` limits `fetch`, `prepare` and `verify` to the named assets, and `--force` does them again where they are already done.
+
 **2. Generate.**
 
 ```bash
@@ -118,7 +119,7 @@ Everything downloaded is listed in `assets/realistic/manifest/*.json` with its s
 .venv/bin/python -m sgi.synth.realistic.assets attribution
 ```
 
- The avatars and poses are Microsoft Rocketbox (MIT); models and materials are mostly CC0 (Poly Haven) and CC BY 4.0 (Objaverse and Amazon Berkeley Objects); the fonts are under the SIL Open Font License. Pictures that use CC BY assets need the attribution to travel with them. The manifest and the attribution file are committed; the assets themselves are not.
+The avatars and poses are Microsoft Rocketbox (MIT); models and materials are mostly CC0 (Poly Haven) and CC BY 4.0 (Objaverse and Amazon Berkeley Objects); the fonts are under the SIL Open Font License. Pictures that use CC BY assets need the attribution to travel with them. The manifest and the attribution file are committed; the assets themselves are not.
 
 ## Known limits
 

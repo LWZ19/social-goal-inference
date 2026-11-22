@@ -9,9 +9,11 @@ We compare two ways of using a vision-language model (VLM). In **pointing**, the
 | 70 new still scenes, six VLMs, tries that end at a good spot | 63.3% | **85.1%** |
 | Waiting lines in those scenes | 41% | **81%** |
 | Situations left out of development: lift, bent line, machine | 54%, 2%, 14% | **88%, 69%, 62%** |
-| Moving line in the simulator, Claude Sonnet, time in the right spot | 6% (decide once) | **29%** (track), **47%** (with the hold-place rule, in the updated simulator) |
+| Moving line in the simulator, Claude Sonnet, time in the right spot | 6% (decide once) | **29%** (ask once, then track) |
 
-The method also has clear limits: a group photo stays unsolved (4% against 8%), someone standing just behind a line breaks it (3.5% against 19% for pointing), and each answer takes 1.2 to 1.8 times as long as pointing. [`results/README.md`](results/README.md) links every number to its scoring script and stored output.
+The first three rows compare with pointing shown worked examples, and the moving-line row with plain pointing. A later hold-place rule, tested on 64 unseen layouts in an updated simulator, raises Claude Sonnet from 25% to 47%, against 65% for a robot given the ideal place.
+
+The method has clear limits. A group photo stays unsolved (ours 8%, pointing 4%), someone standing just behind a line breaks it (ours 3.5%, pointing 19%), and each answer takes 1.2 to 1.8 times as long as pointing. [`results/README.md`](results/README.md) links each number to its stored output and scoring script.
 
 | Folder | What is in it |
 |---|---|
@@ -21,6 +23,8 @@ The method also has clear limits: a group photo stays unsolved (4% against 8%), 
 | [`results/`](results/README.md) | Scoring scripts and stored outputs for every result |
 | [`docs/`](docs/) | The method, the scene format, the simulator and the realistic scenes |
 | [`tests/`](tests/) | The test suite (`pytest`) |
+
+**On this page:** [How the pipeline works](#how-the-pipeline-works) · [Setup](#setup) · [Commands](#commands) · [Switching models](#switching-models) · [Reading a run folder](#reading-a-run-folder) · [Run modes](#run-modes)
 
 ## How the pipeline works
 
@@ -168,11 +172,11 @@ Two more runs stand beside the pair. The baseline is the same command with no `-
 
 `--scenes` names the folder of the scenes, in place of the one `config.yaml` records. A record whose scene or episode is not in the folder stops the command with one `error:` line and exit code 2, and nothing is written.
 
-A scene that carries its own acceptable regions keeps them, and the placeholder scenes are written with theirs. So after a change of the reference rules, generate the placeholder scenes again before rescoring, into their own folder or, as above, into another one that `--scenes` then names. This is how a run made before 9 October 2026 is brought to the regions of that day. With people at the target, a goal is now acceptable 0.5 to 1.2 m from the person the robot stands by: the last person of a waiting line, where it must not be ahead of them and has to face the way the line faces; the nearest member of a conversation group, outside the group's circle and on any side of it, facing the person asked for; and a person nobody is with, in front of them. The distances are those of "Where Should I Join? Robot Group Joining via Language-Guided Goal Prediction" (arXiv 2609.28467, 2026). A place or an object with nobody near keeps its region of 0.6 to 1.6 m. Section 7 of [`docs/scene_format.md`](docs/scene_format.md) has the rules in full.
+A scene that carries its own acceptable regions keeps them, and the placeholder scenes are written with theirs. So after a change of the reference rules, generate the placeholder scenes again before rescoring, into their own folder or, as above, into another one that `--scenes` then names. With people at the target, a goal is acceptable 0.5 to 1.2 m from the person the robot stands by: the last person of a waiting line, where it must not be ahead of them and has to face the way the line faces; the nearest member of a conversation group, outside the group's circle and on any side of it, facing the person asked for; and a person nobody is with, in front of them. The distances are those of "Where Should I Join? Robot Group Joining via Language-Guided Goal Prediction" (arXiv 2609.28467, 2026). A place or an object with nobody near keeps its region of 0.6 to 1.6 m. Section 7 of [`docs/scene_format.md`](docs/scene_format.md) has the rules in full.
 
 A region says where a goal is in place. Whether the robot can stand there is a component of `success` of its own: `in_region` and `reachable` are separate fields of a record's `score`. The scorer keeps the robot's centre 0.55 m from a person's, which is a person's radius of 0.25 m and the robot's of 0.30 m, the defaults. So where a region is measured from a person, the part of it nearer to them than about 0.55 m is `in_region` and cannot succeed. A count of poses by the distances alone takes that strip as well, and comes out higher there than a rescored run.
 
-That change left every picture of the placeholder set as it was, so the cached answers of the models still belong to the scenes generated again, with one exception. A goal request under `few_shot` or `few_shot_cot` shows the goal point of each worked example, and those points moved with the regions, so with the examples generated again such a request is a new one to the cache. Look at what the examples show before a few-shot run on them. A worked example's goal point is the grid point deepest inside its region. In the band round a conversation group that can be behind the person asked for, or across the group from them, while the reasoning text of those examples says to stand just outside the group, facing that person, and names no side. The examples generated before the change are no way round this: the goal points of their waiting lines and groups lie outside the new regions.
+A change of the reference rules leaves every picture of the placeholder set as it is, so the cached answers of the models still belong to the scenes generated again, with one exception. A goal request under `few_shot` or `few_shot_cot` shows the goal point of each worked example, and those points moved with the regions, so with the examples generated again such a request is a new one to the cache. Look at what the examples show before a few-shot run on them. A worked example's goal point is the grid point deepest inside its region. In the band round a conversation group that can be behind the person asked for, or across the group from them, while the reasoning text of those examples says to stand just outside the group, facing that person, and names no side. The examples generated before the change are no way round this: the goal points of their waiting lines and groups lie outside the new regions.
 
 ### Drive a robot among moving people
 
@@ -212,8 +216,8 @@ Two commands list what there is to choose from.
 
 | Provider | `provider` | Entries | Key in `.env` | State |
 |---|---|---|---|---|
-| Gemini | `gemini` | `gemini_fast`, `gemini_strong`, `gemini_pointing`; older models for comparison: `gemini3_flash`, `gemini31_flash_lite`, `gemini35_flash_lite`, `gemini36_flash` | `GEMINI_API_KEY` | Confirmed by a few live calls, on the flash model (`gemini_fast`) only. The key is paid. |
-| SoCLaaS | `openai_compatible` | the seventeen `soclaas_*` entries | `SOCLAAS_API_KEY` | The school's service for open-weight models, internal to the school. Confirmed by full runs on 2026-10-08. A key is allowed 90 requests a minute and has no spending cap. The prices are in the model table. |
+| Gemini | `gemini` | `gemini_fast`, `gemini_strong`, `gemini_pointing`; older models for comparison: `gemini3_flash`, `gemini31_flash_lite`, `gemini35_flash_lite`, `gemini36_flash` | `GEMINI_API_KEY` | Confirmed by live calls and full runs on the flash model (`gemini_fast`). The key is paid. |
+| SoCLaaS | `openai_compatible` | the seventeen `soclaas_*` entries | `SOCLAAS_API_KEY` | The school's gateway for open-weight models, which needs a school key. Confirmed by full runs on 2026-10-08. The prices are in the model table. |
 | OpenAI | `openai` | `openai_fast`, `openai_strong` | `OPENAI_API_KEY` | Built and tested offline, never called: there is no key. |
 | Claude | `anthropic` | `claude_opus55`, `claude_opus55_low`, `claude_sonnet55`, `claude_sonnet55_low`, `claude_haiku55`, `claude_haiku55_low`; older models for comparison: `claude_haiku45`, `claude_sonnet46_low`, `claude_sonnet5_low` | `ANTHROPIC_API_KEY` | Anthropic's own API, used for live runs. The key is paid. The three older models are paced at 25 requests a minute. The prices are in the model table. |
 | Mock | `mock` | `mock` | none | Answers the image centre. For plumbing runs and tests. |
@@ -232,7 +236,7 @@ A prompting strategy and the prompt texts are chosen per run, like a model.
 
 ```bash
 .venv/bin/python -m sgi.run --scenes data/placeholder/eval --model soclaas_qwen38 --strategy goal=few_shot_cot --name qwen38_few_shot_cot
-cp -r prompts my_prompts      # then edit the four files in it
+cp -r prompts my_prompts      # then edit the files in it
 .venv/bin/python -m sgi.run --scenes data/placeholder/eval --model soclaas_qwen38 --prompts my_prompts --name qwen38_my_prompts
 ```
 

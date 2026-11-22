@@ -1,5 +1,5 @@
 # Default configuration. Every stage uses the mock entry, so it runs without API keys.
-# The model IDs are candidates reported on 2026-10-07: confirm each with
+# Model IDs change over time: confirm each with
 # `python -m sgi.smoke --model <entry>` before using it for a reported number.
 models:
   mock:            {provider: mock, model: mock-centre}
@@ -29,7 +29,7 @@ models:
   #   gemma4:26b                 none only: every thinking level ended in a 502 after 60 s
   #   x-test-3                   none and low tried (low thinks); the others not tried
   #   qwen3-vl:32b               any name, and it never thinks
-  # max_requests_per_minute: the service allows 90 requests a minute per key. Everything that uses the key shares
+  # max_requests_per_minute: the pace for this service. Everything that uses the key shares
   # that, and runs started side by side each pace themselves: run them one after another, or lower the number.
   # price_*_per_mtok: US dollars per million tokens, from the gateway's model list; thinking is billed as output.
   soclaas_qwen38:        {<<: &soclaas {provider: openai_compatible, base_url: "https://soclaas-api.comp.nus.edu.sg/v1",
@@ -58,13 +58,13 @@ models:
                           price_input_per_mtok: 0.37, price_output_per_mtok: 1.25}
   soclaas_glm53_max:     {<<: *soclaas, model: x-test-1, reasoning_effort: max,
                           price_input_per_mtok: 0.37, price_output_per_mtok: 1.25}
-  soclaas_dsv41:         {<<: *soclaas, model: x-test-2, reasoning_effort: "none",     # DeepSeek V4.1 Flash 1017, a test deployment
+  soclaas_dsv41:         {<<: *soclaas, model: x-test-2, reasoning_effort: "none",     # DeepSeek V4.1 Flash 1017
                           price_input_per_mtok: 0.3, price_output_per_mtok: 1.2}
   soclaas_dsv41_low:     {<<: *soclaas, model: x-test-2, reasoning_effort: low,        # its levels: none, low, high, xhigh, max
                           price_input_per_mtok: 0.3, price_output_per_mtok: 1.2}
-  # x-test-3: Qwen 3.8 Flash Next (served as qwen3.8-flash-next), a test deployment, added on 2026-10-21.
-  # sgi.smoke --calibrate that day: median error 42.8 px in xy_1000 against 301.3 px in xy_pixel (the image centre:
-  # 179.8 px). Prices not read from the model list yet.
+  # x-test-3: Qwen 3.8 Flash Next (served as qwen3.8-flash-next).
+  # sgi.smoke --calibrate: median error 42.8 px in xy_1000 against 301.3 px in xy_pixel (the image centre:
+  # 179.8 px).
   soclaas_qwen38_next:     {<<: *soclaas, model: x-test-3, reasoning_effort: "none"}
   soclaas_qwen38_next_low: {<<: *soclaas, model: x-test-3, reasoning_effort: low}
   soclaas_gemma4:        {<<: *soclaas, model: "gemma4:26b", reasoning_effort: "none",

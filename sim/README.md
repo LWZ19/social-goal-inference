@@ -13,7 +13,7 @@ You need Linux with an NVIDIA GPU, and [Miniconda](https://docs.anaconda.com/min
 ### Step 1: clone the repository
 
 ```bash
-git clone git@github.com:LWZ19/social-goal-inference.git
+git clone https://github.com/LWZ19/social-goal-inference.git
 cd social-goal-inference
 ```
 
@@ -53,7 +53,7 @@ Open `.env` and fill in one key, on one line, with no spaces or quotes:
 ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-Claude Haiku (Anthropic) is what the results above used. Gemini, OpenAI or the school's SoCLaaS work too, each with its own line in `.env`.
+Claude Haiku (Anthropic) is what the example runs on this page used. Gemini, OpenAI or the school's SoCLaaS work too, each with its own line in `.env`.
 
 ### Step 5: run
 
@@ -165,9 +165,11 @@ Each picture below shows, from left to right, the image the model was given with
 
 ## Moving among people
 
-The goal is decided once, from one view. Spot plans its own way there and plans it again twice a second round the people near it, so it walks round a line or someone passing instead of stopping for them. It keeps clear of furniture by a margin. The pipeline can also be asked again every few seconds while Spot walks (`--requery`), for when the people have moved since it last looked.
+In this demo the goal is decided once, from one view. Spot plans its own way there and plans it again twice a second round the people near it, so it walks round a line or someone passing instead of stopping for them. It keeps clear of furniture by a margin. The pipeline can also be asked again every few seconds while Spot walks (`--requery`), for when the people have moved since it last looked.
 
 ![Spot planning round the end of a moving line](images/local_planner.jpg)
+
+The moving-line experiments go further. The robot asks the VLM once, tracks the people it named, and solves for its spot again every half second with no new VLM call (`POST /resolve`, `src/sgi/resolve.py`). They run through `sgi_habitat.experiment` and `sgi_habitat.experiment_oracle`, launched by `results/moving-lines/design-and-scoring/run_moving.py`, and are scored as in [`SCORING_STRICT.md`](../results/moving-lines/design-and-scoring/SCORING_STRICT.md).
 
 ## Each step by hand
 
