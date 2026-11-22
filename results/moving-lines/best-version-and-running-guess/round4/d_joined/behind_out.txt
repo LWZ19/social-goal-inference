@@ -1,6 +1,0 @@
-| Arm | re-solves while joined (sim) | last is behind the robot | of which not waiting | leaves preceded within 3 s by a last behind the robot |
-|---|---|---|---|---|
-| CT3F | 1661 | 0.006 | 0.80 | 1/14 |
-| CT4 | 712 | 0.083 | 0.10 | 5/15 |
-| W0 | 674 | 0.184 | 0.17 | 5/13 |
-| CT5 | 480 | 0.142 | 0.21 | 4/12 |

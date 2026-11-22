@@ -1,4 +1,4 @@
-"""I01 deliverable (1): solver-alone and people-blind standard-goal rows, six models (zero calls).
+"""Solver-alone and people-blind standard-goal rows, six models (zero calls).
 
 Reads runs and scenes only through research_harness. For every C record of the realistic arms (real, staffed,
 plain) of the new-wording runs (s21 Qwen con; s23 glm53, dsv41, haiku55, sonnet55_low, gemini38_low con) and the

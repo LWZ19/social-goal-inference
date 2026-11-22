@@ -1,4 +1,0 @@
-keys mine 2268 theirs 2268 common 2268
-per-record disagreements: none
-glm53 {'pairs': 252, 'goal_step new=False old=False': 104, 'goal_step new=False old=True': 7, 'goal_step new=True old=True': 134, 'both goal step': 134, 'same n people': 134, 'same SA': 127, 'same C': 111, 'goal_step new=True old=False': 7}
-dsv41 {'pairs': 252, 'goal_step new=False old=False': 88, 'goal_step new=False old=True': 13, 'goal_step new=True old=False': 7, 'goal_step new=True old=True': 144, 'both goal step': 144, 'same n people': 144, 'same SA': 132, 'same C': 112}

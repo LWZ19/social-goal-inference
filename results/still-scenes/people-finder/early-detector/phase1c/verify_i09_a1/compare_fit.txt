@@ -1,1 +1,0 @@
-rows with count differences: 0  max |median xy diff|: 0

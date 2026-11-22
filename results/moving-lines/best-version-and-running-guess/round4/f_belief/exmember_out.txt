@@ -1,4 +1,0 @@
-CT3F: non-waiter ticks counted as waiting 2322; bystander, named 1448 (0.62), ex-member 534 (0.23), bystander, not named 182 (0.08), walker, not named 119 (0.05), walker, named 39 (0.02); ex-member seconds to drop: median 2.6 (n 84)
-CT4: non-waiter ticks counted as waiting 3415; bystander, named 1453 (0.43), ex-member 1171 (0.34), walker, not named 592 (0.17), walker, named 129 (0.04), bystander, not named 70 (0.02); ex-member seconds to drop: median 4.4 (n 76)
-W0: non-waiter ticks counted as waiting 3412; bystander, named 1368 (0.40), ex-member 1345 (0.39), walker, not named 526 (0.15), walker, named 98 (0.03), bystander, not named 75 (0.02); ex-member seconds to drop: median 6.1 (n 66)
-CT5: non-waiter ticks counted as waiting 3213; ex-member 1337 (0.42), bystander, named 1242 (0.39), walker, not named 452 (0.14), walker, named 111 (0.03), bystander, not named 71 (0.02); ex-member seconds to drop: median 5.9 (n 63)

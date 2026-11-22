@@ -1,4 +1,4 @@
-"""The shared offline harness of the research track beyond the VLM-only pipeline (step 0). No model is called, no
+"""The shared offline harness of the analyses beyond the VLM-only pipeline. No model is called, no
 network used, and nothing is written.
 
 Two written lists beside this file say what may be read: research_runs.txt, the recorded runs (RUN_DIR=SCENES_DIR
@@ -91,7 +91,7 @@ FORBIDDEN = {
 HELD_OUT_SCENE = FORBIDDEN["a held-out scene (eval_16 to eval_19)"]
 # The recorded runs' config.yaml files name the development scene sets by the folder that held them when the runs
 # were made. In this repository those sets lie in data/dev_scenes/ (the dev-scenes-v1 release), one to one.
-RECORDED_SETS = ".superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/"
+RECORDED_SETS = "/keep/"
 DEV_SCENES = "data/dev_scenes/"
 SCENE_CACHE = 24                                   # scenes kept loaded, the least recently used dropped first
 
@@ -146,11 +146,11 @@ def guard_tree(folder):
 def relocated(recorded) -> str:
     """A scenes or examples folder as a run's config.yaml records it, as it lies in this repository."""
     text = str(recorded)
-    return DEV_SCENES + text[len(RECORDED_SETS):] if text.startswith(RECORDED_SETS) else text
+    return DEV_SCENES + text.split(RECORDED_SETS, 1)[1] if RECORDED_SETS in text else text
 
 
 def main_checkout(checkout: Path = CHECKOUT) -> Path:
-    """The repository root that holds the runs and the scenes (for a linked git worktree, its main repository's root)."""
+    """The repository root that holds the runs and the scenes (for a linked checkout, the main repository's root)."""
     dot_git = checkout / ".git"
     if dot_git.is_file():
         text = dot_git.read_text(encoding="utf-8").strip()

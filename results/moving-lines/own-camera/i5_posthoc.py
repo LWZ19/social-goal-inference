@@ -1,4 +1,4 @@
-"""Item 5, POST HOC DESCRIPTION (after i5_score_out.txt): the shape of the per-cell differences CTd - CT2 (strict and
+"""Added after the planned test (i5_score_out.txt): the shape of the per-cell differences CTd - CT2 (strict and
 primary): median, quartiles, and how many cells lose or gain more than 0.05. Zero calls; read-only."""
 import statistics
 import sys

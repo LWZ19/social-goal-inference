@@ -1,5 +1,0 @@
-raw comparison: 182 images; bit-identical boxes, scores and keypoints: 182/182
-images with a different box or pose count: 0 []
-over 2791 boxes and 994 pose sets: max |box coord diff| 0 px, max |score diff| 0, max |keypoint coord diff| 0 px, max |keypoint score diff| 0
-total boxes >= 0.05: verifier 2791, compute 2791; >= 0.25: verifier 599, compute 599
-runtime t_det+t_pose (s), no warm-up: verifier median 127.0 ms p90 226.2 ms; compute median 215.1 ms p90 401.8 ms (n 182)

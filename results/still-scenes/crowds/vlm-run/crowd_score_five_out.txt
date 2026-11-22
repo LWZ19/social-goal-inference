@@ -1,0 +1,143 @@
+Runs used (latest per model, seed and method):
+  claude_haiku55       seed0 C   156 records  20261117-220805_crowd_vlm_seed0_claude_haiku55_con
+  claude_haiku55       seed0 E   156 records  20261117-220531_crowd_vlm_seed0_claude_haiku55_fsc
+  claude_haiku55       seed0 R   156 records  20261117-220212_crowd_vlm_seed0_claude_haiku55_cot
+  claude_haiku55       seed1 C   150 records  20261117-220734_crowd_vlm_seed1_claude_haiku55_con
+  claude_haiku55       seed1 E   150 records  20261117-220513_crowd_vlm_seed1_claude_haiku55_fsc
+  claude_haiku55       seed1 R   150 records  20261117-220203_crowd_vlm_seed1_claude_haiku55_cot
+  claude_haiku55       seed2 C   152 records  20261117-220755_crowd_vlm_seed2_claude_haiku55_con
+  claude_haiku55       seed2 E   152 records  20261117-220523_crowd_vlm_seed2_claude_haiku55_fsc
+  claude_haiku55       seed2 R   152 records  20261117-220206_crowd_vlm_seed2_claude_haiku55_cot
+  claude_sonnet55_low  seed0 C   156 records  20261117-233908_crowd_vlm_seed0_claude_sonnet55_low_con
+  claude_sonnet55_low  seed0 E   156 records  20261117-233038_crowd_vlm_seed0_claude_sonnet55_low_fsc
+  claude_sonnet55_low  seed0 R   156 records  20261117-230250_crowd_vlm_seed0_claude_sonnet55_low_cot
+  claude_sonnet55_low  seed1 C   150 records  20261117-233701_crowd_vlm_seed1_claude_sonnet55_low_con
+  claude_sonnet55_low  seed1 E   150 records  20261117-232852_crowd_vlm_seed1_claude_sonnet55_low_fsc
+  claude_sonnet55_low  seed1 R   150 records  20261117-230246_crowd_vlm_seed1_claude_sonnet55_low_cot
+  claude_sonnet55_low  seed2 C   152 records  20261117-233928_crowd_vlm_seed2_claude_sonnet55_low_con
+  claude_sonnet55_low  seed2 E   152 records  20261117-233112_crowd_vlm_seed2_claude_sonnet55_low_fsc
+  claude_sonnet55_low  seed2 R   152 records  20261117-230250_crowd_vlm_seed2_claude_sonnet55_low_cot
+  gemini_fast          seed0 C   156 records  20261118-003626_crowd_vlm_seed0_gemini_fast_con
+  gemini_fast          seed0 E   156 records  20261117-235802_crowd_vlm_seed0_gemini_fast_fsc
+  gemini_fast          seed0 R   156 records  20261117-225932_crowd_vlm_seed0_gemini_fast_cot
+  gemini_fast          seed1 C   150 records  20261118-004209_crowd_vlm_seed1_gemini_fast_con
+  gemini_fast          seed1 E   150 records  20261117-235610_crowd_vlm_seed1_gemini_fast_fsc
+  gemini_fast          seed1 R   150 records  20261117-225926_crowd_vlm_seed1_gemini_fast_cot
+  gemini_fast          seed2 C   152 records  20261118-004731_crowd_vlm_seed2_gemini_fast_con
+  gemini_fast          seed2 E   152 records  20261118-000053_crowd_vlm_seed2_gemini_fast_fsc
+  gemini_fast          seed2 R   152 records  20261117-225930_crowd_vlm_seed2_gemini_fast_cot
+  soclaas_dsv41        seed0 C   156 records  20261117-221240_crowd_vlm_seed0_soclaas_dsv41_con
+  soclaas_dsv41        seed0 E   156 records  20261117-220526_crowd_vlm_seed0_soclaas_dsv41_fsc
+  soclaas_dsv41        seed0 R   156 records  20261117-220210_crowd_vlm_seed0_soclaas_dsv41_cot
+  soclaas_dsv41        seed1 C   150 records  20261117-220737_crowd_vlm_seed1_soclaas_dsv41_con
+  soclaas_dsv41        seed1 E   150 records  20261117-220514_crowd_vlm_seed1_soclaas_dsv41_fsc
+  soclaas_dsv41        seed1 R   150 records  20261117-220204_crowd_vlm_seed1_soclaas_dsv41_cot
+  soclaas_dsv41        seed2 C   152 records  20261117-221515_crowd_vlm_seed2_soclaas_dsv41_con
+  soclaas_dsv41        seed2 E   152 records  20261117-220527_crowd_vlm_seed2_soclaas_dsv41_fsc
+  soclaas_dsv41        seed2 R   152 records  20261117-220209_crowd_vlm_seed2_soclaas_dsv41_cot
+  soclaas_glm53        seed0 C   156 records  20261118-040954_crowd_vlm_seed0_soclaas_glm53_con
+  soclaas_glm53        seed0 E   156 records  20261118-010448_crowd_vlm_seed0_soclaas_glm53_fsc
+  soclaas_glm53        seed0 R   156 records  20261117-220210_crowd_vlm_seed0_soclaas_glm53_cot
+  soclaas_glm53        seed1 C   150 records  20261118-035047_crowd_vlm_seed1_soclaas_glm53_con
+  soclaas_glm53        seed1 E   150 records  20261118-010214_crowd_vlm_seed1_soclaas_glm53_fsc
+  soclaas_glm53        seed1 R   150 records  20261117-220158_crowd_vlm_seed1_soclaas_glm53_cot
+  soclaas_glm53        seed2 C   152 records  20261118-040929_crowd_vlm_seed2_soclaas_glm53_con
+  soclaas_glm53        seed2 E   152 records  20261118-012255_crowd_vlm_seed2_soclaas_glm53_fsc
+  soclaas_glm53        seed2 R   152 records  20261117-220205_crowd_vlm_seed2_soclaas_glm53_cot
+Finished models (every seed and method complete): claude_haiku55, claude_sonnet55_low, gemini_fast, soclaas_dsv41, soclaas_glm53
+Records that ended in a failed call (counted as failures): gemini_fast E 1, soclaas_glm53 C 25, soclaas_glm53 E 1
+
+== claude_haiku55: 29 layouts with variants ==
+  H1 pointing             variants minus bases: mean  -10.5 points, layouts up/down/level (3, 10, 16), p 0.0353
+  H1 pointing + examples  variants minus bases: mean   -8.4 points, layouts up/down/level (9, 8, 12), p 0.0630
+  H1 our method           variants minus bases: mean  -37.4 points, layouts up/down/level (4, 19, 6), p 0.0001
+  H2 our method minus pointing             on variants: mean  +28.3 points, layouts C better/worse/level (26, 1, 2), p 0.0000
+  H2 our method minus pointing + examples  on variants: mean  +26.2 points, layouts C better/worse/level (28, 1, 0), p 0.0000
+  H3 (our drop) minus (pointing drop): mean  -26.9 points, (9, 19, 1), p 0.0065
+
+== claude_sonnet55_low: 29 layouts with variants ==
+  H1 pointing             variants minus bases: mean   -7.3 points, layouts up/down/level (11, 11, 7), p 0.1506
+  H1 pointing + examples  variants minus bases: mean  -13.7 points, layouts up/down/level (9, 13, 7), p 0.0213
+  H1 our method           variants minus bases: mean  -57.3 points, layouts up/down/level (0, 22, 7), p 0.0000
+  H2 our method minus pointing             on variants: mean   +6.9 points, layouts C better/worse/level (16, 10, 3), p 0.1659
+  H2 our method minus pointing + examples  on variants: mean   -2.2 points, layouts C better/worse/level (11, 11, 7), p 0.6344
+  H3 (our drop) minus (pointing drop): mean  -50.0 points, (6, 21, 2), p 0.0000
+
+== gemini_fast: 29 layouts with variants ==
+  H1 pointing             variants minus bases: mean  -23.5 points, layouts up/down/level (6, 20, 3), p 0.0013
+  H1 pointing + examples  variants minus bases: mean  -20.4 points, layouts up/down/level (5, 21, 3), p 0.0019
+  H1 our method           variants minus bases: mean  -38.1 points, layouts up/down/level (0, 20, 9), p 0.0000
+  H2 our method minus pointing             on variants: mean  +21.6 points, layouts C better/worse/level (12, 10, 7), p 0.0111
+  H2 our method minus pointing + examples  on variants: mean  +11.6 points, layouts C better/worse/level (14, 10, 5), p 0.0404
+  H3 (our drop) minus (pointing drop): mean  -14.6 points, (9, 17, 3), p 0.1857
+
+== soclaas_dsv41: 29 layouts with variants ==
+  H1 pointing             variants minus bases: mean  -14.0 points, layouts up/down/level (11, 13, 5), p 0.0164
+  H1 pointing + examples  variants minus bases: mean   -8.7 points, layouts up/down/level (12, 12, 5), p 0.1662
+  H1 our method           variants minus bases: mean  -39.8 points, layouts up/down/level (4, 23, 2), p 0.0000
+  H2 our method minus pointing             on variants: mean  +15.6 points, layouts C better/worse/level (19, 6, 4), p 0.0007
+  H2 our method minus pointing + examples  on variants: mean   +5.1 points, layouts C better/worse/level (13, 12, 4), p 0.3667
+  H3 (our drop) minus (pointing drop): mean  -25.8 points, (6, 19, 4), p 0.0140
+
+== soclaas_glm53: 29 layouts with variants ==
+  H1 pointing             variants minus bases: mean  -18.4 points, layouts up/down/level (7, 16, 6), p 0.0131
+  H1 pointing + examples  variants minus bases: mean  -14.7 points, layouts up/down/level (9, 18, 2), p 0.0770
+  H1 our method           variants minus bases: mean  -18.3 points, layouts up/down/level (10, 12, 7), p 0.0377
+  H2 our method minus pointing             on variants: mean   +3.5 points, layouts C better/worse/level (11, 10, 8), p 0.5322
+  H2 our method minus pointing + examples  on variants: mean   -3.6 points, layouts C better/worse/level (6, 16, 7), p 0.5219
+  H3 (our drop) minus (pointing drop): mean   +0.1 points, (15, 10, 4), p 0.9949
+
+== pooled: 29 layouts with variants ==
+  H1 pointing             variants minus bases: mean  -14.8 points, layouts up/down/level (2, 25, 2), p 0.0000
+  H1 pointing + examples  variants minus bases: mean  -13.2 points, layouts up/down/level (4, 24, 1), p 0.0000
+  H1 our method           variants minus bases: mean  -38.2 points, layouts up/down/level (2, 27, 0), p 0.0000
+  H2 our method minus pointing             on variants: mean  +15.2 points, layouts C better/worse/level (24, 4, 1), p 0.0001
+  H2 our method minus pointing + examples  on variants: mean   +7.4 points, layouts C better/worse/level (18, 10, 1), p 0.0107
+  H3 (our drop) minus (pointing drop): mean  -23.4 points, (6, 23, 0), p 0.0002
+
+Success by family and level (records pooled over 5 models)
+                               n             pointing  pointing + examples           our method
+  A1                         120                25.0%                35.8%                16.7%
+  A2                         120                15.8%                27.5%                 5.0%
+  A3                         150                18.0%                25.3%                 0.7%
+  A4                         150                 7.3%                 4.7%                 0.7%
+  A5                         150                 9.3%                 6.0%                 0.0%
+  A6                         150                12.0%                18.0%                 0.7%
+  B1                         210                20.5%                26.7%                31.4%
+  C1                         200                27.0%                30.0%                44.0%
+  D2                         290                22.4%                35.9%                45.9%
+  D5                          80                48.8%                56.2%                73.8%
+  E1                         210                 7.1%                10.0%                40.0%
+  E2                         160                 5.0%                 6.2%                25.0%
+  base                       300                34.3%                41.7%                72.0%
+
+Success by family and situation (records pooled over 5 models)
+                               n             pointing  pointing + examples           our method
+  ('A behind the line', 'waiting_line')   840                14.2%                18.7%                 3.5%
+  ('B cluster of 3', 'audience')    20                15.0%                25.0%                25.0%
+  ('B cluster of 3', 'conversation_group')    70                44.3%                55.7%                78.6%
+  ('B cluster of 3', 'waiting_line')   120                 7.5%                10.0%                 5.0%
+  ('C second group', 'audience')    10                10.0%                10.0%                50.0%
+  ('C second group', 'conversation_group')    70                48.6%                58.6%                80.0%
+  ('C second group', 'waiting_line')   120                15.8%                15.0%                22.5%
+  ('D bystanders', 'audience')    50                 6.0%                24.0%                32.0%
+  ('D bystanders', 'conversation_group')   170                48.8%                60.0%                75.9%
+  ('D bystanders', 'waiting_line')   150                12.0%                23.3%                31.3%
+  ('E near the stop', 'conversation_group')    70                18.6%                30.0%                68.6%
+  ('E near the stop', 'waiting_line')   300                 3.3%                 3.3%                25.3%
+  ('no one added', 'audience')    60                13.3%                31.7%                60.0%
+  ('no one added', 'conversation_group')    90                63.3%                70.0%                88.9%
+  ('no one added', 'waiting_line')   150                25.3%                28.7%                66.7%
+
+Success by number of people added (records pooled over 5 models)
+                               n             pointing  pointing + examples           our method
+  0                          300                34.3%                41.7%                72.0%
+  1                         1210                11.7%                15.5%                12.6%
+  2                          290                22.4%                35.9%                45.9%
+  3                          410                23.7%                28.3%                37.6%
+  5                           80                48.8%                56.2%                73.8%
+  claude_haiku55       base: R 16/60 E 16/60 C 48/60  variant: R 46/398 E 54/398 C 130/398
+  claude_sonnet55_low  base: R 21/60 E 32/60 C 55/60  variant: R 83/398 E 103/398 C 90/398
+  gemini_fast          base: R 26/60 E 31/60 C 47/60  variant: R 89/398 E 115/398 C 128/398
+  soclaas_dsv41        base: R 18/60 E 22/60 C 42/60  variant: R 50/398 E 80/398 C 95/398
+  soclaas_glm53        base: R 22/60 E 24/60 C 24/60  variant: R 75/398 E 101/398 C 56/398

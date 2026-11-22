@@ -1,148 +1,81 @@
-# Results: start here
+# Results
 
-Every experiment behind the project, grouped by what it tests: the plan written before each run, the scoring script,
-its output, the notes, and the run logs. A person or an AI agent can explore it, re-check any number, and see how it
-was reached. For a plain-language overview with charts, open [`page/robot-stand.html`](page/robot-stand.html) in a
-browser.
+This folder holds the scoring scripts and stored outputs behind every number in the project talk. Slide numbers below
+refer to that talk, and B1 to B10 are its backup slides.
 
-## The question
+- **Pointing:** the VLM marks the spot in the picture. In the outputs it is `R`, or `E` when it is shown worked examples.
+- **Our method:** the VLM names the people and the rules, and the solver in `src/sgi/solver.py` finds the spot. In the
+  outputs it is `C`.
+- **Good spot (still scenes):** inside the region where a polite person would stand, facing within 45 degrees.
+- **Time in the right spot (moving lines):** the share of a 92 s run in which the robot is 0.5 to 1.2 m behind the last
+  person waiting, within 0.6 m of the line, facing the front and clear of everyone, or at the serving spot once it is
+  first. The exact rule is in [`SCORING_STRICT.md`](moving-lines/design-and-scoring/SCORING_STRICT.md).
 
-A robot gets a request ("get me a coffee") and a camera picture, and has to choose where to stand: join the end of a
-waiting line, wait behind a group at a lift, stop at the edge of a conversation, stay out of a photo. A vision-language
-model (VLM) reads the picture. Two ways of choosing are compared:
+## Still scenes
 
-- **Pointing:** the VLM marks the spot in the picture (strategies `cot`, and `few_shot_cot` with worked examples;
-  written R and E in the notes).
-- **Constraint method (ours):** the VLM names the target, the people and the rule, for example "come after people
-  4, 5 and 6"; a geometry solver (`src/sgi/solver.py`) finds the exact spot (strategy `con`; written C).
+| Slide | Finding | Script | Stored output |
+|---|---|---|---|
+| 12, 13 | 70 new scenes, six VLMs: pointing with examples 63.3%, ours 85.1%. Waiting lines 41% and 81%. Better on 42 scenes, worse on none | [`i12_score.py`](still-scenes/fresh-scenes/i12_score.py) | [`i12_score_six_out.txt`](still-scenes/fresh-scenes/i12_score_six_out.txt) |
+| 14 | At lines, all rules 77%, only "who to stand behind" 77%, people with no rules 0% | [`i01_baselines.py`](still-scenes/replay-harness/baselines/i01_baselines.py), [`tables.py`](still-scenes/replay-harness/baselines/tables.py) | [`tables.txt`](still-scenes/replay-harness/baselines/tables.txt) |
+| 15 | Held out: lift 54% to 88%, group photo 4% to 8% | [`held_out_count.py`](still-scenes/hidden-situations-and-more-models/held_out_count.py) | [`held_out_count_out.txt`](still-scenes/hidden-situations-and-more-models/held_out_count_out.txt) |
+| 15 | New situations: bent line 2% to 69%, machine 14% to 62% | [`e4_score.py`](still-scenes/new-situations/e4_score.py) | [`e4_score_six_out.txt`](still-scenes/new-situations/e4_score_six_out.txt) |
+| 16, B8 | 229 crowd scenes, five VLMs: ours 7.4 points ahead of pointing with examples, and drops 23.4 points more when people are added | [`crowd_score.py`](still-scenes/crowds/vlm-run/crowd_score.py) | [`crowd_score_five_out.txt`](still-scenes/crowds/vlm-run/crowd_score_five_out.txt) |
+| 16, B9 | Someone just behind a line: ours 3.5%, pointing with examples 18.7% | [`behind_line_split.py`](still-scenes/crowds/vlm-run/behind_line_split.py) | [`behind_line_split_out.txt`](still-scenes/crowds/vlm-run/behind_line_split_out.txt) |
+| B10 | Stricter joining check: 1.3 m or more behind the line, 7% to 52% on a new seed; no one added, unchanged at 81% | [`fresh_score.py`](still-scenes/crowds/fresh-seed3/fresh_score.py), [`gate_replay.py`](still-scenes/crowds/joining-gate/gate_replay.py) | [`fresh_score_out.txt`](still-scenes/crowds/fresh-seed3/fresh_score_out.txt), [`gate_replay_out.txt`](still-scenes/crowds/joining-gate/gate_replay_out.txt) |
+| B1 | Older and newer models: 12 of 13 pick more good spots with our method | [`layout_tests.py`](still-scenes/method-comparison/layout-level-tests/layout_tests.py) | [`layout_tests_out.txt`](still-scenes/method-comparison/layout-level-tests/layout_tests_out.txt) |
+| B2 | The VLM finds the right target in 95% of tries | [`target_found.py`](still-scenes/target-found/target_found.py) | [`target_found_out.txt`](still-scenes/target-found/target_found_out.txt) |
+| B3 | From an 8-frame tour, 839 of 840 tries pick a frame that shows the target | [`tour_score.py`](still-scenes/tour-grounding/tour_score.py) | [`tour_score_out.txt`](still-scenes/tour-grounding/tour_score_out.txt) |
+| B4 | Each answer takes 1.2 to 1.8 times as long as pointing | [`answer_time.py`](still-scenes/speed/answer_time.py) | [`answer_time_out.txt`](still-scenes/speed/answer_time_out.txt) |
+| B4, B7 | A full solve takes 130 ms | [`solver_time.py`](still-scenes/speed/solver_time.py) | [`solver_time_out.txt`](still-scenes/speed/solver_time_out.txt) |
+| B4 | A small people finder saves 21 to 25% of the time on still scenes | [`e2_score.py`](still-scenes/people-finder/e2_score.py) | [`e2_score_six_out.txt`](still-scenes/people-finder/e2_score_six_out.txt) |
+| B7 | The solver is right on all 229 crowd scenes with the true people and rules | | [`tables.txt`](still-scenes/crowds/score/tables.txt) |
+| B6, B7 | Learned replacements for the solver: 67% and 57%, against the solver's 76% | | [soft density](still-scenes/learned-models/soft-density/tables.txt), [flow model](still-scenes/learned-models/flow-model-pilot/tables.txt) |
+| B6 | Picking from numbered marks helps GLM by 22 good spots and costs DeepSeek 27 | | [GLM](still-scenes/numbered-spots/runs/m2_glm53/m2_out.txt), [DeepSeek](still-scenes/numbered-spots/runs/m2_dsv41/m2_out.txt) |
 
-Two test beds:
+The held-out and new situations (slide 15) and the crowd scenes use simpler renders of the layouts. The pictures on
+those slides are the same layouts redrawn in Blender. The 85.1% leaves out 20 GLM calls that failed. Counting them as
+misses gives 84.0%.
 
-1. **Still scenes:** realistic 3D scenes rendered in Blender, scored automatically against hand-written regions of
-   good spots (`src/sgi/gt/`).
-2. **Moving lines:** Habitat 3.0 with Spot and animated people (`sim/sgi_habitat/`). The front person is served
-   every 12-25 s, walks off and rejoins at the back. The score is the **share of time in the right spot** over a
-   92-second run: every second, is the robot 0.5-1.2 m behind the last person waiting, within 0.6 m of the line,
-   facing the front and at least 0.55 m from everyone (or, once first, within 0.6 m of the serving spot). See
-   [`moving-lines/design-and-scoring/`](moving-lines/design-and-scoring/).
+## Moving lines
 
-## Main findings
+| Slide | Finding | Script | Stored output |
+|---|---|---|---|
+| 18 | Claude Sonnet: decide once by pointing 6%, ask once and track 29% | [`i9_score.py`](moving-lines/school-models/i9_score.py) | [`i9_score_e3b_out.txt`](moving-lines/school-models/i9_score_e3b_out.txt) |
+| 18 | Asking again and again: 2 to 10%, with 22 to 29 calls against 4 | [`i10_score.py`](moving-lines/re-asking/i10_score.py) | [`i10_score_out.txt`](moving-lines/re-asking/i10_score_out.txt) |
+| 19, 21, 22 | Hold-place rule on 64 untuned layouts: Sonnet 25% to 47%, Gemini 21% to 37%, DeepSeek 21% to 31%, Haiku 20% to 28% | [`hold_extended_score.py`](moving-lines/hold-place/hold_extended_score.py) | [`hold_extended_score_out.txt`](moving-lines/hold-place/hold_extended_score_out.txt) |
+| 19, 22 | A robot given the ideal place every half second: 65% | [`ceiling_score.py`](moving-lines/hold-place/ceiling/ceiling_score.py) | [`ceiling_score_out.txt`](moving-lines/hold-place/ceiling/ceiling_score_out.txt) |
+| 22 | With the robot's own camera in place of exact positions | [`i5_score.py`](moving-lines/own-camera/i5_score.py) | [`i5_score_out.txt`](moving-lines/own-camera/i5_score_out.txt) |
+| B5 | Time closer than 0.55 m to someone: 2.3% for tracking, 7.1% and 10.2% for the others | [`bumps.py`](moving-lines/bumps/bumps.py) | [`bumps_out.txt`](moving-lines/bumps/bumps_out.txt) |
+| B5 | Cutting in, per second near the line: 14.5% and 13.7% | [`item6_cutin_exposure.py`](moving-lines/cut-ins-and-decomposition/item6_cutin_exposure.py) | [`item6_out.txt`](moving-lines/cut-ins-and-decomposition/item6_out.txt) |
+| B6 | A people finder in moving lines: DeepSeek 29% to 10% | [`x3_score.py`](moving-lines/people-finder/x3_score.py) | [`x3_score_out.txt`](moving-lines/people-finder/x3_score_out.txt) |
+| B6 | Walking before the answer arrives: 27 runs worse, 12 better | | [`results_fresh_sonnet55_low.md`](moving-lines/updating-vs-once/results_fresh_sonnet55_low.md) |
+| B6 | A rule-based fix for the front of the line: no change | [`front_score.py`](moving-lines/front-of-line-fix/front_score.py) | [`front_score_out.txt`](moving-lines/front-of-line-fix/front_score_out.txt) |
 
-| Finding | Numbers | Where |
-|---|---|---|
-| The constraint method picks good spots far more often than pointing, on every model | Claude Sonnet 5.5: 96% vs 71%; Claude Haiku 5.5: 95% vs 60%; Qwen 3.8: 90% vs 78% (of 252 tries each) | [`still-scenes/method-comparison/`](still-scenes/method-comparison/), [`../docs/results/`](../docs/results/) |
-| It holds on 70 new scenes never used in development, on all six models | e.g. Claude Haiku at waiting lines: 92 of 100 vs 4 of 100 | [`still-scenes/fresh-scenes/`](still-scenes/fresh-scenes/) |
-| It holds on situations kept hidden until the end, and on two new ones (a bent line, someone at a machine) | wins on all 12 layouts of both new tests over the six models together; GLM-5.3 is level on the machine test | [`still-scenes/hidden-situations-and-more-models/`](still-scenes/hidden-situations-and-more-models/), [`still-scenes/new-situations/`](still-scenes/new-situations/) |
-| The gap between methods is larger than the run-to-run noise | over three repeats, our method leads pointing by +65 to +93 good spots (of 252) on DeepSeek and +24 to +38 on GLM-5.3 | [`still-scenes/run-to-run-noise/`](still-scenes/run-to-run-noise/) |
-| A small people detector can replace one VLM question: faster on all six models, never less accurate | e.g. Qwen 107 → 83 s per answer | [`still-scenes/people-finder/`](still-scenes/people-finder/) |
-| Moving lines: asking once and re-solving the spot as people move beats deciding once | 11 of 13 models; Claude Sonnet 29% vs 6% of the time in the right spot | [`moving-lines/updating-vs-once/`](moving-lines/updating-vs-once/), [`moving-lines/school-models/`](moving-lines/school-models/) |
-| Re-solving beats asking the VLM again and again, with far fewer calls | Claude Sonnet 32% vs 2-10%, 4 calls vs 22-29 per run | [`moving-lines/re-asking/`](moving-lines/re-asking/) |
-| Remembering who to stand behind beats following the marked spot | 87 of 125 runs better | [`moving-lines/roles-vs-marked-spot/`](moving-lines/roles-vs-marked-spot/) |
-| Tracking people with the robot's own camera costs nothing measurable | mean change +0.4 points over 125 runs | [`moving-lines/own-camera/`](moving-lines/own-camera/) |
-| The updating robot comes close to people least often | within 0.55 m of someone about 2% of the time, against 7-10% for the other methods | [`moving-lines/bumps/`](moving-lines/bumps/) |
-| Holding the place once in line, and going straight to the serving spot when first, lifts the best version on every model | on 64 unseen layouts: Claude Sonnet 25% → 47%, Gemini 21% → 37%, DeepSeek 21% → 31%, Claude Haiku 20% → 28% | [`moving-lines/hold-place/`](moving-lines/hold-place/) |
-| Before that, the biggest loss was at the front of the line | a test robot told the serving spot gained 4-13 points; a simpler rule-based fix did not | [`moving-lines/test-robots/`](moving-lines/test-robots/), [`moving-lines/front-of-line-fix/`](moving-lines/front-of-line-fix/) |
+## Reading the outputs
 
-The full list, about 110 findings with their strength (conclusive, suggestive, quick probe) and their files, is
-[`overview/EVIDENCE_AUDIT.md`](overview/EVIDENCE_AUDIT.md); the final round of checks is summarised in
-[`overview/RESULTS_7NOV.md`](overview/RESULTS_7NOV.md). Every topic folder has its own `README.md`: the question, the
-result, the files, and how to reproduce it.
+The stored outputs are exactly as the scripts printed them, so they keep the labels used during the runs.
 
-## Layout
+- `R`, `E`, `C` are pointing, pointing with examples, and our method.
+- `R1` decides once by pointing. `C1` decides once with our method. `Rq0` and `Cq` ask the VLM again during the run.
+- `CT2` asks once and tracks the people. `CT3F` adds a check that people move with the line. `CT3FL` adds the hold-place
+  rule. `OW` is a robot given the ideal place.
+- "Frozen" or "bar" marks a scoring rule or pass mark fixed before the run. W/L/T is wins, losses and ties, paired by
+  layout, or by scene and seed.
 
-| Folder | What is in it |
-|---|---|
-| [`still-scenes/`](still-scenes/) | Everything on the still 3D scenes: the method comparison, fresh scenes, new and hidden situations, more models, the people finder, numbered spots, perception, the depth fix, facing, metrics and statistics, learned models, crowds, the confidence signal, combining models, speed, thinking levels, run-to-run noise, and the replay harness the analyses use. |
-| [`moving-lines/`](moving-lines/) | Everything in the simulator: design and scoring, updating against deciding once, re-asking, roles, the robot's own camera, the people finder, the school's models, bystanders, test robots, the test layouts, the best version, the front-of-line fix, bumps, cut-ins, failure analysis and open questions. |
-| [`overview/`](overview/) | The index of every finding, the summaries, and the second ideas round. |
-| [`page/`](page/) | The plain-language results page and its pictures. |
-| [`literature/`](literature/) | The related work found for both directions. |
-| [`_lib/`](_lib/) | `paths.py` (where everything is; scripts import it) and `mcompare.py` (paired comparison of simulator runs). |
-| [`logs/`](logs/) | The compressed run logs, data files and bulk (Git LFS). |
-| `data/` | Created when the logs are unpacked: the simulator run folders. Not committed. |
+## Re-running a script
 
-## Run logs and data
+The scripts read stored run logs and make no model calls. The logs are in the release
+[`run-logs-v1`](https://github.com/LWZ19/social-goal-inference/releases/tag/run-logs-v1). From the repository root:
 
 ```bash
-git lfs install && git lfs pull                    # fetches results/logs/*.tar.gz
-for a in moving-runs research-data bulk; do tar xzf results/logs/$a.tar.gz -C results; done
-tar xzf results/logs/still-runs.tar.gz              # still-scene runs -> runs/ at the repository root
+gh release download run-logs-v1 --repo LWZ19/social-goal-inference
+tar xzf run-logs.tar.gz            # unpacks runs/ and results/data/moving/
+PYTHONPATH=src python results/moving-lines/hold-place/hold_extended_score.py
 ```
 
-- **moving-runs:** every simulator run, unpacked to `results/data/moving/` (`runs`, `runs_i4`, `runs_i10`, ...). A run
-  folder (`<scenario>/seed<N>/<arm>/`) holds `episode.json` (the setup, the VLM answer and its timing, every re-solve
-  of the spot, and a per-second record of the robot, the line, the gap to the last person, the heading, whether it is
-  in the right spot, and cut-ins) and one folder per VLM question (`request.json`, `answer.json`, `inference.txt`).
-- **still-runs:** every still-scene run, unpacked to `runs/`: `config.yaml`, `prompts/` and `results.jsonl` (one line
-  per try, with the chosen spot, the score and why it passed or failed).
-- **research-data:** the data files of the analyses (json and jsonl), unpacked beside their notes in each topic folder.
-- **bulk:** generated layout candidates, test sandboxes and run-console logs, unpacked back into their topic folders.
-- **Development scenes:** the 89 scenes the October still-scene analyses replay (three realistic versions, three
-  development seeds, early placeholder scenes) are a release download, not in git:
-  `gh release download dev-scenes-v1 --repo LWZ19/social-goal-inference && tar xzf dev-scenes-v1.tar.gz` (unpacks to
-  `data/dev_scenes/`). Held-out scenes are not included.
-- **Not included:** camera pictures, depth images and videos (about 20 GB), and the scenes of the later tests (fresh
-  scenes, new situations). The stored scores do not need them.
+A few scripts also need the rendered scenes, which are too large to include: `fresh_score.py`, `gate_replay.py`,
+`i01_baselines.py`, `layout_tests.py` and `solver_time.py`. Their stored outputs are the record.
 
-Run scripts from the repository root with `PYTHONPATH=src python <script>`; they find every location through
-`results/_lib/paths.py`.
-
-## How to read the notes
-
-- **Each test was planned before its data were run** (`*_FROZEN.md`), with a pass rule ("bar"). Later changes are
-  numbered amendments that give their reason and say whether they came before the totals were seen. Results that
-  were not planned are marked post hoc or exploratory.
-- **Held-out scenes** (the lift and photo situations, the machine-use region, and the held-out seeds) were not used
-  while developing the method.
-- `*_score.py` are scorers, `*_out.txt` their outputs, `RESULTS*.md` / `results_*.md` the write-ups.
-- Comparisons are paired by scene and seed and reported as wins/losses/ties with a sign test, and as a mean
-  difference with a 95% lower bound.
-- The notes were cleaned for sharing (some planning text removed), and the original hash files were left out because
-  cleaned files no longer match them. Older notes may name the earlier folder names (item numbers such as `i10` or
-  `x1`); the glossary below maps them.
-- **Frozen hash checks:** many scripts check the sha256 of their frozen plan or code before running. Those values
-  refer to the original files; the copies here were cleaned (paths, wording), so those checks stop such scripts. The
-  stored outputs are the record, and every script that could run here was re-run against its stored output.
-- **Old folder names inside run settings and data:** run `config.yaml` files and some data files still name the
-  original folders of the development scene sets. Those sets are in `data/dev_scenes/`, and the replay harness
-  (`still-scenes/analysis-scripts/harness/`) maps the old names there.
-- **Simulator scenarios:** the generated scenario folders `sim/scenarios/{sweep,pilot3,confirm4,i11}` are not
-  committed; `moving-lines/test-layouts/select_{sweep,pilot,confirm,i11}.py` rebuild them byte for byte, so run those
-  first before re-running moving-line scripts that read the line's shape.
-
-## Glossary
-
-**Models** (run-folder names): `sonnet55_low` Claude Sonnet 5.5; `claude_haiku55` Claude Haiku 5.5; `gemini_fast`
-Gemini 3.8 Flash; `dsv41` DeepSeek V4.1 Flash; `soclaas_qwen38_low` Qwen 3.8; `soclaas_glm53` GLM-5.3-Flash; `x3`
-Qwen 3.8 Flash Next. The free models run on the school's model gateway. Older Claude and Gemini models are in
-`configs/default.yaml`.
-
-**Moving-line versions (arms):**
-
-| Arm | Meaning |
-|---|---|
-| `R1` / `C1` | Decide once: ask once (pointing / constraint method), walk to that spot, stay |
-| `CT` | Keep updating, first version: ask once, then re-solve the spot on tracked people with no further VLM call |
-| `CT2` | Improved updating: people who leave and rejoin, taking the place of the last person served, only stepping forward, the line's path |
-| `CT2-vac`, `CT2-rat`, ... | `CT2` with one part switched off |
-| `CT3` | `CT2` plus the bystander check: someone counts as waiting only if they step up with the line |
-| `CT3F` | Best version: `CT3` with the check on everyone behind a step, and re-finding the line from the target |
-| `CT3FT` | Test robot: `CT3F` told the true serving spot |
-| `CTo`, `CTt`, `CT0` | Test robots: told the true waiting people / the true serving spot; one re-solve then frozen |
-| `CT2f`, `CT3Ff` | The front-of-line fix on `CT2` / `CT3F` |
-| `CT4*` | A running probability of who is waiting, instead of rules |
-| `CTd` | Tracking with the robot's own camera (people detector and tracker) |
-| `CTe` | The detector's people given to the VLM instead of asking it who is there |
-| `CTs` | Re-solve only when the tracks have settled |
-| `CTv` | Re-solve on the first camera view instead of the floor map |
-| `CT2m`, `Rm` | Start walking while the VLM is still answering |
-| `RT`, `RTw` | Follow the VLM's marked spot with the tracked person nearest it, instead of the roles it named |
-| `Rq0`, `Cq` | Ask the VLM again after every answer / every 10 s |
-
-**Earlier item names** (in older notes): `i4` roles-vs-marked-spot; `i5` own-camera; `i9` school-models; `i10`
-re-asking; `i11` best-version-new-layouts; `i12` fresh-scenes; `i13`/`E4` new-situations; `x1` test-robots; `x2`
-bystanders/qwen; `x3` moving-lines/people-finder; `x4` run-to-run-noise; `x5` depth-fix/paid-models; `E2`
-still-scenes/people-finder; `E3` hidden-situations-and-more-models; `marks` numbered-spots; `group4`
-group-of-four-case; phase folders and `I01`-`I52` ideas of the October analyses are listed in
-[`still-scenes/overview/`](still-scenes/overview/).
-
+Three stored outputs were saved before the last runs finished or hold an extra check, so a re-run differs from them in
+rows the talk does not use: the Qwen rows of `i10_score.py`, one GLM line of `i9_score.py`, and a closeness section of
+`front_score.py`.

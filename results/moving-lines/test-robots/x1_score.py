@@ -1,10 +1,10 @@
-"""Extra X1 (X1_FROZEN.md): CT3FT (CT3F with the true counter point) against CT3F on four models' cached first
+"""CT3FT (CT3F with the true counter point) against CT3F on four models' cached first
 answers, both re-run together in runs_x1/<model>; pooled over models. Zero calls; read-only.
 
     .venv/bin/python results/moving-lines/test-robots/x1_score.py [--test]
     (--test reads the earlier DeepSeek pair: CT3FT in runs_ceiling4/dsv41, CT3F in runs_confirm4/dsv41)
 
-Measure: strict share from the first service at band top 1.2 m (round7/c_gaps.py's episode(), as ROUND7_D.md).
+Measure: strict share from the first service at band top 1.2 m (episode() of round7/c_gaps.py).
 """
 import math
 import statistics

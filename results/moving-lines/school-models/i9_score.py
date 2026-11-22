@@ -1,4 +1,4 @@
-"""Item 9 (I9_FROZEN.md): the moving headline (C1, R1, CT, CT2) on Qwen 3.8 and GLM-5.3, seeds 10-14, beside every other
+"""The moving headline (C1, R1, CT, CT2) on Qwen 3.8 and GLM-5.3, seeds 10-14, beside every other
 model's same 25 cells. Zero calls; read-only.
 
     .venv/bin/python results/moving-lines/school-models/i9_score.py          (92 s, the bar)
@@ -17,7 +17,7 @@ OTHERS = {"Sonnet 5.5": "sonnet55_low", "DeepSeek V4.1": "dsv41", "Haiku 5.5": "
           "Haiku 4.5": "claude_haiku45", "Gemini 3 Flash": "gemini3_flash", "Gemini 3.1 Flash Lite": "gemini31_flash_lite",
           "Gemini 3.5 Flash Lite": "gemini35_flash_lite", "Gemini 3.6 Flash": "gemini36_flash"}
 SEEDS = range(10, 15)
-# Amendments 1 and 3 (I9_FROZEN.md): arms that never produced an episode because the sim run timed out (blocked before
+# Arms that never produced an episode because the sim run timed out (blocked before
 # t=0 behind the previous episode's still-running request on the single-threaded service) after the last pass, listed
 # their own, so they are left out of both the bar's pairs and the latency label, and only counted.
 TIMEOUTS = Path(__file__).resolve().parent / "timeouts.txt"
@@ -30,8 +30,8 @@ def timeouts(d, arm):
     return sum(1 for r in rows if len(r) == 4 and r[0] == d and r[3] == arm and int(r[2]) in SEEDS)
 
 
-# Amendment 2 (I9_FROZEN.md): arms whose first answer had transient_retries > 0 (HTTP 429s while other calls shared
-# H9 and the latency label are also reported without the cells where CT2 or R1 is listed (a sensitivity; no bar).
+# Arms whose first answer had transient_retries > 0 (HTTP 429 responses) are listed in retried.txt; the bar and the
+# latency label are also reported without the cells where CT2 or R1 is listed (a sensitivity; no bar).
 RETRIED = Path(__file__).resolve().parent / "retried.txt"
 
 
@@ -54,7 +54,7 @@ def latency(eps, arm, seconds):
 
 def main():
     global RETRIED
-    if "--retried" in sys.argv:                      # amendment 2b: which retry list the sensitivity reads
+    if "--retried" in sys.argv:                      # which retry list the sensitivity reads
         RETRIED = Path(sys.argv[sys.argv.index("--retried") + 1])
     long = "--long" in sys.argv
     base, seconds = ("runs_i9long", 240.0) if long else ("runs", 92.0)
@@ -70,7 +70,7 @@ def main():
             continue
         m = {a: C.means(eps, a) for a in ("R1", "CT", "CT2")}
         nc, mc, late, errc = latency(eps, "CT2", seconds)
-        tout = 0 if long else timeouts(d, "CT2")         # amendment 3: counted, not added to the label
+        tout = 0 if long else timeouts(d, "CT2")         # counted, not added to the label
         _, mr, _, _ = latency(eps, "R1", seconds)
         r2, r1 = C.row("CT2 vs R1", C.pairs(eps, "CT2", "R1")), C.row("CT vs R1", C.pairs(eps, "CT", "R1"))
         print(f"| {name} | {m['R1'][1]:.2f} / {m['CT'][1]:.2f} / {m['CT2'][1]:.2f} | {m['R1'][2]:.2f} / {m['CT'][2]:.2f} / "

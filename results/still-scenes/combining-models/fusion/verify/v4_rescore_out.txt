@@ -1,6 +1,0 @@
-s19 glm53: records=252 success mismatches=0 target_correct mismatches=0 rescored any=78 maj=64 all=44 mean=62.00 (30s)
-s20 dsv41: records=252 success mismatches=0 target_correct mismatches=0 rescored any=79 maj=65 all=38 mean=60.67 (29s)
-s23 glm53: records=252 success mismatches=0 target_correct mismatches=0 rescored any=76 maj=58 all=36 mean=56.67 (29s)
-s23 dsv41: records=252 success mismatches=0 target_correct mismatches=0 rescored any=79 maj=67 all=39 mean=61.67 (31s)
-old rescored GLM+DS 6: any=83 >=3=78 >=4=56 all=27
-new rescored GLM+DS 6: any=84 >=3=71 >=4=59 all=21

@@ -1,1 +1,0 @@
-20 tiles -> crops_wrong_targets.png (15 person wrong targets + 5 place wrong targets with body mask within 15 px; C, realistic sets). Green = target body mask outline, red cross + box = model point and 5x5 lift window, yellow = nearest mask pixel.

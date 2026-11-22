@@ -1,9 +1,0 @@
-Qwen s21 C people identical to s19 same key: 143 / 144
-Qwen s21 C people identical to some s19 answer of same arm+scene: 144 / 144
-s19 qwen C people cache: 143 / 143
-s19 qwen C people-scene success 134 of 144
-s21 qwen C people-scene success 131 of 144
-qwen38_low s21: scene+trial groups with >1 people record 72, of which people answer identical 72; people cached 144/144
-haiku55 s23: scene+trial groups with >1 people record 72, of which people answer identical 72; people cached 75/146
-sonnet55_low s23: scene+trial groups with >1 people record 71, of which people answer identical 71; people cached 74/143
-gemini38_low s23: scene+trial groups with >1 people record 63, of which people answer identical 63; people cached 66/135

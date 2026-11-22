@@ -1,6 +1,0 @@
-qwen38_low {'wrong': 9, 'names a person (place/object scene)': 2}
-glm53 {'wrong': 37, 'names a person (place/object scene)': 7, '  ...staff': 1}
-dsv41 {'wrong': 20, 'names a person (place/object scene)': 3, '  ...a person waiting in line': 2}
-x3 {'wrong': 14, 'names a person (place/object scene)': 4, '  ...a person waiting in line': 1}
-gemini {'wrong': 38, 'names a person (place/object scene)': 29, '  ...a person waiting in line': 22}
-all {'wrong': 118, 'names a person (place/object scene)': 45, '  ...staff': 1, '  ...a person waiting in line': 25}

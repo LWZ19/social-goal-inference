@@ -1,6 +1,0 @@
-glm53 {'det': 161, 'vis': 168, 'det_amb': 2, 'vis_amb': 2, 'rec_any': 2, 'steps': 43, 'clusters': 24, 'multi': 19, 'same_people': 19, 'fresh_people_calls': 24}
-ornith15 {'det': 165, 'vis': 167, 'det_amb': 0, 'vis_amb': 0, 'rec_any': 0, 'steps': 42, 'clusters': 22, 'multi': 20, 'same_people': 20, 'fresh_people_calls': 22}
-qwen36_35 {'det': 172, 'vis': 173, 'det_amb': 0, 'vis_amb': 0, 'rec_any': 0, 'steps': 44, 'clusters': 23, 'multi': 21, 'same_people': 21, 'fresh_people_calls': 23}
-qwen38 {'det': 164, 'vis': 164, 'det_amb': 0, 'vis_amb': 0, 'rec_any': 0, 'steps': 42, 'clusters': 24, 'multi': 18, 'same_people': 18, 'fresh_people_calls': 24}
-qwen3vl {'det': 150, 'vis': 168, 'det_amb': 0, 'vis_amb': 0, 'rec_any': 0, 'steps': 42, 'clusters': 23, 'multi': 19, 'same_people': 19, 'fresh_people_calls': 23}
-ALL {'det': 812, 'vis': 840, 'det_amb': 2, 'vis_amb': 2, 'rec_any': 2, 'steps': 213, 'clusters': 116, 'multi': 97, 'same_people': 97, 'fresh_people_calls': 116}

@@ -1,11 +1,11 @@
-"""Audit item 3 (zero calls): CT0, CTo and CTt on seeds 0-2, scored under SCORING.md (frozen, primary) and
-SCORING_STRICT.md, with summarise_fresh.py's functions (in_line, measures, sign_p) imported unchanged.
+"""CT0, CTo and CTt on seeds 0-2 (zero calls), scored under the primary scoring and SCORING_STRICT.md,
+with summarise_fresh.py's functions (in_line, measures, sign_p) imported unchanged.
 
     python item3_ct0_cto_ctt.py > item3_out.txt
 
 Cells: the five seeds-0-2 scenarios the arms ran on, seeds 0, 1, 2, per model folder under results/data/moving/runs/.
 summarise_fresh.load() keeps only seeds >= 10, so episodes are loaded here (same glob, same JSON), seeds 0-2.
-Ties: |d| < 0.01 (the audit's rule). Every episode has 91 samples, so shares move in steps of 1/91 = 0.011 and the
+Ties: |d| < 0.01. Every episode has 91 samples, so shares move in steps of 1/91 = 0.011 and the
 0.01 rule gives the same W/L/T as summarise_fresh's exact ties (|d| < 1e-9); the script asserts this.
 """
 import json
@@ -19,7 +19,7 @@ import paths  # noqa: E402
 
 M = paths.MOVING_RUNS                    # run folders: M / "runs" / <model> / ...
 sys.path.insert(0, str(paths.DESIGN))
-from summarise_fresh import measures, sign_p  # noqa: E402  (frozen and strict scorings, unchanged)
+from summarise_fresh import measures, sign_p  # noqa: E402  (primary and strict scorings, unchanged)
 
 SCENES = ["cafe", "room_coffee_cart", "cafe_line2_moving", "cafe_line6_moving", "sweet_spot_line2_moving"]
 SEEDS = [0, 1, 2]

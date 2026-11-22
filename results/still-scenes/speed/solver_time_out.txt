@@ -1,0 +1,5 @@
+120 solves from 7 runs; grid 481 x 481 cells of 0.05 m
+whole solve, floor and ranking: median 130 ms, max 152 ms
+floor from depth alone: median 91 ms, max 104 ms
+ranking, whole minus floor: median 39 ms
+reachable cells: median 9240, max 25458

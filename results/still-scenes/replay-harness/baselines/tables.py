@@ -1,5 +1,5 @@
-"""Tables of I01 deliverable (1) from records.jsonl and re_records.jsonl (written by i01_baselines.py). No scene or
-run is read here. Prints and writes tables.txt beside this file."""
+"""Tables of the solver-alone and people-blind rows from records.jsonl and re_records.jsonl (written by
+i01_baselines.py). No scene or run is read here. Prints and writes tables.txt beside this file."""
 from __future__ import annotations
 
 import collections

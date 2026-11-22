@@ -1,1 +1,0 @@
-{"units": 520, "raster_exact": 520, "raster_maxdiff": 0.0, "raster_cells_diff": 0, "labels_ok": 520, "haslabel_ok": 520, "ext_same": 520, "joined_raster_exact": 520, "joined_label_ok": 520, "ch_diff": {}}

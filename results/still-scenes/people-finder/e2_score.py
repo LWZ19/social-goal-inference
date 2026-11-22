@@ -1,4 +1,4 @@
-"""E2 scorer (E2_FROZEN.md sections 5-6), zero calls.
+"""Scorer for the people-finder test, zero calls.
 
     PYTHONPATH= .venv/bin/python e2_score.py --people e2_people.json \
         --scenes run_scenes runs/e2_qwen38_low runs/e2_glm53 runs/e2_dsv41 [runs/e2_sonnet55_low]
@@ -95,7 +95,7 @@ def detector(people_path, scenes_dir):
     th = load_config().thresholds
     warm = [v['t_det_s'] + v['t_pose_s'] for v in doc['scenes'].values()
             if v.get('order', 1) > 0 and v.get('t_det_s') is not None and v.get('t_pose_s') is not None]
-    det_s = st.median(warm) if warm else 0.0596          # E1b's A1 warm time when the pass logged none
+    det_s = st.median(warm) if warm else 0.0596          # the warm time used when the pass logged none
     found = {'staff': [0, 0], 'other': [0, 0]}
     false, images = 0, 0
     for key, v in doc['scenes'].items():

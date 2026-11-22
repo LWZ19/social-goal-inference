@@ -1,1 +1,0 @@
-C2 development feasibility: 42 E-real scenes, 119 C00 people, scenes differing from eval_people.json: 0

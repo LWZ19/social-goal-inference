@@ -1,4 +1,0 @@
-I06 repair probe: R0 reproduction, arm 1b (noisy), model glm. Written 2026-10-18 07:13:07 +0800.
-scenes 168 (bases 15), draws 3360; each draw's e0 {l1, l2, xy 4 dp}, det_i and agree compared with I06 score/work/noisy_models_glm_seed*.jsonl
-draws with any mismatch: 0
-FULL REPRODUCTION: yes

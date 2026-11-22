@@ -1,14 +1,43 @@
-# SCORING_STRICT: a third scoring for the fresh seeds (frozen 2026-11-02 ~01:45, before any fresh-seed result)
+# How moving-line runs are scored
 
-Origin: post hoc, from the failure analysis of seeds 0-2 (results/moving-lines/failure-analysis/FAILURES.md): the frozen in-line test has no
-side check (38% of R1's in-line seconds on DeepSeek are beside the line), and the first-in-line tolerance (1.6 m)
-counts a robot standing about 1 m short of the serving spot, never served. Frozen here before any result on fresh
-seeds 10-19 is looked at; reported beside SCORING.md (primary, as frozen) and CT2_FROZEN.md's 0.6 m-first scoring.
+Each run lasts 92 s. Once a second, from the request to the end of the run, the simulator checks the robot against the
+line as it stands at that moment. **Time in the right spot** is the share of these samples that are in line under the
+rule below.
 
-A sample is **in line (strict)** when it is in line under SCORING.md and, in addition:
-- with someone ahead of the robot: the robot is within **0.6 m** of the queue's slot polyline (`side` <= 0.6 m; the
-  0.6 m of DESIGN.md's corridor; the sim's own membership corridor in code is 0.8 m, logged in DEVIATIONS 6);
-- with nobody ahead (first): within **0.6 m** of slot 0 (`to_slot0_m` <= 0.6), facing and clearance as in SCORING.md.
+## The line
 
-Everything else (sampling, episode measures, comparisons) is as in SCORING.md and the post hoc measures of Q9, Q10,
-Q12. Computed from the logged samples; no re-run.
+The line runs along the queue's slot path, from slot 0 (served next) backwards. A point's `along` is its distance along
+that path, and its `side` is its distance from it. The members are the people in the queue at that moment. A member is
+**ahead of the robot** if they joined the queue before the robot did. A served person leaves the queue, and if they come
+back they join again, so someone who rejoins after the robot joined is behind it.
+
+## In line
+
+**When someone is ahead of the robot**, let L be the member ahead of it who is farthest back along the line. The sample
+is in line when all of these hold:
+
+- the robot is not ahead of L along the line
+- the robot is 0.5 to 1.2 m from L
+- the robot is within 0.6 m of the line (`side` <= 0.6 m)
+- the robot's heading is within 45 degrees of facing up the line
+- the robot is at least 0.55 m from every person
+
+**When nobody is ahead of the robot**, the sample is in line when all of these hold:
+
+- the robot is within 0.6 m of slot 0
+- the robot faces within 45 degrees of the bearing to the serving point
+- the robot is at least 0.55 m from every person
+
+## Cutting in
+
+A sample counts as a cut-in when the robot is within 1.0 m of the line and more than 0.25 m ahead along it of a member
+who is ahead of it in queue order.
+
+## Comparing methods
+
+Methods are paired by scenario, seed and model. Results are reported as the mean share, as wins, losses and ties, and
+with a sign test.
+
+In the outputs this score is the `strict` share. The outputs also print two looser versions, `frozen` (no check on the
+distance from the line, and 1.6 m from the serving spot when first) and `first 0.6 m` (the same with 0.6 m when first).
+The talk uses the strict share.

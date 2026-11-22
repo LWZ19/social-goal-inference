@@ -1,12 +1,13 @@
-"""Layout-level exact sign-flip tests for the still-scene method comparison (items 1 and 2 of the audit fill).
+"""Layout-level exact sign-flip tests for the still-scene method comparison.
 
 No model or provider call: this reads results.jsonl and config.yaml of finished runs and nothing else, and imports
 no project code. Definitions are in README.md beside this file.
 
-Item 1, development still-scene headline, runs from the research whitelist (research_runs.txt) only:
+Part 1, development still-scene headline, runs from the whitelist (research_runs.txt) only:
   new wording: Qwen 3.8 low s21; GLM-5.3, DeepSeek V4.1, Haiku 5.5, Sonnet 5.5 low, Gemini 3.8 low s23.
   old wording: Qwen and GLM R and E from s16b, C from s19; DeepSeek R, E and C from s20 (never s20_held).
-Item 2, the seven older models of E3 (descriptive): runs s24_{variant}_{entry}_{method}, the folders run_static.sh
+Part 2, the seven older models of the hidden-situations run (descriptive): runs s24_{variant}_{entry}_{method},
+  the folders run_static.sh
   names; never hidden-situations-and-more-models/held_configs/ or any held run.
 
 Unit: the layout (scene id without its variant prefix; 14 layouts). Records are paired across methods by
@@ -33,7 +34,7 @@ RUNS = paths.RUNS
 WHITELIST = paths.HARNESS / 'research_runs.txt'
 # The runs' config.yaml files name the development scene sets by the folder that held them when the runs were made;
 # in this repository those sets lie in data/dev_scenes/ (as the harness's relocated()).
-RECORDED_SETS = '.superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/'
+RECORDED_SETS = '/keep/'
 DEV_SCENES = 'data/dev_scenes/'
 OLD_STATS = paths.STILL / 'metrics-and-statistics/stats-rerun/stats_output.txt'
 E3 = paths.STILL / 'hidden-situations-and-more-models'
@@ -49,25 +50,25 @@ FORBIDDEN = re.compile(r'(?:^|_)s(?:tage)?18|(?:^|_)s(?:tage)?20[a-z]*_held|held
                        r'(?:^|_)eval_1[6-9](?![0-9])', re.I)
 HELD_SCENE = re.compile(r'(?:^|_)eval_1[6-9](?![0-9])', re.I)
 
-# Item 1 models: (display name, short name in run names).
+# Part 1 models: (display name, short name in run names).
 NEW_WORDING = (('Qwen 3.8 low', 'qwen38_low', 's21'), ('GLM-5.3', 'glm53', 's23'), ('DeepSeek V4.1', 'dsv41', 's23'),
                ('Haiku 5.5', 'haiku55', 's23'), ('Sonnet 5.5 low', 'sonnet55_low', 's23'),
                ('Gemini 3.8 low', 'gemini38_low', 's23'))
 OLD_WORDING = (('Qwen 3.8 low', 'qwen38_low', {'R': 's16b', 'E': 's16b', 'C': 's19'}),
                ('GLM-5.3', 'glm53', {'R': 's16b', 'E': 's16b', 'C': 's19'}),
                ('DeepSeek V4.1', 'dsv41', {'R': 's20', 'E': 's20', 'C': 's20'}))
-# Totals (R, E, C of 252) the earlier report quotes: EVIDENCE_AUDIT.md A1 and A2, docs/results/README.md line 99.
+# Totals (R, E, C of 252) the earlier report quotes.
 REPORT_TOTALS = {('new', 'Qwen 3.8 low'): (179, 196, 228), ('new', 'GLM-5.3'): (132, 123, 170),
                  ('new', 'DeepSeek V4.1'): (120, 126, 185), ('new', 'Haiku 5.5'): (151, 148, 240),
                  ('new', 'Sonnet 5.5 low'): (178, 178, 242), ('new', 'Gemini 3.8 low'): (164, 173, 214),
                  ('old', 'Qwen 3.8 low'): (175, 214, 234), ('old', 'GLM-5.3'): (129, 145, 186),
                  ('old', 'DeepSeek V4.1'): (113, 120, 182)}
-# Item 2 models: (display name as results_all_out.txt prints it, E3 entry name).
+# Part 2 models: (display name as results_all_out.txt prints it, entry name in the hidden-situations run).
 E3_MODELS = (('Gemini 3 Flash', 'gemini3_flash'), ('Gemini 3.1 Flash Lite', 'gemini31_flash_lite'),
              ('Gemini 3.5 Flash Lite', 'gemini35_flash_lite'), ('Gemini 3.6 Flash', 'gemini36_flash'),
              ('Claude Haiku 4.5', 'claude_haiku45'), ('Claude Sonnet 4.6', 'claude_sonnet46_low'),
              ('Claude Sonnet 5', 'claude_sonnet5_low'))
-# The three current models results_all_out.txt also lists, checked against the s23 runs of item 1.
+# The three current models results_all_out.txt also lists, checked against the s23 runs of part 1.
 E3_CURRENT = (('Claude Sonnet 5.5', 'Sonnet 5.5 low'), ('Claude Haiku 5.5', 'Haiku 5.5'),
               ('Gemini 3.8 Flash', 'Gemini 3.8 low'))
 
@@ -81,7 +82,7 @@ def say(s=''):
 
 def relocated(recorded):
     text = str(recorded)
-    return DEV_SCENES + text[len(RECORDED_SETS):] if text.startswith(RECORDED_SETS) else text
+    return DEV_SCENES + text.split(RECORDED_SETS, 1)[1] if RECORDED_SETS in text else text
 
 
 def guard(text):

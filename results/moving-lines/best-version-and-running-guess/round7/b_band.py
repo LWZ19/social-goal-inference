@@ -1,4 +1,4 @@
-"""Round 7 part B (ROUND7_B.md), DESCRIPTIVE: strict share in line from the first service at band tops 1.2 m (frozen)
+"""Descriptive: strict share in line from the first service at band tops 1.2 m (as scored)
 and 1.5 m (the sim's JOIN_GAP_M top), from the logged samples. Zero calls; read-only.
 
     .venv/bin/python round7/b_band.py SELECTION_JSON RUN_ROOT ARM [ARM ...] \
@@ -23,7 +23,7 @@ TIE = 0.01
 
 
 def strict_at(x, top):
-    """SCORING.md + SCORING_STRICT.md's test on one logged sample, with the band's top raised to `top`.
+    """The primary and strict scorings' test on one logged sample, with the band's top raised to `top`.
     At 1.2 it is the sim's own logged flag: gap_m is rounded to 1 mm, so a logged 1.2 can be a failed 1.2004.
     Above 1.2 a sample also passes when every other condition holds and 1.2 <= gap_m <= top."""
     if in_line(x, "strict") or top <= 1.2 or x["ahead"] < 1:

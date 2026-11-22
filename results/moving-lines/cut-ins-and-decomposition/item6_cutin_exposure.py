@@ -1,14 +1,15 @@
-"""Audit item 6 (zero calls): cut-ins normalised by exposure, from the logged 1-Hz samples.
+"""Cut-ins normalised by exposure, from the logged 1-Hz samples (zero calls).
 
     python item6_cutin_exposure.py > item6_out.txt            # tables
     python item6_cutin_exposure.py --cells > item6_cells_out.txt   # plus every cell's counts
 
 Definitions (README.md):
-- exposure  = samples with side <= 1.0 m (the robot within 1 m of the line's axis; SCORING.md's cut-in needs it);
+- exposure  = samples with side <= 1.0 m (the robot within 1 m of the line's axis; the primary scoring's cut-in
+  needs it);
 - cut-ins   = samples with cut_in true (= summarise_fresh.measures(e)["cut"], asserted);
 - rate      = cut-ins / exposure, undefined when exposure is 0.
 Paired by cell (model, scenario, seed). Sign tests use summarise_fresh.sign_p (exact, two-sided, untied pairs).
-Counts are integers, so a tie is an equal count. Rate ties: |d| < 0.01 (the audit's rule), exact ties given beside it.
+Counts are integers, so a tie is an equal count. Rate ties: |d| < 0.01, exact ties given beside it.
 """
 import json
 import statistics

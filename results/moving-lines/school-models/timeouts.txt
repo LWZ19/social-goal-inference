@@ -1,1 +1,0 @@
-# arms still timed out after pass 3 (the last), one per line: <run dir> <scenario> <seed> <arm>

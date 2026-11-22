@@ -1,5 +1,0 @@
-convlm people: pairs 19 tok/s 125.7 vs 65.4 x1.92; qwen36 more tokens in 16/19
-convlm constraints: pairs 38 tok/s 123.3 vs 68.7 x1.79; qwen36 more tokens in 24/38
-conorc constraints: pairs 38 tok/s 122.8 vs 68.1 x1.80; qwen36 more tokens in 30/38
-qwen36_35 convlm goal step, both calls fresh: n 23 median 5.87
-qwen38 convlm goal step, both calls fresh: n 24 median 9.3

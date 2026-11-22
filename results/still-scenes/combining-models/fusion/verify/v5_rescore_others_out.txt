@@ -1,5 +1,0 @@
-s21 qwen38_low: records=252 success mismatches=0 target_correct mismatches=0 rescored any=83 maj=80 all=65 mean=76.00 (35s)
-s23 haiku55: records=252 success mismatches=0 target_correct mismatches=0 rescored any=83 maj=82 all=75 mean=80.00 (29s)
-s23 sonnet55_low: records=252 success mismatches=0 target_correct mismatches=0 rescored any=84 maj=82 all=76 mean=80.67 (29s)
-s23 gemini38_low: records=252 success mismatches=0 target_correct mismatches=0 rescored any=74 maj=71 all=69 mean=71.33 (29s)
-s19 qwen38_low: records=252 success mismatches=0 target_correct mismatches=0 rescored any=84 maj=80 all=70 mean=78.00 (29s)

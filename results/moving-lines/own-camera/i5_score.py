@@ -1,4 +1,4 @@
-"""Item 5 (I5_FROZEN.md): CTd (people tracked from the robot's own camera) against CT2 (the sim's true positions) on
+"""CTd (people tracked from the robot's own camera) against CT2 (the sim's true positions) on
 the fresh headline cells: non-inferiority. Zero calls; read-only.
 
     .venv/bin/python results/moving-lines/own-camera/i5_score.py
@@ -13,7 +13,7 @@ import mcompare as C  # noqa: E402
 from summarise_fresh import tracking  # noqa: E402
 
 MARGIN = -0.05
-# Both arms are re-run, cache-only, at the current code into runs_i5/<model> (I5_FROZEN.md); the earlier episodes in
+# Both arms are re-run, cache-only, at the current code into runs_i5/<model>; the earlier episodes in
 # runs/<model> are read only for the repeat check. --test reads the earlier runs instead (old data, 30 cells).
 POOLED = {"Sonnet 5.5": ("sonnet55_low", range(10, 20)), "DeepSeek V4.1": ("dsv41", range(10, 15)),
           "Haiku 5.5": ("claude_haiku55", range(10, 15)), "Gemini 3.8": ("gemini_fast", range(10, 15))}

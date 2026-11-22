@@ -1,6 +1,0 @@
-POST HOC verifier: classes {'A': 16, 'B': 9, 'C': 4, 'D': 15}; total 44
-A: second box on a matched staff member 7, paired with a staff miss 9; scores 0.41-0.89
-B: hidden person projects into the picture 9/9; roles Counter({'staff': 9})
-C: distance to nearest hidden person [0.521, 0.544, 0.604, 0.612]
-D: distance to every true person 3.24-4.45 m; scores 0.25-0.53, median 0.29; rows {'eval_05': 5, 'eval_08': 1, 'eval_10': 1, 'eval_11': 3, 'eval_01': 4, 'eval_07': 1}
-sensitivity: without A 0.154; without A,B 0.104; without A,B,C 0.082 per image

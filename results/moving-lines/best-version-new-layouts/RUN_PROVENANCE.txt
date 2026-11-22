@@ -1,2 +1,0 @@
-17:38 queued (fill/queue/j4_i11.sh): the frozen block unchanged; starts after item 9's GLM part.
-19:03 sweep_report.py i11_candidates/ added before select_i11.py: the frozen block omits it, and select_i11.py reads i11_candidates/report.json, which only sweep_report.py writes (zero calls, scenario files only). The 900 candidates drawn at 18:56 are reused.

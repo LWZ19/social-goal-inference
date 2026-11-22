@@ -1,7 +1,7 @@
 """How close the robot came to people, per arm, from the per-second samples of every fresh-seed episode (seed >= 10).
 
 nearest_m is the floor distance from the robot's centre to the nearest person's centre (sim/sgi_habitat/experiment.py).
-Below 0.55 m is SCORING.md's clearance limit; below 0.3 m the bodies would overlap (a bump). Zero calls.
+Below 0.55 m is the primary scoring's clearance limit; below 0.3 m the bodies would overlap (a bump). Zero calls.
     .venv/bin/python results/moving-lines/bumps/bumps.py   (reads the run folders in results/data/moving/)"""
 import collections, glob, json, sys
 from pathlib import Path

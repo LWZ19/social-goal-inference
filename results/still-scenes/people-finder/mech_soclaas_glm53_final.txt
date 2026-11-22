@@ -1,9 +1,0 @@
-meta: model soclaas_glm53, git d50a7b3, diff e3b0c442, people 7d3693c5, dry False
-record lines 382; distinct units 160
-latest row with vlm_error (left out of every arm): 11
-left-out units by row type: {'conversation_group': 8, 'waiting_line': 3}
-clean units 149 | people-matter among them 143
-arm status: {('A0', 'ok'): 143, ('A0b', 'ok'): 143, ('D', 'ok'): 143}
-calls listed per arm: {('A0', 4): 143, ('A0b', 4): 143, ('D', 3): 143}
-orders: {('A0', 'D', 'A0b'): 53, ('D', 'A0b', 'A0'): 44, ('A0b', 'A0', 'D'): 46}
-plan status: {'ok': 160}

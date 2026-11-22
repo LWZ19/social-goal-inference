@@ -1,2 +1,0 @@
-13:37 amendment 1: the first RTw run (runs/<model>, Sonnet only, 23 complete episodes) stopped by the run; 2 partial episode folders without episode.json removed. It stays as a repeat check. The judged run, CT2 + RTw in runs_i4/<model>, starts now.
-14:17 paused by the run for ~25 min to free GPU memory for item 12's re-render (2 partial episode folders removed). Cells finished before the pause have both arms from the same invocation; a cell split by the pause has its two arms under slightly different load. Resumes with run_i4.sh, which skips finished episodes.
