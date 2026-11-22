@@ -1,4 +1,4 @@
-"""Run harness (spec sections 8, 9, 10 and 13): runs the pipeline over a folder of scenes and scores it.
+"""Run harness: runs the pipeline over a folder of scenes and scores it.
 
     python -m sgi.run --scenes DIR [--config PATH] [--model ENTRY] [--stage-model STAGE=ENTRY ...]
                       [--strategy STAGE=NAME ...] [--prompts DIR] --name NAME
@@ -16,8 +16,8 @@ line printed gives the success rate, the model calls made, how many of them the 
 entries used give prices, about what the answers cost. Ground truth stays on this side: the harness selects
 the in-context examples, puts a ground-truth-derived value in place of a stage's output where the run mode
 says so, and scores every goal. Stage code never sees ground truth. With run.grounding_source: tour the plan
-is made on the scene's tour and every navigation subtask is then located in the observation (spec 3.7).
-With run.goal: constraints the goal is placed by the constraint method (its design, section 2): a record then
+is made on the scene's tour and every navigation subtask is then located in the observation.
+With run.goal: constraints the goal is placed by the constraint method: a record then
 also holds the people with their numbers, what the solver made of each constraint, the runners-up and the
 solver's note, so that it can be solved again without a model call. Under run.people: oracle the people of
 that method are those of ground truth, which this side gives it. A record's measures then also hold, against
@@ -78,9 +78,9 @@ _Read = Callable[[dict], Any]                      # a record's value for one co
 _UNLABELLED = "unlabelled"
 _LABEL_KEYS = ("request_type", "situation")        # groupings read from a record's labels
 _FACTOR_KEYS = ("density", "group_size", "bystanders", "other_groups", "view_angle_deg")     # and from its factors
-_GROUP_SIZE_BINS = ((0, "0"), (2, "1-2"), (5, "3-5"), (10, "6-10"))     # spec 13: the largest size in each bin
+_GROUP_SIZE_BINS = ((0, "0"), (2, "1-2"), (5, "3-5"), (10, "6-10"))     # the largest size in each bin
 _GROUP_SIZE_BEYOND = "11+"
-_VIEW_ANGLE_SPLIT_DEG = 30.0                       # spec 13: up to 30 degrees, and above
+_VIEW_ANGLE_SPLIT_DEG = 30.0                       # up to 30 degrees, and above
 _VIEW_ANGLE_DECIMALS = 3                           # a view of exactly 30 degrees keeps its bin through float noise
 _SCORE_COLUMNS = (("success_rate", "success"), ("target_correct_rate", "target_correct"),
                   ("reachable_rate", "reachable"), ("in_region_rate", "in_region"), ("heading_ok_rate", "heading_ok"),
@@ -90,7 +90,7 @@ _MEASURE_COLUMNS = (("context_missed_rate", "context_missed"), ("context_unneces
                     ("plan_exact_rate", "plan_exact"), ("navigate_recall", "navigate_recall"),
                     ("later_subtask_hit_rate", "later_subtask_hit_target"),
                     ("tour_frame_accuracy", "tour_frame_correct"), ("latency_s", "latency_s"))
-# The measures of the constraint method (its design, section 9): the name each has in a record and as a column.
+# The measures of the constraint method: the name each has in a record and as a column.
 _METHOD_MEASURES = ("people_found_share", "people_unmatched", "members_precision", "members_recall",
                     "constraints_unusable", "exclusions_broken")
 _TURN_SITUATION = "waiting_line"                   # in its reference the group at the target waits its turn there
@@ -102,7 +102,7 @@ _FAILURE_STATUSES = ("no_target", "lift_failed", "parse_failed")
 _NO_ANSWER = "vlm_error"                           # no model answer was obtained: kept out of every rate
 _REASONED_EXAMPLES = "few_shot_cot"                # the goal strategy whose examples carry their rationale
 _LOOK_AT_MODE = "vlm_look_at"                      # the heading mode whose answers carry a look_at_point
-_LOOK_AHEAD_M = 1.0                                # spec 8: how far along a yaw heading an example looks
+_LOOK_AHEAD_M = 1.0                                # how far along a yaw heading an example looks
 _UNGROUNDED, _UNMATCHED = "ungrounded", "unmatched"     # what a navigate subtask's target matched when it is no target
 _RECORDED_SETTINGS = ("grounding", "context_check", "goal", "people", "constraints", "grounding_source", "heading_mode")
 _EXAMPLE_STRATEGIES = ("few_shot", "few_shot_cot")      # the goal strategies that show in-context examples
@@ -126,7 +126,7 @@ def _look_at_xy(region: Region) -> tuple[float, float]:
 
 def _worked_example(observation: ObservationData, truth: GroundTruth, et: EpisodeTruth, request: str,
                     cfg: Config) -> Example | None:
-    """The episode as a worked example for the goal stage, or None when it is not eligible (spec 8).
+    """The episode as a worked example for the goal stage, or None when it is not eligible.
 
     The example answers for the episode's first target: the image is marked at its projected anchor and the
     goal is the projected representative point of its first acceptable region."""
@@ -158,7 +158,7 @@ def _select_examples(example_scenes: Sequence[Path], eval_scene_ids: set[str], n
                      cfg: Config) -> tuple[list[tuple[str, Example]], list[str]]:
     """What `select_examples` selects, and the situations that need an example and have no eligible one: those
     of `needed` that are development situations and not left out, in the order of the config. They are logged
-    in one warning here, and the selection is made without them (spec 8)."""
+    in one warning here, and the selection is made without them."""
     run = cfg.run
     candidates: dict[str, list[tuple[str, Example]]] = {}
     for folder in sorted(example_scenes):
@@ -229,7 +229,7 @@ def _lift_point(observation: ObservationData, point: Point,
 
 
 class OracleGoalInferrer:
-    """The goal a perfect Stage 3 would mark (spec 9): the region's representative point, taken through the
+    """The goal a perfect Stage 3 would mark: the region's representative point, taken through the
     path a model's point takes, with the heading the region allows."""
 
     def __init__(self, region: Region, th: Thresholds):
@@ -254,7 +254,7 @@ class OracleGoalInferrer:
 
 
 class OraclePeople:
-    """The `oracle` people source of the constraint method (its design, section 4): the people of ground truth
+    """The `oracle` people source of the constraint method: the people of ground truth
     that pass the visibility rule of the first spec, section 4, in the order of ground truth, with their true
     position and heading. A person's `pixel` is the projection of the point `person_mark_height_m` above their
     position, and there is no label. No model is asked.
@@ -301,7 +301,7 @@ def _matched(subtask: Subtask, observation: ObservationData, truth: GroundTruth,
 
 
 def _given_context_check(mode: str, et: EpisodeTruth, chosen: str | None) -> ContextCheck | None:
-    """The context check the harness passes in place of the model's (spec 9); None where the model is asked."""
+    """The context check the harness passes in place of the model's; None where the model is asked."""
     if mode == "vlm":
         return None
     people_matter = reference_people_matter(et, chosen) if mode == "oracle" else mode == "always_yes"
@@ -310,7 +310,7 @@ def _given_context_check(mode: str, et: EpisodeTruth, chosen: str | None) -> Con
 
 def _given_inferrer(run: RunConfig, pipeline: Pipeline, truth: GroundTruth, ep: EpisodeGT, chosen: str | None,
                     th: Thresholds, trial: int) -> GoalInferrer | None:
-    """The inferrer the harness passes in place of the pipeline's own (spec 9); None where the pipeline builds
+    """The inferrer the harness passes in place of the pipeline's own; None where the pipeline builds
     the one `run.goal` names, with its own trial.
 
     Under `goal: constraints` with `people: oracle` it is the pipeline's constraint inferrer on the people of
@@ -327,14 +327,14 @@ def _given_inferrer(run: RunConfig, pipeline: Pipeline, truth: GroundTruth, ep: 
 
 
 def _require_tour(inputs: SceneInputs, cfg: Config) -> None:
-    """Raise a SceneError naming the scene when the run grounds on the tour and the scene has none (spec 3.7)."""
+    """Raise a SceneError naming the scene when the run grounds on the tour and the scene has none."""
     if cfg.run.grounding_source == "tour" and not inputs.tour:
         raise SceneError(f"{inputs.scene_id}: tour: run.grounding_source is tour and the scene has no tour")
 
 
 @dataclass(frozen=True)
 class _TourGrounding:
-    """Tour grounding of one episode (spec 3.7): the plan made on the tour and what locate found for it."""
+    """Tour grounding of one episode: the plan made on the tour and what locate found for it."""
     outcome: PlanOutcome                           # of the plan call; it lists the frames shown whatever its status
     plan: Plan | None                              # the plan with every point locate found; None for a failed plan
     locations: dict[int, Location]                 # by subtask index: the valid answers of locate
@@ -348,7 +348,7 @@ def _tour_grounding(pipeline: Pipeline, inputs: SceneInputs, episode: EpisodeInp
 
     A null answer of locate is a miss: its subtask keeps no point. A locate call that brought no valid answer
     ends the episode with the status of that call, and no later subtask is located: a bad answer is never
-    counted as "not in view" (spec 2). The points found before it stay in the plan.
+    counted as "not in view". The points found before it stay in the plan.
     """
     outcome = pipeline.plan(episode.request, episode.context, tour=inputs.tour, trial=trial)
     plan = outcome.plan
@@ -374,7 +374,7 @@ def _tour_grounding(pipeline: Pipeline, inputs: SceneInputs, episode: EpisodeInp
 
 
 def _tour_record(grounding: _TourGrounding, inputs: SceneInputs, truth: GroundTruth, ep: EpisodeGT) -> dict:
-    """The `tour` entry of a tour-mode record (spec 3.7 and 10).
+    """The `tour` entry of a tour-mode record.
 
     `shown` holds the original indices of the frames Stage 1 saw, `chosen` the frame it gave the first
     navigation subtask, `reference_frames` the frames that show a target of the episode, and
@@ -441,7 +441,7 @@ def _exclusions_broken(result: GoalResult) -> int:
 
 def _method_measures(result: GoalResult, visible: Sequence[Person], turn_group: str | None, run: RunConfig,
                      th: Thresholds) -> dict[str, float | None]:
-    """The measures of the constraint method for one result (its design, section 9), by name. Each is None where
+    """The measures of the constraint method for one result, by name. Each is None where
     the result does not measure it, and all six are for a result that is not of the method.
 
     `visible` holds the people of ground truth that pass the visibility rule, and `turn_group` the id of the
@@ -551,11 +551,11 @@ def run_episode(pipeline: Pipeline, inputs: SceneInputs, truth: GroundTruth, et:
     sc = score(result, obs, truth, ep, th)
 
     # The reference is the chosen target's, not the scorer's match: the scorer matches nothing for a result
-    # without a pose, while the context answer was given about the chosen target (spec 11).
+    # without a pose, while the context answer was given about the chosen target.
     reference = reference_people_matter(et, chosen)
     said = result.context_check if run.context_check == "vlm" else None
     own_plan = plan is not None and not oracle_grounding
-    # A plan answer that could not be read is the model's own answer and counts as a wrong plan (spec 2). An
+    # A plan answer that could not be read is the model's own answer and counts as a wrong plan. An
     # outage is no answer: it stays unmeasured, like every other column of a vlm_error record.
     bad_plan = plan is None and outcome.status == "parse_failed"
     exact = recall = None
@@ -685,8 +685,8 @@ def summarise(records: Sequence[dict]) -> list[dict]:
     A measure is the mean over the trials of its mean within a trial, taken over the records that got a model
     answer and measured it; None where there is none. With more than one trial among the records, every measure
     is followed by its minimum and maximum over the trials. `transient_retry_share` is the share of the row's
-    model calls that needed a transient retry, over all its records and trials (spec 7): the latency columns
-    include the waits of those retries. The six measures of the constraint method (its design, section 9) follow
+    model calls that needed a transient retry, over all its records and trials: the latency columns
+    include the waits of those retries. The six measures of the constraint method follow
     every other measure, and are None in a row none of whose records measured them: every row of a baseline run.
 
     The last three columns are totals over all the row's records and trials: `calls`, the model calls made;
@@ -775,8 +775,7 @@ def _refuse_failed_check(folder: Path, scene_id: str, cfg: Config) -> None:
 def _examples(cfg: Config, scenes: Sequence[_Scene],
               skip_scene_check: bool) -> tuple[list[tuple[str, Example]], list[str]]:
     """The examples of the run as select_examples gives them, and the situations that need one and have none;
-    neither, and `run.examples_dir` unread, unless the goal is marked by a model under a few-shot strategy
-    (spec 8).
+    neither, and `run.examples_dir` unread, unless the goal is marked by a model under a few-shot strategy.
 
     Unless the scene check is skipped, an example scene the run has not checked is checked like an evaluated
     one: a mis-exported example would reach the model as a worked answer with a wrongly projected point.

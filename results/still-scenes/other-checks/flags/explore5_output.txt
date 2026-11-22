@@ -1,7 +1,0 @@
-real {('constraint_unusable', False): 4, ('constraint_unusable', True): 8, ('std_fallback', False): 3, ('std_fallback', True): 3, ('exclusion_broken', False): 1}
-staffed {('std_fallback', True): 6, ('constraint_unusable', True): 6, ('std_fallback', False): 6, ('constraint_unusable', False): 3, ('exclusion_broken', False): 1}
-plain {('std_fallback', False): 5, ('std_fallback', True): 3, ('constraint_unusable', True): 5, ('exclusion_broken', False): 1, ('constraint_unusable', False): 1}
-ph {('std_fallback', True): 5, ('std_fallback', False): 9, ('constraint_unusable', True): 3, ('exclusion_broken', False): 2, ('constraint_unusable', False): 1}
-dev_seed0 {('constraint_unusable', True): 1}
-dev_seed1 {('constraint_unusable', True): 1}
-dev_seed2 {('constraint_unusable', True): 1}

@@ -1,4 +1,4 @@
-# cafe_line_bent_moving (research break-it case d, 2026-11-01): six waiting in a line that runs south from
+# cafe_line_bent_moving (stress case): six waiting in a line that runs south from
 # the counter for three places, then bends about 55 deg to the south-west; served every 15 s. Walkers kept in the
 # south-east corner, away from the line. The robot starts as in cafe_line6, which sees the whole line.
 stage: data/habitat/stages/cafe.glb

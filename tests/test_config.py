@@ -28,7 +28,8 @@ def test_defaults_in_code_and_in_the_yaml():
         yaw_tolerance_rad=0.001, free_space_agreement_min=0.90,
         view_half_angle_deg=35.0, visible_half_angle_deg=60.0, floor_range_m=12.0, seen_depth_ratio=0.03,
         seen_depth_margin_m=0.02, max_keep_m=3.0, max_people=40, max_constraints=12, person_mark_height_m=1.1,
-        candidate_count=4)                                         # the last ten: the constraint method's (its design, 7)
+        candidate_count=4,                                         # the ten before: the constraint method's
+        join_facing_deg=None, join_spacing_ratio=None)             # the joining gate, off by default
     assert RunConfig().model_dump() == RUN
     assert yaml.safe_load(DEFAULT_CONFIG.read_text())["thresholds"] == Thresholds().model_dump()   # all spelt out
     cfg = load_config()

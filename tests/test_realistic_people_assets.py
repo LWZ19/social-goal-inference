@@ -23,7 +23,7 @@ from sgi.synth.realistic import blender
 from sgi.synth.realistic.library import ASSETS_DIR, AVATAR_TAGS, POSE_TAGS, load_library, manifest_entries
 from sgi.synth.render import HEIGHTS_M
 
-REACH_LIMIT_M = 0.45                               # spec 5.4: a pose that reaches further is not used
+REACH_LIMIT_M = 0.45                               # a pose that reaches further is not used
 STAFFED_KINDS = ("stall", "desk", "ticket_counter", "shop")    # the kinds staff are tagged for: staff_<kind>
 SECOND_STALL = "staff_shop"                        # the vendor's tag: the second stall's own, shared with no place
 OUT_OF_PLACE = ("Pilot_Female_02", "Security_Male_01")     # uniforms of trades no place of a scene has: cast nowhere
@@ -31,7 +31,7 @@ SET_ASIDE = ("talk_thumb_back", "thoughtful_b")    # poses with no tag, which no
 #                                                    the other is the second take of a pose that came up too often
 ACTIVITIES = ("waiting", "talking", "serving")     # what a person is doing; "phone" and "cup" say what they hold
 DRESS = ("casual", "business", "uniform")          # one each; "uniform" is this library's own: staff clothes only
-BUILDS = (0.92, 1.15)                              # spec 5.4: what a person's build is scaled between
+BUILDS = (0.92, 1.15)                              # what a person's build is scaled between
 NEEDED_SAMPLES = 3                                 # of the nine on a person's axis, for the scene check to see them
 BODY_BEHIND_AXIS_M = 0.26                          # heels, seat and hair of a person standing at ease, at the most
 HANDS_BEFORE_WAIST_M = 0.31                        # hands folded before the waist; held out, they are further ahead
@@ -232,7 +232,7 @@ def test_the_preparing_script_measures_by_the_scene_check_at_the_sizes_the_scene
     assert prepare.AXIS_KEPT == NEEDED_SAMPLES + 1                          # one to spare
     heights = {height for height, _build in prepare.SIZES}
     assert heights == {min(HEIGHTS_M), max(HEIGHTS_M)}                      # the shortest and the tallest figure
-    for height in heights:                                                  # spec 5.4: a build of 0.92 to 1.15
+    for height in heights:                                                  # a build of 0.92 to 1.15
         builds = [build for tall, build in prepare.SIZES if tall == height]
         assert {BUILDS[0], 1.0, BUILDS[1]} <= set(builds) and builds == sorted(set(builds)), height
         assert BUILDS[0] <= builds[0] and builds[-1] <= BUILDS[1], height

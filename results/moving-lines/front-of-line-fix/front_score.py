@@ -1,4 +1,4 @@
-"""Front-of-line fix (exploratory, 7 Nov): CT2f (CT2 + no step back once in line + vacate_rejoined) against CT2 on the
+"""Front-of-line fix (exploratory): CT2f (CT2 + no step back once in line + vacate_rejoined) against CT2 on the
 same 25 cells per model (EVAL5, seeds 10-14), CT2 from runs_i10 (current code), CT2f from runs_front. Zero calls.
     .venv/bin/python results/moving-lines/front-of-line-fix/front_score.py   (uses results/_lib/mcompare.py and summarise_fresh.in_line)"""
 import statistics, sys

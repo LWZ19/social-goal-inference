@@ -71,8 +71,7 @@ models:
                           price_input_per_mtok: 0.102294, price_output_per_mtok: 0.379882}
   soclaas_qwen35_9:      {<<: *soclaas, model: "qwen3.5:9b", reasoning_effort: "none",
                           price_input_per_mtok: 0.114438, price_output_per_mtok: 0.200438}
-  # Claude, through Anthropic's own API. Built and tested offline, never called: there is no key yet, so no
-  # request has confirmed anything below. Run `python -m sgi.smoke --model <entry>` before an entry's first use.
+  # Claude, through Anthropic's own API. Run `python -m sgi.smoke --model <entry>` before an entry's first use.
   # reasoning_effort is the model's effort level: low, medium, high, xhigh, max. Left out of a request it is
   # medium on Opus 5.5 and on Haiku 5.5 and high on Sonnet 5.5, so it is always sent. The models think by
   # themselves, as much as the level allows, and no thinking setting is sent with a level.
@@ -96,8 +95,8 @@ models:
                         price_input_per_mtok: 0.1, price_output_per_mtok: 0.5}
   claude_haiku55_low:  {provider: anthropic, model: claude-haiku-5-5, reasoning_effort: low, point_format: xy_pixel,
                         price_input_per_mtok: 0.1, price_output_per_mtok: 0.5}
-  # Older models for E3 (added 6 Nov 2026); point formats calibrated with sgi.smoke --calibrate on the real
-  # set (e3_models/calib_*.txt): Haiku 4.5 answers in 0-1000, Sonnet 4.6 and 5 in pixels, the Gemini models in 0-1000.
+  # Older models; point formats calibrated with sgi.smoke --calibrate on the real
+  # set: Haiku 4.5 answers in 0-1000, Sonnet 4.6 and 5 in pixels, the Gemini models in 0-1000.
   claude_haiku45:      {provider: anthropic, model: claude-haiku-4-5, reasoning_effort: "none", point_format: xy_1000,
                         price_input_per_mtok: 1.0, price_output_per_mtok: 5.0, max_requests_per_minute: 25}
   claude_sonnet46_low: {provider: anthropic, model: claude-sonnet-4-6, reasoning_effort: low, point_format: xy_pixel,
@@ -133,6 +132,6 @@ thresholds:        # metres and radians; the two *_deg in degrees. The last ten 
    camera_height_min_m: 0.2, camera_height_max_m: 3.0, yaw_tolerance_rad: 0.001, free_space_agreement_min: 0.90,
    view_half_angle_deg: 35.0, visible_half_angle_deg: 60.0, floor_range_m: 12.0,
    seen_depth_ratio: 0.03, seen_depth_margin_m: 0.02, max_keep_m: 3.0, max_people: 40, max_constraints: 12,
-   person_mark_height_m: 1.1, candidate_count: 4}
+   person_mark_height_m: 1.1, candidate_count: 4, join_facing_deg: null, join_spacing_ratio: null}
 dev_situations: [no_one, waiting_line, conversation_group, audience]
 held_out_situations: [group_photo, lift_wait, machine_use]

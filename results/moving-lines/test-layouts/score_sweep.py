@@ -1,6 +1,4 @@
-"""Scores the fresh sweep runs by ../best-version-and-running-guess/CT4_FROZEN.md section 4 (sha256 2df880ff), with ../best-version-and-running-guess/DEVIATION_1.md
-(32aab43f). Zero calls; read-only on the runs. The research checks this file against the note before it is
-run on fresh data.
+"""Scores the fresh sweep runs with the analysis fixed before they were run. Zero calls; read-only on the runs.
 
     python3 score_sweep.py results/data/moving/runs_sweep/dsv41 [results/data/moving/runs_sweep/sonnet55_low]   (from the repo root)
 
@@ -21,15 +19,15 @@ Definitions (every number below comes from one of these):
   - by flag cell: capture (seconds with a bystander as the solver's last, not vacated; 0.5 s a tick), recall
     (the summed |roster ∩ ahead| over the summed |ahead|, over ticks with someone ahead), and empty (the share of
     ticks with someone ahead where the solver's last is None and the tick is not vacated). Over `ahead`, not the
-    whole queue: once the robot has joined, people behind it do not bear on its goal (research's check,
-    3 Nov). Predicted: CT3F lower capture in every cell; CT4 higher recall and lower empty in every cell;
+    whole queue: once the robot has joined, people behind it do not bear on its goal.
+    Predicted: CT3F lower capture in every cell; CT4 higher recall and lower empty in every cell;
   - cut-in samples, and strict share in line (`summarise_fresh.measures`, unchanged): no prediction;
   - on "ours" layouts:
     - time to a right roster after delivery, from the first delivery to the first tick where the roster, less
       those behind the robot in the queue, equals `truth.ahead`; "never" when it doesn't happen;
     - share in line after the first service that follows delivery. A service is a tick where the front of the
       previous tick's `order` has left the queue; the share is over 1-s samples from that tick's time to the
-      end, both frozen and strict;
+      end, both primary and strict;
   - every arm against CT3 on right last, and Gl and CT2 alongside;
   - a held / not held line for every stated prediction;
   - sensitivity, reported and not the claim: C1 with vacated ticks left out of the denominator (only CT3F

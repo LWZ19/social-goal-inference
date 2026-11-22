@@ -1,0 +1,24 @@
+## DeepSeek V4.1: 280 tour records, 280 paired with the view-grounded run
+- right tour frame: tour 280/280 (100.0%)
+- right target: tour 264/280 (94.3%), view 263/280 (93.9%)
+- good spot: tour 210/280 (75.0%), view 228/280 (81.4%)
+- good spots, tour minus view by scene: better 10, worse 23, level 37, sign p 0.0351
+- chance of a right frame by a random pick: 95.0% (the target shows in every shown frame in 176 of 280 records)
+- records that ended in a failed call: 0
+
+## Claude Haiku 5.5: 280 tour records, 280 paired with the view-grounded run
+- right tour frame: tour 280/280 (100.0%)
+- right target: tour 275/280 (98.2%), view 278/280 (99.3%)
+- good spot: tour 262/280 (93.6%), view 260/280 (92.9%)
+- good spots, tour minus view by scene: better 9, worse 6, level 55, sign p 0.6072
+- chance of a right frame by a random pick: 95.0% (the target shows in every shown frame in 176 of 280 records)
+- records that ended in a failed call: 0
+
+## Gemini 3.8 Flash: 280 tour records, 280 paired with the view-grounded run
+- right tour frame: tour 279/280 (99.6%)
+- right target: tour 252/280 (90.0%), view 260/280 (92.9%)
+- good spot: tour 244/280 (87.1%), view 237/280 (84.6%)
+- good spots, tour minus view by scene: better 14, worse 13, level 43, sign p 1.0000
+- chance of a right frame by a random pick: 95.0% (the target shows in every shown frame in 176 of 280 records)
+- records that ended in a failed call: 0
+

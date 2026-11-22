@@ -1,5 +1,5 @@
-"""E2, POST HOC (after e2_score_all_out.txt and e2_excluded_out.txt): pooled H2 with GLM's left-out units at their
-worst case for D (each one -1 on its layout's net). Zero calls; reported, not a bar.
+"""People-finder test, added after the planned test (e2_score_all_out.txt and e2_excluded_out.txt): pooled H2 with
+GLM's left-out units at their worst case for D (each one -1 on its layout's net). Zero calls; reported, not a bar.
     PYTHONPATH= .venv/bin/python e2_pooled_worst.py runs/e2_soclaas_qwen38_low \
         runs/e2_soclaas_dsv41 runs/e2_soclaas_glm53
 """

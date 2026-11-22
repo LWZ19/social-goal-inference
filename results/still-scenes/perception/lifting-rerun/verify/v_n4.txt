@@ -1,5 +1,0 @@
-C records with a point (realistic, 3 models): 752
-zero-call front snap: {'unmoved': 676, 'break': 37, 'moved_still_ok': 19, 'fix': 8, 'moved_still_wrong': 12}
-  by kind: {('break', 'person'): 36, ('moved_still_ok', 'place'): 19, ('fix', 'place'): 5, ('moved_still_wrong', 'place'): 4, ('fix', 'person'): 3, ('moved_still_wrong', 'object'): 5, ('moved_still_wrong', 'person'): 3, ('break', 'place'): 1}
-oracle snap-and-lift on every record: {'same': 726, 'fix': 26}
-records by (kind, recorded target_correct): {('place', True): 459, ('object', True): 39, ('person', True): 201, ('person', False): 15, ('place', False): 23, ('object', False): 15}

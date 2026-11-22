@@ -188,7 +188,7 @@ def build_context_request(strategy: Strategy, request: str, subtask: Subtask, ma
 
 def build_people_request(strategy: Strategy, image: ImagePart, point_format: str, max_people: int,
                          prompts_dir: Path = PROMPTS_DIR) -> tuple[str, list[Part]]:
-    """The people step of the constraint method (its design, section 4): the camera image as it is, and the most
+    """The people step of the constraint method: the camera image as it is, and the most
     people the answer may list.
 
     Nothing of an episode goes in, neither request nor target, so every episode of a scene sends the same request
@@ -202,7 +202,7 @@ def build_people_request(strategy: Strategy, image: ImagePart, point_format: str
 def build_constraints_request(strategy: Strategy, request: str, subtask: Subtask, numbered_image: ImagePart,
                               people: str, relevant_people: str | None, standoff_m: float, max_constraints: int,
                               prompts_dir: Path = PROMPTS_DIR) -> tuple[str, list[Part]]:
-    """The constraints step of the constraint method (its design, sections 5 and 6): the case, the list of people,
+    """The constraints step of the constraint method: the case, the list of people,
     the six kinds a constraint can be of, and the image with the target ringed and a number on every person.
 
     `people` is the list as `people_lines` gives it, an empty string when nobody was found: the request then says
@@ -269,7 +269,7 @@ def _faced(person: DetectedPerson, things: Sequence[tuple[str, tuple[float, floa
 def people_lines(people: Sequence[DetectedPerson], target: GroundedTarget, observation: ObservationData,
                  th: Thresholds) -> str:
     """The list of people that the constraints step is shown: one line each, in the order given, worked out from
-    geometry alone (the design, section 5). An empty string when there is nobody.
+    geometry alone. An empty string when there is nobody.
 
         Person 3: 2.4 m from the robot, 1.1 m from the target, on the left of the image; faces person 1 (0.9 m),
         the target (1.1 m).

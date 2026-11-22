@@ -1,5 +1,0 @@
-self-check: 289 of 289 fit scenes pass; 12.3 s
-  F-real: 21 scenes, 39 visible true people of 55 in truth.people
-  F-ph: 268 scenes, 585 visible true people of 585 in truth.people
-  detector, 6 bands x 3 splits on plain_examples_00_no_one_place ((480, 640), 307200 points): 0.1 s
-  detector, 6 bands x 3 splits on examples_00_no_one_place ((480, 640), 307200 points): 0.1 s

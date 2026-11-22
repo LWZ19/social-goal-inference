@@ -1,9 +1,0 @@
-[qwen] mismatches recorded vs now: E 0 []  C 0 []  (47s)
-   recorded: C=234 E=214 d=[0, 0, 0, 0, 0, 0, 3, 6, 1, 6, 2, 0, 2, 0] two-sided p=0.031250
-   rescored now: C=234 E=214 d=[0, 0, 0, 0, 0, 0, 3, 6, 1, 6, 2, 0, 2, 0] two-sided p=0.031250
-[glm] mismatches recorded vs now: E 0 []  C 0 []  (91s)
-   recorded: C=186 E=145 d=[0, 1, 1, 0, 0, 0, 2, 12, -1, 4, 7, 5, 3, 7] two-sided p=0.007812
-   rescored now: C=186 E=145 d=[0, 1, 1, 0, 0, 0, 2, 12, -1, 4, 7, 5, 3, 7] two-sided p=0.007812
-[ds] mismatches recorded vs now: E 0 []  C 0 []  (128s)
-   recorded: C=182 E=120 d=[1, 2, 0, 2, 0, 0, 10, 10, 4, 12, 3, 2, 6, 10] two-sided p=0.000977
-   rescored now: C=182 E=120 d=[1, 2, 0, 2, 0, 0, 10, 10, 4, 12, 3, 2, 6, 10] two-sided p=0.000977

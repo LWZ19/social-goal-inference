@@ -1,4 +1,4 @@
-"""Who waits, as one estimate kept over time: a research option for re-solving (ideas round 2, research arm CT4).
+"""Who waits, as one estimate kept over time: an experiment option for re-solving (experiment arm CT4).
 
 The constraint method's answer names the people who wait ("come after 4, 5, 6"). Here that answer is taken as
 evidence, not as the roster: a belief over which tracked people wait their turn at the anchor (the answer's target
@@ -17,17 +17,14 @@ stand and how they move, with nothing about any one kind of place:
 The decision: the roster is everyone with P(waits) >= 0.5; the solver gets `come_after` = the roster and everyone
 else as exempt from its place-in-turn rule, along `dir`.
 
-Round 3 (research arm CT5, `moving/ideas2_1b/round3/ROUND3.md`, from `ct5.py` sha256 a27fb000, variant W4) adds two
-options, both off by default:
+Experiment arm CT5 (variant W4) adds two options, both off by default:
 - `STATIC_WIN_S`: the static snapshot read as the mean log ratio over that many seconds (one observation of a
   configuration that persists, still counted once at decision time), not a single instant;
-- `decide`: whom to come after, by least expected cost over the belief's sets, with costs fixed before any decision
-  code ran: coming ahead of a person who waits 1 each, coming after a person who does not wait 0.25 each, moving
-  0.125 a metre.
+- `decide`: whom to come after, by least expected cost over the belief's sets, with costs fixed in advance:
+  coming ahead of a person who waits 1 each, coming after a person who does not wait 0.25 each, moving 0.125 a
+  metre.
 
-Ported unchanged from the frozen research code (`results/2026-11-01-push/moving/ideas2_1b/ct4.py`, sha256 a8176bf9; the note
-`CT4_FROZEN.md`, sha256 2df880ff): the class takes the answer and the tracks at the photo in place of a research
-cell; every parameter is the frozen default.
+The class takes the answer and the tracks at the photo; every parameter has the default given in `DEFAULTS`.
 """
 from __future__ import annotations
 
@@ -45,7 +42,7 @@ DEFAULTS = dict(P0=0.3, P_NAMED_W=0.85, P_NAMED_N=0.15, H_MOVE=0.05, H_STILL=0.0
                 FRONT_HI=1.6, LR_STATIC_MAX=5.0, FOLLOW_FRAC=0.5, PERSIST_S=2.0, STAND_S=0.0, STALE_DECIDE_S=1e9,
                 WALKERS_STATIC=True, LR_BACK=1.0, STATIC_WIN_S=0.0)
 
-C_AHEAD, C_BEHIND, C_MOVE_PER_M = 1.0, 0.25, 0.125      # ROUND3.md section 2, in service intervals
+C_AHEAD, C_BEHIND, C_MOVE_PER_M = 1.0, 0.25, 0.125      # in service intervals
 UNSET = object()                                         # `decide` has made no choice yet
 
 

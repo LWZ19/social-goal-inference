@@ -46,7 +46,7 @@ class AnthropicBackend:
     provider = "anthropic"
 
     def __init__(self, api_key: str, client=None):
-        self._api_key = api_key                                  # kept to strike it from error messages (spec 7)
+        self._api_key = api_key                                  # kept to strike it from error messages
         if client is None:
             # With the key given, the SDK reads no credential of the shell or of a profile on disk; with the
             # endpoint given, ANTHROPIC_BASE_URL decides nothing: the SDK would send the key there. The header

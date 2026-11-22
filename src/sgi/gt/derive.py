@@ -1,4 +1,4 @@
-"""Ground-truth derivation (spec sections 4, 9 and 11): what the scorer needs beyond the scene's facts.
+"""Ground-truth derivation: what the scorer needs beyond the scene's facts.
 
 Per episode: the regions filled from the reference rules, a representative point for each acceptable
 region, the reference context check, the derived factors, and the relevant people the image hides.
@@ -23,7 +23,7 @@ from sgi.scene import EpisodeGT, Factors, ForbiddenRegion, GroundTruth, Person, 
 from sgi.stages.goal import standard_goal
 from sgi.types import GroundedTarget, Point
 
-_VISIBILITY_HEIGHTS_M = (0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7)   # spec 4: samples on a person's vertical axis
+_VISIBILITY_HEIGHTS_M = (0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7)   # samples on a person's vertical axis
 _GROUP_RULE_SITUATIONS = ("waiting_line", "conversation_group", "audience", "group_photo",
                           "lift_wait", "machine_use")                   # their rules need group_at_target
 _RULE_SITUATIONS = ("no_one", *_GROUP_RULE_SITUATIONS)                  # the situations sgi.gt.regions has a rule for
@@ -91,7 +91,7 @@ def _reach(observation: ObservationData, truth: GroundTruth, th: Thresholds) -> 
 
 
 def _passes(xy, region: Region, observation: ObservationData, grid: Grid, mask: np.ndarray, th: Thresholds) -> bool:
-    """Whether xy passes the oracle path for the region (spec 4): what comes back is on the floor, inside
+    """Whether xy passes the oracle path for the region: what comes back is on the floor, inside
     the region and in a free cell joined to the robot."""
     w = oracle_path(observation, xy, th)
     if w is None or abs(w[2]) > th.floor_tolerance_m or not point_in_polygon(w[:2], region.polygon):
@@ -116,7 +116,7 @@ def _reference(region: Region) -> tuple[float, float]:
 
 def _deepest_passing(region: Region, observation: ObservationData, grid: Grid, mask: np.ndarray,
                      th: Thresholds) -> tuple[float, float] | None:
-    """The region's representative point (spec 11), or None when none of its lattice points passes.
+    """The region's representative point, or None when none of its lattice points passes.
 
     Of the lattice points that pass, those no more than a grid step nearer the boundary than the farthest
     from it are equally deep. Where the heading faces a point, those of them no more than a grid step farther
@@ -165,7 +165,7 @@ def _distance_to_target(xy, target: Target) -> float:
 
 def relevant_people(truth: GroundTruth, ep: EpisodeGT, th: Thresholds) -> list[Person]:
     """The people within the relevant radius of one of the episode's targets or regions, and everyone in a
-    group with one of them (spec 4), in the scene's order. A person with a role (staff) is left out unless one of
+    group with one of them, in the scene's order. A person with a role (staff) is left out unless one of
     the episode's targets refers to them."""
     targets = [truth.targets[target_id] for target_id in ep.target_ids]
     polygons = [region.polygon for region in [*(ep.acceptable_regions or []), *(ep.forbidden_regions or [])]]
@@ -194,7 +194,7 @@ def _sample_seen(observation: ObservationData, p_world, th: Thresholds) -> bool:
 
 
 def is_visible(person: Person, observation: ObservationData, th: Thresholds) -> bool:
-    """The visibility rule of spec 4: enough of the samples on the person's vertical axis are seen."""
+    """The visibility rule: enough of the samples on the person's vertical axis are seen."""
     seen = sum(_sample_seen(observation, (person.x, person.y, z), th) for z in _VISIBILITY_HEIGHTS_M)
     return seen >= th.visibility_min_samples
 
@@ -291,7 +291,7 @@ def _episode_truth(episode_id: str, ep: EpisodeGT, observation: ObservationData,
         result = standard_goal(observation, target, th).model_copy(update={"target": target})
         # Given every id, the scorer matches the first of them the point falls on, and beside another target
         # that can be the other one. Given this id alone, it tests the goal against this target's own regions,
-        # whatever the order of target_ids (spec 11: evaluated once per id).
+        # whatever the order of target_ids (evaluated once per id).
         alone = gt.model_copy(update={"target_ids": [target_id]})
         standard_goal_ok[target_id] = score(result, observation, truth, alone, th).success
 
@@ -318,7 +318,7 @@ def prepare(inputs: SceneInputs, truth: GroundTruth, cfg: Config) -> dict[str, E
 
 
 def reference_people_matter(et: EpisodeTruth, matched_target_id: str | None) -> bool:
-    """The reference context check (spec 11): people matter when the standard goal fails for the matched
+    """The reference context check: people matter when the standard goal fails for the matched
     target, or for the episode's first target when none matched.
 
     In an episode without a target no standard goal passes, so there they matter."""

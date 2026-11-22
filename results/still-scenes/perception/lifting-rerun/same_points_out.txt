@@ -1,3 +1,0 @@
-qwen38_low: {('C right', 'same point'): 245, ('C wrong', 'same point'): 7, ('C wrong', 'C plan/locate calls cached', (True,)): 7}
-glm53: {('C right', 'same point'): 224, ('C wrong', 'same point'): 28, ('C wrong', 'C plan/locate calls cached', (True,)): 28}
-dsv41: {('C right', 'same point'): 230, ('C wrong', 'same point'): 22, ('C wrong', 'C plan/locate calls cached', (True,)): 22}

@@ -384,7 +384,7 @@ def test_someone_moving_far_from_the_waiting_people_does_not_count():
     assert r.settled(tracks(*LINE, (9.0, 8.0)), t=3.5)
 
 
-# ---- CT2 (moving/CT2_FROZEN.md): re-admit, a shorter span, the vacated place, path memory
+# ---- CT2: re-admit, a shorter span, the vacated place, path memory
 
 V2 = dict(readmit=True, line_span_m=0.5, vacate_after_s=5.0, path_memory=True)
 
@@ -490,7 +490,7 @@ def test_v2_path_memory_points_the_solver_along_the_back_of_the_line():
     assert r.solve_direction == pytest.approx((0.0, 1.0), abs=0.02)
 
 
-# ---- co-motion (research arm CT3): named people must move with the line; nobody joins it without moving
+# ---- co-motion (experiment arm CT3): named people must move with the line; nobody joins it without moving
 
 CO = dict(V2, co_motion_s=4.0)
 ASIDE = (2.9, 0.7)                     # 0.92 m from the second in line and off to its side: a bystander
@@ -652,7 +652,7 @@ def test_co_motion_rejoin_cancels_a_follow_check_made_before_someone_was_taken_b
     assert 2 not in kept.non_followers and 2 not in kept.dropped
 
 
-# ---- ideas round 2: the best bolt-on of the same evidence (CT3-fix-gated, moving/ideas2_1b/CT4_FROZEN.md)
+# ---- the best add-on using the same evidence (CT3-fix-gated)
 
 GROUP = dict(CO, group_follow=True)
 
@@ -699,7 +699,7 @@ def test_anchor_rederive_finds_a_new_line_once_everyone_named_has_gone_but_not_s
     assert set(got["anchor"]) == newcomers
 
 
-# ---- hold_place (research arm CT3FL): once in line, the people ahead are locked in and only leave
+# ---- hold_place (experiment arm CT3FL): once in line, the people ahead are locked in and only leave
 
 HOLD = dict(V2, hold_place=True)
 

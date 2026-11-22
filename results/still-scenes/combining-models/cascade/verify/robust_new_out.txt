@@ -1,6 +1,0 @@
-s21 qwen dis1 partner t+1: AUROC fail 0.766 gain 0.718; @0.5 206
-s21 qwen dis1 partner t+2: AUROC fail 0.787 gain 0.774; @0.5 209
-s23 sonnet dis1 partner t+1: AUROC fail 0.766 gain 0.762; @0.5 211
-s23 sonnet dis1 partner t+2: AUROC fail 0.787 gain 0.778; @0.5 209
-s23 gemini dis1 partner t+1: AUROC fail 0.766 gain 0.689; @0.5 190
-s23 gemini dis1 partner t+2: AUROC fail 0.787 gain 0.693; @0.5 189

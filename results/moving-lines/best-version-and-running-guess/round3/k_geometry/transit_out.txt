@@ -1,5 +1,0 @@
-CT3F: first right tick after a wrong one — robot on axis n 24, goal ok 0.50; robot off axis n 15, goal ok 0.33
-CT4: first right tick after a wrong one — robot on axis n 29, goal ok 0.48; robot off axis n 51, goal ok 0.33
-W0: first right tick after a wrong one — robot on axis n 17, goal ok 0.53; robot off axis n 53, goal ok 0.26
-CT5: first right tick after a wrong one — robot on axis n 9, goal ok 0.11; robot off axis n 49, goal ok 0.10
-within arm x layout, goal ok higher with robot on axis: 9, lower: 12, tied: 16

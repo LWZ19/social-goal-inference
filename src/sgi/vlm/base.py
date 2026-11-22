@@ -90,7 +90,7 @@ class QuotaExceededError(BackendError):
 def strike_key(text: str, key: str) -> str:
     """The text with every occurrence of the API key struck out: a provider's error or refusal can echo the key.
 
-    Every back end passes what it raises or returns through here (spec 7)."""
+    Every back end passes what it raises or returns through here."""
     return text.replace(key, "<key>") if key else text
 
 

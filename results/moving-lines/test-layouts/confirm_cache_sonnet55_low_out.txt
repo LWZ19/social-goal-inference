@@ -1,3 +1,0 @@
-groups 72 {'CT3F': 72, 'CT4P': 72, 'CT4PJ': 72, 'CT4': 72}
-direction source: {('CT4P', 'path'): 9914, ('CT4PJ', 'path'): 9646, ('CT4PJ', 'belief'): 443, ('CT4P', 'belief'): 167}
-faults: none

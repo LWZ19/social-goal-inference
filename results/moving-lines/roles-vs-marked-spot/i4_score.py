@@ -1,7 +1,7 @@
-"""Item 4 (I4_FROZEN.md): RTw (tracking R1's marked point, no roles) against CT2 on the fresh headline cells. Zero
+"""RTw (tracking R1's marked point, no roles) against CT2 on the fresh headline cells. Zero
 calls; read-only.
 
-    .venv/bin/python results/moving-lines/roles-vs-marked-spot/i4_score.py           (the frozen reading)
+    .venv/bin/python results/moving-lines/roles-vs-marked-spot/i4_score.py           (the planned reading)
     .venv/bin/python results/moving-lines/roles-vs-marked-spot/i4_score.py --test    (old data: seeds 0-2, CT)
 """
 import sys
@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "_lib" / "paths.py").exists()) / "_lib"))
 import mcompare as C  # noqa: E402
 
-# Amendment 1 (I4_FROZEN.md): RTw and CT2 are run together in one invocation into runs_i4/<model> (same machine
+# RTw and CT2 are run together in one invocation into runs_i4/<model> (same machine
 # load); the earlier RTw and CT2 in runs/<model> are read only for repeat checks.
 POOLED = {"Sonnet 5.5": ("runs_i4/sonnet55_low", range(10, 20)), "DeepSeek V4.1": ("runs_i4/dsv41", range(10, 15)),
           "Haiku 5.5": ("runs_i4/claude_haiku55", range(10, 15)), "Gemini 3.8": ("runs_i4/gemini_fast", range(10, 15))}

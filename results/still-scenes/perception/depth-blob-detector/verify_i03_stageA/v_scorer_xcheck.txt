@@ -1,2 +1,0 @@
-self-check (true people as detections, verifier scorer): 289 of 289
-random cross-check vs frozen scorer: 900 of 900 agree

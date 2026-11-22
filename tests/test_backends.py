@@ -103,7 +103,7 @@ def test_response_maps_to_backend_result(provider, body, text, finish):
     assert result == BackendResult(text, finish, usage, VERSION[provider]) and len(sent) == 1
     assert sent[0].extensions["timeout"]["read"] == 30.0 and json.loads(sent[0].content)["store"] is False
 
-@pytest.mark.parametrize("provider, reported, usage", [               # spec 3.1: null when the provider says nothing
+@pytest.mark.parametrize("provider, reported, usage", [               # null when the provider says nothing
     ("openai", {"input_tokens": 100, "output_tokens": 50},
      Usage(input_tokens=100, output_tokens=50, reasoning_tokens=None)),              # nothing is subtracted from 50
     ("gemini", {"total_input_tokens": 100, "total_output_tokens": 20},
@@ -159,7 +159,7 @@ ECHOES = [                                                            # provider
 
 @pytest.mark.parametrize("provider, reply, raised", [(p, *row[1:]) for row in ECHOES for p in row[0].split()])
 def test_an_error_that_echoes_the_key_is_raised_without_it(provider, reply, raised):
-    key = KEY[provider]                                               # spec 7: a key never reaches a log or a run output
+    key = KEY[provider]                                               # a key never reaches a log or a run output
     backend, _ = wired(provider, **reply(f"Incorrect API key provided: {key}. Sent {key} to /v1?key={key}"))
     with pytest.raises((TransientError, BackendError)) as err:
         backend.call(ENTRY[provider], None, PARTS, SCHEMA)

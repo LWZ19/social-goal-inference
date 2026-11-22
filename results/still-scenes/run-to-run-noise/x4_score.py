@@ -1,4 +1,4 @@
-"""Extra X4 (X4_FROZEN.md): run-to-run noise for GLM-5.3 and DeepSeek V4.1 on the development still scenes. Per model and
+"""Run-to-run noise for GLM-5.3 and DeepSeek V4.1 on the development still scenes. Per model and
 method (R cot, E fsc, C con): the batch totals of successes (of 252) for s23 and the fresh batches noise1 and noise2,
 their mean and SD, the paired differences C-R and C-E within each batch, and the record-level flip rate between batches.
 Reported, no bar. Zero calls; reads results.jsonl of the runs named below.

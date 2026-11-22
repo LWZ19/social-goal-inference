@@ -1,9 +1,0 @@
-# E2 addendum 1: S2 on all people-matter units (frozen) and on the fresh ones (no cached goal-step call)
-
-## soclaas_dsv41: cached goal-step calls {'A0': 75, 'A0b': 73, 'D': 2}
-- all people-matter units, every call ok: n 157; median A0 34.5, A0b 32.6, D 18.8; D faster 148, slower 9, p 0.0000; placebo 76/81, p 0.7497; S2 True
-- fresh units: n 75; median A0 32.5, A0b 32.6, D 17.4; D faster 71, slower 4, p 0.0000; placebo 35/40, p 0.6445; S2 True
-
-## soclaas_qwen38_low: cached goal-step calls {'A0': 63, 'A0b': 66, 'D': 2}
-- all people-matter units, every call ok: n 159; median A0 70.0, A0b 71.8, D 45.0; D faster 133, slower 26, p 0.0000; placebo 78/81, p 0.8740; S2 True
-- fresh units: n 53; median A0 66.2, A0b 69.3, D 45.4; D faster 42, slower 11, p 0.0000; placebo 26/27, p 1.0000; S2 True

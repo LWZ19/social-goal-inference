@@ -1,4 +1,4 @@
-"""The items of a placeholder layout and the stream of accepted layouts (realistic-scenes spec 5.1 and 5.6).
+"""The items of a placeholder layout and the stream of accepted layouts.
 
 An item says what a run of a layout's primitives is and where it stands, so that a second generator can build
 the same thing another way. accepted_layouts gives that generator the layouts generate() keeps, without tours.

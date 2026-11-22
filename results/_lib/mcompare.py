@@ -1,8 +1,8 @@
-"""Shared scorer for the fill-in moving designs (EVIDENCE_AUDIT.md Part 1). Zero calls; read-only.
+"""Shared scorer for the moving-line comparisons. Zero calls; read-only.
 
 Paired comparisons of whole-episode share in line by (model, scenario, seed), exactly as moving-lines/design-and-scoring/summarise_fresh.py's
 `paired`:
-- measures() gives share_strict (SCORING_STRICT.md) and share_frozen (SCORING.md, the primary scoring);
+- measures() gives share_strict (SCORING_STRICT.md) and share_frozen (the primary scoring);
 - a win, loss or tie compares the two shares, with a tie only when they are equal within 1e-9;
 - the sign test is summarise_fresh.sign_p (exact, two-sided).
 Pooled results sum wins and losses over models (each cell is one pair).
@@ -81,6 +81,6 @@ def means(eps: dict, arm: str) -> tuple:
 
 
 def better(r: dict, key: str = "strict", alpha: float = 0.05) -> bool:
-    """The bar used by the fill-in designs: more wins than losses and an exact two-sided sign p <= alpha."""
+    """The bar used by these comparisons: more wins than losses and an exact two-sided sign p <= alpha."""
     w, l, _ = r[key]
     return w > l and r[f"p_{key}"] <= alpha

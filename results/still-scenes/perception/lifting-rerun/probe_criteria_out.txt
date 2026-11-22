@@ -1,7 +1,0 @@
-C realistic wrong-target rows 57
-['glm53', 'dsv41'] all 50 with point 46 lift classes 20 oracle fixes 20 fix->full success 16 {'choice error': 26, 'occluder capture': 9, 'background leak': 11}
-['qwen38_low'] all 7 with point 7 lift classes 6 oracle fixes 6 fix->full success 6 {'occluder capture': 5, 'choice error': 1, 'background leak': 1}
-['qwen38_low', 'glm53', 'dsv41'] all 57 with point 53 lift classes 26 oracle fixes 26 fix->full success 22 {'occluder capture': 14, 'choice error': 27, 'background leak': 12}
-qwen38_low (n, oracle fix, full success) {'person': (5, 5, 5), 'parcel': (0, 0, 0), 'place': (2, 1, 1)}
-glm53 (n, oracle fix, full success) {'person': (2, 2, 2), 'parcel': (8, 1, 1), 'place': (14, 3, 2)}
-dsv41 (n, oracle fix, full success) {'person': (8, 8, 5), 'parcel': (7, 5, 5), 'place': (7, 1, 1)}

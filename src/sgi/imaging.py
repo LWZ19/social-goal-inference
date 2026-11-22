@@ -20,7 +20,7 @@ _WORD_PADDING = 2                                  # pixels of white around the 
 _DISC = (255, 221, 0)                              # a person's number stands in a yellow disc,
 _INK = (0, 0, 0)                                   # with its rim and the number in black: unlike the target's marker
 _DISC_SHARE = 0.019                                # the disc's radius as a share of the image's short side,
-_DISC_MIN = 8                                      # and the least it is, in pixels (the design, section 5)
+_DISC_MIN = 8                                      # and the least it is, in pixels
 
 
 def _to_image(rgb: np.ndarray) -> Image.Image:
@@ -93,7 +93,7 @@ def draw_point(rgb: np.ndarray, u: float, v: float, color=(255, 0, 0), label: st
 
 
 def draw_people_numbers(rgb: np.ndarray, people: Sequence[DetectedPerson], camera_xy) -> np.ndarray:
-    """A copy with each person's number in a filled disc on their body point, `pixel` (the design, section 5).
+    """A copy with each person's number in a filled disc on their body point, `pixel`.
 
     The disc's radius is 0.019 of the image's short side, at least 8 pixels. The discs are placed nearest the
     camera first: by the distance on the ground from `camera_xy`, the camera's ground position in the world

@@ -1,2 +1,0 @@
-# qwen3.8:27b calls 2026-11-07 14:18:32 to 2026-11-07 17:20:41: 28; threshold 55.0 s; rolling median of the last 30 at each call from the 30th
-# maximum rolling median 0.0 s at -; never over the threshold

@@ -1,2 +1,0 @@
-17:38 queued (fill/queue/j6_x2.sh): the frozen block unchanged; starts after item 9's GLM part.
-2026-11-07 01:09 6 episodes crashed at sim start-up (exit -11 within 25-32 s, no episode.json; sim logs kept in crashed/): treated as outages and re-run (run_pass2.log). Then the 240 s cache-only secondary (X2_FROZEN.md: item 9's latency rule fired for Qwen). Script: fill/queue/j10_x2_finish.sh.

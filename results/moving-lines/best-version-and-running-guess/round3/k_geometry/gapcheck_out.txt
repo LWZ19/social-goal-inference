@@ -1,4 +1,0 @@
-CT3F 216 gap deciles [1.22, 1.33, 1.4, 1.54, 1.63, 1.84, 1.88, 2.22, 2.54] too close 5 states {'moving': 126, 'arrived': 83, 'waiting': 7} robot-to-goal median 0.24
-CT4 372 gap deciles [1.27, 1.44, 1.53, 1.62, 1.75, 1.95, 2.25, 2.7, 3.11] too close 14 states {'moving': 263, 'arrived': 50, 'waiting': 59} robot-to-goal median 1.46
-W0 291 gap deciles [1.4, 1.53, 1.58, 1.82, 1.99, 2.24, 2.49, 2.79, 3.17] too close 2 states {'moving': 222, 'waiting': 42, 'arrived': 27} robot-to-goal median 1.49
-CT5 309 gap deciles [1.39, 1.5, 1.57, 1.72, 1.91, 2.16, 2.55, 2.94, 3.47] too close 3 states {'moving': 242, 'waiting': 44, 'arrived': 23} robot-to-goal median 1.63

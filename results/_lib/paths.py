@@ -16,5 +16,5 @@ STILL = RESULTS / "still-scenes"
 MOVING = RESULTS / "moving-lines"
 RUNS = REPO / "runs"                       # still-scene run folders (logs/still-runs.tar.gz, unpacked at the repo root)
 MOVING_RUNS = RESULTS / "data" / "moving"  # simulator run folders runs, runs_i4, runs_i10, ... (logs/moving-runs.tar.gz)
-DESIGN = MOVING / "design-and-scoring"     # run_moving.py, summarise_fresh.py and the moving-line scoring notes
+DESIGN = MOVING / "design-and-scoring"     # run_moving.py, summarise_fresh.py and the moving-line scoring definitions
 HARNESS = STILL / "analysis-scripts" / "harness"  # the offline harness of the still-scene analyses (data/dev_scenes)

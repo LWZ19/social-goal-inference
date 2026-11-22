@@ -1,4 +1,4 @@
-"""How each kind of item is built for the realistic set (realistic-scenes spec 5.3): what a construction draws,
+"""How each kind of item is built for the realistic set: what a construction draws,
 what it blocks, where its staff stand, what names it, and how all of that follows the placeholder's own item.
 
 An item is made here as a recipe makes it, its builder called with its options and the result stood in a frame
@@ -32,7 +32,7 @@ FLOOR_M = 0.15                                      # no higher than this is flo
 CELL_M = 0.05                                       # a cell of the map
 OVERHEAD_M = 1.85                                   # above every head: the sign over a place begins higher
 BODY_M = 0.2                                        # the disc a standing body needs
-REACH_M = 0.45                                      # the furthest a pose gets from the body's axis (spec 5.4)
+REACH_M = 0.45                                      # the furthest a pose gets from the body's axis
 STRIP_M = 0.36                                      # the least depth of the floor behind a counter, and the most of
 #                                                     the counter
 NAMING = ("label", "logo", "plate", "pictogram", "exit")       # the sign styles that name what they are on
@@ -852,7 +852,7 @@ def test_natural_mode_has_no_sign_wider_than_half_a_metre_on_a_target(kind, libr
 
 @pytest.mark.parametrize("kind", KINDS)
 def test_natural_mode_sets_no_lettering_taller_than_4_cm_on_any_sign(kind, library):
-    """Nothing in natural mode spells a target out in large letters (spec 5.3). The half metre of the test above
+    """Nothing in natural mode spells a target out in large letters. The half metre of the test above
     bounds how wide a sign that names its item is, and leaves its letters as tall as its rectangle lets them be:
     a plate half a metre square reads 10 cm tall. So the letters are measured, as the module that draws them
     sets them: on whatever a construction shows, a plate, a logo, a screen, a menu, no capital stands taller
@@ -890,7 +890,7 @@ def test_a_sign_has_art_of_the_size_of_the_rectangle_it_fills(kind, signs, libra
         assert sign.emission >= 0.0 and (sign.emission == 0.0 or sign.art.style in ("screen", "exit") or lamp)
 
 
-NATURAL = {   # kind: the styles of sign it shows in natural mode (spec 5.3), and those of them that name it
+NATURAL = {   # kind: the styles of sign it shows in natural mode, and those of them that name it
     "desk": ({"plate", "screen", "pictogram"}, {"plate", "pictogram"}),
     "stall": ({"logo", "menu", "screen"}, {"logo"}),
     "ticket_counter": ({"plate", "menu", "paper"}, {"plate"}), "kiosk": ({"screen", "pictogram"}, {"pictogram"}),

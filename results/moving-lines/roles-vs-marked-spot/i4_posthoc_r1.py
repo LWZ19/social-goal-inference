@@ -1,6 +1,6 @@
-"""Item 4, post hoc (reported, labelled): the secondary RTw vs R1. i4_score.py looked for R1 in runs_i4/<model>, but R1
-was never re-run (I4_FROZEN.md: "CT2 and R1 already ran and are not re-run"); it lives in runs/<model>. Here RTw comes
-from runs_i4/<model> and R1 from runs/<model>, so the two arms ran under different machine loads (amendment 1's issue).
+"""Added after the planned test (reported, labelled): the secondary RTw vs R1. i4_score.py looked for R1 in
+runs_i4/<model>, but R1 was not re-run there; it lives in runs/<model>. Here RTw comes from runs_i4/<model> and R1 from
+runs/<model>, so the two arms ran under different machine loads (i4_score.py runs RTw and CT2 together to avoid this).
 Zero calls; read-only."""
 import sys
 from pathlib import Path

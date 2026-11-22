@@ -1,1 +1,0 @@
-{'never a member': 168, 'member': 22, 'joiner on the way': 143, 'ex-member': 5}

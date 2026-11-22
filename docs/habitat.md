@@ -2,7 +2,7 @@
 
 This page is for anyone who wants to watch the pipeline drive a robot: Boston Dynamics' Spot in a Habitat 3.0 flat where five people walk about and queue at the kitchen counter. Type a request such as "get me a cup from the kitchen counter". The robot's current RGB-D view goes to the pipeline with it, the people keep moving while the models answer, and Spot then walks to the goal pose that comes back.
 
-Nothing here is a measurement. The simulator is for seeing the pipeline at work and for collecting live observations. The numbers in [the results](results/README.md) come from `python -m sgi.run` on scene folders.
+Nothing here is a measurement. The simulator is for seeing the pipeline at work and for collecting live observations. The numbers in [the results](../results/README.md) come from `python -m sgi.run` on scene folders.
 
 ## Two environments
 

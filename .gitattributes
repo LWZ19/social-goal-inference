@@ -1,2 +1,0 @@
-results/logs/*.tar.gz filter=lfs diff=lfs merge=lfs -text
-results/moving-lines/hold-place/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text

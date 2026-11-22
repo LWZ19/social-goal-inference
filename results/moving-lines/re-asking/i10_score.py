@@ -1,7 +1,7 @@
-"""Item 10 (I10_FROZEN.md): asking once and re-solving (CT2) against re-asking (Rq0: the marked point asked again as
+"""Asking once and re-solving (CT2) against re-asking (Rq0: the marked point asked again as
 soon as an answer arrives; Cq: the constraint method asked again every 10 s) on fresh headline cells. Zero calls.
 
-    .venv/bin/python results/moving-lines/re-asking/i10_score.py           (the frozen reading)
+    .venv/bin/python results/moving-lines/re-asking/i10_score.py           (the planned reading)
     .venv/bin/python results/moving-lines/re-asking/i10_score.py --test    (old data: seeds 0-2, CT)
 """
 import math
@@ -13,7 +13,7 @@ sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 
 import mcompare as C  # noqa: E402
 
 MARGIN = -0.05
-# Amendment 1 (I10_FROZEN.md): CT2, Rq0 and Cq all run in one invocation into runs_i10/<model> (same machine load);
+# CT2, Rq0 and Cq all run in one invocation into runs_i10/<model> (same machine load);
 # the earlier CT2 in runs/<model> is read only for a repeat check.
 MODELS = {"DeepSeek V4.1": ("runs_i10/dsv41", range(10, 15)), "Qwen 3.8": ("runs_i10/soclaas_qwen38_low", range(10, 15)),
           "Sonnet 5.5": ("runs_i10/sonnet55_low", range(10, 15))}
@@ -42,7 +42,7 @@ NORMAL = {"DeepSeek V4.1": {"Rq0": 0.49, "Cq": 0.51}, "Sonnet 5.5": {"Rq0": 0.79
 
 
 def reask_ratio(eps, arm):
-    """Amendment 3 (I10_FROZEN.md): median latency of the arm's live re-asks (answers after the first) over the median
+    """Median latency of the arm's live re-asks (answers after the first) over the median
     latency of its first answers (cache replays, stored when first made). None without both."""
     first = [e["answers"][0]["latency_s"] for (_, _, a), e in eps.items() if a == arm and e is not None
              and e.get("answers") and e["answers"][0].get("status") == "ok" and e["answers"][0].get("latency_s")]
@@ -91,7 +91,7 @@ def main():
             ct = [e for (_, _, a), e in eps.items() if a == ref and e is not None]
             late = sum(1 for e in ct if not e.get("answers") or e["answers"][0].get("status") != "ok"
                        or (e["answers"][0].get("latency_s") or 0) + 2.0 > 92.0)
-            bound = bool(ct) and late > len(ct) / 2          # item 9's latency-bound rule (I9_FROZEN.md)
+            bound = bool(ct) and late > len(ct) / 2          # the latency-bound rule of the school-models comparison
             if bound:
                 verdicts.append(f"- {name}: LATENCY-BOUND ({late} of {len(ct)} {ref} episodes without a first answer in "
                                 f"time): reported only, left out of the pooled bar")

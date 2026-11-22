@@ -64,7 +64,8 @@ def worker(w: int, jobs: list, lock: threading.Lock, args, log) -> None:
         goal = "constraints" if kind == "C" else "direct_marking"
         f = open(args.out / f"serve_w{w}_{kind}.log", "a")
         serves[kind] = subprocess.Popen([str(VENV_PY), "-m", "sgi.serve", "--model", args.model, "--goal", goal,
-                                         "--port", str(port), "--max-rpm", str(args.max_rpm)],
+                                         "--port", str(port), "--max-rpm", str(args.max_rpm),
+                                         *(f"--threshold={pair}" for pair in args.threshold)],
                                         cwd=REPO, stdout=f, stderr=subprocess.STDOUT)
         log(f"w{w} serve {kind} pid {serves[kind].pid} port {port}")
     try:
@@ -126,6 +127,8 @@ def main() -> int:
     ap.add_argument("--record", nargs="*", default=[], help="scenarios to record video for")
     ap.add_argument("--module", default="sgi_habitat.experiment", help="or sgi_habitat.experiment_controls")
     ap.add_argument("--port-base", type=int, default=8800, help="services on this port and up, two a worker")
+    ap.add_argument("--threshold", action="append", default=[], metavar="KEY=VALUE",
+                    help="passed to every sgi.serve as --threshold (e.g. join_spacing_ratio=1.5)")
     ap.add_argument("--jobs", type=Path, help="a file of 'scenario seed' lines, in place of --scenarios x --seeds")
     args = ap.parse_args()
     if not args.out.is_absolute():                 # run folders live in results/data/moving/

@@ -1,4 +1,4 @@
-"""The realistic scene generator (realistic-scenes spec 5.6): the placeholder generator's scenes, dressed and
+"""The realistic scene generator: the placeholder generator's scenes, dressed and
 drawn by a renderer.
 
     python -m sgi.synth.realistic.generate [--variant real|plain|staffed] [--out DIR] [--only ID ...] [--force]
@@ -25,7 +25,7 @@ A scene is made in these steps:
    the scene check without an error or a warning other than the expected one, and a standard goal that is
    reached where nobody is about). So is the scene's dressing in each of the other variants. A dressing that
    fails in any of them is given up in all for the next attempt, five in all; then the run stops and says
-   why. The attempt seeds the cast, and the variants of a scene show the same people (spec 5.6): each run
+   why. The attempt seeds the cast, and the variants of a scene show the same people: each run
    keeps the first attempt at which all three pass, whichever variant it makes. The layout is never drawn
    again.
 3. The reference regions are derived from that folder, as for the placeholder set.

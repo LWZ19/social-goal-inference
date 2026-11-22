@@ -1,2 +1,0 @@
-13:42 X5 started; the three models run side by side (request for parallel API calls), not one after another. No earlier snap_plan run for these models exists.
-13:56 all three runs complete: 144 records each, 0 vlm_error, 0 parse_failed. Scored with the venv python (the block's bare python3 has no sgi module); no other change.

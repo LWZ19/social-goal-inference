@@ -1,4 +1,0 @@
-CT3F extra off axis: n 80, goal ok 0.16; extra, all on axis: n 124, goal ok 0.49; no extra: n 1052, goal ok 0.64
-CT4 extra off axis: n 138, goal ok 0.28; extra, all on axis: n 236, goal ok 0.32; no extra: n 784, goal ok 0.40
-W0 extra off axis: n 162, goal ok 0.30; extra, all on axis: n 202, goal ok 0.37; no extra: n 654, goal ok 0.43
-CT5 extra off axis: n 175, goal ok 0.21; extra, all on axis: n 222, goal ok 0.32; no extra: n 507, goal ok 0.24

@@ -1,9 +1,10 @@
-"""People tracks from the robot's own camera, as a local HTTP service for the sim (research arm CTd, E1D_FROZEN.md).
+"""People tracks from the robot's own camera, as a local HTTP service for the sim (arm CTd).
 
     .venv/bin/python tracker_service.py [--port 8897] [--detector http://127.0.0.1:8899/detect]
 
-POST /track {"key": episode id, "rgb_png", "depth_npy", "camera", "robot", "t"} runs the E1d detector service on the
-frame, A1's deployed people on it (own-camera/detector-on-sim-frames/e1d/tracker.py: people_from_raw), and that episode's Tracker.update; it answers
+POST /track {"key": episode id, "rgb_png", "depth_npy", "camera", "robot", "t"} runs the detector service on the
+frame, the deployed people finder on it (own-camera/detector-on-sim-frames/e1d/tracker.py: people_from_raw), and
+that episode's Tracker.update; it answers
 {"tracks": [{"id", "x", "y", "yaw", "stale"}], "detected": n, "ms": round trip}. One Tracker per key, kept until the
 service stops. Uses only what the robot has: the frame's rgb, depth and camera.
 """
@@ -22,7 +23,7 @@ sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / 
 import paths  # noqa: E402
 E1D = paths.MOVING / "own-camera" / "detector-on-sim-frames" / "e1d"
 sys.path.insert(0, str(E1D))
-import tracker as T  # noqa: E402  (E1d's frozen tracker, pinned in E1D.sha256)
+import tracker as T  # noqa: E402  (the tracker used by the CTd arm)
 
 from sgi.serve import observation_from  # noqa: E402
 

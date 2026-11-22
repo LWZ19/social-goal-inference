@@ -1,3 +1,3 @@
-plain: .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/plain/scenes
-real: .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/real/scenes
-staffed: .superpowers/sdd/2026-10-07-social-goal-inference-pipeline/keep/realistic_final/staffed/scenes
+plain: data/dev_scenes/realistic_final/plain/scenes
+real: data/dev_scenes/realistic_final/real/scenes
+staffed: data/dev_scenes/realistic_final/staffed/scenes

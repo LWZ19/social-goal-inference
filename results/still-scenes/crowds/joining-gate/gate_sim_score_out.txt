@@ -1,0 +1,30 @@
+## DeepSeek V4.1, 64 untuned layouts: 64 of 64 layouts with all three runs
+- strict share: recorded live 0.306, replay 0.297, replay with the gate 0.308
+  replay with the gate minus replay: +1.1 points; layouts better 18, worse 21, level 25, sign p 0.7493
+  replay minus recorded live: -0.9 points; layouts better 13, worse 21, level 30, sign p 0.2295
+- primary share: recorded live 0.350, replay 0.344, replay with the gate 0.367
+  replay with the gate minus replay: +2.3 points; layouts better 22, worse 18, level 24, sign p 0.6358
+  replay minus recorded live: -0.6 points; layouts better 17, worse 21, level 26, sign p 0.6271
+## DeepSeek V4.1, all 72 layouts: 72 of 72 layouts with all three runs
+- strict share: recorded live 0.305, replay 0.290, replay with the gate 0.305
+  replay with the gate minus replay: +1.5 points; layouts better 21, worse 24, level 27, sign p 0.7660
+  replay minus recorded live: -1.4 points; layouts better 16, worse 24, level 32, sign p 0.2682
+- primary share: recorded live 0.348, replay 0.334, replay with the gate 0.367
+  replay with the gate minus replay: +3.3 points; layouts better 26, worse 20, level 26, sign p 0.4614
+  replay minus recorded live: -1.4 points; layouts better 19, worse 25, level 28, sign p 0.4514
+
+## Claude Sonnet 5.5, 64 untuned layouts: 64 of 64 layouts with all three runs
+- strict share: recorded live 0.467, replay 0.452, replay with the gate 0.462
+  replay with the gate minus replay: +1.0 points; layouts better 22, worse 20, level 22, sign p 0.8776
+  replay minus recorded live: -1.5 points; layouts better 19, worse 21, level 24, sign p 0.8746
+- primary share: recorded live 0.535, replay 0.513, replay with the gate 0.531
+  replay with the gate minus replay: +1.8 points; layouts better 24, worse 16, level 24, sign p 0.2682
+  replay minus recorded live: -2.2 points; layouts better 16, worse 21, level 27, sign p 0.5114
+## Claude Sonnet 5.5, all 72 layouts: 72 of 72 layouts with all three runs
+- strict share: recorded live 0.454, replay 0.432, replay with the gate 0.457
+  replay with the gate minus replay: +2.5 points; layouts better 28, worse 22, level 22, sign p 0.4799
+  replay minus recorded live: -2.2 points; layouts better 22, worse 25, level 25, sign p 0.7709
+- primary share: recorded live 0.517, replay 0.490, replay with the gate 0.529
+  replay with the gate minus replay: +3.9 points; layouts better 31, worse 16, level 25, sign p 0.0400
+  replay minus recorded live: -2.8 points; layouts better 20, worse 25, level 27, sign p 0.5515
+

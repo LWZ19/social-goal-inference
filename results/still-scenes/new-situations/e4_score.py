@@ -1,7 +1,7 @@
-"""E4 scorer (I13_FROZEN.md section 4): per situation family, success of pointing (R, "cot"), pointing with examples
+"""Scorer for the new situations: per situation family, success of pointing (R, "cot"), pointing with examples
 (E, "fsc") and the constraint method (C, "con") for each model, and the layout-level exact sign-flip of C-R and C-E,
 pooled over the six models (per-layout net summed over models, episodes and trials) and per model. Zero calls; reads
-sgi.run output folders (config.yaml + results.jsonl). the run runs it (machine_use is a held-out situation).
+sgi.run output folders (config.yaml + results.jsonl). machine_use is a held-out situation.
 
     PYTHONPATH= .venv/bin/python e4_score.py RUN_DIR [RUN_DIR ...]
 """
@@ -65,7 +65,7 @@ def main(dirs):
         for m in models:
             keys = {k[2:] for k in rec if k[0] == m and rec[k][0] == sit}
             full = [k for k in keys if all((m, meth, *k) in rec for meth in ("cot", "fsc", "con"))]
-            # amendment 1 (I13_FROZEN.md): records still in vlm_error after the last pass, in any method, are left out
+            # Records still in vlm_error after the last pass, in any method, are left out
             # of every method for that model and counted; the worst case counts each as a C loss
             excl = [k for k in full if any(rec[(m, meth, *k)][2] == "vlm_error" for meth in ("cot", "fsc", "con"))]
             both = [k for k in full if k not in set(excl)]

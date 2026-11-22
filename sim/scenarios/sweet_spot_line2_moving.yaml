@@ -1,4 +1,4 @@
-# sweet_spot_line2_moving: sweet_spot_line2 with the line moving (research, 2026-11-01): the person at the front is served
+# sweet_spot_line2_moving: sweet_spot_line2 with the line moving: the person at the front is served
 # every 15 s, walks about for 8 to 15 s and joins the end again. The slots are extended to 6, so
 # that people coming back (and the robot, once it has joined) have places behind the line.
 stage: data/habitat/stages/sweet_spot_cafe.glb

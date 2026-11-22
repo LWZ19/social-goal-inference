@@ -1,1 +1,0 @@
-camera start: n=752 A=25 (3.32%) B=24 (3.19%) successes 2/602 per model {'qwen38_low': 0, 'glm53': 14, 'dsv41': 11}

@@ -1,16 +1,34 @@
-# Social goal inference pipeline
+# Social goal inference
+
+Course project for CS6244. A robot gets a request such as "get me a coffee" and a camera view, and has to decide where to stand among people: behind the last person in a line, at the edge of a group, out of someone's photo.
+
+We compare two ways of using a vision-language model (VLM). In **pointing**, the VLM marks the spot in the picture. In **our method**, the VLM names the people and the social rules that apply, for example "come after people 4, 5 and 6", and a geometric solver finds the exact spot. When people move, the robot tracks the people the VLM named and solves again every half second, with no new VLM call.
+
+| Test | Pointing | Our method |
+|---|---|---|
+| 70 new still scenes, six VLMs, tries that end at a good spot | 63.3% | **85.1%** |
+| Waiting lines in those scenes | 41% | **81%** |
+| Situations left out of development: lift, bent line, machine | 54%, 2%, 14% | **88%, 69%, 62%** |
+| Moving line in the simulator, Claude Sonnet, time in the right spot | 6% (decide once) | **29%** (track), **47%** (with the hold-place rule, in the updated simulator) |
+
+The method also has clear limits: a group photo stays unsolved (4% against 8%), someone standing just behind a line breaks it (3.5% against 19% for pointing), and each answer takes 1.2 to 1.8 times as long as pointing. [`results/README.md`](results/README.md) links every number to its scoring script and stored output.
+
+| Folder | What is in it |
+|---|---|
+| [`src/sgi/`](src/sgi/) | The pipeline, the solver (`solver.py`) and the tracking layer (`resolve.py`) |
+| [`prompts/`](prompts/) | The VLM prompts for each step |
+| [`sim/`](sim/) | The Habitat 3.0 simulator with a Spot robot and animated people |
+| [`results/`](results/README.md) | Scoring scripts and stored outputs for every result |
+| [`docs/`](docs/) | The method, the scene format, the simulator and the realistic scenes |
+| [`tests/`](tests/) | The test suite (`pytest`) |
+
+## How the pipeline works
 
 `sgi` turns a vague human request and one RGB-D view of a scene into a socially appropriate navigation goal for a robot, using vision-language models. What goes in is a request such as "get me a coffee", optional context text, and one RGB-D observation with its camera and robot pose. What comes out is an ordered list of subtasks and, for the navigation subtask whose target is in view, a goal pose (x, y, θ) in the robot frame. Five stages produce it. The **plan** stage splits the request into subtasks and points at each navigation target in the image. **Locate** marks a target that the plan left unmarked. The **context check** decides whether the people in view matter for where the robot stops. If they do not, the **standard goal** stops about a metre in front of the side of the target that the robot sees, facing it, from depth alone. If they do, the **point-marking baseline** has the model mark a point on the floor, and depth lifts it to the goal pose. The scene format, for anyone who exports scenes, is in [`docs/scene_format.md`](docs/scene_format.md).
 
 That last step has a second method, the **constraint method**, chosen with `goal: constraints`: the people in view get numbers, a model states what they require of the place as constraints over those numbers, and a geometric solver finds the place. [Run the constraint method](#run-the-constraint-method) says how to use it. [`docs/constraint_method.md`](docs/constraint_method.md) is the page to read first: what the method does, how to run it against the baseline, its known limits, and what has and has not been measured.
 
-Comments in the code that cite a "spec" or "the design" by section refer to the project's design documents, which are not part of this repository.
-
 Numbers measured on placeholder scenes are not research results. They only show the pipeline works.
-
-## Results
-
-The experiments, their results and the run logs are in [`results/`](results/README.md). Start with `results/README.md`.
 
 ## Setup
 
@@ -37,7 +55,7 @@ Every command runs from the repository root. `data/`, `runs/` and `.cache/` are 
 .venv/bin/python -m sgi.synth.generate --out data/placeholder
 ```
 
-This writes 22 scenes to `data/placeholder/eval` and 8 to `data/placeholder/examples`, the same ones every time, in a minute or two. They stand in for the Isaac Sim scenes until those arrive. Each scene is a furnished room drawn by a small ray caster, with exact depth and ground truth. It has one target (a coffee stall, a ticket counter, a help desk, a print kiosk, a parcel on a table, a big screen, a lift, or a person in red), people drawn with bodies and faces, one of six situations (nobody at the target, a waiting line, a conversation group, people watching a screen, a picture being taken, people waiting at a lift), a request that names the target and one that only says what is wanted, and a tour of eight frames. `data/placeholder/examples` holds the scenes that the in-context examples of the goal stage are taken from.
+This writes 22 scenes to `data/placeholder/eval` and 8 to `data/placeholder/examples`, the same ones every time, in a minute or two. They let you try the pipeline without rendering anything. Each scene is a furnished room drawn by a small ray caster, with exact depth and ground truth. It has one target (a coffee stall, a ticket counter, a help desk, a print kiosk, a parcel on a table, a big screen, a lift, or a person in red), people drawn with bodies and faces, one of six situations (nobody at the target, a waiting line, a conversation group, people watching a screen, a picture being taken, people waiting at a lift), a request that names the target and one that only says what is wanted, and a tour of eight frames. `data/placeholder/examples` holds the scenes that the in-context examples of the goal stage are taken from.
 
 ### Check a scene
 
@@ -53,7 +71,7 @@ This prints one verdict per check, twelve in all (`OK`, `WARNING` or `ERROR`), t
 .venv/bin/python -m sgi.run --scenes data/placeholder/eval --model mock --name plumbing
 ```
 
-The keyless path is `--model mock`: the `mock` entry of the model table in `configs/default.yaml`. This is what the spec calls `--provider mock`; no command here has a `--provider` option. The mock answers every point with the image centre, so the success rate this run prints means nothing. What the run shows is that the whole path works: the scene check, the selection of examples, every stage, the scorer and the outputs. It writes `runs/<timestamp>_<name>/`.
+The keyless path is `--model mock`: the `mock` entry of the model table in `configs/default.yaml`. The mock answers every point with the image centre, so the success rate this run prints means nothing. What the run shows is that the whole path works: the scene check, the selection of examples, every stage, the scorer and the outputs. It writes `runs/<timestamp>_<name>/`.
 
 A run logs every warning of the scene check, with the scene and the check, before it starts on the episodes; only an error stops it. On the placeholder scenes no warning is expected. Any warning on an exported scene is worth a look before the numbers are read, above all one from check 10 or 11: a map that does not agree with the depth image means every goal is tested for reachability against the wrong map. A warning from check 9 says that the standard goal fails in an episode with nobody near the target, which is a matter of the scene or of the view and not of people. It has two causes, and in both the stop is taken on the robot's line of sight and ends up beside a target that is seen from the side. One is a target whose depth shows no flat upright surface round the target point (a person seen in profile is one). The other is a target that has such a surface but no place in front of it that is clear and on floor the picture shows, as wide as the robot is: the place is hidden behind something, lies at the edge of the picture or beside it, or the robot stands so near that the picture ends on the target itself and not on floor. With the camera of the placeholder scenes, 1.5 m up and tilted 10 degrees down, that last case begins nearer than about 2.5 m from a place seen 45 degrees off its front and 2.7 m from one seen 58 degrees off; the placeholder robots stand 4.3 to 6.2 m from their targets.
 
@@ -206,7 +224,7 @@ An `openai_compatible` entry is for any service that speaks the OpenAI chat-comp
 
 For an `anthropic` entry, `reasoning_effort` is the model's effort level: `low`, `medium`, `high`, `xhigh` or `max`. The model thinks by itself, as much as the level allows, and its thinking is billed as output. `none` is not one of those levels: it stands for thinking switched off. By Anthropic's documentation Claude Haiku 5.5 takes that, and Claude Opus 5.5 and Claude Sonnet 5.5 refuse it, which stops the run with the provider's message. Such an entry may set neither `temperature` nor `image_detail`: the models refuse a sampling parameter and the back end has nowhere to send either, so an entry that sets one is refused with an `error:` line that names it. An answer may be as long as `max_output_tokens`, thinking included, and 16000 tokens where the entry gives no number. The shape of an answer is asked for with the stage's schema, sent without the bounds of a point's coordinates because the API takes no bound on a number; the answer is checked against the bounds all the same. A request the model declines is recorded as refused, with the category the API gives, and is never handed to another model: a run measures the model its entry names.
 
-What has been measured with real models so far is in [`docs/results/README.md`](docs/results/README.md).
+What has been measured with real models is in [`results/README.md`](results/README.md).
 
 ### Strategies and prompt folders
 

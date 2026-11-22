@@ -1,8 +1,0 @@
-I06 repair probe: R0 reproduction, arm 1 (oracle C). Written 2026-10-18 06:47:34 +0800.
-scenes 229 (bases 30, variants 199); both episodes compared with I06 score/work/arms_seed*.jsonl arm3 (L1, L2, xy within 1e-9 m, note.joined_waiting) and rows_oracle.jsonl det[i]
-scenes with any mismatch: 0
-R0 L1 failures at lines by family and level: {'A1': 12, 'A2': 12, 'A3': 15, 'A4': 15, 'A5': 15, 'A6': 15, 'B1': 8, 'C1': 3, 'D2': 4, 'E2': 4} (sum 103); expected {'A1': 12, 'A2': 12, 'A3': 15, 'A4': 15, 'A5': 15, 'A6': 15, 'B1': 8, 'C1': 3, 'D2': 4, 'E2': 4}
-R0 L1 failures at groups or audiences: none
-scenes with a non-empty joined_waiting (e0): 99; of them R0 failures: 99
-every episode pair agreed (asserted in the pass): yes
-FULL REPRODUCTION: yes

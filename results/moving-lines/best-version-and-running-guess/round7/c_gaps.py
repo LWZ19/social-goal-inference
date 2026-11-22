@@ -1,6 +1,5 @@
-"""Round 7 part C, DESCRIPTIVE: ROUND7.md's predictions (section 2) and readings (section 3) applied mechanically to
-the ceiling runs, at band tops 1.2 m (frozen; the decisions) and 1.5 m (ROUND7_B.md; reported beside them).
-Written and hashed before the ceiling totals. Zero calls; read-only.
+"""Descriptive: the predictions and readings fixed before the runs, applied mechanically to the ceiling runs, at band
+tops 1.2 m (the decisions) and 1.5 m (reported beside them). Written before the ceiling totals. Zero calls; read-only.
 
     .venv/bin/python round7/c_gaps.py SELECTION_JSON CEILING_ROOT CONFIRM_ROOT
     (SELECTION_JSON relative to results/moving-lines/, the roots relative to results/data/moving/. OW, CT4OT, CT4O and
@@ -14,10 +13,10 @@ seconds), so every gap splits into front + behind.
 Gaps are means of paired per-layout differences over layouts where both arms have a window:
 - place and follow: OW - CT4OT;
 - target: CT4OT - CT4O;
-- who, model's target: CT4O - CT4PJ (ROUND7's WA reading uses this one, as fixed);
-- who, true target: CT4OT - CT4PJT (ROUND7 section 4).
+- who, model's target: CT4O - CT4PJ (the WA reading uses this one);
+- who, true target: CT4OT - CT4PJT.
 
-One rule added here, before the totals: if the two "who" gaps give different WA decisions, both go to the project,
+One rule added here, before the totals: if the two "who" gaps give different WA decisions, both are reported,
 as for the two band tops.
 """
 import json
@@ -37,7 +36,7 @@ from summarise_fresh import sign_p  # noqa: E402
 CEILING, CONFIRM = ("OW", "CT4OT", "CT4O", "CT4PJT"), ("CT4PJ", "CT3F")
 GAPS = (("place and follow", "OW", "CT4OT"), ("target", "CT4OT", "CT4O"), ("who, model's target", "CT4O", "CT4PJ"),
         ("who, true target", "CT4OT", "CT4PJT"))
-MIN_EFFECT = 0.05          # CONFIRM_CT4PJ.md section 3
+MIN_EFFECT = 0.05          # smallest difference read as an effect
 TIE = 0.01
 
 

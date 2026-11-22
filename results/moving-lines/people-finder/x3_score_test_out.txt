@@ -1,7 +1,0 @@
-# X3: CTe against CTd TEST
-
-- Sonnet (seeds 10-12): 15 cells; strict CTe 0.316, CTd 0.247; mean d +0.070, lower bound -0.004; W/L/T 9/4/2 (p 0.267)
-  first answer: median CTe 10.6 s, CTd 13.0 s; CTe earlier in 15, later in 0 (sign p 0.0001)
-
-- Sonnet (seeds 10-12): BAR X3-speed (CTe's first answer earlier, sign p <= 0.05): True; per-model X3-quality (lower bound > -0.05): True
-- POOLED over 15 cells: BAR X3-quality (CTe non-inferior to CTd, strict lower bound > -0.05): True (mean +0.070, bound -0.004)

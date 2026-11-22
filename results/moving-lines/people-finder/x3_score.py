@@ -1,4 +1,4 @@
-"""Extra X3 (X3_FROZEN.md): CTe (detector people for the first answer, plus detector tracking) against CTd (the model's
+"""CTe (detector people for the first answer, plus detector tracking) against CTd (the model's
 people call for the first answer, plus detector tracking), run together into runs_x3/<model>. Zero calls; read-only.
 
     .venv/bin/python results/moving-lines/people-finder/x3_score.py [--test]

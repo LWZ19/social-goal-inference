@@ -1,4 +1,4 @@
-"""The pipeline: plan in the far phase, then locate and infer the goal pose on an observation (spec 3)."""
+"""The pipeline: plan in the far phase, then locate and infer the goal pose on an observation."""
 from __future__ import annotations
 
 import time
@@ -55,7 +55,7 @@ class _TimedClient:
 
 
 class Pipeline:
-    """The three calls of spec 3, each stage on its own client and strategy from the config.
+    """Each stage of the pipeline on its own client and strategy from the config.
 
     The stage prompts are read from the config's `run.prompts_dir`, a folder under the repository root unless it
     is absolute. A folder without the file of a stage of the run (sgi.prompts.stages_of), or with a file that
@@ -70,7 +70,7 @@ class Pipeline:
 
     def _timed[T](self, stage: StageName,
                   work: Callable[[_TimedClient], tuple[T, VLMResponse]]) -> tuple[T, VLMResponse, float]:
-        """Run one stage on its client: what `work` returns, and the stage's time (spec 3.1).
+        """Run one stage on its client: what `work` returns, and the stage's time.
 
         The time is the wall-clock time of `work` with the response's own `latency_total_s` in place of the
         time `generate` took, so a call answered from the cache counts the same as the call that was stored.
@@ -144,7 +144,7 @@ class Pipeline:
                    subtask_index: int, *, target_point: Point | None = None,
                    context_check: ContextCheck | None = None, inferrer: GoalInferrer | None = None,
                    trial: int = 0) -> GoalResult:
-        """The goal pose for one subtask of the plan on this observation (spec 3.3 to 3.6).
+        """The goal pose for one subtask of the plan on this observation.
 
         `target_point` stands in for the plan's point and for locate, `context_check` for the context stage, and
         `inferrer` for the method that places the goal where people matter. Without an inferrer the one

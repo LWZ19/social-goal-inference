@@ -1,2 +1,0 @@
-CT4 (threshold, chord): goal in line (proxy), all ticks: high 0.112, low 0.369; right-last ticks only: high 0.277 (n 538), low 0.621 (n 951)
-CT4P (threshold, path): goal in line (proxy), all ticks: high 0.149, low 0.354; right-last ticks only: high 0.391 (n 512), low 0.591 (n 950)

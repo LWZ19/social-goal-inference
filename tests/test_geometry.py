@@ -4,7 +4,7 @@ import pytest
 import sgi.geometry as g
 from tests.helpers import INTRINSICS, MOUNT, ROBOT, camera_for, floor_observation
 
-# Spec 15 fixed case: robot at (1, 2) facing world +Y; camera 0.2 m ahead, 1.2 m up, pitched 20 degrees down.
+# Fixed case: robot at (1, 2) facing world +Y; camera 0.2 m ahead, 1.2 m up, pitched 20 degrees down.
 # Columns: camera +X (right), +Y (down), +Z (optical axis), origin. 0.9396926... = cos 20, 0.3420201... = sin 20.
 T_FIXED = np.array([[1.0, 0.0, 0.0, 1.0], [0.0, -0.3420201433256687, 0.9396926207859084, 2.2],
                     [0.0, -0.9396926207859084, -0.3420201433256687, 1.2], [0.0, 0.0, 0.0, 1.0]])

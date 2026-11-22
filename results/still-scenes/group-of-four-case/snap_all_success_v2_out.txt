@@ -1,7 +1,0 @@
-qwen38_low {'records': 252, 'snap_fires': 11, 'resolved': 9, 'succ_before': 1, 'succ_after': 9, 'fixed': 8, 'no_solver_step': 2}
-glm53 {'records': 252, 'snap_fires': 4, 'resolved': 4, 'succ_before': 0, 'succ_after': 2, 'fixed': 2}
-dsv41 {'records': 252, 'snap_fires': 9, 'no_solver_step': 1, 'resolved': 8, 'succ_before': 1, 'succ_after': 7, 'fixed': 6}
-sonnet55_low {'records': 252, 'snap_fires': 7, 'resolved': 7, 'succ_before': 0, 'succ_after': 7, 'fixed': 7}
-haiku55 {'records': 252, 'snap_fires': 1, 'resolved': 1, 'succ_before': 0, 'succ_after': 1, 'fixed': 1}
-gemini38_low {'records': 252}
-target moved by the snap (m): median 1.12, 90th 3.18, max 12.30

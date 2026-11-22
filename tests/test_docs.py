@@ -58,9 +58,9 @@ def test_readme_covers_the_run_modes_the_run_folder_and_the_caveat():
     assert "`goal: constraints`" in rows["`people`"] and "`goal: constraints`" in rows["`constraints`"]
     assert "no model call" in rows["`people`"] and "the solver runs on its own rules alone" in rows["`constraints`"]
     assert "Numbers measured on placeholder scenes are not research results." in README
-    keyless = ["--model mock", "--provider mock"]         # the keyless path, and the name the spec gives it
+    keyless = ["--model mock"]                            # the keyless path
     assert [w for w in keyless if f"`{w}`" not in section("Commands")] == []
-    report = ["latency_s", "latency_total_s", "transient_retry_share", "model", "reasoning_effort"]      # spec 7, Latency
+    report = ["latency_s", "latency_total_s", "transient_retry_share", "model", "reasoning_effort"]  # the latency columns
     assert [w for w in report if f"`{w}`" not in section("Reading a run folder")] == []
 
 def test_readme_says_how_to_switch_models_and_what_state_each_provider_is_in():
@@ -82,7 +82,7 @@ def test_readme_says_how_to_switch_models_and_what_state_each_provider_is_in():
     (levels,) = [p for p in text.split("\n\n") if p.startswith("For an `anthropic` entry")]
     said = ["reasoning_effort", "none", "low", "medium", "high", "xhigh", "max", "temperature", "image_detail", "max_output_tokens"]
     assert [w for w in said if f"`{w}`" not in levels] == [] and "16000" in levels and "thinking switched off" in levels
-    assert "(docs/results/README.md)" in text and (REPO_ROOT / "docs" / "results" / "README.md").is_file()
+    assert "(results/README.md)" in text and (REPO_ROOT / "results" / "README.md").is_file()
 
 def test_readme_says_how_to_choose_strategies_and_prompt_folders_and_what_pacing_and_cost_are():
     text = section("Switching models")
@@ -199,7 +199,7 @@ def test_scene_format_page_names_every_field_and_its_worked_example():
     assert len(names) == 70 and sorted(n for n in names if not re.search(rf'[`"]{n}[`"]', PAGE)) == []
     example = scene.read_scene_file(REPO_ROOT / "docs" / "example_scene")
     recipe = ["T = inverse(transpose(M))", "T[:3, 3] *= metersPerSceneUnit", "T_world_camera = T @ diag(1, -1, -1, 1)",
-              "fx = fy = W * cameraFocalLength / cameraAperture[0]"]       # spec 5, character for character: no paraphrase
+              "fx = fy = W * cameraFocalLength / cameraAperture[0]"]       # character for character: no paraphrase
     words = [*CFG.dev_situations, *CFG.held_out_situations, "ahead_in_line", "group_space", "cameraViewTransform",
              "metersPerSceneUnit", "distance_to_image_plane", "camera_params", "check.png", example.scene_id, *recipe,
              *(t.label for t in example.ground_truth.targets), *(e.request for e in example.episodes)]

@@ -1,4 +1,4 @@
-"""Item 12 (I12_FROZEN.md): the still-scene headline on fresh seeds of the 14 development rows. Per model, success of
+"""The still-scene headline on fresh seeds of the 14 development rows. Per model, success of
 pointing (R, "cot"), pointing with examples (E, "fsc") and the constraint method (C, "con"), and the exact two-sided
 sign-flip over layouts (a layout is one scene) of C-R, C-E and E-R, per model and pooled over models (per-layout net
 summed over models, episodes and trials). Also success by situation. Zero calls; reads sgi.run output folders.
@@ -68,7 +68,7 @@ def main(dirs):
     for m in models:
         keys = {k[2:] for k in rec if k[0] == m}
         full = sorted(k for k in keys if all((m, meth, *k) in rec for meth in ("cot", "fsc", "con")))
-        # amendment 1 (I12_FROZEN.md): a record still in vlm_error after the last re-run pass, in any method, is left
+        # A record still in vlm_error after the last re-run pass, in any method, is left
         # out of every method for that model (the comparison stays paired) and counted
         excluded = [k for k in full if any(rec[(m, meth, *k)][2] == "vlm_error" for meth in ("cot", "fsc", "con"))]
         both = [k for k in full if k not in set(excluded)]

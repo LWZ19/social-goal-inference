@@ -1,5 +1,0 @@
-72 layouts -> sim/scenarios/sweep; scenario files' sha256 047f49a5
-  ours  40: bases {'cafe': 20, 'sweet': 20}, facing {'away': 13, 'side': 12, 'counter': 15}, members {2: 13, 3: 12, 4: 15}, flags {(False, False): 10, (True, True): 10, (False, True): 10, (True, False): 10}, past 1.20-1.60 m, walkers {2: 19, 1: 13, 0: 8}
-  chain 12: bases {'cafe': 6, 'sweet': 6}, facing {'away': 4, 'side': 4, 'counter': 4}, members {4: 3, 2: 5, 3: 4}, flags {(False, False): 3, (True, True): 3, (False, True): 3, (True, False): 3}, past 0.42-2.11 m, walkers {1: 4, 2: 7, 0: 1}
-  mixed  8: bases {'cafe': 4, 'sweet': 4}, facing {'side': 3, 'away': 2, 'counter': 3}, members {2: 3, 4: 2, 3: 3}, flags {(False, False): 2, (True, True): 2, (False, True): 2, (True, False): 2}, past 1.13-1.89 m, walkers {2: 4, 1: 3, 0: 1}
-  easy  12: bases {'cafe': 6, 'sweet': 6}, facing {'away': 4, 'counter': 4, 'side': 4}, members {4: 3, 2: 5, 3: 4}, flags {(False, False): 3, (True, True): 3, (False, True): 3, (True, False): 3}, past 0.80-2.19 m, walkers {1: 4, 2: 7, 0: 1}

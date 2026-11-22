@@ -1,4 +1,4 @@
-"""Placeholder scene generator (spec section 12): stands in for Isaac Sim until real scenes arrive.
+"""Placeholder scene generator: stands in for scenes exported from a simulator.
 
     python -m sgi.synth.generate --out data/placeholder [--config PATH] [--seed N]
     python -m sgi.synth.generate --out DIR --rows NAME [--config PATH] [--seed N]
@@ -7,12 +7,12 @@ Writes <out>/eval and <out>/examples in scene format v0.1, with exact depth and 
 the same seed. With --rows it writes instead only the rows of the set NAME of _ON_REQUEST, straight into <out>
 (see generate_rows): rows that the two splits never hold. A layout that fails the scene check, or whose
 nobody-at-target standard goal cannot be reached, is rejected and drawn again. The reference regions of sgi.gt
-are written into every scene kept, and every scene kept has a tour (spec 3.7): eight frames from a walk round
+are written into every scene kept, and every scene kept has a tour: eight frames from a walk round
 the targets, inside the room and clear of everything in it. A target's `tour_frames` are the frames it is
 visible in: those that show its anchor, lettering on it, or half of it or more.
 
 accepted_layouts gives the layouts kept for a seed without writing the set, for a generator that renders
-the same layouts by other means (realistic-scenes spec 5.6). It and generate() take one accept step.
+the same layouts by other means. It and generate() take one accept step.
 """
 from __future__ import annotations
 
@@ -83,7 +83,7 @@ _PEOPLE_RECIPES = {"waiting_line": recipe_waiting_line, "conversation_group": re
 _VIEW_ANGLE_SPREAD_DEG = 3.0       # a no_one scene is seen from up to this far inside the angle its row asks for
 _SHIFT_M = 5.0                     # the random transform moves a layout up to this far along each axis
 _MAX_ATTEMPTS = 20
-_EXPECTED_WARNING = 9              # spec 6: the standard goal failing with nobody relevant. The standard goal stops
+_EXPECTED_WARNING = 9              # the standard goal failing with nobody relevant. The standard goal stops
 #                                    before the surface it sees, so a place seen obliquely keeps its stop and no
 #                                    placeholder scene raises this; it stays allowed, as a layout that does is no fault
 _UNREACHABLE = "standard_goal_unreachable"

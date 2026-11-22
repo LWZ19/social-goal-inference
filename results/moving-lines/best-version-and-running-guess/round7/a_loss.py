@@ -1,4 +1,4 @@
-"""Round 7 (the ceiling check), DESCRIPTIVE: where strict time in line is lost, per arm. Zero calls; read-only.
+"""Descriptive (the ceiling check): where strict time in line is lost, per arm. Zero calls; read-only.
 
     .venv/bin/python round7/a_loss.py SELECTION_JSON SCENARIO_DIR RUN_ROOT \
         ARM [ARM ...] [--csv OUT.csv]

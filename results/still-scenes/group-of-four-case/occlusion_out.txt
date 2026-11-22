@@ -1,3 +1,0 @@
-real_eval_10_conversation_group_2        target t0 = p0 (person in red): hidden 0% by []
-real_eval_11_conversation_group_3        target t0 = p0 (person in red): hidden 0% by []
-real_eval_12_conversation_group_4        target t0 = p0 (person in red): hidden 35% by ['p3']

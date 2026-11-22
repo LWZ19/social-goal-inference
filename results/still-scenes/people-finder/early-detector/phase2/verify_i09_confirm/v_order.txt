@@ -1,9 +1,0 @@
-I09 confirmation, independent verifier: step log (+08:00)
-04:53  read FROZEN.md (sha256 f55341c0...e751 verified; file born 01:17:11, FROZEN.sha256 01:17:19, before the first render command 01:22:06 and the first seed folder 01:23:29), DEVIATIONS_1.md (80e865ea... verified), compute agent's files (read only, none imported)
-04:55  v_manifest.py -> v_manifest_check.txt, v_images.json (project venv; every scene guarded by v_guard and H.guard_scene)
-04:56-04:57  sidecar/v_infer.py -> raw/v_rtdetr_v2_r50vd.jsonl, raw/v_meta.json, pip_freeze_v_before.txt, pip_freeze_v_after.txt (torch sidecar; nvidia-smi 7794 MiB free, RAM 10427 MiB available; one GPU process)
-       NOTE: FROZEN.md section 9 step 7 says the optional verifier "runs no detector or pose model on a test image". This verifier's dispatch asked for an own re-run of the sidecar; it was run once, after scoring was finished, only to compare raw outputs; it changes no input of the frozen scoring. Departure from FROZEN's text, disclosed here.
-04:58  v_compare_raw.py -> v_compare_raw.txt (182/182 images bit-identical)
-05:00  v_score.py -> v_tables.txt, v_people_rows.jsonl, v_summary.json (own pipeline v_pipe.py and own scorer)
-05:02  v_c2.py -> v_c2.txt (own pipeline on A1's development raw pass through the harness; 119/119 people equal)
-05:03  v_posthoc.py -> v_posthoc.txt (POST HOC check of the compute agent's post hoc false-people classes)

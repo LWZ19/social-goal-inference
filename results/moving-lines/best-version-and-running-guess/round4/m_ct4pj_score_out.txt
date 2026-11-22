@@ -1,4 +1,0 @@
-# CT4PJ.md scored: results/data/moving/runs_pilot3/dsv41, new CT4PJ, base CT4P
-
-- episodes: CT3F 24, CT4P 24, CT4PJ 24
-- J1, last behind the robot while joined: CT4PJ 0.049 (n 1146; bar < 0.03) -> NOT held: the port is wrong; J2-J5 withheld

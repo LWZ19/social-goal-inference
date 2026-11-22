@@ -1,6 +1,6 @@
 """The solver of the constraint method: the floor from depth, and on it the place the constraints leave.
 
-Design: the project's design document for the method, sections 6 and 7; docs/constraint_method.md describes it. The solver is
+docs/constraint_method.md describes the method. The solver is
 pure: it calls no model, reads no file and keeps nothing between calls. Everything is worked out in the robot's
 frame, on a grid that lies in it, so the same picture gives the same place wherever the world frame lies. A cell
 stands for its centre. "Within d" means a distance of d or less.
@@ -27,7 +27,7 @@ _MM = 3                                            # decimals of a metre: every 
 
 @dataclass(frozen=True)
 class Floor:
-    """The floor of one observation, on a square grid in the robot's frame (the design, section 7, "Floor").
+    """The floor of one observation, on a square grid in the robot's frame.
 
     The robot's position is the centre of the middle cell. Every mask is indexed [row, column]: rows run to the
     robot's left and columns along its heading, both in the order of `offsets`.
@@ -144,7 +144,7 @@ def _joined(passable: np.ndarray, start: tuple[int, int]) -> np.ndarray:
 
 
 def floor(observation: ObservationData, people: Sequence[DetectedPerson], th: Thresholds) -> Floor:
-    """The floor the picture shows, and where on it the robot may go and stand (the design, section 7, "Floor").
+    """The floor the picture shows, and where on it the robot may go and stand.
 
     A cell is seen when its centre projects inside the picture and the depth at that pixel is the centre's own, to
     within `seen_depth_ratio` of it plus `seen_depth_margin_m`. It is hidden when it projects inside and the depth
@@ -255,7 +255,7 @@ class _Body:
 
 @dataclass(frozen=True)
 class _Reading:
-    """One constraint of the answer as the solver reads it (the design, section 6)."""
+    """One constraint of the answer as the solver reads it."""
     status: str                                    # used, unusable, superseded or cut
     reason: str | None = None                      # why it is not used
     kind: str | None = None                        # of one that is used, and what it stands on:
@@ -276,7 +276,7 @@ def _bodies(people: Sequence[DetectedPerson], robot: RobotPose) -> list[_Body]:
 
 def _faces(xy, yaw: float | None, other_xy, half_angle: float) -> bool:
     """Whether someone at `xy` who faces along `yaw` faces `other_xy`: its bearing from them is within
-    `half_angle` of their heading (the design, section 7, "Faces"). Without a heading they face nothing."""
+    `half_angle` of their heading. Without a heading they face nothing."""
     if yaw is None:
         return False
     bearing = math.atan2(other_xy[1] - xy[1], other_xy[0] - xy[0])
@@ -297,9 +297,9 @@ def _target_number(bodies: Sequence[_Body], target_xy, camera_xy, th: Thresholds
 
 def target_person(observation: ObservationData, target: GroundedTarget, people: Sequence[DetectedPerson],
                   th: Thresholds) -> int | None:
-    """The number of the detected person who is the target, or None when the target is no person (the design,
-    section 5): the person whose centre is within `person_radius_m` of the target's ground point moved
-    `person_radius_m` along its viewing ray, the nearest when several are."""
+    """The number of the detected person who is the target, or None when the target is no person: the person whose
+    centre is within `person_radius_m` of the target's ground point moved `person_radius_m` along its viewing ray,
+    the nearest when several are."""
     robot = observation.robot
     camera_xy = to_robot_xy(robot, *observation.camera.T_world_camera[:2, 3])
     return _target_number(_bodies(people, robot), to_robot_xy(robot, *target.world[:2]), camera_xy, th)
@@ -307,7 +307,7 @@ def target_person(observation: ObservationData, target: GroundedTarget, people: 
 
 def _read(constraints: Sequence[Constraint], bodies: dict[int, _Body], target_number: int | None,
           th: Thresholds) -> list[_Reading]:
-    """What each constraint of the answer stands on, or why it is not used (the design, section 6)."""
+    """What each constraint of the answer stands on, or why it is not used."""
     readings, faced = [], False
     for index, constraint in enumerate(constraints):
         if index >= th.max_constraints:
@@ -553,11 +553,28 @@ def _behind(last: _Body, before: _Body | None, target_xy: np.ndarray, robot_xy: 
 
 @dataclass(frozen=True)
 class _Turn:
-    """Where the robot's turn is, behind the people who wait (the design, section 7, "The place in turn")."""
+    """Where the robot's turn is, behind the people who wait."""
     last: int                                      # the number of the last of them
     last_from_target: float                        # how far the last stands from the target point
     place: np.ndarray                              # the place in turn
     joined: list[int]                              # those taken as waiting whom the answer did not list, as they joined
+
+
+def _may_join(body: _Body, back: np.ndarray, along: np.ndarray, last: int, before: int | None,
+              bodies: dict[int, _Body], th: Thresholds) -> bool:
+    """The joining gate (`join_facing_deg`, `join_spacing_ratio`; each off where None): whether a person who stands
+    behind the last may join the waiting people. They must face within `join_facing_deg` of the line's front (the
+    direction opposite `along`), and stand no farther from the last than `join_spacing_ratio` times the gap from the
+    last to the one before. An unknown heading passes the first test, and a line without one before the second."""
+    if th.join_facing_deg is not None and body.yaw is not None:
+        front = math.atan2(-float(along[1]), -float(along[0]))
+        if abs(float(_turned(body.yaw - front))) > math.radians(th.join_facing_deg) + _EPS:
+            return False
+    if th.join_spacing_ratio is not None and before is not None:
+        spacing = float(np.hypot(*(bodies[last].xy - bodies[before].xy)))
+        if float(np.hypot(*back)) > th.join_spacing_ratio * spacing + _EPS:
+            return False
+    return True
 
 
 def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], target_number: int | None,
@@ -568,7 +585,8 @@ def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], tar
     another) has taken the place in turn when their own space covers it and they stand behind the last: the
     direction from the last to them is within `view_half_angle_deg` of the line's. The nearest of those to the
     place, the lower number of two equally near, joins as the new last, the one who was last is the one before
-    them, and the place is worked out again from the two; and so on until nobody has taken it.
+    them, and the place is worked out again from the two; and so on until nobody has taken it. With the joining gate
+    on (`_may_join`), only those who pass it can take the place.
     """
     waiting, joined = list(waiting), []
     last, before = _line_end(waiting, bodies, target_xy, robot_xy, th, line)
@@ -581,7 +599,7 @@ def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], tar
                 continue
             gap, back = float(np.hypot(*(body.xy - place))), body.xy - bodies[last].xy
             behind = float(back @ along) >= math.cos(math.radians(th.view_half_angle_deg)) * float(np.hypot(*back)) - _EPS
-            if gap < th.standoff_m - _EPS and behind:
+            if gap < th.standoff_m - _EPS and behind and _may_join(body, back, along, last, before, bodies, th):
                 taken.append((round(gap, _MM), number))
         if not taken:
             from_target = float(np.hypot(*(bodies[last].xy - target_xy)))
@@ -593,7 +611,7 @@ def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], tar
 
 # -------------------------------------------------------------------------------------------------------- the seen side
 def _seen_face(observation: ObservationData, target: GroundedTarget, th: Thresholds) -> np.ndarray | None:
-    """The front of the face the target point lies on (the design, section 7, "The seen side"): the horizontal unit
+    """The front of the face the target point lies on: the horizontal unit
     normal, on the camera's side, of the surface round the point, in the robot's frame. None where the depth image
     shows no near-vertical flat surface there. The fit and its thresholds are the standard goal's."""
     normal = surface_normal_xy(observation.depth, observation.camera, target.world, th.surface_radius_m,
@@ -668,7 +686,7 @@ _BANDED = ("turn_m", "preference_m")               # the keys at which the cells
 
 
 def _first(keys: dict[str, np.ndarray], among: np.ndarray, band_m: float) -> int | None:
-    """The first of the cells of a mask in the order of the design, section 7: key by key, the cells at the
+    """The first of the cells of a mask in the order of the solver's keys: key by key, the cells at the
     least value stay in, and at the banded keys those within `band_m` of it; then the first in the order the
     cells are given in, which is by row and then by column of the grid. None when the mask is empty."""
     if not among.any():
@@ -683,8 +701,8 @@ def _first(keys: dict[str, np.ndarray], among: np.ndarray, band_m: float) -> int
 def _settle(cells: np.ndarray, robot_xy, camera_xy, target_xy, bodies: Sequence[_Body],
             constraints: Sequence[Constraint], standard_xy, th: Thresholds, front=None, line=None,
             exempt: Sequence[int] = ()) -> _Settled:
-    """The place among `cells`, (N, 2) positions in the order of the grid, and the runners-up (the design,
-    section 7). Every position is given in one frame, and so is every heading. `front` is the front of the seen
+    """The place among `cells`, (N, 2) positions in the order of the grid, and the runners-up.
+    Every position is given in one frame, and so is every heading. `front` is the front of the seen
     face in that frame (`_seen_face`), or None where the target point lies on none. It needs at least one cell: with
     none, a usable view of the target makes it raise (`solve` always has cells, the robot's own)."""
     robot_xy, standard_xy = np.asarray(robot_xy, dtype=np.float64), np.asarray(standard_xy, dtype=np.float64)
@@ -861,8 +879,8 @@ def solve(observation: ObservationData, target: GroundedTarget, people: Sequence
           constraints: Sequence[Constraint], standard: GoalResult, th: Thresholds,
           line_direction: Sequence[float] | None = None, floor_map: FloorMap | None = None,
           exempt: Sequence[int] = ()) -> Solved:
-    """The place the constraints leave on the floor of the observation, the heading there and the runners-up
-    (the design, section 7). `standard` is the standard goal for the same observation and target.
+    """The place the constraints leave on the floor of the observation, the heading there and the runners-up.
+    `standard` is the standard goal for the same observation and target.
 
     Each exclusion and each preference gives every cell a violation in metres. Every value is rounded to the
     millimetre, and the selectable cells are compared by these keys in turn, the cells at the least value
@@ -874,7 +892,7 @@ def solve(observation: ObservationData, target: GroundedTarget, people: Sequence
     `grid_resolution_m` of the least stay in. So the place breaks no exclusion where some cell breaks none;
     otherwise each one it breaks is recorded with its violation.
 
-    Two rules of the seen side (the design, section 7) are in this: the key for the seen face, and, with a
+    Two rules of the seen side are in this: the key for the seen face, and, with a
     `keep_out_of_view` towards the target, an exclusion of every cell ahead of those of its people who stand on
     the side the robot was sent to. Neither is applied where a place in turn is used or the target is a person.
     The key is not read either where the answer says the robot came for a person: a used `face` names someone and
@@ -894,7 +912,7 @@ def solve(observation: ObservationData, target: GroundedTarget, people: Sequence
     place already taken.
 
     `exempt` numbers people the place-in-turn rule must not take as joining the waiting people, as if the answer
-    had listed them under `keep_out_of_shared_space` (research arm CT3, from `sgi.resolve`). Empty by default.
+    had listed them under `keep_out_of_shared_space` (experiment arm CT3, from `sgi.resolve`). Empty by default.
     """
     robot = observation.robot
     cells, settled = _over_floor(observation, target, people, constraints, standard, th, line_direction, floor_map,

@@ -129,4 +129,4 @@ Everything downloaded is listed in `assets/realistic/manifest/*.json` with its s
 - **Blender 4.5 LTS is needed to render**, not to run the tests; the Blender tests are skipped without it.
 - **Rooms are plainer than real ones.** Light comes from the ceiling fittings alone: a window shows a street but lets no daylight in. Walls and ceilings carry few fittings, and the back of a stall or booth is a blank panel, which a tour frame can face from close by.
 - **Only the placeholder's first 14 evaluation and 7 example rows.** No lines with uneven spacing, seated people, an audience or held-out situations, and no camera noise or lens blur.
-- **A research stand-in, not the research scenes.** The Isaac Sim scenes remain those. This is a second synthetic source under the same contract.
+- **Synthetic scenes.** They are rendered in Blender. The scene format also accepts exports from other simulators.

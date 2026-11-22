@@ -1,7 +1,7 @@
 """The goal step of the constraint method: the people in view get numbers, a model states constraints over them,
 and the solver finds the place.
 
-Design: the project's design document for the method, sections 2, 5, 6 and 8; docs/constraint_method.md describes it. The
+docs/constraint_method.md describes the method. The
 inferrer stands where the baseline's does, behind the same interface, so the two are run on the same episodes. It
 is built from a people source: the `vlm` source of `sgi.stages.people`, the harness's oracle, or a detector.
 """
@@ -30,14 +30,14 @@ _NO_CALL = "none"                                  # the constraints mode in whi
 
 
 def numbered_image(observation: ObservationData, target: GroundedTarget, people: Sequence[DetectedPerson]) -> np.ndarray:
-    """The image the constraints step is shown (the design, section 5): the camera image with the target ringed
+    """The image the constraints step is shown: the camera image with the target ringed
     as in the baseline, and each person's number in a disc on their body point."""
     marked = draw_target_marker(observation.rgb, *target.pixel)
     return draw_people_numbers(marked, people, observation.camera.T_world_camera[:2, 3])
 
 
 class ConstraintInferrer:
-    """The constraint method of the design's section 2, a `GoalInferrer`.
+    """The constraint method, a `GoalInferrer`.
 
     `people_source` finds the people of the observation. They are merged, cut to `th.max_people` and numbered
     (`number_people`), and the numbers are drawn on them. One model call, stage `constraints`, then states what

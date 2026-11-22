@@ -1,7 +1,0 @@
-M4 xph: 26 scenes, 26 targets, 6 s
-  G1 person  n=  4 medIoU 1.000 IoU>=.5 4 IoU>=.7 4 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 1.000
-  G1 parcel  n=  1 medIoU 0.313 IoU>=.5 0 IoU>=.7 0 merged 1 merged_other 0 (union 0) split 0 structure 0 medPur 0.313
-  G1 place   n= 21 medIoU 0.643 IoU>=.5 21 IoU>=.7 10 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 1.000
-  G2 person  n=  4 medIoU 1.000 IoU>=.5 4 IoU>=.7 4 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 1.000
-  G2 parcel  n=  1 medIoU 0.313 IoU>=.5 0 IoU>=.7 0 merged 1 merged_other 0 (union 0) split 0 structure 0 medPur 0.313
-  G2 place   n= 21 medIoU 0.992 IoU>=.5 21 IoU>=.7 19 merged 0 merged_other 0 (union 0) split 0 structure 0 medPur 1.000

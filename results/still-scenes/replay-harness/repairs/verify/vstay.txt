@@ -1,4 +1,0 @@
-old_glm53 LF 29 P stays 14 R5 fixes 4 P_1m fixes 2 | R6 flips on goal-step wrong targets 7 of 14
-old_dsv41 LF 15 P stays 7 R5 fixes 5 P_1m fixes 0 | R6 flips on goal-step wrong targets 10 of 14
-new_glm53 LF 32 P stays 12 R5 fixes 5 P_1m fixes 1 | R6 flips on goal-step wrong targets 9 of 22
-new_dsv41 LF 17 P stays 9 R5 fixes 8 P_1m fixes 0 | R6 flips on goal-step wrong targets 10 of 15

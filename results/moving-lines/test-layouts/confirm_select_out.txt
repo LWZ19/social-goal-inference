@@ -1,5 +1,0 @@
-72 layouts -> sim/scenarios/confirm4; scenario files' sha256 1832d191
-  ours  48: bases {'cafe': 24, 'sweet': 24}, facing {'side': 17, 'counter': 18, 'away': 13}, members {2: 14, 3: 18, 4: 16}, flags {(False, False): 12, (True, True): 12, (False, True): 12, (True, False): 12}, past 1.19-1.60 m, walkers {2: 22, 1: 17, 0: 9}
-  chain 12: bases {'cafe': 6, 'sweet': 6}, facing {'side': 4, 'counter': 4, 'away': 4}, members {4: 3, 2: 4, 3: 5}, flags {(False, False): 3, (True, True): 3, (False, True): 3, (True, False): 3}, past 0.41-2.13 m, walkers {1: 5, 2: 6, 0: 1}
-  mixed  6: bases {'cafe': 3, 'sweet': 3}, facing {'side': 2, 'away': 2, 'counter': 2}, members {4: 2, 3: 2, 2: 2}, flags {(False, False): 2, (True, True): 2, (False, True): 1, (True, False): 1}, past 1.18-1.79 m, walkers {1: 2, 2: 3, 0: 1}
-  easy   6: bases {'cafe': 3, 'sweet': 3}, facing {'counter': 2, 'away': 2, 'side': 2}, members {3: 2, 4: 2, 2: 2}, flags {(False, False): 2, (True, True): 2, (False, True): 1, (True, False): 1}, past 0.92-2.12 m, walkers {2: 3, 1: 2, 0: 1}

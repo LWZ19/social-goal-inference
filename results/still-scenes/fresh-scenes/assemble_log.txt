@@ -1,6 +1,0 @@
-seed 510: ok
-seed 511: ok
-seed 512: ok
-seed 513: ok
-seed 514: ok
-used seeds [510, 511, 512, 513, 514]: 70 scenes

@@ -1,4 +1,0 @@
-s19 glm53 {'mixed': 19, 'usable kinds differ': 19, 'people list identical across C trials': 0, 'people xy rounded 0.3m same': 0} statuses {'unusable': 29, 'used': 493}
-s20 dsv41 {'mixed': 22, 'usable kinds differ': 22, 'people list identical across C trials': 0, 'people xy rounded 0.3m same': 0} statuses {'used': 669, 'unusable': 28}
-s23 glm53 {'mixed': 18, 'usable kinds differ': 17, 'people list identical across C trials': 0, 'people xy rounded 0.3m same': 0} statuses {'used': 482, 'unusable': 21}
-s23 dsv41 {'mixed': 19, 'usable kinds differ': 19, 'people list identical across C trials': 0, 'people xy rounded 0.3m same': 1} statuses {'used': 636, 'unusable': 24}

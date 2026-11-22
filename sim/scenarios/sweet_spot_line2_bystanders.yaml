@@ -1,6 +1,6 @@
-# Research, 2026-11-02 (BYSTANDERS_FROZEN.md): sweet_spot_line2_moving with bystanders added, nothing else changed.
+# sweet_spot_line2_bystanders: sweet_spot_line2_moving with bystanders added, nothing else changed.
 # Bystanders stand at a place of their own and shift about it (up to 0.35 m every 5-10 s); nobody added is
-# in the line. `bystander: true` is read only by the research scripts.
+# in the line. `bystander: true` is read only by the experiment scripts.
 # One person just past the end of the line, off to its side and facing away from it; a pair talking to each
 # other further back on the same side.
 stage: data/habitat/stages/sweet_spot_cafe.glb

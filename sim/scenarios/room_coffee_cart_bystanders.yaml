@@ -1,7 +1,7 @@
-# Research, 2026-11-02 (BYSTANDERS_FROZEN.md): room_coffee_cart_slots with bystanders added, nothing else changed, except that the middle person in the line stands turned 90 deg
+# room_coffee_cart_bystanders: room_coffee_cart_slots with bystanders added, nothing else changed, except that the middle person in the line stands turned 90 deg
 # away from the person ahead (still in the line, still stepping up): facing alone does not tell who is in it.
 # Bystanders stand at a place of their own and shift about it (up to 0.35 m every 5-10 s); nobody added is
-# in the line. `bystander: true` is read only by the research scripts.
+# in the line. `bystander: true` is read only by the experiment scripts.
 # One person just past the end of the line, off to its side and facing away from it; a pair talking to each
 # other behind the line on the far side.
 stage: data/habitat/stages/room.glb

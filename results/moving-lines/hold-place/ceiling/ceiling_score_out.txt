@@ -1,0 +1,14 @@
+## DeepSeek V4.1, 64 untuned layouts: 64 of 64 layouts with all three arms (updated simulator)
+- strict share: ideal place (OW) 0.649, best version (CT3F) 0.208, with hold place (CT3FL) 0.306
+- primary share: ideal place (OW) 0.677, best version (CT3F) 0.264, with hold place (CT3FL) 0.350
+## DeepSeek V4.1, all 72 layouts: 72 of 72 layouts with all three arms (updated simulator)
+- strict share: ideal place (OW) 0.648, best version (CT3F) 0.199, with hold place (CT3FL) 0.305
+- primary share: ideal place (OW) 0.676, best version (CT3F) 0.256, with hold place (CT3FL) 0.348
+
+## Claude Sonnet 5.5, 64 untuned layouts: 64 of 64 layouts with all three arms (updated simulator)
+- strict share: ideal place (OW) 0.647, best version (CT3F) 0.248, with hold place (CT3FL) 0.467
+- primary share: ideal place (OW) 0.678, best version (CT3F) 0.358, with hold place (CT3FL) 0.535
+## Claude Sonnet 5.5, all 72 layouts: 72 of 72 layouts with all three arms (updated simulator)
+- strict share: ideal place (OW) 0.657, best version (CT3F) 0.254, with hold place (CT3FL) 0.454
+- primary share: ideal place (OW) 0.687, best version (CT3F) 0.358, with hold place (CT3FL) 0.517
+

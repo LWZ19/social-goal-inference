@@ -1,7 +1,0 @@
-| scene | cells | unseen members / episode | unseen non-members / episode | CT2 re-solves behind a non-member | of those, never seen by the camera |
-|---|---|---|---|---|---|
-| cafe_slots | 25 | 0.00 | 0.00 | 520 of 2860 (0.18) | 0 of 520 |
-| room_coffee_cart_slots | 25 | 0.00 | 0.00 | 534 of 2587 (0.21) | 0 of 534 |
-| cafe_line2_moving | 25 | 0.00 | 0.00 | 296 of 1148 (0.26) | 0 of 296 |
-| cafe_line6_moving | 25 | 0.00 | 0.00 | 90 of 3211 (0.03) | 0 of 90 |
-| sweet_spot_line2_moving | 25 | 0.00 | 0.28 | 101 of 780 (0.13) | 0 of 101 |

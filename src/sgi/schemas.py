@@ -31,7 +31,7 @@ _ANALYSIS = "analysis"                             # the goal answer's reasoning
 # Its three parts, wire key to GoalReasoning field: "people" sorts after "expectations", and is written first. The
 # constraints answer reasons in the same three parts.
 _ANALYSIS_PARTS = {"arrangement": "people", "expectations": "expectations", "placement": "placement"}
-# How a person faces as seen in the image, in the order of the design (section 4): the first eight go right round,
+# How a person faces as seen in the image, in a fixed order: the first eight go right round,
 # a step of 45 degrees at a time, turning to the image's right. The order is part of the rule that reads them.
 FACINGS = ("towards_camera", "towards_right", "right", "away_right", "away_from_camera", "away_left", "left",
            "towards_left", "unclear")
@@ -46,13 +46,13 @@ class PersonEntry(BaseModel):
 
 
 class PeopleAnswer(BaseModel):
-    """The answer of the people stage of the constraint method (its design, section 4)."""
+    """The answer of the people stage of the constraint method."""
     reasoning: str | None = None
     people: list[PersonEntry]
 
 
 class ConstraintsAnswer(BaseModel):
-    """The answer of the constraints stage of the constraint method (its design, section 6)."""
+    """The answer of the constraints stage of the constraint method."""
     reasoning: GoalReasoning | None = None
     constraints: list[Constraint]                  # as the model stated them, in its order: the solver judges each
 
@@ -187,7 +187,7 @@ def goal_schema(strategy: Strategy, point_format: str, size: tuple[int, int], he
 
 
 def people_schema(strategy: Strategy, point_format: str, size: tuple[int, int]) -> type[BaseModel]:
-    """The people answer of the constraint method (its design, section 4): every person in view, each with a few
+    """The people answer of the constraint method: every person in view, each with a few
     words that pick them out, a point on the body, a point on what they face or null, and how they face as seen
     in the image. Its reasoning is one string, `analysis`.
 
@@ -199,7 +199,7 @@ def people_schema(strategy: Strategy, point_format: str, size: tuple[int, int]) 
 
 
 def constraints_schema(strategy: Strategy) -> type[BaseModel]:
-    """The constraints answer of the constraint method (its design, section 6): a list of constraints, each with
+    """The constraints answer of the constraint method: a list of constraints, each with
     one sentence of why, one of the six kinds, the numbers of the people it is about, a range in metres or null,
     and whether it is about the target. Its reasoning, `analysis`, has the three parts of the goal answer's.
 

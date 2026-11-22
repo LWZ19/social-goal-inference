@@ -1,4 +1,4 @@
-"""Reference region rules (spec section 11): where the robot may stand, and may not, per situation.
+"""Reference region rules: where the robot may stand, and may not, per situation.
 
 Pure functions of scene-format fields. Each returns (acceptable regions, forbidden regions) for one target."""
 import math
@@ -9,7 +9,7 @@ from sgi.geometry import wrap_angle
 from sgi.polygons import Polygon, convex_hull, disc, oriented_rectangle, ring, segment_rectangle
 from sgi.scene import ForbiddenRegion, Heading, Person, Region, Target
 
-# The numbers of spec section 11. They define the reference rules; they are not Config.thresholds.
+# These numbers define the reference rules; they are not Config.thresholds.
 # The first two say how near a person the robot may stand and how far off. They are the distances of "Where
 # Should I Join? Robot Group Joining via Language-Guided Goal Prediction" (arXiv
 # 2609.28467, September 2026), which counts a pose as valid 0.5 to 1.2 m from the relevant member: the last
@@ -29,8 +29,8 @@ _VIEW_CLEAR_M = 0.3                 # how far the robot's centre keeps outside t
 _TAKER_SEES_DEG = 60.0              # whoever takes a picture has everyone else within this angle of the way they face,
 #                                     and everyone else has them within it of theirs
 _FRAME_MARGIN_M = 0.5               # how far to each side of the outermost of those in a picture its strip reaches
-# Someone using a machine, a cash machine or a ticket machine, with nobody else waiting: this project's own rule,
-# fixed on 6 November 2026 before any scene or result of it (E4_DESIGN.md). Banks commonly ask the next customer to
+# Someone using a machine, a cash machine or a ticket machine, with nobody else waiting: this project's own rule.
+# Banks commonly ask the next customer to
 # wait about a metre back for privacy; 2 m keeps the robot clearly waiting for this machine; 60 degrees counts
 # slightly-off-behind as polite and leaves out standing level beside the user.
 _MACHINE_NEAR_M = 1.0               # no nearer the user than this: within it is over their shoulder, and forbidden

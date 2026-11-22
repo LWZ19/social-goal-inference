@@ -1,2 +1,0 @@
-{'kept': 6592, 'lost': 1048, 'with a broken bout in the last 10 s': 545, 'member for under 10 s': 433, 'named': 981, 'not named': 67}
-seconds since joining the queue, median 12.0 p90 49.0
