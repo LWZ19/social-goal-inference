@@ -95,6 +95,11 @@ class Thresholds(_Strict):
     max_constraints: int = 12              # a guard: twice the number of kinds
     person_mark_height_m: float = 1.1      # chest height, inside the heights the visibility rule samples
     candidate_count: int = 4               # the runners-up kept beside the place
+    # The joining gate of the place in turn (results/still-scenes/crowds/joining-gate/), off where None: a person the
+    # answer did not list joins the waiting people only if they face within join_facing_deg of the line's front, and
+    # stand no farther behind the last than join_spacing_ratio times the gap from the last to the one before.
+    join_facing_deg: float | None = None
+    join_spacing_ratio: float | None = None
 
 
 class RunConfig(_Strict):

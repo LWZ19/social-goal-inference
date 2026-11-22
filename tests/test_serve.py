@@ -545,3 +545,15 @@ def test_people_given_with_the_request_replace_the_people_call():
 def test_a_broken_people_list_is_a_request_error():
     with pytest.raises(serve.RequestError, match="people"):
         serve.infer(mock_pipeline(), {**body_for(floor_observation()), "people": [{"xy": "here"}]})
+
+
+def test_threshold_options_set_the_joining_gate_and_refuse_unknown_keys():
+    import pytest as _pytest
+    from sgi.config import ConfigError, load_config
+    from sgi.serve import with_thresholds
+    cfg = load_config()
+    assert cfg.thresholds.join_facing_deg is None and with_thresholds(cfg, []) is cfg
+    gated = with_thresholds(cfg, ["join_facing_deg=90", "join_spacing_ratio=1.5"])
+    assert (gated.thresholds.join_facing_deg, gated.thresholds.join_spacing_ratio) == (90.0, 1.5)
+    with _pytest.raises(ConfigError):
+        with_thresholds(cfg, ["no_such_key=1"])

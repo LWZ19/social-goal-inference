@@ -638,6 +638,23 @@ def make_handler(pipeline: Pipeline) -> type[BaseHTTPRequestHandler]:
     return Handler
 
 
+def with_thresholds(cfg: Config, pairs: Sequence[str]) -> Config:
+    """The configuration with the thresholds that `pairs` ("KEY=VALUE", each a number) set; unknown keys raise."""
+    if not pairs:
+        return cfg
+    updates = {}
+    for pair in pairs:
+        key, sep, value = pair.partition("=")
+        if not sep:
+            raise ConfigError(f"--threshold wants KEY=VALUE, not {pair!r}")
+        updates[key.strip()] = float(value)
+    try:
+        thresholds = type(cfg.thresholds).model_validate({**cfg.thresholds.model_dump(), **updates})
+    except ValueError as error:
+        raise ConfigError(f"--threshold: {error}") from error
+    return cfg.model_copy(update={"thresholds": thresholds})
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="python -m sgi.serve",
                                      description="Serve the pipeline over HTTP for a live simulator.")
@@ -650,12 +667,16 @@ def main(argv=None) -> int:
                         help="the method that places the goal where people matter (default: constraints)")
     parser.add_argument("--max-rpm", type=int, help="at most this many requests a minute to any provider, for a "
                         "service that shares its key with others")
+    parser.add_argument("--threshold", action="append", default=[], metavar="KEY=VALUE",
+                        help="set one entry of the thresholds (a number), e.g. join_spacing_ratio=1.5; may be given "
+                        "several times")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
     try:
-        pipeline = build_pipeline(make_config(args.model, args.stage_model, args.strategy, args.goal, args.max_rpm))
+        pipeline = build_pipeline(with_thresholds(make_config(args.model, args.stage_model, args.strategy, args.goal,
+                                                              args.max_rpm), args.threshold))
     except (MissingKeyError, ConfigError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 2

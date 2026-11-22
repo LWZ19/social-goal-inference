@@ -560,6 +560,23 @@ class _Turn:
     joined: list[int]                              # those taken as waiting whom the answer did not list, as they joined
 
 
+def _may_join(body: _Body, back: np.ndarray, along: np.ndarray, last: int, before: int | None,
+              bodies: dict[int, _Body], th: Thresholds) -> bool:
+    """The joining gate (`join_facing_deg`, `join_spacing_ratio`; each off where None): whether a person who stands
+    behind the last may join the waiting people. They must face within `join_facing_deg` of the line's front (the
+    direction opposite `along`), and stand no farther from the last than `join_spacing_ratio` times the gap from the
+    last to the one before. An unknown heading passes the first test, and a line without one before the second."""
+    if th.join_facing_deg is not None and body.yaw is not None:
+        front = math.atan2(-float(along[1]), -float(along[0]))
+        if abs(float(_turned(body.yaw - front))) > math.radians(th.join_facing_deg) + _EPS:
+            return False
+    if th.join_spacing_ratio is not None and before is not None:
+        spacing = float(np.hypot(*(bodies[last].xy - bodies[before].xy)))
+        if float(np.hypot(*back)) > th.join_spacing_ratio * spacing + _EPS:
+            return False
+    return True
+
+
 def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], target_number: int | None,
           target_xy: np.ndarray, robot_xy: np.ndarray, th: Thresholds, line: np.ndarray | None = None) -> _Turn:
     """The place in turn for the waiting people of the answer, and who has taken it.
@@ -568,7 +585,8 @@ def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], tar
     another) has taken the place in turn when their own space covers it and they stand behind the last: the
     direction from the last to them is within `view_half_angle_deg` of the line's. The nearest of those to the
     place, the lower number of two equally near, joins as the new last, the one who was last is the one before
-    them, and the place is worked out again from the two; and so on until nobody has taken it.
+    them, and the place is worked out again from the two; and so on until nobody has taken it. With the joining gate
+    on (`_may_join`), only those who pass it can take the place.
     """
     waiting, joined = list(waiting), []
     last, before = _line_end(waiting, bodies, target_xy, robot_xy, th, line)
@@ -581,7 +599,7 @@ def _turn(waiting: Sequence[int], apart: set[int], bodies: dict[int, _Body], tar
                 continue
             gap, back = float(np.hypot(*(body.xy - place))), body.xy - bodies[last].xy
             behind = float(back @ along) >= math.cos(math.radians(th.view_half_angle_deg)) * float(np.hypot(*back)) - _EPS
-            if gap < th.standoff_m - _EPS and behind:
+            if gap < th.standoff_m - _EPS and behind and _may_join(body, back, along, last, before, bodies, th):
                 taken.append((round(gap, _MM), number))
         if not taken:
             from_target = float(np.hypot(*(bodies[last].xy - target_xy)))

@@ -1778,3 +1778,32 @@ def test_turn_roles_takes_who_stands_behind_the_last_unless_exempt():
     last, joined, place = solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), th, exempt=[3])
     assert last == 2 and joined == [] and place[1] == pytest.approx(6.2, abs=0.3)
     assert solver.turn_roles(people, [], (1.0, 9.0), (3.0, 3.0), th) == (None, [], None)
+
+
+def _behind_a_line_of_two(xy, yaw):
+    """Two people waiting for a target at (1, 9), facing it, 0.8 m apart, and a third at `xy` facing `yaw`."""
+    from sgi.types import Constraint, DetectedPerson
+    people = [DetectedPerson(number=i + 1, xy=p, yaw=math.pi / 2, pixel=(0.0, 0.0))
+              for i, p in enumerate([(1.0, 8.0), (1.0, 7.2)])]
+    people.append(DetectedPerson(number=3, xy=xy, yaw=yaw, pixel=(0.0, 0.0)))
+    return people, [Constraint(because="they wait", kind="come_after", people=[1, 2])]
+
+
+GATED = Thresholds(join_facing_deg=90.0, join_spacing_ratio=1.5)
+
+
+def test_with_the_joining_gate_someone_who_faces_the_front_at_the_line_s_spacing_still_joins():
+    people, waits = _behind_a_line_of_two((1.0, 6.2), math.pi / 2)        # 1.0 m behind, 1.25 times the spacing
+    assert solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), GATED)[:2] == (3, [3])
+
+
+def test_with_the_joining_gate_someone_behind_the_line_who_faces_away_is_not_taken_as_waiting():
+    people, waits = _behind_a_line_of_two((1.0, 6.2), -math.pi / 2)
+    assert solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), Thresholds())[:2] == (3, [3])
+    assert solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), GATED)[:2] == (2, [])
+
+
+def test_with_the_joining_gate_someone_farther_back_than_the_line_s_spacing_allows_is_not_taken_as_waiting():
+    people, waits = _behind_a_line_of_two((1.0, 5.6), math.pi / 2)        # 1.6 m behind, twice the spacing
+    assert solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), Thresholds())[:2] == (3, [3])
+    assert solver.turn_roles(people, waits, (1.0, 9.0), (3.0, 3.0), GATED)[:2] == (2, [])
