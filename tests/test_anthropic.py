@@ -198,7 +198,7 @@ def test_response_maps_to_backend_result(body, said, finish):
     usage = Usage(input_tokens=100, output_tokens=20, reasoning_tokens=30)           # the API reports 50 = 20 + 30
     assert backend.call(ENTRY, "sys", PARTS, SCHEMA) == BackendResult(said, finish, usage, VERSION) and len(sent) == 1
 
-@pytest.mark.parametrize("reported, usage", [                         # spec 3.1: null when the provider says nothing
+@pytest.mark.parametrize("reported, usage", [                         # null when the provider says nothing
     ({"input_tokens": 100, "output_tokens": 50}, Usage(input_tokens=100, output_tokens=50)),      # nothing is subtracted
     ({"input_tokens": 100, "output_tokens": 50, "output_tokens_details": None}, Usage(input_tokens=100, output_tokens=50)),
     ({"input_tokens": 100, "output_tokens": 50, "output_tokens_details": {"thinking_tokens": 0}},
@@ -361,7 +361,7 @@ ECHOES = [                                                            # where th
 
 @pytest.mark.parametrize("reply, raised, shown", [row[1:] for row in ECHOES], ids=[row[0] for row in ECHOES])
 def test_an_error_that_echoes_the_key_is_raised_without_it_and_unchained(reply, raised, shown):
-    backend, sent = wired(key=SECRET, **reply)                        # spec 7: a key never reaches a log or a run output
+    backend, sent = wired(key=SECRET, **reply)                        # a key never reaches a log or a run output
     with pytest.raises((TransientError, BackendError)) as err:
         backend.call(ENTRY, None, PARTS, SCHEMA)
     assert sent[0].headers["x-api-key"] == SECRET                     # the request, which the SDK's error holds, had it

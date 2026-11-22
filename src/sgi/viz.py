@@ -48,8 +48,8 @@ _ARROW_SHAFT_M = 0.05    # top-down arrow: width of the shaft
 _ARROW_HEAD_M = 0.16     # top-down arrow: length and width of the head
 _PERSON_FILL = 0.3       # opacity of a person's disc on the top-down plot, so that the arrow over it shows
 _MARGIN_M = 1.5          # view margin around the content
-_PIECE_M = 0.1           # longest piece of a projected line (spec 6, check.png)
-_LANDMARK_Z = 1.0        # height of the landmark points projected on the image (spec 6, check 4)
+_PIECE_M = 0.1           # longest piece of a projected line
+_LANDMARK_Z = 1.0        # height of the landmark points projected on the image
 _DPI = 110
 _FREE_GREY = 0.85        # shade of non-free cells on the top-down plot
 
@@ -153,8 +153,8 @@ def _arrow(ax, x: float, y: float, yaw: float, colour: str) -> None:
 
 
 def _ranks(keys: dict[str, np.ndarray], band_m: float) -> np.ndarray:
-    """The rank of each cell in the order the solver compares them in (the design of the constraint method,
-    section 7), 0 for the cells that come first; cells that no key tells apart share a rank.
+    """The rank of each cell in the order the solver compares them in, 0 for the cells that come first; cells that no key
+    tells apart share a rank.
 
     Key by key, as the solver chooses its place: the cells of one rank are told apart by the next key, and at
     a key the solver takes with a band, those within `band_m` of the least among them stay together."""

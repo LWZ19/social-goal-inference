@@ -1,5 +1,5 @@
 """Dressing a layout: one layout of the placeholder generator made into a scene description for a renderer
-and the ground truth that goes with it (realistic-scenes spec 5.4, 5.6 and 6).
+and the ground truth that goes with it.
 
 The scene stays the twin of the placeholder scene: the same people in the same places, the same robot and
 camera, the same targets, bounds and episodes. The layout is not changed, and what is not said here is read
@@ -34,7 +34,7 @@ Each target has an object group of its own, 1, 2, ... in the order of the target
 draws it: the constructions of a place's items, with the small things on them; the person; the construction
 of the item that holds an object. Everything else is in group 0.
 
-Casting (spec 5.4): one avatar for each person and none twice in a scene. A visitor wears casual or business
+Casting: one avatar for each person and none twice in a scene. A visitor wears casual or business
 dress. Only a person whom a target's label asks for in red wears red, and nobody wears pink, in any scene:
 the scenes and their variants stay comparable. A person is as tall as the placeholder's figure of them, a
 little broader or slighter than their avatar, and posed by what they are doing (_SUITS): the members of a

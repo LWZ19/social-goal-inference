@@ -37,7 +37,7 @@ STAGES = ("plan", "locate", "context", "goal")
 ORACLE = {"grounding": "oracle", "context_check": "always_yes", "goal": "oracle"}
 CONTEXT_ONLY = {"grounding": "oracle", "context_check": "vlm", "goal": "oracle"}     # one model call per record
 METHOD_COLUMNS = ["people_found_share", "people_unmatched", "members_precision", "members_recall", "constraints_unusable",
-                  "exclusions_broken"]   # the measures of the constraint method, in the order its design's section 9 lists them
+                  "exclusions_broken"]   # the measures of the constraint method, in the order of their columns
 SHARED, VIEW, AFTER, WITHIN, VISIBLE, FACE = ("keep_out_of_shared_space", "keep_out_of_view", "come_after", "within_distance",
                                               "visible_to", "face")
 _GENERATED = {}

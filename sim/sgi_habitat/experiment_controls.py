@@ -1,4 +1,4 @@
-"""Controls and break-it cases for the moving-people experiment (research note moving/QUESTIONS.md).
+"""Controls and stress cases for the moving-people experiment.
 
     python -m sgi_habitat.experiment_controls --scenario FILE --arm ARM --seed N --out DIR [as sgi_habitat.experiment]
 

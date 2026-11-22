@@ -1,4 +1,4 @@
-"""Manual provider check and point-format calibration (spec section 15): real requests, reported as answered.
+"""Manual provider check and point-format calibration: real requests, reported as answered.
 
     python -m sgi.smoke --model ENTRY [--stage-model STAGE=ENTRY ...] [--strategy STAGE=NAME ...] [--prompts DIR]
                         [--calibrate | --goal constraints] [--scene DIR]

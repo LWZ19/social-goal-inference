@@ -1,4 +1,4 @@
-"""How each kind of item of a layout is built for the realistic set (realistic-scenes spec 5.3).
+"""How each kind of item of a layout is built for the realistic set.
 
 construct takes one item of a placeholder layout, with the primitives the layout draws it with, and gives
 its construction: the parts and the library models the realistic scene draws in that spot, what of them
@@ -513,7 +513,7 @@ class _Build:
         return True
 
     def mark(self) -> _Mark:
-        """The small sign that names the item in natural mode (spec 5.3): a logo, a plate or a pictogram, from
+        """The small sign that names the item in natural mode: a logo, a plate or a pictogram, from
         what the placeholder writes on it.
 
         Its seed, which picks a logo's made-up name, comes from the words and the frame, not from the draw:

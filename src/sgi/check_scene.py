@@ -1,4 +1,4 @@
-"""Scene check (spec section 6): validates a v0.1 scene folder, from the generator or from an export.
+"""Scene check: validates a v0.1 scene folder, from the generator or from an export.
 
     python -m sgi.check_scene <scene_dir> [--config PATH]
 

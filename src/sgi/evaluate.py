@@ -1,4 +1,4 @@
-"""The scorer and the supplementary measures (spec section 10).
+"""The scorer and the supplementary measures.
 
 Harness code and generic geometry over ground truth: nothing here reads an episode's situation or calls a
 model, and every number comes from the thresholds."""

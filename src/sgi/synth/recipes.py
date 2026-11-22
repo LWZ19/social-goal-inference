@@ -1,4 +1,4 @@
-"""Placeholder layouts (spec section 12): a furnished room, people, a robot pose, a target and two requests for it.
+"""Placeholder layouts: a furnished room, people, a robot pose, a target and two requests for it.
 
 A recipe lays its scene out in a canonical frame: the target's ground point at the origin, its front along
 +x; where a picture is being taken, the middle of the row posing is there instead, whoever the target is.
@@ -27,7 +27,7 @@ in the picture, with nobody before it, or not in it.
 
 A layout also says what its primitives are: its `items` name each run of them, a stall, a bench, a window,
 with the frame it stands in and what its builder was called with, so that another generator can build the
-same thing in the same spot by other means (realistic-scenes spec 5.1). Naming them draws no random number.
+same thing in the same spot by other means. Naming them draws no random number.
 An item's rectangle is the ground its own primitives stand on, which is not always one obstacle: a deep
 place is two items on one obstacle, and a parcel table with its crate is one item on two.
 """
@@ -1120,7 +1120,7 @@ def recipe_no_one(rng, view_angle_deg: float, kind: str = "place") -> Layout:
     boxes, footprints, people, figures, items = [], [], [], [], []
     if kind == "object":
         # The table is turned to the robot. The crate, 0.9 m towards the robot and 0.35 m to the side, is the
-        # low thing in its way (spec 12): its corner is 0.22 m from the standard goal's first candidate, and
+        # low thing in its way: its corner is 0.22 m from the standard goal's first candidate, and
         # the first candidate clear of it lies about 0.25 m further out, 1.40 m from the table's centre and so
         # inside the 1.6 m ring.
         parts = _parcel_table()

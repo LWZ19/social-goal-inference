@@ -71,7 +71,7 @@ class Person(_Strict):
     y: float
     yaw: float
     group: str | None = None
-    role: str | None = None                       # e.g. "staff": a person with a role is not a bystander (spec 4)
+    role: str | None = None                       # e.g. "staff": a person with a role is not a bystander
 
 
 class Target(_Strict):

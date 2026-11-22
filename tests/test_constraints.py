@@ -59,7 +59,7 @@ def read(*constraints, th=TH):
     return [(use.status, use.reason) for use in trio().solve(*constraints_from_wire(wire).constraints, th=th).uses]
 
 
-# -------------------------------------------------------------- the design's table of section 6, from the answer as written
+# -------------------------------------------------------------- the table of constraints, from the answer as written
 TABLE = [
     # keep_out_of_shared_space reads people, two or more
     (written(SHARED, 1, 2), USED), (written(SHARED, 3, 1, target=True, between=(0.0, 0.1)), USED),      # the rest is ignored

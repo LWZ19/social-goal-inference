@@ -24,7 +24,7 @@ _LOOK_AT_MODE = "vlm_look_at"                      # the heading mode that faces
 
 
 class GoalInferrer(Protocol):
-    """A method that places the goal where the people in view matter (spec 3.6)."""
+    """A method that places the goal where the people in view matter."""
 
     def infer(self, observation: ObservationData, request: str, subtask: Subtask,
               target: GroundedTarget, context_check: ContextCheck | None) -> GoalResult: ...
@@ -77,7 +77,7 @@ def _first_clear(anchor: np.ndarray, unit: np.ndarray, obstacles_xy: np.ndarray,
 
 
 def standard_goal(observation: ObservationData, target: GroundedTarget, th: Thresholds) -> GoalResult:
-    """Stop `standoff_m` in front of the surface the target point lies on, facing the target (spec 3.5).
+    """Stop `standoff_m` in front of the surface the target point lies on, facing the target.
 
     In front is along the horizontal normal of that surface, on the side the camera sees: a stop on the robot's
     own line of approach is beside a target that is seen at an angle. `standard_goal_frontal` is set when the
@@ -137,7 +137,7 @@ def _lift_point(observation: ObservationData, point: Point,
 
 
 class DirectMarkingInferrer:
-    """The baseline of spec 3.6: a model marks the goal on the image and depth lifts the mark to the ground."""
+    """The baseline: a model marks the goal on the image and depth lifts the mark to the ground."""
 
     def __init__(self, client: VLMClient, strategy: Strategy, heading_mode: str, examples: Sequence[Example],
                  th: Thresholds, max_image_side: int | None = None, trial: int = 0,

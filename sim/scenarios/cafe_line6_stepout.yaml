@@ -1,4 +1,4 @@
-# cafe_line6_stepout (research break-it case b, 2026-11-01): cafe_line6_moving, and at t = 40 s the fourth
+# cafe_line6_stepout (stress case): cafe_line6_moving, and at t = 40 s the fourth
 # person in line steps 1.5 m aside for 7 s, keeping their place in the queue.
 stage: data/habitat/stages/cafe.glb
 wander_area:

@@ -4,7 +4,7 @@
                                      [--sgi-url URL] [--request TEXT] [--seconds 92] [--requery 10]
                                      [--resolve-every 0.5] [--record FILE]
 
-The arms (research note moving/DESIGN.md): R1 and C1 ask the pipeline once; Rq and Cq ask again every --requery
+The arms: R1 and C1 ask the pipeline once; Rq and Cq ask again every --requery
 seconds for the whole episode; CT asks once and then has the stored answer of the constraint method solved again
 on the people's tracked positions (POST /resolve) every --resolve-every seconds. The R arms need a service started
 with --goal direct_marking, the C arms one with the constraint method.
@@ -18,7 +18,7 @@ What every arm shares, so that only the arm differs:
 - The goal is replaced by a new answer only when it moves more than 0.3 m or turns more than 25 degrees.
 
 The episode is written to DIR/episode.json: every answer and re-solve, a sample a second (the robot's pose, the
-line, whether the robot is in line or has cut in, by moving/SCORING.md), and the summary.
+line, whether the robot is in line or has cut in), and the summary.
 """
 from __future__ import annotations
 
@@ -47,7 +47,7 @@ ARMS = {"R1": dict(asks_again=False, resolves=False), "Rq": dict(asks_again=True
 TRACK_RANGE_M = 12.0          # people farther from the robot than the solver's floor are not tracked
 JOIN_GAP_M = (0.3, 1.5)       # the robot joins the line arrived this far behind the last person in it
 CORRIDOR_M = 0.8              # and this near the line's axis; it leaves the line farther than this from it
-BAND_M = (0.5, 1.2)           # in line: this far from the person ahead of it (SCORING.md)
+BAND_M = (0.5, 1.2)           # in line: this far from the person ahead of it
 FIRST_M = 1.6                 # first in line: this near slot 0
 HEADING_DEG = 45.0
 CLEAR_M = 0.55
@@ -242,7 +242,7 @@ class Episode(R.Demo):
             return
         if self.t - self.asked_at >= self.requery_s:
             # a fresh view: the loop decides whether to render before the last answer is delivered, so the frames
-            # it holds can be the view asked about last time (the bug of DEVIATIONS 4)
+            # it holds can be the view asked about last time
             self.send(self.active_request, self.render(), again=True)
 
     # --- re-solving on tracks -----------------------------------------------------------------------------
@@ -345,7 +345,7 @@ class Episode(R.Demo):
     def truth(self) -> dict:
         """Who is in the line now, as the sim has it, by track id: the queue's order (front first), those ahead of
         the robot in that order (everyone when the robot has not joined), the last of those (`last`: the right
-        last for re-solving, CT4_FROZEN.md section 4), and the last of those by distance along the line (`last_along`,
+        last for re-solving), and the last of those by distance along the line (`last_along`,
         as `sample` scores the gap)."""
         order = [m for m in self.queue.members if not isinstance(m, RobotInLine)]
         mine = next((k for k, m in enumerate(self.queue.members) if m is self.robot_in_line), None)

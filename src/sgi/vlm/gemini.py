@@ -36,7 +36,7 @@ class GeminiBackend:
     provider = "gemini"
 
     def __init__(self, api_key: str, client=None):
-        self._api_key = api_key                                  # kept to strike it from error messages (spec 7)
+        self._api_key = api_key                                  # kept to strike it from error messages
         if client is None:
             # Given whole, so that GOOGLE_GEMINI_BASE_URL and the Vertex switches of the shell decide nothing:
             # the SDK would send the key to whatever host they name.
@@ -45,7 +45,7 @@ class GeminiBackend:
         self._client = client
         config = self._client.interactions.sdk_configuration
         config.retry_config = None                               # one attempt: VLMClient owns the retries
-        config.debug_logger = _Silent()                          # keys are never logged (spec 7)
+        config.debug_logger = _Silent()                          # keys are never logged
 
     def build_request(self, entry: ModelEntry, system: str | None, parts: Sequence[Part], json_schema: dict) -> dict:
         """The keyword arguments of `interactions.create`. A key is present only when its source is set."""

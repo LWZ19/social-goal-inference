@@ -1,10 +1,10 @@
-"""The solver with reference constraints (the design of the constraint method, section 9): a test of the solver,
+"""The solver with reference constraints: a test of the solver,
 not a measure of a run.
 
 For every placeholder scene of the four situations named in COVERED, the constraints a careful answer would hold are
 written from who is in the group at the target; for a scene of another situation none is given. The people are those of
 ground truth as the method's `oracle` source gives them, and the solver's own properties are asserted: the place breaks
-no exclusion where some cell breaks none, no selectable cell comes before it in the order of the design's section 7,
+no exclusion where some cell breaks none, no selectable cell comes before it in the solver's order,
 and no selectable cell lies outside the scene's static free space. Where people watch the target it is measured as
 well, from the place itself, that the robot stands level with the hindmost of them or behind.
 

@@ -1,4 +1,4 @@
-# cafe_line2_fast (research break-it case a/g, 2026-11-01): cafe_line2_moving served every 6 s, so the
+# cafe_line2_fast (stress case): cafe_line2_moving served every 6 s, so the
 # robot can become first in line, and the line moves faster than it can follow.
 stage: data/habitat/stages/cafe.glb
 wander_area:

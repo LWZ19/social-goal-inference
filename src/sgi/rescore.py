@@ -1,4 +1,4 @@
-"""Scores the records of a finished run again (spec sections 10, 11 and 13).
+"""Scores the records of a finished run again.
 
     python -m sgi.rescore RUN_DIR [--scenes DIR]
 

@@ -1,4 +1,4 @@
-"""The role estimator of ideas round 2 (research arm CT4, `moving/ideas2_1b/CT4_FROZEN.md`)."""
+"""The role estimator (experiment arm CT4)."""
 import math
 
 import numpy as np

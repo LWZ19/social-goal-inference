@@ -1,4 +1,4 @@
-# room_coffee_cart_slots (research, 2026-11-02, CT2_FROZEN.md): room_coffee_cart with the queue's slots extended to 8, so
+# room_coffee_cart_slots: room_coffee_cart with the queue's slots extended to 8, so
 # that people coming back are not placed onto a robot queued at the back (a sim artefact of the 4-5 slot
 # original). Used by every arm on fresh seeds 10-19.
 stage: data/habitat/stages/room.glb

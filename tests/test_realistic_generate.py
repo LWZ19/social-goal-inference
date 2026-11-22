@@ -1,4 +1,4 @@
-"""The realistic generator through the stub renderer (realistic-scenes spec 5.6 and 6): what a run writes for
+"""The realistic generator through the stub renderer: what a run writes for
 a few scenes of seed 0, and what it does when it is run again, on part of the set, or when something fails.
 
 The scenes are one of each sort the set has: a stall with nobody before it and someone behind it, the parcel on

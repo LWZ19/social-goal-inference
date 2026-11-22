@@ -26,7 +26,7 @@ class OpenAIBackend:
     provider = "openai"
 
     def __init__(self, api_key: str, client=None):
-        self._api_key = api_key                                  # kept to strike it from error messages (spec 7)
+        self._api_key = api_key                                  # kept to strike it from error messages
         if client is None:
             # With the endpoint given, OPENAI_BASE_URL of the shell decides nothing: the SDK would send the key there.
             client = openai.OpenAI(api_key=api_key, base_url=_BASE_URL)

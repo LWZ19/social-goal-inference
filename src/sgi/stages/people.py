@@ -1,6 +1,6 @@
 """The people of the constraint method: who is in view, and the numbers they are given.
 
-Design: the project's design document for the method, section 4; docs/constraint_method.md describes it. A people source finds
+docs/constraint_method.md describes the method. A people source finds
 the people of one observation, each with a floor position, a heading where it can be told and a body point in the
 image. The `vlm` source is here: one model call on the camera image. The `oracle` source reads ground truth and
 lives in the run harness. `number_people` then merges, cuts and numbers what either of them found.
@@ -26,7 +26,7 @@ from sgi.types import Call, DetectedPerson, GroundedTarget
 from sgi.vlm.base import VLMClient, to_call
 
 _EPS = 1e-9                                        # float noise where a distance is held against a radius: no threshold
-# The design's table: how far each of the first eight facings turns the bearing from a person to the camera,
+# How far each of the first eight facings turns the bearing from a person to the camera,
 # anticlockwise seen from above, in degrees. The ninth, unclear, gives no heading.
 _TURN_DEG = dict(zip(FACINGS, (0, 45, 90, 135, 180, -135, -90, -45)))
 
@@ -45,7 +45,7 @@ class PeopleFound:
     """What a people source returns for one observation.
 
     A call that brought no valid answer leaves `found` empty, and its status in `calls` says so. That is not
-    nobody in view: the goal step then ends with that status and no pose (the design, section 8)."""
+    nobody in view: the goal step then ends with that status and no pose."""
     found: list[FoundPerson]                       # in the order found
     calls: list[Call]                              # the model calls made, none by a source that asks no model
     call_time_s: float                             # the stage time of those calls: counted under `goal`
@@ -139,7 +139,7 @@ def number_people(found: Sequence[FoundPerson], target: GroundedTarget, observat
                   max_people: int) -> tuple[list[DetectedPerson], bool]:
     """The people the constraint method works with, in the order of their numbers, and whether any was cut.
 
-    The three steps of the design's section 4, the same for every source and in this order. Merge: in the order
+    The three steps, the same for every source and in this order. Merge: in the order
     found, a person whose centre is within `person_radius_m` of one already kept is dropped. Cut: the `max_people`
     nearest the ground under the target point are kept, the one found first of two as near; the flag says that
     someone was dropped here. Number: from 1, from the left of the image by the column of `pixel`; in one column,

@@ -1,4 +1,4 @@
-"""Dressing a layout (realistic-scenes spec 5.4, 5.6 and 6): what dress adds to a layout of the placeholder
+"""Dressing a layout: what dress adds to a layout of the placeholder
 generator and what it leaves as the twin has it.
 
 The rules are tried on the layouts the generator keeps for seed 0, on layouts drawn as it draws them with other
@@ -33,7 +33,7 @@ from sgi.synth.render import Box, Sphere
 
 CFG = load_config()
 SEED = (0, 1, 7, 0)                                 # as the generator seeds a dressing: seed, split, row, attempt
-REACH_M = 0.45                                      # the furthest a pose may get from the body's axis (spec 5.4)
+REACH_M = 0.45                                      # the furthest a pose may get from the body's axis
 BUILD = (0.92, 1.15)                                # how much wider than the avatar a visitor is made
 WIDTH_SCALE = 1.07                                  # of an avatar whose manifest entry gives no max_width_scale
 STAFF_POSE = "listen_upright"

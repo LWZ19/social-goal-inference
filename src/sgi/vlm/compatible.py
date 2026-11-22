@@ -38,7 +38,7 @@ class OpenAICompatibleBackend:
             # Without an address the SDK uses its own, OpenAI's, and would send a gateway's key there.
             raise ValueError("an OpenAI-compatible back end needs the address of its service: base_url is empty")
         _refuse_shell_headers(base_url)                          # before a client exists that would send them
-        self._api_key = api_key                                  # kept to strike it from error messages (spec 7)
+        self._api_key = api_key                                  # kept to strike it from error messages
         self._base_url = base_url
         # The key, the address and the retries are given whole, to a client passed in too: the key goes to the
         # entry's address, whatever OPENAI_BASE_URL of the shell says, in one attempt (VLMClient owns the retries).

@@ -246,7 +246,7 @@ NEAR = {"because": "Something is handed over.", "kind": "within_distance", "peop
 def test_the_constraints_answer_has_its_keys_in_writing_order_and_the_shapes_a_strict_mode_takes(strategy, lead):
     model = constraints_schema(strategy)
     assert props(model) == lead + ["constraints"] == sorted(props(model))
-    assert props(model, "ConstraintWire") == ["because", "kind", "people", "range_m", "target"]       # the design's order, which is sorted
+    assert props(model, "ConstraintWire") == ["because", "kind", "people", "range_m", "target"]  # the schema's order, which is sorted
     assert props(model, "RangeWire") == ["at_least", "at_most"]
     sent = model.model_json_schema()
     shape = lambda field: {key: value for key, value in field.items() if key not in ("description", "title")}

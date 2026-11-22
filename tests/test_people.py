@@ -91,7 +91,7 @@ def test_a_facing_turns_the_bearing_to_the_camera_anticlockwise_by_its_row_of_th
         assert facing == "unclear" and person.yaw is None
         return
     assert -math.pi < person.yaw <= math.pi and turned(person.yaw) == pytest.approx(turned(math.radians(heading_deg)))
-    turn = (0, 45, 90, 135, 180, -135, -90, -45)[FACINGS.index(facing)]                     # the design's row, as it is written
+    turn = (0, 45, 90, 135, 180, -135, -90, -45)[FACINGS.index(facing)]  # the table's row, as it is written
     assert turned(person.yaw) == pytest.approx(turned(math.pi + math.radians(turn)))
     # What the name says, read off the picture: a point a metre ahead of the person lies to that side of them in the
     # image, and nearer the camera or farther from it than they are.

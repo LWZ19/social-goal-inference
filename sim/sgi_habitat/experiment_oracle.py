@@ -1,4 +1,4 @@
-"""Oracle ceilings for the moving-people experiment (research note moving/QUESTIONS.md Q10): not methods.
+"""Oracle ceilings for the moving-people experiment: these are reference points, not methods.
 
     python -m sgi_habitat.experiment_oracle --scenario FILE --arm {CTo,CTt} --seed N --out DIR [as experiment]
 
@@ -8,21 +8,21 @@
   and constraints are kept.
 - CT0: one re-solve on the tracked people, then the goal is frozen: CT0 against C1 measures the better people
   positions of tracking; CT against CT0 measures re-solving as people move.
-- CT2, CT2-vac, CT2-rat: re-solving v2 (moving/CT2_FROZEN.md): readmit, a 0.5 m line span, the vacated place, path
+- CT2, CT2-vac, CT2-rat: the second version of re-solving: readmit, a 0.5 m line span, the vacated place, path
   memory, and a forward ratchet in the replace rule; CT2-vac without the vacated place, CT2-rat without the ratchet.
-- CT2m, Rm: CT2 and R1 that move while thinking (moving/CT2m_FROZEN.md): once the plan call answers (POST /plan, the
-  call /goal then reuses from the cache), an interim goal on the ray to the plan's target, 2.5 m short of it or 1.5 m
+- CT2m, Rm: CT2 and R1 that move while thinking: once the plan call answers (POST /plan, the call /goal then
+  reuses from the cache), an interim goal on the ray to the plan's target, 2.5 m short of it or 1.5 m
   before the first tracked person within 0.6 m of the ray, whichever is farther from the target, facing it.
-- CTd: CT2 on people tracked from the robot's own camera (E1D_FROZEN.md) instead of the sim's true positions:
+- CTd: CT2 on people tracked from the robot's own camera instead of the sim's true positions:
   every 0.5 s from the request, and on the request frame itself, the frame goes to the tracker service
-  (moving/tracker_service.py, $SGI_TRACKER_URL, default http://127.0.0.1:8897), whose tracks the re-solves use.
-- CT2-nora: CT2 without readmit (post hoc ablation, CT2_NORA_POSTHOC.md); CT2-norv: without readmit and without the
-  vacated place (CT2_NORV_POSTHOC.md); CT2-none: every CT2 part off through the CT2 code path, no ratchet or
-  stood-on replace (a sanity arm that should reproduce CT; CT2_NONE_RAT_POSTHOC.md).
+  (tracker_service.py in results/moving-lines/design-and-scoring/, $SGI_TRACKER_URL, default
+  http://127.0.0.1:8897), whose tracks the re-solves use.
+- CT2-nora: CT2 without readmit (an ablation added later); CT2-norv: without readmit and without the
+  vacated place; CT2-none: every CT2 part off through the CT2 code path, no ratchet or
+  stood-on replace (a sanity arm that should reproduce CT).
 - CTe: CTd whose first answer uses the request frame's detected people (the tracker's live tracks) instead of the
-  model's people call (e1/e1c/E1C_FROZEN.md): /goal is sent with `people`, so only the constraints call is new.
-- CTs: CT that re-solves only on settled tracks and also replaces a goal someone stands on (frozen in
-  moving/CTs_FROZEN.md; judged on fresh seeds only).
+  model's people call: /goal is sent with `people`, so only the constraints call is new.
+- CTs: CT that re-solves only on settled tracks and also replaces a goal someone stands on (judged on fresh seeds only).
 - CT4O (a ceiling, not a method): CT4PJ with the roster replaced at every re-solve by the queue's true members
   ahead of the robot (`oracle_roster`); nobody behind the robot is ever in it. The model's target point is kept.
 - CT4OT (a ceiling, not a method): CT4O with the target point also moved to the queue's true counter point, as CTt.
@@ -54,23 +54,23 @@ E.ARMS.update({"CTo": dict(asks_again=False, resolves=True), "CTt": dict(asks_ag
                "CT2-none": dict(asks_again=False, resolves=True),
                "Gl": dict(asks_again=False, resolves=True), "CT3": dict(asks_again=False, resolves=True),
                "CT3-j": dict(asks_again=False, resolves=True), "CT3b": dict(asks_again=False, resolves=True),
-               # ideas round 2: CT3 with the wait's tracks replayed before the first re-solve (a ladder rung)
+               # CT3 with the wait's tracks replayed before the first re-solve
                "CT3p": dict(asks_again=False, resolves=True, photo_time=True),
-               # moving/ideas2_1b/CT4_FROZEN.md: the best bolt-on (CT3F) against one estimate of who waits (CT4)
+               # the best add-on (CT3F) against one estimate of who waits (CT4)
                "CT3F": dict(asks_again=False, resolves=True, photo_time=True),
-               # front-of-line fix (exploratory, 7 Nov): no step back once in line, and the vacated place taken when
-               # the last served person rejoins behind the robot; on CT2 (the video's arm) and on CT3F (the best)
+               # front-of-line fix (exploratory): no step back once in line, and the vacated place taken when
+               # the last served person rejoins behind the robot; on CT2 and on CT3F (the best)
                "CT2f": dict(asks_again=False, resolves=True),
                "CT3Ff": dict(asks_again=False, resolves=True, photo_time=True),
                "CT4": dict(asks_again=False, resolves=True, photo_time=True),
-               # moving/ideas2_1b/round3/ROUND3.md: CT4 with the 5 s window (W0), and with the cost decision (CT5)
+               # CT4 with the 5 s window (W0), and with the cost decision (CT5)
                "W0": dict(asks_again=False, resolves=True, photo_time=True),
                "CT5": dict(asks_again=False, resolves=True, photo_time=True),
-               # round3/CT4P.md: CT4 lined up along the remembered line, as CT3F is (a control)
+               # CT4 lined up along the remembered line, as CT3F is (a control)
                "CT4P": dict(asks_again=False, resolves=True, photo_time=True),
-               # round4/CT4PJ.md: CT4P with the Resolver's joined rule, as CT3F has it (a control)
+               # CT4P with the Resolver's joined rule, as CT3F has it (a control)
                "CT4PJ": dict(asks_again=False, resolves=True, photo_time=True),
-               # ceilings for the confirmatory test: the true roster ahead (CT4O), the ideal place (OW)
+               # ceilings: the true roster ahead (CT4O), the ideal place (OW)
                "CT4O": dict(asks_again=False, resolves=True, photo_time=True, oracle_ahead=True),
                "CT4OT": dict(asks_again=False, resolves=True, photo_time=True, oracle_ahead=True),
                "CT4PJT": dict(asks_again=False, resolves=True, photo_time=True),
@@ -78,7 +78,7 @@ E.ARMS.update({"CTo": dict(asks_again=False, resolves=True), "CTt": dict(asks_ag
                # CT3F that holds its place once in line: the people ahead are locked in and only leave (hold_place)
                "CT3FL": dict(asks_again=False, resolves=True, photo_time=True),
                "OW": dict(asks_again=False, resolves=True)})
-# BYSTANDERS_FROZEN.md: CT2's options, and roles from geometry (Gl) or from the model checked by motion (CT3; CT3-j
+# CT2's options, and roles from geometry (Gl) or from the model checked by motion (CT3; CT3-j
 # without the follow check); later arms add their own (see ARMS above)
 _ROSTER = ("Gl", "CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT4", "W0", "CT5", "CT4P", "CT4PJ", "CT4O", "CT4OT", "CT4PJT",
            "CT3FT", "CT3Ff", "CT3FL")
@@ -86,7 +86,7 @@ _FRONT_FIX = ("CT2f", "CT3Ff")
 _CO_MOTION_S = 5.0
 _TRACKED = ("CTd", "CTe")
 _TRACK_EVERY_S = 0.5
-_SHORT_M, _BEFORE_M, _RAY_M, _NEAR_M = 2.5, 1.5, 0.6, 0.3            # CT2m_FROZEN.md
+_SHORT_M, _BEFORE_M, _RAY_M, _NEAR_M = 2.5, 1.5, 0.6, 0.3
 _V2 = {"readmit": True, "line_span_m": 0.5, "vacate_after_s": 5.0, "path_memory": True}
 _RATCHET_M, _CLEAR_M = 0.08, 0.55
 _IDEAL_BACK_M, _IDEAL_MOVED_M, _IDEAL_TURNED_DEG = 0.85, 0.1, 15.0      # OW
@@ -112,9 +112,9 @@ class _Inject:
                 if arm in ("CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT3FT", "CT3Ff", "CT3FL"):
                     payload["variant"] = {**payload["variant"], "co_motion_s": _CO_MOTION_S,
                                           "co_motion_follow": arm != "CT3-j"}
-                if arm == "CT3b":                           # post hoc: stale follow checks cancelled on re-admission
+                if arm == "CT3b":                           # added later: stale follow checks cancelled on re-admission
                     payload["variant"]["co_motion_rejoin"] = True
-                if arm in ("CT3F", "CT3FT", "CT3Ff", "CT3FL"):  # CT4_FROZEN.md: the group test and the gated anchor
+                if arm in ("CT3F", "CT3FT", "CT3Ff", "CT3FL"):  # the group test and the gated anchor
                     payload["variant"] = {**payload["variant"], "group_follow": True, "anchor_rederive": True}
                 if arm in _FRONT_FIX:                       # the vacated place, also when the last served rejoined behind
                     payload["variant"] = {**payload["variant"], "vacate_rejoined": True}
@@ -122,7 +122,7 @@ class _Inject:
                     payload["variant"]["hold_place"] = True
                 if arm == "CT4":                            # the roles from sgi.roles; CT2's ratchet stays (sim side)
                     payload["variant"] = {"role_belief": True}
-                if arm in ("CT4P", "CT4PJ"):                # round3/CT4P.md, round4/CT4PJ.md
+                if arm in ("CT4P", "CT4PJ"):                # CT4 with the remembered line, and with the join rule too
                     payload["variant"] = {"role_belief": True, "role_direction": "path",
                                           **({"role_joined": True} if arm == "CT4PJ" else {})}
                 if arm == "CT4PJT":                         # a ceiling cell: CT4PJ, with the true target (oracle)
@@ -130,7 +130,7 @@ class _Inject:
                 if arm in ("CT4O", "CT4OT"):                # ceilings: CT4PJ with the true roster ahead
                     payload["variant"] = {"role_belief": True, "role_direction": "path", "role_joined": True,
                                           "oracle_roster": True}
-                if arm in ("W0", "CT5"):                    # ROUND3.md section 8
+                if arm in ("W0", "CT5"):                    # the 5 s window, and with CT5 the cost decision
                     payload["variant"] = {"role_belief": True, "static_win_s": 5.0, "role_decision": arm == "CT5"}
                 if arm == "CT2-none":                       # every CT2 part off, through the CT2 code path
                     payload["variant"] = {"readmit": False, "line_span_m": 1.0, "vacate_after_s": None,

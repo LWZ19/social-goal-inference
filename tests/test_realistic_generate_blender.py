@@ -1,4 +1,4 @@
-"""The realistic generator with Blender (realistic-scenes spec 5.6 and 7): one whole scene, rendered by the
+"""The realistic generator with Blender: one whole scene, rendered by the
 command as it is run by hand, through the scene check. Skipped where Blender or the prepared assets are absent.
 
 What the generator does with a renderer's frames is tested through the stub in test_realistic_generate.py.

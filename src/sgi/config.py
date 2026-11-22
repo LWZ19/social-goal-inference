@@ -84,14 +84,14 @@ class Thresholds(_Strict):
     camera_height_max_m: float = 3.0
     yaw_tolerance_rad: float = 0.001
     free_space_agreement_min: float = 0.90
-    # The ten of the constraint method (its design, section 7), each with its reason.
+    # The ten of the constraint method, each with its reason.
     view_half_angle_deg: float = 35.0      # a person's view, who faces whom: as far as the eyes turn without the head
     visible_half_angle_deg: float = 60.0   # seen without turning round: half the field both eyes share, 120 degrees
     floor_range_m: float = 12.0            # the solver's floor: people are in frame from head to foot out to about 7 m
     seen_depth_ratio: float = 0.03         # seen floor: above depth's change across one pixel of floor, 0.7 % at 12 m
     seen_depth_margin_m: float = 0.02      # with the ratio 0.38 m at floor_range_m: inside standard_goal_clearance_m
     max_keep_m: float = 3.0                # three times standoff_m: farther than that is not being at the target
-    max_people: int = 40                   # a guard: the proposal's largest episode, with room for a false find
+    max_people: int = 40                   # a guard: at most this many people in one view, with room for a false find
     max_constraints: int = 12              # a guard: twice the number of kinds
     person_mark_height_m: float = 1.1      # chest height, inside the heights the visibility rule samples
     candidate_count: int = 4               # the runners-up kept beside the place
