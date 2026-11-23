@@ -28,7 +28,7 @@ import numpy as np
 from sgi.geometry import Camera
 from sgi.synth.render import Box, Color, Cylinder, Solid, Sphere
 
-# The names the tasks share. A material is one of MATERIALS, which the asset library provides, or PAINT.
+# The names the scene description and the asset library share. A material is one of MATERIALS, which the asset library provides, or PAINT.
 SIGN_STYLES = ("label", "logo", "pictogram", "plate", "menu", "map", "exit", "notice", "screen", "paper")
 MATERIALS = ("floor_tile", "floor_terrazzo", "floor_laminate", "ceiling_tile", "wall_paint", "wood", "wood_dark",
              "laminate_white", "steel", "painted_metal", "plastic_dark", "plastic_light", "fabric", "stone", "cork",

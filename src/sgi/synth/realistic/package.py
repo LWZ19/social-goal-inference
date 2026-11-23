@@ -1,7 +1,7 @@
 """Packing a rendered set of the realistic scenes, and fetching and verifying it again.
 
-Rendered sets are never committed: a variant travels as one archive that is attached by hand
-to a release of the private repository, and the repository holds its manifest and this command.
+Rendered sets are never committed: a variant travels as one archive that is attached
+to a release of this repository, and the repository holds its manifest and this command.
 
     python -m sgi.synth.realistic.package pack   --set FOLDER --out FILE.tar.gz [--manifest FILE] [--variant NAME]
     python -m sgi.synth.realistic.package verify --set FOLDER [--manifest FILE | --variant NAME]

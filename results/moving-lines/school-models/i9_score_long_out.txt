@@ -1,9 +1,0 @@
-# Item 9: the moving headline, seeds 10-14, 240 s episodes (SECONDARY, cache-only)
-
-| model | R1 / CT / CT2 strict | R1 / CT / CT2 primary | first answer median s, C / R | C episodes with no answer in time (or an error) | CT2 vs R1 strict W/L/T, p | CT vs R1 strict W/L/T, p | CT2 vs R1 primary W/L/T, p |
-|---|---|---|---|---|---|---|---|
-| Qwen 3.8 | 0.04 / nan / 0.13 | 0.13 / nan / 0.23 | 123.4 / 66.8 | 0 of 25 (errors 0; timed out, excluded: 0) | 19/1/5, 0.0000 | 0/0/0, 1.0000 | 19/5/1, 0.0066 |
-| GLM-5.3 | 0.01 / nan / 0.00 | 0.03 / nan / 0.00 | 217.2 / 173.1 | 24 of 25 (errors 5; timed out, excluded: 0) | 0/3/22, 0.2500 | 0/0/0, 1.0000 | 0/3/22, 0.2500 |
-
-- Qwen 3.8: BAR H9 (secondary) (CT2 vs R1, strict, wins > losses and p <= 0.05): True; primary scoring (reported): True
-- GLM-5.3: BAR H9 (secondary) (CT2 vs R1, strict, wins > losses and p <= 0.05): False; primary scoring (reported): False; LATENCY-BOUND: most C answers arrive after the episode ends

@@ -1,14 +1,13 @@
 """Layout-level exact sign-flip tests for the still-scene method comparison.
 
 No model or provider call: this reads results.jsonl and config.yaml of finished runs and nothing else, and imports
-no project code. Definitions are in README.md beside this file.
+no project code.
 
 Part 1, development still-scene headline, runs from the whitelist (research_runs.txt) only:
-  new wording: Qwen 3.8 low s21; GLM-5.3, DeepSeek V4.1, Haiku 5.5, Sonnet 5.5 low, Gemini 3.8 low s23.
-  old wording: Qwen and GLM R and E from s16b, C from s19; DeepSeek R, E and C from s20 (never s20_held).
+  new wording (the current prompts): Qwen 3.8 low s21; GLM-5.3, DeepSeek V4.1, Haiku 5.5, Sonnet 5.5 low, Gemini 3.8 low s23.
+  old wording (earlier prompts): Qwen and GLM R and E from s16b, C from s19; DeepSeek R, E and C from s20 (never s20_held).
 Part 2, the seven older models of the hidden-situations run (descriptive): runs s24_{variant}_{entry}_{method},
-  the folders run_static.sh
-  names; never hidden-situations-and-more-models/held_configs/ or any held run.
+  never hidden-situations-and-more-models/held_configs/ or any held run.
 
 Unit: the layout (scene id without its variant prefix; 14 layouts). Records are paired across methods by
 (variant, scene, episode, trial). net(A-B) of a layout = sum over its paired records of success(A) - success(B).
@@ -57,7 +56,7 @@ NEW_WORDING = (('Qwen 3.8 low', 'qwen38_low', 's21'), ('GLM-5.3', 'glm53', 's23'
 OLD_WORDING = (('Qwen 3.8 low', 'qwen38_low', {'R': 's16b', 'E': 's16b', 'C': 's19'}),
                ('GLM-5.3', 'glm53', {'R': 's16b', 'E': 's16b', 'C': 's19'}),
                ('DeepSeek V4.1', 'dsv41', {'R': 's20', 'E': 's20', 'C': 's20'}))
-# Totals (R, E, C of 252) the earlier report quotes.
+# Totals (R, E, C of 252) that the earlier statistics give.
 REPORT_TOTALS = {('new', 'Qwen 3.8 low'): (179, 196, 228), ('new', 'GLM-5.3'): (132, 123, 170),
                  ('new', 'DeepSeek V4.1'): (120, 126, 185), ('new', 'Haiku 5.5'): (151, 148, 240),
                  ('new', 'Sonnet 5.5 low'): (178, 178, 242), ('new', 'Gemini 3.8 low'): (164, 173, 214),
@@ -115,7 +114,7 @@ def whitelisted_run(wl, name):
 
 
 def e3_run(name, scenes_by_variant, variant):
-    """The one folder runs/<timestamp>_<name> (run_static.sh's --name), never a held run."""
+    """The one folder runs/<timestamp>_<name>, never a held run."""
     hits = [p for p in RUNS.iterdir() if p.is_dir() and p.name[16:] == name and not FORBIDDEN.search(p.name)]
     assert len(hits) == 1, (name, [p.name for p in hits])
     return hits[0], (ROOT / relocated(scenes_by_variant[variant])).resolve()
@@ -286,7 +285,7 @@ def analyse_block(title, models):
 
 
 def parse_old_stats():
-    """The earlier stats.py output: {block name: (C total, X name, X total, two-sided p string)}."""
+    """The stored statistics output: {block name: (C total, X name, X total, two-sided p string)}."""
     blocks, name = {}, None
     for line in OLD_STATS.read_text(encoding='utf-8').splitlines():
         m = re.match(r'^-- (.+?): runs ', line)
@@ -324,7 +323,7 @@ def parse_e3_totals():
 
 def main():
     wl = read_whitelist()
-    say('Layout-level exact sign-flip tests, still scenes (layout_tests.py; no model call; definitions in README.md).')
+    say('Layout-level exact sign-flip tests, still scenes (layout_tests.py; no model call; definitions in its docstring).')
     say('Methods: R = marked point (cot runs), E = R with worked examples (fsc runs), C = constraint method (con runs).')
     say('Each method: 3 variants (real, staffed, plain) x 14 layouts x 2 episodes x 3 trials = 252 records.')
     say()
@@ -336,9 +335,9 @@ def main():
             return folder, scenes, name
         return locate
 
-    new = analyse_block('ITEM 1a. Development still scenes, NEW wording (Qwen 3.8 low s21; the other five s23)',
+    new = analyse_block('1a. Development still scenes, NEW wording (Qwen 3.8 low s21; the other five s23)',
                         [(d, wl_locator({'R': st, 'E': st, 'C': st}, s)) for d, s, st in NEW_WORDING])
-    old = analyse_block('ITEM 1b. Development still scenes, OLD wording (Qwen, GLM: R and E s16b, C s19; '
+    old = analyse_block('1b. Development still scenes, OLD wording (Qwen, GLM: R and E s16b, C s19; '
                         'DeepSeek: R, E, C s20)', [(d, wl_locator(stages, s)) for d, s, stages in OLD_WORDING])
 
     scenes_by_variant = yaml.safe_load(E3_SCENES.read_text(encoding='utf-8'))
@@ -350,7 +349,7 @@ def main():
             return folder, scenes, name
         return locate
 
-    e3 = analyse_block('ITEM 2. Seven older models, E3 (s24 runs, descriptive; same scenes and protocol as s23)',
+    e3 = analyse_block('2. Seven older models (s24 runs, descriptive; same scenes and method as s23)',
                        [(d, e3_locator(e)) for d, e in E3_MODELS])
 
     # ------------------------------------------------------------------------------------------- checks
@@ -358,18 +357,18 @@ def main():
     say('CHECKS')
     say('=' * 118)
     bad = []
-    say('Totals R/E/C against the earlier report (EVIDENCE_AUDIT.md A1, A2; docs/results/README.md):')
+    say('Totals R/E/C against the earlier statistics (new = current prompts, old = earlier prompts):')
     for (wording, display), want in REPORT_TOTALS.items():
         got = (new if wording == 'new' else old)[display][0]
         ok = got == want
-        bad += [] if ok else [f'{wording} {display} totals {got} != report {want}']
-        say(f"  {wording:3s} {display:16s} got {got} report {want}  {'OK' if ok else 'MISMATCH'}")
+        bad += [] if ok else [f'{wording} {display} totals {got} != earlier {want}']
+        say(f"  {wording:3s} {display:16s} got {got} earlier {want}  {'OK' if ok else 'MISMATCH'}")
     say('Totals R/E/C against results/still-scenes/hidden-situations-and-more-models/results_all_out.txt:')
     e3_want = parse_e3_totals()
     for display, _entry in E3_MODELS:
         got, want = e3[display][0], e3_want[display]
         ok = got == want
-        bad += [] if ok else [f'E3 {display} totals {got} != results_all_out {want}']
+        bad += [] if ok else [f'{display} totals {got} != results_all_out {want}']
         say(f"  {display:22s} got {got} results_all_out {want}  {'OK' if ok else 'MISMATCH'}")
     for e3_name, display in E3_CURRENT:
         got, want = new[display][0], e3_want[e3_name]

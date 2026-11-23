@@ -11,7 +11,8 @@ from sgi.config import REPO_ROOT, ModelEntry, RunConfig, StageName, Strategy, lo
 from sgi.types import ConstraintKind, ConstraintUse, Flags, GoalResult
 from sgi.vlm import compatible, factory
 
-README = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+FRONT = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+README = (REPO_ROOT / "docs" / "usage.md").read_text(encoding="utf-8")      # the full reference
 PAGE = (REPO_ROOT / "docs" / "scene_format.md").read_text(encoding="utf-8")
 CFG = load_config()
 PROVIDERS = typing.get_args(ModelEntry.model_fields["provider"].annotation)
@@ -21,7 +22,7 @@ def commands(text):                                       # (module, arguments) 
     return [(w[2], w[3:]) for w in (shlex.split(line, comments=True) for line in lines) if w[1:2] == ["-m"]]
 
 def test_documented_commands_name_real_modules_flags_paths_and_model_entries():
-    found = commands(README) + commands(PAGE)
+    found = commands(FRONT) + commands(README) + commands(PAGE)
     assert {m for m, _ in commands(README)} >= {"venv", "sgi.synth.generate", "sgi.check_scene", "sgi.run", "sgi.smoke", "sgi.rescore"}
     assert ("sgi.check_scene", ["docs/example_scene"]) in commands(PAGE)
     for module, args in found:
@@ -43,21 +44,20 @@ def test_documented_commands_name_real_modules_flags_paths_and_model_entries():
     for module, option in (("sgi.run", "--list-entries"), ("sgi.smoke", "--list-models")):
         assert any(m == module and option in args for m, args in found), option
 
-def section(title):                                       # the text under one "## " heading of the README
+def section(title):                                       # the text under one "## " heading of the usage page
     return README.split(f"\n## {title}\n")[1].split("\n## ")[0]
 
-def test_readme_covers_the_run_modes_the_run_folder_and_the_caveat():
+def test_usage_covers_the_run_modes_and_the_run_folder():
     words = [w for name in ("grounding", "context_check", "goal", "people", "constraints", "grounding_source")
              for w in (name, *typing.get_args(RunConfig.model_fields[name].annotation))]
     words += ["trials", "leave_out_situation", "--final-test", "config.yaml", "results.jsonl", "summary.csv"]
     assert len(words) == 27 and [w for w in words if f"`{w}`" not in section("Run modes") + section("Reading a run folder")] == []
     rows = {row.split("|")[1].strip(): row for row in section("Run modes").splitlines() if row.startswith("| `")}
     assert list(rows)[:5] == ["`grounding`", "`context_check`", "`goal`", "`people`", "`constraints`"]
-    # The constraint method is built: no row puts it off, and each of its two own settings says when it is read.
-    assert "built in a later task" not in README and "constraint method" in rows["`goal`"]
+    # Each of the constraint method's two own settings says when it is read.
+    assert "constraint method" in rows["`goal`"]
     assert "`goal: constraints`" in rows["`people`"] and "`goal: constraints`" in rows["`constraints`"]
     assert "no model call" in rows["`people`"] and "the solver runs on its own rules alone" in rows["`constraints`"]
-    assert "Numbers measured on placeholder scenes are not research results." in README
     keyless = ["--model mock"]                            # the keyless path
     assert [w for w in keyless if f"`{w}`" not in section("Commands")] == []
     report = ["latency_s", "latency_total_s", "transient_retry_share", "model", "reasoning_effort"]  # the latency columns
@@ -71,10 +71,10 @@ def test_readme_says_how_to_switch_models_and_what_state_each_provider_is_in():
     table = {row.split("|")[1].strip(): row for row in text.splitlines() if row.startswith("| ")}
     assert {"Gemini", "SoCLaaS", "OpenAI", "Claude"} <= set(table)   # a row each, with its key variable and its state
     assert "`GEMINI_API_KEY`" in table["Gemini"] and "live calls" in table["Gemini"]
-    assert "`SOCLAAS_API_KEY`" in table["SoCLaaS"] and "full runs on 2026-10-08" in table["SoCLaaS"]
+    assert "`SOCLAAS_API_KEY`" in table["SoCLaaS"] and "full runs" in table["SoCLaaS"]
     assert "prices" in table["SoCLaaS"]
     assert sum(name.startswith("soclaas_") for name in CFG.models) == 17 and "the seventeen `soclaas_*` entries" in table["SoCLaaS"]
-    assert "`OPENAI_API_KEY`" in table["OpenAI"] and "never called" in table["OpenAI"]
+    assert "`OPENAI_API_KEY`" in table["OpenAI"] and "Not used for the reported results" in table["OpenAI"]
     claude = [name for name, entry in CFG.models.items() if entry.provider == "anthropic"]
     assert "`ANTHROPIC_API_KEY`" in table["Claude"] and "live runs" in table["Claude"] and "`anthropic`" in table["Claude"]
     assert len(claude) == 9 and [name for name in claude if f"`{name}`" not in table["Claude"]] == []
@@ -82,7 +82,7 @@ def test_readme_says_how_to_switch_models_and_what_state_each_provider_is_in():
     (levels,) = [p for p in text.split("\n\n") if p.startswith("For an `anthropic` entry")]
     said = ["reasoning_effort", "none", "low", "medium", "high", "xhigh", "max", "temperature", "image_detail", "max_output_tokens"]
     assert [w for w in said if f"`{w}`" not in levels] == [] and "16000" in levels and "thinking switched off" in levels
-    assert "(results/README.md)" in text and (REPO_ROOT / "results" / "README.md").is_file()
+    assert "(../results/README.md)" in text and (REPO_ROOT / "results" / "README.md").is_file()
 
 def test_readme_says_how_to_choose_strategies_and_prompt_folders_and_what_pacing_and_cost_are():
     text = section("Switching models")
@@ -92,11 +92,11 @@ def test_readme_says_how_to_choose_strategies_and_prompt_folders_and_what_pacing
     assert len(words) == 19 and [w for w in words if not re.search(rf"`{w}[ `]", text)] == []
     assert [f"{stage}.md" for stage in stages if f"`{stage}.md`" not in text] == []        # what a prompts folder holds
     limits = {entry.max_requests_per_minute for name, entry in CFG.models.items() if name.startswith("soclaas_")}
-    assert limits == {80} and "80 a minute" in text and "one after another" in text       # the number, and its caveat
+    assert limits == {80} and "80 a minute" in text and "one after another" in text       # the number and the pacing rule
 
 def test_readme_says_that_every_real_provider_lists_its_models_and_what_a_line_of_a_gateway_carries():
     (listing,) = [p for p in section("Switching models").split("\n\n") if p.startswith("`--list-models` ")]
-    assert "no listing yet" not in README and [p for p in PROVIDERS if f"`{p}`" not in listing] == []
+    assert [p for p in PROVIDERS if f"`{p}`" not in listing] == []
     assert "every provider" in listing and "300 characters" in listing      # and the one that has nothing to list
     assert re.search(r"`mock` entry has no(thing| models) to list", listing)
 
@@ -117,7 +117,7 @@ def test_readme_says_how_to_score_a_run_again_and_both_pages_give_the_distances_
     words = ["rescored/", "results.jsonl", "summary.csv", "note.txt", "config.yaml", "--scenes", "error:", "success", "score",
              "hidden_relevant_people"]
     assert [w for w in words if f"`{w}`" not in part] == []
-    assert all(said in part for said in ("no model call", "code 2", "nothing is written", "generate the placeholder scenes again"))
+    assert all(said in part for said in ("no model call", "code 2", "nothing is written", "generate the test scenes again"))
     assert "(#score-a-finished-run-again)" in section("Reading a run folder")
     rules = [line for line in PAGE.splitlines() if line.startswith(("- **`no_one`.**", "- **`waiting_line`.**", "- **`conversation_group`**"))]
     assert len(rules) == 3 and all("0.5 to 1.2 m" in rule for rule in rules) and "0.5 to 1.2 m" in part
@@ -127,8 +127,8 @@ def test_readme_says_how_to_score_a_run_again_and_both_pages_give_the_distances_
     # A region begins nearer a person than the robot can come: both pages say where the part that can be reached starts.
     assert all("0.55 m" in text and "0.25 m" in text and "0.30 m" in text for text in (part, rules[1]))
     assert "`in_region`" in part and "`reachable`" in part
-    # The pictures are as they were, the worked examples' goal points are not: what that does to the cache and to a few-shot run.
-    assert all(said in part for said in ("`few_shot`", "`few_shot_cot`", "new one to the cache", "outside the new regions"))
+    # The pictures stay and the worked examples' goal points follow the regions: what that does to the cache.
+    assert all(said in part for said in ("`few_shot`", "`few_shot_cot`", "new one to the cache"))
 
 def test_readme_says_that_smoke_leaves_the_context_stage_alone():
     (smoke,) = [p for p in section("Switching models").split("\n\n") if p.startswith("`sgi.smoke` takes `--model`")]
@@ -180,7 +180,7 @@ def test_setup_names_each_shell_variable_a_gateway_entry_is_not_built_under():
     assert "`openai_compatible`" in section("Setup") and "`env -u`" in section("Setup")
 
 def test_setup_creates_the_key_file_once_and_never_overwrites_it(tmp_path):
-    copy = "[ -e .env ] || cp .env.example .env"          # the one Setup line that writes .env, which holds a paid key
+    copy = "[ -e .env ] || cp .env.example .env"          # the one Setup line that writes .env, which holds API keys
     (block,) = re.findall(r"^```bash\n(.*?)^```", section("Setup"), re.S | re.M)
     assert [line for line in block.splitlines() if ".env" in line] == [copy]
     assert "an existing `.env`" in section("Setup")       # and the text says that it is left alone
@@ -190,8 +190,8 @@ def test_setup_creates_the_key_file_once_and_never_overwrites_it(tmp_path):
         return (tmp_path / ".env").read_text()
     (tmp_path / ".env.example").write_text("GEMINI_API_KEY=\nOPENAI_API_KEY=\n")
     assert setup_again() == "GEMINI_API_KEY=\nOPENAI_API_KEY=\n"         # a fresh clone: created from the example
-    (tmp_path / ".env").write_text("GEMINI_API_KEY=a-key-that-costs-money\n")
-    assert setup_again() == "GEMINI_API_KEY=a-key-that-costs-money\n"    # the block run a second time: kept
+    (tmp_path / ".env").write_text("GEMINI_API_KEY=a-real-key\n")
+    assert setup_again() == "GEMINI_API_KEY=a-real-key\n"    # the block run a second time: kept
 
 def test_scene_format_page_names_every_field_and_its_worked_example():
     names = {field for name, c in inspect.getmembers(scene, inspect.isclass) if issubclass(c, BaseModel)
@@ -204,3 +204,9 @@ def test_scene_format_page_names_every_field_and_its_worked_example():
              "metersPerSceneUnit", "distance_to_image_plane", "camera_params", "check.png", example.scene_id, *recipe,
              *(t.label for t in example.ground_truth.targets), *(e.request for e in example.episodes)]
     assert [w for w in words if w not in PAGE] == []
+
+def test_front_page_is_short_and_points_to_the_reference_pages():
+    assert len(FRONT.split()) < 1000
+    links = re.findall(r"\]\((?!https?:)([^)#\s]+)", FRONT)
+    assert {"docs/usage.md", "docs/constraint_method.md", "results/README.md", "sim/README.md"} <= set(links)
+    assert [link for link in links if not (REPO_ROOT / link).exists()] == []

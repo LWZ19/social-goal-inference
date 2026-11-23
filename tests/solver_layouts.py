@@ -1,6 +1,6 @@
 """What the solver's tests share: pictures of a floor, and the people on it.
 
-Two kinds of picture. `mounted` is taken by the camera of the placeholder scenes on its robot and rendered, so
+Two kinds of picture. `mounted` is taken by the camera of the generated scenes on its robot and rendered, so
 bodies and walls hide the floor behind them. `open_floor` is a bare floor seen from straight above the robot,
 every cell within range in view: what is laid out on it is read from positions alone.
 """
@@ -20,7 +20,7 @@ from sgi.types import Constraint, DetectedPerson, DistanceRange, GoalResult, Gro
 
 TH = Thresholds()
 LENS = dict(fx=554.3, fy=554.3, cx=320.0, cy=240.0, width=640, height=480)
-MOUNT = dict(forward_m=0.2, height_m=1.5, pitch_down_rad=math.radians(10.0))      # as the placeholder scenes have it
+MOUNT = dict(forward_m=0.2, height_m=1.5, pitch_down_rad=math.radians(10.0))      # as the generated scenes have it
 HERE = RobotPose(0.0, 0.0, 0.0)                    # at the origin, heading along +x: its frame is the world's
 
 # Where the mounted camera's picture ends on a level floor, worked out from the mount alone. The lower edge is

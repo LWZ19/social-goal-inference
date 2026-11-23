@@ -28,7 +28,7 @@ The keys of every answer are also held against the schema the call was made with
 order they are to be written in (sgi.schemas): reasoning before the point it argues for. An answer that was
 accepted (status ok) and has them in another order gets one line starting `WARNING:`, which names the call and
 the first object that differs, and the exit code is then 1: under that provider or setting the written
-reasoning is no chain of thought, and the strategies that ask for it measure nothing. An answer that was
+reasoning did not come before the answer, so the `cot` strategies are invalid for that entry. An answer that was
 rejected gets its status alone, whatever its text holds.
 
 With --goal constraints the smoke run is that of the constraint method (`run.goal: constraints`), and it is the

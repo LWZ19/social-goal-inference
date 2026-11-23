@@ -1,4 +1,4 @@
-"""Who waits, as one estimate kept over time: an experiment option for re-solving (experiment arm CT4).
+"""Who waits, as one estimate kept over time: an option for re-solving.
 
 The constraint method's answer names the people who wait ("come after 4, 5, 6"). Here that answer is taken as
 evidence, not as the roster: a belief over which tracked people wait their turn at the anchor (the answer's target
@@ -17,7 +17,7 @@ stand and how they move, with nothing about any one kind of place:
 The decision: the roster is everyone with P(waits) >= 0.5; the solver gets `come_after` = the roster and everyone
 else as exempt from its place-in-turn rule, along `dir`.
 
-Experiment arm CT5 (variant W4) adds two options, both off by default:
+Two further options are off by default:
 - `STATIC_WIN_S`: the static snapshot read as the mean log ratio over that many seconds (one observation of a
   configuration that persists, still counted once at decision time), not a single instant;
 - `decide`: whom to come after, by least expected cost over the belief's sets, with costs fixed in advance:

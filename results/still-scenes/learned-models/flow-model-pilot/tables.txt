@@ -1,5 +1,5 @@
-C5 (I52) flow-matching pilot: tables. Protocol: FROZEN.md (sha256 a60f1d62...767f); deviations and clarifications: DEVIATIONS.md (hash in DEVIATIONS.sha256); checkpoints hashed in CHECKPOINTS.sha256 before any evaluation sample was drawn.
-EXPLORATORY. Gate 1 overridden by the project; train and test layouts share the generator templates (22 configurations); labels are the project's reference rules, so agreement measures fit to those rules, not social correctness.
+Flow-matching pilot (exploratory): tables.
+Exploratory: the pilot went ahead without meeting its first pass mark. Train and test layouts share the generator templates (22 configurations). Scored against the project's reference regions.
 
 == D1. Data (seeds 110-189 train, 190-199 validation; units = (scene, episode); e0 and e1 both kept) ==
 train: 4160 units in 2080 scenes; left out: none
@@ -15,7 +15,7 @@ val: 520 units in 260 scenes; left out: none
   waiting_line         units   140 scenes    70 labelled   120 (label poses 3840); unlabelled 20; lift failed 0; seen face none 0; heading not shared 0; robot disc in raster 0
   unlabelled units by situation / row: {'waiting_line / waiting_line_6': 20}
   share of the extended region cells inside the raster, by row (train): audience / audience_3: 0.6186, audience / audience_4: 0.6103, audience / audience_5: 0.5595, conversation_group / conversation_group_2: 1.0, conversation_group / conversation_group_3: 1.0, conversation_group / conversation_group_4: 1.0, no_one / no_one_deep_place: 1.0, no_one / no_one_lift: 1.0, no_one / no_one_object: 1.0, no_one / no_one_person: 1.0, no_one / no_one_place: 1.0, no_one / no_one_screen: 1.0, waiting_line / waiting_line_1: 1.0, waiting_line / waiting_line_2: 1.0, waiting_line / waiting_line_3: 1.0, waiting_line / waiting_line_4: 0.5808, waiting_line / waiting_line_6: 0.0008
-  label self-check (train, I14 replica on every label pose): no_one: n 56320, in region 0.9585, heading ok 0.9585, reachable 0.9973, all three 0.9561; ALL: n 128576, in region 0.9647, heading ok 0.9647, reachable 0.9915, all three 0.9568; waiting_line: n 31296, in region 0.9603, heading ok 0.9603, reachable 0.9891, all three 0.9500; conversation_group: n 25600, in region 0.9722, heading ok 0.9722, reachable 0.9896, all three 0.9623; audience: n 15360, in region 0.9843, heading ok 0.9843, reachable 0.9780, all three 0.9639
+  label self-check (train, scorer replica on every label pose): no_one: n 56320, in region 0.9585, heading ok 0.9585, reachable 0.9973, all three 0.9561; ALL: n 128576, in region 0.9647, heading ok 0.9647, reachable 0.9915, all three 0.9568; waiting_line: n 31296, in region 0.9603, heading ok 0.9603, reachable 0.9891, all three 0.9500; conversation_group: n 25600, in region 0.9722, heading ok 0.9722, reachable 0.9896, all three 0.9623; audience: n 15360, in region 0.9843, heading ok 0.9843, reachable 0.9780, all three 0.9639
 
 == D2. Training (rectified flow; AdamW 1e-3, wd 0.01, cosine over 30 epochs; batch 256; fp32; seed 0) ==
 model                      left out             tr units tr poses va poses epochs best ep  best val  wall s peak MiB stopped
@@ -26,7 +26,7 @@ loso_audience              audience                 3538   113216    14080     3
 env: NVIDIA GeForce RTX 4060 Laptop GPU, driver 595.91.07, torch 2.14.1+cu126, CUDA 12.6, cuDNN 91002, 2134148 parameters
 
 == T1. (i) Validation seeds 190-199 (in-distribution test; also picked the checkpoint, so mildly optimistic) ==
-Success = in the target's acceptable region, reachable on robot_grid(truth), heading within 45 deg (I14 replica, checked against sgi.evaluate.score). Flow: 64 raw samples per unit; top pose = densest of the 64 raw samples. Coverage = share of region cells (0.10 m lattice extended beyond the raster, on the floor) with a raw sample within 0.2 m; n = units with at least one region cell. B0/B1 = solver top-1 with oracle people, oracle target and standard_goal (B1: reference constraints, circular, a reference only).
+Success = in the target's acceptable region, reachable on robot_grid(truth), heading within 45 deg (scorer replica, checked against sgi.evaluate.score). Flow: 64 raw samples per unit; top pose = densest of the 64 raw samples. Coverage = share of region cells (0.10 m lattice extended beyond the raster, on the floor) with a raw sample within 0.2 m; n = units with at least one region cell. B0/B1 = solver top-1 with oracle people, oracle target and standard_goal (B1: reference constraints, circular, a reference only).
 situation             n ep  n sc | sample succ |   coverage (n) |       flow top-1 |         B0 top-1 |         B1 top-1
 no_one                 220   110 |       0.977 |  0.937 (  220) | 220/220 (100.0%) |  200/220 (90.9%) |  200/220 (90.9%)
 waiting_line           140    70 |       0.799 |  0.739 (  140) |  120/140 (85.7%) |     0/140 (0.0%) | 140/140 (100.0%)
@@ -43,8 +43,8 @@ conversation_group     100    50 |      0.088 /     0.944 |    0.055 /    0.683 
 audience                60    30 |      0.000 /     0.874 |    0.000 /    0.535 |      0/60 (0.0%) |   60/60 (100.0%) |      0/60 (0.0%)
 
 == T3. (ii) Setting (b): each model's recorded people (the fair comparison with C) ==
-Package scorer (H.score_poses, recorded target). C top-1 = recorded C (I14 S1). P(success) = mean success of the valid snapped samples (fallback: the solver's place); Lift_room = sum P(success) / sum rho_room; I14 form = sum top-1 / sum rho_room; hit@k over the flow's places.
-group                 n |         C top-1 |      flow top-1 | diff pp | P(succ)  all64  valid  fb | Lift_room I14 form | hit@1..5 | raw top-1
+Package scorer (H.score_poses, recorded target). C top-1 = recorded C. P(success) = mean success of the valid snapped samples (fallback: the solver's place); Lift_room = sum P(success) / sum rho_room; alt lift = sum top-1 / sum rho_room; hit@k over the flow's places.
+group                 n |         C top-1 |      flow top-1 | diff pp | P(succ)  all64  valid  fb | Lift_room alt lift | hit@1..5 | raw top-1
 old_qwen            143 | 134/143 (93.7%) |  82/143 (57.3%) |   -36.4 |   0.575  0.425  0.239  25 |      8.13     8.11 | [82, 93, 102, 105, 106] | 55
 old_glm             141 |  96/141 (68.1%) |  65/141 (46.1%) |   -22.0 |   0.467  0.443  0.284  36 |      6.94     6.85 | [65, 81, 82, 85, 85] | 60
 old_deepseek        157 | 109/157 (69.4%) |  71/157 (45.2%) |   -24.2 |   0.451  0.407  0.256  43 |      6.98     7.00 | [71, 87, 91, 96, 96] | 66
@@ -56,9 +56,9 @@ MODEL glm           177 | 119/177 (67.2%) |  91/177 (51.4%) |   -15.8 |   0.519 
 MODEL deepseek      193 | 132/193 (68.4%) | 103/193 (53.4%) |   -15.0 |   0.531  0.489  0.218  53 |      6.42     6.45 | [103, 119, 124, 129, 129] | 99
 POOLED 549          549 | 417/549 (76.0%) | 312/549 (56.8%) |   -19.1 |   0.568  0.499  0.219 136 |      6.66     6.66 | [312, 359, 375, 387, 388] | 276
 
-== T4. (iii) Setting (a): true people, I01 P's people and constraints (upper bound) ==
-Package scorer (H.score_poses, recorded target). P top-1 = P's own solver top-1, recomputed with repairs.py's code. P(success) = mean success of the valid snapped samples (fallback: the solver's place); Lift_room = sum P(success) / sum rho_room; I14 form = sum top-1 / sum rho_room; hit@k over the flow's places.
-group                 n |         P top-1 |      flow top-1 | diff pp | P(succ)  all64  valid  fb | Lift_room I14 form | hit@1..5 | raw top-1
+== T4. (iii) Setting (a): true people, arm P's people and constraints (upper bound) ==
+Package scorer (H.score_poses, recorded target). P top-1 = P's own solver top-1, recomputed. P(success) = mean success of the valid snapped samples (fallback: the solver's place); Lift_room = sum P(success) / sum rho_room; alt lift = sum top-1 / sum rho_room; hit@k over the flow's places.
+group                 n |         P top-1 |      flow top-1 | diff pp | P(succ)  all64  valid  fb | Lift_room alt lift | hit@1..5 | raw top-1
 old_qwen            143 | 136/143 (95.1%) |  80/143 (55.9%) |   -39.2 |   0.567  0.434  0.224  21 |      7.87     7.76 | [80, 89, 96, 98, 100] | 60
 old_glm             141 | 112/141 (79.4%) |  70/141 (49.6%) |   -29.8 |   0.512  0.443  0.297  19 |      7.45     7.23 | [70, 87, 88, 89, 90] | 60
 old_deepseek        157 | 120/157 (76.4%) |  69/157 (43.9%) |   -32.5 |   0.449  0.423  0.260  36 |      6.81     6.67 | [69, 82, 88, 96, 97] | 73
@@ -70,10 +70,10 @@ MODEL glm           177 | 141/177 (79.7%) | 102/177 (57.6%) |   -22.0 |   0.586 
 MODEL deepseek      193 | 151/193 (78.2%) | 102/193 (52.8%) |   -25.4 |   0.534  0.521  0.218  40 |      6.38     6.31 | [102, 116, 122, 130, 131] | 107
 POOLED 549          549 | 461/549 (84.0%) | 320/549 (58.3%) |   -25.7 |   0.589  0.529  0.216 102 |      6.82     6.75 | [320, 361, 375, 386, 390] | 294
 
-P reproduction: realistic records compared with I01 rows_old_*: 441, mismatches 0
+P reproduction: realistic records compared with the recorded rows: 441, mismatches 0
 
-== T5. (iv) Comparison with I04 V1 (soft density) and V3 (Gaussian control), held-out settings, matched by key ==
-I04: P(success) = mean S, Lift_room = sum S / sum rho_room, hit@5 = hit_pkg[4]. Flow: setting (b). C's lexicographic hit@5 beside. Note: I04 was fitted on the development records themselves (leave one layout out); the flow never saw a development record.
+== T5. (iv) Comparison with V1 (soft density) and V3 (Gaussian control), held-out settings, matched by key ==
+Soft-density model: P(success) = mean S, Lift_room = sum S / sum rho_room, hit@5 = hit_pkg[4]. Flow: setting (b). C's lexicographic hit@5 beside. The soft-density model was fitted on the development records themselves (leave one layout out); the flow never saw a development record.
 group                 n |     P(succ) flow/V1/V3 |   Lift_room flow/V1/V3 |     hit@5 flow/V1/V3/C
 old_qwen            143 |  0.575  0.869  0.918   |   8.13  12.29  12.99   |  106  134  135  134
 old_glm             141 |  0.467  0.536  0.669   |   6.94   7.97   9.94   |   85   99   98   99
@@ -92,7 +92,7 @@ setting (a): n 549, median 20.41 ms, p90 46.87 ms, mean 28.23 ms, max 80.20 ms; 
 reported apart (project venv, setting b, n 549): painting the raster median 78.5 ms (p90 100.3); _over_floor (solver work C already does) median 110.8 ms (p90 137.1); the hand-off between the two environments (files on disk) was not timed per record.
 env: NVIDIA GeForce RTX 4060 Laptop GPU, driver 595.91.07, torch 2.14.1+cu126, CUDA 12.6
 
-== T7. C5 criteria (FROZEN.md section 7; exploratory) ==
+== T7. Criteria (exploratory; S = success condition, K = stop condition) ==
 Qwen 3.8 (qwen38_low)          n 179: flow(b) 65.9% vs C 92.7% (-26.8 pp); flow(a) 64.8% vs P 94.4% (-29.6 pp)
 GLM-5.3-Flash (glm53)          n 177: flow(b) 51.4% vs C 67.2% (-15.8 pp); flow(a) 57.6% vs P 79.7% (-22.0 pp)
 DeepSeek V4.1 Flash (dsv41)    n 193: flow(b) 53.4% vs C 68.4% (-15.0 pp); flow(a) 52.8% vs P 78.2% (-25.4 pp)
@@ -102,8 +102,8 @@ S3 median latency 18.30 ms < 500 ms: met
 K1 flow(a) top-1 < P - 10 pp for every model: fires
 K2 flow(b) top-1 < C - 10 pp for every model: fires
 K3 pooled flow(b) Lift_room 6.66 <= V3 8.78 and P(success) 0.568 <= V3 mean S 0.749: fires
-VERDICT (kill overrides success; anything else is neither): KILL (exploratory)
-C5's 'holds on fresh seeds' is reported from T1, not judged.
+Result (a stop condition overrides success; anything else is neither): did not meet the pass mark (exploratory)
+'Holds on fresh seeds' is reported from T1, not judged.
 
 == T8. Secondary (decides nothing): layout-cluster bootstrap of flow(b) - C top-1, percentage points ==
 2,000 draws, default_rng(20261018); realistic layouts (13) drawn first (2000 x 13), then watching (2000 x 6); a model row uses its records in the drawn layouts of both strata; mean over drawn records; percentile 95%.
@@ -139,4 +139,4 @@ MODEL glm          n  177: (b) raw   87/177 (49.2%) snapped   91/177 (51.4%) | (
 MODEL deepseek     n  193: (b) raw   99/193 (51.3%) snapped  103/193 (53.4%) | (a) raw  107/193 (55.4%) snapped  102/193 (52.8%)
 POOLED 549         n  549: (b) raw  276/549 (50.3%) snapped  312/549 (56.8%) | (a) raw  294/549 (53.6%) snapped  320/549 (58.3%)
 
-EXPLORATORY. Gate 1 overridden by the project; train and test layouts share the generator templates (22 configurations); labels are the project's reference rules, so agreement measures fit to those rules, not social correctness.
+Exploratory: the pilot went ahead without meeting its first pass mark. Train and test layouts share the generator templates (22 configurations). Scored against the project's reference regions.

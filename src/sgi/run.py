@@ -22,7 +22,7 @@ also holds the people with their numbers, what the solver made of each constrain
 solver's note, so that it can be solved again without a model call. Under run.people: oracle the people of
 that method are those of ground truth, which this side gives it. A record's measures then also hold, against
 ground truth, how many of the people in view were found and whether those the answer lists as waiting are the
-ones who wait, and how many constraints were unusable and exclusions broken (that design, section 9); they are
+ones who wait, and how many constraints were unusable and exclusions broken; they are
 the last measure columns of summary.csv, empty in a row whose records did not measure them.
 
 Exit codes: 0 for a complete run, and for --list-entries; 1 when a record ended in vlm_error, where the same
@@ -255,7 +255,7 @@ class OracleGoalInferrer:
 
 class OraclePeople:
     """The `oracle` people source of the constraint method: the people of ground truth
-    that pass the visibility rule of the first spec, section 4, in the order of ground truth, with their true
+    that pass the visibility rule in the order of ground truth, with their true
     position and heading. A person's `pixel` is the projection of the point `person_mark_height_m` above their
     position, and there is no label. No model is asked.
 
@@ -411,7 +411,7 @@ def _cost_usd(calls: Sequence[Call], cfg: Config) -> float | None:
 
 def _matched_people(detected: Sequence[DetectedPerson], visible: Sequence[Person], th: Thresholds) -> dict[int, str]:
     """Who of ground truth each detected person is: by the number of a detected person, the id of the person of
-    `visible` matched to them (the constraint design, section 9).
+    `visible` matched to them.
 
     The two can be one when their centres are within twice `person_radius_m`, a body's width. The pairs are
     taken nearest first, each detected person and each person of ground truth once; of two pairs as near, the
@@ -430,7 +430,7 @@ def _matched_people(detected: Sequence[DetectedPerson], visible: Sequence[Person
 
 
 def _exclusions_broken(result: GoalResult) -> int:
-    """How many exclusions the place of a solved result breaks (the constraint design, section 7): the own space
+    """How many exclusions the place of a solved result breaks: the own space
     of each person it is inside, each exclusion of the answer recorded as broken, and coming after the people
     who wait once, however many constraints list them, because several are one."""
     broken = [use.constraint.kind for use in result.constraints

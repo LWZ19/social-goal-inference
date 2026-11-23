@@ -4,7 +4,7 @@ The order of the keys. In every wire schema, at every depth, the keys are define
 be written in, and that order is their sorted order (plain string sort). A model writes its answer key by key,
 so what it writes first is all that a later key can lean on: reasoning has to come before the point it argues
 for. One provider writes the keys in the order of the schema, another sorts them whatever the schema says, as
-the school's gateway does. With the two orders the same, both write the same answer. A wire key is therefore
+some OpenAI-compatible gateways do. With the two orders the same, both write the same answer. A wire key is therefore
 named to sort into its place, and where that gives it another name than the stage output has
 (`stop_elsewhere`, `analysis`, `arrangement`) the *_from_wire functions map it back, so nothing after them sees
 a wire name. tests/test_key_order.py holds every schema to the rule, and `python -m sgi.smoke` warns of an

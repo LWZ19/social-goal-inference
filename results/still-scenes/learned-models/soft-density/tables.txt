@@ -1,8 +1,6 @@
-I04 phase 1d tables. Protocol: FROZEN.md (sha256 8e0aac98...1882), fits: fits.json (FITS.sha256, written
-before any held-out metric). Every number is a held-out number: each record is scored with the setting of the
+Soft-density model: tables. The fits were written before any held-out metric. Every number is a held-out number: each record is scored with the setting of the
 fold that left out its layout (new-wording records: the fold of their own layout; they are in no fit pool).
-Every score measures agreement with the project's own reference regions and heading rule, not social
-correctness. Primary cells: old-wording realistic (s19 Qwen, s19 GLM, s20 DeepSeek) and watching (s19/s20
+Scored against the project's reference regions and heading rule. Primary cells: old-wording realistic (s19 Qwen, s19 GLM, s20 DeepSeek) and watching (s19/s20
 dev_seed0-2, audience). New wording is reported beside, not judged; its people answers for Qwen, GLM and
 DeepSeek are cache copies of s19/s20, so old and new rows of a model are not independent.
 Records: 1409 goal-step records in the cache; 1409 reproduce (left out: 0).
@@ -50,7 +48,7 @@ new_sonnet        143  134 |  0.937  0.883  0.895  0.925   |  13.50  12.72  12.8
 new_gemini        135  109 |  0.807  0.763  0.778  0.799   |  12.63  11.94  12.16  12.49   |   5.75   5.44   5.54   5.69   |  -1.330  -1.377  -1.361  -1.339
 S = the density's P(success) (V0 = the lexicographic place at kappa inf, i.e. official top-1). Lift_room = sum S
 / sum rho_room (rho_room = share of F cells in the matched target's acceptable region, 0 for a wrong target);
-Lift_disc = sum S / sum rho_disc (F cells within 3 m of the recorded target point). Ratios of sums, as I14.
+Lift_disc = sum S / sum rho_disc (F cells within 3 m of the recorded target point). Ratios of sums.
 
 == T3. Mass measures (held out): in-region mass, concentration share within 0.3 m of the top place ==
 cell                n | in-region mass V0/V1/V2/V3     | mean conc V1/V2/V3     | records with conc > 0.9: V1 / V2 / V3
@@ -147,37 +145,37 @@ watch_deepseek     36 |  -0.114 [ -0.496,  +0.225]       |   -0.15 [  -0.46,   +
 POOLED primary    549 |  -0.111 [ -0.188,  -0.035]       |   -0.93 [  -1.31,   -0.49]       |  -0.124 [ -0.190,  -0.060]       |   -0.80 [  -1.17,   -0.43]
 A realistic cell resamples the 13 realistic layouts and a watching cell the 6 watching layouts (6 clusters: crude);
 the pooled row resamples both strata. The same 2,000 draws serve every row (realistic drawn first, then watching).
-Post hoc, descriptive (not declared): pooled Lift_room V1 95% [6.39, 9.45], V3 [7.44, 10.15] (same draws).
+Post hoc, descriptive: pooled Lift_room V1 95% [6.39, 9.45], V3 [7.44, 10.15] (same draws).
 
-== T8. Post hoc, descriptive (not declared): primary records by situation (labels used only to tabulate) ==
+== T8. Post hoc, descriptive: primary records by situation (labels used only to tabulate) ==
 situation               n top1 | mean S V1/V3   | Lift_room V0/V1/V3     | mean log V1/V3   | mean conc V1 / share > 0.9
 audience              108   78 | 0.677 0.739  |   4.56   4.28   4.67 |  -1.297  -1.222 | 0.799 / 0.435
 conversation_group    162  133 | 0.637 0.815  |   9.36   7.26   9.29 |  -1.254  -1.088 | 0.549 / 0.167
 no_one                 18   10 | 0.390 0.519  |  13.23   9.30  12.37 |  -3.105  -3.114 | 0.659 / 0.278
 waiting_line          261  196 | 0.707 0.728  |  13.26  12.49  12.86 |  -1.760  -1.659 | 0.938 / 0.893
 
-== T9a. Criteria for V1 (primary; FROZEN.md section 9), n 549 primary records ==
+== T9a. Criteria for V1 (primary), n 549 primary records ==
 (a) Lift_room >= 10 pooled: 7.85 (V0 8.90, V3 8.78) -> NOT MET
     per cell: old_qwen 12.29; old_glm 7.97; old_deepseek 9.35; watch_qwen 4.78; watch_glm 4.03; watch_deepseek 3.99
 (b) pooled mean log score V1 -1.5635 > V3 -1.4523: NOT MET (interval in T7)
 (c) density hit@5 >= lexicographic hit@5 - 2 in every primary cell: MET; literal two-sided |diff| <= 2: MET
     old_qwen 134 vs 134; old_glm 99 vs 99; old_deepseek 122 vs 123; watch_qwen 35 vs 35; watch_glm 29 vs 29; watch_deepseek 31 vs 33
 (d) AUROC(c_V1) >= 0.70 in >= 2 of 3 old-wording realistic cells: old_qwen 0.559, old_glm 0.303, old_deepseek 0.540 -> NOT MET
-Kill 1 (V1 does not beat V3 on the pooled mean log score): FIRES
-Kill 2 (c_V1 > 0.9 in more than 80% of the 549 primary records): 312 of 549 (56.8%) -> does not fire
-Better than expected (reported, not a verdict): pooled Lift_room V1 > V3: no; AUROC >= 0.75 in >= 2 of 3 old realistic cells: no
-VERDICT (V1): KILL
+Stop condition 1 (V1 does not beat V3 on the pooled mean log score): FIRES
+Stop condition 2 (c_V1 > 0.9 in more than 80% of the 549 primary records): 312 of 549 (56.8%) -> does not fire
+Better than expected (reported, not a pass mark): pooled Lift_room V1 > V3: no; AUROC >= 0.75 in >= 2 of 3 old realistic cells: no
+Result (V1): did not meet the pass mark
 
-== T9b. Criteria for V2 (secondary; FROZEN.md section 9), n 549 primary records ==
+== T9b. Criteria for V2 (secondary), n 549 primary records ==
 (a) Lift_room >= 10 pooled: 7.98 (V0 8.90, V3 8.78) -> NOT MET
     per cell: old_qwen 12.50; old_glm 8.35; old_deepseek 9.34; watch_qwen 4.82; watch_glm 4.03; watch_deepseek 4.02
 (b) pooled mean log score V2 -1.5759 > V3 -1.4523: NOT MET (interval in T7)
 (c) density hit@5 >= lexicographic hit@5 - 2 in every primary cell: MET; literal two-sided |diff| <= 2: MET
     old_qwen 134 vs 134; old_glm 99 vs 99; old_deepseek 121 vs 123; watch_qwen 35 vs 35; watch_glm 29 vs 29; watch_deepseek 31 vs 33
 (d) AUROC(c_V2) >= 0.70 in >= 2 of 3 old-wording realistic cells: old_qwen 0.562, old_glm 0.334, old_deepseek 0.480 -> NOT MET
-Kill 1 (V2 does not beat V3 on the pooled mean log score): FIRES
-Kill 2 (c_V2 > 0.9 in more than 80% of the 549 primary records): 325 of 549 (59.2%) -> does not fire
-Better than expected (reported, not a verdict): pooled Lift_room V2 > V3: no; AUROC >= 0.75 in >= 2 of 3 old realistic cells: no
-VERDICT (V2): KILL
+Stop condition 1 (V2 does not beat V3 on the pooled mean log score): FIRES
+Stop condition 2 (c_V2 > 0.9 in more than 80% of the 549 primary records): 325 of 549 (59.2%) -> does not fire
+Better than expected (reported, not a pass mark): pooled Lift_room V2 > V3: no; AUROC >= 0.75 in >= 2 of 3 old realistic cells: no
+Result (V2): did not meet the pass mark
 
-Prediction in FROZEN.md section 9 (from I14 T5): (a) fails pooled for every variant -> observed: V1 7.85, V2 7.98, V3 8.78.
+Prediction fixed before the run: (a) fails pooled for every variant -> observed: V1 7.85, V2 7.98, V3 8.78.

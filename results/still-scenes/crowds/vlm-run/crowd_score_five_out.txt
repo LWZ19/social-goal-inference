@@ -48,52 +48,52 @@ Finished models (every seed and method complete): claude_haiku55, claude_sonnet5
 Records that ended in a failed call (counted as failures): gemini_fast E 1, soclaas_glm53 C 25, soclaas_glm53 E 1
 
 == claude_haiku55: 29 layouts with variants ==
-  H1 pointing             variants minus bases: mean  -10.5 points, layouts up/down/level (3, 10, 16), p 0.0353
-  H1 pointing + examples  variants minus bases: mean   -8.4 points, layouts up/down/level (9, 8, 12), p 0.0630
-  H1 our method           variants minus bases: mean  -37.4 points, layouts up/down/level (4, 19, 6), p 0.0001
-  H2 our method minus pointing             on variants: mean  +28.3 points, layouts C better/worse/level (26, 1, 2), p 0.0000
-  H2 our method minus pointing + examples  on variants: mean  +26.2 points, layouts C better/worse/level (28, 1, 0), p 0.0000
-  H3 (our drop) minus (pointing drop): mean  -26.9 points, (9, 19, 1), p 0.0065
+  pointing             variants minus bases: mean  -10.5 points, layouts up/down/level (3, 10, 16), p 0.0353
+  pointing + examples  variants minus bases: mean   -8.4 points, layouts up/down/level (9, 8, 12), p 0.0630
+  our method           variants minus bases: mean  -37.4 points, layouts up/down/level (4, 19, 6), p 0.0001
+  our method minus pointing             on variants: mean  +28.3 points, layouts C better/worse/level (26, 1, 2), p 0.0000
+  our method minus pointing + examples  on variants: mean  +26.2 points, layouts C better/worse/level (28, 1, 0), p 0.0000
+  (our drop) minus (pointing drop): mean  -26.9 points, (9, 19, 1), p 0.0065
 
 == claude_sonnet55_low: 29 layouts with variants ==
-  H1 pointing             variants minus bases: mean   -7.3 points, layouts up/down/level (11, 11, 7), p 0.1506
-  H1 pointing + examples  variants minus bases: mean  -13.7 points, layouts up/down/level (9, 13, 7), p 0.0213
-  H1 our method           variants minus bases: mean  -57.3 points, layouts up/down/level (0, 22, 7), p 0.0000
-  H2 our method minus pointing             on variants: mean   +6.9 points, layouts C better/worse/level (16, 10, 3), p 0.1659
-  H2 our method minus pointing + examples  on variants: mean   -2.2 points, layouts C better/worse/level (11, 11, 7), p 0.6344
-  H3 (our drop) minus (pointing drop): mean  -50.0 points, (6, 21, 2), p 0.0000
+  pointing             variants minus bases: mean   -7.3 points, layouts up/down/level (11, 11, 7), p 0.1506
+  pointing + examples  variants minus bases: mean  -13.7 points, layouts up/down/level (9, 13, 7), p 0.0213
+  our method           variants minus bases: mean  -57.3 points, layouts up/down/level (0, 22, 7), p 0.0000
+  our method minus pointing             on variants: mean   +6.9 points, layouts C better/worse/level (16, 10, 3), p 0.1659
+  our method minus pointing + examples  on variants: mean   -2.2 points, layouts C better/worse/level (11, 11, 7), p 0.6344
+  (our drop) minus (pointing drop): mean  -50.0 points, (6, 21, 2), p 0.0000
 
 == gemini_fast: 29 layouts with variants ==
-  H1 pointing             variants minus bases: mean  -23.5 points, layouts up/down/level (6, 20, 3), p 0.0013
-  H1 pointing + examples  variants minus bases: mean  -20.4 points, layouts up/down/level (5, 21, 3), p 0.0019
-  H1 our method           variants minus bases: mean  -38.1 points, layouts up/down/level (0, 20, 9), p 0.0000
-  H2 our method minus pointing             on variants: mean  +21.6 points, layouts C better/worse/level (12, 10, 7), p 0.0111
-  H2 our method minus pointing + examples  on variants: mean  +11.6 points, layouts C better/worse/level (14, 10, 5), p 0.0404
-  H3 (our drop) minus (pointing drop): mean  -14.6 points, (9, 17, 3), p 0.1857
+  pointing             variants minus bases: mean  -23.5 points, layouts up/down/level (6, 20, 3), p 0.0013
+  pointing + examples  variants minus bases: mean  -20.4 points, layouts up/down/level (5, 21, 3), p 0.0019
+  our method           variants minus bases: mean  -38.1 points, layouts up/down/level (0, 20, 9), p 0.0000
+  our method minus pointing             on variants: mean  +21.6 points, layouts C better/worse/level (12, 10, 7), p 0.0111
+  our method minus pointing + examples  on variants: mean  +11.6 points, layouts C better/worse/level (14, 10, 5), p 0.0404
+  (our drop) minus (pointing drop): mean  -14.6 points, (9, 17, 3), p 0.1857
 
 == soclaas_dsv41: 29 layouts with variants ==
-  H1 pointing             variants minus bases: mean  -14.0 points, layouts up/down/level (11, 13, 5), p 0.0164
-  H1 pointing + examples  variants minus bases: mean   -8.7 points, layouts up/down/level (12, 12, 5), p 0.1662
-  H1 our method           variants minus bases: mean  -39.8 points, layouts up/down/level (4, 23, 2), p 0.0000
-  H2 our method minus pointing             on variants: mean  +15.6 points, layouts C better/worse/level (19, 6, 4), p 0.0007
-  H2 our method minus pointing + examples  on variants: mean   +5.1 points, layouts C better/worse/level (13, 12, 4), p 0.3667
-  H3 (our drop) minus (pointing drop): mean  -25.8 points, (6, 19, 4), p 0.0140
+  pointing             variants minus bases: mean  -14.0 points, layouts up/down/level (11, 13, 5), p 0.0164
+  pointing + examples  variants minus bases: mean   -8.7 points, layouts up/down/level (12, 12, 5), p 0.1662
+  our method           variants minus bases: mean  -39.8 points, layouts up/down/level (4, 23, 2), p 0.0000
+  our method minus pointing             on variants: mean  +15.6 points, layouts C better/worse/level (19, 6, 4), p 0.0007
+  our method minus pointing + examples  on variants: mean   +5.1 points, layouts C better/worse/level (13, 12, 4), p 0.3667
+  (our drop) minus (pointing drop): mean  -25.8 points, (6, 19, 4), p 0.0140
 
 == soclaas_glm53: 29 layouts with variants ==
-  H1 pointing             variants minus bases: mean  -18.4 points, layouts up/down/level (7, 16, 6), p 0.0131
-  H1 pointing + examples  variants minus bases: mean  -14.7 points, layouts up/down/level (9, 18, 2), p 0.0770
-  H1 our method           variants minus bases: mean  -18.3 points, layouts up/down/level (10, 12, 7), p 0.0377
-  H2 our method minus pointing             on variants: mean   +3.5 points, layouts C better/worse/level (11, 10, 8), p 0.5322
-  H2 our method minus pointing + examples  on variants: mean   -3.6 points, layouts C better/worse/level (6, 16, 7), p 0.5219
-  H3 (our drop) minus (pointing drop): mean   +0.1 points, (15, 10, 4), p 0.9949
+  pointing             variants minus bases: mean  -18.4 points, layouts up/down/level (7, 16, 6), p 0.0131
+  pointing + examples  variants minus bases: mean  -14.7 points, layouts up/down/level (9, 18, 2), p 0.0770
+  our method           variants minus bases: mean  -18.3 points, layouts up/down/level (10, 12, 7), p 0.0377
+  our method minus pointing             on variants: mean   +3.5 points, layouts C better/worse/level (11, 10, 8), p 0.5322
+  our method minus pointing + examples  on variants: mean   -3.6 points, layouts C better/worse/level (6, 16, 7), p 0.5219
+  (our drop) minus (pointing drop): mean   +0.1 points, (15, 10, 4), p 0.9949
 
 == pooled: 29 layouts with variants ==
-  H1 pointing             variants minus bases: mean  -14.8 points, layouts up/down/level (2, 25, 2), p 0.0000
-  H1 pointing + examples  variants minus bases: mean  -13.2 points, layouts up/down/level (4, 24, 1), p 0.0000
-  H1 our method           variants minus bases: mean  -38.2 points, layouts up/down/level (2, 27, 0), p 0.0000
-  H2 our method minus pointing             on variants: mean  +15.2 points, layouts C better/worse/level (24, 4, 1), p 0.0001
-  H2 our method minus pointing + examples  on variants: mean   +7.4 points, layouts C better/worse/level (18, 10, 1), p 0.0107
-  H3 (our drop) minus (pointing drop): mean  -23.4 points, (6, 23, 0), p 0.0002
+  pointing             variants minus bases: mean  -14.8 points, layouts up/down/level (2, 25, 2), p 0.0000
+  pointing + examples  variants minus bases: mean  -13.2 points, layouts up/down/level (4, 24, 1), p 0.0000
+  our method           variants minus bases: mean  -38.2 points, layouts up/down/level (2, 27, 0), p 0.0000
+  our method minus pointing             on variants: mean  +15.2 points, layouts C better/worse/level (24, 4, 1), p 0.0001
+  our method minus pointing + examples  on variants: mean   +7.4 points, layouts C better/worse/level (18, 10, 1), p 0.0107
+  (our drop) minus (pointing drop): mean  -23.4 points, (6, 23, 0), p 0.0002
 
 Success by family and level (records pooled over 5 models)
                                n             pointing  pointing + examples           our method

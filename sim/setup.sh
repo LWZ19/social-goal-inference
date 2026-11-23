@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Everything the simulator needs after a fresh clone, in one go (sim/README.md, "Quick start").
 #   sim/setup.sh [DOWNLOADS]
-# Creates the conda environments that are missing, the pipeline's placeholder scenes and Habitat's data, builds
+# Creates the conda environments that are missing, the pipeline's test scenes and Habitat's data, builds
 # the scenes made from nothing, and builds the Sketchfab scenes whose downloads are in DOWNLOADS (default
 # ~/Downloads); for any that are not there, it says what to download. Everything it makes is git-ignored (data/).
 # Running it again redoes nothing that is done.
@@ -24,7 +24,7 @@ for env in sgi sgi-habitat sgi-tools; do
   if have_env "$env"; then echo "$env: already there"; else conda env create -f "envs/$env.yml"; fi
 done
 
-step "the pipeline's placeholder scenes (about 60 MB, two minutes)"
+step "the pipeline's test scenes (about 60 MB, two minutes)"
 if [[ -d data/placeholder/eval ]]; then
   echo "already made"
 else

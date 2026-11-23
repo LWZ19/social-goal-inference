@@ -1,6 +1,6 @@
 """Safety net for the whole suite: no test reads the real .env file or opens a network connection.
 
-The real .env holds a paid API key. A test that needs a key passes its own file or replaces require_key.
+The real .env holds API keys. A test that needs a key passes its own file or replaces require_key.
 """
 import socket
 

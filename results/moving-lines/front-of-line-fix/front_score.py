@@ -34,6 +34,6 @@ for model in ("dsv41", "sonnet55_low"):
     if model == "dsv41":
         k = ("cafe_slots", 10)
         if eps.get((*k, "CT2f")) and eps.get((*k, "CT2")):
-            print(f"- the video's cell (cafe_slots seed 10): CT2f {C.measures(eps[(*k, 'CT2f')])['share_strict']:.3f} "
+            print(f"- the example run (cafe_slots seed 10): CT2f {C.measures(eps[(*k, 'CT2f')])['share_strict']:.3f} "
                   f"vs CT2 {C.measures(eps[(*k, 'CT2')])['share_strict']:.3f}")
     print()

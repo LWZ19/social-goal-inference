@@ -443,7 +443,7 @@ CLAUDE = {                                                            # entry: (
     "claude_opus55": ("claude-opus-5-5", "medium", 4.0, 20.0), "claude_opus55_low": ("claude-opus-5-5", "low", 4.0, 20.0),
     "claude_sonnet55": ("claude-sonnet-5-5", "medium", 2.0, 10.0), "claude_sonnet55_low": ("claude-sonnet-5-5", "low", 2.0, 10.0),
     "claude_haiku55": ("claude-haiku-5-5", "none", 0.1, 0.5), "claude_haiku55_low": ("claude-haiku-5-5", "low", 0.1, 0.5),
-    # Older models, for how much the method depends on the model (6 Nov 2026); paced at 25 requests a minute.
+    # Older models, for how much the method depends on the model; paced at 25 requests a minute.
     "claude_haiku45": ("claude-haiku-4-5", "none", 1.0, 5.0), "claude_sonnet46_low": ("claude-sonnet-4-6", "low", 3.0, 15.0),
     "claude_sonnet5_low": ("claude-sonnet-5", "low", 2.0, 10.0)}
 OLDER_CLAUDE = {"claude_haiku45", "claude_sonnet46_low", "claude_sonnet5_low"}
@@ -457,8 +457,8 @@ def test_the_model_table_has_nine_claude_entries_each_with_its_model_its_level_a
     assert shared == {(None, None, None, None, None)}
     assert {name: e.max_requests_per_minute for name, e in entries.items()} == {
         name: 25 if name in OLDER_CLAUDE else None for name in CLAUDE}
-    # The format each model points best in, by `sgi.smoke --calibrate` (17 October; the older models 4 November);
-    # Opus is not calibrated yet.
+    # The format each model points best in, by `sgi.smoke --calibrate`;
+    # Opus is not calibrated.
     assert {name: e.point_format for name, e in entries.items()} == {
         "claude_opus55": "xy_1000", "claude_opus55_low": "xy_1000", "claude_sonnet55": "xy_pixel",
         "claude_sonnet55_low": "xy_pixel", "claude_haiku55": "xy_pixel", "claude_haiku55_low": "xy_pixel",

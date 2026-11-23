@@ -1,7 +1,6 @@
 """OpenAI-compatible back end: one chat-completions call per request, to the address a model entry names.
 
-For a gateway that speaks the OpenAI chat-completions format without being OpenAI. SDK names were read from
-openai 3.26.0 and run offline. What a server sends is settled by `python -m sgi.smoke`.
+For a gateway that speaks the OpenAI chat-completions format without being OpenAI.
 """
 from __future__ import annotations
 

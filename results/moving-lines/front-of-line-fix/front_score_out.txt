@@ -2,13 +2,10 @@
 - time in the right spot (strict): CT2f 0.288 vs CT2 0.277; W/L/T 10/8/7, sign p 0.8145
 - at the front (seconds with nobody ahead, 9 cells with such seconds in both): CT2f 0.052 vs CT2 0.017
 - seconds stepping back > 0.2 m after joining: CT2f 6 vs CT2 17
-- the video's cell (cafe_slots seed 10): CT2f 0.209 vs CT2 0.198
+- the example run (cafe_slots seed 10): CT2f 0.209 vs CT2 0.198
 
 ## sonnet55_low: 25 paired cells
 - time in the right spot (strict): CT2f 0.331 vs CT2 0.324; W/L/T 12/9/4, sign p 0.6636
 - at the front (seconds with nobody ahead, 16 cells with such seconds in both): CT2f 0.000 vs CT2 0.047
 - seconds stepping back > 0.2 m after joining: CT2f 2 vs CT2 23
 
-## Closeness to people, the same 50 paired cells
-- CT2: 50 runs; within 0.55 m 2.9% of the time; within 0.3 m 0.44% (8 of 20 such seconds with the robot moving); runs with a bump 10
-- CT2f: 50 runs; within 0.55 m 2.0% of the time; within 0.3 m 0.33% (3 of 15 such seconds with the robot moving); runs with a bump 6

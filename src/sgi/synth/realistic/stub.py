@@ -1,4 +1,4 @@
-"""The stub renderer: a scene description drawn with the placeholder's numpy ray caster, for tests without Blender.
+"""The stub renderer: a scene description drawn with the generator's numpy ray caster, for tests without Blender.
 
 It stands in for the Blender renderer wherever the look does not matter: it honours the same interface and
 puts every surface where the description says, so what is derived from depth (the scene check, the regions,
@@ -7,9 +7,9 @@ what a tour frame shows) can be tested through it. The picture is a sketch:
 - a part is its solid with the colour of its material in place of its own, or with its tint where it has one;
   with PAINT it is the solid as it is, whatever its tint;
 - a model is the box it fills, every model in one colour;
-- a person is the placeholder's figure at their height, widened by their build: the same figure for every
+- a person is the generator's figure at their height, widened by their build: the same figure for every
   avatar, pose and prop;
-- the room is the placeholder's room with the floor and the ceiling in the colours of their materials.
+- the room is the generator's room with the floor and the ceiling in the colours of their materials.
 
 Glass is drawn solid, as it is a surface in the depth. Bevels, signs, openings, the lighting preset and the
 HDRI are not drawn: a wall with a window in it is a whole wall here.

@@ -43,7 +43,7 @@ ASSETS_DIR = REPO_ROOT / "assets" / "realistic"   # manifest/, ATTRIBUTION.md, _
 ASSET_CLASSES = ("models", "materials", "hdris", "fonts", "avatars", "poses")     # each a file of the manifest
 PREPARED_STAMP = "prepared.json"                   # in the prepared folder: what has been prepared, by class
 
-# The names the tasks share. A manifest may hold others; these are the ones the scenes ask for.
+# The names the scene description and the asset library share. A manifest may hold others; these are the ones the scenes ask for.
 MODEL_KINDS = ("plant", "bench", "cooler", "lockers", "office_chair", "monitor", "keyboard", "espresso_machine", "cup",
                "bottle", "book", "box", "clock", "bag")
 AVATAR_TAGS = ("female", "male", "red", "pinkish", "casual", "business", "staff_stall", "staff_desk",

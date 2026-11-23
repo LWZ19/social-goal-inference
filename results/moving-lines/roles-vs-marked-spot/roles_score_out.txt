@@ -1,0 +1,60 @@
+# RTw against CT2
+
+- Sonnet 5.5 RTw: 50 episodes, strict 0.036, primary 0.162, vlm_error episodes 0
+- Sonnet 5.5 CT2: 50 episodes, strict 0.318, primary 0.425, vlm_error episodes 0
+- Sonnet 5.5 R1: 0 episodes, strict nan, primary nan, vlm_error episodes 0
+  50 RTw episodes: point farther than 3 m from anyone (no anchor) 0; anchor left the queue 45
+  repeat check, RTw this run vs the earlier run, 24 cells: mean d +0.009, mean |d| 0.011
+  repeat check, CT2 this run vs the earlier run, 50 cells: mean d +0.011, mean |d| 0.033
+- DeepSeek V4.1 RTw: 25 episodes, strict 0.067, primary 0.109, vlm_error episodes 0
+- DeepSeek V4.1 CT2: 25 episodes, strict 0.278, primary 0.309, vlm_error episodes 0
+- DeepSeek V4.1 R1: 0 episodes, strict nan, primary nan, vlm_error episodes 0
+  25 RTw episodes: point farther than 3 m from anyone (no anchor) 1; anchor left the queue 21
+  repeat check, CT2 this run vs the earlier run, 25 cells: mean d +0.005, mean |d| 0.027
+- Haiku 5.5 RTw: 25 episodes, strict 0.071, primary 0.093, vlm_error episodes 0
+- Haiku 5.5 CT2: 25 episodes, strict 0.320, primary 0.441, vlm_error episodes 0
+- Haiku 5.5 R1: 0 episodes, strict nan, primary nan, vlm_error episodes 0
+  25 RTw episodes: point farther than 3 m from anyone (no anchor) 0; anchor left the queue 21
+  repeat check, CT2 this run vs the earlier run, 25 cells: mean d +0.016, mean |d| 0.023
+- Gemini 3.8 RTw: 25 episodes, strict 0.255, primary 0.285, vlm_error episodes 0
+- Gemini 3.8 CT2: 25 episodes, strict 0.218, primary 0.338, vlm_error episodes 0
+- Gemini 3.8 R1: 0 episodes, strict nan, primary nan, vlm_error episodes 0
+  25 RTw episodes: point farther than 3 m from anyone (no anchor) 0; anchor left the queue 19
+  repeat check, CT2 this run vs the earlier run, 25 cells: mean d +0.013, mean |d| 0.037
+- Qwen 3.8 Flash Next RTw: 15 episodes, strict 0.103, primary 0.143, vlm_error episodes 0
+- Qwen 3.8 Flash Next CT2: 15 episodes, strict 0.118, primary 0.143, vlm_error episodes 0
+- Qwen 3.8 Flash Next R1: 0 episodes, strict nan, primary nan, vlm_error episodes 0
+  15 RTw episodes: point farther than 3 m from anyone (no anchor) 0; anchor left the queue 11
+  repeat check, CT2 this run vs the earlier run, 15 cells: mean d +0.001, mean |d| 0.007
+- Qwen 3.8: no RTw episodes
+- GLM-5.3: no RTw episodes
+
+## Primary comparison
+
+| | pairs | strict W/L/T | strict mean d | strict p | primary W/L/T | primary mean d | primary p |
+|---|---|---|---|---|---|---|---|
+| Sonnet 5.5: CT2 vs RTw | 50 | 40/7/3 | +0.281 | 0.0000 | 36/13/1 | +0.263 | 0.0014 |
+| DeepSeek V4.1: CT2 vs RTw | 25 | 17/6/2 | +0.211 | 0.0347 | 17/7/1 | +0.200 | 0.0639 |
+| Haiku 5.5: CT2 vs RTw | 25 | 20/3/2 | +0.249 | 0.0005 | 22/3/0 | +0.348 | 0.0002 |
+| Gemini 3.8: CT2 vs RTw | 25 | 10/15/0 | -0.036 | 0.4244 | 12/13/0 | +0.052 | 1.0000 |
+| Qwen 3.8 Flash Next: CT2 vs RTw | 15 | 7/4/4 | +0.015 | 0.5488 | 5/6/4 | -0.000 | 1.0000 |
+| pooled (Sonnet, DeepSeek, Haiku, Gemini): CT2 vs RTw | 125 | 87/31/7 | +0.197 | 0.0000 | 87/36/2 | +0.225 | 0.0000 |
+
+## Secondary: does tracking the point help over asking once?
+
+| | pairs | strict W/L/T | strict mean d | strict p | primary W/L/T | primary mean d | primary p |
+|---|---|---|---|---|---|---|---|
+| Sonnet 5.5: RTw vs R1 | 0 | 0/0/0 | +nan | 1.0000 | 0/0/0 | +nan | 1.0000 |
+| DeepSeek V4.1: RTw vs R1 | 0 | 0/0/0 | +nan | 1.0000 | 0/0/0 | +nan | 1.0000 |
+| Haiku 5.5: RTw vs R1 | 0 | 0/0/0 | +nan | 1.0000 | 0/0/0 | +nan | 1.0000 |
+| Gemini 3.8: RTw vs R1 | 0 | 0/0/0 | +nan | 1.0000 | 0/0/0 | +nan | 1.0000 |
+| Qwen 3.8 Flash Next: RTw vs R1 | 0 | 0/0/0 | +nan | 1.0000 | 0/0/0 | +nan | 1.0000 |
+| pooled: RTw vs R1 | 0 | 0/0/0 | +nan | 1.0000 | 0/0/0 | +nan | 1.0000 |
+
+Pass mark (pooled, strict: CT2 wins > losses and sign p <= 0.05): True
+Same under the primary scoring (reported): True
+- per model, reported: Sonnet 5.5: CT2 vs RTw: strict True, primary True
+- per model, reported: DeepSeek V4.1: CT2 vs RTw: strict True, primary False
+- per model, reported: Haiku 5.5: CT2 vs RTw: strict True, primary True
+- per model, reported: Gemini 3.8: CT2 vs RTw: strict False, primary False
+- per model, reported: Qwen 3.8 Flash Next: CT2 vs RTw: strict False, primary False

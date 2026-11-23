@@ -361,7 +361,7 @@ def test_someone_named_who_does_not_wait_and_walks_off_leaves_their_constraints(
     assert constraints[1].people == [3]                    # for good
 
 
-# ---- settled: re-solve only when the people near the waiting set have stopped moving (CTs)
+# ---- settled: re-solve only when the people near the waiting set have stopped moving
 
 def test_people_standing_still_are_settled():
     r = resolver()
@@ -384,7 +384,7 @@ def test_someone_moving_far_from_the_waiting_people_does_not_count():
     assert r.settled(tracks(*LINE, (9.0, 8.0)), t=3.5)
 
 
-# ---- CT2: re-admit, a shorter span, the vacated place, path memory
+# ---- re-admit, a shorter span, the vacated place, path memory
 
 V2 = dict(readmit=True, line_span_m=0.5, vacate_after_s=5.0, path_memory=True)
 
@@ -490,7 +490,7 @@ def test_v2_path_memory_points_the_solver_along_the_back_of_the_line():
     assert r.solve_direction == pytest.approx((0.0, 1.0), abs=0.02)
 
 
-# ---- co-motion (experiment arm CT3): named people must move with the line; nobody joins it without moving
+# ---- co-motion (co_motion_s): named people must move with the line; nobody joins it without moving
 
 CO = dict(V2, co_motion_s=4.0)
 ASIDE = (2.9, 0.7)                     # 0.92 m from the second in line and off to its side: a bystander
@@ -647,12 +647,12 @@ def test_co_motion_rejoin_cancels_a_follow_check_made_before_someone_was_taken_b
             r.record((3.0, 0.0), True, absorbed=[2])     # and is taken back, behind 1
         run(r, where, 13.5, 17.0)
         return r
-    assert 2 in drive(CO).non_followers                  # CT3: the check made at the step-up still fires
-    kept = drive(dict(CO, co_motion_rejoin=True))        # CT3b: it is dropped with the re-admission
+    assert 2 in drive(CO).non_followers                  # the check made at the step-up still fires
+    kept = drive(dict(CO, co_motion_rejoin=True))        # co_motion_rejoin: it is dropped with the re-admission
     assert 2 not in kept.non_followers and 2 not in kept.dropped
 
 
-# ---- the best add-on using the same evidence (CT3-fix-gated)
+# ---- the best add-on using the same evidence (group_follow and anchor_rederive)
 
 GROUP = dict(CO, group_follow=True)
 
@@ -699,7 +699,7 @@ def test_anchor_rederive_finds_a_new_line_once_everyone_named_has_gone_but_not_s
     assert set(got["anchor"]) == newcomers
 
 
-# ---- hold_place (experiment arm CT3FL): once in line, the people ahead are locked in and only leave
+# ---- hold_place: once in line, the people ahead are locked in and only leave
 
 HOLD = dict(V2, hold_place=True)
 

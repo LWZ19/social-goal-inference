@@ -42,7 +42,7 @@ def test_defaults_in_code_and_in_the_yaml():
         "claude_opus55": ("anthropic", "claude-opus-5-5"), "claude_opus55_low": ("anthropic", "claude-opus-5-5"),
         "claude_sonnet55": ("anthropic", "claude-sonnet-5-5"), "claude_sonnet55_low": ("anthropic", "claude-sonnet-5-5"),
         "claude_haiku55": ("anthropic", "claude-haiku-5-5"), "claude_haiku55_low": ("anthropic", "claude-haiku-5-5"),
-        # older models, for how much the method depends on the model (6 Nov 2026)
+        # older models, for how much the method depends on the model
         "claude_haiku45": ("anthropic", "claude-haiku-4-5"), "claude_sonnet46_low": ("anthropic", "claude-sonnet-4-6"),
         "claude_sonnet5_low": ("anthropic", "claude-sonnet-5"),
         "gemini3_flash": ("gemini", "gemini-3-flash-preview"), "gemini31_flash_lite": ("gemini", "gemini-3.1-flash-lite"),
@@ -258,7 +258,7 @@ def test_soclaas_entries_share_one_gateway_and_each_has_its_model_and_level():
     entries = {name: entry for name, entry in cfg.models.items() if entry.provider == "openai_compatible"}
     assert {name: (entry.model, entry.reasoning_effort) for name, entry in entries.items()} == SOCLAAS
     shared = {(e.base_url, e.api_key_env, e.point_format, e.structured_output) for e in entries.values()}
-    assert shared == {("https://soclaas-api.comp.nus.edu.sg/v1", "SOCLAAS_API_KEY", "xy_1000", "json_schema")}
+    assert shared == {("https://gateway.example/v1", "SOCLAAS_API_KEY", "xy_1000", "json_schema")}
     assert {(e.base_url, e.api_key_env) for name, e in cfg.models.items() if name not in SOCLAAS} == {(None, None)}
     assert not {"qwen3.6:27b", "ornith1.0:35b"} & {e.model for e in cfg.models.values()}      # second names of two others
 

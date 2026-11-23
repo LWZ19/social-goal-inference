@@ -1,6 +1,4 @@
 """OpenAI back end: one Responses API call per request, mapped to a BackendResult or a classified error.
-
-SDK names were read from openai 3.26.0 and run offline. What a server sends is settled by `python -m sgi.smoke`.
 """
 from __future__ import annotations
 

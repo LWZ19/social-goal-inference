@@ -314,10 +314,10 @@ def test_the_measures_of_the_method_are_columns_after_the_others_and_empty_where
     assert [baseline[name] for name in METHOD_COLUMNS] == [None] * 6 and list(baseline)[-9:-3] == METHOD_COLUMNS
 
 def test_the_readme_and_the_page_of_the_method_name_its_measures_and_the_commands_of_the_page_exist():
-    readme, page = ((REPO_ROOT / name).read_text(encoding="utf-8") for name in ("README.md", "docs/constraint_method.md"))
+    readme, page = ((REPO_ROOT / name).read_text(encoding="utf-8") for name in ("docs/usage.md", "docs/constraint_method.md"))
     reading = readme.split("\n## Reading a run folder\n")[1].split("\n## ")[0]
     assert [name for name in METHOD_COLUMNS if f"`{name}`" not in reading or f"`{name}`" not in page] == []
-    assert "(docs/constraint_method.md)" in readme.split("\n## Setup\n")[0]            # the introduction points to the page
+    assert "(constraint_method.md)" in readme.split("\n## Setup\n")[0]            # the introduction points to the page
     # The pair of runs a result of the method is read from: two configs one setting apart, the second the solver alone.
     pair = readme.split("\n### Read a constraint run beside the solver alone\n")[1].split("\n### ")[0]
     assert [args[args.index("--config") + 1] for module, args in commands(pair)] == ["constraints.yaml", "solver_alone.yaml"]

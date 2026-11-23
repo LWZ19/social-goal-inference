@@ -1,6 +1,4 @@
 """Gemini back end: one Interactions API call per request, mapped to a BackendResult or a classified error.
-
-SDK names were read from google-genai 2.28.0 and run offline. What a server sends is settled by `python -m sgi.smoke`.
 """
 from __future__ import annotations
 

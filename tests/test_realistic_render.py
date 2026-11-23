@@ -1160,7 +1160,7 @@ def test_the_renderer_is_named_blender_and_carries_its_version(pretended):
     renderer = BlenderRenderer()
     assert (BlenderRenderer.name, renderer.name, renderer.version) == ("blender", "blender", "4.5.14")
     assert (renderer.samples, renderer.device, renderer.keep) == (64, "OPTIX", False)
-    assert BlenderRenderer(32, "CPU", None, True).samples == 32             # the order the plan gives them in
+    assert BlenderRenderer(32, "CPU", None, True).samples == 32             # samples, device, output folder, keep
     assert LIGHTING[0] == "ceiling" and SceneSpec(PLAIN_ROOM).lighting in LIGHTING
 
 
@@ -1309,7 +1309,7 @@ def test_the_default_drawing_is_the_sign_modules_own(pretended, monkeypatch):
         asked.append((art, font, px_per_m))
         return np.zeros((8, 8, 3), dtype=np.uint8)
 
-    # The sign module is another task's and is asked for only when a sign is to be drawn: one is put in its place
+    # The sign module is loaded only when a sign is to be drawn: one is put in its place
     # here, whether or not it is there yet.
     stand_in = types.ModuleType("sgi.synth.realistic.signs")
     stand_in.draw = draw

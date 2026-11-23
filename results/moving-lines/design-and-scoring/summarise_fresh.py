@@ -1,4 +1,4 @@
-"""Fresh seeds 10-19: the judged comparisons (planned before the runs) under the three scorings (the primary
+"""Unseen seeds 10-19: the comparisons, fixed before the runs, under the three scorings (the primary
 scoring; the first-within-0.6 m scoring; SCORING_STRICT.md).
 
     python3 summarise_fresh.py results/data/moving/runs/sonnet55_low [results/data/moving/runs/dsv41 ...]   (from the repo root)
@@ -13,13 +13,13 @@ from collections import defaultdict
 from pathlib import Path
 
 ARMS = ["C1", "R1", "Rm", "CT", "CT2", "CT2m", "CT2-vac", "CT2-rat", "CT2-nora", "CT2-norv", "CT2-none", "CTs", "CTd", "CTe"]
-PAIRS = [("CT2", "CT", "primary (CT2_FROZEN)"), ("CT2", "R1", ""), ("CT2m", "CT2", "latency (CT2m_FROZEN)"),
-         ("Rm", "R1", "latency, R (CT2m_FROZEN)"), ("CT2m", "Rm", "headline across"), ("CT2", "CT2-vac", "ablation"),
-         ("CT2", "CT2-rat", "ablation"), ("CTs", "CT", "CTs_FROZEN"), ("CTd", "CT2", "tracking (E1D_FROZEN)"),
-         ("CTe", "CTd", "detector people at answer (E1C_FROZEN)"),
-         ("CT2", "CT2-nora", "post hoc ablation: readmit (CT2_NORA_POSTHOC)"), ("CT2-nora", "CT", ""),
-         ("CT2", "CT2-norv", "post hoc: readmit + vacate (CT2_NORV_POSTHOC)"), ("CT2-norv", "CT", ""),
-         ("CT2-none", "CT", "sanity: every part off (CT2_NONE_RAT_POSTHOC N1)"), ("CT2-rat", "CT", "R2"),
+PAIRS = [("CT2", "CT", "primary"), ("CT2", "R1", ""), ("CT2m", "CT2", "latency"),
+         ("Rm", "R1", "latency, R"), ("CT2m", "Rm", "headline across"), ("CT2", "CT2-vac", "ablation"),
+         ("CT2", "CT2-rat", "ablation"), ("CTs", "CT", "settled tracks"), ("CTd", "CT2", "tracking"),
+         ("CTe", "CTd", "detector people at answer"),
+         ("CT2", "CT2-nora", "post hoc ablation: readmit"), ("CT2-nora", "CT", ""),
+         ("CT2", "CT2-norv", "post hoc: readmit + vacate"), ("CT2-norv", "CT", ""),
+         ("CT2-none", "CT", "sanity: every part off"), ("CT2-rat", "CT", "without the ratchet"),
          ("CT2", "CT2-rat", "ratchet, all cells")]
 BREAK = {"cafe_line6_stepout", "cafe_line_bent_moving"}
 
@@ -51,7 +51,7 @@ def measures(e):
     out["cut"] = sum(x["cut_in"] for x in s)
     first = next((x["t"] - s[0]["t"] for x in s if in_line(x, "strict")), None)
     out["first_strict"] = first
-    events = back = 0                                  # per service event with someone ahead (IDEAS_social_eval B2)
+    events = back = 0                                  # per service event with someone ahead
     for i in range(1, len(s)):
         a, b = s[i - 1], s[i]
         if a["ahead"] >= 1 and b["ahead"] < a["ahead"] and b["joined"]:
@@ -72,7 +72,7 @@ def sign_p(wins, losses):
 
 def table(eps, title):
     print(f"\n## {title}\n")
-    print("| Arm | Episodes | Share (frozen) | Share (first 0.6 m) | Share (strict) | End in line (strict) | Median first in line, strict (s) | Back in line within 10 s of a service | Cut-in samples |")
+    print("| Arm | Episodes | Share (looser) | Share (first 0.6 m) | Share (strict) | End in line (strict) | Median first in line, strict (s) | Back in line within 10 s of a service | Cut-in samples |")
     print("|---|---|---|---|---|---|---|---|---|")
     for arm in ARMS:
         m = [measures(e) for e in eps if e["arm"] == arm]
@@ -90,7 +90,7 @@ def paired(eps, title):
     for e in eps:
         by[(e["label"], e["scenario"], e["seed"])][e["arm"]] = measures(e)
     print(f"\n## {title}: paired by (model, scenario, seed); share in line under the strict scoring\n")
-    print("| Comparison | Which | Pairs | Wins / losses / ties | Mean difference | Sign p | Same, frozen scoring (W/L/T) |")
+    print("| Comparison | Which | Pairs | Wins / losses / ties | Mean difference | Sign p | Same, looser scoring (W/L/T) |")
     print("|---|---|---|---|---|---|---|")
     for a, b, note in PAIRS:
         pairs = [(v[a], v[b]) for v in by.values() if a in v and b in v]
@@ -110,7 +110,7 @@ def tracking(eps):
     rows = [e for e in eps if e["arm"] == "CTd" and e.get("det")]
     if not rows:
         return
-    print("\n## CTd: people tracked from the robot's own camera (E1D_FROZEN.md)\n")
+    print("\n## CTd: people tracked from the robot's own camera\n")
     print("| Model | Episodes | Frames | Errors | Median ms | Live tracks matched to a true person (0.5 m) | Id switches / live track-frames | Stale share of tracks | First-match rate |")
     print("|---|---|---|---|---|---|---|---|---|")
     for label in sorted({e["label"] for e in rows}):
@@ -145,7 +145,7 @@ def tracking(eps):
 
 def main():
     eps = load(sys.argv[1:])
-    print(f"# Fresh seeds: {len(eps)} episodes; models {sorted({e['label'] for e in eps})}")
+    print(f"# Unseen seeds: {len(eps)} episodes; models {sorted({e['label'] for e in eps})}")
     main_eps = [e for e in eps if e["scenario"] not in BREAK]
     for label in sorted({e["label"] for e in main_eps}):
         sub = [e for e in main_eps if e["label"] == label]
@@ -155,7 +155,7 @@ def main():
     for b in sorted(BREAK):
         sub = [e for e in eps if e["scenario"] == b]
         if sub:
-            table(sub, f"Break-it case {b}")
+            table(sub, f"Stress case {b}")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ are the recorded ones. A record without a solver step (the standard goal was tak
 carried as recorded. A record of a held-out situation, or of no known situation, is left out, and its scene is not
 opened. Held out is every situation of the recorded config's `held_out_situations` and every one of that list as
 the imported code has it by default: a run recorded under another list does not open what is held out now. A record
-of a held-out placeholder scene (eval_16 to eval_19, the pattern research_harness.py beside this file refuses too)
+of a held-out generated test scene (eval_16 to eval_19, the pattern research_harness.py beside this file refuses too)
 is left out as well, whatever its situation, before its scene is opened. The solver is run again by solve_again,
 which research_harness.resolve uses as well. This file needs no other file beside it unless --whitelist is given.
 
@@ -40,7 +40,7 @@ after it.
                  a file of the places known not to be given again, with why, one a line in the form of --accepted;
                  each is still printed, and marked. research_moved.txt beside this file names those of the runs on
                  research_runs.txt under the code as it is.
-    --gate       the regression gate for a change to the solver: the tables of the single runs are not printed,
+    --gate       the regression check for a change to the solver: the tables of the single runs are not printed,
                  only the one over all the runs and every record that lost its success, and the exit code is 1
                  when a record lost it that --accepted does not name.
     --accepted   a file of the records whose loss is known and stated, one a line: the run's name (its folder's,
@@ -49,7 +49,7 @@ after it.
                  replay_accepted.txt beside this file names them, with the reason.
     --rows       writes one row per record, with both places and both verdicts, as JSON.
     --whitelist  refuses, before anything is opened, every RUN_DIR that is not on research_runs.txt beside this file
-                 (the runs of the research track beyond the VLM-only pipeline), a SCENES_DIR or recorded scenes folder
+                 (the listed runs), a SCENES_DIR or recorded scenes folder
                  that is not the one that list gives for the run, every path that is held out or excluded where it
                  is written or where its links lead (research_harness.guard; a run's config.yaml and results.jsonl
                  whichever form is given), a scene not on research_scenes.txt or with a file in it or named by its
@@ -57,12 +57,12 @@ after it.
                  the repository; the error names the path refused.
                  Run it from the repository root: the runs and scenes are read as the lists say.
 
-The gate over every recorded run, from the repository root (the runs and their scenes are local, not in git):
+The regression check over every recorded run, from the repository root (the runs and their scenes are local, not in git):
 
     .venv/bin/python results/still-scenes/analysis-scripts/harness/replay_solver.py --gate \
         --accepted results/still-scenes/analysis-scripts/harness/replay_accepted.txt @results/still-scenes/analysis-scripts/harness/replay_runs.txt
 
-The reproduction check over the research track's runs with solver steps, from the repository root (RUNS holds those lines
+The reproduction check over the listed runs with solver steps, from the repository root (RUNS holds those lines
 of research_runs.txt):
 
     PYTHONPATH= .venv/bin/python results/still-scenes/analysis-scripts/harness/replay_solver.py --whitelist --gate --expect-reproduced \

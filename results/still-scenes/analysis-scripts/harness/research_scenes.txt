@@ -1,10 +1,10 @@
-# The development scenes of the research track (step 0, frozen 17 October 2026), as SCENES_DIR/SCENE_ID from the
+# The development scenes of the replay analyses, as SCENES_DIR/SCENE_ID from the
 # repository root, built from folder names alone: the scenes of the scenes folders the runs of
 # research_runs.txt use (82 lines), and every worked-example scene of the examples folders their config.yaml
 # records (29 lines, at the end; a scene of a folder named `examples` is a worked example): 111 lines in all.
 #
 # The 82 lines are 68 scenes: data/dev_scenes/placeholder_first14, the scenes folder the s19_ph and s20_ph runs record, is a
-# folder of 14 links to data/placeholder/eval/eval_00 to eval_13 (the first 14 placeholder scenes, as its name
+# folder of 14 links to data/placeholder/eval/eval_00 to eval_13 (the first 14 generated test scenes, as its name
 # says), so each of those 14 scenes is listed twice, once under each folder. A run is replayed
 # against the folder its config.yaml records, so both stay; a scene-level pass over the list takes each scene once
 # with research_harness.distinct_scenes(), which resolves the links (the summary checks that the 68 and the 29 are
@@ -12,7 +12,7 @@
 # eval_20_no_one_lift and eval_21_no_one_screen, byte for byte the scenes of data/dev_scenes/dev_new/seed0/scenes; no listed
 # run was evaluated on them there, so they are listed under dev_new/seed0 alone.
 #
-# The held-out placeholder scenes eval_16 to eval_19 (group_photo, lift_wait) are left out; eval_20_no_one_lift and
+# The held-out generated test scenes eval_16 to eval_19 (group_photo, lift_wait) are left out; eval_20_no_one_lift and
 # eval_21_no_one_screen are development scenes and are kept. By its name no worked example is of a held-out
 # situation, and research_harness.example() leaves out the truth of any episode of one.
 # research_harness.py refuses to open a scene that is not on this list.

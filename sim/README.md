@@ -4,7 +4,7 @@ A Boston Dynamics Spot robot moves through scenes with people in them, in [Habit
 
 ![The simulator window](images/window.jpg)
 
-*The window, from left to right: a camera following Spot; Spot's own RGB and depth, which are what the pipeline sees; a map with the people (red: queueing, green: walking, purple: standing still, such as a barista or performers) and Spot (blue) with its path and goal. Below them is what the pipeline made of the last request: the image with the target, the people it found, numbered, and the goal, and beside it the reasoning of each step.*
+*The window. On the left, a camera follows Spot. Next are Spot's own RGB and depth, which are what the pipeline sees. Then comes a map with the people (red for queueing, green for walking, purple for standing still, such as a barista or performers) and Spot (blue) with its path and goal. Below them is what the pipeline made of the last request. It shows the image with the target, the numbered people it found and the goal, and beside it the reasoning of each step.*
 
 ## Quick start
 
@@ -27,7 +27,7 @@ Three scenes use 3D models by other people. They are free on Sketchfab (CC BY 4.
 | [Simple Concert Stage](https://sketchfab.com/3d-models/simple-concert-stage-d5c7733d06d24947bf60b3a0fe203f69) | Original format | `simple-concert-stage.zip` | the concert |
 | [barigate 8 met besi hitam](https://sketchfab.com/3d-models/barigate-8-met-besi-hitam-07ba7df39b3a4947bb5f0910b9fbc530) | Original format | `barigate-8-met-besi-hitam.zip` | the concert |
 
-You can skip this step: the kitchen flat, the simple café and the room work without it.
+You can skip this step. The kitchen flat, the simple café and the room work without it.
 
 ### Step 3: set up and create the scenes
 
@@ -37,13 +37,13 @@ sim/setup.sh                 # or: sim/setup.sh /path/to/folder/with/the/zips
 
 This one command:
 
-1. creates the conda environments `sgi` (the pipeline), `sgi-habitat` (the simulator) and `sgi-tools` (model conversion);
-2. makes the pipeline's placeholder scenes, and downloads Habitat's people, the Spot robot and the kitchen flat (about 430 MB together);
-3. creates the scenes made in code: the simple café, the room, the concert ground, and the coffee cart, plant and water cooler;
-4. creates the scenes from your downloads: it unpacks the Sweet Spot café and paints it, and it converts the concert stage, puts its textures on, and brings in the barricade;
+1. creates the conda environments `sgi` (the pipeline), `sgi-habitat` (the simulator) and `sgi-tools` (model conversion),
+2. makes the pipeline's generated test scenes, and downloads Habitat's people, the Spot robot and the kitchen flat (about 430 MB together),
+3. creates the scenes made in code, which are the simple café, the room, the concert ground, and the coffee cart, plant and water cooler,
+4. creates the scenes from your downloads, unpacking and painting the Sweet Spot café, converting the concert stage and putting its textures on, and bringing in the barricade,
 5. makes an empty `.env` for your model key.
 
-It takes about ten minutes the first time. Everything it makes goes under `data/`, which git ignores (see [What is in git](#what-is-in-git)). It lists any download it did not find, with its link. Run it again whenever you like (after adding a download, say): it skips what is already done.
+It takes about ten minutes the first time. Everything it makes goes under `data/`, which git ignores (see [What is in git](#what-is-in-git)). It lists any download it did not find, with its link. Run it again whenever you like, for example after adding a download. It skips what is already done.
 
 ### Step 4: add a model key
 
@@ -53,7 +53,7 @@ Open `.env` and fill in one key, on one line, with no spaces or quotes:
 ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-Claude Haiku (Anthropic) is what the example runs on this page used. Gemini, OpenAI or the school's SoCLaaS work too, each with its own line in `.env`.
+The example runs on this page used Claude Haiku (Anthropic). Gemini, OpenAI or SoCLaaS also work, each with its own line in `.env`.
 
 ### Step 5: run
 
@@ -61,7 +61,7 @@ Claude Haiku (Anthropic) is what the example runs on this page used. Gemini, Ope
 sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/sweet_spot_line2.yaml
 ```
 
-A window opens. Type `Get me a coffee` in the terminal, and watch Spot work out where to go. For the concert, try `concert_sparse.yaml` or `concert_crowded.yaml` and ask *"Where should I go to get a good close-up view of the concert?"*. Every scenario is in [`scenarios/`](scenarios/).
+A window opens. Type `Get me a coffee` in the terminal and watch Spot work out where to go. For the concert, try `concert_sparse.yaml` or `concert_crowded.yaml` and ask *"Where should I go to get a good close-up view of the concert?"*. Every scenario is in [`scenarios/`](scenarios/).
 
 ## How it works
 
@@ -89,11 +89,11 @@ What happens for one request:
 
 1. **The simulator runs the scene.** Habitat-Sim renders the room, Habitat 3.0's humanoids walk, queue or stand, and Spot stands still. The scene runs in real time.
 2. **You type a request,** such as "Get me a coffee". The simulator takes Spot's camera image, its depth image, the camera's pose and Spot's pose at that moment, and sends them with the request to the pipeline (`POST /goal`). The people keep moving while it waits.
-3. **The pipeline decides the goal.** This is the repository's own social goal inference method (`src/sgi`), unchanged. It asks a vision-language model through its API (Claude, Gemini, OpenAI or the school's SoCLaaS, with the key in `.env`) to plan the request and find the target, to judge whether the people there matter, to find and number the people, and to state constraints such as "come after persons 1 and 2". A geometric solver then turns the constraints into a goal pose. That is about four model calls, 5 to 15 seconds with Claude Haiku. Answers are cached, so the same image and request asked again cost nothing.
-4. **The answer comes back:** the goal pose, and everything each step found (the plan, the people, the constraints, the reasoning), which the window draws.
+3. **The pipeline decides the goal.** This is the social goal inference method in `src/sgi`. It asks a vision-language model through its API (Claude, Gemini, OpenAI or SoCLaaS, with the key in `.env`) to plan the request and find the target, to judge whether the people there matter, to find and number the people, and to state constraints such as "come after persons 1 and 2". A geometric solver then turns the constraints into a goal pose. That is about four model calls, 5 to 15 seconds with Claude Haiku. Answers are cached, so the same image and request asked again cost nothing.
+4. **The answer comes back.** It holds the goal pose and everything each step found (the plan, the people, the constraints, the reasoning), which the window draws.
 5. **Spot walks there.** It plans a path on its own navmesh, kept clear of furniture, and plans it again twice a second round the people near it. It never calls the model while it walks, unless it is asked to check the goal again every few seconds (`--requery`).
 
-The model sees only what Spot's camera sees: no map, no positions from the simulator. Where it stops follows from that one image.
+The model sees only what Spot's camera sees. It gets no map and no positions from the simulator, so where Spot stops follows from that one image.
 
 ## Environments
 
@@ -101,13 +101,13 @@ The model sees only what Spot's camera sees: no map, no positions from the simul
 
 | Environment | What it is |
 |---|---|
-| **Kitchen flat** | ReplicaCAD's apartment, from the Habitat datasets: a queue at the kitchen counter, people walking about. |
-| **Simple café** | A café built in code: a coffee counter with a machine and menu board, four tables. |
-| **Sweet Spot café** | A downloaded coffee-shop interior: a U-shaped counter with machines, a pastry case, tables, and a barista behind the counter. |
-| **Room with downloaded models** | An empty room furnished with models from the internet: a coffee cart, plants, a water cooler. |
+| **Kitchen flat** | ReplicaCAD's apartment, from the Habitat datasets, with a queue at the kitchen counter and people walking about. |
+| **Simple café** | A café built in code, with a coffee counter, a machine and menu board, and four tables. |
+| **Sweet Spot café** | A downloaded coffee-shop interior, with a U-shaped counter with machines, a pastry case, tables, and a barista behind the counter. |
+| **Room with downloaded models** | An empty room furnished with models from the internet, including a coffee cart, plants and a water cooler. |
 | **Concert** | An open ground with a concert stage, barricades in front of it, and performers on the stage. |
 
-People are animated Habitat 3.0 humanoids: they walk, queue, stand still or wait their turn. Any scene or object downloaded as `.glb`, `.gltf`, `.obj` or `.fbx` can be brought in. The Sweet Spot café came without colours and was given the two tones of Sketchfab's clay view:
+People are animated Habitat 3.0 humanoids that walk, queue, stand still or wait their turn. Any scene or object downloaded as `.glb`, `.gltf`, `.obj` or `.fbx` can be brought in. The Sweet Spot café came without colours and was given the two tones of Sketchfab's clay view:
 
 ![Before and after painting](images/painting.jpg)
 
@@ -118,7 +118,7 @@ Two kinds of place, asked about in one sentence each:
 - **Café: "Get me a coffee".** In each café, the line at the counter is empty, two people long or six people long. Spot starts in the same place in all three, where it sees the counter and everyone in the line, and two people walk about in the background. The right place is the counter itself when nobody waits, and the end of the line otherwise.
 - **Concert: "Where should I go to get a good close-up view of the concert?"** The front of the barricades is either packed (a full front row and a second row behind it) or sparse (a few people scattered). The right place is behind the crowd when it is packed, and a free stretch of barricade when it is not.
 
-The pipeline ran on Claude Haiku 5.5, the smallest and fastest model, once per case. One run per case is a demonstration, not a measurement.
+The pipeline ran on Claude Haiku 5.5, the smallest and fastest model. Each case was run once.
 
 | Case | People waiting | Where Spot went | | Video |
 |---|---|---|---|---|
@@ -146,7 +146,7 @@ Each picture below shows, from left to right, the image the model was given with
 **Simple café, six in line.** The two walkers were taken for part of the line, which pulled the goal off to the side.
 ![](images/case_cafe_line6.jpg)
 
-**Sweet Spot café, nobody in line.** The barista stands behind the counter; nobody waits, so Spot goes to the counter.
+**Sweet Spot café, nobody in line.** The barista stands behind the counter. Nobody waits, so Spot goes to the counter.
 ![](images/case_sweet_spot_line0.jpg)
 
 **Sweet Spot café, two in line.** Spot joins the end of the line, 1.06 m behind the last person, facing the counter.
@@ -165,7 +165,7 @@ Each picture below shows, from left to right, the image the model was given with
 
 ## Moving among people
 
-In this demo the goal is decided once, from one view. Spot plans its own way there and plans it again twice a second round the people near it, so it walks round a line or someone passing instead of stopping for them. It keeps clear of furniture by a margin. The pipeline can also be asked again every few seconds while Spot walks (`--requery`), for when the people have moved since it last looked.
+In this demo the goal is decided once, from one view. Spot plans its own way there and plans it again twice a second round the people near it. So it walks round a line or someone passing instead of stopping for them. It keeps clear of furniture by a margin. The pipeline can also be asked again every few seconds while Spot walks (`--requery`), for when the people have moved since it last looked.
 
 ![Spot planning round the end of a moving line](images/local_planner.jpg)
 
@@ -173,7 +173,7 @@ The moving-line experiments go further. The robot asks the VLM once, tracks the 
 
 ## Each step by hand
 
-`sim/setup.sh` (Quick start, step 3) does all of this for you. These are the commands it runs, one by one, for anyone who wants to run or change a step by hand. Everything runs from the repository root, on Linux with an NVIDIA GPU (it was built on an RTX 5060 Laptop, 8 GB). Downloads go under `data/`, which git ignores.
+`sim/setup.sh` (Quick start, step 3) does all of this for you. These are the commands it runs, one by one, for anyone who wants to run or change a step by hand. Everything runs from the repository root, on Linux with an NVIDIA GPU (tested on an 8 GB GPU). Downloads go under `data/`, which git ignores.
 
 ### 1. Environments
 
@@ -198,7 +198,7 @@ conda run -n sgi-habitat python -m habitat_sim.utils.datasets_download \
 cp .env.example .env        # then fill in one key, with no spaces or quotes: ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-The cases above used `claude_haiku55` (Anthropic). `gemini_fast`, `openai_fast` and the SoCLaaS entries work the same way with their own keys; `mock` needs none but answers with nonsense.
+The cases above used `claude_haiku55` (Anthropic). `gemini_fast`, `openai_fast` and the SoCLaaS entries work the same way with their own keys. `mock` needs no key, and its answers carry no meaning.
 
 ### 4. The scenes
 
@@ -219,7 +219,7 @@ python -m sgi_habitat.paint_stage data/habitat/downloads/sweet_spot_cafe/scene.g
     --floor-y 0.15 --region 7.5 21.0 -0.3 9.3 --counter 11.0 16.7 4.9 8.85
 ```
 
-The concert is an open ground, a stage ([Simple Concert Stage](https://sketchfab.com/3d-models/simple-concert-stage-d5c7733d06d24947bf60b3a0fe203f69), "Original format": an `.fbx` with its textures) and a barricade ([barigate 8 met besi hitam](https://sketchfab.com/3d-models/barigate-8-met-besi-hitam-07ba7df39b3a4947bb5f0910b9fbc530), "Original format": an `.obj`), both from Sketchfab:
+The concert is an open ground, a stage and a barricade, both from Sketchfab. The stage is [Simple Concert Stage](https://sketchfab.com/3d-models/simple-concert-stage-d5c7733d06d24947bf60b3a0fe203f69) ("Original format", an `.fbx` with its textures). The barricade is [barigate 8 met besi hitam](https://sketchfab.com/3d-models/barigate-8-met-besi-hitam-07ba7df39b3a4947bb5f0910b9fbc530) ("Original format", an `.obj`).
 
 ```bash
 python -m sgi_habitat.make_room --width 30 --depth 32 --no-walls --floor-rgb 92 92 96 --out data/habitat/stages/concert_ground.glb
@@ -247,7 +247,7 @@ One script starts the pipeline (env `sgi`) and the simulator (env `sgi-habitat`)
 sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/sweet_spot_line2.yaml
 ```
 
-Type a request in the terminal and press Enter. In the window, a click on the map or on Spot's view sends Spot there directly; `i` shows or hides the reasoning, `c` cancels the goal, `p` pauses and `q` quits. Every request leaves the image sent, the answer and the reasoning under `runs/habitat/`.
+Type a request in the terminal and press Enter. In the window, a click on the map or on Spot's view sends Spot there directly. `i` shows or hides the reasoning, `c` cancels the goal, `p` pauses and `q` quits. Every request leaves the image sent, the answer and the reasoning under `runs/habitat/`.
 
 ### 6. The eight cases and their videos
 
@@ -264,7 +264,7 @@ done
 
 Each run prints where Spot stopped against the true scene ("1.06 m behind the last of 2, 0.03 m off the line"), which is where the table above comes from. A model does not answer the same way every time, so a fresh run can differ from the one shown here.
 
-Everything else is in [`docs/habitat.md`](../docs/habitat.md): every option, the scenario format, the planner, the frames, and the known limits.
+[`docs/habitat.md`](../docs/habitat.md) covers the rest, with every option, the scenario format, the planner, the frames and the known limits.
 
 ## What is in git
 
@@ -272,7 +272,7 @@ Only code, scenario files, docs and the pictures and videos of this page, about 
 
 | Not in git | About | What it is |
 |---|---|---|
-| `.env` | | your model API keys: never commit it (`.env.example` is the template) |
+| `.env` | | your model API keys. Never commit this file (`.env.example` is the template). |
 | `data/habitat/` | 570 MB | Habitat's people, Spot and kitchen flat, the unpacked Sketchfab downloads, the built scenes |
 | `data/placeholder/` | 60 MB | the pipeline's generated test scenes |
 | `runs/` | grows | what every run and request leaves behind: images, answers, recordings |
@@ -285,4 +285,4 @@ Only code, scenario files, docs and the pictures and videos of this page, about 
 - The coffee cart, potted plant and water cooler: from the repository's asset manifest (`assets/realistic/manifest/models.json`), which gives each one's licence.
 - "Simple Concert Stage" by [gluttonia](https://sketchfab.com/gluttonia), from [Sketchfab](https://sketchfab.com/3d-models/simple-concert-stage-d5c7733d06d24947bf60b3a0fe203f69), under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/). Converted to glTF and its textures re-attached by us.
 - "barigate 8 met besi hitam" by [eventdesignws](https://sketchfab.com/eventdesignws), from [Sketchfab](https://sketchfab.com/3d-models/barigate-8-met-besi-hitam-07ba7df39b3a4947bb5f0910b9fbc530), under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/).
-- None of the three Sketchfab models is in this repository: each is downloaded from its page (Quick start). Images of them shared elsewhere have to carry the credit above.
+- None of the three Sketchfab models is in this repository. Each is downloaded from its page (Quick start). Images of them shared elsewhere have to carry the credit above.

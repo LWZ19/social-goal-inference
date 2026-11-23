@@ -2,7 +2,7 @@
 
 From the repository root:
     PYTHONPATH=src python results/still-scenes/crowds/vlm-run/crowd_score.py runs/*_crowd_vlm_*
-Writes nothing; prints the tables. With --json PATH also writes the numbers behind the chart.
+Writes nothing; prints the tables. With --json PATH also writes the numbers as JSON.
 """
 import argparse
 import json
@@ -140,19 +140,19 @@ def main():
         for k in "REC":
             d = [var[k][l] - base[k][l] for l in lays]
             p = signflip(d)
-            print(f"  H1 {LABEL[k]:20s} variants minus bases: mean {100*mean(d):+6.1f} points, "
+            print(f"  {LABEL[k]:20s} variants minus bases: mean {100*mean(d):+6.1f} points, "
                   f"layouts up/down/level {wlt(d)}, p {p:.4f}")
             out["tests"][f"{scope} H1 {k}"] = [mean(d), p]
         vl = sorted(var["C"])
         for k in "RE":
             d = [var["C"][l] - var[k][l] for l in vl]
             p = signflip(d)
-            print(f"  H2 our method minus {LABEL[k]:20s} on variants: mean {100*mean(d):+6.1f} points, "
+            print(f"  our method minus {LABEL[k]:20s} on variants: mean {100*mean(d):+6.1f} points, "
                   f"layouts C better/worse/level {wlt(d)}, p {p:.4f}")
             out["tests"][f"{scope} H2 C-{k}"] = [mean(d), p]
         d = [(var["C"][l] - base["C"][l]) - (var["R"][l] - base["R"][l]) for l in lays]
         p = signflip(d)
-        print(f"  H3 (our drop) minus (pointing drop): mean {100*mean(d):+6.1f} points, {wlt(d)}, p {p:.4f}")
+        print(f"  (our drop) minus (pointing drop): mean {100*mean(d):+6.1f} points, {wlt(d)}, p {p:.4f}")
         out["tests"][f"{scope} H3"] = [mean(d), p]
 
     # descriptive, pooled over finished models (record-level shares)

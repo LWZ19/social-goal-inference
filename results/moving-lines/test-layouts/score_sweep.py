@@ -1,4 +1,4 @@
-"""Scores the fresh sweep runs with the analysis fixed before they were run. Zero calls; read-only on the runs.
+"""Scores the fresh sweep runs with a fixed analysis. Zero calls; read-only on the runs.
 
     python3 score_sweep.py results/data/moving/runs_sweep/dsv41 [results/data/moving/runs_sweep/sonnet55_low]   (from the repo root)
 
@@ -13,7 +13,7 @@ Definitions (every number below comes from one of these):
 - **C1**: the 36 lag-flagged layouts (`lag` true: lag only, plus lag and excursion), DeepSeek, d = right last of
   CT4 minus CT3F. Ties are |d| < 0.01. Exact two-sided sign test over untied layouts (`summarise_fresh.sign_p`).
   It passes when wins > losses and p <= 0.05.
-- **Reported, not claimed**:
+- **Also reported**:
   - the same comparison on excursion-only (18) and clean (18) layouts, predicted ties (an untied win rate in
     0.35-0.65), and on lag-flagged "ours" layouts (20), predicted CT4 ahead;
   - by flag cell: capture (seconds with a bystander as the solver's last, not vacated; 0.5 s a tick), recall
@@ -30,7 +30,7 @@ Definitions (every number below comes from one of these):
       end, both primary and strict;
   - every arm against CT3 on right last, and Gl and CT2 alongside;
   - a held / not held line for every stated prediction;
-  - sensitivity, reported and not the claim: C1 with vacated ticks left out of the denominator (only CT3F
+  - sensitivity: C1 with vacated ticks left out of the denominator (only CT3F
     vacates);
   - every layout and arm without a value, with the reason, and any case where one arm of a compared pair has a
     value and the other has none (which would bias a test);
@@ -152,7 +152,7 @@ def report(root: Path, claim: bool) -> None:
     else:
         print(f"C1's comparison (reported for this model), lag-flagged: {fmt(c1)}\n")
     sens = compare(scores, lag, "CT4", "CT3F", key="right_last_novac")
-    print(f"- sensitivity (reported, not the claim): C1 with vacated ticks left out of the denominator: {fmt(sens)}")
+    print(f"- sensitivity: C1 with vacated ticks left out of the denominator: {fmt(sens)}")
     exc_c, clean_c = compare(scores, exc_only, "CT4", "CT3F"), compare(scores, clean, "CT4", "CT3F")
     ours_c = compare(scores, ours_lag, "CT4", "CT3F")
     print(f"- excursion only (n = {len(exc_only)}; predicted tie): {fmt(exc_c)}")
@@ -225,7 +225,7 @@ def report(root: Path, claim: bool) -> None:
         st = [s["after_service_strict"] for s in vals if s["after_service_strict"] is not None]
         med = f"{statistics.median(times):.1f}" if times else "-"
         print(f"- {arm} (n = {len(vals)}): right roster after a median {med} s ({len(times)} layouts; never in "
-              f"{never}); share in line after the first service: frozen "
+              f"{never}); share in line after the first service: looser "
               f"{statistics.mean(fz) if fz else float('nan'):.3f}, strict {statistics.mean(st) if st else float('nan'):.3f}")
     print("\n## Layouts and arms without a right-last value\n")
     gaps = [(x["name"], arm, scores[(x["name"], arm)]["reason"]) for x in sel for arm in ("CT2", "CT3", "Gl", "CT3F", "CT4")
@@ -236,7 +236,7 @@ def report(root: Path, claim: bool) -> None:
         print(f"- {g[0]} {g[1]}: {g[2]}")
     if not gaps:
         print("- none")
-    print("\n## Mechanical checks (RUN_NOTE: these, not scores, may stop the next run)\n")
+    print("\n## Mechanical checks\n")
     for arm in ("CT2", "CT3", "Gl", "CT3F", "CT4", "R1"):
         mine = {n: e for (n, a), e in eps.items() if a == arm}
         errs = sum(1 for e in mine.values() for r in e.get("resolves", []) if r.get("status") not in ("ok", None))

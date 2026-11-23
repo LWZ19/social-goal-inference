@@ -1,7 +1,7 @@
-"""Dressing a layout: one layout of the placeholder generator made into a scene description for a renderer
+"""Dressing a layout: one layout of the scene generator made into a scene description for a renderer
 and the ground truth that goes with it.
 
-The scene stays the twin of the placeholder scene: the same people in the same places, the same robot and
+The scene stays the twin of the layout's scene: the same people in the same places, the same robot and
 camera, the same targets, bounds and episodes. The layout is not changed, and what is not said here is read
 from it as it is. Dressing adds or changes four things, and the ground truth describes each as it is drawn:
 
@@ -524,7 +524,7 @@ def _episodes(layout: Layout, staffed: Sequence[str]) -> tuple[EpisodeModel, ...
     """The layout's episodes, as they are but for one text. `staffed` are the ids of the targets that someone
     on duty stands at in this dressing.
 
-    The placeholder says of a target with nobody at it that nobody is waiting there or standing close to it.
+    The generator says of a target with nobody at it that nobody is waiting there or standing close to it.
     With a member of staff behind the target that is no longer so, and an episode of that situation at such a
     target says instead what the picture shows (_NOBODY_BUT_STAFF). Its id, its request, its context, its
     request type, its plan and the rest of its rationale are the twin's."""

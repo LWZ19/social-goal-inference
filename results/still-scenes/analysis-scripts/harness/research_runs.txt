@@ -1,4 +1,4 @@
-# The runs of the research track beyond the VLM-only pipeline (step 0, frozen 17 October 2026): 153 run folders.
+# The recorded runs used by the replay analyses: 153 run folders.
 # Each line is RUN_DIR=SCENES_DIR from the repository root; the scenes folder is the one the
 # run's config.yaml records. research_harness.py reads this list and refuses every run folder that is not on it.
 #
@@ -9,17 +9,12 @@
 # other stage. Records of a held-out situation (group_photo, lift_wait) inside these runs are skipped by the harness
 # before any of their fields is used.
 #
-# Code at run time: no config.yaml records a commit. By the development repository's HEAD reflog at each run's start
-# (uncommitted changes unknown): s8 227845e, but s8_convlm_qwen3vl 89ceafe (227845e cannot read the placeholder
-# scenes as they are now, 89ceafe can; they give every s8 place again); s10 a3c3fd0; s16b fc61bc5, but from 2025 d7ebfc3;
-# s19 31e7150; s20 a233baa, but the cot runs at 2003-2004 74b61a9; s21 202c165, but the con runs f1a488a.
 # The solver places that the code as it is does not give again, and why: research_moved.txt.
 #
-# Also taken, beyond the first step-0 list: the 6 s22 and 45 s23 runs the plan's step 0 adds (REPORT.md, step 0,
-# and its stage 22 and 23 notes); and the 12 s17 R and E runs of the development seeds, as the comparison tables'
-# development set takes them.
+# Also taken: the 6 s22 and 45 s23 runs, and the 12 s17 R and E runs of the development seeds, as the comparison
+# tables' development set takes them.
 
-# s8, the panel ablations of the constraint method on the placeholder scenes: none (oracle people and no
+# s8, the panel ablations of the constraint method on the generated test scenes: none (oracle people and no
 # constraints, the solver alone), convlm (people and constraints from the model), conorc (oracle people and
 # constraints from the model): 15 runs.
 runs/20261010-004334_s8_none_glm53=data/placeholder/eval
@@ -38,7 +33,7 @@ runs/20261010-003604_s8_conorc_qwen36_35=data/placeholder/eval
 runs/20261010-003601_s8_conorc_qwen38=data/placeholder/eval
 runs/20261010-004740_s8_conorc_qwen3vl=data/placeholder/eval
 
-# s10, reasoning effort none, low and medium, by method, on the placeholder scenes: 15 runs.
+# s10, reasoning effort none, low and medium, by method, on the generated test scenes: 15 runs.
 # Names with no folder: s10_glm53_medium_cot, s10_glm53_medium_fsc, s10_glm53_medium_con.
 # s10_qwen38_low_con: 20261010-121108 taken (28 records); superseded 20261010-115145 (28 records).
 runs/20261010-121744_s10_glm53_none_cot=data/placeholder/eval
@@ -57,8 +52,8 @@ runs/20261010-113304_s10_qwen38_medium_cot=data/placeholder/eval
 runs/20261010-114330_s10_qwen38_medium_fsc=data/placeholder/eval
 runs/20261010-114753_s10_qwen38_medium_con=data/placeholder/eval
 
-# s16b, the marked point (cot) and worked examples (fsc), on the three realistic arms and the placeholder
-# scenes: 16 runs.
+# s16b, the marked point (cot) and worked examples (fsc), on the three realistic arms and the generated
+# test scenes: 16 runs.
 runs/20261010-201358_s16b_real_qwen38_low_cot=data/dev_scenes/realistic_final/real/scenes
 runs/20261010-202647_s16b_real_qwen38_low_fsc=data/dev_scenes/realistic_final/real/scenes
 runs/20261010-203755_s16b_real_glm53_cot=data/dev_scenes/realistic_final/real/scenes
@@ -78,7 +73,7 @@ runs/20261010-204126_s16b_ph_glm53_fsc=data/placeholder/eval
 
 # s17, Qwen 3.8 low and GLM-5.3, the marked point (cot) and 3 worked examples (fsc3) on the development seeds, 24
 # records each, as the comparison tables' development set takes them: 12 runs. fsc3 shows 3 worked examples where s16b
-# fsc on the realistic sets shows 2. Not the s17 con runs, from before the solver fix (C on the seeds is s19
+# fsc on the realistic sets shows 2. Not the s17 con runs (C on the seeds is s19
 # dev_seed*), nor the s17 fsc runs, the 4-example variant.
 runs/20261010-205408_s17_seed0_qwen38_low_cot=data/dev_scenes/dev_new/seed0/scenes
 runs/20261010-210542_s17_seed0_qwen38_low_fsc3=data/dev_scenes/dev_new/seed0/scenes
@@ -93,7 +88,7 @@ runs/20261010-210549_s17_seed2_qwen38_low_fsc3=data/dev_scenes/dev_new/seed2/sce
 runs/20261010-205901_s17_seed2_glm53_cot=data/dev_scenes/dev_new/seed2/scenes
 runs/20261010-210550_s17_seed2_glm53_fsc3=data/dev_scenes/dev_new/seed2/scenes
 
-# s19, the constraint method (con), on the three realistic arms, the placeholder scenes (its first 14) and the
+# s19, the constraint method (con), on the three realistic arms, the generated test scenes (the first 14) and the
 # development seeds: 14 runs. The ph runs record data/dev_scenes/placeholder_first14, a folder of 14 links to
 # data/placeholder/eval/eval_00 to eval_13: the same scenes as the s8, s10 and s16b_ph runs (research_scenes.txt).
 runs/20261011-160334_s19_real_qwen38_low_con=data/dev_scenes/realistic_final/real/scenes
@@ -159,8 +154,8 @@ runs/20261017-012701_s21_plain_qwen38_low_cot=data/dev_scenes/realistic_final/pl
 runs/20261017-020401_s21_plain_qwen38_low_fsc=data/dev_scenes/realistic_final/plain/scenes
 runs/20261017-021852_s21_plain_qwen38_low_con=data/dev_scenes/realistic_final/plain/scenes
 
-# s22, Qwen 3.8 at low effort, the marked point (cot) and worked examples (fsc) on the three realistic arms, pinned
-# at 202c165, 168 records each: 6 runs. Trials 0-2 are cache copies of the s16b qwen38_low runs and trials 3-5 are
+# s22, Qwen 3.8 at low effort, the marked point (cot) and worked examples (fsc) on the three realistic arms,
+# 168 records each: 6 runs. Trials 0-2 are cache copies of the s16b qwen38_low runs and trials 3-5 are
 # fresh: deduplicate when pooling with s16b. Not the s22_replay* runs (the guard refuses them).
 runs/20261017-114056_s22_real_qwen38_low_cot=data/dev_scenes/realistic_final/real/scenes
 runs/20261017-121440_s22_real_qwen38_low_fsc=data/dev_scenes/realistic_final/real/scenes

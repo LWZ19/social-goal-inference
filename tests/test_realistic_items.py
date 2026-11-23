@@ -189,7 +189,7 @@ def test_every_primitive_of_an_item_stands_on_its_footprint(row):
         assert_stood_on(lay)
 
 
-# The plan calls this test "an item footprint is among the obstacles or is the target footprint". So it is for a
+# This test checks that an item footprint is among the obstacles or is the target footprint. So it is for a
 # furnishing and for a place that is one item. A footprint is also the ground its item's primitives stand on (the
 # test above), and the two items of a deep place and a parcel table with its crate cannot be both: of a deep place
 # the footprints divide the obstacle between them, and a parcel table's holds its two.

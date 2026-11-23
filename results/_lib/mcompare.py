@@ -81,6 +81,6 @@ def means(eps: dict, arm: str) -> tuple:
 
 
 def better(r: dict, key: str = "strict", alpha: float = 0.05) -> bool:
-    """The bar used by these comparisons: more wins than losses and an exact two-sided sign p <= alpha."""
+    """The pass mark used by these comparisons: more wins than losses and an exact two-sided sign p <= alpha."""
     w, l, _ = r[key]
     return w > l and r[f"p_{key}"] <= alpha

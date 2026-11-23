@@ -289,7 +289,7 @@ def test_people_beyond_the_bound_are_cut_before_they_are_numbered_and_the_flag_s
 
 
 def test_nobody_in_view_is_still_asked_about_the_target_and_a_place_under_the_picture_has_no_pixel():
-    box = Box(cx=3.3, cy=0.0, yaw=math.pi, sx=0.6, sy=1.0, sz=1.2)    # a thing 3 m ahead of the camera of the placeholder scenes
+    box = Box(cx=3.3, cy=0.0, yaw=math.pi, sx=0.6, sy=1.0, sz=1.2)    # a thing 3 m ahead of the camera of the generated scenes
     seen = mounted(HERE, boxes=[box])
     target = thing(3.0, 0.0, 0.8, observation=seen)
     near = {"constraints": [written(WITHIN, target=True, between=(0.9, 1.1)), written(FACE, target=True)]}

@@ -1,8 +1,5 @@
 """Anthropic back end: one Messages API call per request, mapped to a BackendResult or a classified error.
 
-SDK names were read from anthropic 1.13.0 and run offline. What a server sends is settled by `python -m sgi.smoke`:
-no request has been sent to this provider yet.
-
 Thinking. An entry's `reasoning_effort` is the model's effort level and is sent as `output_config.effort`. No
 `thinking` setting goes with it: the current models think by themselves, as much as the level allows, and refuse
 a thinking budget. The level `none` is this back end's name for thinking switched off: `thinking: {type: disabled}`

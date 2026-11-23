@@ -38,6 +38,6 @@ who is ahead of it in queue order.
 Methods are paired by scenario, seed and model. Results are reported as the mean share, as wins, losses and ties, and
 with a sign test.
 
-In the outputs this score is the `strict` share. The outputs also print two looser versions, `frozen` (no check on the
-distance from the line, and 1.6 m from the serving spot when first) and `first 0.6 m` (the same with 0.6 m when first).
-The talk uses the strict share.
+In the outputs this score is the `strict` share. The outputs also print two looser scores: `primary`, also labelled
+`looser` (field `share_frozen`; no check on the distance from the line, and 1.6 m from the serving spot when first), and
+`first 0.6 m` (the same with 0.6 m when first). The results use the strict share.

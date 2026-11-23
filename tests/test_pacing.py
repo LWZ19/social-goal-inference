@@ -148,7 +148,7 @@ def test_the_soclaas_entries_of_the_default_config_share_one_pacer_and_no_other_
     for name in cfg.models:
         client(name, cfg)
     assert {key: pacer.max_per_minute for key, pacer in registry.items()} == {
-        ("openai_compatible", "https://soclaas-api.comp.nus.edu.sg/v1"): 80,
+        ("openai_compatible", "https://gateway.example/v1"): 80,
         ("anthropic", None): 25}                                       # the three older Claude models share one
 
 def test_cache_only_answers_a_miss_with_an_error_and_never_calls(tmp_path, monkeypatch):

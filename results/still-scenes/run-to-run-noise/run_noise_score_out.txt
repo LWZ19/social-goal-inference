@@ -1,0 +1,30 @@
+# Run-to-run noise on the development still scenes (reported, no pass mark)
+
+## GLM-5.3
+
+| batch | R | E | C | C-R | C-E | records per method |
+|---|---|---|---|---|---|---|
+| s23 | 132 | 123 | 170 | +38 | +47 | 252 |
+| noise1 | 136 | 144 | 167 | +31 | +23 | 252 |
+| noise2 | 133 | 151 | 157 | +24 | +6 | 252 |
+- R: batch totals [132, 136, 133], mean 133.7, SD 2.08 (df 2)
+- E: batch totals [123, 144, 151], mean 139.3, SD 14.57 (df 2)
+- C: batch totals [170, 167, 157], mean 164.7, SD 6.81 (df 2)
+- flips s23 -> noise1 (right->wrong / wrong->right): R 38/42 of 252; E 36/57 of 252; C 40/37 of 252
+- flips s23 -> noise2 (right->wrong / wrong->right): R 44/45 of 252; E 38/66 of 252; C 51/38 of 252
+- flips noise1 -> noise2 (right->wrong / wrong->right): R 47/44 of 252; E 42/49 of 252; C 53/43 of 252
+
+## DeepSeek V4.1
+
+| batch | R | E | C | C-R | C-E | records per method |
+|---|---|---|---|---|---|---|
+| s23 | 120 | 126 | 185 | +65 | +59 | 252 |
+| noise1 | 125 | 138 | 210 | +85 | +72 | 252 |
+| noise2 | 126 | 137 | 219 | +93 | +82 | 252 |
+- R: batch totals [120, 125, 126], mean 123.7, SD 3.21 (df 2)
+- E: batch totals [126, 138, 137], mean 133.7, SD 6.66 (df 2)
+- C: batch totals [185, 210, 219], mean 204.7, SD 17.62 (df 2)
+- flips s23 -> noise1 (right->wrong / wrong->right): R 33/38 of 252; E 34/46 of 252; C 27/52 of 252
+- flips s23 -> noise2 (right->wrong / wrong->right): R 34/40 of 252; E 37/48 of 252; C 26/60 of 252
+- flips noise1 -> noise2 (right->wrong / wrong->right): R 23/24 of 252; E 40/39 of 252; C 23/32 of 252
+

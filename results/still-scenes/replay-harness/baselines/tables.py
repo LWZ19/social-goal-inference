@@ -1,5 +1,5 @@
 """Tables of the solver-alone and people-blind rows from records.jsonl and re_records.jsonl (written by
-i01_baselines.py). No scene or run is read here. Prints and writes tables.txt beside this file."""
+baselines.py). No scene or run is read here. Prints and writes tables.txt beside this file."""
 from __future__ import annotations
 
 import collections
@@ -45,7 +45,7 @@ def main():
                     f"{sum(r['CA'] for r in sub):4d} {sum(not r['goal_step'] for r in sub):8d} "
                     f"{sum(not r['has_target'] for r in sub):8d}")
             say()
-        # compact rows in the report's order
+        # compact rows
         for s in ("conversation_group", "waiting_line", "no_one", "pooled"):
             say(f"-- {SHORT.get(s, s)} (order {', '.join(models)}) --")
             for col in ("C_rec", "SA", "SG", "CA"):

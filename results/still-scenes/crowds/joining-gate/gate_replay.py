@@ -99,7 +99,7 @@ def _replay(job):
             try:
                 inputs, truth = load_scene(folder / scene_id)
                 loaded[scene_id] = (inputs.observation, truth, prepare(inputs, truth, cfg))
-            except Exception as error:                  # a scene folder not unpacked on this machine
+            except Exception as error:                  # a scene folder that is not present
                 loaded[scene_id] = error
         if isinstance(loaded[scene_id], Exception):
             skipped[f"scene missing ({folder.relative_to(REPO) if folder.is_relative_to(REPO) else folder})"] += 1

@@ -140,30 +140,30 @@ class Resolver:
                  follow_m: float = 0.25,
                  moved_m: float = 1.0, history_s: float = 20.0, group_follow: bool = False,
                  anchor_rederive: bool = False, hold_place: bool = False):
-        """The options after `gone_m` are those of experiment arm CT2, off by
-        default: `readmit` lets a person who left wait again once the solver takes them as joining behind the last;
+        """The options after `gone_m` are off by
+        default. The first group re-admits and vacates: `readmit` lets a person who left wait again once the solver takes them as joining behind the last;
         `vacate_after_s` gives `vacated_pose`, the last still pose of the last of the waiting people to leave, once
         the robot has joined, nobody it came after still waits and that person has been away so long (`vacate_rejoined`
         also takes it when that person is back in the line but behind the robot, as one served who rejoined); `path_memory`
         remembers the line as the polyline through the waiting people's positions at the answer, not a straight
         axis, and points the solver along its back (`solve_direction`).
 
-        `co_motion_s` (experiment arm CT3) asks the people to move together: when a
+        `co_motion_s` asks the people to move together: when a
         waiting person advances (`advance_m` nearer the target within a few seconds), the waiting person next behind
         them must have come `follow_m` nearer within `co_motion_s`, or is taken as not waiting (`non_followers`);
         and nobody is taken as joining unless, within `history_s`, they walked `moved_m` or came a step nearer the
         target. The model's answer says who waits; how people move afterwards can overrule it. `exempt()` gives
         those who may not join, for the solver; `co_motion_follow` False keeps the gate and leaves out the follow
-        check (experiment arm CT3-j); `co_motion_rejoin` cancels a follow check made before the person was taken
-        back into the line (experiment arm CT3b, added later).
+        check (the gate alone); `co_motion_rejoin` cancels a follow check made before the person was taken
+        back into the line.
 
-        Two more, for the best add-on using the same evidence (experiment arm CT3F): `group_follow` checks every
+        Two more, using the same evidence: `group_follow` checks every
         waiting person behind an advance, not only the next; `anchor_rederive` finds the waiting people again from
         the target point once nobody the answer named still waits (the still person at the front gap the named
         people showed, then still people behind a member within 1.5 spacings), never taking someone found not
         following, and nobody unnamed who has not moved as a joiner would.
 
-        `hold_place` keeps the robot's place once it has joined (experiment arm CT3FL): the people ahead of it then
+        `hold_place` keeps the robot's place once it has joined: the people ahead of it then
         are locked in (`locked`): those taken as waiting, and anyone else standing within 0.6 m of the line ahead
         of it (someone who has just come back to the line, before the rules have taken them back). From then on
         that set only shrinks. Nobody is added to it: no
@@ -306,7 +306,7 @@ class Resolver:
                 window_s: float = 1.0) -> bool:
         """Whether every tracked person within `radius_m` of the waiting people (of the people the answer named,
         while none waits) has moved at most `move_m` over the last `window_s` seconds: for a caller that solves
-        again only on settled tracks (experiment arm CTs). Keeps the tracks' history."""
+        again only on settled tracks. Keeps the tracks' history."""
         history = getattr(self, "_history", {})
         self._history = history
         for track in tracks:
@@ -486,7 +486,7 @@ class Resolver:
                     and t - self._advanced_at.get(q, -1e9) > _ADVANCE_EVERY_S):
                 self._advanced_at[q] = t
                 behind = [n for n in active if n != q and active[n] > gap + _EPS]
-                if behind and self._group_follow:      # everyone behind the advance (CT3F)
+                if behind and self._group_follow:      # everyone behind the advance
                     for p in behind:
                         if not any(d[1] == p for d in self._due):
                             self._due.append((t + self._co_motion_s, p, self._gap_since(p, t - _ADVANCE_WITHIN_S)))

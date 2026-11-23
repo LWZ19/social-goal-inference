@@ -1,4 +1,4 @@
-"""The role estimator (experiment arm CT4)."""
+"""The role estimator."""
 import math
 
 import numpy as np

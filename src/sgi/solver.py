@@ -735,7 +735,7 @@ def _settle(cells: np.ndarray, robot_xy, camera_xy, target_xy, bodies: Sequence[
     turn = None
     if waiting:                                    # several come_after are one, about all their people
         apart = {n for reading in used if reading.kind == "keep_out_of_shared_space" for n in reading.people}
-        apart |= set(exempt)                       # and those the caller knows are not joining (sgi.resolve, CT3)
+        apart |= set(exempt)                       # and those the caller knows are not joining (sgi.resolve)
         turn = _turn(waiting, apart, by_number, target_number, target_xy, robot_xy, th, line)
         ahead = np.maximum(0.0, turn.last_from_target - from_target)       # nearer to the target than the last
         exclusions.append(ahead)
@@ -912,7 +912,7 @@ def solve(observation: ObservationData, target: GroundedTarget, people: Sequence
     place already taken.
 
     `exempt` numbers people the place-in-turn rule must not take as joining the waiting people, as if the answer
-    had listed them under `keep_out_of_shared_space` (experiment arm CT3, from `sgi.resolve`). Empty by default.
+    had listed them under `keep_out_of_shared_space` (from `sgi.resolve`). Empty by default.
     """
     robot = observation.robot
     cells, settled = _over_floor(observation, target, people, constraints, standard, th, line_direction, floor_map,

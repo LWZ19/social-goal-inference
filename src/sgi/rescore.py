@@ -9,8 +9,7 @@ run, and note.txt, which says when that was, at which commit the code stood, and
 changed. Nothing else in the run folder is touched. No model is called and no client is built.
 
 --scenes names the folder of the scenes, in place of the one config.yaml records. A scene that brings its own
-acceptable regions keeps them here as it does in a run. The placeholder scenes are written with theirs
-(sgi.synth.generate), so a change of the reference rules shows once they have been generated again.
+acceptable regions keeps them here as it does in a run. The scenes of sgi.synth.generate are written with theirs, so a change of the reference rules shows once they have been generated again.
 
 Scored again in a record is what follows from the ground truth and the recorded result: `score`,
 `hidden_relevant_people`, and in `measures` the reference of the context check with the two measures taken

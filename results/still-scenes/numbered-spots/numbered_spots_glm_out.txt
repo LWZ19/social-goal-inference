@@ -1,0 +1,14 @@
+Scored pairs: 252
+
+== soclaas_glm53: 252 pairs
+  target right: A0 215, A2-both 237, A2-number 237, A2-point 213
+  both    gain  30  harm   8  (harm share of A0-right 0.037)
+  number  gain  30  harm   8  (harm share of A0-right 0.037)
+  point   gain  24  harm  26  (harm share of A0-right 0.121)
+  replayed success (recorded people and constraints): A0 155, A2-both 177, A2-number 164, A2-point 169  of 252
+  plan exact: A0 200, A2 228 of 251
+  answers with a mark: 248/252; person marks 93; centre-nearest 66; largest component 1; binding conflicts 35
+  number histogram: 1:37, 2:39, 3:39, 4:46, 5:33, 6:13, 7:25, 8:16
+  Pass marks (rule both): harm 8 <= 2% of 215 -> False; plan drop -28 <= 2% of 251 -> True; gain 30 vs harm 8
+
+Result: did not meet the harm limit, so Gemini was not run

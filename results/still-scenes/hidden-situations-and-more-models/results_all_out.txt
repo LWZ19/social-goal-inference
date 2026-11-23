@@ -13,4 +13,4 @@ HIDDEN SITUATIONS (of 36: pointing / with examples / ours)
   Claude Sonnet 5.5    lift 33 / 31 / 36   photo 2 / 2 / 4
   Claude Haiku 5.5     lift  7 /  7 / 32   photo 0 / 1 / 9
   Gemini 3.8 Flash     lift 15 / 20 / 28   photo 6 / 3 / 0
-  DeepSeek (13 Oct)    lift  8 / 15 / 31   photo 1 / 1 / 0
+  DeepSeek             lift  8 / 15 / 31   photo 1 / 1 / 0

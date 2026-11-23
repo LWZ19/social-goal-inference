@@ -1,14 +1,14 @@
-# The recorded runs that hold solver steps of the constraint method, as of 10 October 2026: 90 runs, 4344 records,
+# The recorded runs that hold solver steps of the constraint method: 90 runs, 4344 records,
 # 2295 solver steps, none of a held-out situation. Each line is RUN_DIR=SCENES_DIR, from the repository root; the
 # scenes folder is the one the run's config.yaml records. The runs and the scenes are local and not in git.
 #
 #     .venv/bin/python results/still-scenes/analysis-scripts/harness/replay_solver.py --gate \
 #         --accepted results/still-scenes/analysis-scripts/harness/replay_accepted.txt @results/still-scenes/analysis-scripts/harness/replay_runs.txt
 #
-# is the regression gate for a change to the solver: per situation and in all, the successes as recorded and as
+# is the regression check for a change to the solver: per situation and in all, the successes as recorded and as
 # replayed, how many records gained and lost theirs, and every record that lost it.
 
-# The six runs on the development scenes of people who watch a thing that stands free (10 October 2026).
+# The six runs on the development scenes of people who watch a thing that stands free.
 runs/20261010-210914_s17_seed0_qwen38_low_con=data/dev_scenes/dev_new/seed0/scenes
 runs/20261010-210904_s17_seed1_qwen38_low_con=data/dev_scenes/dev_new/seed1/scenes
 runs/20261010-210900_s17_seed2_qwen38_low_con=data/dev_scenes/dev_new/seed2/scenes
@@ -16,7 +16,7 @@ runs/20261010-205731_s17_seed0_glm53_con=data/dev_scenes/dev_new/seed0/scenes
 runs/20261010-205729_s17_seed1_glm53_con=data/dev_scenes/dev_new/seed1/scenes
 runs/20261010-210124_s17_seed2_glm53_con=data/dev_scenes/dev_new/seed2/scenes
 
-# The eight main runs of 10 October 2026, under the reworded context prompt.
+# The eight main runs.
 runs/20261010-190638_s15_newcomer_real_qwen38_low=data/dev_scenes/realistic_final/real/scenes
 runs/20261010-190641_s15_newcomer_staffed_qwen38_low=data/dev_scenes/realistic_final/staffed/scenes
 runs/20261010-190642_s15_newcomer_plain_qwen38_low=data/dev_scenes/realistic_final/plain/scenes

@@ -1736,7 +1736,7 @@ def test_which_end_of_a_row_that_is_the_same_on_both_sides_is_settled_by_the_sta
     assert end((2.0, -0.002), from_right) == 0 and end((2.0, -0.002), from_left) == 0
 
 
-# ---------------------------------------------------------------------------------------------------- placeholder scenes
+# ---------------------------------------------------------------------------------------------------- generated scenes
 def test_on_every_placeholder_scene_the_place_is_first_in_the_order_and_breaks_no_exclusion(placeholder):
     th = load_config().thresholds
     solved_episodes = 0

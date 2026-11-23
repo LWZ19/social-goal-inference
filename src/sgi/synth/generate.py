@@ -85,7 +85,7 @@ _SHIFT_M = 5.0                     # the random transform moves a layout up to t
 _MAX_ATTEMPTS = 20
 _EXPECTED_WARNING = 9              # the standard goal failing with nobody relevant. The standard goal stops
 #                                    before the surface it sees, so a place seen obliquely keeps its stop and no
-#                                    placeholder scene raises this; it stays allowed, as a layout that does is no fault
+#                                    generated scene raises this; it stays allowed, as a layout that does is no fault
 _UNREACHABLE = "standard_goal_unreachable"
 _REASONS = (*(f"check_{number}" for number in range(1, 13)), _UNREACHABLE)
 _SHADOW_M = 0.35                   # the renderer's shadows end nearer than this to the foot of what casts them

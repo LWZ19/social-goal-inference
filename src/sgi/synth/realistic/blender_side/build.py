@@ -30,7 +30,7 @@ the solid's own colour, with its `top` colour on the upper face. A box's label, 
 lettering comes as signs, each an image on a rectangle 1 mm proud of one face of a box. A part with `glass`
 set, or of the material "glass", is a pane: glass to the camera, clear to shadow rays.
 
-The asset library (library.py beside this file, another task's) is asked for only when a job names its
+The asset library (library.py beside this file) is asked for only when a job names its
 prepared folder. Without one, a named material is a plain coat of a fitting colour, the world is a plain sky,
 and a model or a person is an error.
 

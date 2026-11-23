@@ -35,7 +35,7 @@ def test_cache_key_covers_everything_that_shapes_the_answer():
     assert len(set(keys)) == 10 and len(keys[0]) == 64 and key(parts=tuple(PARTS)) == keys[0]
     assert key(timeout_s=5.0) == keys[0]                              # the timeout does not shape the answer
 
-# One made-up request and the key it had before the first field was added to ModelEntry after answers were paid for.
+# One made-up request and the key it had before the first field was added to ModelEntry.
 # A change that moves this digest orphans every answer in .cache/vlm: correct the change, never the digest.
 PINNED_ENTRY = dict(provider="openai_compatible", model="made-up:1b", base_url="https://gateway.example/v1",
                     api_key_env="A_KEY", reasoning_effort="none")

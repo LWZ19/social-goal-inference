@@ -2,7 +2,7 @@
 .env
 
 # Made on each machine; sim/setup.sh recreates all of them (sim/README.md, Quick start).
-# data/: Habitat's data, the downloaded models, the built scenes, the placeholder scenes.
+# data/: Habitat's data, the downloaded models, the built scenes, the generated scenes.
 # runs/: what each run and each request leaves behind. .cache/: the pipeline's cache of model answers.
 data/
 runs/

@@ -1,4 +1,4 @@
-"""The shared offline harness of the analyses beyond the VLM-only pipeline. No model is called, no
+"""The shared offline harness of the replay analyses. No model is called, no
 network used, and nothing is written.
 
 Two written lists beside this file say what may be read: research_runs.txt, the recorded runs (RUN_DIR=SCENES_DIR
@@ -8,7 +8,7 @@ are those of a folder named `examples`. A run or a scene that is not on its list
 name that is held out or excluded, whatever list names it (`guard`, case-insensitive, in every component of a path,
 as written and where its links lead): an s18 or s20_held run (stage18 and s18b alike), anything with `heldout` or
 `held_out` in a component, a `.cache` or `.env` component, an s21_replay or s21_sonnet probe, an s22_replay run, a
-pre-flight `pf_` run, and the held-out placeholder scenes eval_16 to eval_19. Before a scene is loaded, every file
+pre-flight `pf_` run, and the held-out generated test scenes eval_16 to eval_19. Before a scene is loaded, every file
 and folder in it and every file its scene.json names are guarded, and a named file must lie in the scene's folder.
 Inside a listed run, a record of a held-out or unknown situation, or of a held-out scene, is skipped and counted
 before any of its other fields is used, as replay_solver.py does: held out is every situation of the run's recorded
@@ -42,11 +42,11 @@ Count or look at runs through this tool, never with a glob or a find over the re
 As a script it prints, per listed run, the records allowed and skipped, the solver steps, the recorded pose of
 every allowed record scored again now against its recorded success (a mismatch can be legitimate where the scorer
 or a scene changed since the run; they are printed, not failed), the same pose through score_pose against rescore
-(they must agree), and the reproduction gate: every solver step solved again by the solver of the imported code
+(they must agree), and the reproduction check: every solver step solved again by the solver of the imported code
 must give the recorded place, or be named with its reason in research_moved.txt. It also checks the worked
 examples: every one a listed run showed is on the list of example scenes, and every listed one loads; and it
 counts the listed scenes once each (distinct_scenes), and checks that no two of them, nor two worked examples, are
-one scene by content. Exit code 1 when the gate fails, score_pose and rescore disagree, a worked example shown has
+one scene by content. Exit code 1 when the check fails, score_pose and rescore disagree, a worked example shown has
 no development truth, or two listed scenes are one by content:
 
     PYTHONPATH=src python results/still-scenes/analysis-scripts/harness/research_harness.py [--stage S] [--arm A] [--model M]
@@ -190,7 +190,7 @@ class Whitelist:
 
 
 def describe(name: str) -> tuple[str, str, str, str]:
-    """(stage, arm, model, method) of a run's name without its time. s8 and s10 ran on the placeholder scenes; an
+    """(stage, arm, model, method) of a run's name without its time. s8 and s10 ran on the generated test scenes; an
     s17 name's seedN is the arm dev_seedN. Which stages are taken is the list's to say, not this function's."""
     stage, _, rest = guard(name).partition("_")
     if not STAGE.fullmatch(stage) or rest.count("_") < 1:
@@ -317,7 +317,7 @@ class SceneRef:
 
 def distinct_scenes(*, wl: Whitelist | None = None) -> list[SceneRef]:
     """Each listed evaluation scene once, however many listings lead to it: keyed by its folder with every link
-    resolved, so the 14 links of data/dev_scenes/placeholder_first14 and the 14 placeholder scenes they lead to are 14 scenes,
+    resolved, so the 14 links of data/dev_scenes/placeholder_first14 and the 14 generated test scenes they lead to are 14 scenes,
     not 28. A scene-level pass over the list (a re-run of a method on the development scenes) takes these. Each
     run of `runs` loads the scene with scene(run, scene_id); listings of one scene by different names are refused.
     Sorted by the listing each is known by. Paths only: nothing is opened (fingerprint() compares contents)."""
@@ -782,7 +782,7 @@ def main(argv=None) -> int:
     for option in ("--stage", "--arm", "--model", "--method"):
         parser.add_argument(option)
     parser.add_argument("--no-rescore", action="store_true", help="score nothing again")
-    parser.add_argument("--no-resolve", action="store_true", help="solve nothing again (no reproduction gate)")
+    parser.add_argument("--no-resolve", action="store_true", help="solve nothing again (no reproduction check)")
     parser.add_argument("--moved", type=Path, default=MOVED_FILE, help="the places known to move, with reasons")
     args = parser.parse_args(argv)
     started = time.monotonic()
@@ -860,7 +860,7 @@ def main(argv=None) -> int:
         for line in disagree:
             print(f"  {line}")
     if not args.no_resolve:
-        print(f"reproduction gate: {'PASS' if not unnamed else 'FAIL'}: {totals['same']} of {totals['solver']} solver "
+        print(f"reproduction check: {'PASS' if not unnamed else 'FAIL'}: {totals['same']} of {totals['solver']} solver "
               f"places given again by the solver of {Path(sys.modules['sgi'].__file__).resolve().parents[1]}; "
               f"{totals['moved']} moved, {totals['moved'] - len(unnamed)} of them named in {args.moved.name}")
         for line in moved:

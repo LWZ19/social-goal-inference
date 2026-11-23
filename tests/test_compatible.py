@@ -428,7 +428,7 @@ def test_make_client_builds_the_back_end_with_the_key_variable_and_the_address_t
     cfg = load_config(overrides=GATEWAYS)
     clients = [factory.make_client(name, cfg) for name in ("soclaas_glm53_max", "other_gateway")]
     assert [(c.entry.model, c.entry.reasoning_effort) for c in clients] == [("x-test-1", "max"), ("m", "low")]
-    assert built == [("value of SOCLAAS_API_KEY", "https://soclaas-api.comp.nus.edu.sg/v1"), ("value of OTHER_API_KEY", BASE)]
+    assert built == [("value of SOCLAAS_API_KEY", "https://gateway.example/v1"), ("value of OTHER_API_KEY", BASE)]
 
 def test_a_missing_key_names_the_file_and_the_variable_of_the_entry(tmp_path, monkeypatch):
     cfg = load_config(overrides=GATEWAYS)
@@ -445,7 +445,7 @@ def test_a_missing_key_names_the_file_and_the_variable_of_the_entry(tmp_path, mo
 
 MISMATCH = ("Structured output processing only supports one backend per engine. The engine is already using "
             "'guidance', but this request resolved to 'xgrammar'. Configure `structured_outputs_config.backend` "
-            "explicitly or use schemas supported by the initialized backend.")     # what the school gateway said
+            "explicitly or use schemas supported by the initialized backend.")     # what a gateway said
 
 
 def in_turn(*replies):

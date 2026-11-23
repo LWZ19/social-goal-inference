@@ -1,5 +1,5 @@
 """Finding the target: share of records with score.target_correct, per model, on the main
-still-scene comparison (development scenes, final wording: Qwen s21, the other five s23; real, staffed and plain;
+still-scene comparison (development scenes, current prompts: Qwen s21, the other five s23; real, staffed and plain;
 252 records per method) and on the fresh scenes (s27, 280 records per method), split by request type (grounded,
 high-level) and by situation. Zero model calls; reads stored runs only.
 

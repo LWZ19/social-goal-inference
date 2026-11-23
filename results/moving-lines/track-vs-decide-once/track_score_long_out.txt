@@ -1,0 +1,8 @@
+# The moving headline, seeds 10-14, 240 s episodes (SECONDARY, cache-only)
+
+| model | R1 / CT / CT2 strict | R1 / CT / CT2 primary | first answer median s, C / R | C episodes with no answer in time (or an error) | CT2 vs R1 strict W/L/T, p | CT vs R1 strict W/L/T, p | CT2 vs R1 primary W/L/T, p |
+|---|---|---|---|---|---|---|---|
+| Qwen 3.8 | not run | | | | | | |
+| GLM-5.3 | not run | | | | | | |
+
+(no model has run)

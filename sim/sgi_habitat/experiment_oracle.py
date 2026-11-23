@@ -15,9 +15,9 @@
   before the first tracked person within 0.6 m of the ray, whichever is farther from the target, facing it.
 - CTd: CT2 on people tracked from the robot's own camera instead of the sim's true positions:
   every 0.5 s from the request, and on the request frame itself, the frame goes to the tracker service
-  (tracker_service.py in results/moving-lines/design-and-scoring/, $SGI_TRACKER_URL, default
+  (a separate service at $SGI_TRACKER_URL, default
   http://127.0.0.1:8897), whose tracks the re-solves use.
-- CT2-nora: CT2 without readmit (an ablation added later); CT2-norv: without readmit and without the
+- CT2-nora: CT2 without readmit; CT2-norv: without readmit and without the
   vacated place; CT2-none: every CT2 part off through the CT2 code path, no ratchet or
   stood-on replace (a sanity arm that should reproduce CT).
 - CTe: CTd whose first answer uses the request frame's detected people (the tracker's live tracks) instead of the
@@ -112,7 +112,7 @@ class _Inject:
                 if arm in ("CT3", "CT3-j", "CT3b", "CT3p", "CT3F", "CT3FT", "CT3Ff", "CT3FL"):
                     payload["variant"] = {**payload["variant"], "co_motion_s": _CO_MOTION_S,
                                           "co_motion_follow": arm != "CT3-j"}
-                if arm == "CT3b":                           # added later: stale follow checks cancelled on re-admission
+                if arm == "CT3b":                           # stale follow checks cancelled on re-admission
                     payload["variant"]["co_motion_rejoin"] = True
                 if arm in ("CT3F", "CT3FT", "CT3Ff", "CT3FL"):  # the group test and the gated anchor
                     payload["variant"] = {**payload["variant"], "group_follow": True, "anchor_rederive": True}

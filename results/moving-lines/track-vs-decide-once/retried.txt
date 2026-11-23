@@ -1,0 +1,3 @@
+# arms whose first answer met an HTTP 429: <run dir> <scenario> <seed> <arm>
+soclaas_glm53 cafe_slots 13 R1
+soclaas_glm53 cafe_line2_moving 11 R1

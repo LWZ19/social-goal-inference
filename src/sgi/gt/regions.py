@@ -13,15 +13,15 @@ from sgi.scene import ForbiddenRegion, Heading, Person, Region, Target
 # The first two say how near a person the robot may stand and how far off. They are the distances of "Where
 # Should I Join? Robot Group Joining via Language-Guided Goal Prediction" (arXiv
 # 2609.28467, September 2026), which counts a pose as valid 0.5 to 1.2 m from the relevant member: the last
-# member of a queue, any member of a conversation. Adopted on 9 October 2026.
+# member of a queue, any member of a conversation.
 _JOIN_NEAR_M = 0.5
 _JOIN_FAR_M = 1.2
 _NO_ONE_NEAR_M = 0.6                # a place or an object with nobody at it: this project's own numbers
 _NO_ONE_FAR_M = 1.6
 _NO_ONE_WIDTH_M = 1.2
 _LINE_CORRIDOR_WIDTH_M = 1.2
-# The rules for people who attend to something together and for a picture being taken are this project's own
-# first definitions, written on 10 October 2026. They are built on the two distances of the paper above: the
+# The rules for people who attend to something together and for a picture being taken are this project's own.
+# They are built on the two distances of the paper above: the
 # robot joins people at arm's length or a little more from the nearest of them. The three numbers below are
 # theirs alone.
 _VIEW_CLEAR_M = 0.3                 # how far the robot's centre keeps outside the space between people and what they

@@ -1,9 +1,9 @@
-Layout-level exact sign-flip tests, still scenes (layout_tests.py; no model call; definitions in README.md).
+Layout-level exact sign-flip tests, still scenes (layout_tests.py; no model call; definitions in its docstring).
 Methods: R = marked point (cot runs), E = R with worked examples (fsc runs), C = constraint method (con runs).
 Each method: 3 variants (real, staffed, plain) x 14 layouts x 2 episodes x 3 trials = 252 records.
 
 ======================================================================================================================
-ITEM 1a. Development still scenes, NEW wording (Qwen 3.8 low s21; the other five s23)
+1a. Development still scenes, NEW wording (Qwen 3.8 low s21; the other five s23)
 ======================================================================================================================
 Successes of 252 per method (R / E / C) and layout-level tests; A-B rows give A, B totals, layouts A>B / A<B / tied (W/L/T), net = A-B summed, exact two-sided sign-flip p, smallest p attainable with k non-zero layouts.
   model                        R/E/C  cmp     A    B     W/L/T   net  p two-sided   = hits/2^k      min p
@@ -73,7 +73,7 @@ Runs read (results.jsonl, 84 records each, none skipped)
   Gemini 3.8 low         C: 20261017-125226_s23_real_gemini38_low_con, 20261017-125459_s23_staffed_gemini38_low_con, 20261017-125351_s23_plain_gemini38_low_con
 
 ======================================================================================================================
-ITEM 1b. Development still scenes, OLD wording (Qwen, GLM: R and E s16b, C s19; DeepSeek: R, E, C s20)
+1b. Development still scenes, OLD wording (Qwen, GLM: R and E s16b, C s19; DeepSeek: R, E, C s20)
 ======================================================================================================================
 Successes of 252 per method (R / E / C) and layout-level tests; A-B rows give A, B totals, layouts A>B / A<B / tied (W/L/T), net = A-B summed, exact two-sided sign-flip p, smallest p attainable with k non-zero layouts.
   model                        R/E/C  cmp     A    B     W/L/T   net  p two-sided   = hits/2^k      min p
@@ -113,7 +113,7 @@ Runs read (results.jsonl, 84 records each, none skipped)
   DeepSeek V4.1          C: 20261013-191337_s20_real_dsv41_con, 20261013-191345_s20_staffed_dsv41_con, 20261013-191402_s20_plain_dsv41_con
 
 ======================================================================================================================
-ITEM 2. Seven older models, E3 (s24 runs, descriptive; same scenes and protocol as s23)
+2. Seven older models (s24 runs, descriptive; same scenes and method as s23)
 ======================================================================================================================
 Successes of 252 per method (R / E / C) and layout-level tests; A-B rows give A, B totals, layouts A>B / A<B / tied (W/L/T), net = A-B summed, exact two-sided sign-flip p, smallest p attainable with k non-zero layouts.
   model                        R/E/C  cmp     A    B     W/L/T   net  p two-sided   = hits/2^k      min p
@@ -195,16 +195,16 @@ Runs read (results.jsonl, 84 records each, none skipped)
 ======================================================================================================================
 CHECKS
 ======================================================================================================================
-Totals R/E/C against the earlier report (EVIDENCE_AUDIT.md A1, A2; docs/results/README.md):
-  new Qwen 3.8 low     got (179, 196, 228) report (179, 196, 228)  OK
-  new GLM-5.3          got (132, 123, 170) report (132, 123, 170)  OK
-  new DeepSeek V4.1    got (120, 126, 185) report (120, 126, 185)  OK
-  new Haiku 5.5        got (151, 148, 240) report (151, 148, 240)  OK
-  new Sonnet 5.5 low   got (178, 178, 242) report (178, 178, 242)  OK
-  new Gemini 3.8 low   got (164, 173, 214) report (164, 173, 214)  OK
-  old Qwen 3.8 low     got (175, 214, 234) report (175, 214, 234)  OK
-  old GLM-5.3          got (129, 145, 186) report (129, 145, 186)  OK
-  old DeepSeek V4.1    got (113, 120, 182) report (113, 120, 182)  OK
+Totals R/E/C against the earlier statistics (new = current prompts, old = earlier prompts):
+  new Qwen 3.8 low     got (179, 196, 228) earlier (179, 196, 228)  OK
+  new GLM-5.3          got (132, 123, 170) earlier (132, 123, 170)  OK
+  new DeepSeek V4.1    got (120, 126, 185) earlier (120, 126, 185)  OK
+  new Haiku 5.5        got (151, 148, 240) earlier (151, 148, 240)  OK
+  new Sonnet 5.5 low   got (178, 178, 242) earlier (178, 178, 242)  OK
+  new Gemini 3.8 low   got (164, 173, 214) earlier (164, 173, 214)  OK
+  old Qwen 3.8 low     got (175, 214, 234) earlier (175, 214, 234)  OK
+  old GLM-5.3          got (129, 145, 186) earlier (129, 145, 186)  OK
+  old DeepSeek V4.1    got (113, 120, 182) earlier (113, 120, 182)  OK
 Totals R/E/C against results/still-scenes/hidden-situations-and-more-models/results_all_out.txt:
   Gemini 3 Flash         got (119, 132, 176) results_all_out (119, 132, 176)  OK
   Gemini 3.1 Flash Lite  got (131, 122, 227) results_all_out (131, 122, 227)  OK

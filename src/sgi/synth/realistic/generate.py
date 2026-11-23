@@ -36,7 +36,7 @@ A scene is made in these steps:
    picture: it must be the depth of step 2, pixel for pixel, or the call has not drawn the scene that was
    judged. Then the observation and the other tour frames with their pictures, and for every tour frame and
    target a depth image of what draws the target, alone, through the frame's camera grown until it holds the
-   target (target_blocks, widened as the placeholder widens). The scene keeps the depth of step 2. The depth
+   target (target_blocks, widened as the generator widens). The scene keeps the depth of step 2. The depth
    that comes with the observation's picture may differ from it at single pixels (_STRAY_SHARE says why).
 6. A target's `tour_frames` are the frames it is visible in, by the placeholder's three rules read off depth:
    the frame shows its anchor, or lettering on it reads, or the frame shows half of it or more.

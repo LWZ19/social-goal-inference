@@ -40,13 +40,13 @@ the answer was asked on, with the people who stood in it then painted out (`sgi.
 first /resolve gives `floor_map`, the robot's navigation map ({"origin": [x, y], "resolution": m, "png": base64,
 non-zero where the robot may stand, rows along y}), which is then kept and used round the robot's current pose.
 The new observation gives the robot's pose. `in_turn` holds when the place is within 0.3 m of the place in turn.
-The first /resolve may give `variant`, options of experiment arm CT2 (`readmit`, `line_span_m`,
-`vacate_after_s`, `path_memory`, and CT3's `co_motion_s`; see `sgi.resolve.Resolver`); the answer then also says whether the pose is the
+The first /resolve may give `variant`, re-solving options (`readmit`, `line_span_m`,
+`vacate_after_s`, `path_memory`, and `co_motion_s`; see `sgi.resolve.Resolver`); the answer then also says whether the pose is the
 vacated place (`vacated`) and the direction the solver was given (`solve_direction`). The experiment options of the
-role belief (`sgi.roles`) are `role_belief` (CT4), `static_win_s` and `role_decision` (CT5), and `role_direction`
-(CT4P: "path" lines up along the remembered line at the back of the roster; the answer says which in
+role belief (`sgi.roles`) are `role_belief`, `static_win_s` and `role_decision`, and `role_direction`
+("path" lines up along the remembered line at the back of the roster; the answer says which in
 `direction_source`).
-With `"settle": true` (experiment arm CTs), a /resolve made while a tracked person near the waiting people has moved
+With `"settle": true`, a /resolve made while a tracked person near the waiting people has moved
 more than 0.1 m in the last second returns the last solve again with status `held` (`Resolver.settled`).
 For experiment ceilings only, the first /resolve may give `oracle`: {"come_after": [track ids]} replaces the answer's
 people and constraints with the tracks and one `come_after` of those ids; {"target_xy": [x, y]} moves the target
@@ -287,15 +287,15 @@ def _tracks(body: dict, key: str) -> list[Track]:
 
 _IN_TURN_M = 0.3                                   # a place this near the place in turn is it
 _HOLD_BACK_M = 0.05                                # hold_place: a place farther back down the line than this is not taken
-_VARIANT_OPTIONS = {"readmit", "line_span_m", "vacate_after_s", "vacate_rejoined", "path_memory",  # CT2
-                    "co_motion_s", "co_motion_follow", "co_motion_rejoin",                            # and CT3
-                    "group_follow", "anchor_rederive",                       # CT3F
-                    "hold_place",                                            # and CT3FL: the place held in line
-                    "role_belief",                                           # and CT4, one estimate of who waits
-                    "static_win_s", "role_decision",                         # and CT5: its window, a cost decision
-                    "role_direction", "role_joined",                 # and CT4P, CT4PJ: direction, joined rule
+_VARIANT_OPTIONS = {"readmit", "line_span_m", "vacate_after_s", "vacate_rejoined", "path_memory",  # re-admit, vacate, path
+                    "co_motion_s", "co_motion_follow", "co_motion_rejoin",                            # co-motion checks
+                    "group_follow", "anchor_rederive",                       # group follow, anchor re-derivation
+                    "hold_place",                                            # the place held in line
+                    "role_belief",                                           # one estimate of who waits
+                    "static_win_s", "role_decision",                         # its window, a cost decision
+                    "role_direction", "role_joined",                 # direction, joined rule
                     "oracle_roster"}                                 # and a ceiling: the roster from ground truth
-_ROLE_PATH = {"path_memory": True, "line_span_m": 0.5}     # the remembered line, as re-solving v2 (CT2) builds it
+_ROLE_PATH = {"path_memory": True, "line_span_m": 0.5}     # the remembered line, as the re-admit and path options build it
 
 
 def _floor_map(body: dict) -> FloorMap | None:
@@ -369,18 +369,18 @@ def resolve(pipeline: Pipeline, sessions: Sessions, body: dict) -> dict:
             raise RequestError("'role_joined' needs 'role_direction' \"path\"")
         item["resolver"] = Resolver(people, constraints, item["target"].world[:2], at_answer, **variant)
         item["belief"] = None
-        if role_belief:                             # experiment arm CT4: who waits from one estimate (sgi.roles)
+        if role_belief:                             # who waits from one estimate (sgi.roles)
             history = body.get("history") or []
             start = history[0].get("robot") if history and history[0].get("robot") else (observation.robot.x,
                                                                                          observation.robot.y)
             item["belief"] = RoleBelief(people, constraints, item["target"].world[:2], at_answer, start,
                                         {"STATIC_WIN_S": static_win_s} if static_win_s else None)
             item["belief_t"] = None
-            item["role_decision"], item["choice"] = role_decision, UNSET     # experiment arm CT5
-            # experiment arm CT4P: a second resolver, for the remembered line's geometry only
+            item["role_decision"], item["choice"] = role_decision, UNSET     # the cost decision
+            # a second resolver, for the remembered line's geometry only
             item["path"] = (Resolver(people, constraints, item["target"].world[:2], at_answer, **_ROLE_PATH)
                             if role_direction == "path" else None)
-            item["role_joined"] = role_joined           # experiment arm CT4PJ: the path's join test and "behind"
+            item["role_joined"] = role_joined           # the path's join test and "behind"
             item["oracle_roster"] = oracle_roster       # a ceiling: every /resolve gives the roster (`oracle_ahead`)
             if oracle_roster:
                 item["oracle"].append("roster")
@@ -403,7 +403,7 @@ def resolve(pipeline: Pipeline, sessions: Sessions, body: dict) -> dict:
     if item.get("belief") is not None:
         return _resolve_with_belief(pipeline, item, observation, tracks, t, started)
     people, constraints = resolver.inputs(tracks, (observation.robot.x, observation.robot.y), t)
-    if body.get("settle"):                          # experiment arm CTs: solve only on settled tracks
+    if body.get("settle"):                          # solve only on settled tracks
         still = resolver.settled(tracks, t)
         if not still and item.get("last") is not None:
             return {**item["last"], "status": "held", "timings_s": {"resolve": time.perf_counter() - started}}
@@ -415,7 +415,7 @@ def resolve(pipeline: Pipeline, sessions: Sessions, body: dict) -> dict:
                         "in_turn": True, "vacated": True, "joined": resolver.joined,
                         "dropped": sorted(resolver.dropped), "people": len(people)}
         return {**item["last"], "timings_s": {"resolve": time.perf_counter() - started}}
-    exempt = resolver.exempt()                      # CT3: whoever has not moved as a joiner would
+    exempt = resolver.exempt()                      # whoever has not moved as a joiner would
     if item["floor_map"] is not None:
         solved = solve(observation, item["target"], people, constraints, item["standard"], th,
                        line_direction=resolver.solve_direction, floor_map=item["floor_map"], exempt=exempt)
@@ -439,7 +439,7 @@ def resolve(pipeline: Pipeline, sessions: Sessions, body: dict) -> dict:
                     "floor": "map" if item["floor_map"] is not None else "first view", "oracle": item["oracle"],
                     "match_rate": resolver.match_rate, "people": len(people),
                     # for the run logs, by track id: who the solver took as last and as joining, who was exempt,
-                    # and who was taken as not following the line (CT3), with when
+                    # and who was taken as not following the line, with when
                     "last": None if solved.turn_last is None else resolver.track_of(solved.turn_last),
                     "turn_joined": [resolver.track_of(n) for n in solved.note.joined_waiting],
                     "exempt": sorted(resolver.track_of(n) for n in exempt),
@@ -460,12 +460,12 @@ def _belief_step(item: dict, t: float, tracks: Sequence[Track]) -> None:
 
 def _resolve_with_belief(pipeline: Pipeline, item: dict, observation: ObservationData, tracks: Sequence[Track],
                          t: float, started: float) -> dict:
-    """Experiment arm CT4: the roles from the role belief (`sgi.roles`), the place from the solver. The resolver only
+    """The roles from the role belief (`sgi.roles`), the place from the solver. The resolver only
     numbers the tracks and carries the answer's other constraints; the come_after is the belief's roster, everyone
     else is exempt from the place-in-turn rule, and the line runs along the belief's direction. With
-    `role_direction` "path" (experiment arm CT4P) it runs along the remembered line at the back of the roster
+    `role_direction` "path" it runs along the remembered line at the back of the roster
     instead, as `path_memory` points the solver, and along the belief's direction when there is no such line. With
-    `role_joined` (experiment arm CT4PJ) the remembered line also keeps the Resolver's join test, and once the robot
+    `role_joined` the remembered line also keeps the Resolver's join test, and once the robot
     has joined, the people farther back than it are left out of the solve, as the Resolver leaves them out."""
     resolver, belief = item["resolver"], item["belief"]
     _belief_step(item, t, tracks)
@@ -483,7 +483,7 @@ def _resolve_with_belief(pipeline: Pipeline, item: dict, observation: Observatio
             gone = {resolver._number_of[i] for i in behind if i in resolver._number_of}
             people, ahead = [p for p in people if p.number not in gone], [i for i in roster if i not in behind]
     chosen, decision = ahead, {}
-    if item.get("role_decision"):                   # experiment arm CT5: whom to come after, by expected cost
+    if item.get("role_decision"):                   # whom to come after, by expected cost
         choice, costs = decide(belief, {tr.id for tr in tracks}, item["choice"])
         item["choice"] = choice
         chosen = [] if choice is None else sorted(
