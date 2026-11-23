@@ -193,7 +193,7 @@ Two commands list what there is to choose from.
 | Provider | `provider` | Entries | Key in `.env` | State |
 |---|---|---|---|---|
 | Gemini | `gemini` | `gemini_fast`, `gemini_strong`, `gemini_pointing`; older models for comparison: `gemini3_flash`, `gemini31_flash_lite`, `gemini35_flash_lite`, `gemini36_flash` | `GEMINI_API_KEY` | Used in live calls and full runs (`gemini_fast`). |
-| SoCLaaS | `openai_compatible` | the seventeen `soclaas_*` entries | `SOCLAAS_API_KEY` | An OpenAI-compatible gateway to open-weight models. Set `base_url` in `configs/default.yaml` to your gateway. Used in full runs. The prices are in the model table. |
+| SoCLaaS | `openai_compatible` | the seventeen `soclaas_*` entries | `SOCLAAS_API_KEY` | A university gateway to open-weight models, in the OpenAI format. It needs a university key. Used in full runs. The prices are in the model table. |
 | OpenAI | `openai` | `openai_fast`, `openai_strong` | `OPENAI_API_KEY` | Implemented and tested offline. Not used for the reported results. |
 | Claude | `anthropic` | `claude_opus55`, `claude_opus55_low`, `claude_sonnet55`, `claude_sonnet55_low`, `claude_haiku55`, `claude_haiku55_low`; older models for comparison: `claude_haiku45`, `claude_sonnet46_low`, `claude_sonnet5_low` | `ANTHROPIC_API_KEY` | Anthropic's own API, used for live runs. The three older models are paced at 25 requests a minute. The prices are in the model table. |
 | Mock | `mock` | `mock` | none | Answers the image centre. For plumbing runs and tests. |

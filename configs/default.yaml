@@ -15,7 +15,7 @@ models:
   openai_fast:     {provider: openai, model: gpt-6-luna, reasoning_effort: low, point_format: xy_1000}
   openai_strong:   {provider: openai, model: gpt-6.1-sol, reasoning_effort: low, point_format: xy_1000}
   # SoCLaaS, a gateway to open-weight models, in the OpenAI chat-completions format: one entry per
-  # vision model and thinking level worth comparing. Set base_url to your OpenAI-compatible gateway.
+  # vision model and thinking level worth comparing.
   # The ids qwen3.6:27b and ornith1.0:35b have no entry: the gateway's model list marks them as aliases of
   # qwen3.8:27b and of ornith1.5:35b.
   # reasoning_effort is always sent: left out, it means maximum thinking on some models and none on others.
@@ -32,7 +32,7 @@ models:
   # max_requests_per_minute: the pace for this service. Everything that uses the key shares
   # that, and runs started side by side each pace themselves: run them one after another, or lower the number.
   # price_*_per_mtok: US dollars per million tokens, from the gateway's model list; thinking is billed as output.
-  soclaas_qwen38:        {<<: &soclaas {provider: openai_compatible, base_url: "https://gateway.example/v1",
+  soclaas_qwen38:        {<<: &soclaas {provider: openai_compatible, base_url: "https://soclaas-api.comp.nus.edu.sg/v1",
                                         api_key_env: SOCLAAS_API_KEY, point_format: xy_1000, structured_output: json_schema,
                                         max_requests_per_minute: 80},
                           model: "qwen3.8:27b", reasoning_effort: "none",
