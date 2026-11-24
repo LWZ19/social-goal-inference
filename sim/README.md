@@ -1,10 +1,10 @@
 # Social goal inference in simulation
 
-A Boston Dynamics Spot robot moves through scenes with people in them, in [Habitat 3.0](https://github.com/facebookresearch/habitat-lab). You give it a request such as *"Get me a coffee"*. The robot's camera view goes to the social goal inference pipeline of this repository, and the pipeline decides where a considerate person would stop. Spot then walks there, around the people in its way.
+A Boston Dynamics Spot robot moves through scenes with people in them, in [Habitat 3.0](https://github.com/facebookresearch/habitat-lab). You give it a request such as *"Get me a coffee"*. The social goal inference pipeline of this repository takes the robot's camera view and decides where a considerate person would stop. Spot then walks there, around the people in its way.
 
 ![The simulator window](images/window.jpg)
 
-*The window. On the left, a camera follows Spot. Next are Spot's own RGB and depth, which are what the pipeline sees. Then comes a map with the people (red for queueing, green for walking, purple for standing still, such as a barista or performers) and Spot (blue) with its path and goal. Below them is what the pipeline made of the last request. It shows the image with the target, the numbered people it found and the goal, and beside it the reasoning of each step.*
+*The window. On the left, a camera follows Spot. Next are Spot's own RGB and depth, which are what the pipeline sees. Then comes a map with the people (red for queueing, green for walking, purple for standing still, such as a barista or performers) and Spot (blue) with its path and goal. Below them is the pipeline's output for the last request. It shows the image with the target, the numbered people it found and the goal, and beside it the reasoning of each step.*
 
 ## Quick start
 
@@ -19,7 +19,7 @@ cd social-goal-inference
 
 ### Step 2: download the required models
 
-Three scenes use 3D models by other people. They are free on Sketchfab (CC BY 4.0), but each needs a free Sketchfab login to download, so they are not in this repository. Open each link, press **Download 3D Model**, choose the format given, and save the `.zip` into `~/Downloads` without renaming it:
+Three scenes use 3D models made by others. They are free on Sketchfab (CC BY 4.0), but each download needs a free Sketchfab login, so the models are not in this repository. Open each link, press **Download 3D Model**, choose the format given, and save the `.zip` into `~/Downloads` without renaming it:
 
 | Model | Format to choose | Saved as | Used by |
 |---|---|---|---|
@@ -43,7 +43,7 @@ This one command:
 4. creates the scenes from your downloads, unpacking and painting the Sweet Spot café, converting the concert stage and putting its textures on, and bringing in the barricade,
 5. makes an empty `.env` for your model key.
 
-It takes about ten minutes the first time. Everything it makes goes under `data/`, which git ignores (see [What is in git](#what-is-in-git)). It lists any download it did not find, with its link. Run it again whenever you like, for example after adding a download. It skips what is already done.
+It takes about ten minutes the first time. Everything it makes goes under `data/`, which git ignores (see [What is in git](#what-is-in-git)). It lists any download it did not find, with its link. You can run it again at any time, for example after adding a download, and it skips what is already done.
 
 ### Step 4: add a model key
 
@@ -89,9 +89,9 @@ What happens for one request:
 
 1. **The simulator runs the scene.** Habitat-Sim renders the room, Habitat 3.0's humanoids walk, queue or stand, and Spot stands still. The scene runs in real time.
 2. **You type a request,** such as "Get me a coffee". The simulator takes Spot's camera image, its depth image, the camera's pose and Spot's pose at that moment, and sends them with the request to the pipeline (`POST /goal`). The people keep moving while it waits.
-3. **The pipeline decides the goal.** This is the social goal inference method in `src/sgi`. It asks a vision-language model through its API (Claude, Gemini, OpenAI or SoCLaaS, with the key in `.env`) to plan the request and find the target, to judge whether the people there matter, to find and number the people, and to state constraints such as "come after persons 1 and 2". A geometric solver then turns the constraints into a goal pose. That is about four model calls, 5 to 15 seconds with Claude Haiku. Answers are cached, so the same image and request asked again cost nothing.
+3. **The pipeline decides the goal.** This is the social goal inference method in `src/sgi`. It calls a vision-language model through its API (Claude, Gemini, OpenAI or SoCLaaS, with the key in `.env`). The model plans the request and finds the target, judges whether the people there matter, finds and numbers the people, and states constraints such as "come after persons 1 and 2". A geometric solver then turns the constraints into a goal pose. This takes about four model calls, 5 to 15 seconds with Claude Haiku. Answers are cached, so the same request on the same image costs nothing the second time.
 4. **The answer comes back.** It holds the goal pose and everything each step found (the plan, the people, the constraints, the reasoning), which the window draws.
-5. **Spot walks there.** It plans a path on its own navmesh, kept clear of furniture, and plans it again twice a second round the people near it. It never calls the model while it walks, unless it is asked to check the goal again every few seconds (`--requery`).
+5. **Spot walks there.** It plans a path on its own navmesh, kept clear of furniture, and plans it again twice a second round the people near it. It calls the model again while it walks only with `--requery`, which checks the goal every few seconds.
 
 The model sees only what Spot's camera sees. It gets no map and no positions from the simulator, so where Spot stops follows from that one image.
 
@@ -113,7 +113,7 @@ People are animated Habitat 3.0 humanoids that walk, queue, stand still or wait 
 
 ## The cases
 
-Two kinds of place, asked about in one sentence each:
+There are two kinds of place, each with one request:
 
 - **Café: "Get me a coffee".** In each café, the line at the counter is empty, two people long or six people long. Spot starts in the same place in all three, where it sees the counter and everyone in the line, and two people walk about in the background. The right place is the counter itself when nobody waits, and the end of the line otherwise.
 - **Concert: "Where should I go to get a good close-up view of the concert?"** The front of the barricades is either packed (a full front row and a second row behind it) or sparse (a few people scattered). The right place is behind the crowd when it is packed, and a free stretch of barricade when it is not.
@@ -160,20 +160,20 @@ Each picture below shows, from left to right, the image the model was given with
 **Sparse front.** The model names "the metal barrier fence in front of the stage" and sends Spot to an empty stretch of it, between people already there.
 ![](images/case_concert_sparse.jpg)
 
-**Crowded front.** The model sees "a dense row of spectators" and keeps Spot behind them, rather than pushing in. It stays well back, though.
+**Crowded front.** The model sees "a dense row of spectators" and keeps Spot behind them. Spot stops well back from the crowd.
 ![](images/case_concert_crowded.jpg)
 
 ## Moving among people
 
-In this demo the goal is decided once, from one view. Spot plans its own way there and plans it again twice a second round the people near it. So it walks round a line or someone passing instead of stopping for them. It keeps clear of furniture by a margin. The pipeline can also be asked again every few seconds while Spot walks (`--requery`), for when the people have moved since it last looked.
+In this demo the goal is decided once, from one view. Spot plans its own way there and plans it again twice a second round the people near it. So it walks round a line or someone passing instead of stopping for them. It keeps a margin from furniture. With `--requery`, the pipeline is asked again every few seconds while Spot walks, in case the people have moved since the request.
 
 ![Spot planning round the end of a moving line](images/local_planner.jpg)
 
-The moving-line experiments go further. The robot asks the VLM once, tracks the people it named, and solves for its spot again every half second with no new VLM call (`POST /resolve`, `src/sgi/resolve.py`). They run through `sgi_habitat.experiment` and `sgi_habitat.experiment_oracle`, launched by `results/moving-lines/design-and-scoring/run_moving.py`, and are scored as in [`SCORING_STRICT.md`](../results/moving-lines/design-and-scoring/SCORING_STRICT.md).
+In the moving-line experiments, the robot asks the VLM once, tracks the people it named, and solves for its spot again every half second with no new VLM call (`POST /resolve`, `src/sgi/resolve.py`). They run through `sgi_habitat.experiment` and `sgi_habitat.experiment_oracle`, launched by `results/moving-lines/design-and-scoring/run_moving.py`, and are scored as in [`SCORING_STRICT.md`](../results/moving-lines/design-and-scoring/SCORING_STRICT.md).
 
 ## Each step by hand
 
-`sim/setup.sh` (Quick start, step 3) does all of this for you. These are the commands it runs, one by one, for anyone who wants to run or change a step by hand. Everything runs from the repository root, on Linux with an NVIDIA GPU (tested on an 8 GB GPU). Downloads go under `data/`, which git ignores.
+`sim/setup.sh` (Quick start, step 3) does all of this for you. These are the commands it runs, one by one, for running or changing a step by hand. Everything runs from the repository root, on Linux with an NVIDIA GPU (tested on an 8 GB GPU). Downloads go under `data/`, which git ignores.
 
 ### 1. Environments
 
@@ -202,7 +202,7 @@ The cases above used `claude_haiku55` (Anthropic). `gemini_fast`, `openai_fast` 
 
 ### 4. The scenes
 
-Run these in `conda activate sgi-habitat`. The simple café, the room and the coffee cart are built from nothing:
+Run these in the `sgi-habitat` environment. The simple café, the room and the coffee cart need no manual download:
 
 ```bash
 python -m sgi_habitat.make_cafe                                        # data/habitat/stages/cafe.glb
@@ -247,7 +247,7 @@ One script starts the pipeline (env `sgi`) and the simulator (env `sgi-habitat`)
 sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/sweet_spot_line2.yaml
 ```
 
-Type a request in the terminal and press Enter. In the window, a click on the map or on Spot's view sends Spot there directly. `i` shows or hides the reasoning, `c` cancels the goal, `p` pauses and `q` quits. Every request leaves the image sent, the answer and the reasoning under `runs/habitat/`.
+Type a request in the terminal and press Enter. In the window, a click on the map or on Spot's view sends Spot there directly. `i` shows or hides the reasoning, `c` cancels the goal, `p` pauses and `q` quits. Every request saves the image sent, the answer and the reasoning under `runs/habitat/`.
 
 ### 6. The eight cases and their videos
 
@@ -262,13 +262,13 @@ for sc in cafe_line0 cafe_line2 cafe_line6 sweet_spot_line0 sweet_spot_line2 swe
 done
 ```
 
-Each run prints where Spot stopped against the true scene ("1.06 m behind the last of 2, 0.03 m off the line"), which is where the table above comes from. A model does not answer the same way every time, so a fresh run can differ from the one shown here.
+Each run prints where Spot stopped, measured against the true scene ("1.06 m behind the last of 2, 0.03 m off the line"). The table above comes from these lines. Model answers vary from run to run, so a new run can differ from the one shown here.
 
-[`docs/habitat.md`](../docs/habitat.md) covers the rest, with every option, the scenario format, the planner, the frames and the known limits.
+[`docs/habitat.md`](../docs/habitat.md) gives every option, the scenario format, the planner, the frames and the known limits.
 
 ## What is in git
 
-Only code, scenario files, docs and the pictures and videos of this page, about 5.5 MB. Everything else is made on each machine by `sim/setup.sh` and is ignored by `.gitignore`:
+Git holds only code, scenario files, docs, and the pictures and videos of this page, about 5.5 MB. `sim/setup.sh` makes everything else on each machine, and `.gitignore` excludes it:
 
 | Not in git | About | What it is |
 |---|---|---|

@@ -1,6 +1,6 @@
 # The pipeline in Habitat, among moving people
 
-This page shows the pipeline driving a robot. The robot is Boston Dynamics' Spot, in a Habitat 3.0 flat where five people walk about and queue at the kitchen counter. Type a request such as "get me a cup from the kitchen counter". The robot's current RGB-D view goes to the pipeline with it. The people keep moving while the models answer, and Spot then walks to the goal pose that comes back.
+The pipeline drives a Boston Dynamics Spot robot in a Habitat 3.0 flat, where five people walk about and queue at the kitchen counter. You type a request such as "get me a cup from the kitchen counter", and the robot's current RGB-D view goes to the pipeline with it. The people keep moving while the models answer. Spot then walks to the goal pose that comes back.
 
 The examples on this page come from one or two runs each. In [the results](../results/README.md), the still-scene numbers come from `python -m sgi.run` on scene folders, and the moving-line numbers from `sgi_habitat.experiment`, launched by `results/moving-lines/design-and-scoring/run_moving.py`.
 
@@ -13,7 +13,7 @@ Habitat-Sim is built for Python 3.9 only, and `sgi` needs Python 3.12. So they r
 | `sgi` | 3.12 | `python -m sgi.serve`: the pipeline as a local service | `src/sgi` |
 | `sgi-habitat` | 3.9 | `python -m sgi_habitat.run`: Habitat-Sim 0.3.3, habitat-lab 0.3.3, the people, Spot, the window | `sim/sgi_habitat` |
 
-The service is given what a robot has (the image, the depth, the camera and the robot's pose) and answers with the goal pose. It reads no ground truth and scores nothing.
+The service receives what a robot has (the image, the depth, the camera and the robot's pose) and returns the goal pose. It reads no ground truth and scores nothing.
 
 ## Setup
 
@@ -40,7 +40,7 @@ sim/demo.sh --model soclaas_qwen38_low        # a real model, with the constrain
 sim/demo.sh --model gemini_fast --goal direct_marking -- --record runs/habitat/demo.mp4
 ```
 
-`--model` and `--goal` go to `python -m sgi.serve`. Everything after `--` goes to the simulator. Started by hand, in two terminals, it is:
+`--model` and `--goal` go to `python -m sgi.serve`. Everything after `--` goes to the simulator. To start the two by hand, in two terminals:
 
 ```bash
 conda activate sgi && python -m sgi.serve --model soclaas_qwen38_low
@@ -67,7 +67,7 @@ The same picture and text are saved as `inference.png` and `inference.txt` in th
 
 ### A model key
 
-The `mock` entry needs no key. It answers every question with the centre of the image, so what the row shows is the shape of an answer, not an inference. For a real model, put a key in `.env` at the repository root (`cp .env.example .env` makes the file) and name the model entry:
+The `mock` entry needs no key. It answers every question with the centre of the image, so its row shows only the form of an answer. For a real model, put a key in `.env` at the repository root (`cp .env.example .env` makes the file) and name the model entry:
 
 | Provider | Key in `.env` | How to get it | Entry to try |
 |---|---|---|---|
@@ -87,10 +87,10 @@ A request costs a few model calls, about four under the constraint method (plan,
 
 You can also send Spot somewhere by clicking, with no model involved. It walks there along a shortest path on the navmesh, as it does to a goal from the pipeline, and stops for people in its way.
 
-- **On the map**, Spot goes to the place clicked. Press and drag to choose the heading it ends in. A plain click leaves it facing the way it travelled.
+- **On the map**, Spot goes to the place clicked. Press and drag to choose the heading it ends in. A click without a drag leaves it facing the way it travelled.
 - **On the robot's RGB image**, the depth at that pixel lifts it to a point in the world, and Spot goes there. A point on a person, a counter or a wall sends it to the nearest place it can stand, and the status line says how far off that is.
 
-A click made while the models are still answering wins. The answer, when it comes, is printed but not followed.
+A click made while the models are still answering takes priority. The answer is printed when it arrives, and Spot does not follow it.
 
 The simulator's options:
 
@@ -122,7 +122,7 @@ Six scenarios cover two cafés, each with three lengths of line:
 
 The three of a café differ only in how many people wait. Spot starts from the same place facing the same way. The line stands still (nobody is served), and two people walk about beyond the line, in a `wander_area` that never comes between Spot and the line.
 
-The starts were found by search. Spot was placed in turn on every point of a 0.5 m grid with the six-person line standing, and each place was kept or dropped by what its camera saw. A person counts as seen when the depth image shows them, not something in front of them, at two of three heights (hips, chest, head). In all six scenarios, every person in the line and the counter were seen at every check over 30 s with the walkers moving.
+Spot's start in each café was found by search. With the six-person line standing, Spot was placed on each point of a 0.5 m grid in turn, and each place was kept or dropped by what its camera saw. A person counts as seen when the depth image shows them, and not something in front of them, at two of three heights (hips, chest, head). In all six scenarios, every person in the line and the counter were seen at every check over 30 s with the walkers moving.
 
 ```bash
 sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/sweet_spot_line6.yaml
@@ -139,18 +139,18 @@ The two scenes differ only in the audience behind the barricades:
 - In the crowded one the whole front row is taken and a second row stands behind it (41 people).
 - In the sparse one four people stand scattered along the barricades.
 
-Asked "Take me near the stage, I want to watch the concert", the right place is behind the crowd in the first scene and a free stretch of barricade in the second.
+For the request "Take me near the stage, I want to watch the concert", the right place is behind the crowd in the first scene and a free stretch of barricade in the second.
 
 In one run of each with Claude Haiku, the model told the two apart.
 
 - In the sparse scene it named "the stage front barrier railing" and kept out of the view of the people watching. Spot stopped at the barricade in a gap between two of them.
-- In the crowded scene it found 31 people and stated that the robot comes after them and keeps out of the crowd. Spot stayed where it started, about 6 m behind the back row, rather than closing up behind it.
+- In the crowded scene it found 31 people and stated that the robot comes after them and keeps out of the crowd. Spot stayed where it started, about 6 m behind the back row, and did not close up behind it.
 
-The stage came as an FBX file with separate textures, which nothing in `sgi-habitat` can convert. It was converted with Assimp in a small environment of its own, with `conda env create -f envs/sgi-tools.yml` and then `conda run -n sgi-tools python sim/fbx_to_glb.py IN.fbx OUT.glb`.
+The stage comes as an FBX file with separate textures, which nothing in `sgi-habitat` can convert. Assimp converts it, in a small environment of its own: `conda env create -f envs/sgi-tools.yml`, then `conda run -n sgi-tools python sim/fbx_to_glb.py IN.fbx OUT.glb`.
 
-Its textures were then put on the GLB as one glTF material by `python -m sgi_habitat.texture_model`. They are base colour, metallic-roughness (packed from the roughness and metallic maps), and normal, each at 2048 px. The metallic factor was lowered to 0.35, since without reflections a fully metal surface renders black. The stage's units are centimetres, hence `scale: 0.01`. The barricade came as an OBJ in metres and went in through `import_model`.
+`python -m sgi_habitat.texture_model` then puts its textures on the GLB as one glTF material. The textures are base colour, metallic-roughness (packed from the roughness and metallic maps) and normal, each at 2048 px. The metallic factor is lowered to 0.35, because without reflections a fully metal surface renders black. The stage's units are centimetres, hence `scale: 0.01`. The barricade comes as an OBJ in metres and goes in through `import_model`.
 
-Neither download came with a licence file. Their Sketchfab pages give both as CC BY 4.0:
+Neither download comes with a licence file. Their Sketchfab pages give both as CC BY 4.0:
 
 - The stage is [Simple Concert Stage](https://sketchfab.com/3d-models/simple-concert-stage-d5c7733d06d24947bf60b3a0fe203f69) by gluttonia. Its 6,458 faces match the download. Later re-uploads under the same name have 6,452.
 - The barricade is [barigate 8 met besi hitam](https://sketchfab.com/3d-models/barigate-8-met-besi-hitam-07ba7df39b3a4947bb5f0910b9fbc530) by eventdesignws.
@@ -159,17 +159,17 @@ Neither is in this repository. `sim/setup.sh` builds both from the downloaded `.
 
 ## Moving among moving people
 
-Replanning happens at two levels, at two very different rates.
+Spot replans at two levels, at very different rates.
 
 **The path, twice a second, without the pipeline.** Spot plans on a navmesh of its own, cut back 0.45 m from every wall and piece of furniture (`clearance_m` under `robot:` in a scenario changes it). The people walk on one cut back 0.3 m.
 
-While anyone is within 3 m of Spot or of its path, the rest of the way is planned again every 0.5 s with A* on a 0.1 m grid of that navmesh. Each person is a disc 0.8 m in radius on the grid (their own 0.25 m, the robot's clearance and a margin), and the path is then pulled straight where the grid allows. So Spot goes round a line and round people walking about instead of stopping for them. It still stops for anyone within 0.65 m ahead, and when no way round is open it waits for them to move. On the map, the yellow path shows each new plan.
+While anyone is within 3 m of Spot or of its path, the rest of the way is planned again every 0.5 s with A* on a 0.1 m grid of that navmesh. Each person is a disc 0.8 m in radius on the grid (their own 0.25 m, the robot's clearance and a margin). The path is then pulled straight where the grid allows. So Spot goes round a line and round people walking about instead of stopping for them. It still stops for anyone within 0.65 m ahead, and when no way round is open it waits for them to move. On the map, the yellow path shows each new plan.
 
 In one run across the busy café (`cafe_busy.yaml`), Spot went round the moving line and two walkers without stopping, never left its navmesh, and came no nearer than 0.65 m to a person's centre.
 
-**The goal, every few seconds, through the pipeline.** A goal is inferred once, on the view at the moment of the request, and people move after it. With `--requery S`, the simulator sends the same request again on a fresh view every S seconds while Spot carries it out, and once more after it arrives (twice at most).
+**The goal, every few seconds, through the pipeline.** A goal is inferred once, on the view at the moment of the request, and the people move on after that. With `--requery S`, the simulator sends the same request again on a fresh view every S seconds while Spot carries it out, and once more after it arrives (twice at most).
 
-An answer whose goal moved more than 0.3 m or turned more than 25° replaces the goal. Any other answer, including one with no goal, leaves it as it is. A click stops the asking. Each time costs one pipeline answer, about 4 to 15 s with Claude Haiku, so a few seconds apart is as often as it can usefully go:
+An answer whose goal moved more than 0.3 m or turned more than 25° replaces the goal. Any other answer, including one with no goal, leaves it as it is. A click stops the re-asking. Each re-ask costs one pipeline answer, about 4 to 15 s with Claude Haiku, so a few seconds is the shortest useful interval:
 
 ```bash
 sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/cafe_busy.yaml --requery 6
@@ -184,18 +184,18 @@ Every request gets a folder `runs/habitat/<time>/NNN/` holding:
 - `answer.json`, the service's answer,
 - `view.png`, the follow camera when the answer came.
 
-These are live observations of moving people. No tool here writes ground truth for them, so they do not become scene folders for `python -m sgi.run`.
+These are live observations of moving people. No tool in this repository writes ground truth for them, so they cannot serve as scene folders for `python -m sgi.run`.
 
 ## The service
 
-`python -m sgi.serve` takes `--model`, `--stage-model`, `--strategy` and `--goal` as the other commands do, and `--host` and `--port`. The default goal method is `constraints`. Under `direct_marking`, the goal stage is put on `cot` unless `--strategy` names its strategy, because the service has no example scenes to show. It answers:
+`python -m sgi.serve` takes `--model`, `--stage-model`, `--strategy` and `--goal` as the other commands do, and `--host` and `--port`. The default goal method is `constraints`. Under `direct_marking`, the goal stage uses `cot` unless `--strategy` sets its strategy, because the service has no example scenes to show. It answers these requests:
 
 - `GET /health` returns the goal method and the model entry of each stage.
 - `POST /goal` takes a JSON body with `request`, `context`, `rgb_png` and `depth_npy` (base64 PNG and `.npy`), `camera` (fx, fy, cx, cy, width, height, `T_world_camera`) and `robot` (x, y, yaw). The answer holds `status`, the plan's `subtasks`, the `source` of the goal, `pose_world` and `pose_robot` as [x, y, θ], `target_world`, the `calls` made and `timings_s`. Its docstring, in [`src/sgi/serve.py`](../src/sgi/serve.py), describes each field.
-- `POST /plan` returns the plan alone, so a robot can start towards the target while the rest of the answer is made.
+- `POST /plan` returns the plan alone, so a robot can start towards the target while the rest of the answer is computed.
 - `POST /resolve` solves a stored `/goal` answer again on tracked people and a new observation, with no model call. The moving-line experiments use it.
 
-Any simulator or robot can use it, not only this one.
+Any simulator or robot can use the service.
 
 ## Frames
 
@@ -207,24 +207,24 @@ Positions in a scenario file are in the pipeline's world, so a goal pose from th
 
 ## The scenario file
 
-[`sim/scenarios/apt_0_kitchen.yaml`](../sim/scenarios/apt_0_kitchen.yaml) is commented. It names the scene (a scene of a dataset, or a `.glb` under `stage:`, as in the next section), the robot's start, the robot's camera, the queues and the people.
+[`sim/scenarios/apt_0_kitchen.yaml`](../sim/scenarios/apt_0_kitchen.yaml) is a commented example. It names the scene (a scene of a dataset, or a `.glb` under `stage:`, as in the next section), the robot's start, the robot's camera, the queues and the people.
 
 - `humanoids` and `spot_urdf` default to where the download above puts them.
-- An `avatar` is one of the twelve folders there, `female_0` to `female_3`, `male_0` to `male_3`, and `neutral_0` to `neutral_3`, which are untextured.
+- An `avatar` is one of the twelve folders there: `female_0` to `female_3`, `male_0` to `male_3`, and the untextured `neutral_0` to `neutral_3`.
 - A queue is a list of slots, the first at the counter. Its members stand in the slots in order. The first faces the counter and each other one faces the person ahead. Every `service_s` seconds the person at the front is served, leaves, walks about for 8 to 15 s, and joins the end of the line again.
 - A person with no queue walks to a random place 1.5 to 8 m away, waits 1 to 4 s, and goes on.
 - The robot's camera defaults to 1.2 m up, 0.35 m ahead of Spot's body, pitched 10° down, with a 90° field of view, 640 × 480.
 
 ## Your own scene, from Blender or elsewhere
 
-A scenario can name a `.glb` file under `stage:` in place of `dataset:` and `scene:`. Habitat loads it, the navmesh is computed from its geometry at start-up, and the people and Spot work on it as they do in the flat. A café built this way comes with the repository:
+A scenario can name a `.glb` file under `stage:` in place of `dataset:` and `scene:`. Habitat loads it and computes the navmesh from its geometry at start-up. The people and Spot then work on it as they do in the flat. A café built this way comes with the repository:
 
 ```bash
 conda run -n sgi-habitat python -m sgi_habitat.make_cafe          # writes data/habitat/stages/cafe.glb
 sim/demo.sh -- --scenario sim/scenarios/cafe.yaml
 ```
 
-It is a 10 × 8 m room with a coffee counter, a machine and a menu board along the north wall, four tables with chairs, and three people queueing at the counter while two walk about. Request "Get me a coffee".
+It is a 10 × 8 m room with a coffee counter, a machine and a menu board along the north wall, four tables with chairs, and three people queueing at the counter while two walk about. Try the request "Get me a coffee".
 
 To make a scene in Blender:
 
@@ -233,7 +233,7 @@ To make a scene in Blender:
 3. **Export with File → Export → glTF 2.0**, with format *glTF Binary (.glb)*, *+Y Up* ticked (the default), *Apply Modifiers* ticked and materials exported. Put the file under `data/habitat/stages/`.
 4. **Write a scenario** like `sim/scenarios/cafe.yaml`, with `stage:` naming the file. With *+Y Up*, Blender's x and y are the pipeline's x and y, so the robot's start, the queue slots and the start positions of the people can be read straight off Blender's 3D cursor.
 
-The first time a `.glb` is loaded, a `<name>.stage_config.json` is written beside it. Without it, Habitat 0.3.3 takes a bare `.glb` to be z-up and lays the scene on its side. The file is not overwritten, so it can be edited. For a heavy scene, for instance, `collision_asset` can name a simpler mesh of the same room, since the navmesh and the clicks' ray casts use that mesh.
+The first time a `.glb` is loaded, a `<name>.stage_config.json` is written beside it. Without it, Habitat 0.3.3 takes a bare `.glb` to be z-up and lays the scene on its side. The file is not overwritten, so it can be edited. For a heavy scene, for instance, `collision_asset` can name a lighter mesh of the same room, because the navmesh and the ray casts of clicks use that mesh.
 
 ### A scene from separate models
 
@@ -274,7 +274,7 @@ Each entry of `objects:` takes:
 
 Each model is set on the stage's floor, its bounding box centred on (x, y), and is cut out of the navmesh, so people and Spot walk round it. As with a stage, an `<name>.object_config.json` is written beside a model the first time it is loaded.
 
-In `sim/scenarios/room_coffee_cart.yaml`, Poly Haven's coffee cart (2.2 × 1.7 m) stands against the north wall with a line of three in front of it. In one run, asked "Get me a coffee", Claude Haiku found the cart and stated that the robot comes after the people waiting. Spot stopped 1.27 m behind the last of them, 0.30 m to the side of the line.
+In `sim/scenarios/room_coffee_cart.yaml`, Poly Haven's coffee cart (2.2 × 1.7 m) stands against the north wall with a line of three in front of it. In one run with the request "Get me a coffee", Claude Haiku found the cart and stated that the robot comes after the people waiting. Spot stopped 1.27 m behind the last of them, 0.30 m to the side of the line.
 
 ### A downloaded scene without colours
 
@@ -290,16 +290,16 @@ sim/demo.sh --model claude_haiku55 -- --scenario sim/scenarios/sweet_spot_cafe.y
 
 Stages loaded from a file get soft light from above and from all four sides, and a light grey background where no ceiling is hit. With Habitat's default lighting, the faces turned away from its one light would be dark.
 
-In the clay café, Claude Haiku names "the coffee counter at the back of the room" and finds it. In the two recorded runs it judged that the people queueing at the counter's other end did not matter, and stopped at the end of the counter nearest the robot, beside the line rather than behind it.
+In the clay café, Claude Haiku names "the coffee counter at the back of the room" and finds it. In the two recorded runs it judged that the people queueing at the counter's other end did not matter. Spot stopped at the end of the counter nearest the robot, beside the line instead of behind it.
 
 The realistic layouts in `src/sgi/synth/realistic/` are built in Blender 4.5 (`BLENDER_SERIES` in `blender.py`). They are not exported to Habitat.
 
 ## Known limits
 
-- **A fixed set of scenes.** The scenarios in `sim/scenarios/` use the environments listed in [`sim/README.md`](../sim/README.md). A ticket desk, a lift or a screen with an audience would each be a scene and a scenario of their own.
+- **A fixed set of scenes.** The scenarios in `sim/scenarios/` use the environments listed in [`sim/README.md`](../sim/README.md). A ticket desk, a lift or a screen with an audience would each need a scene and a scenario of their own.
 - **Spot's base glides.** The base moves kinematically along its path, as in Habitat 3.0's social navigation task, and the legs play a trot over it. The feet are not planted, so they can slide.
 - **People only yield.** A walker waits up to 2 s for someone within 0.7 m ahead and then walks on, so two people can pass through each other, or walk into Spot's way. Spot plans round them (above), but people do not plan round Spot.
-- **The local planner sees people as round.** It knows where each person is, not where they are heading, so someone walking towards Spot can come nearer than the 0.8 m it plans for before the next plan, half a second later.
+- **The local planner sees people as round.** It uses where each person is and ignores where they are heading. So someone walking towards Spot can come nearer than the 0.8 m it plans for before the next plan, half a second later.
 - **The floor is taken to be flat.** The people's feet and Spot's base are held at the measured floor height, and the navmesh, which lies a few centimetres above it, gives only x and z.
 - **The goal is snapped to the navmesh.** A goal pose closer to furniture or a wall than the navmesh allows (0.3 m) is moved to the nearest place the robot can stand. When that is more than 0.2 m away, the status line says how far.
 - **One request at a time.** A request typed while the models are still answering is refused. The robot stands still while it waits, unless a click sends it somewhere.

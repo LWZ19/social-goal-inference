@@ -23,7 +23,7 @@ This is a CS6244 course project. It compares two ways of using a vision-language
 | Someone standing just behind a line | **19%** | 3.5% |
 | Moving line in the simulator, Claude Sonnet, time in the right spot | 6% | **29%** |
 
-Still-scene rows show the share of tries that end at a good spot, with pointing shown worked examples. In the moving-line row, pointing decides once and our method asks once and then tracks. A hold-place rule, tested on 64 unseen layouts in an updated simulator, raises Claude Sonnet from 25% to 47%. A robot given the ideal place reaches 65%.
+Still-scene rows show the share of tries that end at a good spot, with pointing shown worked examples. In the moving-line row, pointing decides once and our method asks once and then tracks. A hold-place rule raises Claude Sonnet from 25% to 47% on 64 layouts that it was not tuned on, in an updated simulator. A robot given the ideal place reaches 65%.
 
 [`results/README.md`](results/README.md) links each number to its stored output.
 
